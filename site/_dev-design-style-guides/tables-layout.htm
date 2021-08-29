@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="../assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="../assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="../assets/sass/master.utilities.css">
+<link rel="stylesheet" href="../assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="../assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="../assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="../assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="../assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Dizaino pavyzdžiai &#8212; lentelės layout'ui</h1>
+<h2>Stulpeliai</h2>
+<p> plius gali būti <code>.Tag-EquelXcol</code></p>
+<p>plius galima pridėti &#8212; <code>Tag-EquelWidth</code></p>
+<h3><code>.Tag .Tag-Grid</code></h3>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<td width="50%"><p>&nbsp;</p></td>
+		<td width="50%"><p>&nbsp;</p></td>
+	</tr>
+</table>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<th width="50%">&nbsp;</th>
+		<th width="50%">&nbsp;</th>
+	</tr>
+	<tr>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<td width="33%"><p>&nbsp;</p></td>
+		<td width="33%"><p>&nbsp;</p></td>
+		<td width="33%"><p>&nbsp;</p></td>
+	</tr>
+</table>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<th width="33%">&nbsp;</th>
+		<th width="33%">&nbsp;</th>
+		<th width="33%">&nbsp;</th>
+	</tr>
+	<tr>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<td width="25%"><p>&nbsp;</p></td>
+		<td width="25%"><p>&nbsp;</p></td>
+		<td width="25%"><p>&nbsp;</p></td>
+		<td width="25%"><p>&nbsp;</p></td>
+	</tr>
+</table>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<th width="25%">&nbsp;</th>
+		<th width="25%">&nbsp;</th>
+		<th width="25%">&nbsp;</th>
+		<th width="25%">&nbsp;</th>
+	</tr>
+	<tr>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table width="1200" class="c-table-linesGrid u-table-equelCols">
+	<tr>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+	</tr>
+</table>
+<table width="1200" class="c-table-linesGrid u-table-equelCols">
+	<tr>
+		<th width="20%">&nbsp;</th>
+		<th width="20%">&nbsp;</th>
+		<th width="20%">&nbsp;</th>
+		<th width="20%">&nbsp;</th>
+		<th width="20%">&nbsp;</th>
+	</tr>
+	<tr>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table width="1600" class="c-table-linesGrid u-table-equelCols">
+	<tr>
+		<td width="20%"><p>&nbsp;</p>
+				<p>&nbsp;</p>
+			<p>&nbsp;</p>			</td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table width="2000" class="c-table-linesGrid u-table-equelCols">
+	<tr>
+		<td width="20%"><p>&nbsp;</p>
+				<p>&nbsp;</p>
+			<p>&nbsp;</p>			</td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+		<td width="20%"><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>???:</p>
+<table class="c-table-linesGrid" style="width:100%">
+	<tr>
+		<th>---</th>
+		<th>---</th>
+	</tr>
+	<tr>
+		<td><p>&nbsp;</p></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+</table>
+<h3><code>.Tag .Tag-Clean .Tag-EquelWidth</code></h3>
+<table class="Tag-Clean Tag-EquelWidth" style="width:1600px">
+	<tr>
+		<td><h3>---</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+		<td><h3>---</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+		<td><h3>---</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+		<td><h3>---</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+		<td><h3>---</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+	</tr>
+</table>
+<h2>Kodas: <code>.Tag .Tag-Code</code></h2>
+<table class="Tag-Code" width="100%">
+	<tr>
+		<td><pre><code></code></pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><pre><code></code></pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><pre><code></code></pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table class="Tag-Code" width="100%">
+	<tr>
+		<td><pre><code>var = 7;</code></pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><pre>fsdfsdf</pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><pre><code></code></pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<h2>Lentelė</h2>
+<table width="883" class="c-table-linesGrid">
+	<tr>
+		<th>Kodas</th>
+		<th>Parametrai-kategorijos-tagai</th>
+		<th>Aprašymas</th>
+	</tr>
+	<tr>
+		<td><pre><code>* html {}</code></pre></td>
+		<td><p>Veikimas: Mato: IE6-</p></td>
+		<td><h5>Star html hack</h5></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid" style="width:1250px">
+	<tr>
+		<th style="width:15%">Tagai</th>
+		<th style="width:35%">&nbsp;</th>
+		<th style="width:50px">Kodas</th>
+	</tr>
+	<tr>
+		<td>predefined-variable</td>
+		<td><dl>
+			<dt>Aprašymas</dt>
+			<dd>
+				<p>dar neaišku kuo skiriasi nuo $_SERVER[&quot;SCRIPT_NAME&quot;] ?????????</p>
+				<blockquote>
+					<p>The filename of the currently executing script,  relative to the document root. For instance, $_SERVER['PHP_SELF'] in a  script at the address http://example.com/test.php/foo.bar would be  /test.php/foo.bar. The __FILE__ constant contains the full path and  filename of the current (i.e. included) file. </p>
+					<p>If PHP is  running as a command-line processor this variable contains the script  name since PHP 4.3.0. Previously it was not available.</p>
+				</blockquote>
+			</dd>
+			<dt>Pavyzdys</dt>
+			<dd>
+				<p>Failo URL'as /galerija/index.php &gt;&gt;&gt; /galerija/index.php</p>
+				<p>...</p>
+			</dd>
+		</dl></td>
+		<td><pre><code>$_SERVER['PHP_SELF']</code></pre></td>
+	</tr>
+</table>
+<h2>Katalogams ir failams: <code>.Tag .Tag-Grid .Tag-Folders</code></h2>
+<table class="c-table-linesGrid Tag-Folders" width="1500px">
+	<tr>
+		<td width="244"><pre>/kazkas</pre></td>
+		<td width="1244"><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><pre>   failas.htm</pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><pre>   /kitas
+      /ten
+      /šen</pre></td>
+		<td><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><pre><code> </code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre><code> </code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre><code> </code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre><code> </code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre><code> </code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre><code> </code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid Tag-Folders">
+	<tr>
+		<td><pre>/yaml
+   /core</pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre>      base.css
+      iehacks.css</pre></td>
+		<td><p>are responsible for the correct display in all browsers</p></td>
+	</tr>
+	<tr>
+		<td><pre>      print_base.css</pre></td>
+		<td>ensures an optimal layout in print </td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid u-table-equelCols" style="width:1400px">
+	<tr>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+	<tr>
+		<td><p>&nbsp;</p>
+		<p>&nbsp;</p></td>
+		<td><p>&nbsp;</p>
+		<p>&nbsp;</p></td>
+		<td><p>&nbsp;</p>
+		<p>&nbsp;</p></td>
+		<td><p>&nbsp;</p>
+		<p>&nbsp;</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table class="Tag-Clean">
+	<tr>
+		<td><h3>aaa</h3>
+			<p>&nbsp;</p>
+		</td>
+		<td><h3>bbb</h3>
+		<p>&nbsp;</p></td>
+		<td><h3>ccc</h3>
+		<p>&nbsp;</p></td>
+	</tr>
+</table>
+<h2>Suvestinėms</h2>
+<table width="100%" class="c-table-linesGrid">
+	<tr>
+		<td><pre><code>
+</code></pre></td>
+		<td><h4>-</h4>
+			<p>Mato: </p></td>
+	</tr>
+	<tr>
+		<td><pre><code>
+</code></pre></td>
+		<td><h4>-</h4>
+			<p>Mato: </p></td>
+	</tr>
+	<tr>
+		<td><pre><code>
+</code></pre></td>
+		<td><h4>-</h4>
+			<p>Mato: </p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" class="Tag-Code">
+	<tr>
+		<td><pre><code>
+</code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre><code>
+</code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><pre><code>
+</code></pre></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

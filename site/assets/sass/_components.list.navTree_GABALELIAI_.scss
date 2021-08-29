@@ -1,0 +1,168 @@
+
+$cntree-txtClr:        hsl(240, 100%, 50%);
+$cntree-txtHoverClr:   scale-color($cntree-txtClr, $saturation: 0%, $lightness: -10%);
+
+$cntree-bgClr:         scale-color($cntree-txtClr, $saturation: -10%, $lightness: 60%, $alpha: -90%);
+$cntree-bgClr-hover:   scale-color($cntree-bgClr, $saturation: 0%, $lightness: -10%, $alpha: 0%);
+
+$cntree-txtBgHoverClr: scale-color($cntree-bgClr, $saturation: 0%, $lightness: -20%);
+
+$cntree-listClr-base:  $cntree-txtClr;
+$cntree-listClr:       scale-color($cntree-listClr-base, $saturation: -20%, $lightness: 80%);
+$cntree-listClr-hover: scale-color($cntree-listClr-base, $saturation: 0%, $lightness: 0%);
+
+.c-navTree {
+  --cntree-leftIndent: 1em;
+  ul {
+    list-style-type: none;
+  }
+}
+
+.c-navTree--clean {
+
+  //---------------------------------------------------------------------
+  // <ul>
+  //---------------------------------------------------------------------
+
+  ul {
+    margin: 0;
+    padding: 0 0 0 var(--cntree-leftIndent);
+  }
+
+  > ul {
+    //margin: 0;
+    //padding: 4px 0 4px 10px;
+    padding: .5em .7em;
+    //border: none;
+    //background-color: hsla(302, 36%, 29%, 0.5);
+    //background-color: colorScheme-site("1HD2");
+    background-color: $cntree-bgClr;
+
+    &:hover {
+      //border: none;
+      //background-color: hsla(302, 36%, 29%, 0.9);
+      //scale_color($color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha])
+      //background-color: scale-color($this-bg-color, $alpha:-7%, $saturation:-20%);
+      //background-color: transparentize($cntree-bgClr, 0.05);
+      background-color: $cntree-bgClr-hover;
+    }
+  }
+
+  li > ul {
+    //border-left: 1px solid hsla(0, 0%, 100%, 0.4);
+    //border-left: 1px solid lighten($this-txtClr, 40%);
+    //border-bottom: 1px solid $this-listClr;
+
+    //border-left: 2px solid $cntree-listClr;
+    //border-left: 2px solid var(--, $cntree-listClr);
+
+    //border-radius: 3px;
+
+    //margin-top: -1em;
+    //padding-top: 1em;
+    //&:hover {
+    //  //border-left: 1px dotted hsla(180, 100%, 70%, 0.9);
+    //  //border-left-color: hsla(180, 100%, 70%, 0.7);
+    //  //border-left-style: solid;
+    //  border-left-color: $cntree-listClr-hover;
+    //}
+  }
+
+  //---------------------------------------------------------------------
+  // <li>
+  //---------------------------------------------------------------------
+
+  li {
+    //margin: 0 0 0 -2px;
+    margin: 0 0 0 0;
+    padding: 0;
+
+    border-left: 2px solid var(--cntree-listClr, $cntree-listClr);
+    &:hover {
+      border-left-color: var(--cntree-listClr-hover, $cntree-listClr-hover);
+    }
+
+    //// šitas style'ina parent'inius sąrašo elementus
+    //&:hover > a  {
+    //  //outline: 3px dotted orangered;
+    //  //font-weight: bold;
+    //  text-shadow: 1px 1px 6px transparentize($cntree-txtClr, 0.7), -1px -1px 6px transparentize($cntree-txtClr, 0.7)
+    //  //, 1px 1px 2px hsla(0, 0%, 100%, 1), -1px -1px 2px hsla(0, 0%, 100%, 1)
+    //  ;
+    //  //color: $this-txtHoverClr;
+    //  text-decoration: underline;
+    //}
+
+    //&:hover:first-child {
+    //  a {
+    //    color: blue;
+    //  }
+    //}
+    //a {
+    //  display: block;
+    //  &:hover, &:active, &:focus {
+    //    background-color: rgba(255,255,255,.2);
+    //  }
+    //}
+  }
+
+  a {
+    display: block;
+    padding: 2px 10px 2px var(--cntree-leftIndent);
+    //margin: -2px 0 -2px -10px;
+    //border-radius: 20px;
+
+    line-height: 1.15;
+    font-size: .95em;
+
+    //z-index: 10;
+    //position: relative;
+
+    //font-weight: bold;
+    //font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    //font-family: Georgia, "Times New Roman", Times, serif;
+    //font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    //font-family: "MS Serif", "New York", serif;
+    //font-family: "Segoe UI";
+    //font-family: "Droid Sans";
+    //font-family: oswaldregular;
+    //font-family: Ubuntu, Arial, Helvetica, sans-serif;
+    font-family: "Liberation Sans Regular", sans-serif;
+
+    &:link, &:visited {
+      text-decoration: none;
+      color:           var(--cntree-txtClr, $cntree-txtClr);
+    }
+
+    &:hover, &:active, &:focus {
+      //background: none;
+      //background-color: rgba(0,0,0,.25);
+      //background-color: scale-color(colorScheme-site('1HD1'), $alpha:-0%, $saturation:-20%, $lightness:-10%);
+      //background-color: scale-color($this-bgClr, $lightness:-8%);
+      background-color: var(--cntree-txtBgHoverClr, $cntree-txtBgHoverClr);
+      //background-color: darkseagreen;
+      color:            var(--cntree-txtHoverClr, $cntree-txtHoverClr);
+      //position:         relative;
+      text-decoration:  none !important;
+      // offset-x | offset-y | blur-radius | color
+      //text-shadow: 1px 1px 2px hsl(0, 0%, 80%);
+      //font-weight: normal!important;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

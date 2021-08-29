@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS veikimo mechanizmas: cascade, specificity, inheritance (paveldimumas)</h1>
+<h2>Cascade</h2>
+<p><a href="http://konspektas-prev.local/client-side/css/koncepcijos/cascade.htm">http://konspektas-prev.local/client-side/css/koncepcijos/cascade.htm</a></p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade">Introducing the CSS Cascade - CSS: Cascading Style Sheets | MDN</a></p>
+<p> <a href="https://css-tricks.com/the-c-in-css-the-cascade/">The "C" in CSS: The Cascade</a></p>
+<p><a href="https://alistapart.com/article/braces-to-pixels#section3">alistapart.com/braces-to-pixels#section3</a></p>
+<p>&nbsp;</p>
+<p> <a href="">The Definitive Guide to CSS Styling Order</a></p>
+<div class="MR2c MB2c" style="display: flex; align-items: flex-start"> <img src="images/20190717205435-cascade-07.svg" alt="" width="150"/> <img src="images/2019-07-17-definitive-guide-to-css-styling-order.svg" alt="" width="150"/> </div>
+<p>&nbsp;</p>
+<p><img src="images/20181201_175344_Window.png" alt=""/></p>
+<p>&nbsp;</p>
+<p>Cascade'as pagal E:\bib wd video skirstyti-2\udemy-advanced-css-sass\</p>
+<div class="MR2c MB2c" style="display: flex; align-items: flex-start; flex-flow: wrap"> <img src="images/2019-07-18-udemy-advanced-css-sass-1.png" alt="" width="150"/><img src="images/2019-07-18-udemy-advanced-css-sass-2.png" alt="" width="150"/><img src="images/2019-07-18-udemy-advanced-css-sass-3.png" alt="" width="150"/></div>
+<p>&nbsp;</p>
+<p>Cascade'as yra algoritmas, priskiriantis HTML dokumento tagui-elementui CSS savybės reikšmę, kai yra ne vienas CSS ruleset'as, skirtas-target'inantis tą tagą su tos pačios CSS savybės deklaracija, t. y. nustato kurio ruleset'o deklaracija bus pritaikyta tagui:</p>
+<blockquote>
+  <p>At some point in your work, you'll find yourself in the situation where multiple CSS rules will have selectors matching the same element. In such cases, which CSS rule "wins", and ends up being the one that is finally applied to the element? This is controlled by a mechanism called the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade">Cascade</a></p>
+  <p>The cascading algorithm determines how to find the value to apply for each property for each document element.</p>
+</blockquote>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>HTML dokumento elemento CSS deklaracijų kilmė-šaltinis (origin of CSS declarations)      </h3>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade#Origin_of_CSS_declarations">MDN/CSS/Cascade#Origin_of_CSS_declarations</a></p>
+      <p>CSS rule'sai gali būti 3-uose origin'uose, jie turi skirtingą prioritetą-svorį, čia pateikti didėjimo tvarka:</p>
+      <dl>
+        <dt>naršyklės stiliai (user-agent stylesheets)</dt>
+        <dd>
+          <p>Skirti  dokumentų skaitomumui be autoriaus stilių. </p>
+          <blockquote>
+            <p>The browser has a basic style sheet that gives a default style to any document.</p>
+          </blockquote>
+          <p>Tai nėra default'inės CSS savybių reikšmės, apibrėžtos CSS standarte, atvirkščiai, naršyklės stiliai pakeičia netenkinančias default'ines CSS savybių reikšmes.</p>
+          <blockquote>
+            <p>According to the <a href="http://www.w3.org/TR/CSS21/text.html#decoration">CSS specification,</a> the default value for the <a href="http://reference.sitepoint.com/css/text-decoration">text-decoration</a> property is none, but typically, user agents set this property to underline for a elements.</p>
+          </blockquote>
+        </dd>
+        <dt>autoriaus stiliai (author stylesheets)</dt>
+        <dd>
+          <p>Tai CSS, HTML dokumentui priskirti vienu iš būdų:</p>
+          <ul>
+            <li><code>&lt;link rel="stylesheet" href="failas.css" /&gt;</code> (linked styles)</li>
+            <li><code>&lt;style&gt;...&lt;/style&gt;</code> (embeded styles)</li>
+            <li><code>&lt;tagas style="..."&gt;</code>  (inline styles)</li></ul>
+        </dd>
+        <dt>vartotojo-naudotojo stiliai (user stylesheets)</dt>
+        <dd>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+    </td>
+    <td width="20%">
+      <h3>???</h3>
+      <blockquote>
+        <p id="Which_CSS_entities_participate_in_the_cascade">Which CSS entities participate in the cascade</p>
+        <p>Only CSS declarations, that is property/value pairs, participate in the cascade. This means that <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule">at-rules</a> containing entities other than declarations, such as a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face" title="The @font-face CSS at-rule specifies a custom font with which to display text; the font can be loaded from either a remote server or the user's own computer.">@font-face</a> rule containing <em>descriptors</em>, don't participate in the cascade. In these cases, only the at-rule as a whole participates in the cascade: here, the @font-face identified by its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-family">font-family</a> descriptor. If several @font-face rules with the same descriptor are defined, only the most appropriate @font-face, as a whole, is considered.</p>
+        <p>While the declarations contained in most at-rules — such as those in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media" title="The @media CSS at-rule can be used to apply part of a style sheet based on the result of one or more media queries.">@media</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@document" title="The @document CSS at-rule restricts the style rules contained within it based on the URL of the document. It is designed primarily for user-defined style sheets, though it can be used on author-defined style sheets, too.">@document</a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports" title="The @supports CSS at-rule lets you specify declarations that depend on a browser's support for one or more specific CSS features. This is called a feature query. The rule may be placed at the top level of your code or nested inside any other conditional group at-rule.">@supports</a> — participate in the cascade, declarations contained in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" title="The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence.">@keyframes</a> don't. As with @font-face, only the at-rule as a whole is selected via the cascade algorithm.</p>
+        <p>Finally, note that <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import" title="The @import CSS at-rule is used to import style rules from other style sheets. These rules must precede all other types of rules, except @charset rules; as it is not a nested statement, @import cannot be used inside conditional group at-rules.">@import</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@charset" title="The @charset CSS at-rule specifies the character encoding used in the style sheet. It must be the first element in the style sheet and not be preceded by any character; as it is not a nested statement, it cannot be used inside conditional group at-rules. If several @charset at-rules are defined, only the first one is used, and it cannot be used inside a style attribute on an HTML element or inside the <style> element where the character set of the HTML page is relevant.">@charset</a> obey specific algorithms and aren't affected by the cascade algorithm.</p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade#Which_CSS_entities_participate_in_the_cascade">MDN/CSS/Cascade#Which_CSS_entities_participate_in_the_cascade</a></p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <h3>CSS animacijos dalyvavimas <i>cascade</i></h3>
+      <blockquote>
+        <p id="CSS_animations_and_the_cascade">CSS animations and the cascade</p>
+        <p><a rel="nofollow" href="https://developer.mozilla.org/en-US/docs/Web/CSSUsing_CSS_animations" title="/en-US/docs/Web/CSSUsing_CSS_animations">CSS animations</a>, using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" title="The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence.">@keyframes</a> at-rules, define animations between states. Keyframes don't cascade, meaning that at any given time CSS takes values from only one single <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" title="The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence.">@keyframes</a>, and never mixes multiple ones together.</p>
+        <p>When several keyframes are appropriate, it chooses the latest defined in the most important document, but never combined all together.</p>
+        <p>Also note that values within @keyframes at-rules overwrite all normal values but are overwritten by !important values.</p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade#CSS_animations_and_the_cascade">MDN/CSS/Cascade#CSS_animations_and_the_cascade</a></p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Kaip tagui priskiriama CSS savybės reikšmė (cascading order, the process of resolution)      </h3>
+      <ol>
+        <li>
+          <p>Surenkami visi tagui skirti ruleset'ai iš visų origin'ų ir tinkamų &quot;media at-rule&quot; su apdorojamos CSS savybės deklaracijomis (valid declarations).</p>
+          <blockquote>
+            <p>It first filters all the rules from the different sources to keep only the rules that apply to a given element. That means rules whose selector matches the given element and which are part of an appropriate media at-rule.</p>
+          </blockquote>
+        </li>
+        <li>
+          <ol>
+            <li>Jeigu nėra nei vienos apdorojamos CSS savybės deklaracijos &#8212; tai savybei priskiriama default'inė reikšmė.</li>
+            <li>Jeigu yra viena apdorojamos CSS savybės deklaracija &#8212; tos deklaracijos reikšmė priskiriama  CSS savybei.</li>
+            <li>Jeigu yra daugiau nei viena apdorojamos CSS savybės deklaracija &#8212; pradedamas kitas žingsnis.</li>
+          </ol>
+        </li>
+        <li>
+          <ol>
+        <li>
+          <p>Apdorojamos CSS savybės deklaracijos surūšiuojamos pagal svarbumą (<code>!important</code>) ir origin'ą, pateikta prioriteto-svorio didėjimo tvarka (The cascade is in ascending order):</p>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">Origin</th>
+                <th scope="col">Importance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>CSS Transitions</td>
+                <td><em>see below</em></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>user agent</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>user</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>author</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>CSS Animations</td>
+                <td><em>see below</em></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>author</td>
+                <td>!important</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>user</td>
+                <td>!important</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>user agent</td>
+                <td>!important</td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>Jeigu didžiausio prioriteto-svorio deklaracija yra viena, tada ji ir priskiriama apdorojamam tagui,  ir &quot;Process of Resolution&quot; baigiamas. </li>
+        <li>Jeigu didžiausio prioriteto-svorio deklaracijų yra daugiau (<q>the same combination of
+          importance level and origin)</q>, tada pradedamas kitas žingsnis.</li>
+      </ol>
+        </li>
+        <li>
+          <ol>
+            <li>Tokio pačio prioriteto-svorio deklaracijos rūšiuojamos pagal jų ruleset'ų selektorių specifiškumą. </li>
+            <li>Jeigu aukščiausią specifiškumą turi vienas rulesetsas &#8212; to ruleset'o deklaracija priskiriama ir &quot;Process of Resolution&quot; baigiamas. </li>
+            <li>Jeigu yra daugiau ruleset'ų su tokiu pačiu aukščiausiu specifiškumu &#8212; pradedamas kitas žingsnis.</li>
+          </ol>
+        </li>
+        <li></li>
+      </ol>
+      <p>&nbsp;</p>
+      <p>Ruleset'ai su tokiu pačiu specifiškumu surūšiuojami pagal poziciją kode (source order).</p>
+      <p>&nbsp;</p>
+      <p>Visi būdai prijungti CSS rule'sus prie HTML dokumento yra lygiaverčiai:</p>
+      <dl>
+        <dt>HTML faile</dt>
+        <dd>
+          <p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot; /&gt;</code></p>
+          <p><code>&lt;style&gt;...&lt;/style&gt;</code></p>
+        </dd>
+        <dt>CSS faile</dt>
+        <dd>
+          <p><code class="cssatrule">@import url(&quot;&quot;)</code></p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <p><code>&lt;link&gt;</code>HTML failo <code>&lt;head&gt;</code>'e</p>
+      <p>&nbsp;</p>
+      <p>Tai reiškia, kad:</p>
+      <ul>
+        <li>Kas iš  HTML faile esančių <code>&lt;style&gt;</code> ir <code>&lt;link&gt;</code> yra toliau kode, to rule'sai laimi.</li>
+        <li>CSS faile su <code class="cssatrule">@import</code> (kuris turi būti tik pačioje kodo pradžioje) prijungtas kodas turi mažesnį svorį, nei tame CSS faile esantys rule'sai, nes jie yra kode toliau.</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>Konkuruojančios deklaracijos rūšiuojamos pagal vietą kode, toliausiai kode esanti deklaracija laimi, tiksliau override'ina. Tos pačios CSS savybės deklaracijos gali būti ir tame pačiame rule'se ir skirtinguose, visais atvejais veikia ta pati taisyklė, kad toliau kode esanti deklaracija laimi-override'ina.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Naršyklė (user agent) iš visų reikiamo &quot;media
+      type&quot; <a href="#deklaraciju-kilme">šaltinių</a> surenka apdorojamos CSS savybės  (pvz. <code>color:</code>) teisingas deklaracijas (valid declarations),  skirtas apdorojamam tagui.</p>
+      <p>Jeigu rasta tik viena apdorojamos CSS savybės deklaracija, tos deklaracijos reikšmė priskiriama  CSS savybei, </p>
+      <p>savybė priskiriama apdorojamam tagui su tos deklaracijos reikšme ir &quot;Process of Resolution&quot; baigiamas. Jei rasta daugiau apdorojamos CSS savybės deklaracijų &#8212;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+      <p id="Cascading_order">Cascading order</p>
+      <p>The cascading algorithm determines how to find the value to apply for each property for each document element.</p>
+      <ol>
+        <li>It first filters all the rules from the different sources to keep only the rules that apply to a given element. That means rules whose selector matches the given element and which are part of an appropriate media at-rule.</li>
+        <li>Then it sorts these rules according to their importance, that is, whether or not they are followed by !important, and by their origin. The cascade is in ascending order, which means that !important values from a user-defined style sheet have precedence over normal values originated from a user-agent style sheet:
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">Origin</th>
+                <th scope="col">Importance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>CSS Transitions</td>
+                <td><em>see below</em></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>user agent</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>user</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td> </td>
+                <td>override <span title="This is an obsolete API and is no longer guaranteed to work."></span></td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>author</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>CSS Animations</td>
+                <td><em>see below</em></td>
+              </tr>
+              <tr>
+                <td> </td>
+                <td>override <span title="This is an obsolete API and is no longer guaranteed to work."></span></td>
+                <td>!important</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>author</td>
+                <td>!important</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>user</td>
+                <td>!important</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>user agent</td>
+                <td>!important</td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>In case of equality, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" title="/en-US/docs/Web/CSSSpecificity">specificity</a> of a value is considered to choose one or the other.</li>
+      </ol>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>Kaip vyksta deklaracijų priskyrimas kiekvienam tagui (The Process of Resolution)</p>
+      <p>T. y. kaip apdorojamam tagui nustatoma apdorojamos CSS savybės reikšmė (tai ir yra CSS cascade):</p>
+      <ol>
+        <li>
+          <p>Naršyklė (user agent) iš visų reikiamo &quot;media
+            type&quot; <a href="#deklaraciju-kilme">šaltinių</a> surenka apdorojamos CSS savybės  (pvz. <code>color:</code>) teisingas deklaracijas (valid declarations),  skirtas apdorojamam tagui.</p>
+          <p>Jeigu rasta viena apdorojamos CSS savybės deklaracija, ta savybė priskiriama apdorojamam tagui su tos deklaracijos reikšme ir &quot;Process of Resolution&quot; baigiamas. Jei rasta daugiau apdorojamos CSS savybės deklaracijų &#8212; pradedamas kitas žingsnis.</p>
+        </li>
+        <li>
+          <p>Rastos apdorojamos CSS savybės deklaracijos surūšiuojamos pagal svarbumą ir kilmę (origins), pateikta prioriteto-svorio didėjimo tvarka:</p>
+          <ol>
+            <li>user agent declarations</li>
+            <li>normal declarations in user style sheets</li>
+            <li>normal declarations in author style sheets</li>
+            <li>important declarations in author style sheets</li>
+            <li>important declarations in user style sheets</li>
+          </ol>
+          <p>Jeigu didžiausio prioriteto-svorio deklaracija yra viena, tada ji ir priskiriama apdorojamam tagui,  ir &quot;Process of Resolution&quot; baigiamas. Jeigu didžiausio prioriteto-svorio deklaracijų yra daugiau, t. y. <q>the same combination of
+            importance level and origin</q>, tada pradedamas kitas žingsnis.</p>
+        </li>
+        <li>
+          <p>Praėjusiame žingsnyje rastos tokio pačio prioriteto-svorio deklaracijos rūšiuojamos pagal selektorių <a href="../../../client-side/css/koncepcijos/specificity.htm">specifiškumą</a>. Jeigu aukščiausią specifiškumą turi vienas rule'sas (kuriame žinoma yra apdorojamos CSS savybės deklaracija), tada to rule'so deklaracija priskiriama ir &quot;Process of Resolution&quot; baigiamas. Jeigu yra daugiau rule'sų su tokiu pačiu aukščiausiu specifiškumu &#8212; pradedamas kitas žingsnis.</p>
+        </li>
+        <li>
+          <p>Konkuruojančios deklaracijos rūšiuojamos pagal vietą kode, toliausiai kode esanti deklaracija laimi, tiksliau override'ina. Tos pačios CSS savybės deklaracijos gali būti ir tame pačiame rule'se ir skirtinguose, visais atvejais veikia ta pati taisyklė, kad toliau kode esanti deklaracija laimi-override'ina.</p>
+          <p>Visi būdai prijungti CSS rule'sus prie HTML dokumento yra lygiaverčiai:</p>
+          <ul>
+            <li><code>&lt;style&gt;</code> HTML failo <code>&lt;head&gt;</code>'e</li>
+            <li><code>&lt;link&gt;</code>HTML failo <code>&lt;head&gt;</code>'e</li>
+            <li><code class="cssatrule">@import</code> CSS faile</li>
+          </ul>
+          <p>Tai reiškia, kad:</p>
+          <ul>
+            <li>Kas iš  HTML faile esančių <code>&lt;style&gt;</code> ir <code>&lt;link&gt;</code> yra toliau kode, to rule'sai laimi.</li>
+            <li>CSS faile su <code class="cssatrule">@import</code> (kuris turi būti tik pačioje kodo pradžioje) prijungtas kodas turi mažesnį svorį, nei tame CSS faile esantys rule'sai, nes jie yra kode toliau.</li>
+          </ul>
+        </li>
+      </ol>
+      <p>Kaip nustatoma reikiama tago CSS savybė (pvz. <code>color:</code>), jeigu jai nei viename <a href="#deklaraciju-kilme">šaltinyje</a> nėra deklaracijos, t. y. per &quot;CSS cascade&quot; nieko negavo &#8212; <a href="../../../client-side/css/koncepcijos/inheritance.htm">paveldima</a> iš tėvinio tago (parent of the element). Beje galima naudoti bendrą CSS savybių reikšmę <a href="../../../client-side/css/values/inherit.htm">inherit</a>.</p>
+      <p> Jeigu CSS savybė tagui nesuteikta nei per &quot;CSS cascade&quot;, nei <a href="../../../client-side/css/koncepcijos/inheritance.htm">paveldimumą</a>, tada <q>it’s up      to the user agent to supply a CSS default value for the      property</q>, taigi visos CSS savybės turi default'ines reikšmes.</p>
+    </td>
+    <td>
+      <ul>
+        <li>deklaracijų svarbumas (declaration importance) (!important)</li>
+        <li><a href="http://konspektas-prev.local/client-side/css/koncepcijos/cascade.htm#deklaraciju-kilme">kilmė (origin)</a> ??????????????????????????</li>
+        <li>specifiškumas (specificity)</li>
+        <li>deklaracijų (kurios yra rule'suose) vieta kode</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p> When  declarations  conflict,  the  cascade  considers  three things to resolve the difference: </p>
+      <p>1 Stylesheet origin—Where the styles come from. Your styles are applied in conjunction with the browser's default styles. </p>
+      <p>2 Selector specificity—Which selectors take precedence over which. </p>
+      <p>3 Source order—Order in which styles are declared in the stylesheet.</p>
+      <p></p>
+    </td>
+  </tr>
+</table>
+<h2>CSS savybių deklaracijų specifiškumas (<i>Specificity</i>)</h2>
+<p><a href="http://konspektas-prev.local/client-side/css/koncepcijos/specificity.htm">http://konspektas-prev.local/client-side/css/koncepcijos/specificity.htm</a></p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity">Specificity - CSS: Cascading Style Sheets | MDN</a></p>
+<p> <a href="https://css-tricks.com/specifics-on-css-specificity/">Specifics on CSS Specificity</a></p>
+<p><a href="http://cssspecificity.com/">CSS Specificity</a></p>
+<p>Visos CSS savybių deklaracijos turi <i>Specificity</i> reikšmę, kurios dydis lemia kuri deklaracija bus pritaikyta DOM elementui konfliktinėse <i>Cascade</i> situacijose. </p>
+<p>Laimi, t. y. priskiriamos DOM elementui, tos deklaracijos, kurių <i>specificity</i> yra didesnis.</p>
+<blockquote>
+  <p><strong>Specificity</strong> is the means by which browsers decide which CSS property values are the most relevant to an element and, therefore, will be applied.</p>
+</blockquote>
+<h3><i>Specificity</i> dydžio apskaičiavimas</h3>
+<p>Deklaracijų <i>specificity</i>  apskaičiuojamas pagal:</p>
+<ul>
+  <li>yra &quot;inline style, style attribute&quot; ar nėra,</li>
+  <li>ir jei nėra,  pagal rule'so selektoriaus sudėtį.</li>
+</ul>
+<blockquote>
+  <p>Specificity is based on the matching rules which are composed of different sorts of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Reference#Selectors">CSS selectors</a>.</p>
+</blockquote>
+<div class="c-em-note">
+  <p>Kiekvienas rule'so selektorius turi savo &quot;specificity&quot;, jis nustatomas tik pagal rule'so selektoriaus sudėtį:</p>
+  <table class="Tag Tag-Grid Tag-Equel2col" style="width:900px">
+    <tr>
+      <td width="314">
+        <pre><code>p, .Content h2 { color: navy; }</code></pre>
+        <p>&nbsp;</p>
+      </td>
+      <td width="574">
+        <p>Čia yra vienas &quot;CSS rule&quot;as , jo &quot;selector group&quot; susideda iš dviejų selektorių, kurių kiekvienas turi savo &quot;specificity&quot;:</p>
+        <p><code>p</code> &#8211; 0,0,0,1</p>
+        <p><code>.Content h2</code> &#8211; 0,0,1,1</p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="-FR"><img src="images/20190718_103302_Specifics on CSS Specificity.png" alt="" width="367" height="221"/></p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <caption>
+  kaip apskaičiuojamas <i>specificity</i>
+  </caption>
+  <tr>
+    <th width="20%" rowspan="2">&nbsp;</th>
+    <th width="20%">...</th>
+    <th width="60%" colspan="3">pagal rule'so selektoriaus sudėtį</th>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <th>ID selektorius</th>
+    <th>klasės, pseudo klasės ir atributo selektoriai</th>
+    <th>tago ir psiaudo tago selektoriai </th>
+  </tr>
+  <tr>
+    <th>...</th>
+    <td>
+      <p><code>&lt;h1 style=&quot;...&quot;&gt;</code> stiliai tage (Inline Style), visada laimi</p>
+      <blockquote>
+        <p>Inline styles added to an element (e.g., <code>style="font-weight: bold;"</code>) always overwrite any styles in external stylesheets, and thus can be thought of as having the highest specificity.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <ul>
+        <li><code>#kazkas {}</code> ID selektorius (ID selector)</li>
+      </ul>
+      <blockquote>
+        <p>Form-based specificity</p>
+        <p>Specificity is based on the form of a selector. In the following case, the selector *[id="foo"]counts as an attribute selector for the purpose of determining the selector's specificity, even though it selects an ID.</p>
+        <pre><code>&lt;p id="foo"&gt;I am a sample text.&lt;/p&gt;
+
+*#foo {
+  color: green; // &lt;&lt;&lt; WINS
+}
+
+*[id="foo"] {
+  color: purple;
+}</code></pre>
+      </blockquote>
+    </td>
+    <td>
+      <dl>
+        <dt>klasės      selektorius (class selector)</dt>
+        <dd>
+          <p><code>.kazkas {}</code>        </p>
+        </dd>
+        <dt>pseudo klasės selektorius (pseudo-class selector)</dt>
+        <dd>
+          <p><code>:link {}</code></p>
+          <p>Išimtis:</p>
+          <blockquote>
+            <p>The :not() exception</p>
+            <p>The pseudo-class :not() adds no specificity by itself, only what's inside it's parentheses.</p>
+            <p>Negation pseudo-class (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not" title="The documentation about this has not yet been written; please consider contributing!">:not()</a>) have no effect on specificity. The selectors declared <em>inside</em> :not() do, however.</p>
+            <p>The negation pseudo-class <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not" title="The documentation about this has not yet been written; please consider contributing!">:not()</a> is <em>not</em> considered a pseudo-class in the specificity calculation. But selectors placed into the negation pseudo-class count as normal selectors when determining the count of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#Selector_Types">selector types</a>.</p>
+          </blockquote>
+        </dd>
+        <dt>atributo selektorius (attribute selector)</dt>
+        <dd>
+          <p><code>[kazkas] {}</code></p>
+        </dd>
+      </dl>
+    </td>
+    <td>
+      <ul>
+        <li><code>p {}</code> Tago selektorius (element type selector)</li>
+        <li><code>*::before {}</code> Psiaudo tago selektorius (pseudo-element selector)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th>Kaip prideda prie <i>specificity</i></th>
+    <td><code>+1, 0, 0, 0</code></td>
+    <td><code>0, +1, 0, 0</code></td>
+    <td>
+      <p><code>0, 0, +1, 0</code>    </p>
+    </td>
+    <td>
+      <p><code>0, 0, 0, +1</code>    </p>
+    </td>
+  </tr>
+</table>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <caption>
+  kokie selektoriaus komponentai neįtakoja <i>specificity</i> dydžio
+  </caption>
+  <tr>
+    <td width="20%">
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>The universal selector (<code>*</code>) has no specificity value (0,0,0,0)</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Combinators (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator" title="The documentation about this has not yet been written; please consider contributing!">+</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator" title="The documentation about this has not yet been written; please consider contributing!">&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_combinator" title="The documentation about this has not yet been written; please consider contributing!">~</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator">' '</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Column_combinator" title="The documentation about this has not yet been written; please consider contributing!">||</a>) have no effect on specificity.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<p>Apskaičiavimo pavydžiai:</p>
+<table width="553" class="c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="31%"><img src="images/20190717_203147_Specificity - css kungfu.png" alt="" width="172" height="88"/></td>
+    <td width="69%">
+      <p><code>#kazkas {...}</code> 0,1,0,0<br>
+        <code>#kazkas #kitas {...}</code> 0,2,0,0<br>
+        <code>#kazkas #kitas #darKitas {...}</code> 0,3,0,0</p>
+      <p><code>.kazkas {...}</code> 0,0,1,0<code><br>
+        .kazkas[attKazkoks] {...}</code> 0,0,2,0<br>
+        <code>.kazkas[attKazkoks] &gt; .kitas {...}</code> 0,0,3,0</p>
+      <p><code>p.bright em.dark {...}</code> 0,0,2,2<br>
+        <code>div#sidebar *[href] {...}</code> 0,1,1,1</p>
+    </td>
+  </tr>
+</table>
+<h3>Kaip <i>specificity</i> reikšmės palyginamos, t. y. nustatoma kuri didesnė</h3>
+<p>Kaip nustatoma kuris <i>specificity</i> didesnis? Lyginama kurio <i>specificity</i> didesnė didžiausio svorio dalis, kaip ir paprastuose skaičiuose, skaičių reikšmė didėja iš kairės į dešnę (t. y. 100 &gt; 50), pvz:</p>
+<ul>
+  <li><code>0,0,0,2 &gt; 0,0,0,1</code></li>
+  <li><code>0,0,1,0 &gt; 0,0,0,1</code></li>
+  <li><code>0,0,1,0 &gt; 0,0,0,2</code></li>
+  <li><code>0,1,0,1 &gt; 0,1,0,0</code></li>
+  <li><code>1,0,0,0 &gt; 0,15,3,3</code></li>
+</ul>
+<div class="c-em-note">
+  <p>Paprastas selektoriaus specifiškumo padidinimo būdas:</p>
+  <blockquote>
+    <p>As a nonsense special case, duplicate simple selectors to increase specificity when you have nothing more to specify.</p>
+    <pre><code>#myId#myId span { color: yellow; }
+.myClass.myClass span { color: orange; }</code></pre>
+  </blockquote>
+</div>
+<h3><I>Specificity</i> santykiai su ...</h3>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h4><I>Specificity</i> santykiai su <i>inheritance</i></h4>
+      <p id="Directly_targeted_elements_vs._inherited_styles2">Directly targeted elements vs. inherited styles</p>
+      <p>Styles for a directly targeted element will always take precedence over inherited styles, regardless of the specificity of the inherited rule. This CSS ...</p>
+      <pre><code>&lt;html&gt;
+  &lt;body id="parent"&gt;
+    &lt;h1&gt;Here is a title!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+#parent {
+  color: green;
+}
+
+h1 {
+  color: purple;
+}</code></pre>
+    </td>
+    <td width="20%">
+      <h4><code>!important</code> santykis su <i>specificity</i></h4>
+      <p><code>!important</code> deklaracijos visada laimi prieš bet kokio dydžio <i>specificity</i></p>
+      <blockquote>
+        <p>When an important rule is used on a style declaration, this declaration overrides any other declarations. Although technically <code>!important</code> has nothing to do with specificity, it interacts directly with it. </p>
+      </blockquote>
+      <p>Kai tos pačios savybės deklaracijos skirtingose vietose yra su <code>!important</code>, tada <i>specificity</i> lemia kuri laimės:</p>
+      <blockquote>
+        <p>When two conflicting declarations with the !important rule are applied to the same element, the declaration with a greater specificity will be applied.</p>
+      </blockquote>
+      <p>Apibendrinimas:</p>
+      <blockquote>
+        <p>The !important value appended a CSS property value is an automatic win. It overrides even inline styles from the markup. The only way an !important value can be overridden is with another !important rule declared later in the CSS and with equal or great specificity value otherwise.</p>
+      </blockquote>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<h3>Grafinis <i>specificity</i> pateikimas</h3>
+<p><img src="images/2019-07-17_specifishity.com.png" alt="" width="105" height="135"/></p>
+<h3>Rekomendacijos</h3>
+<p><img src="images/20190717_202627_CSS !important_ Don't Use It. Do This Instead – UX Engineer.png" alt="" width="150" height="89"/></p>
+<h2>Inheritance</h2>
+<p><a href="http://konspektas-prev.local/client-side/css/koncepcijos/inheritance.htm">http://konspektas-prev.local/client-side/css/koncepcijos/inheritance.htm</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<p>eigu yra viena apdorojamos CSS savybės deklaracija — tos deklaracijos reikšmė priskiriama CSS savybei</p>
+<p>Kiekviena DOM elementui priskirta CSS savybės deklaracija turi </p>
+<p>&nbsp;</p>
+<figure class="figure--image-bigCaption"><img src="images/20181201_175344_Window.png" alt="" width="151" height="63"/>
+  <figcaption>Grant K.J. - CSS in Depth - 2018.pdf &#8212; 35 p. </figcaption>
+</figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

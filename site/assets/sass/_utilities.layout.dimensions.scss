@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+// @TEST:
+// http://konspektas.local/!sass.utilities.layout.dimensions.html
+
+@include szm-utilities-layout-dimensions-widthHeightAuto;
+
+@include szm-utilities-layout-dimensions-widthHeight(px, 5, 5, 200);
+
+@include szm-utilities-layout-dimensions-widthHeight("%", 1, 1, 100);
+
+@include szm-utilities-layout-dimensions-widthHeight("em", 1, 1, 40);
+
+@include szm-utilities-layout-dimensions-widthHeight("vh", 5, 5, 100);
+
+@include szm-utilities-layout-dimensions-widthHeight("vw", 5, 5, 100);
+
+
+
+

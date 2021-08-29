@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////////////////
+
+%dev-inspect-attr-hover-hover-1 {
+  outline: 2px dotted hsla(120, 100%, 30%, 0.7);
+}
+
+%dev-inspect-attr-hover-hover-2 {
+  outline: 2px dotted hsla(240, 100%, 50%, 0.7);
+  outline-offset: 3px;
+}
+
+%dev-inspect-attr-hover-pseudoElm {
+  position:      absolute;
+  display: block;
+  //transform:     translate(-50%, -112%);
+  padding:       0.15em 0.6em 0.25em;
+  left:          50%;
+  /*width:       calc(100% - 16px);*/
+  width:         fit-content;
+  font:          1.3rem "IBM Plex Mono";
+  color:         hsla(120, 100%, 90%, 1);
+  background:    hsla(120, 30%, 10%, 1);
+  /*border:        1px solid hsla(120, 100%, 70%, 0.9);*/
+  border-radius: 0.35em;
+  /*box-shadow:    0px 0px 17px 0px hsla(120, 50%, 50%, 0.7);*/
+  box-shadow:    .3em .2em .1em hsla(120, 50%, 30%, 0.4);
+  content:       var(--dev-inspect-attr-hover-pseudoElm);
+  z-index:       10000;
+}
+
+%dev-inspect-attr-hover-pseudoElm-2 {
+  //bottom:     -5px;
+  //transform:  translate(-50%, 112%);
+  color:      hsla(240, 100%, 90%, 1);
+  background: hsla(240, 30%, 10%, 1);
+  box-shadow: .3em .2em .1em hsla(240, 50%, 30%, 0.4);
+  /*border-color: hsla(240, 100%, 70%, 0.9);*/
+}
+
+// @PARAMS:
+//   $style  offset red blue green
+
+@mixin dev-inspect-attr-hover($selector, $attribute: "class", $style: "blue", $pseudoElm: "after") {
+
+  // simple-selectors(".foo.bar") => ".foo", ".bar"
+  // selector-parse(".foo .bar, .baz .bang") => ('.foo' '.bar', '.baz' '.bang')
+
+  #{$selector}:hover {
+    /*outline: 1px dashed darkturquoise;*/
+    //position: relative;
+    @if ($style == 1) {
+      @extend %dev-inspect-attr-hover-hover-1;
+    }
+    @else if($style == 2) {
+      @extend %dev-inspect-attr-hover-hover-2;
+    }
+  }
+
+  #{$selector}:hover::#{$pseudoElm} {
+    @if ($style == 1) {
+      --dev-inspect-attr-hover-pseudoElm: "#{$attribute}=\"" attr(#{$attribute}) "\"";
+      @extend %dev-inspect-attr-hover-pseudoElm;
+    }
+    @else if($style == 2) {
+      --dev-inspect-attr-hover-pseudoElm: "#{$attribute}=\"" attr(#{$attribute}) "\"";
+      @extend %dev-inspect-attr-hover-pseudoElm;
+      @extend %dev-inspect-attr-hover-pseudoElm-2;
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////////////////
+
+@include dev-inspect-attr-hover("[data-DIAC1]", "class");
+@include dev-inspect-attr-hover("[data-DIAC2]", "class", 2);
+
+//$selector, $inspectAttr: "class", $pseudoElm: "after", $style: 1
+@include dev-inspect-attr-hover("[data-DIAS1]", "style");
+@include dev-inspect-attr-hover("[data-DIAS2]", "style", $style: 2);
+
+
+
+
+
+
+
+//@if ($style == 1) {
+//  position:      absolute;
+//  transform:     translate(-50%, -112%);
+//  padding:       0.15em 0.6em 0.25em;
+//  left:          50%;
+//  /*width:       calc(100% - 16px);*/
+//  width:         fit-content;
+//  font:          1.3rem "IBM Plex Mono";
+//  color:         hsla(120, 100%, 90%, 1);
+//  background:    hsla(120, 30%, 10%, 1);
+//  /*border:        1px solid hsla(120, 100%, 70%, 0.9);*/
+//  border-radius: 0.35em;
+//  /*box-shadow:    0px 0px 17px 0px hsla(120, 50%, 50%, 0.7);*/
+//  box-shadow:    .3em .2em .1em hsla(120, 50%, 30%, 0.4);
+//  content:       "#{$attribute}=\"" attr(#{$attribute}) "\"";
+//  z-index:       10000;
+//}
+//@else if($style == 2) {
+//  bottom:     -5px;
+//  transform:  translate(-50%, 112%);
+//  color:      hsla(240, 100%, 90%, 1);
+//  background: hsla(240, 30%, 10%, 1);
+//  box-shadow: .3em .2em .1em hsla(240, 50%, 30%, 0.4);
+//  /*border-color: hsla(240, 100%, 70%, 0.9);*/
+//}
+
+

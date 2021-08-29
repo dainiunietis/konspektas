@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Loginės ir fizinės savybės ir reikšmės / Logical and physical properties and values</h1>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid,_Logical_Values_and_Writing_Modes">CSS grids, logical values, and writing modes - CSS: Cascading Style Sheets | MDN</a></p>
+<p>Apibūdinimas fizinis  /  physical reiškia kompiuterio ar kito įrenginio naudotojo perspektyvą, t. y. ekrano kraštines: kairę-dešnę, viršų-apačią:</p>
+<blockquote>
+  <p>We call these keywords and properties <em>physical</em> because they relate to the screen you are looking at. Left is always left, no matter what direction your text is running.</p>
+</blockquote>
+<p>&nbsp;</p>
+<figure id="pagefrg-20201231004000" class="c-figure c-figure--shadow" style="wwidth:95%">
+  <div class="c-figure__content">
+    <blockquote>
+      <p>In the example below, I have two paragraphs. One has no <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a> property set, the second has <code>text-align</code> set to left. I have added <code>dir="rtl"</code> to the html element, which switches the writing mode from the default for an English language document of <code>ltr</code>. You can see that the first paragraph remains left to right, due to the <code>text-align</code> value being <code>left</code>. The second however, switches direction and the text runs from right to left.</p>
+      <p><img src="images/20201230_230229_CSS grids, logical values, and writing modes - CSS_ Cascading Style Sheets _ MDN.png" alt="" width="406" height="188"/></p>
+    </blockquote>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg">
+      <p>Default'inis western kalboms — <code>dir=&quot;ltr&quot;</code></p>
+      <div class="c-pvs__parent FS1.5em" style="">
+        <p data-diah-style-bottom-offset style="">Koks tai tekstas apie ką nors.</p>
+        <p data-diah-style-bottom-offset style="text-align:right">Koks tai tekstas apie ką nors.</p>
+      </div>
+    </div>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg">
+      <p>Hebrajų-arabų kalbų — <code>dir=&quot;rtl&quot;</code></p>
+      <p>Be fizinių / physical CSS nustatymų — rodo gerai:</p>
+      <div dir="rtl" class="c-pvs__parent FS1.5em" style="">
+        <p data-diah-style-bottom-offset style="">Koks tai tekstas apie ką nors.</p>
+      </div>
+      <p>Su nustatytu <code>text-align: left</code> — rodo blogai:</p>
+      <div dir="rtl" class="c-pvs__parent FS1.5em" style="">
+        <p data-diah-style-bottom-offset style="text-align:left">Koks tai tekstas apie ką nors.</p>
+      </div>
+    </div>
+  </div>
+  <figcaption>Pavyzdys, kai fizinių / physical CSS nustatymų naudojimas apiforminime, trukdo korektiškai atvaizduoti skirtingomis kalbomis</figcaption>
+</figure>
+<p>&nbsp;</p>
+<p>&lt;box-side&gt; == left | right | top | bottom</p>
+<table width="100%" class="c-table-linesGrid">
+	<tr>
+		<th width="20%">&nbsp;</th>
+		<th width="20%">CSS savybės</th>
+		<th width="20%">CSS savybių reikšmės</th>
+	</tr>
+	<tr>
+		<td>
+		  Fizinės / Physical
+		</td>
+		<td>
+		  <p>left: right:</p>
+      <p>top: bottom:</p>
+		  <p>margin-&lt;box-side&gt;:</p>
+      <p>padding-&lt;box-side&gt;: </p>
+		</td>
+		<td>
+		  <p>text-align: left | center | right </p>
+      <p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>Loginės  / Logical</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols u-table-equelCols">
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols u-table-equelCols">
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols u-table-equelCols">
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

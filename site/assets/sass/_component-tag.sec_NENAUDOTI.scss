@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+/*   /////
+    ///
+   ///        section.Command
+  ///
+ /////   */
+
+section.Command {
+  padding: 4px 2px 0 2px;
+  margin: 0 -3px .5em;
+  border: 1px dotted rgba(158,133,80,.8);
+  border-radius: 5px;
+  position: relative;
+}
+
+section.Command:hover {
+  border-color: rgba(158,133,80,1);
+  background-color: rgba(158,133,80,.06);
+}
+
+section.Command > *:last-child {
+  margin-bottom: .4em;
+}
+
+/***/
+
+/*section.Command h1 { */
+/*section.Command > *:first-child, */
+section.Command > p:first-child,
+section.Command > h1:first-child,
+section.Command > a:first-child > * {
+  font-family: inherit; font-size: 1em; text-align: left; color: inherit;
+  padding: .35em 3px; margin: -5px -3px .3em -3px;
+  border: 1px dotted rgba(158,133,80,0);
+  border-radius: 5px;
+  background-color: rgba(158,133,80,0);
+}
+
+/*section.Command h1:hover {*/
+section.Command > *:first-child:hover, section.Command > h1:hover {
+  border-color: rgba(158,133,80,1);
+  background-color: rgba(158,133,80,0);
+}
+
+/*section.Command h1:before { content: ""; }*/
+section.Command h1:before { content: ""; }
+
+/*section.Command h1 strong { font-weight: bold; background: none; }*/
+section.Command > h1 strong { font-weight: bold; background: none; }
+
+/***/
+
+section.Command.Link {
+  border-color: rgba(0,0,255,.8);
+}
+
+section.Command.Link:hover {
+  border-color: rgba(0,0,255,1);
+  background-color: rgba(0,0,255,.05);
+}
+
+section.Command.Link h1 {
+  /*border-color: rgba(0,0,255,.4);*/
+}
+
+section.Command.Link h1:hover {
+  border-color: rgba(0,0,255,1);
+  /*border-color: rgba(0,0,255,.4);
+  background-color: rgba(0,0,255,.04);*/
+}
+
+section.Command.Link > a:first-child {
+  text-decoration: none;
+}
+
+section.Command.Link > a:first-child kbd {
+  color: rgb(0,0,255);
+}
+
+
+

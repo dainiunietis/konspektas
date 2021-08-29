@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<style>
+
+</style>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Naršyklių palaikymas-suderinamumas, browser support, cross-browser compatibility</h1>
+<p> browser inconsistency</p>
+<blockquote>
+  <p><strong>Cross-browser compatibility</strong> is the practice of trying to make sure your webpage works across as many devices as possible. </p>
+  <p> <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/The_web_and_web_standards">The web and web standards - Learn web development | MDN</a></p>
+</blockquote>
+<p>&nbsp;</p>
+<p><a href="https://hacks.mozilla.org/2018/03/how-to-write-css-that-works-in-every-browser-even-the-old-ones/" rel="nofollow">Resilient CSS: How to Write CSS That Works in Every Browser, Even the Old Ones</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>G:\bib wd book\Eric Meyer, Estelle Weyl - CSS. The Definitive Guide (4th) - 2017.pdf<br>
+  Feature Queries<br>
+  53 p.</p>
+<p>&nbsp;</p>
+<h2>Naršyklių palaikymo priemonės–technikos</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h3>CSS savybių overwrite'inimo panaudojimas naudojant dvi tos pačios CSS savybės deklaracijas</h3>
+    <p>Pirma eina platesnį palaikymą turinti deklaracija, t. y.  palaikoma senesnių versijų naršyklių, po to skirta naujausioms versijoms, tada:</p>
+    <ul>
+      <li>Senesnių versijų naršyklėms eiliškumas apskritai nesvarbus, joms paskutinė deklaracija su nežinoma CSS savybės reikšme tarsi neegzistuoja, tiksliau ją ignoruoja, o pirmąją žinomą — pritaiko.    </li>
+      <li>Naujausių  versijų naršyklėms eiliškumas svarbus — pritaiko paskutinę deklaraciją, kuri overwrite'ina pirmąją.</li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>JS Modernizer</h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>CSS Feature Queries — <code>@supports</code></h3>
+    <p><a href="https://getflywheel.com/layout/css-feature-queries-how-to/">How to use CSS Feature Queries | Layout</a></p>
+    <p>Kas yra ir kaip veikia:</p>
+    <blockquote>
+      <p>CSS Feature Queries are a way to perform a browser-native method of feature detection. These queries analyze whether or not a browser has properly implemented a CSS property. Essentially, the browser "reports" on whether or not a certain CSS property or value is supported. The result determines whether or not to apply a block of CSS or not.</p>
+    </blockquote>
+    <p>Naudojimo pvz.:</p>
+    <blockquote>
+      <p><a href="https://twitter.com/ryanfiller_/status/1093261885582049285">Ryan Filler mentions</a> using it for mix-blend-mode. His example sets more opacity on an element, but if mix-blend-mode is supported, it uses a bit less and that property which can have the effect of seeing through an element on its own.</p>
+        <pre rel="CSS">.thing {
+  opacity: 0.5;
+}
+@supports (mix-blend-mode: multiply) {
+  .thing {
+    mix-blend-mode: multiply;
+    opacity: 0.75;
+  }
+}</pre>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p> <a href="https://css-tricks.com/how-supports-works/#javascript-variant">How @supports Works — JavaScript Variant | CSS-Tricks</a></p>
+    <p>&nbsp;</p>
+    <pre><code>@supports selector(A &gt; B) {
+  ...
+}</code></pre>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Naršyklių palaikymo strategijos</h2>
+<p> <a href="http://konspektas-prev.local/client-side/css/strategijos/progressive-enhancement-graceful-degradation.html">Apiforminimo-design'o principai-strategijos: "progressive enhancement" ir "graceful degradation"</a></p>
+<p> <a href="http://konspektas-prev.local/client-side/css/strategijos/suderinamumo-brauzeriams-os-strategija_SENAS.htm">Suderinamumo brauzeriams ir OS strategija</a></p>
+<h3>Graceful degradation</h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Graceful degradation starts complex with a goal of providing a simple experience when needed.</p>
+      <p>Graceful degradation uses the idea of providing all the bells and whistles in more modern browsers, but will "degrade gracefully" to a lower level of functionality in older browsers. In the older browsers, the experience may not be as nice, but it will provide your users with an adequate basic functionality so they can still view the content of the site without having things appear broken or missing on the page.</p>
+      <p>writing code so that it falls back to a simpler but still usable experience in older browsers</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Progressive enhancement</h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+    <p class="c-em-important"><a href="http://en.wikipedia.org/wiki/Progressive_enhancement">Progressive enhancement</a> strategijoje svarbiausia <strong>turinys</strong>, kad tinklapio lankytojas ir su nauju, ir su senu brauzeriu gautų tą pačią informaciją.</p>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Progressive enhancements starts simple and then adds on to that with the desired feature-rich experience. </p>
+      <p>A basic user experience is planned out for all browsers so there is consistency with how things are rendered at a basic level, to ensure content can adequately be viewed and the user can perform any needed tasks with what is provided. More advanced functionality is then built in and will be available to the browsers that can render it.</p>
+      <p>using technologies that all the browsers support, delivering better experiences to browsers that can handle them</p>
+    </blockquote>
+    <div class="c-em-note c-em--small">
+      <p><strong>JS Modernizer naudojimas</strong></p>
+      <blockquote>
+        <p>Modernizer is the most widely adopted tool in a progressive enhancement. <a href="https://modernizr.com/" target="_blank" rel="noopener noreferrer">Modernizr</a> is a JavaScript library that checks if a browser supports next generation web technologies.</p>
+      </blockquote>
+      <p>Bet Modernizer veikia lėčiau nei CSS, ir jei JS naršyklėje išjungtas, greičiausiai bus ne vienas trūkumas: </p>
+      <blockquote>
+        <p>It's a good solution, but Modernizer requires JavaScript, which is small in size but yet still slower than only using CSS. And although it isn't common, what happens if JavaScript doesn't execute?</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Daromas turinio apiforminimo pagerinimas tik naujesnėse naršyklėse, nustačius, kad reikiamos CSS savybės palaikomos</h4>
+    <h5>Su @supports</h5>
+    <div class="c-pvs c-pvs--title c-pvs--border -c-pvz2--bg">
+      <style>
+    @supports (initial-letter: 5) or (-webkit-initial-letter: 5) {
+      .pvz-20200816203615 p::first-letter {
+        -webkit-initial-letter: 5;
+        initial-letter: 5;
+        color: darkred;
+        font-weight: bold;
+        margin-right: 0.5em;
+        font-family: serif;
+      }
+    }
+      </style>
+      <p>Drop caps'as pritaikomas tik tada, kai yra <code>initial-letter:</code> palaikymas</p>
+      <div class="c-pvs__parent pvz-20200816203615" style="">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed ac lorem facilisis, convallis ipsum eu, commodo dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec id massa euismod, posuere orci volutpat, ornare ligula. Integer scelerisque dignissim velit, interdum vestibulum turpis interdum non.</p>
+        <p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis, sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>
+        <p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum tempor, lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae iaculis.</p>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Yra bazinis senesnių versijų palaikomas sprendimas, nustačius reikiamų naujesnių CSS savybių palaikymą, pritaikomas naujesnis sprendimas, kartu keičiamos bazinio sprendimo savybės, kurios trukdo naujajam</h4>
+    <h5>Su @supports    </h5>
+    <div class="c-pvs c-pvs--title c-pvs--border c-pvz2--bg">
+      <style>
+        .pvz-20200814143253 > * {
+          outline: 1px solid hsla(240, 100%, 50%, 1);
+        }
+        .pvz-20200814143253 > *:nth-child(1) {
+          float: left;
+          width: 75%;
+        }
+        .pvz-20200814143253 > *:nth-child(2) {
+          float: right;
+          width: 24%;
+        }
+
+        @supports (display: grid) {
+          .pvz-20200814143253 {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            /*grid-template-rows: 1fr;*/
+            gap: 10px;
+            /*grid-template-areas: ". .";*/
+          }
+          .pvz-20200814143253[class] > * {
+            float: none;
+            width: auto;
+            outline: none;
+          }
+        }
+
+      </style>
+      <!--      <p class="c-pvz__caption">va kas čia yra <code>kodo gabalėlis</code></p>-->
+      <p>CSS grid'as su fallback'u į float'inį layout'ą</p>
+      <!--      <p class="c-pvz__comment">O taip ir anaip, yra kaip ir taip. </p>-->
+      <div class="c-pvs__parent pvz-20200814143253" style="">
+        <div style="">turinys</div>
+        <div style="">sidebar'as</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--title c-pvs--border -c-pvz2--bg">
+      <style>
+    .pvz-20200818205535 p::first-letter {
+      float: left;
+      font-size: 4em;
+      line-height: 1;
+      font-weight: bold;
+      margin-right: .2em;
+      color: forestgreen;
+    }
+    @supports (initial-letter: 5) or (-webkit-initial-letter: 5) {
+      .pvz-20200818205535 p::first-letter {
+        -webkit-initial-letter: 5;
+        initial-letter: 5;
+        float: none;
+        color: darkred;
+      }
+    }
+      </style>
+      <p>Drop caps'as: bazinis — žalia, naujas — raudona</p>
+      <div class="c-pvs__parent pvz-20200818205535" style="">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed ac lorem facilisis, convallis ipsum eu, commodo dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec id massa euismod, posuere orci volutpat, ornare ligula. Integer scelerisque dignissim velit, interdum vestibulum turpis interdum non.</p>
+        <p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis, sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>
+        <p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum tempor, lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae iaculis.</p>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

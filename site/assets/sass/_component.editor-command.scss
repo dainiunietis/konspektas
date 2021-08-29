@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+.c-editor-command {
+  & > &__title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95em;
+//     background: colorScheme-site('2HL4');
+    color: colorScheme-site('2HD1');
+    padding: .15em 3px .15em;
+    margin-bottom: 0.4rem;
+  }
+  //& > &__title {
+  //  text-align: center;
+  //  font-weight: bold;
+  //  font-3%size: 0.95em;
+  //  background: hsla(41, 3, 70%, 1);
+  //  color: hsla(41, 33%, 25%, 1);
+  //  padding: .15em 3px .15em;
+  //  margin-bottom: 0.4rem;
+  //}
+
+  // .c-editor-command--link
+  &--link {
+    border-color: rgba(0,0,255,.7);
+    border-style: dotted;
+    box-shadow: inset 0 0 65px 0px rgba(0,0,255,.1);
+
+    &:hover {
+      border-color: rgba(0,0,255,1);
+      //box-shadow: black;
+      //background-color: rgba(0,0,255,.05);
+      box-shadow: inset 0 0 65px 0px rgba(0,0,255,.2);
+    }
+
+    & > a:first-child {
+      text-decoration: none;
+      //margin: 0;
+      //padding: 0;
+      display: block;
+    }
+  }
+
+
+}
+
+
+//section.Command.Link {
+//  border-color: rgba(0,0,255,.8);
+//}
+//
+//section.Command.Link:hover {
+//  border-color: rgba(0,0,255,1);
+//  background-color: rgba(0,0,255,.05);
+//}
+//
+//section.Command.Link h1 {
+//  /*border-color: rgba(0,0,255,.4);*/
+//}
+//
+//section.Command.Link h1:hover {
+//  border-color: rgba(0,0,255,1);
+//  /*border-color: rgba(0,0,255,.4);
+//    background-color: rgba(0,0,255,.04);*/
+//}
+//
+//section.Command.Link > a:first-child {
+//  text-decoration: none;
+//}
+//
+//section.Command.Link > a:first-child kbd {
+//  color: rgb(0,0,255);
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

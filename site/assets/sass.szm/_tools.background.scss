@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+///////////////////////////////////////////////////////////////////
+
+@function szm-background-image-svgUrl-emoji($symbol) {
+  //@return url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><foreignObject width=%22100px%22 height=%22100px%22><div xmlns=%22http://www.w3.org/1999/xhtml%22 style=%22 font-size:73px; -background:lightsteelblue; -border:1px red solid; line-height: 1 %22>#{$symbol}</div></foreignObject></svg>");
+  //@return url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><foreignObject width=%22100px%22 height=%22100px%22><div xmlns=%22http://www.w3.org/1999/xhtml%22 style=%22 font-size:80px; -background:lightsteelblue; -border:1px red solid; line-height: 100px; font-family: Segoe UI Emoji, emoji %22>#{$symbol}</div></foreignObject></svg>');
+  @return url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">#{$symbol}</div></foreignObject></svg>');
+
+  //color: lightsteelblue;
+  //border: 1px red solid;
+  //line-height: 0.9;
+  //font-family: "Segoe UI Emoji", emoji;
+
+  //url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><foreignObject width=%22100px%22 height=%22100px%22><div xmlns=%22http://www.w3.org/1999/xhtml%22 style=%22color:transparent;text-shadow: 0 0 %23e42100, -2px 2px 0 black;font-size:70px%22>🏄‍♀️</div></foreignObject></svg>")
+
+  //-- VEIKIA emojis SVG
+  //content:     ""; // IŠTRINTA
+  //background: repeat-x;
+  //background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><foreignObject width=%22100px%22 height=%22100px%22><div xmlns=%22http://www.w3.org/1999/xhtml%22 style=%22font-size:70px%22>🔪</div></foreignObject></svg>");
+}
+
+
+
+
+
+
+
+

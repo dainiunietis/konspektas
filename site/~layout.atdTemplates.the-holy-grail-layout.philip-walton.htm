@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Holy Grail Layout by Philip Walton</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      font: 1.2em "IBM Plex Sans", sans-serif;
+    }
+
+    /* ====================================================== */
+
+    .holyGrail {
+      --layoutBlock-gap:     .5em;
+      --layoutBlock-padding: .8em;
+      --layoutBlock-clr:     hsla(190, 35%, 82%, .7);
+      --layoutBlock-clr-1:   hsl(0, 35%, 85%);
+      --layoutBlock-clr-2:   hsl(70, 35%, 85%);
+      --layoutBlock-clr-3:   hsl(140, 35%, 85%);
+      --layoutBlock-clr-4:   hsl(210, 35%, 85%);
+      --layoutBlock-clr-5:   hsl(280, 35%, 85%);
+
+      min-height:            100vh;
+    }
+
+    .holyGrail, .holyGrail__body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--layoutBlock-gap);
+    }
+
+    /* =====================================================
+    root'iniai layout'o konteineriai:
+    .holyGrail__header .holyGrail__body .holyGrail__footer
+    ======================================================== */
+
+    .holyGrail__header {
+      background: var(--layoutBlock-clr-1);
+      padding: var(--layoutBlock-padding);
+    }
+
+    .holyGrail__body {}
+
+    .holyGrail__footer {
+      background: var(--layoutBlock-clr-5);
+      padding: var(--layoutBlock-padding);
+    }
+
+    /* =====================================================
+    .holyGrail__body vaikiniai konteineriai:
+    .holyGrail__content .holyGrail__nav .holyGrail__ads
+    ========================================================*/
+
+    /*.holyGrail__body > * {
+      background: var(--layoutBlock-clr);
+    }*/
+
+    .holyGrail__content {
+      background: var(--layoutBlock-clr-3);
+      padding: var(--layoutBlock-padding);
+    }
+
+    .holyGrail__nav {
+      background: var(--layoutBlock-clr-2);
+      padding: var(--layoutBlock-padding);
+      order: -1;
+    }
+
+    .holyGrail__ads {
+      background: var(--layoutBlock-clr-4);
+      padding: var(--layoutBlock-padding);
+    }
+
+    /* ====================================================== */
+
+    @media (min-width: 768px) {
+      .holyGrail__body {
+        flex-direction: row;
+        flex: 1;
+      }
+      .holyGrail__content {
+        flex: 1;
+      }
+      .holyGrail__nav, .holyGrail__ads {
+        /* 12em is the width of the columns */
+        flex: 0 0 12em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="holyGrail">
+  <header class="holyGrail__header">
+    <p>{Header}</p>
+  </header>
+  <div class="holyGrail__body">
+    <main class="holyGrail__content">
+      <details>
+        <summary>{Main content}</summary>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos laborum cumque incidunt, enim ipsa dicta? Porro illo doloribus, consectetur eum exercitationem sit ipsam, est nesciunt maxime, eius animi dolor? Harum.</p>
+        <p>Commodi culpa deserunt dolor sed, ipsam tempore ullam architecto fuga voluptas, quis veniam. Vitae veniam, odit adipisci, quas similique debitis excepturi quisquam minima facere temporibus, porro optio perferendis iusto fuga.</p>
+        <p>Illo numquam, sapiente neque repellendus facere amet doloribus asperiores quia eum? Sunt vero amet neque vel? Tempora, nulla voluptatum amet autem culpa magnam debitis! Dolores esse quam amet nobis ut.</p>
+        <p>Sunt excepturi in nostrum, fugiat veritatis ab sit sequi nemo aperiam deserunt temporibus, dolorem ex adipisci autem. Quasi, iure fugiat! Nulla amet doloribus velit nam tempora, soluta consequatur doloremque omnis?</p>
+        <p>Officia ea repellat ad, sapiente eligendi modi magni quos temporibus totam culpa corporis, dignissimos quibusdam mollitia dolore eaque suscipit soluta beatae ipsam! Aperiam doloremque vero soluta pariatur possimus. Cupiditate, fuga.</p>
+        <p>Beatae deserunt veritatis magni quis quae enim ad est dignissimos iste, quidem, dolores temporibus asperiores natus inventore, nobis eius facere adipisci doloremque eligendi autem magnam excepturi? Inventore, iusto soluta. Maiores.</p>
+        <p>Enim facilis aspernatur, maiores unde at inventore temporibus minima possimus eveniet? Cum alias, asperiores quibusdam doloribus, vel ullam qui in dicta recusandae eaque atque dolor perspiciatis tenetur, fugit vero reprehenderit.</p>
+        <p>Reiciendis, deleniti eius nostrum fugit commodi quasi esse molestias non voluptates, corrupti excepturi voluptatibus, consequatur ipsa animi placeat quia corporis ut itaque quos pariatur inventore. Quasi incidunt sapiente quisquam soluta?</p>
+        <p>Laboriosam eos atque possimus assumenda quia voluptatem saepe optio, eveniet laborum. Sit esse doloremque laboriosam? Ullam inventore ut facilis accusamus, ipsum, autem labore incidunt consequatur eos dolorem, sit aperiam odit.</p>
+        <p>Consequuntur pariatur illum doloremque, necessitatibus praesentium quis cumque officiis non commodi reprehenderit quaerat velit saepe impedit vitae dolores, veritatis reiciendis ducimus nobis totam, itaque porro temporibus excepturi error iste! Sunt.</p>
+        <p>Commodi culpa deserunt dolor sed, ipsam tempore ullam architecto fuga voluptas, quis veniam. Vitae veniam, odit adipisci, quas similique debitis excepturi quisquam minima facere temporibus, porro optio perferendis iusto fuga.</p>
+        <p>Illo numquam, sapiente neque repellendus facere amet doloribus asperiores quia eum? Sunt vero amet neque vel? Tempora, nulla voluptatum amet autem culpa magnam debitis! Dolores esse quam amet nobis ut.</p>
+        <p>Sunt excepturi in nostrum, fugiat veritatis ab sit sequi nemo aperiam deserunt temporibus, dolorem ex adipisci autem. Quasi, iure fugiat! Nulla amet doloribus velit nam tempora, soluta consequatur doloremque omnis?</p>
+        <p>Officia ea repellat ad, sapiente eligendi modi magni quos temporibus totam culpa corporis, dignissimos quibusdam mollitia dolore eaque suscipit soluta beatae ipsam! Aperiam doloremque vero soluta pariatur possimus. Cupiditate, fuga.</p>
+      </details>
+      <p><a href="https://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/">Holy Grail Layout &mdash; Solved by Flexbox &mdash; Cleaner, hack-free CSS</a></p>
+    </main>
+    <nav class="holyGrail__nav">
+      <p>{Navigation}</p>
+    </nav>
+    <aside class="holyGrail__ads">
+      <p>{Ads}</p>
+    </aside>
+  </div>
+  <footer class="holyGrail__footer">
+    <p>{Footer}</p>
+  </footer>
+</div>
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

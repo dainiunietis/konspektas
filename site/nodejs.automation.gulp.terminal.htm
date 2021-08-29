@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Gulp'o command prompt / command line / terminal komandos</h1>
+<h2>npm komandos</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>Gulp'o globalus instaliavimas</h3>
+      <p>Instaliuoja Gulp'ą globaliai &#8212; <q>gulp command line utility</q> &#8212; įvykdyti galima bet kuriame kataloge:</p>
+      <p><code>&gt; npm install --global gulp-cli</code></p>
+      <figure class="c-figure--shadow" style="mmax-width:400px">
+        <div class="c-figure__content">
+          <ol>
+            <li>
+              <p>Išinstaliuojame (tikroji komanda <code>uninstall</code>, o <code>un</code> yra alias'as) : </p>
+              <p><code>&gt; npm un --global gulp</code></p>
+            </li>
+            <li>
+              <p>Instaliuojame  (tikroji komanda <code>install</code>, o <code>i</code> yra alias'as): </p>
+              <p><code>&gt; npm i --global gulp-cli</code></p>
+            </li>
+          </ol>
+        </div>
+        <figcaption>Globalaus Gulp'o perinstaliavimas kai yra kokios problemos</figcaption>
+      </figure>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>Gulp'o instaliacija projekto kataloge</h3>
+      <dl>
+        <dt>1. Sukurti projekto katalogą (jeigu jo nėra)</dt>
+        <dd>
+          <ul>
+            <li>arba su failų explorer'iu ar redaktoriuje, ar kaip kitaip,</li>
+            <li>
+              <p>arba per Command Prompt'ą <q>Create a project directory and navigate into it</q>:</p>
+              <pre><code>&gt; npx mkdirp my-project
+&gt; cd my-project</code></pre>
+            </li>
+          </ul>
+        </dd>
+        <dt>2. Sukurti failą <code>package.json</code> šakniniame projekto kataloge &#8212; <q>initialize  project directory</q></dt>
+        <dd>
+          <p>Esant  šakniniame projekto kataloge (project root):</p>
+          <p><code>&gt; npm init</code></p>
+          <blockquote>
+            <p>The <code>npm init</code> command creates a <code>package.json</code> file for your project which stores information about the project, like the <em>dependencies</em> used in the project (Gulp is an example of a dependency)</p>
+          </blockquote>
+        </dd>
+        <dt>2. Instaliuoti Gulp'ą projekto kataloge Install the gulp package in your devDependencies:</dt>
+        <dd>
+          <p><code>&gt; npm install --save-dev gulp</code></p>
+          <blockquote>
+            <p>This time, we're installing Gulp into <code>project</code> instead of installing it globally, which is why there are some differences in the command. </p>
+            <p>You'll see that the <code>sudo</code> keyword isn't required because we're not installing Gulp globally, so <code>-g</code> is also not necessary. We've added <code>--save-dev</code>, which tells the computer to add <code>gulp</code> as a dev dependency in <code>package.json</code>.</p>
+          </blockquote>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <figure class="c-figure--shadow" style="mmax-width:400px">
+        <div class="c-figure__content">
+          <p>Lokalaus Gulp'o perinstaliavimas (įvykdyti projekto kataloge): </p>
+          <ol>
+            <li>
+              <p>Išinstaliuojame:</p>
+              <p><code>&gt; npm un --save-dev gulp</code></p>
+            </li>
+            <li>
+              <p>Instaliuojame:</p>
+              <p><code>&gt; npm i --save-dev gulp</code></p>
+            </li>
+          </ol>
+        </div>
+        <figcaption>Lokalaus Gulp'o perinstaliavimas kai yra kokios problemos</figcaption>
+      </figure>
+    </td>
+    <td width="20%">
+      <h3>Gulp'o plugin'o instaliacija projekto kataloge</h3>
+      <p><code>&gt; npm i --save-dev gulp-plugin-name</code></p>
+      <p>&nbsp;</p>
+      <p></p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Gulp'o komandos</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p>Įvykdo public Gulp'o task'ą:</p>
+      <p><code>&gt; gulp taskName</code>      </p>
+      <h3>Default'inis task'as</h3>
+      <p>Jeigu yra apibrėžtas default'inis  task'as:</p>
+      <pre><code>
+exports.default = series(kazkas1, kazkas2);</code></pre>
+      <p>Tada iškviečiant per CMD nereikia jo nurodyti:</p>
+      <p><code>&gt; gulp</code></p>
+<p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>Išveda public Gulp'o task'us:</p>
+      <p><code>&gt; gulp --tasks</code></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,104 @@
+
+@mixin borderis($style: solid, $color: red, $width: 1px) {
+  border: $style $color $width;
+}
+
+@mixin alertas( $fs: 3px, $color: red) {
+  font-size: $fs;
+  color: $color;
+}
+
+//------------------------------------------------------------
+// mixin with optional arguments
+//------------------------------------------------------------
+
+.boxas {
+  @include borderis;
+}
+
+.boxas-2 {
+  @include borderis(dashed);
+}
+
+.boxas-3 {
+  @include borderis($color: blue);
+}
+
+.boxas-4 {
+  @include borderis(dashed, null, 5px);
+}
+
+.boxas-svarbu {
+  @include alertas(null, yellow);
+}
+
+// .b {
+//  @include borderis(5px, aaa);
+// }
+
+
+
+
+// $cols-count: null;
+// $cols-gutter: null;
+
+// @mixin cols-columns($gutter: null, $count: null) {
+//   @if $count  == null { $count: $cols-count; }
+//   @if $gutter == null { $gutter: $cols-gutter; }
+//   ...
+//   padding: $gutter;
+// }
+
+// // using case with no parameters
+
+// $cols-count: 3;
+// $cols-gutter: 1em;
+
+// .something {
+//   @include cols-columns();
+// }
+
+
+
+// @mixin display (
+//   $disp,
+//   $padding: null,
+//   $r-margin: null,
+//   $l-margin: null) {
+//     display: $disp;
+//     padding: $padding;
+//     margin-left: $l-margin;
+//     margin-right: $r-margin;
+// }
+
+// .nav__item {
+//   @include display(inline-block, $l-margin: 20px);
+// }
+
+// .nav__link {
+//   @include display(block, 10px 5px);
+// }
+
+// --------------------------------------------
+
+// .nav__item {
+//   display: inline-block;
+//   margin-left: 20px;
+// }
+
+// .nav__link {
+//   display: block;
+//   padding: 10px 5px;
+// }
+
+
+
+
+
+
+
+
+
+
+
+

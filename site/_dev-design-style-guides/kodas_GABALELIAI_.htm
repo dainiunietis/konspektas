@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="../assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="../assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="../assets/sass/master.utilities.css">
+<link rel="stylesheet" href="../assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="../assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="../assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="../assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="../assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Kodas</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Kodo blokai</h2>
+<p>Dabar kodo blokas pasidaro su <code>&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></p>
+<p>Su HTML'e prisegta klase kodo blokui formatuoti: <code>&lt;pre class=&quot;<mark>CodeBlock</mark>&quot;&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></p>
+<pre class="CodeBlock"><code>function doPlus(plus) {
+   return 5 + plus;
+}</code></pre>
+<p>Be  HTML'e prisegtos klasės, prisega jQuery:</p>
+<pre><code>function doPlus(plus) {
+   return 5 + plus;
+}</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a href="http://common-resources.local/_js/_apps/SyntaxHighlighter/">SyntaxHighlighter</a></h3>
+<p class="Alert">Pramečiau palaikančius failus iš Templates\konspekto.dwt, ir atsargai padėjau į Templates\konspekto_GABALELIAI_.dwt</p>
+<p>Tiesiog tekstas:</p>
+<pre><code class="brush: text;">&lt;ol&gt;
+  &lt;li&gt;Go to &lt;code&gt;Preferences&lt;/code&gt; &raquo; &lt;code&gt;Package Settings&lt;/code&gt; &raquo; &lt;code&gt;Package Control&lt;/code&gt; &raquo; &lt;code&gt;Settings - User&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Copy the contents of the file into the field below (yes, the whole thing).&lt;/li&gt;
+  &lt;li&gt;Press the Can I Switch? button.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p>HTML:</p>
+<pre><code class="brush: html;">&lt;ol&gt;
+  &lt;li&gt;Go to &lt;code&gt;Preferences&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Copy the contents of the file into&lt;/li&gt;
+  &lt;li&gt;Press the Can I Switch? button&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p>CSS:</p>
+<pre><code class="brush: css;">.frg-saltiniai {
+  margin: 2.4em 0 2.4em 0;
+  padding: .7em 1em 1em 2.4em;
+  border: #66CC33 0 dotted;
+  border-width: 0 0 1px 0;
+}
+
+.frg-saltiniai > div {
+  margin: 0 0 .5em 0;
+  font: 1.4em Georgia, "Times New Roman", Times, serif;
+  color: #66CC33;
+}</code></pre>
+<p>SASS SCSS:</p>
+<pre><code class="brush: sass;">#navbar {
+  width: 80%;
+  height: 23px;
+
+  ul { list-style-type: none; }
+  li {
+    float: left;
+    a { font-weight: bold; }
+  }
+}</code></pre>
+<p>JS:</p>
+<pre><code class="brush: js;">function doPlus(plus) {
+   return 5 + plus;
+}</code></pre>
+<p>PHP:</p>
+<pre><code class="brush: php;">function validate_form() {
+    $tmp = htmlspecialchars(strtoupper($_POST['name']));    //    clean POST data
+    if(stripos($_POST['great'], 'yes') !== false) return array('name' => $tmp, 'great' => 'YES!');
+    return 'Wrong answer!';
+} </code></pre>
+<p>Python:</p>
+<pre><code class="brush: python;">import re
+for test_string in ['555-1212', 'ILL-EGAL']:
+    if re.match(r'^\d{3}-\d{4}$', test_string):
+        print test_string, 'is a valid US local phone number'
+    else:
+        print test_string, 'rejected'</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

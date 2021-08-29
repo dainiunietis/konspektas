@@ -1,0 +1,26 @@
+{
+  "name": "konspektas-assets",
+  "version": "1.0.0",
+  "description": "konspektas.local assets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ZM",
+  "license": "ISC",
+  "dependencies": {
+    "@firstandthird/toc": "^2.1.0",
+    "assets": "^3.0.1",
+    "html-contents": "^0.2.0",
+    "jquery": "^3.6.0",
+    "normalize.css": "^8.0.1",
+    "sass-mq": "^5.0.1",
+    "tocbot": "^4.12.1",
+    "vue": "^2.6.7"
+  },
+  "devDependencies": {
+    "modularscale-sass": "^3.0.10",
+    "sass-lumen": "0.0.1",
+    "sass.js": "^0.11.1"
+  }
+}

@@ -1,0 +1,57 @@
+
+$modularscale: (
+  base: 1em 1140em 12em,
+  ratio: 1.3
+);
+@import "../node_modules/modularscale-sass/stylesheets/modularscale";
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+html {
+  //font-size: 2vw;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //font-family: "Source Sans Pro Semibold";
+  //border-radius: ;
+  padding: 0;
+  // Responsive base font size
+  // Our initial font size declaration was font-size: calc(12px + 1vw).
+  // We can modify either value, you can experiment in the demo if you want.
+  // But I’m going to wiggle the 1vw value to find out which number makes the
+  // body font size look as similar as possible to 16px.
+  // That value is: .35vw.
+  font-size: calc(12px + .35vw);
+  //font-size: 16px;
+}
+
+p {
+  // Remember that our paragraphs are simulating 16px font size via
+  // the font-size: calc(12px + .35vw); declaration in the body rule.
+}
+
+// https://www.modularscale.com/?1,1140,12&em&1.3
+
+h1 { font-size: ms(7); }
+h2 { font-size: ms(5); }
+h3 { font-size: ms(4); }
+h4 { font-size: ms(3); }
+h5 { font-size: ms(2); }
+h6 { font-size: ms(1); }
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.c-article {
+  width: 100%;        // For small screens
+  max-width: 1140px;  // For large screens
+                      // designing for a 1280px screen resolution, so 1140px is a good maximum width
+  margin: auto;       // Center the container in the viewport
+}
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+
+

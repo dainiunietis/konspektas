@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="../assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="../assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="../assets/sass/master.utilities.css">
+<link rel="stylesheet" href="../assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="../assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="../assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="../assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="../assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Testinių&#8211;demonstracinių pavyzdžių šablonai JS demonstracijoms</h1>
+<p>CSS class'ai iš <code>/_css/pvz.css</code></p>
+
+
+<h2>Kai <code>.Pvz-Container</code> yra su <code>#Pvz-kažkas</code></h2>
+<p>Naudojame <code>$('#Pvz-1 .Pvz-Target')</code></p>
+<p class="Pvz-Title">Vaaaaaa <code>*</code></p>
+<div id="Pvz-1" class="Pvz-Container">
+	<p class="Pvz-Target" style="">PVZ</p>
+	<button onclick="$('#Pvz-1 .Pvz-Target').css('background-color','blue')">Daryti padaryti</button>
+</div>
+
+
+<h2>Kai nėra identifikatoriaus</h2>
+<p>Naudojame <code>$(this).siblings('.Pvz-Target')</code></p>
+<div class="Pvz-Container">
+	<p class="Pvz-Target" style="">PVZ</p>
+	<button onclick="$(this).siblings('.Pvz-Target').css('background-color','blue')">Daryti padaryti</button>
+</div>
+
+
+<h2>Kai reikia ilgesnio JS kodo ir yra vienas button'as</h2>
+<p>Naudojame <code>$(this).siblings('.Pvz-Target')</code></p>
+<div id="Pvz-2" class="Pvz-Container">
+	<p class="Pvz-Target" style="">PVZ</p>
+	<button>Daryti padaryti</button>
+	<script>
+	$('#Pvz-2 button').click(function() {
+		$('#Pvz-2 .Pvz-Target').css('background-color','blue');
+		// arba
+		// $(this).siblings('.Pvz-Target').css('background-color','blue');
+	});
+	</script>
+</div>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

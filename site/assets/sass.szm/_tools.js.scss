@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  # specialių class'ų skirtų pridėti su JS generavimas
+//
+//////////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------------
+// #
+//------------------------------------------------------------------------
+
+// @USAGE:
+// naudojame kai reikalingas tik spec. class'as
+// SASS:
+//   .c-navTree__noSubMenu#{$szm-js-addedByJsSufix} {
+//     font-size: 2em;
+//   }
+// CSS:
+//   .c-navTree__noSubMenu_ADDED_BY_JS {
+//     font-size: 2em;
+//   }
+
+$szm-js-addedByJsSufix: "_ADDED_BY_JS";
+
+//------------------------------------------------------------------------
+// mixin'as tam atvejui kai reikia ir paprasto, ir spec. class'ų
+//------------------------------------------------------------------------
+
+// @USAGE:
+// SASS:
+//   .c-navTree__noSubMenu {
+//     @include szm-js-extendThisWithAddedByJs;
+//     font-size: 2em;
+//   }
+// CSS:
+//   .c-navTree__noSubMenu, .c-navTree__noSubMenu_ADDED_BY_JS {
+//     font-size: 2em;
+//   }
+
+@mixin szm-js-extendThisWithAddedByJs {
+  $thisCurrContext: &;
+  &#{$szm-js-addedByJsSufix} {
+    @extend #{$thisCurrContext};
+  }
+}
+

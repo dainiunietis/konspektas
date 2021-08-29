@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+// Stulpeliai vienoje eilutėje su Flexbox
+
+//$o-grd-gapVer:   szm-spacing-size(small);
+//$o-grd-gapHor:   szm-spacing-size(small);
+//
+//$o-grd-minWidth: 9em;
+////$o-grd-minWidth: min-content;
+
+$o-clm-gutterHor:   szm-spacing-size(small);
+
+///////////////////////////////////////////////////////////////////////////
+//
+//  # width: max-content
+//
+/////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+
+.o-clm {
+  display: flex;
+  > * {
+    //flex: initial;
+    //width: max-content;
+    margin: 0;
+    //&:not(:last-child) <<< daro tą patį
+    &:nth-last-child(1n+2) {
+      margin-right: $o-clm-gutterHor;
+    }
+  }
+}
+
+.o-clm--maxContentFix {
+  > * {
+    //width: max-content;
+    flex: 0 0 auto;
+  }
+}
+
+// stulpelių plotis daromas proporcingas maksimaliam turinio pločiui, t. y. ką nustato width: max-content
+
+.o-clm--maxContentScale {
+  > * {
+    //width: max-content;
+    flex: 1 1 auto;
+  }
+}
+
+.o-clm--maxContentGrow {
+  > * {
+    //width: max-content;
+    flex: 1 0 auto;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////
+//
+//  # width: min-content
+//
+/////////////////////////////////////////////////////////////////////////
+
+.o-clm--minContentFix {
+  > * {
+    width: min-content;
+    flex: 0 0 auto;
+  }
+}
+
+.o-clm--minContentGrow {
+  > * {
+    width: min-content;
+    flex: 1 0 auto;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////
+//
+//  # width: min-content
+//
+/////////////////////////////////////////////////////////////////////////
+
+.o-clm--equal {
+  > * {
+    flex: 1 1 1%;
+  }
+}
+
+
+
+
+
+
+
+
+
+//-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

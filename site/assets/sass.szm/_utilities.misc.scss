@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//    opacity:
+//
+/////////////////////////////////////////////////////////////
+
+// Nepermatomumas keiciamas kas 0.05 nuo 0 iki 1.
+// .u-opacity-X
+// .OX
+
+@for $i from 0 through 20 {
+  $size: 0.05 * $i;
+  $sizeStr: quote($size + "");
+  $sizeStrEsc: str-replace($sizeStr, ".", "\\.");
+
+  $sizeShort_str: $sizeStr;
+  //@if str_length($sizeStr) > 1 AND str_slice($sizeStr, 1, 1) == "0" {
+  //@if $size > 0 AND str_slice($sizeStr, 1, 1) == "0" {
+  //  $sizeShort_str: str_slice($sizeStr, 2);
+  //}
+  //$sizeShort_strEsc: str-replace($sizeShort_str, ".", "\\.");
+
+  //.u-opacity-#{$sizeStrEsc}, .u-opacity-#{$sizeShort_strEsc},
+  //.O#{$sizeStrEsc}, .O#{$sizeShort_strEsc} {
+  //  opacity: $size;
+  //}
+
+  //.u-opacity-#{$sizeStrEsc},
+  .O#{$sizeStrEsc} {
+    opacity: $size;
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//    cursor:
+//
+/////////////////////////////////////////////////////////////
+
+.u-cursor-pointer, .CSP { cursor: hand!important; cursor: pointer!important; }
+.u-cursor-default, .CSD { cursor: default!important; }
+.u-cursor-help,    .CSH { cursor: help!important; }
+.u-cursor-move,    .CSM { cursor: move!important; }
+
+//////////////////////////////////////////////////////////////////
+//
+//    .u-counter-zm[1-9]-before
+//    .u-counter-zm[1-9]-after
+//
+/////////////////////////////////////////////////////////////
+
+// @USAGE:
+//<div class="u-counter-zm1-before B312c">
+//  <div></div>
+//  <div></div>
+//  <div></div>
+//  <div class="u-counter-zm2-before B362c">
+//    <div></div>
+//    <div></div>
+//    <div></div>
+//  </div>
+//  <div></div>
+//  <div></div>
+//  <div></div>
+//</div>
+
+
+@for $i from 1 through 9 {
+  @each $pseudoElement in before, after {
+    $counterName: zmlib#{$pseudoElement}#{$i};
+
+    .u-counter-zm#{$i}-#{$pseudoElement} {
+      counter-reset: $counterName;
+
+      &::#{$pseudoElement} {
+        content: none;
+      }
+
+      > *::#{$pseudoElement} {
+        counter-increment: $counterName;
+        //content: " [" counter($counterName) "] ";
+        //content: " \ab " counter($counterName) "\bb  ";
+        //content: "" counter($counterName) "\21f6  ";
+        $symbol-1: if($pseudoElement==after, " .", null);
+        $symbol-2: if($pseudoElement==before, ". ", null);
+        content: $symbol-1 counter($counterName) $symbol-2;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//  #
+//
+/////////////////////////////////////////////////////////////
+
+//.u-display-inline,
+.DI, .DIc > * {
+  display: inline;
+}
+
+//.u-display-inline-block,
+.DIB, .DIBc > * {
+  display: inline-block;
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//  # List
+//
+/////////////////////////////////////////////////////////////
+
+//.u-display-inline,
+.LSN, .LSNc > * {
+  list-style: none;
+}
+
+
+
+

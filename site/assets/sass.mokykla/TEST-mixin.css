@@ -1,0 +1,21 @@
+.boxas {
+  border: solid red 1px;
+}
+
+.boxas-2 {
+  border: dashed red 1px;
+}
+
+.boxas-3 {
+  border: solid blue 1px;
+}
+
+.boxas-4 {
+  border: dashed 5px;
+}
+
+.boxas-svarbu {
+  color: yellow;
+}
+
+/*# sourceMappingURL=TEST-mixin.css.map */

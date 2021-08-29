@@ -1,0 +1,1386 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  
+<!--<script src="assets/js/component.collapse--SENAS.js"></script>-->
+<script>
+//$(function() {
+//  // console.log("HTML — 1");
+//  componentCollapse.hideAllSafe();
+//});
+</script>
+  
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>GIT — Distributed Version-Revision-Source Control System</h1>
+<blockquote>
+  <p>Git is an open-source distributed Revision Control System.</p>
+</blockquote>
+<p>Programos:</p>
+<ul>
+  <li><a href="https://git-scm.com/downloads/guis" target="_blank" rel="noopener">GIT Graphical Clients</a></li>
+</ul>
+<h2>Dokumentacijos ir mokymosi resursai</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Quick reference guides</h3>
+      <ul>
+        <li><a href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf">GitHub Cheat Sheet</a>, <a href="file:///G|/bib wd cheat-sheet/github-git-cheat-sheet.pdf">savo kompe</a></li>
+        <li><a href="http://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf">http://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf</a>, savo kompe — <a href="file:///G|/bib wd cheat-sheet/git - the simple guide cheat sheet.pdf">git - the simple guide cheat sheet</a></li>
+        <li><a href="http://ndpsoftware.com/git-cheatsheet.html">Visual Git Cheat Sheet</a> (SVG | PNG)</li>
+        <li><a href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a> — GitHub'o oficialus Quick Start Guide'as</li>
+        <li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-git-a-reference-guide">https://www.digitalocean.com/community/tutorials/how-to-use-git-a-reference-guide</a></li>
+      </ul>
+    </td>
+    <td width="25%">
+     <h3>Pagrindai</h3>
+     <ul>
+       <li><a href="https://www.freecodecamp.org/news/best-git-tutorial/">The Best Git Tutorials</a></li>
+      </ul>
+     <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Pilni vadovai</h3>
+      <ul>
+        <li><span class="fs3em">!!! <a href="https://www.madebymike.com.au/writing/how-to-git/">Git from Beginner to Advanced - MadeByMike</a> !!!</span></li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>interaktyvūs mokytuvai</h3>
+      <ul>
+        <li><a href="https://learngitbranching.js.org/">Learn Git Branching</a></li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Schemos</h3>
+      <ul>
+        <li><a href="http://justinhileman.info/article/git-pretty/git-pretty.png" target="_blank" onClick="_gaq.push(['_trackEvent', 'git-cheatsheet', 'refer', 'git-pretty', null])">escape a git mess, step-by-step</a></li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Komandų suvestinė</h3>
+      <ul>
+        <li> <a href="https://mirrors.edge.kernel.org/pub/software/scm/git/docs/giteveryday.html">giteveryday(7)</a></li>
+        <li> <a href="https://wiki.spheredev.org/index.php/Git_for_the_lazy">Git for the lazy - Spherical</a></li>
+      </ul>
+    </td>
+    <td>
+      <h3>GIT'o veikimo interaktyvios demonstracijos</h3>
+      <ul>
+        <li> <a href="http://git-school.github.io/visualizing-git/">Visualizing Git</a></li>
+      </ul>
+    </td>
+    <td>
+      <h3>Rinkiniai</h3>
+      <ul>
+        <li><a href="https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#git">EbookFoundation/free-programming-books: GIT</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Patarimai / Tips</h3>
+      <ul>
+        <li>!!! <a href="https://ohshitgit.com/">Oh Shit, Git!?!</a> !!!</li>
+      </ul>
+    </td>
+    <td>
+      <h3>GIT'o komandos</h3>
+      <pre><code>$ git help        &lt;&lt;&lt; lists only porcelain commands
+$ git help -a     &lt;&lt;&lt; lists porcelain and plumbing commands
+$ git help -g
+
+$ git help &lt;komanda&gt;      &lt;&lt;&lt; documentation for a specific git subcommand
+$ git &lt;komanda&gt; --help    &lt;&lt;&lt;</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h2>GIT versija</h2>
+      <dl>
+        <dt>Sužinoti kompe suinstaliuoto GIT'o versiją:</dt>
+        <dd>
+          <pre><code>λ git --version
+git version 2.23.0.windows.1</code></pre>
+          <p>arba</p>
+          <pre><code>λ git version
+git version 2.23.0.windows.1</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h2>GIT terminal comands</h2>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Git commands are divided into two major groups: </p>
+        <ul>
+          <li>Porcelain commands — high-level commands meant for every day use.</li>
+          <li>Plumbing commands — low-level commands. </li>
+        </ul>
+      </blockquote>
+      <p></p>
+    </td>
+    <td width="25%">
+      <h2>Rep'o katalogų-failų struktūra      </h2>
+      <table class="c-table-folders" width="100%">
+        <tbody>
+        <tr>
+          <td width="27%">
+            <pre>.git/</pre>
+          </td>
+          <td width="73%">&nbsp;</td>
+        </tr>
+          <tr>
+            <td>
+              <pre>  hooks/</pre>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <pre>  info/</pre>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <pre>  objects/</pre>
+            </td>
+            <td>Git objects database</td>
+          </tr>
+          <tr>
+            <td>
+              <pre>  refs/</pre>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <pre>  config</pre>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <pre>  description</pre>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <pre>  HEAD</pre>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>GIT veikimo modelis</h2>
+<p>Pagal <code>G:\bib wd video\Pluralsight - How Git Works\</code></p>
+<blockquote>
+  <p>If you want to master Git, don't worry  about learning the commands.  Instead, learn the model.</p>
+  <p>Git Is an Onion:</p>
+  <ul>
+    <li>a Persistent Map</li>
+    <li>a Stupid Content Tracker </li>
+    <li>a Revision Control System </li>
+    <li>a Distributed Revision Control System</li>
+  </ul>
+</blockquote>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>a Persistent Map</h3>
+      <p>Turinys Git'o rep'e identifikuojamas ir randamas pagal jo  &quot;SHA1 Hash ID&quot;:</p>
+      <blockquote>
+        <p>Every object in Git has its own SHA1. </p>
+      </blockquote>
+      <p><img src="images/20191225_143345_GIT — Distributed Version-Revision-Source Control System WebDev konspektas.png" alt="" width="234" height="112"/></p>
+      <p>Taip per CMD galima išvesti teksto eilutės &quot;SHA1 Hash ID&quot;:</p>
+      <pre><code>λ echo "kas tas" | git hash-object --stdin
+be70cb5270aa55077bbee699494e4decca352604</code></pre>
+      <h4>Persistent — reiškia išsaugoma failų sistemoje</h4>
+      <p>Pridėjus opciją <code>-w</code> (arba <code>--write</code>), teksto eilutė (piece of content) bus išsaugota rep'e:      </p>
+      <pre><code>λ echo "kas tas" | git hash-object --stdin <mark>-w</mark>
+be70cb5270aa55077bbee699494e4decca352604</code></pre>
+      <p>čia <code>.git\objects\</code> sukuriamas katalogas, kuris pavadinamas pirmaisiais dvejais  &quot;SHA1 Hash ID&quot; simboliais:      </p>
+      <p><img src="images/20191225_132951_D__webdev_learn.video-course.pluralsight-how-git-works_.git_objects.png" alt=""/></p>
+      <p>o tame kataloge sukuriamas failas, kuris pavadinamas su likusiais  &quot;SHA1 Hash ID&quot; simboliais:</p>
+      <p><img src="images/20191225_135630_D__webdev_learn.video-course.pluralsight-how-git-works_.git_objects_be.png" alt=""/></p>
+      <p>o pats turinys, t. y. teksto eilutė <code>"kas tas"</code>, tame faile yra suarchyvuota, todėl atidarius redaktoriuje atrodo taip:</p>
+      <p><img src="images/20191225_144730_D__webdev_learn.video-course.pluralsight-how-git-works_.git_objects_be_70cb5270a.png" alt=""/></p>
+      <hr>
+      <hr>
+      <p>su <code>&gt; git cat-file</code>, nurodydami rep'e išsaugoto objekto &quot;SHA1 Hash ID&quot;, galima sužinoti to objekto charakteristikas:</p>
+      <dl>
+        <dt> su opcija <code>-t</code> išveda to objekto tipą:</dt>
+        <dd>
+          <p><img src="images/20191225_140611_Cmder.png" alt=""/></p>
+        </dd>
+        <dt>o su opcija <code>-p</code> išveda to objekto turinį, kuris pačiame faile yra suarchyvuotas:</dt>
+        <dd>
+          <p><img src="images/20191225_141353_Cmder.png" alt=""/></p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>a Stupid Content Tracker</h3>
+      <p>&nbsp;</p>
+      <dl>
+        <dt>Pradinė situacija</dt>
+        <dd>
+          <p>Projekto (working tree) failai:</p>
+          <p><img src="images/20191227_155811_Cmder.png" alt=""/></p>
+          <p>Failo <code>menu.txt</code> turinys:</p>
+          <p><img src="images/20191227_163813_Cmder.png" alt=""/></p>
+          <p>Failo <code>recipes\README.txt</code> turinys:</p>
+          <p><img src="images/20191227_164217_Cmder.png" alt=""/></p>
+          <p>Failo <code>recipes\apple_pie.txt</code> turinys:</p>
+          <p><img src="images/20191227_164045_Cmder.png" alt=""/></p>
+        </dd>
+        <dt>Sukuriame rep'ą</dt>
+        <dd>
+          <pre><code>λ git init
+Initialized empty Git repository in D:/webdev/learn.video-course.pluralsight-how-git-works/cookbook/.git/</code></pre>
+        </dd>
+        <dt>Pasitikriname</dt>
+        <dd>
+          <p>pažiūrime ir paslėptus failus-katalogus:</p>
+          <p><img src="images/20191227_170451_Cmder.png" alt=""/></p>
+          <p>pažiūrime rep'o statusą:</p>
+          <p><img src="images/20191227_165944_Cmder.png" alt=""/></p>
+        </dd>
+        <dt>Kadangi žinome, kad visų failų projekte EOL == LF, pačiame rep'e nustatome:</dt>
+        <dd>
+          <p><img src="images/20191227_171221_Cmder.png" alt=""/></p>
+        </dd>
+        <dt>Visus failus padedame į &quot;staging area&quot;</dt>
+        <dd>
+          <p><img src="images/20191227_171854_Cmder.png" alt=""/></p>
+        </dd>
+        <dt>padarome commit'ą</dt>
+        <dd>
+          <p><img src="images/20200101_135420_Cmder.png" alt=""/></p>
+        </dd>
+        <dt>su <code>git log</code> pažiūrime commit'ų istoriją — <q>show commit logs</q></dt>
+        <dd>
+          <p class="c-em-important c-em--narrow">Kiekvienas commit'as išsaugomas rep'o objektų DB.</p>
+          <p>Katalogo pavadinamas — pirmieji du commit'o &quot;SHA1 Hash ID&quot; simboliai:</p>
+          <p><img src="images/20200103_123239_Cmder.png" alt=""/></p>
+          <p>O failas jame pavadinamas su likusiais  &quot;SHA1 Hash ID&quot; simboliais:</p>
+          <p><img src="images/20200103_130538_D__webdev_learn.video-course.pluralsight-how-git-works_cookbook_.git_objects_de.png" alt=""/></p>
+          <p>su <code>git cat-file -p &lt;object-sha1&gt;</code> pažiūrime to failo turinį, jame pagrindinė informacija, kad commit'as sukūrė objektą:</p>
+          <p><img src="images/20200103_134423_Cmder.png" alt=""/></p>
+          <p>pažiūrime to objekto, t. y. failo tame kataloge, turinį — jame nurodyta kas buvo padėta į index'ą ir su'commit'inta:</p>
+          <p><img src="images/20200105_130609_Cmder.png" alt=""/></p>
+        </dd>
+      </dl>
+    </td>
+    <td width="25%">
+      <h3>a Revision Control System</h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>a Distributed Revision Control System</h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Git terminai</h2>
+<h3>Blob</h3>
+<p>&nbsp;</p>
+<blockquote>
+  <p>GIT represents file's contents in <em>blobs</em>, which are leaf nodes in  a <em>tree</em>.  A <em>blob</em> is named by computing the SHA1 hash id of its size and contents.</p>
+</blockquote>
+<p>&nbsp;</p>
+<div class="c-em-important c-em--narrow">
+  <p>Identiškas turinys visada turės tokį patį blob'o pavadinimą (SHA1 hash id).</p>
+  <p>Jei yra keli failai su identišku turiniu, pats turinys GIT'o rep'e bus saugomas tik vienoje vietoje, ir tų identiškų failų blob'ai turės nuorodas į tą turinį.</p>
+</div>
+<p>&nbsp;</p>
+<p>Su <code>git hash-object</code> galima gauti failo turinio blob'o pavadinimą, kuris padaromas iš SHA1 Hash ID failo dydžio ir pačio turinio:</p>
+<pre><code>D:\webdev\sites.test\git-test (master -> origin)
+λ git hash-object tekstas.txt
+1c4e6aa0791440241a49dd07bb86c6f0537a6c66</code>
+</pre>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>repository, repo</h3>
+      <p>&nbsp;</p>
+      <p>Repository contains files, history, config managed by Git      </p>
+      <blockquote>
+        <p>A <strong>repository</strong> is a collection of <em>commits</em>, each of which is an archive of what the project's <em>working tree</em> looked like at a past date, whether on your machine or someone else's. It also defines HEAD (see below), which identifies the branch or commit the current working tree stemmed from. Lastly, it contains a set of <em>branches</em> and <em>tags</em>, to identify certain commits by name.</p>
+      </blockquote>
+      <p><img src="images/20191018_205631_08 - Key Git Terminology.mp4 - SMPlayer.png" alt="" width="232" height="143"/></p>
+    </td>
+    <td width="25%">
+      <h3>index, staging area</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p><strong>The index</strong> — Unlike other, similar tools you may have used, Git does not commit changes directly from the <em>working tree</em> into the <em>repository</em>. Instead, changes are first registered in something called <strong>the index</strong>. Think of it as a way of "confirming" your changes, one by one, before doing a commit (which records all your approved changes at once). Some find it helpful to call it instead as the "staging area", instead of the index.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>working tree</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>working tree</strong> is any directory on your filesystem which has a <em>repository</em> associated with it (typically indicated by the presence of a sub-directory within it named .git.). It includes all the files and sub-directories in that directory.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>commit</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>commit</strong> is a snapshot of your working tree at some point in time. The state of HEAD (see below) at the time your commit is made becomes that commit's parent. This is what creates the notion of a "revision history".</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Branch</h3>
+      <p> <a href="https://guides.github.com/introduction/flow/">Understanding the GitHub flow · GitHub Guides</a>      </p>
+      <p class="c-em-note c-em--narrow">Pagrindinis-šakninis rep'o  branch'as default'iškai vadinasi &quot;master&quot;.</p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A "branch" is an active line of development. The most recent <a href="https://git-scm.com/docs/gitglossary#def_commit">commit</a> on a branch is referred to as the tip of that branch. The tip of the branch is referenced by a branch <a href="https://git-scm.com/docs/gitglossary#def_head">head</a>, which moves forward as additional development is done on the branch. </p>
+      </blockquote>
+      <p>Branch'ai yra rep'e, o darbiniai failai (working tree) yra surišti tik aktyviu (checked out) branch'u:</p>
+      <blockquote>
+        <p>A single Git <a href="https://git-scm.com/docs/gitglossary#def_repository">repository</a> can track an arbitrary number of branches, but your <a href="https://git-scm.com/docs/gitglossary#def_working_tree">working tree</a> is associated with just one of them (the "current" or "checked out" branch), and <a href="https://git-scm.com/docs/gitglossary#def_HEAD">HEAD</a> points to that branch.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>Kaip šakojasi  branch'ai:</p>
+      <blockquote>
+        <p>The diagram below shows how you can branch off of your 'master' branch, do work and then merge those changes back into 'master'. You can even branch off of a branch if you need to, the 'master' branch doesn't have to be the base.</p>
+        <p><img src="images/branches.png" alt="" width="266" height="112"/></p>
+      </blockquote>
+      <p>Branch'as yra vienas ar daugiau commit'ų, pažymėtų bendru pavadinimu ????????????????????? </p>
+      <blockquote>
+        <p>A <strong>branch</strong> is just a name for a commit, also called a reference. It's the parentage of a commit which defines its history, and thus the typical notion of a "branch of development".</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>tag</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p><strong>tag</strong> — A <strong>tag</strong> is also a name for a commit, similar to a <em>branch</em>, except that it always names the same commit, and can have its own description text.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>master</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p><strong>master</strong> — The mainline of development in most repositories is done on a branch called "**master**". Although this is a typical default, it is in no way special.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>HEAD</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p><strong>HEAD</strong> — <strong>HEAD</strong> is used by your repository to define what is currently checked out:</p>
+        <ul>
+          <li>If you checkout a branch, HEAD symbolically refers to that branch, indicating that the branch name should be updated after the next commit operation.</li>
+          <li>If you checkout a specific commit, HEAD refers to that commit only. This is referred to as a detached <em>HEAD</em>, and occurs, for example, if you check out a tag name.      </li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Git Workflow Life Cycle</h2>
+<div class="-FXBCc M1c" style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center">
+  <img src="images/20191015_105122_Git & GitHub_ Branching and the GitHub Workflow [720p].mp4 - SMPlayer.png" alt="" width="166" height="199"/>
+    <img src="images/git-transport.png" alt="" width="299" height="282"/>
+  <figure class="figure--image-bigCaption" style="width: min-content">
+    <img src="images/lifecycle.png" width="264" style="min-width: 264px">
+    <figcaption>
+      <p>a typical project's life-cycle</p>
+    </figcaption>
+  </figure>
+</div>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>Three States of Git:</p>
+      <ul>
+        <li>Working directory </li>
+        <li>Staging area — pre-commit holding area </li>
+        <li>Commit — Git Repository (history)</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Master branch</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>
+  <del>
+  Nustatymai / Setup / Preferences / Configuration
+  </del>
+</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <del>
+      <h3>Git'o nustatymų architektūra</h3>
+      <p><a href="https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Where-system-global-and-local-Windows-Git-config-files-are-saved">Where system, global and local Windows Git config files are saved - Coffee Talk: Java, News, Stories and Opinions</a></p>
+      <p>Šiuo metu pas mane Git'o konfiginiai failai saugomi:</p>
+      <ol>
+        <li>Local — <code>&lt;projektas&gt;\.git\config</code></li>
+        <li>Global — <code>C:\Users\zm\.gitconfig</code></li>
+        <li>System — <code>C:\Program Files\Git\mingw64\etc\gitconfig</code>      </li>
+      </ol>
+      <p>Kaip veikia:</p>
+      <blockquote>
+        <p>System, global and local Git config files</p>
+        <p>Git provides three different scopes for storing configuration data. Accordingly, when using the <em>git config</em> command, one of these three scopes can be specified:</p>
+        <ol>
+          <li>Local</li>
+          <li>Global</li>
+          <li>System</li>
+        </ol>
+        <p>The scopes are cascading, so system scope trumps global scope and local scope trumps global scope.</p>
+      </blockquote>
+      <p>Kokie failų pavadinimai:</p>
+      <blockquote>
+        <p>Names of Windows Git config files</p>
+        <p>Just to make life a bit more complicated, the Git configuration files all have different names. Furthermore, Windows Git config files are each stored in different locations.</p>
+        <ul>
+          <li>The <em>extensionless</em> system Git config file is named <em>gitconfig.</em></li>
+          <li>The global Git config file has no name, but is instead just an extension. The global Windows Git config file is named <em>.gitconfig.</em></li>
+          <li>The local Windows Git configuration file is simply named <em>config, </em>and like the system Git config file, it has no extension.</li>
+        </ul>
+      </blockquote>
+      <p>Kur saugomi:</p>
+      <blockquote>
+        <p>Where are Git config files stored?</p>
+        <p>As for the location of these three Windows Git configuration files, here is where you'll find them:</p>
+        <ul>
+          <li>The system Git config file is found in the <em>mingw32\</em>etc folder of the Git installation.</li>
+          <li>The global Git configuration file is found in the root of the user's local profile or home directory <em>(C:\Users\git-user\).</em></li>
+          <li>The local Git config file is stored inside the .git directory of the repository in which you are working.</li>
+        </ul>
+      </blockquote>
+      <p>Per CMD galima atidaryti redaktoriuje config failus:</p>
+      <blockquote>
+        <p>Editing Windows Git config files</p>
+        <p>If you are interested in viewing or editing Git config files, simply use the git <em>config</em> command, specify the scope and add an –edit switch.</p>
+        <pre><code>$ git config --global --edit
+$ git config --system --edit
+$ git config --local --edit</code></pre>
+        <p>Each of these <a href="https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Need-to-git-cherry-pick-a-commit-Heres-an-example-how">Git commands</a> will open the corresponding Windows Git config file in the configuration specified editor.</p>
+      </blockquote>
+      </del>
+    </td>
+    <td width="25%">
+      <del>
+<h3><code>git config</code> opcijos nustatyti <i>configuration scope</i></h3>
+      <p>&nbsp;</p>
+      <ul>
+        <li><code>--local</code></li>
+        <li><code>--global</code></li>
+        <li><code>--system</code></li>
+      </ul>
+</del>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <del>
+<h3>Setup Name and Email</h3>
+      <p>Reikia padaryti suinstaliavus kompe GIT'ą:</p>
+      <pre><code>&gt; git config --global user.name &quot;dainiunietis&quot;
+&gt; git config --global user.email &quot;zydrunas.martinkus@gmail.com&quot;</code></pre>
+</del>
+    </td>
+    <td>
+      <del>
+      <h3>Setup Line Ending Preferences </h3>
+      <p> <a href="https://stackoverflow.com/questions/1967370/git-replacing-lf-with-crlf/20653073#20653073">git replacing LF with CRLF - Stack Overflow</a>      </p>
+      <blockquote>
+        <p><strong>Moral</strong> (for Windows): </p>
+        <ul>
+          <li>use <code>core.autocrlf = true</code> if you plan to use this project under Unix as well (and unwilling to configure your editor/IDE to use unix line endings), </li>
+          <li>use <code>core.autocrlf = false</code> if you plan to use this project under Windows only (or you have configured your editor/IDE to use unix line endings), </li>
+          <li><em>never</em> use <code>core.autocrlf = input</code> unless you have a good reason to (<em>eg</em> if you're using unix utilities under windows or if you run into makefiles issues),      </li>
+        </ul>
+      </blockquote>
+      <h4>Ant Windows'ų darome</h4>
+      <p>Laikome globalius nustatymus:</p>
+      <pre><code>&gt; git config --global core.autocrlf true
+&gt; git config --global core.safecrlf true</code></pre>
+      <P>Jei žinome, kad visų failų projekte EOL == LF, pačiame rep'e nustatome:</p>
+      <pre><code>&gt; git config --local core.autocrlf false</code></pre>
+      <del tabindex="0">
+      <p>Priklauso kokia situacija su EOL simboliais projekto failuose</p>
+      <dl>
+        <dt>Jei projekte gali būti failų su windows'iniais EOL == CRLF</dt>
+        <dd>
+          <pre><code>&gt; git config --global core.autocrlf true</code>
+        </pre>
+        </dd>
+        <dt>Kai žinome, kad visų failų projekte EOL == LF</dt>
+        <dd>
+          <pre><code>&gt; git config --global core.autocrlf false</code>
+        </pre>
+        </dd>
+      </dl>
+      <p>Kai redaktoriai su EOL = LF</p>
+      <pre><code>&gt; git config --global core.autocrlf false
+&gt; git config --global core.safecrlf true</code></pre>
+      <p>Jeigu koks projektas su failais su windows'iniais CRLF, pačiame rep'e nustatome:</p>
+      <pre><code>&gt; git config --local core.autocrlf true</code></pre>
+      </del>
+      <h4>Unix/Mac</h4>
+      <pre><code>git config --global core.autocrlf input
+git config --global core.safecrlf true</code></pre>
+      </del>
+    </td>
+    <td>
+      <del>
+      <h3>Išvesti nustatymus</h3>
+      <p>Išveda visus globalius nustatymus:</p>
+      <pre><code>&gt; git config --global --list
+user.name=dainiunietis
+user.email=zydrunas.martinkus@gmail.com</code></pre>
+      <p>Išveda nurodytą nustatymą: </p>
+      <pre><code>&gt; git config --global user.username
+dainiunietis</code></pre>
+      <p>&nbsp;</p>
+      </del>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+      <del>
+<p><code>.gitignore</code> turi būti šakniniame projekto kataloge.</p>
+      <blockquote>
+        <p>A <code>.gitignore</code> is a list of files that Git should <em>not</em> track, for instance, files with passwords!</p>
+      </blockquote>
+</del>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Operacijos su lokaliu rep'u (Working Locally)</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <del>
+      <h3>Sukūrimas</h3>
+      <dl>
+        <dt><code>&gt; git init</code></dt>
+        <dd>
+          <p>Kataloge, kuriame įvykdyta ši komanda, sukuria tuščią GIT repository, t. y. katalogas <code>.git/</code> su pradinia GIT repository katalogų-failų struktūra.</p>
+          <blockquote>
+            <p>The command initializes an empty Git repository in the current directory.</p>
+            <p>This <code>.git</code>  directory <em>is the "repo"</em>! This is where git records all of the commits and keeps track of everything!</p>
+          </blockquote>
+          <p class="c-em-note c-em--narrow"><code>&gt; ls -a</code> — išveda ir paslėptus katalogus ir failus, todėl ji išves ir su <code>&gt; git init</code> sukurtą katalogą <code>/.git</code></p>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      </del>
+    </td>
+    <td width="25%">
+      <h3>Informacijos gavimas      </h3>
+      <dl>
+        <dt><code>&gt; git status</code></dt>
+        <dd>
+          <del>
+          <p>&nbsp;</p>
+          <blockquote>
+            <p>to monitor the state between the repository and the working directory.</p>
+          </blockquote>
+          <hr>
+          <pre><code>$ git status
+On branch master
+nothing to commit, working tree clean</code></pre>
+          <p>Šis pranešimas reiškia, kad visi &quot;working directory&quot; failai padėti į &quot;repository&quot;:</p>
+          <blockquote>
+            <p>The status command reports that there is nothing to commit. This means that the repository has all the current state of the working directory. There are no outstanding changes to record.</p>
+          </blockquote>
+          <hr>
+          <pre><code>λ git status
+On branch master
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+        modified:   sveiki.md
+
+no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
+          <p>Failas sveiki.md &quot;working directory&quot; kataloge redaguotas ir išsaugotas. </p>
+          <hr>
+          <p>&nbsp;</p>
+          </del>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Pakeistų failų pridėjimas į rep'ą</h3>
+      <dl>
+        <dt><code>&gt; git add &lt;pathspec&gt;...</code></dt>
+        <dd>
+          <p>Į index'ą prideda nurodytus failus.</p>
+          <div class="c-em-note c-em--narrow">
+            <p><code>&gt; git add -n &lt;pathspec&gt;…</code> — gerai pasitikrinti ką darys</p>
+            <blockquote>
+              <p>Don't actually add the file(s), just show if they exist and/or will be ignored.</p>
+            </blockquote>
+          </div>
+          <ul>
+            <li><code>&gt; git add skaityk.txt</code> — į index'ą prideda vieną failą <code>skaityk.txt</code>:</li>
+            <li><code>&gt; git add tas.js anas.css</code> — du failus </li>
+            <li><code>&gt; git add -A</code> — all changes, additions and deletions ??????????????</li>
+            <li><code>&gt; git add .</code> — į index'ą prideda visus ???????? failus        </li>
+          </ul>
+        </dd>
+        <dt><code>&gt; git commit</code></dt>
+        <dd>
+          <p>Visas index'o turinys perkeliamas į repository.</p>
+          <p><code>&gt; git commit -m &quot;tas anas padaryta&quot;</code> — commit'as su komentar</p></dd>
+        <dt><code>&gt; git reset</code></dt>
+        <dd>
+          <p>Į index'ą pridėtų failų pašalinimas — <q>unstage</q> arba <q>undo <code>git add</code></q>:</p>
+          <ul>
+            <li><code>&gt; git reset</code> — visi failai iš index'o pašalinami — <q>unstage all changes</q></li>
+            <li><code>&gt; git reset &lt;file&gt;</code></li>
+          </ul>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <div class="o-collapse-locdep">
+        <p><code>-i</code> or <code>--interactive</code> option</p>
+        <p> <a href="https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging">Git - Interactive Staging</a></p>
+        <p> <a href="https://stackoverflow.com/questions/19576116/how-to-add-multiple-files-to-git-at-the-same-time/35943688#35943688">push - How to add multiple files to Git at the same time - Stack Overflow</a></p>
+        <blockquote>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">As some have mentioned a possible way is using<span> </span><a href="https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging" rel="noreferrer" style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-size: 15px; vertical-align: baseline; box-sizing: inherit; text-decoration: underline; color: rgb(0, 100, 189); cursor: pointer;">git interactive staging</a>. This is great when you have files with different extensions</p>
+          <pre style="margin: 0px 0px 1em; padding: 12px 8px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; width: auto; max-height: 600px; overflow: auto; background-color: rgb(239, 240, 241); border-radius: 3px; overflow-wrap: normal; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: inherit;">$ git add -i
+           staged     unstaged path
+  1:    unchanged        +0/-1 TODO
+  2:    unchanged        +1/-1 index.html
+  3:    unchanged        +5/-1 lib/simplegit.rb
+
+*** Commands ***
+  1: status     2: update      3: revert     4: add untracked
+  5: patch      6: diff        7: quit       8: help
+What now&gt;
+</code></pre>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">If you press<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">2</code><span> </span>then<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">enter</code><span> </span>you will get a list of available files to be added:</p>
+          <pre style="margin: 0px 0px 1em; padding: 12px 8px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; width: auto; max-height: 600px; overflow: auto; background-color: rgb(239, 240, 241); border-radius: 3px; overflow-wrap: normal; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: inherit;">What now&gt; 2
+           staged     unstaged path
+  1:    unchanged        +0/-1 TODO
+  2:    unchanged        +1/-1 index.html
+  3:    unchanged        +5/-1 lib/simplegit.rb
+Update&gt;&gt;
+</code></pre>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Now you just have to insert the number of the files you want to add, so if we wanted to add<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">TODO</code><span> </span>and<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">index.html</code><span> </span>we would type<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">1,2</code></p>
+          <pre style="margin: 0px 0px 1em; padding: 12px 8px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; width: auto; max-height: 600px; overflow: auto; background-color: rgb(239, 240, 241); border-radius: 3px; overflow-wrap: normal; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: inherit;">Update&gt;&gt; 1,2
+           staged     unstaged path
+* 1:    unchanged        +0/-1 TODO
+* 2:    unchanged        +1/-1 index.html
+  3:    unchanged        +5/-1 lib/simplegit.rb
+Update&gt;&gt;
+</code></pre>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">You see the<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">*</code><span> </span>before the number? that means that the file was added.</p>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Now imagine that you have 7 files and you want to add them all except the 7th? Sure we could type<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">1,2,3,4,5,6</code><span> </span>but imagine instead of 7 we have 16, that would be quite cumbersome, the good thing we don't need to type them all because we can use ranges,by typing<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">1-6</code></p>
+          <pre style="margin: 0px 0px 1em; padding: 12px 8px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; width: auto; max-height: 600px; overflow: auto; background-color: rgb(239, 240, 241); border-radius: 3px; overflow-wrap: normal; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: inherit;">Update&gt;&gt; 1-6
+           staged     unstaged path
+* 1:    unchanged        +0/-1 TODO
+* 2:    unchanged        +1/-1 index.html
+* 3:    unchanged        +5/-1 lib/simplegit.rb
+* 4:    unchanged        +5/-1 file4.html
+* 5:    unchanged        +5/-1 file5.html
+* 6:    unchanged        +5/-1 file6.html
+  7:    unchanged        +5/-1 file7.html
+Update&gt;&gt;
+</code></pre>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">We can even use multiple ranges, so if we want from 1 to 3 and from 5 to 7 we type<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">1-3, 5-7</code>:</p>
+          <pre style="margin: 0px 0px 1em; padding: 12px 8px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; width: auto; max-height: 600px; overflow: auto; background-color: rgb(239, 240, 241); border-radius: 3px; overflow-wrap: normal; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: inherit;">Update&gt;&gt; 1-3, 5-7
+           staged     unstaged path
+* 1:    unchanged        +0/-1 TODO
+* 2:    unchanged        +1/-1 index.html
+* 3:    unchanged        +5/-1 lib/simplegit.rb
+  4:    unchanged        +5/-1 file4.html
+* 5:    unchanged        +5/-1 file5.html
+* 6:    unchanged        +5/-1 file6.html
+* 7:    unchanged        +5/-1 file7.html
+Update&gt;&gt;
+</code></pre>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">We can also use this to unstage files, if we type<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">-number</code>, so if we wanted to unstage file number 1 we would type<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">-1</code>:</p>
+          <pre style="margin: 0px 0px 1em; padding: 12px 8px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; width: auto; max-height: 600px; overflow: auto; background-color: rgb(239, 240, 241); border-radius: 3px; overflow-wrap: normal; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: inherit;">Update&gt;&gt; -1
+           staged     unstaged path
+  1:    unchanged        +0/-1 TODO
+* 2:    unchanged        +1/-1 index.html
+* 3:    unchanged        +5/-1 lib/simplegit.rb
+  4:    unchanged        +5/-1 file4.html
+* 5:    unchanged        +5/-1 file5.html
+* 6:    unchanged        +5/-1 file6.html
+* 7:    unchanged        +5/-1 file7.html
+Update&gt;&gt;
+</code></pre>
+          <p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">And as you can imagine we can also unstage a range of files, so if we type<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">-range</code><span> </span>all the files on that range would be unstaged. If we wanted to unstage all the files from 5 to 7 we would type<span> </span><code style="margin: 0px; padding: 1px 5px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: pre-wrap;">-5-7</code>:</p>
+          <pre style="margin: 0px 0px 1em; padding: 12px 8px; border: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 400; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; width: auto; max-height: 600px; overflow: auto; background-color: rgb(239, 240, 241); border-radius: 3px; overflow-wrap: normal; color: rgb(36, 39, 41); letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Liberation Mono&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, monospace, sans-serif; font-size: 13px; vertical-align: baseline; box-sizing: inherit; background-color: rgb(239, 240, 241); white-space: inherit;">Update&gt;&gt; -5-7
+           staged     unstaged path
+  1:    unchanged        +0/-1 TODO
+* 2:    unchanged        +1/-1 index.html
+* 3:    unchanged        +5/-1 lib/simplegit.rb
+  4:    unchanged        +5/-1 file4.html
+  5:    unchanged        +5/-1 file5.html
+  6:    unchanged        +5/-1 file6.html
+  7:    unchanged        +5/-1 file7.html
+Update&gt;&gt;</code></pre>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Versioning / History</h3>
+      <p>Parodo kuo skiriasi failai projekto kataloge (working tree) ir repository, t. y. kas juose buvo pakeista nuo paskutinio commit'o:</p>
+      <p><code>&gt; git diff</code>      </p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Branch'ai</h3>
+      <del>
+      <h4>Branch'ų sukūrimas ir aktyvavimas</h4>
+      <dl>
+        <dt><code>&gt; git branch &lt;branch-name&gt;</code></dt>
+        <dd>
+          <blockquote>
+            <p>When you create a branch, Git copies everything from the current branch you're on and places it in the branch you've requested be made.</p>
+          </blockquote>
+          <p><code>&gt; git branch
+            <mark>-m</mark>
+            &lt;new-branch-name&gt;</code> — pakeičia aktyvaus branch'o pavadinimą.</p>
+          <p><code>&gt; git branch</code> — List the branches</p>
+        </dd>
+        <dt><code>&gt; git checkout &lt;branch-name&gt;</code></dt>
+        <dd>
+          <blockquote>
+            <p>To go into that branch and work on it you <strong>checkout</strong> a branch.</p>
+          </blockquote>
+          <p><code>&gt; git checkout -b &lt;branch-name&gt;</code> — You can create and switch to a branch in one line </p>
+        </dd>
+      </dl>
+      <h4>Kam skirti papildomi branch'ai</h4>
+      <p> Papildomi  branch'ai sukuriami ir naudojami projekto vystymui organizuoti. Galimos  branch'ų paskirtys:</p>
+      <ul>
+        <li>Team work'ui — kiekviemas developer'is, ar jų grupė, turi savo  branch'ą.</li>
+        <li>
+          <p>Atskiram funkcionalui kurti:</p>
+          <blockquote>
+            <p>When you're working on a project, you're going to have a bunch of different features or ideas in progress at any given time – some of which are ready to go, and others which are not. Branching exists to help you manage this workflow.</p>
+            <p>When you create a branch in your project, you're creating an environment where you can try out new ideas. Changes you make on a branch don't affect the master branch, so you're free to experiment and commit changes, safe in the knowledge that your branch won't be merged until it's ready to be reviewed by someone you're collaborating with.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <blockquote>
+        <p>Git repositories use branches to isolate work when needed. It's common practice when working on a project or with others on a project to create a <strong>branch</strong> to keep your working changes in. This way you can do your work while the main, commonly named 'master', branch stays stable. When the work on your branch is finished you merge it back into the 'master' master branch.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <h4> Branch'ų merge'inimas ir pašalinimas </h4>
+      <p>Branch'ai sukuriami tam tikram tikslui, ateina laikas juos panaikinti:</p>
+      <blockquote>
+        <p>Cleaning up</p>
+        <p>Once you don't need branches anymore you can delete them locally and remotely. This is helpful so that you don't end up with a pile of old branches.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <dl>
+        <dt><code>&gt; git merge &lt;branch-name&gt;</code></dt>
+        <dd>
+          <p>Į aktyvų branch'ą su'merge'ina nurodytą <code>&lt;branch-name&gt;</code> (Merge a branch into current branch). </p>
+        </dd>
+        <dt>&gt; <code>git branch -d &lt;branch-name&gt;</code></dt>
+        <dd>
+          <p>Ištrina nurodytą branch'ą <code>&lt;branch-name&gt;</code>. </p>
+        </dd>
+        <dt>&gt; <code>git push &lt;remote-name&gt; --delete &lt;branch-name&gt;</code></dt>
+        <dd>
+          <p>Ištrina nurodytą branch'ą remote'e.</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      </del>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>GitHubbin / Working Remotely / Connect your Local to your Remote</h2>
+<p>Remote repository (GitHub) </p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>
+        <figure style="width: fit-content; background: beige"> <img src="images/remotes.png" alt="" width="236" height="154"/></figure>
+      </p>
+      <p><i>remote repository</i> yra:</p>
+      <blockquote>
+        <p>Remotes</p>
+        <p>When you put something on GitHub that copy lives on one of GitHub's servers. This makes it a <strong>remote</strong> repository because it is not on your computer, but on a server, "remote" and somewhere else. </p>
+      </blockquote>
+      <p>Kaip <i>local repository</i> padaromas &quot;up to date&quot;:</p>
+      <blockquote>
+        <p>By <strong>pushing</strong> your <strong>local</strong> (on your computer) changes to it, you keep it up to date.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Konfigūracija</h3>
+      <p>&nbsp;</p>
+      <dl>
+        <dt><code>&gt; git config --global user.username kazkasTai</code></dt>
+        <dd>
+          <blockquote>
+            <p>Add your GitHub username to your Git configuration.</p>
+          </blockquote>
+          <p>Kai yra toks nustatymas, nebeprašo įvesti vykdant prisijungimo prie GitHub komandas.        </p>
+        </dd>
+        <dt><code>&gt; git remote add &lt;remote-name&gt; &lt;url&gt;</code></dt>
+        <dd>
+          <p>Priskiria  rep'ui <i>remote</i>'ą, prieš tai buvę neliečiami — <q>add remote connection</q>.</p>
+          <p>Lokalus rep'as gali turėti jungtis su kitur esančiais rep'ais, tokia jungtis vadinama <i>remote connection</i> arba trumpiau <i>remote</i>:</p>
+          <blockquote>
+            <p>You can have multiple remotes so each requires a name. The primary remote is typically named <strong>origin</strong>.</p>
+            <p>To add a remote named 'origin' to your repository:</p>
+            <p><code>&gt; git remote add origin &lt;url-from-github&gt;</code></p>
+            <p>Your <strong>local</strong> repository now knows where your <strong>remote</strong> repository, named 'origin', lives on GitHub's servers.</p>
+          </blockquote>
+          <p>Programos GitHub Desktop įpatybės:</p>
+          <blockquote>
+            <p>Windows Users:</p>
+            <p>If you have <strong>GitHub Desktop</strong> on your computer, a remote named 'origin' is automatically created in your local repository. In that case, you'll just need to tell it what URL to associate with 'origin'. Use this command instead of the 'add' one above:</p>
+            <p><code>&gt; git remote set-url origin &lt;URLFROMGITHUB&gt;</code></p>
+          </blockquote>
+        </dd>
+        <dt><code>&gt; git remote set-url &lt;REMOTENAME&gt; &lt;URL&gt;</code></dt>
+        <dd>
+          <p>Kai jau esančiam remote'ui reikia pakeisti url'ą (change a remote URL).</p>
+        </dd>
+        <dt><code>&gt; git remote -v</code></dt>
+        <dd>
+          <blockquote>
+            <p>View remote addresses.          </p>
+          </blockquote>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Failų siuntimas tarp Local ir Remote rep'ų</h3>
+      <p>&nbsp;</p>
+      <dl>
+        <dt><code>&gt; git push &lt;remote-name&gt; &lt;branch&gt;</code></dt>
+        <dd>
+          <p>Lokalaus rep'o branch'o <code>&lt;branch&gt;</code> siuntimas į <code>&lt;remote-name&gt;</code> — <q>push changes</q>.</p>
+          <blockquote>
+            <p>Next you want to <strong>push</strong> (send) everything you've done locally to your remote repository on GitHub. This is something you'll do often so that your remote version is up to date and matching the state of your local version.</p>
+          </blockquote>
+          <p><code>&gt; git push origin master</code> — default'iniai branch'o ir remote'o pavadinimai</p>
+        </dd>
+        <dt><code>&gt; git pull &lt;remote-name&gt; &lt;remote-branch&gt;</code></dt>
+        <dd>
+          <blockquote>
+            <p>Pull in changes from a remote branch.</p>
+          </blockquote>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><code>-u --set-upstream</code></p>
+      <p>Su šia opcija yra išsaugoma lokalaus rep'o konfigūraciniame faile <code>.git\config</code> pateikti branch'o ir remote'o pavadinimai.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>argument-less git-pull</p>
+      <div class="c-em-note c-em--small c-em--narrow">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>See changes to the remote before you pull in </p>
+      <p><code>&gt; git fetch --dry-run</code></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Kitų rep'ų naudojimas</h3>
+      <p>
+        <figure style="width: fit-content; background: beige"> <img src="images/clone.png" alt="" width="245" height="188"/> </figure>
+      </p>
+      <h4>Fork a repository — kito rep'o kopijavimas į savo GitHub account'ą</h4>
+      <p>Kas tai yra:</p>
+      <blockquote>
+        <p>When you <strong>fork</strong> a repository, you're creating a copy of it on your GitHub account. Your forked copy begins its life as a <strong>remote</strong> repository—it exists just on your GitHub account, not on your computer.</p>
+      </blockquote>
+      <p>Kam naudojama:</p>
+      <blockquote>
+        <p>Forks are used for creating your own version of a project (this diversion from the original is like taking a fork in the road) or contributing back your changes (such as bug fixes or new features) to the original project.</p>
+      </blockquote>
+      <p>Fork'inio repo savo GitHub account'e sukūrimo būdai:</p>
+      <dl>
+        <dt>Naršyklėje atidarius kokį nors rep'ą</dt>
+        <dd>
+          <p><img src="images/20191204_190821_jlord_patchwork_ All the Git-it Workshop completers!.png" alt=""/></p>
+        </dd>
+        <dt>...</dt>
+        <dd>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <h4>Clone a repository — fork'inio repo iš savo GitHub account'o kopijavimas į savo kompą</h4>
+      <dl>
+        <dt><code>&gt; git clone &lt;github-url&gt;</code></dt>
+        <dd>
+          <blockquote>
+            <p>To get a forked repository from your GitHub account onto your computer you <strong>clone</strong> it. This cloning action copies the remote repository onto your computer so that you can work on it locally.</p>
+          </blockquote>
+          <p>Kokiame kataloge vykdyti šią komandą:</p>
+          <blockquote>
+            <p>It will automatically create a new folder for the repository so there is no need to create one yourself. But make sure you aren't cloning it inside of another Git repository folder!</p>
+          </blockquote>
+          <p>Lokalus su'clone'intas fork'inis rep'as yra prijungtas:</p>
+          <blockquote>
+            <p>Now you've got a copy of the repository on your computer and it is automatically connected to the remote repository (your forked copy) on your GitHub account.</p>
+          </blockquote>
+          <p>Galima patikrinti pačiame su'clone'intame rep'e įvykdžius:</p>
+          <p><code>&gt; git remote -v</code>        </p>
+        </dd>
+      </dl>
+      <h4>Lokalus fork'inis rep'as gali turėti jungtį su pradiniu rep'u — connect to the original repository</h4>
+      <blockquote>
+        <p>You can name this remote connection anything you want, but typically people use the name 'upstream'.</p>
+        <p><code>&gt; git remote add upstream &lt;original-github-url&gt;</code></p>
+      </blockquote>
+      <h4>Pull requests — užklausa iš suforkinto rep'o originalaus repo šeimininkui, kad leistų atsiųsti pakeitimus</h4>
+      <blockquote>
+        <p>Often when you make changes and improvements to a project you've forked, you'll want to send those changes to the maintainer of the original and <strong>request </strong>that they <strong>pull</strong> those changes into the original so that everyone can benefit from the updates—that's a <strong>pull request</strong>.</p>
+      </blockquote>
+      <p>Pull request'o padarymo būdai, naršyklėje atidarome &quot;the original repository you forked on GitHub&quot;:</p>
+      <div class="c-em-note c-em--small c-em--narrow">
+        <p>Prieš tai turi būti padaryta:</p>
+        <ol>
+          <li>Suforkintas kažkieno rep'as į savo GitHub account'ą</li>
+          <li>
+            <p><code>&gt; git clone &lt;forked-github-url&gt;</code></p>
+            <p>Fork'inio repo iš savo GitHub account'o kopijavimas į savo kompą (clone a repository).</p>
+            <p><strong>Toliau visos komandos vykdomos lokaliame fork'iniame rep'e.</strong></p>
+          </li>
+          <li>
+            <p><code>&gt; git remote add upstream &lt;original-github-url&gt;</code></p>
+            <p> Sukuria jungtį (dažniausiu pavadinimu upstream) su originaliu-pradiniu rep'u (connect to the original repository).</p>
+          </li>
+          <li>
+            <p><code>&gt; git branch zydrunas-martinkus</code></p>
+            <p>Sukuriamas savo vardo branch'as.</p>
+          </li>
+          <li>
+            <p><code>&gt; git checkout zydrunas-martinkus</code></p>
+            <p>Aktyvuojamas branch'as.</p>
+          </li>
+          <li>Redaguojame (working tree) failus, ar sukuriame naujus.</li>
+          <li>
+            <p><code>&gt; git status</code></p>
+            <p>Pasitikriname kokius pakeitimus rodo Git'as.</p>
+          </li>
+          <li>
+            <p><code>&gt; git add tas.js anas.css</code></p>
+            <p>Pridedame redaguotus failus į index'ą.</p>
+          </li>
+          <li>
+            <p><code>&gt; git commit -m "padaryta tas ir anas"</code></p>
+            <p>Visą index'o turinį perkeliame į repository.          </p>
+          </li>
+          <li>
+            <p><code>&gt; git push origin zydrunas-martinkus</code></p>
+            <p>Siunčiame lokaliame fork'iniame rep'e pakeistus ar pridėtus failus į savo GitHub account'e esantį fork'inį rep'ą.</p>
+          </li>
+        </ol>
+      </div>
+      <ul>
+        <li>
+          <blockquote>
+            <p>Often GitHub will detect if you've pushed a branch to a fork and display it at the top of the original's website. If you see that your branch, you can click to create a Pull Request from there.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <ol>
+              <li>Click the green 'New pull request' button.</li>
+              <li>Select the branch with the changes you want to submit. </li>
+            </ol>
+          </blockquote>
+        </li>
+      </ul>
+      <p>Tada:</p>
+      <blockquote>
+        <ul>
+          <li>Click 'Create pull request'</li>
+          <li>Add a title and description to the changes you're suggesting the original author pull in.</li>
+          <li>Click 'Send pull request'!      </li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>GitHub Pages</p>
+        <p>GitHub will automatically serve and host static website files in branches named 'gh-pages'. This free service is called <a href="http://pages.github.com">GitHub Pages</a>. Since the project you forked creates a website, its main branch is named 'gh-pages' instead of 'master'. All repositories that have a 'gh-pages' branch with website files can be found, live online, using this pattern for the URL:</p>
+        <p>        http://githubusername.github.io/repositoryname
+        </p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Bendro darbo organizavimas — Collaboration / Teamwork</h3>
+      <p>&nbsp;</p>
+      <h4>Collaborators</h4>
+      <p>Tai yra:</p>
+      <blockquote>
+        <p><strong>Collaborators</strong> are other GitHub users who are given permission to make edits to a repository owned by someone else. </p>
+      </blockquote>
+      <p>Jie padaromi GigHub'o rep'o puslapyje:</p>
+      <p><img src="images/20191210_182607_Window.png" alt="" width="169" height="97"/></p>
+      <h4>Contributors      </h4>
+      <blockquote>
+        <p>The term <strong>contributor</strong>, this describes another GitHub user who has made contributions, through a Fork and Pull Request, to a project.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Bendri komandų parametrų tipai </h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3> pathspec      </h3>
+      <p> <a href="https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec">Git - gitglossary Documentation</a></p>
+      <p>Pagal šią sintaksę filtruojami failai komandose:</p>
+      <ul>
+        <li><code> &gt; git ls-files</code></li>
+        <li><code>&gt; git ls-tree</code></li>
+        <li><code>&gt; git add</code></li>
+        <li><code>&gt; git grep</code></li>
+        <li><code>&gt; git diff</code></li>
+        <li><code>&gt; git checkout</code></li>
+        <li>ir kitose</li>
+      </ul>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p><em><code>*</code></em> and <em><code>?</code></em> <em>can</em> match directory separators</p>
+        <p>For example, <code>Documentation/*.jpg</code> will match all <code>.jpg</code> files in the Documentation subtree, including <code>Documentation/chapter_1/figure_1.jpg</code>.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Bendros komandų opcijos (options)</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><code>--dry-run | -n</code></h3>
+      <p>Su šia opcija komanda tik išves sąrašą failų, nurodant kas su kiekvienu iš jų būtų daroma.    </p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Sprendimai</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <del>
+      <h3>Projekto pakeitimų žingsnis, kurį galima įvardinti</h3>
+      <ol>
+        <li>Redaguojame (working tree) failus, ar sukuriame naujus.</li>
+        <li>Pasitikriname kokius pakeitimus rodo Git'as:
+          <p><code>&gt; git status</code></p>
+        </li>
+        <li>
+          <p>Pridedame redaguotus failus į index'ą:</p>
+          <p><code>&gt; git add tas.js anas.css</code></p>
+        </li>
+        <li>
+          <p>Visą index'o turinį perkeliame į repository:</p>
+          <p><code>&gt; git commit -m "padaryta tas ir anas"</code></p>
+        </li>
+      </ol>
+      <p>&nbsp;</p>
+      </del>
+    </td>
+    <td width="25%">
+      <del>
+      <h3>Feature branch'o naudojimo ciklas</h3>
+      <ol class="ulol--lines">
+        <li>
+          <p><code>&gt; git branch nuotraukų-galerija</code></p>
+          <p>Esant aktyviam šakniniam branch'ui <code>master</code>, sukuriamas vaikinis branch'as <code>nuotraukų-galerija</code>.</p>
+        </li>
+        <li>
+          <p><code>&gt; git checkout nuotraukų-galerija</code></p>
+          <p>Aktyvuojamas naujas branch'as.</p>
+        </li>
+        <li>
+          <p>Vyksta failų redagavimas ir padėjimas į rep'ą:</p>
+          <ol>
+            <li>Redaguojame (working tree) failus, ar sukuriame naujus. </li>
+            <li>
+              <p><code>&gt; git add tas.js anas.css</code></p>
+              <p>Pridedame redaguotus failus į index'ą.</p>
+            </li>
+            <li>
+              <p><code>&gt; git commit -m "padaryta tas ir anas"</code></p>
+              <p>Visą index'o turinį perkeliame į repository.</p>
+            </li>
+            <li>
+              <p><code>&gt; git push origin nuotraukų-galerija</code></p>
+              <p>Pakeitimus siunčiame į GitHub'ą.</p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p><code>&gt; git checkout master</code></p>
+          <p>Padarius kas numatyta su branch'u, pradedame jo šalinimą — aktyvuojame tėvinį branch'ą.</p>
+        </li>
+        <li>
+          <p><code>&gt; git merge         nuotraukų-galerija</code></p>
+          <p>Branch'e <code>nuotraukų-galerija</code> padarytus pakeitimus pridedame prie šakninio branch'o <code>master</code>.</p>
+        </li>
+        <li>
+          <p><code>&gt; git branch -d nuotraukų-galerija</code></p>
+          <p>Pašalinamas branch'as <code>nuotraukų-galerija</code>.</p>
+        </li>
+        <li>
+          <p>&gt; <code>git push origin --delete nuotraukų-galerija</code></p>
+          <p>Pašalinamas branch'as <code></code>ir  GitHub'e.        </p>
+        </li>
+      </ol>
+      <p>&nbsp;</p>
+      </del>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+      <p>&nbsp;</p>
+      <p><strong>Check-in</strong></p>
+      <p>Go through the steps for checking in a project:</p>
+      <p>git status</p>
+      <p>git add &lt;contributors/FILENAME&gt;</p>
+      <p>git commit -m "commit message"</p>
+      <p>Now push your update to <strong>your fork</strong>, 'origin', on GitHub:</p>
+      <p>git push origin &lt;BRANCHNAME&gt;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Backup / Archive </p>
+<p>&nbsp;</p>
+<p>Undo Changes</p>
+<p>Comparing</p>
+<p>&nbsp;</p>
+<p>Isolation of Changes </p>
+<p>Context Switching </p>
+<p>Code Review</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Others can always then get the latest from your project by <strong>pulling</strong> your changes down from the remote (and onto their computer). This is how everyone can work on a project together without needing access to your computer where your local copy is stored.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre>D:\webdev\sites.test\git-test
+λ git init
+Initialized empty Git repository in D:/webdev/sites.test/git-test/.git/
+
+D:\webdev\sites.test\git-test (master -> origin)
+λ git add tekstas.txt
+warning: LF will be replaced by CRLF in tekstas.txt.
+The file will have its original line endings in your working directory
+
+D:\webdev\sites.test\git-test (master -> origin)
+λ git commit -m "pirmas pridėtas failas"
+[master (root-commit) 12c07d4] pirmas pridėtas failas
+ 1 file changed, 1 insertion(+)
+ create mode 100644 tekstas.txt
+
+D:\webdev\sites.test\git-test (master -> origin)
+λ git cat-file -t 100644
+fatal: Not a valid object name 100644
+
+D:\webdev\sites.test\git-test (master -> origin)
+λ git cat-file -t 12c07d4
+commit
+
+D:\webdev\sites.test\git-test (master -> origin)
+λ git hash-object tekstas.txt
+1c4e6aa0791440241a49dd07bb86c6f0537a6c66
+
+D:\webdev\sites.test\git-test (master -> origin)
+λ git cat-file -t 1c4e6a
+blob
+
+D:\webdev\sites.test\git-test (master -> origin)
+λ</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

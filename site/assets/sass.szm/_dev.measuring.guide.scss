@@ -1,0 +1,112 @@
+@charset "utf-8";
+
+// pradinis variantas: D:\webdev\konspektas\site\assets\css\dbg-LESS.less
+
+//Sutrupinimai:
+//	VP = viewport
+//	DC = document
+//	Sides:
+//		T = top
+//		B = bottom
+//		L = left
+//		R = right
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////////////////
+
+$d-guide-color: hsl(0, 100%, 50%);
+
+@mixin d-guide-base {
+  //@include szm-project-config-data-hideinDebugOff;
+  @include szm-hidden(debugOff); // debugOn debugOff envDev envProd
+  z-index: 1000;
+  border: dashed scale_color($d-guide-color, $alpha:-50%);
+  &:before {
+    //font:  600 1em "Roboto Mono";
+    font:  600 1em "IBM Plex Mono";
+    color: scale_color($d-guide-color, $alpha:-20%);
+    white-space: nowrap;
+    content: attr(style);
+    background: scale_color($d-guide-color, $alpha:-93%);
+    padding: .08em .8em .13em;
+  }
+}
+
+@mixin d-guide-fixed {
+  position: fixed;
+  &:before {
+    position: fixed;
+  }
+}
+
+@mixin d-guide-hor {
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-width: 1px 0 0 0;
+  &:before {
+    transform: translate(-50%, calc(-100% - 4px));
+    left: 50%;
+    //margin-top: -22px;
+  }
+}
+
+@mixin d-guide-ver {
+  top: 0;
+  width: 0;
+  height: 100%;
+  border-width: 0 0 0 1px;
+  &:before {
+    top: 50%;
+    transform-origin: top left;
+    transform: rotate(-90deg) translate(-50%, calc(-100% - 5px));
+    //background-color: #a0b9f9;
+    //transform: translate(50px, 0);
+    //margin-left: -63px;
+    //margin-left: -5%;
+  }
+}
+
+////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// <div class="d-guide-fixed-hor" style="top: 100px"></div>
+// <div class="d-guide-fixed-hor" style="bottom: 50px"></div>
+
+.d-guide-fixed-hor {
+  @include d-guide-base;
+  @include d-guide-hor;
+  @include d-guide-fixed;
+  //position: fixed;
+  //&:before {
+  //  position: fixed;
+  //}
+}
+
+// @USAGE:
+// <div class="d-guide-fixed-ver" style="left: 100px"></div>
+// <div class="d-guide-fixed-ver" style="right: 70px"></div>
+
+.d-guide-fixed-ver {
+  @include d-guide-base;
+  @include d-guide-ver;
+  @include d-guide-fixed;
+  //position: fixed;
+  //&:before {
+  //  position: fixed;
+  //}
+}
+
+
+
+
+
+
+
+
+
+
+

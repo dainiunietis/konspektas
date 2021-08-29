@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # Full Width Containers in Limited Width Parents
+//
+////////////////////////////////////////////////////////////////////////
+
+// https://css-tricks.com/full-width-containers-limited-width-parents
+//
+// http://konspektas.local/~technique-css.full-bleed-viewport.htm
+
+// @USAGE:
+// <div class="o-fullBleedInLimited">
+//   <p>...</p>
+//   <div class="o-fullBleedInLimited__bleed">
+//     <div>
+//       <p>...</p>
+//     </div>
+//   </div>
+//   <p>...</p>
+// </div>
+
+.o-fullBleedInLimited {
+  --o-fullBleedInLimited-contentMaxWidth: 75ch;
+  --o-fullBleedInLimited-scrollbarWidth:  17px;
+}
+
+.o-fullBleedInLimited, .o-fullBleedInLimited__bleed > * {
+  max-width: var(--o-fullBleedInLimited-contentMaxWidth);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.o-fullBleedInLimited__bleed {
+  //padding: 1rem 0;
+  width: calc(100vw - var(--o-fullBleedInLimited-scrollbarWidth));
+  margin-left: 50%;
+  transform: translateX(-50%);
+  //margin-left: calc(50% - 50vw); !!! NEVEIKIA
+}
+
+.o-fullBleedInLimited__bleed > * {
+  //box-sizing:    content-box;
+  //padding-left:  .8rem;
+  //padding-right: .8rem;
+}
+
+
+
+//html {
+//  --scrollbarWidth: 17px;
+//  scrollbar-width: var(--scrollbarWidth); /* future standards way */
+//  scrollbar-width: 10px; /* future standards way */
+//  /*overflow-y: hidden;*/
+//}
+//html::-webkit-scrollbar { /* long-standing webkit way */
+//  width: var(--scrollbarWidth);
+//}
+//html::-webkit-scrollbar-track {
+//  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//}
+//html::-webkit-scrollbar-thumb {
+//  background-color: darkgrey;
+//  outline: 1px solid slategrey;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

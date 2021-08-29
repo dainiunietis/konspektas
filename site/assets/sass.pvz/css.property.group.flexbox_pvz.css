@@ -1,0 +1,85 @@
+.p-pvz {
+  height: 250px;
+  padding: 0.5rem 0;
+  margin: 0 auto;
+  border: dashed #b3b3b3;
+  border-width: 2px 0;
+}
+
+.p-pvz--resize {
+  resize: both;
+  overflow: auto;
+  /* something other than visible */
+}
+
+#pvz-1 {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+#pvz-1 > * {
+  padding: 0.3em 0.6em;
+  margin: 0 0.31em 0.5em;
+  background: tomato;
+  color: white;
+  text-align: center;
+}
+
+/* Small screens */
+#pvz-2 {
+  display: flex;
+  flex-flow: column wrap;
+  position: relative;
+  /* Medium screens */
+  /* Large screens */
+}
+#pvz-2:before {
+  content: "Small screens";
+  /*display: block;*/
+  position: absolute;
+  top: -2.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.1em 0.4em;
+  /*font-family: "Consolas", "DejaVu Sans", "Droid Sans Mono", "Courier New", Courier, monospace;*/
+  /*font-family: 'Source Code Pro', Menlo, Consolas, Monaco, monospace;*/
+  /*font-family: "Droid Sans Mono", monospace;*/
+  /*font-family: "Input Mono";*/
+  font-family: "Envy Code R", monospace;
+  font-size: 0.7em;
+  background: #999999;
+  color: white;
+}
+#pvz-2 > * {
+  padding: 0.3rem 0.6rem;
+  margin: 0 0 0.5rem;
+  background: tomato;
+  color: white;
+  text-align: center;
+}
+@media all and (min-width: 500px) {
+  #pvz-2 {
+    flex-direction: row;
+    margin-right: -0.5rem;
+  }
+  #pvz-2:before {
+    content: "Medium screens";
+  }
+  #pvz-2 > * {
+    flex-grow: 1;
+    margin-right: 0.5rem;
+  }
+}
+@media all and (min-width: 800px) {
+  #pvz-2 {
+    justify-content: flex-end;
+  }
+  #pvz-2:before {
+    content: "Large screens";
+  }
+  #pvz-2 > * {
+    flex-grow: 0;
+  }
+}
+
+/*# sourceMappingURL=css.property.group.flexbox_pvz.css.map */

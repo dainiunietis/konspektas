@@ -1,0 +1,278 @@
+//@charset "utf-8";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// Settings
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+//$inuit-global-line-height:  20px;
+//
+//@import "../sass.szm/settings.project";
+//@import "settings.project";
+//
+//@import "../sass.szm/settings.misc";
+//
+//@import "../sass.szm/settings.layout.spacing";
+//@import "../sass.szm/settings.box";
+//@import "../sass.szm/settings.box.design-measure";
+//@import "../sass.szm/settings.string";
+//
+//@import "settings.color";
+//@import "settings.layout.spacing";
+//@import "settings.misc";
+//
+//////@import "../bower_components/inuitcss/settings/example.settings.config";
+////@import "../bower_components/inuitcss/settings/settings.core";
+//////@import "../bower_components/inuitcss/settings/example.settings.global";
+////@import "../sass.szm/settings.core";
+////@import "../sass.szm/settings.layout.spacing.design-measure";
+////@import "../sass.szm/settings.box";
+////
+////@import "settings.config";
+////@import "settings.misc";
+////@import "settings.color";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// Tools
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+//@import "../bower_components/inuitcss/tools/tools.font-size";
+////@import "../bower_components/inuitcss/tools/tools.clearfix";
+//@import "../bower_components/inuitcss/tools/tools.hidden";
+////@import "../bower_components/sass-mq/mq";
+//
+//@import "../node_modules/sass-lumen/sass/lumen";
+//
+//@import "../sass.szm/tools.color.accessibility-contrast.sergom";
+//@import "../sass.szm/tools.color.accessibility-contrast.bresau";
+//@import "../sass.enhanced/tools.color";
+//@import "../sass.szm/tools.color.set";
+//@import "tools.color.set";
+//@import "../sass.szm/tools.color.scheme";
+//@import "tools.color.scheme";
+////@import "tools.colors-tallys";
+//
+//@import "../sass.szm/tools.layout.spacing";
+//@import "../sass.szm/tools.layout.float";
+//
+//@import "../sass.enhanced/tools.data-type.string";
+//@import "../sass.szm/tools.data-type.list";
+//@import "../sass.enhanced/tools.data-type.map";
+//
+//@import "../sass.szm/tools.text.font-face";
+//@import "../sass.szm/tools.text.font";
+//
+//@import "../sass.szm/tools.math";
+//@import "../sass.enhanced/tools.data-type.lenght-number";
+//
+//@import "../sass.szm/tools.box.border.designStyle";
+//@import "tools.box.border.designStyle";
+//
+//////@import "../bower_components/inuitcss/tools/tools.rem";
+//////@import "../bower_components/inuitcss/tools/tools.font-size";
+////@import "../bower_components/inuitcss/tools/tools.clearfix";
+//////@import "../bower_components/inuitcss/tools/tools.hidden";
+//////@import "../bower_components/sass-mq/mq";
+////
+////@import "../node_modules/sass-lumen/sass/lumen";
+////
+////@import "../sass.szm/tools.color.accessibility-contrast.sergom";
+////@import "../sass.szm/tools.color.accessibility-contrast.bresau";
+////@import "../sass.szm/tools.color";
+////@import "../sass.szm/tools.color.set";
+////@import "../sass.szm/tools.color.scheme";
+////@import "tools.color.scheme";
+//////@import "tools.colors-tallys";
+////
+////@import "../sass.szm/tools.layout.spacing";
+////@import "../sass.szm/tools.math";
+////
+////@import "../sass.szm/tools.data-type.string";
+////@import "../sass.szm/tools.data-type.list";
+////@import "../sass.szm/tools.data-type.map";
+////
+////@import "../sass.szm/tools.text.font-face";
+////@import "../sass.szm/tools.value-type";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// Generic
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+//@import "generic.layout.spacing";
+//@import "../sass.szm/generic.box";
+//
+//@import "generic.typography";
+//
+//////@import "../bower_components/inuitcss/generic/generic.box-sizing";
+//////@import "../bower_components/inuitcss/generic/generic.normalize";
+//////@import "../bower_components/inuitcss/generic/generic.reset";
+//////@import "../bower_components/inuitcss/generic/generic.shared";
+////
+//////@import "generic.font-face";
+//////@import "generic.font-face.ubuntu";
+//////@import "generic.shared";
+////@import "generic.text.font";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// elements
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+//@import "elements.html-body";
+//@import "elements.misc";
+//@import "elements.figure-figcaption";
+//@import "elements.blockquote-cite-q";
+//@import "elements.headings";
+//@import "elements.p-paragraph";
+//@import "elements.list.ul-ol";
+//@import "elements-components.list.ul-ol";
+//@import "elements.list.dl";
+//
+//@import "../sass.szm/elements.table";
+////@import "elements.table";
+//
+//@import "elements.text-format";
+//
+//@import "elements.pre-code";
+//
+//@import "elements-pseudo.user-interaction";
+//
+//////@import "../bower_components/inuitcss/elements/elements.page";
+//////@import "../bower_components/inuitcss/elements/elements.headings";
+//////@import "../bower_components/inuitcss/elements/elements.images";
+//////@import "../bower_components/inuitcss/elements/elements.tables";
+////
+////@import "elements.all";
+////@import "elements.figure";
+////@import "elements.blockquote";
+////@import "elements.headings";
+////@import "elements.list.ul-ol";
+////@import "elements.page";
+////@import "elements.text-format";
+////
+////@import "elements.pre-code";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// Objects
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+//@import "objects.collapse";
+//
+//@import "../sass.szm/objects.grd-ibk-flt-flx";
+//@import "../sass.szm/objects.grid.flex";
+//@import "../sass.szm/objects.mcl";
+//
+//////@import "objects.collapse__nenaudoti";
+////@import "objects.collapse";
+//////@import "../sass.szm/objects.grid__nenaudoti";
+////@import "../sass.szm/objects.grid";
+////
+////@import "../sass.szm/objects.cols";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// Components
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+////--- sass.szm -------------------------------------------------------------
+//
+//@import "../sass.szm/components.pvz";
+//
+////--- vietiniai --------------------------------------------------------------
+//
+//@import "component-tag.mark";
+//@import "elements.section";
+//
+//@import "components.tableCols";
+//@import "components.table";
+//
+//@import "components.list.dl";
+//
+//@import "components.control-panel";
+//@import "components.jquery-toc";
+//
+//@import "component.side-fixed-panel";
+//@import "component.figure";
+//@import "component.emphasize";
+//@import "component.editor-command";
+//
+//////--- assets/vendor/lib-frontend/sass ----------------------------------------
+////
+////@import "../sass.szm/components.pvz";
+////
+//////--- vietiniai --------------------------------------------------------------
+////
+////@import "elements.list.dl";
+////@import "component-tag.mark";
+////@import "component-tag.sec";
+////
+////@import "components.tableCols";
+////@import "components.control-panel";
+////@import "components.jquery-toc";
+////
+////@import "component.side-fixed-panel";
+////@import "component.figure";
+////@import "component.emphasize";
+////@import "component.editor-command";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// Utilities-Trumps
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+//$inuit-offsets: true;
+//
+//@import "../sass.szm/utilities.layout.spacing";
+//
+//@import "../sass.szm/utilities.layout.dimensions";
+//@import "../sass/utilities.layout.dimensions";
+//
+//@import "../sass.szm/utilities.layout.float";
+//@import "../sass.szm/utilities.layout.flex";
+//
+//@import "../sass.szm/utilities.box.background";
+//@import "utilities.box.background";
+//
+//@import "../sass.szm/utilities.box.border";
+//@import "utilities.box.border";
+//
+//@import "../sass.szm/utilities.misc";
+//@import "../sass.szm/utilities.table";
+//
+//@import "../sass.szm/utilities.text";
+//@import "../sass.szm/utilities.text.font";
+//@import "utilities.text.font";
+//
+//////@import "../bower_components/inuitcss/utilities/utilities.clearfix";
+////$inuit-offsets: true;
+//////@import "../bower_components/inuitcss/utilities/utilities.widths";
+//////@import "../bower_components/inuitcss/utilities/utilities.headings";
+//////@import "../bower_components/inuitcss/utilities/utilities.spacings";
+//////@import "../bower_components/inuitcss/utilities/utilities.print";
+//////@import "../bower_components/inuitcss/utilities/utilities.hide";
+////
+////@import "utilities.site-specific";
+//////@import "../sass.szm/utilities.text";
+//////@import "../sass.szm/utilities.layout.spacing";
+//////@import "../sass.szm/utilities.layout.dimensions";
+//////@import "../sass.szm/utilities.box";
+//////@import "../sass.szm/utilities.misc";
+//
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//// Development-Debuging
+////▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+//
+////@import "../sass.szm/utilities.marking";
+//@import "../sass.szm/dev.tools.marking";
+//@import "../sass.szm/dev.measuring.ruler";
+//@import "../sass.szm/dev.measuring.guide";
+//@import "../sass.szm/dev.measuring.mesh";
+//
+//////--- assets/vendor/lib-frontend/sass ----------------------------------------
+////
+//////@import "../sass.szm/utilities.marking";
+//////@import "../sass.szm/dev.marking";
+////@import "../sass.szm/dev.measuring.ruler";
+////@import "../sass.szm/dev.measuring.guide";
+//
+//
+//
+//
+//
+//

@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<script src="assets/js/component.collapse--SENAS.js"></script>
+<script>
+$(document).ready(function() {
+	component_collapse_savas_locdep.hideAll();
+});
+</script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>AutoHotkey kalbos sintaksės suvestinė (cheat sheet)</h1>
+<p><a href="https://autohotkey.com/docs/commands/index.htm">https://autohotkey.com/docs/commands/index.htm</a></p>
+<p>&nbsp;</p>
+<pre><code>var := "hello"
+a := "Hello"
+
+if a = var		; False. Not expression syntax. Comparing variable a with "var"
+	msgbox % "a = var is true"
+
+if (a == var)	; False. Expression syntax, but case sensitive compare
+	msgbox % "(a == var) is true"</code></pre>
+<p>&nbsp;</p>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="25%"><h3>Funkcijos</h3>
+        <p>D:\progs_data\AutoHotkey\manozm\mokykla\ahk function.ahk</p>
+        <p><a href="https://jacksautohotkeyblog.wordpress.com/2015/09/22/beginning-tips-for-writing-autohotkey-scripts-functions-as-building-blocks/">https://jacksautohotkeyblog.wordpress.com/2015/09/22/beginning-tips-for-writing-autohotkey-scripts-functions-as-building-blocks/</a> &#8212; išsamiai </p>
+        <p><a href="https://autohotkey.com/docs/commands/Func.htm">https://autohotkey.com/docs/commands/Func.htm</a></p>
+        <p><a href="https://autohotkey.com/docs/objects/Func.htm">https://autohotkey.com/docs/objects/Func.htm</a></p>
+        <p>&nbsp;</p>
+        <p>Funkcijos iškvietimas komandos parametre:</p>
+        <pre><code>MsgBox, % GetKeyName(&quot;SC138&quot;)               <mark>;&lt;veikia</mark>
+MsgBox, % GetKeyName(&quot;SC138&quot;) &quot; - toks va&quot;  <mark>;&lt;</mark>
+MsgBox, %GetKeyName(&quot;SC138&quot;)%   <mark>;NEveikia, skirta kintamiesiems</mark></code></pre>
+        <p>&nbsp;</p>
+        <h4>Laisvas funkcijos parametrų skaičius &#8212; Variadic Functions</h4>
+        <p>Kaip padaroma:</p>
+        <blockquote>
+          <p>write an asterisk after the <strong>final parameter</strong> to mark the function as variadic, allowing it to receive a variable number of parameters</p>
+        </blockquote>
+        <p>Variadic'inis parametras funkcijoje tampa objektu-masyvu:</p>
+        <pre><code>manoFunkcija(kieno, kass*) {
+    str := kieno " = "
+    for index, kas in kass
+        str .= kas "+"
+    MsgBox % str
+}
+manoFunkcija("Petro vaikai", "Antanas", "Genutė", "Juozas")</code></pre>
+        <h4>Variadic'inis funkcijos iškvietimas &#8212; Variadic Function Calls</h4>
+        <p>Variadic'iškai perduotas objektas-masyvas funkcijoje priimamas ne kaip vienas parametras, kiekvienas perduoto objekto-masyvo elementas tampa parametru:        </p>
+        <pre><code>manoFunkcija(kieno, kas_1, kas_2, kas_3) {
+    MsgBox % kieno " = " kas_1 "+" kas_2 "+" kas_3
+}
+arr := ["Antanas", "Genutė", "Juozas"]
+manoFunkcija("Petro vaikai", arr*)</code></pre>
+        <p>Galima naudoti tik paskutiniam parametrui:</p>
+        <blockquote>
+          <p>Only the right-most parameter can be expanded this way. For example, Func(x, y*) is supported but Func(x*, y) is not.</p>
+        </blockquote>
+        <h4>ByRef Parameters</h4>
+        <p><a href="https://autohotkey.com/docs/Functions.htm#ByRef">https://autohotkey.com/docs/Functions.htm#ByRef</a></p>
+        <p>&nbsp;</p>
+        <p><code>IsByRef()</code></p>
+        <p><a href="https://autohotkey.com/docs/commands/IsByRef.htm">https://autohotkey.com/docs/commands/IsByRef.htm</a></p>
+        <blockquote>
+          <p><code>TrueOrFalse := IsByRef(UnquotedVarName)</code></p>
+          <p>This function returns 1 if <em>UnquotedVarName</em> is a <a href="https://autohotkey.com/docs/Functions.htm#ByRef">ByRef parameter</a> and the caller supplied a variable; or 0 if <em>UnquotedVarName</em> is any other kind of variable.</p>
+        </blockquote>
+        <p><a href="https://autohotkey.com/docs/commands/IsByRef.htm"></a></p>
+        <p>&nbsp;</p>
+        <h4>Funkcijų builtin kintamieji</h4>
+      <p>A_ThisFunc</p>
+      <p>&nbsp;</p></td>
+      <td width="25%"><h3>Kintamieji (Variables)</h3>
+        <p><a href="https://autohotkey.com/docs/Variables.htm">https://autohotkey.com/docs/Variables.htm</a></p>
+        <p>&nbsp;</p>
+        <figure>
+          <pre><code>number = 1
+ball_%number% = red
+<mark>realiai įvyksta:</mark>
+ball_1 = red</code></pre>
+          <figcaption>Dinaminiai kintamieji (Dynamic variable assignment - assigning a string or expression to a dynamic variable)</figcaption>
+        </figure>
+        <p>&nbsp;</p>
+        <p>In newer versions of AutoHotkey, if a variable is declare global anywhere outside of any function, then it is global everywhere including within all <em>Functions</em>:</p>
+        <code>
+        <pre>Global vardas = Petras
+GetTime()  {
+  MsgBox, The time is %vardas%
+}</pre>
+        </code>
+        <p>&nbsp;</p></td>
+      <td width="25%"><p>&nbsp;</p></td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Duomenų tipai</h2>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="25%"><h3>Eilutės (string)
+      </h3>
+        <h4>String'o priskyrimas kintamajam (Variable assignment)</h4>
+      <dl>
+        <dt>Paprasčiausio string'o (literal string) priskyrimas (Literal assignment - assigning a string to a variable)</dt>
+        <dd>
+          <pre><code>Spalva = blue      <mark>&lt;&lt; traditional method</mark>
+Spalva := "blue"   <mark>&lt;&lt; expression method</mark></code></pre>
+        </dd>
+        <dt>String'o kintamojo ir string'o (literal string) sujungimas (Concatenation - combining variables and strings together)</dt>
+        <dd>
+          <pre><code>rastaSpalva = rasta %Spalva%
+rastaSpalva := &quot;rasta &quot; . Spalva</code></pre>
+          <p>Concatenation'o simbolis taškas gali būti ir praleistas-nenaudojamas:</p>
+          <pre><code>rastaSpalva := &quot;rasta &quot; Spalva</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <pre><code>::btw::
+var=
+(join`r`n
+This is
+some text
+I want to paste
+
+OK
+)
+Clip(var)
+Return</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><a href="https://autohotkey.com/docs/Scripts.htm#esc">https://autohotkey.com/docs/Scripts.htm#esc</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+      <td width="25%"><h3>Objektai (Objects)</h3>
+      <p><a href="https://autohotkey.com/docs/Objects.htm">https://autohotkey.com/docs/Objects.htm</a></p>
+      <p><a href="https://autohotkey.com/docs/objects/Object.htm">https://autohotkey.com/docs/objects/Object.htm</a></p>
+      <p>https://autohotkey.com/docs/Tutorial.htm#s7</p>
+      <h4>Objektų sukūrimo būdai</h4>
+      <p>Visi šie būdai sukuria analogiškus objektus.</p>
+      <dl>
+        <dt> indexed array</dt>
+        <dd>
+          <div class="collapse-savas-locdep">
+            <figure>
+              <pre><code>vaisiai := ["obuolys", &quot;kriaušė&quot;, "slyva"]</code></pre>
+              <figcaption>Objektas sukurtas su &quot;Bracket syntax&quot;</figcaption>
+            </figure>
+            <blockquote>
+              <p>Bracket syntax. This will start you off with what is sometimes called an "indexed array". An indexed array is an object representing a list of items, numbered 1 and up. In this example, the value "one" is stored in object key 1 (aka index 1), and the value 17 is stored in object key 4(aka index 4).</p>
+            </blockquote>
+          </div>
+          <div class="collapse-savas-locdep">
+            <figure>
+              <pre><code>vaisiai := Array("obuolys", &quot;kriaušė&quot;, "slyva")</code></pre>
+              <figcaption>Objektas sukurtas su <q>The &quot;array&quot; creation function</q></figcaption>
+            </figure>
+          </div>
+        </dd>
+        <dt>associative array</dt>
+        <dd>
+          <div class="collapse-savas-locdep">
+            <figure>
+              <pre><code>zmogus := {"vardas": "Petras", "metai": 47}</code></pre>
+              <figcaption>Objektas sukurtas su &quot;Brace syntax&quot;</figcaption>
+            </figure>
+            <blockquote>
+              <p>Brace syntax. This will let you start of by defining what is sometimes called an "associative array". An associative array is a collection of data where each item has a name</p>
+            </blockquote>
+          </div>
+          <div class="collapse-savas-locdep">
+            <figure>
+              <pre><code>zmogus := Object("vardas", "Petras", "metai", 47)</code></pre>
+              <figcaption>Objektas sukurtas su <q>The object creation function</q></figcaption>
+            </figure>
+          </div>
+        </dd>
+      </dl>
+      <h4>Objekto narių reikšmių paėmimas ir priskyrimas (To retrieve values)</h4>
+      <pre><code>kliento_vardas := zmogus.vardas      <mark>; dot notation</mark>
+kliento_vardas := zmogus[&quot;vardas&quot;]   <mark>; bracket notation</mark></code></pre>
+      <h4>Objekto esamų narių keitimas-redagavimas</h4>
+      <p>Daroma dvejais būdais :</p>
+      <pre><code>zmogus.vardas := &quot;Antanas&quot;      <mark>; dot notation</mark>
+zmogus[&quot;vardas&quot;] := &quot;Antanas&quot;   <mark>; bracket notation</mark></code></pre>
+      <h4>Naujų narių objektui priskyrimas (To add new keys and values)</h4>
+      <p>Daromas analogiškai redagavimui: </p>
+      <pre><code>zmogus.hobis := &quot;bėgimas&quot;
+zmogus[&quot;hobis&quot;] := &quot;bėgimas&quot;</code></pre>
+      <p>Ir dar dvi funkcijos:</p>
+      <p><code>MyObject.InsertAt(Index, Value1, Value2, Value3...)</code></p>
+      <blockquote>
+        <p> <em>Index</em> is any integer key. This will shift ALL higher integer keys up by the number of values which were inserted, even if there are gaps (for example, only keys 1 and 100 exist, and you insert a value at key 50, it will shift 100 up to 101).</p>
+      </blockquote>
+      <p>      <code>MyObject.Push(Value1, Value2, Value3...)</code></p>
+      <blockquote>
+        <p> This "appends" the values to the end of the array <em>MyObject</em>. In other words, it inserts the values at the highest integer key plus one.</p>
+      </blockquote>
+      <h4>Objekto narių pašalinimas (To remove keys and values)</h4>
+      <p>&nbsp;</p>
+      <pre><code>zmogus.Delete(&quot;vardas&quot;)
+buvoVardas := zmogus.Delete(&quot;vardas&quot;)   <mark>; galima išsaugoti buvusią reikšmę</mark>
+
+<mark>;galima ištrinti grupę-atkarpą narių</mark>
+vaisiai := ["obuolys", &quot;kriaušė&quot;, "slyva", &quot;persikas&quot;]
+vaisiai.Delete(2, 4)
+kiekIstrinta = vaisiai.Delete(2, 4) <mark>;galima sužinoti kiek ištrinta</mark>
+<mark>;gausime</mark>
+vaisiai == [&quot;obuolys&quot;]</code></pre>
+      <p>&nbsp;</p>
+      <pre><code>MyObject.Pop()</code></pre>
+      <blockquote>
+        <p>This removes the highest integer key, and returns the value. There are no keys higher than it to be affected. </p>
+      </blockquote>
+      <pre><code>RemovedValue := MyObject.RemoveAt(Index)
+NumberOfRemovedKeys := MyObject.RemoveAt(Index, Length)</code></pre>
+      <blockquote>
+        <p>This removes all keys from Index to Index + Length - 1 (inclusive). If Length is omitted it defaults to 1. After removing the keys it takes all higher numbered/integer keys and moves them down to fill the gap, so that if there was a value at Index + Length it will now be at Index. This is similar to how the InsertAt method with multiple specified values works.</p>
+      </blockquote>
+      <p>Tuščio string'o priskyrimas:</p>
+      <pre><code>zmogus.vardas := &quot;&quot;</code></pre>
+      <blockquote>
+        <p>Blanking the value out. The simplest way to remove a value is to just blank it out. You can do this by setting it to "", also known as an <em>empty string</em>. This doesn't remove the key, but it will make the value appear identical to an unset value.  It is possible to tell that the key still exists by using the HasKey method, and it will still come up in a for loop. </p>
+    </blockquote>
+<p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+      <td width="25%"><h3>Class'ės
+      </h3>
+        <p><a href="https://autohotkey.com/docs/Objects.htm#Custom_Objects">https://autohotkey.com/docs/Objects.htm#Custom_Objects</a></p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Class definitions can contain variable declarations, method definitions and nested class definitions.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <h4>Objekto-class'ės apibrėžimas</h4>
+      <p>Dar galima vadinti &quot;base object&quot;, &quot;prototype&quot;.</p>
+      <pre><code>Class Zmogus {}
+Zmogus := {}</code></pre>
+      <p>&nbsp;</p>
+      <h4>instance'o kintamasis (Instance Variable)</h4>
+      <p><a href="https://autohotkey.com/docs/Objects.htm#Custom_Classes_var">https://autohotkey.com/docs/Objects.htm#Custom_Classes_var</a>      </p>
+      <pre><code>Class Zmogus {
+  <mark>;kai yra class'o body'je, nereikia this</mark>
+  salis := "LT"
+  kurGyvena() {
+    Return this.salis <mark>;o čia jau reikia</mark>
+  }
+}</code></pre>
+      <p>Kur saugomas:</p>
+      <blockquote>
+        <p>An <em>instance variable</em> is one that each instance of the class (that is, each object derived from the class) has its own copy of.</p>
+      </blockquote>
+      <p>Kada <code>this</code> nenaudojamas:</p>
+      <blockquote>
+        <p>They are declared like normal assignments, but the this. prefix is omitted (only directly within the class body)</p>
+      </blockquote>
+      <h4>class'ės kintamasis (Static/Class Variable)</h4>
+      <p><a href="https://autohotkey.com/docs/Objects.htm#Custom_Classes_staticvar">https://autohotkey.com/docs/Objects.htm#Custom_Classes_staticvar</a>      </p>
+      <pre><code>Class Zmogus {
+    static kvepuoja := "oru"
+}
+MsgBox % &quot;žmogus kvėpuoja &quot; Zmogus.kvepuoja </code></pre>
+      <p>Kur saugomas:</p>
+      <blockquote>
+        <p>Static/class variables belong to the class itself, but can be inherited by derived objects (including sub-classes).</p>
+      </blockquote>
+      <p>Kada ir kaip įvykdomas pats priskyrimas:</p>
+      <blockquote>
+        <p>Static declarations are evaluated only once, before the <a href="https://autohotkey.com/docs/Scripts.htm#auto">auto-execute section</a>, in the order they appear in the script. Each declaration stores a value in the class object. Any variable references in <em>Expression</em> are assumed to be global.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <pre><code></code></pre>
+      <p>&nbsp;</p>
+      <pre><code></code></pre>
+      <p>&nbsp;</p>
+      <pre><code></code></pre>
+      <p>&nbsp;</p>
+      <pre><code></code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+      <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <pre><code>array := {ten: 10, twenty: 20, thirty: 30}
+For key, value in array
+  MsgBox %key% = %value%</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

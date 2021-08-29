@@ -1,0 +1,32 @@
+{
+  "name": "konspektas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zm",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "browser-sync": "^2.26.14",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.7.0",
+    "gulp-load-plugins": "^1.6.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-print": "^5.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-css-comments": "^2.0.0",
+    "node-sass": "^4.14.1",
+    "postcss-discard-comments": "^4.0.2",
+    "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "undertaker": "^1.3.0"
+  }
+}

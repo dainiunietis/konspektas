@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Iliustracijos, component.c-figure &#8212; Design Style Guide</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Iliustracijos, <code>&lt;figure&gt; &lt;figcaption&gt; .figure--* .c-figure</code> &#8212; Design Style Guide</h1>
+<h2>HTML'o copy-paste</h2>
+<p>Default'iškai pačių tagų apiforminimas skirtas img'ams:</p>
+<p>&lt;&lt;&lt; čia nustatome img'o dydį (tiksliau plotį, o aukštis pasidaro proporcingas pagal tikrą img'o dydį)</p>
+<pre><code>&lt;figure style=&quot;width:300px&quot;&gt; <mark></mark>
+  &lt;img src=&quot;&quot;&gt;
+  &lt;figcaption&gt;Dideliauskas miestas&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+<p>ir kodui:</p>
+<pre><code>&lt;figure&gt;
+  &lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
+  &lt;figcaption&gt;Dideliauskas kodas&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+<h2>Su fonu</h2>
+<div style="width: 30em">
+  <p>tvarkingai didinasi-mažinasi:</p>
+  <figure style="width: fit-content; background: beige">
+    <img src="images/remotes.png" alt=""/>
+  </figure>
+</div>
+<h2>img'as su parašu</h2>
+<h3><code>FIGURE</code> <code>FIGCAPTION</code> apiforminimas</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure style="width:300px">
+	<img src="images/graphics/vaizdelis.jpg" alt="">
+	<figcaption>Dideliauskas miestas</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<h3><code>.figure--img-bigCaption</code></h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--img-bigCaption">
+	<img src="images/graphics/vaizdelis.jpg" width="300">
+  <figcaption>
+    <p>Dideliausko miesto dideliauskas aprašymas Dideliausko miesto dideliauskas aprašymas Dideliausko miesto dideliauskas aprašymas.</p>
+  </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<h3><code>.figure--img-shadow</code></h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--img-shadow" style="width:300px">
+	<img src="images/graphics/vaizdelis.jpg" alt="">
+  <figcaption>Dideliauskas miestas Dideliauskas miestas Dideliauskas miestas Dideliauskas miestas Dideliauskas miestas</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h3><code>.c-figure--shadow</code></h3>
+<figure class="c-figure c-figure--shadow">
+  <div class="c-figure__content" style="width: fit-content">
+    <p><img src="images/graphics/vaizdelis.jpg" alt="" width="100" /></p>
+  </div>
+  <figcaption>Rėmelis prisitaiko prie iliustracijos dydžio, o parašas išlieka per visą plotį</figcaption>
+</figure>
+  <p>&nbsp;</p>
+<h2>Tekstas ar bet koks turinys</h2>
+<h3><code>FIGURE</code> <code>FIGCAPTION</code> apiforminimas -</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure style="wwidth:400px">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h3>Rėmeliai-border'iai</h3>
+<p>Tago modifier'iai</p>
+<h4><code>.figure--dashedTB</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--dashedTB" style="">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h4><code>.figure--dashedTB-1</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--dashedTB-1" style="">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h4><code>.figure--dashedTB-2</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--dashedTB-2" style="">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h4><code>.figure--solidTB</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--solidTB" style="">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h4><code>.figure--solidTB-1</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--solidTB-1" style="">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h4><code>.figure--solidTB-2</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--solidTB-2" style="">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h3>Vidiniai stulpeliai-grid'ai</h3>
+<h4><code>.figure--grd-minContentGrow</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--grd-minContentGrow BGCL1c" style="background: hsla(289,100%,81%,1.00)">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Usuallyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. </p>
+<figure class="figure--grd-minContentGrow BGCL1c" style="">
+  <p>Usssssssssssssually this is an image</p>
+  <p>So me of the</p>
+  <p>By mea ns of the Hot key com mand, hot keys By me ans of the By mea ns of the</p>
+  <figcaption>Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus.</p>
+<h4><code>.figure--grd-equal</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--grd-equal BGCL1c" style="">
+  <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+  <p>Someeeeeeeeeeeeeeeeeee of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+  <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. </p>
+<figure class="figure--grd-equal BGCL1c" style="">
+  <p>Usually this is an image, an illustration</p>
+  <p>Some of the most useful </p>
+  <p>By means of the Hotkey command, hotkeys </p>
+  <figcaption>Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus.</p>
+<h3>Komponentas <code>.c-figure</code></h3>
+<h4><code>.c-figure</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure" style="width:75%">
+  <div class="c-figure__content -B161c">
+    <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h4><code>.c-figure--ridgeBox</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure c-figure--ridgeBox" style="width:75%">
+  <div class="c-figure__content">
+    <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<h4><code>.c-figure--shadow</code></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure c-figure--shadow" style="max-width:400px">
+  <div class="c-figure__content">
+    <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h4><code>.c-figure__content .o-clm</code></h4>
+<p>Galima naudoti visus iš <a href="!sass.szm.objects.clm.htm">!sass.szm.objects.clm.htm</a></p>
+<h5><code>.o-clm--maxContentScale</code></h5>
+<p class="c-em-note">stulpelių plotis daromas proporcingas maksimaliam turinio pločiui, t. y. ką nustato <code>width: max-content</code></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-clm o-clm--maxContentScale B161c -BGCL2c">
+    <p>Usually this is an image, an illustration, a diagram, a code snippet</p>
+    <p>For the longest timeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee, Javier and I, we didn't know just how much we were both in anguish at the same time in the same manner. He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that's exactly what I was doing. When he read my reflection of the same moment in the memoir, he said it really got to him. It sheds a light on how insular and how inwardly reflective the immigrant experience is...</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-clm o-clm--maxContentScale B161c -BGCL2c">
+    <p>Usually this is an image, an illustration nisi urna faucibus metus</p>
+    <p>Some of the most useful </p>
+    <p>By means of the Hotkey command, hotkeys </p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus.</p>
+<h5><code>.o-clm--minContentGrow</code></h5>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-clm o-clm--minContentGrow B161c -BGCL2c">
+    <p>Usuallyyyyyyyyyyyyyyyyyyyyyyyyyyyyy this is an image, an illustration, a diagram, a code snippet</p>
+    <p>For the longest time, Javier and I, we didn't know just how much we were both in anguish at the same time in the same manner. He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that's exactly what I was doing. When he read my reflection of the same moment in the memoir, he said it really got to him. It sheds a light on how insular and how inwardly reflective the immigrant experience is...</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-clm o-clm--minContentGrow B161c -BGCL2c">
+    <p>Usually this is an image, an illustration nisi urna faucibus metus</p>
+    <p>Some of the most useful </p>
+    <p>By means of the Hotkey command, hotkeys </p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus.</p>
+<h4><code>.c-figure__content .o-grd .o-flx</code></h4>
+<p>Galima naudoti visus iš <a href="!sass.szm.objects.grd-ibk-flt-flx.htm">!sass.szm.objects.grd-ibk-flt-flx.htm</a></p>
+<h5><code>.o-flx--maxContentScale</code></h5>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-grd o-flx o-flx--maxContentScale B161c -BGCL2c">
+    <p>Usuallyyyyyyyyyyyyyyyyyyyyyyyyyyyyy this is an image, an illustration, a diagram, a code snippet</p>
+    <p>For the longest time, Javier and I, we didn't know just how much we were both in anguish at the same time in the same manner. He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that's exactly what I was doing. When he read my reflection of the same moment in the memoir, he said it really got to him. It sheds a light on how insular and how inwardly reflective the immigrant experience is...</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-grd o-flx o-flx--maxContentScale B161c -BGCL2c">
+    <p>Usually this is an image, an illustration nisi urna faucibus metus</p>
+    <p>Some of the most useful </p>
+    <p>By means of the Hotkey command, hotkeys </p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus.</p>
+<h5><code>.o-flx--minContentGrow</code></h5>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-grd o-flx o-flx--minContentGrow B161c -BGCL2c">
+    <p>Usuallyyyyyyyyyyyyyyyyyyyyyyyyyyyyy this is an image, an illustration, a diagram, a code snippet</p>
+    <p>For the longest time, Javier and I, we didn't know just how much we were both in anguish at the same time in the same manner. He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that's exactly what I was doing. When he read my reflection of the same moment in the memoir, he said it really got to him. It sheds a light on how insular and how inwardly reflective the immigrant experience is...</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-grd o-flx o-flx--minContentGrow B161c -BGCL2c">
+    <p>Usually this is an image, an illustration nisi urna faucibus metus</p>
+    <p>Some of the most useful </p>
+    <p>By means of the Hotkey command, hotkeys </p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus.</p>
+<h5><code>.o-flx--clsn3</code></h5>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-grd o-flx o-flx--minContentGrow o-flx--clsn3 B161c -BGCL2c">
+    <p>Usuallyyyyyyyyyyyyyyyyyyyyyyyyyyyyy this is an image, an illustration, a diagram, a code snippet</p>
+    <p>For the longest time, Javier and I, we didn't know just how much we were both in anguish at the same time in the same manner. He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that's exactly what I was doing. When he read my reflection of the same moment in the memoir, he said it really got to him. It sheds a light on how insular and how inwardly reflective the immigrant experience is...</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. </p>
+<figure class="c-figure" style="">
+  <div class="c-figure__content o-grd o-flx o-flx--minContentGrow o-flx--clsn3 B161c -BGCL2c">
+    <p>Usually this is an image, an illustration nisi urna faucibus metus</p>
+    <p>Some of the most useful </p>
+    <p>By means of the Hotkey command, hotkeys </p>
+  </div>
+  <figcaption>Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas Dideliauskas tekstas </figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus.</p>
+<h2>Sąrašai</h2>
+<h3>DL — definition list</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="figure--dl">
+  <figcaption>Dokumentacija, vadovai:</figcaption>
+  <dl>
+    <dt>Oficiali specifikacija</dt>
+    <dd>
+      <ul>
+        <li><a href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a></li>
+        <li> <a href="https://www.w3.org/TR/css-grid-2/">CSS Grid Layout Module Level 2</a></li>
+      </ul>
+    </dd>
+    <dt>CSS savybių suvestinės-santraukos (CSS Grid Layout properties cheat sheets)</dt>
+    <dd>
+      <ul>
+        <li><a href="http://grid.malven.co/">http://grid.malven.co/</a> (<a href="file:///D|/webdev/docs.cheat-sheets/GRID_ A simple visual cheatsheet for CSS Grid Layout.mhtml">lokaliai</a>, <a href="http://webdev.local/docs.cheat-sheets/GRID_ A simple visual cheatsheet for CSS Grid Layout.mhtml">webdev.local</a>)</li>
+        <li><a href="https://www.gapintelligence.com/blog/2018/get-on-the-grid-the-one-page-css-grid-cheat-sheet">https://www.gapintelligence.com/blog/2018/get-on-the-grid-the-one-page-css-grid-cheat-sheet</a></li>
+        <li><a href="https://rachelandrew.co.uk/css/cheatsheets/box-alignment">https://rachelandrew.co.uk/css/cheatsheets/box-alignment</a> (<a href="file:///D|/webdev/docs.cheat-sheets/Box Alignment Cheatsheet - rachelandrew.co.uk.mhtml">lokaliai</a>) </li>
+      </ul>
+    </dd>
+    <dt>mokytuvai-vadovai: pagrindai</dt>
+    <dd>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">Basic concepts of grid layout</a></li>
+      </ul>
+    </dd>
+    <dt>mokytuvai-vadovai: viskas</dt>
+    <dd>
+      <ul>
+        <li><a href="https://tympanus.net/codrops/css_reference/grid/">https://tympanus.net/codrops/css_reference/grid/</a></li>
+        <li> <a href="https://learncssgrid.com/">Learn CSS Grid - A Guide to Learning CSS Grid | Jonathan Suh</a>    </li>
+      </ul>
+    </dd>
+    <dt>naršyklių suderinamumas-palaikymas</dt>
+    <dd>
+      <p> <a href="https://www.smashingmagazine.com/2017/07/enhancing-css-layout-floats-flexbox-grid/">Progressively Enhancing CSS Layout: From Floats To Flexbox To Grid — Smashing Magazine</a></p>
+    </dd>
+  </dl>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet.</p>
+<h2>Kodas</h2>
+<h3><code>figure</code> — tik pagrindiniai tagai</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure>
+  <pre><code>html {
+  color: #333;
+}</code></pre>
+  <figcaption>HTML'o selektorius</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure>
+  <pre><code>$primary-color: #333;
+
+body {
+  color: $primary-color;
+}</code></pre>
+  <pre><code>body {
+  color: #333;
+}</code></pre>
+  <figcaption>HTML'o selektorius</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<h3><code>.figure--code</code></h3>
+<figure class="figure--code">
+  <pre><code>$primary-color: #333;
+
+body {
+  color: $primary-color;
+}</code></pre>
+  <pre><code>body {
+  color: #333;
+}</code></pre>
+  <figcaption>Paprasčiausias naudojimas</figcaption>
+</figure>
+<h3><code>.c-figure--code</code></h3>
+<p>&nbsp;</p>
+<figure class="c-figure c-figure--code" style="mmax-width:400px">
+  <div class="c-figure__content">
+    <pre><code>$primary-color: #333;
+
+body {
+  color: $primary-color;
+}</code></pre>
+    <pre><code>body {
+  color: #333;
+}</code></pre>
+  </div>
+  <figcaption>Dideliauskas kodas</figcaption>
+</figure>
+<p>&nbsp;</p>
+<div class="c-em-note c-em--small">
+  <figure class="c-figure c-figure--code" style="mmax-width:400px">
+    <div class="c-figure__content">
+      <pre><code>$primary-color: #333;
+
+body {
+  color: $primary-color;
+}</code></pre>
+      <pre><code>body {
+  color: #333;
+}</code></pre>
+    </div>
+    <figcaption>Dideliauskas kodas</figcaption>
+  </figure>
+</div>
+<p>&nbsp;</p>
+<h3><code>.c-figure--shadow</code> su kodu</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure c-figure--shadow" style="mmax-width:400px">
+  <div class="c-figure__content">
+    <pre><code>html {
+  font-size: 100%;
+  animation-timing-function: linear
+}</code></pre>
+  </div>
+  <figcaption>Dideliauskas kodas</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<figure class="c-figure c-figure--shadow" style="mmax-width:400px">
+  <div class="c-figure__content">
+    <pre><code>$primary-color: #333;
+
+body {
+  color: $primary-color;
+}</code></pre>
+    <pre><code>body {
+  color: #333;
+}</code></pre>
+  </div>
+  <figcaption>Dideliauskas kodas</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices, ipsum vitae ultrices luctus, nisi urna faucibus metus, ut ultrices purus mauris a augue. Vivamus leo purus, commodo dapibus massa eu, ultrices semper nunc. Donec vel consectetur tellus. Sed arcu arcu, semper non neque eget, aliquam pulvinar elit. Duis suscipit ultricies magna eget laoreet. Nullam vehicula condimentum enim ullamcorper tempor. Etiam placerat est eu facilisis volutpat. Maecenas vehicula turpis vel commodo imperdiet. </p>
+<h2>Video</h2>
+<!--
+<p>Plikas VIDEO tgas:</p>
+<p style="width:50%; margin: 0 auto"><video src="images/flip-grid.mp4" controls name=""></video></p>
+-->
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h3>tik pagrindiniai tagai</h3>
+    <figure style="-width:75%; background: hsla(20,80%,34%,0.50)">
+      <video src="images/flip-grid.mp4" controls name=""></video>
+      <figcaption>Dideliauskas tekstas</figcaption>
+    </figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.figure--img-bigCaption</code></h3>
+    <figure class="figure--img-bigCaption" style="-width:75%; background: hsla(70,80%,34%,0.50)">
+      <video src="images/flip-grid.mp4" controls name=""></video>
+      <figcaption>Dideliauskas tekstas</figcaption>
+    </figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-figure</code></h3>
+    <figure class="c-figure" style="-width:75%; background: hsla(130,80%,34%,0.50)">
+      <div class="c-figure__content" style="">
+        <video src="images/flip-grid.mp4" controls name=""></video>
+      </div>
+      <figcaption>Dideliauskas tekstas</figcaption>
+    </figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-figure--videoFluid</code></h3>
+    <figure class="c-figure c-figure--videoFluid" style="-width:75%; background: hsla(180,80%,34%,0.50)">
+      <div class="c-figure__content" style="padding-top: 50%">
+        <video src="images/flip-grid.mp4" controls name=""></video>
+      </div>
+      <figcaption>Dideliauskas tekstas</figcaption>
+    </figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Tekstas ar bet koks turinys su turinį gaubiančiu tagu.</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

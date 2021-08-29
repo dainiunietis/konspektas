@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Automatinis redaguojamo puslapio atnaujinimas naršyklėje</h1>
+<p><a href="http://konspektas-prev.local/brauzeriai/automatinis-redaguojamo-puslapio-atnaujinimas.htm">http://konspektas-prev.local/brauzeriai/automatinis-redaguojamo-puslapio-atnaujinimas.htm</a></p>
+<h2>Naudojant <code>npm  browser-sync</code> per CMD lokalaus serverio paleidimas ir puslapio reload'as pakeitus failus</h2>
+<h3>Tinka kai daromas <q>vanilla HTML + CSS + JS</q></h3>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <p>Veikiantys sprendimai:</p>
+    <p>&nbsp;</p>
+    <p>Veikia redaguoti konspekto HTML failus:</p>
+    <pre>D:\webdev\konspektas (master) (konspektas@1.0.0)
+λ browser-sync start --server --directory --files "**/*.htm*"</pre>
+    <p>&nbsp;</p>
+    <ul>
+      <li>
+        <p>Kad list'intų failus:</p>
+        <p><code>λ browser-sync start --server
+          <mark>--directory</mark>
+--files &quot;*.htm?&quot;</code></p>
+      </li>
+      <li>
+        <p>Kad watch'intų visus HTML failus subkataloguose:</p>
+        <p><code>λ browser-sync start --server --directory --files
+          <mark>&quot;**/*.htm?&quot;</mark>
+        </code></p>
+      </li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>--<code>serveStatic</code> ????????????????</p>
+    <p><code>λ browser-sync start --server --files &quot;*.html&quot; --serveStatic  &quot;.&quot;</code></p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <blockquote>
+      <p><a href="https://flaviocopes.com/how-to-reload-browser-file-save/">How to reload the browser window when you save a file</a></p>
+      <p>I was working on a website in vanilla HTML + JS, and I missed one of the best feature provided by those quick start packages like create-react-app or the Vue CLI: reloading the page when I saved a file in the code editor.</p>
+      <p>The simplest way I found is to install browser-sync:</p>
+      <pre>npm install -g browser-sync </pre>
+      <p>then run it in your project folder:</p>
+      <pre>browser-sync start --server --files "." </pre>
+      <p>The above command watches all files in the current folder (and all subfolders) for changes, and launches a web server on port 3000, opening a browser window to connect to the server.</p>
+      <p>Any time you change a file, the browser will refresh.</p>
+      <p>Very useful while prototyping!</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Kurį NPM package'ą naudoti: browserSync ar gulp-connect</h2>
+<blockquote>
+  <p> <a href="https://www.reddit.com/r/webdev/comments/5ehbrv/gulp_are_there_any_major_differences_between/">[Gulp] Are there any major differences between gulp-connect and BrowserSync? : webdev</a></p>
+  <p>BrowserSync comes with more then just a live reload.</p>
+  <ul>
+    <li>
+      <p>remote debugging (via weinre)</p>
+    </li>
+  </ul>
+  <p>Actually a remote inspector that is injected via XSS. For any device, i even debuged a site on a samsung TV with that.</p>
+  <ul>
+    <li>
+      <p>Interaction Sync</p>
+    </li>
+  </ul>
+  <p>eg. Click the same button everywhere.</p>
+  <ul>
+    <li>
+      <p>History</p>
+    </li>
+  </ul>
+  <p>Browse the history to get the paths taken by the devices. Some mobile browsers do silly stuff.</p>
+  <p>You can think of gulp-connect as the minimal functional solution while browser-sync is full fledged testing enviroment.</p>
+</blockquote>
+<h2>LiveStyle</h2>
+<p><a href="http://livestyle.io/">http://livestyle.io/</a></p>
+<ul>
+  <li><a href="http://livestyle.io/docs/">http://livestyle.io/docs/</a>&#8212; kaip suinstaliuoti</li>
+  <li><a href="http://livestyle.io/docs/using-livestyle/">http://livestyle.io/docs/using-livestyle/</a> &#8212; kaip naudoti </li>
+</ul>
+<p>Suinstaliavau:</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

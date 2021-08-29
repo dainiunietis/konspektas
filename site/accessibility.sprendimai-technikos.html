@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->n
+<h1>Accessibility sprendimai-technikos</h1>
+<p> <a href="https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939">Writing CSS with Accessibility in Mind - Manuel Matuzovic - Medium</a></p>
+<h2>Turinio paslėpimas</h2>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Hiding content from everyone</p>
+      <p> By using the hidden attribute or setting <code>visibility: hidden</code> and/or <code>display: none</code> you hide content completely. Users can't see it and screen readers or search engines can't read it.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Hiding content visually</p>
+      <p>      Hiding content only visually isn't that easy. You have to make sure that it's still accessible to screen readers, you have to deal with browser quirks and you have to decide what happens when the element is focused. Of course, people already did that and there are solutions you can use.</p>
+      <p>      I did some research and as it turns out there are many different approaches. That's why I asked some experts about their opinion and I dissected the recommended technique to fully understand what's happening.</p>
+      <pre>.visually-hidden {
+  /* Remove the item from normal flow */
+  position: absolute;
+  /* Workaround for falsely pronounced, smushed text */
+  white-space: nowrap;
+  /* Set it to the smallest possible size
+     (some screen readers ignore elements with zero height and width) */
+  width: 1px;
+  height: 1px;
+  /* Hide overflowing content after resizing */
+  overflow: hidden;
+  /* Reset any property that may change the elements size */
+  border: 0;
+  padding: 0;
+  /* Clipping defines what part of an element should be displayed. */
+  /* Deprecated clip property for older browsers */
+  clip: rect(0 0 0 0);
+  /* clip-path for newer browsers. inset(50%) defines an inset
+     rectangle that makes the content disappear.  */
+  clip-path: inset(50%);
+  /* It seems like at the moment nobody is quite sure why
+     margin: -1px is there. On top of that it seems to cause issues
+     (see: https://github.com/h5bp/html5-boilerplate/issues/1985). */
+  margin: -1px;
+}</pre>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>HTML tagų, kurių paskirtis padaryti vizualą, paslėpimas </h3>
+    <blockquote>
+      <p id="aec8">Hiding content semantically</p>
+      <p id="5b9f">Sometimes it makes sense to display content visually, but hide it from screen readers, for example when you're using icons. It that case add the aria-hidden attribute to the element you want to hide and set it to true.</p>
+      <pre>&lt;button&gt;<br>  &lt;span class="icon icon-hamburger" aria-hidden="true"&gt;&lt;/span&gt;<br>  &lt;span class="text"&gt;Menu&lt;/span&gt;<br>&lt;/button&gt;</pre>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p id="a730">Sometimes we use the content property for adding non-text content like font icons or special characters. If we do that, we need to remember that <a href="https://tink.uk/accessibility-support-for-css-generated-content/" target="_blank" rel="noopener nofollow">some screen readers recognize and announce generated content</a>. If the generated content is purely presentational, make sure to hide it from assistive technology, for example by using aria-hidden.</p>
+      <pre>&lt;span class="icon icon-key" aria-hidden="true"&gt;&lt;/span&gt;</pre>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Navigacija</h2>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <h3>Link'ų išskyrimas kai yra aktyvuojami klaviatūra su pseudo klase <code>:focus</code></h3>
+    <blockquote>
+      <p> <a href="http://outlinenone.com/">CSS outline property - outline: none and outline: 0</a></p>
+      <p>a { outline: none; }</p>
+      <p>DON'T DO IT!</p>
+      <p><strong>What does the outline property do?</strong></p>
+      <p>It provides visual feedback for links that have "focus" when navigating a web document using the TAB key (or equivalent). This is especially useful for folks who can't use a mouse or have a visual impairment. If you remove the outline you are making your site inaccessible for these people.</p>
+      <p>Defining focus to navigation elements is an accessibility requirement, it's clearly stated in the <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-focus-visible">Web Content Accessibility Guidelines</a>:</p>
+      <blockquote>
+        <p>2.4.7 Focus Visible: Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible. (Level AA)</p>
+      </blockquote>
+      <p><strong>Why do some web designers remove it?</strong></p>
+      <p>Usually "design vanity" or total ignorance of accessibility.</p>
+      <p>Many designers use CSS resets which include styling that removes the outline. One of these is Eric Meyers well known <a href="http://meyerweb.com/eric/tools/css/reset/index.html">CSS Reset</a>, but Eric makes it <em>perfectly clear</em> that users should <em>redefine focus styles</em>.</p>
+      <pre>/* remember to define focus styles! */
+  :focus {
+  outline: 0;
+}</pre>
+      <p>Notice the bit that says "remember to define focus styles!" - ignorance is no excuse</p>
+    </blockquote>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p> <a href="https://codepen.io/matuzo/pen/RZBNjP">Skip link in css</a></p>
+      <p>Skip links</p>
+      <p> A skip link is a link that is initially visually hidden, but visible on focus. It should be one of the first items on the page to give screen reader and keyboard users the chance to immediately skip introductory content and jump right to the main content. Basically, it's just an anchor link that will take the user to a specific part of the page.</p>
+      <pre>&lt;style&gt;
+  .skip-link {
+    /* Remove item from normal flow */
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }
+
+  .skip-link:not(:focus) {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+  }
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;a href="#content" class="skip-link"&gt;Skip to Content&lt;/a&gt;
+  ...
+  &lt;main id="content"&gt;...&lt;/main&gt;
+&lt;/body&gt;</pre>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Tekstas, šriftas / Typography</h2>
+<p>Šriftas / font face</p>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <h3>Paragrafinio teksto dydis</h3>
+    <p>Optimalus paragrafinio teksto dydis — <code>18..20px</code>.</p>
+    <blockquote>
+      <p>Increasing font size</p>
+      <p id="4152">There was a time were a <a href="https://www.smashingmagazine.com/2011/10/16-pixels-body-copy-anything-less-costly-mistake/" target="_blank" rel="noopener nofollow">12px font size for body text was standard</a>, but with the rise of devices with higher resolutions the average font size settled somewhere between 15 and 18px for a while. In recent years, it has risen again to 20px and up, which is a good thing. Text must be big enough for reading on smartphones and increase with the size of the screen in order to still be readable from distance on big screens like TVs.</p>
+      <p id="acd5">As the characteristics of typefaces may differ a lot, it doesn't make sense to define a standard minimum size, but 18–20px probably is a good starting point for smaller screen sizes.</p>
+    </blockquote>
+  </div>
+  <div>
+    <h3>Tarpai tarp teksto eilučių / line height</h3>
+    <blockquote>
+      <p id="dcda">Setting line height</p>
+      <p id="c81b">The default line height in browsers is at roughly 1.2. According to the <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-visual-presentation" target="_blank" rel="noopener nofollow">Web Content Accessibility Guidelines</a> it should be at least 1.5 within paragraphs in blocks of text.</p>
+      <p>Text within a paragraph with adjusted line height isn't just better readable, but often also visually more appealing.</p>
+    </blockquote>
+  </div>
+  <div>
+    <h3>contrast between text and background</h3>
+    <dl>
+      <dt>Kodėl reikalingas tinkamas kontrastas:</dt>
+      <dd>
+        <blockquote>
+          <p> Our designs must provide enough contrast between text and background in order to be legible. People with low vision benefit from high contrast as well as people without visual impairments. Just think about using your smartphone outside on a sunny day.</p>
+        </blockquote>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>Kaip spalvų kontrastas apskaičiuojamas:</dt>
+      <dd>
+        <blockquote>
+          <p>Two colors are contrasting when they're from different segments of the color wheel. Broadly speaking, the bigger the difference of two colors the higher the contrast.</p>
+          <p>The contrast ratio tells how high the contrast for text in certain sizes and widths on a specific background is. The ratio can range from 1:1 to 21:1. It's 1:1 if both compared colors are the same and 21:1 if black and white are the colors in opposition.</p>
+        </blockquote>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>Minimalus kontrasto koeficientas:</dt>
+      <dd>
+        <blockquote>
+          <p>The minimum contrast ratio</p>
+          <p>According to the <a href="https://www.w3.org/TR/WCAG20/" target="_blank" rel="noopener nofollow">Web Content Accessibility Guidelines (WCAG) 2.0</a> we must ensure that a <a href="https://www.w3.org/TR/WCAG20-TECHS/G18.html" target="_blank" rel="noopener nofollow">contrast ratio of at least 4.5:1</a> exists between a background and its text (or images of text). This applies for text that is less than 24px (if not bold) and less than 19px (if bold). For larger text a ratio of 3:1 is sufficient. Those are the minimum numbers to meet level AA criteria. To pass level AAA the minimum ratio for normal text is <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html" target="_blank" rel="noopener nofollow">7:1 and 4.5:1</a> for bold text. It's no required for conformance, but if we're using icons we should try to use icons that meet the contrast provisions for text.</p>
+        </blockquote>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>Matavimo priemonės:</dt>
+      <dd>
+        <ul>
+          <li> <a href="http://www.webaxe.org/color-contrast-tools/">Color Contrast Tools | Web Axe</a> — didelis ir atnaujinamas rinkinys</li>
+          <li>
+            <blockquote>
+              <p>In Chrome Canary it's possible to display the contrast ratio directly in Dev Tools. Remy Sharp shares how in <a href="https://remysharp.com/2017/08/17/contrast-ratio-in-devtools" target="_blank" rel="noopener nofollow">a blog post</a>.</p>
+            </blockquote>
+          </li>
+          <li>
+            <blockquote>
+              <p id="abf2" data-selectable-paragraph="">Browserextensions and DevTools</p>
+              <ul>
+                <li id="078c2" data-selectable-paragraph=""><a href="https://www.youtube.com/watch?v=b0Q5Zp_yKaU&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g" target="_blank" rel="noopener nofollow">Chrome DevTools Audits Panel</a><br>
+                  Chrome 60 shipped with a new audits panel, powered by Lighthouse. Among others it gives sites accessibility scores and lists issues.</li>
+                <li id="2e" data-selectable-paragraph=""><a href="http://khan.github.io/tota11y/" target="_blank" rel="noopener nofollow">tota11y</a><br>
+                  Great browser extension for testing contrast, the document outline and more.</li>
+                <li id="91cc2" data-selectable-paragraph=""><a href="https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd" target="_blank" rel="noopener nofollow">aXe</a><br>
+                  "Automated tool to find Accessibility defects on your web site by using the aXe Chrome extension."</li>
+              </ul>
+            </blockquote>
+          </li>
+          <li>Online — <strong>Evernote::</strong> webdev-tool | accessibility | color-contrast-ratio </li>
+        </ul>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>a</dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Teksto blokai / text block, paragraph</h3>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <blockquote>
+      <p>Defining paragraph widths</p>
+      <p>According to several sources designers should strive for <a href="https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/#line-length-measure-and-reading" target="_blank" rel="noopener nofollow">45 to 85 characters per line</a> since the ideal width for a paragraph is supposedly 65 characters.</p>
+      <p>When defining widths of text blocks the <a href="http://caniuse.com/#feat=ch-unit" target="_blank" rel="noopener nofollow">ch unit</a> may come in handy since 1ch is equivalent to the width of the zero (0) character. It also changes as the font-family or font-size changes.</p>
+      <pre><span>p {<br>  /* Maximum width of 65characters */<br>  max-width: 65ch;<br>}</span></pre>
+    </blockquote>
+  </div>
+  <div>
+    <p>Pataria nenaudoti <code>text-align: justify</code></p>
+    <blockquote>
+      <p>Aligning text to the left or right</p>
+      <p>Even though some of us may prefer justified over left or right aligned text because it looks nicer, it's considered bad practice. <code>text-align: justify</code> modifies word spacing to create same length lines. Those uneven spaces can harm readability and be very distracting.</p>
+    </blockquote>
+    <p>Deja žodžių perkėlimas veikia prastai:</p>
+    <blockquote>
+      <p>Breaking up words when necessary could be a solution, but <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens?redirectlocale=en-US&redirectslug=CSS%2Fhyphens#Languages_support_notes" target="_blank" rel="noopener nofollow">CSS Hyphenation</a> isn't well supported and might not work as expected.</p>
+    </blockquote>
+  </div>
+  <div><p>&nbsp;</p></div>
+  <div><p>&nbsp;</p></div>
+</div>
+<h2>HTML</h2>
+<h3>aria</h3>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Spausdinimas / print
+  medium</h2>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p id="ea36" data-selectable-paragraph="">The screen is not the only medium</p>
+      <p id="6bf4" data-selectable-paragraph="">Even though we live in a digital age, people still print stuff. Make sure that your pages are accessible and usable even when printed out our saved as PDF. All you have to do is to add a @media block to your CSS and tweak the styling of elements that don't look right or hide those that don't make sense on paper, like navigation or ads.</p>
+      <pre>@media print {<br>  .header {<br>    position: static;<br>  }  nav {<br>    display: none;<br>  }<br>}</pre>
+      <p id="e008" data-selectable-paragraph="">One of the issues with printed web pages is that links are completely useless because you don't know where they're are leading. Luckily CSS gives us a way of <a href="https://alistapart.com/article/goingtoprint" target="_blank" rel="noopener nofollow">revealing the values of attributes and showing them on screen</a> (or paper in this case).</p>
+      <pre>@media print {<br>  a[href^="http"]:not([href*="mywebsite.com"])::after {<br>    content: " (" attr(href) ")";<br>  }<br>}</pre>
+      <p id="167d" data-selectable-paragraph="">These lines will display the value of the href attribute next to every link that has a href attribute, which starts with <em>http</em>, but doesn't have mywebsite.com in its value.</p>
+      <p id="ca4c" data-selectable-paragraph="">Firefox and especially Chrome offer <a href="https://uxdesign.cc/i-totally-forgot-about-print-style-sheets-f1e6604cfd6#63e3" target="_blank" rel="noopener">tools for testing and debugging print style sheets</a>.</p>
+      <p id="9421" data-selectable-paragraph="">If you want to dig deeper, I've collected a number of <a href="https://uxdesign.cc/i-totally-forgot-about-print-style-sheets-f1e6604cfd6" target="_blank" rel="noopener">tips and tricks for working with print styles</a>.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

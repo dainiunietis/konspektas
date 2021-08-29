@@ -1,0 +1,1240 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>DOM (Document Object Model)</h1>
+<p>Kas tai yra DOM apskritai:</p>
+<blockquote>
+  <p>The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.</p>
+  <hr>
+  <p>The <strong>Document Object Model</strong> (<strong>DOM</strong>) connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory.</p>
+</blockquote>
+<h2>Visokie patarimai-sprendimai</h2>
+<div class="o-mcl o-mcl--W5 o-mcl--N2 o-mcl--continuous-all">
+  <div class="c-em-note">
+    <p>Kaip naršyklės DevTool'uose pamatyti norimo HTML elemento (tiksliau DOM node'o) DOM savybes: </p>
+    <ol>
+      <li>Pažymime Elements panelėje norimą DOM node'ą — <img src="images/20201011_131539_DevTools - konspektas.local_dom.pagrindai.html.png" alt="" width="65" height="28"/></li>
+      <li>Tada Console'ėje įvykdome <code>console.dir($0)</code> — <img src="images/20201011_131823_DevTools - konspektas.local_dom.pagrindai.html.png" alt="" width="37" height="29"/></li>
+    </ol>
+  </div>
+  <div class="c-em-note">
+    <p>Kaip ieškoti:</p>
+    <blockquote>
+      <p>To find something, it's often convenient to use an internet search "WHATWG [term]" or "MDN [term]", e.g <a href="https://google.com/?q=whatwg+localstorage">https://google.com?q=whatwg+localstorage</a>, <a href="https://google.com/?q=mdn+localstorage">https://google.com?q=mdn+localstorage</a>.</p>
+    </blockquote>
+  </div>
+</div>
+<h2>Core DOM</h2>
+<dl>
+  <dt>Oficiali specifikacija</dt>
+  <dd>
+    <p><a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>  — paskutinė-naujausia — <q>is the single version of the DOM specification being actively developed</q></p>
+  </dd>
+  <dt>DOM API</dt>
+  <dd>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Document Object Model (DOM) - Web APIs | MDN</a></p>
+  </dd>
+  <dt>Mokymuisi</dt>
+  <dd>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">Introduction to the DOM - Web APIs | MDN</a></p>
+  </dd>
+</dl>
+<p><dfn>Core DOM</dfn> — bazinė DOM standarto dalis, kuri praplečiama pritaikant konkretiems formatams, pvz. HTML DOM:</p>
+<blockquote>
+  <p>The core <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM</a> defines the objects that fundamentally describe a document and the objects within it. This is expanded upon as needed by other APIs that add new features and capabilities to the DOM.</p>
+</blockquote>
+<h3>DOM terminai</h3>
+<p>DOM node'ų struktūriniai apibūdinimai:</p>
+<dl>
+  <dt>Vaikai (tiesioginiai vaikai) / Child nodes (children)</dt>
+  <dd>
+    <blockquote>
+      <ul>
+        <li><strong>Child nodes (or children)</strong> – elements that are direct children. In other words, they are nested exactly in the given one. For instance, &lt;head&gt; and &lt;body&gt; are children of &lt;html&gt; element.</li>
+      </ul>
+    </blockquote>
+  </dd>
+  <dt>Palikuonys / Descendants</dt>
+  <dd>
+    <blockquote>
+      <ul>
+        <li><strong>Descendants</strong> – all elements that are nested in the given one, including children, their children and so on. </li>
+      </ul>
+    </blockquote>
+  </dd>
+</dl>
+<h2>HTML DOM — apibendrinimas–visuma</h2>
+<dl>
+  <dt>Oficiali specifikacija </dt>
+  <dd>
+    <blockquote>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Specification</th>
+            <th scope="col">Status</th>
+            <th scope="col">Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://html.spec.whatwg.org/multipage/" hreflang="en" lang="en" rel="noopener" title="The 'HTML Living Standard' specification">HTML Living Standard</a></td>
+            <td>Living Standard</td>
+            <td>WHATWG HTML Specification</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.w3.org/TR/html52/" hreflang="en" lang="en" rel="noopener" title="The 'HTML5' specification">HTML5</a></td>
+            <td>Recommendation</td>
+            <td>No change from <a href="https://www.w3.org/TR/DOM-Level-2-HTML/" hreflang="en" lang="en" rel="noopener" title="The 'Document Object Model (DOM) Level 2 HTML Specification' specification">Document Object Model (DOM) Level 2 HTML Specification</a></td>
+          </tr>
+          <tr>
+            <td><a href="https://www.w3.org/TR/DOM-Level-2-HTML/" hreflang="en" lang="en" rel="noopener" title="The 'Document Object Model (DOM) Level 2 HTML Specification' specification">Document Object Model (DOM) Level 2 HTML Specification</a></td>
+            <td>Obsolete</td>
+            <td>No change from <a href="https://www.w3.org/TR/REC-DOM-Level-1/" hreflang="en" lang="en" rel="noopener" title="The 'Document Object Model (DOM) Level 1 Specification' specification">Document Object Model (DOM) Level 1 Specification</a>.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.w3.org/TR/REC-DOM-Level-1/" hreflang="en" lang="en" rel="noopener" title="The 'Document Object Model (DOM) Level 1 Specification' specification">Document Object Model (DOM) Level 1 Specification</a></td>
+            <td>Obsolete</td>
+            <td>Initial definition.</td>
+          </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </dd>
+  <dt>DOM API</dt>
+  <dd>
+    <ul>
+      <li><a href="https://www.w3schools.com/jsref/default.asp">JavaScript and HTML DOM Reference</a></li>
+    </ul>
+  </dd>
+  <dt>Mokymuisi</dt>
+  <dd>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API">The HTML DOM API - Web APIs | MDN</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Using_the_W3C_DOM_Level_1_Core">Using the W3C DOM Level 1 Core - Web APIs | MDN</a>  </li>
+    </ul>
+  </dd>
+  <dt>Priemonės</dt>
+  <dd>
+    <ul>
+      <li><a href="http://software.hixie.ch/utilities/js/live-dom-viewer/">Live DOM Viewer</a> — parodo tikslią įvesto HTML dokumento DOM struktūrą  </li>
+    </ul>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--boxed o-gfx--W3 u-spvm">
+  <div>
+    <h3>– – –    </h3>
+    <p><img src="images/20200701_215024_Browser environment, specs.png" alt="" width="414" height="353"/></p>
+    <p>Pagrindinė HTML DOM paskirtis — HTML tagų-elementų veikimas:</p>
+    <blockquote>
+      <p>The <strong>HTML DOM API</strong> is made up of the interfaces that define the functionality of each of the <a href="https://developer.mozilla.org/en-US/docs/Glossary/element">elements</a> in <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML">HTML</a>, as well as any supporting types and interfaces they rely upon.</p>
+    </blockquote>
+    <p>Visos HTML DOM sritys:</p>
+    <blockquote>
+      <p>The functional areas included in the HTML DOM API include:</p>
+      <ul>
+        <li>Access to and control of HTML elements via the <a href="https://developer.mozilla.org/en-US/docs/Glossary/DOM">DOM</a>.</li>
+        <li>Access to and manipulation of form data.</li>
+        <li>Interacting with the contents of 2D images and the context of an HTML <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas" title="Use the HTML <canvas> element with either the canvas scripting API or the WebGL API to draw graphics and animations.">&lt;canvas&gt;</a>, for example to draw on top of them.</li>
+        <li>Management of media connected to the HTML media elements (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" title="The HTML <audio> element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the <source> element: the browser will choose the most suitable one. It can also be the destination for streamed media, using a MediaStream.">&lt;audio&gt;</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" title="The HTML Video element (<video>) embeds a media player which supports video playback into the document. You can use <video> for audio content as well, but the <audio> element may provide a more appropriate user experience.">&lt;video&gt;</a>).</li>
+        <li>Dragging and dropping of content on webpages.</li>
+        <li>Access to the browser navigation history</li>
+        <li>Supporting and connective interfaces for other APIs such as <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">Web Storage</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">Web Workers</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSocket</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-sent events</a>.</li>
+      </ul>
+    </blockquote>
+  </div>
+  <div>
+    <h3> HTML DOM cross-browser compatibility</h3>
+    <p>Skirtingos naršyklės HTML DOM standartą įgyvendina skirtingai:</p>
+    <blockquote>
+      <p>Different browsers have different implementations of the DOM, and these implementations exhibit varying degrees of conformance to the actual DOM standard, but every web browser uses some document object model to make web pages accessible via JavaScript.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>window</code> — šakninis <i>host environment</i> objektas</h3>
+    <p>Jis turi dvilypę paskirtį:</p>
+    <blockquote>
+      <p>There's a "root" object called window. It has two roles:</p>
+      <ol>
+        <li>First, it is a global object for JavaScript code, as described in the chapter <a href="https://javascript.info/global-object">Global object</a>.</li>
+        <li>Second, it represents the "browser window" and provides methods to control it.</li>
+      </ol>
+    </blockquote>
+    <dl>
+      <dt><dfn>platform | host | host environment</dfn></dt>
+      <dd>
+        <p>Tai yra aplinka, kurioje veikia JavaScript'as. </p>
+        <blockquote>
+          <p>The JavaScript language was initially created for web browsers. Since then it has evolved and become a language with many uses and platforms.</p>
+          <p>A platform may be a browser, or a web-server or another <em>host</em>, even a "smart" coffee machine, if it can run JavaScript. The JavaScript specification calls that a <em>host environment</em>.</p>
+        </blockquote>
+        <p>Konkreti aplinka prideda savo objektus ir funkcijas — <q> platform-specific functionality</q>. </p>
+        <blockquote>
+          <p>A host environment provides own objects and functions additional to the language core. Web browsers give a means to control web pages. Node.js provides server-side features, and so on.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+    <pre><code>function sayHi() {
+  alert("Hello");
+}
+
+// global functions are methods
+// of the global object
+window.sayHi();</code></pre>
+  </div>
+  <figcaption><code>window</code> naudojimas kaip &quot;Global object&quot;</figcaption>
+</figure>
+<figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+        <pre><code>// inner window height
+alert(window.innerHeight);</code></pre></div>
+      <figcaption><code>window</code> naudojimas kaip &quot;browser window&quot;</figcaption>
+    </figure>
+  </div>
+  <div>
+    <h3>BOM (Browser Object Model)</h3>
+    <p> <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a></p>
+    <blockquote>
+      <p>The Browser Object Model (BOM) represents additional objects provided by the browser (host environment) for working with everything except the document.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Specifications</p>
+      <p>BOM is the part of the general <a href="https://html.spec.whatwg.org/">HTML specification</a>.</p>
+      <p>Yes, you heard that right. The HTML spec at <a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org</a> is not only about the "HTML language" (tags, attributes), but also covers a bunch of objects, methods and browser-specific DOM extensions. That's "HTML in broad terms". Also, some parts have additional specs listed at <a href="https://spec.whatwg.org/">https://spec.whatwg.org</a>.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>CSSOM</h3>
+    <ul>
+      <li><a href="https://www.w3.org/TR/cssom-1/">CSS Object Model (CSSOM)</a></li>
+      <li> <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model">CSS Object Model (CSSOM) - Web APIs | MDN</a></li>
+    </ul>
+    <blockquote>
+  <p>CSSOM for styling</p>
+      <p>There's also a separate specification, <a href="https://www.w3.org/TR/cssom-1/">CSS Object Model (CSSOM)</a> for CSS rules and stylesheets, that explains how they are represented as objects, and how to read and write them.</p>
+      <p>CSSOM is used together with DOM when we modify style rules for the document. In practice though, CSSOM is rarely required, because we rarely need to modify CSS rules from JavaScript (usually we just add/remove CSS classes, not modify their CSS rules), but that's also possible.</p>
+    </blockquote>
+  </div>
+</div>
+<h3>Veikimas</h3>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm">
+  <div>
+    <h4>Autocorrection</h4>
+    <p> <a href="https://javascript.info/dom-nodes#autocorrection">DOM tree</a></p>
+    <p>Tai yra:</p>
+    <blockquote>
+      <p>If the browser encounters malformed HTML, it automatically corrects it when making the DOM.</p>
+    </blockquote>
+    <p>Ką konkrečiai daro:</p>
+    <dl>
+      <dt>Jei HTML dokumente nėra reikiamoje vietoje <code>&lt;html&gt;</code> ir  <code>&lt;body&gt;</code> tagų, sukuria <code>HTML</code> ir  <code>BODY</code> node'us</dt>
+      <dd>
+        <blockquote>
+          <p>For instance, the top tag is always &lt;html&gt;. Even if it doesn't exist in the document, it will exist in the DOM, because the browser will create it. The same goes for &lt;body&gt;.</p>
+          <p>As an example, if the HTML file is the single word "Hello", the browser will wrap it into &lt;html&gt; and &lt;body&gt;, and add the required &lt;head&gt;, and the DOM will be:</p>
+          <svg width="360" height="120">
+            <g transform="translate(10,13)">
+              <path class="link" d="M7,0L7,30L57,30" style="fill: none; stroke: rgb(190, 195, 199); stroke-width: 1px;"></path>
+              <path class="link" d="M7,0L7,60L57,60" style="fill: none; stroke: rgb(190, 195, 199); stroke-width: 1px;"></path>
+              <path class="link" d="M57,60L57,90L107,90" style="fill: none; stroke: rgb(190, 195, 199); stroke-width: 1px;"></path>
+              <g class="node" transform="translate(0,0)" style="opacity: 1;">
+                <rect y="-12.5" x="-5" rx="4" ry="4" height="25" width="250" style="fill: rgb(206, 224, 244); cursor: pointer;"></rect>
+                <text dy="4.5" dx="3.5" style="fill: black; pointer-events: none;">▾ </text>
+                <text dy="4.5" dx="16.5" style="font: 14px Consolas, &quot;Lucida Console&quot;, Menlo, Monaco, monospace; fill: rgb(51, 51, 51); pointer-events: none;">HTML</text>
+              </g>
+              <g class="node" transform="translate(50,30)" style="opacity: 1;">
+                <rect y="-12.5" x="-5" rx="4" ry="4" height="25" width="250" style="fill: rgb(206, 224, 244); cursor: pointer;"></rect>
+                <text dy="4.5" dx="3.5" style="fill: black; pointer-events: none;">▾ </text>
+                <text dy="4.5" dx="16.5" style="font: 14px Consolas, &quot;Lucida Console&quot;, Menlo, Monaco, monospace; fill: rgb(51, 51, 51); pointer-events: none;">HEAD</text>
+              </g>
+              <g class="node" transform="translate(50,60)" style="opacity: 1;">
+                <rect y="-12.5" x="-5" rx="4" ry="4" height="25" width="250" style="fill: rgb(206, 224, 244); cursor: pointer;"></rect>
+                <text dy="4.5" dx="3.5" style="fill: black; pointer-events: none;">▾ </text>
+                <text dy="4.5" dx="16.5" style="font: 14px Consolas, &quot;Lucida Console&quot;, Menlo, Monaco, monospace; fill: rgb(51, 51, 51); pointer-events: none;">BODY</text>
+              </g>
+              <g class="node" transform="translate(100,90)" style="opacity: 1;">
+                <rect y="-12.5" x="-5" rx="4" ry="4" height="25" width="250" style="fill: rgb(255, 222, 153); cursor: pointer;"></rect>
+                <text dy="4.5" dx="3.5" style="fill: black; pointer-events: none;"></text>
+                <text dy="4.5" dx="5.5" style="font: 14px Consolas, &quot;Lucida Console&quot;, Menlo, Monaco, monospace; fill: rgb(51, 51, 51); pointer-events: none;">#text Hello</text>
+              </g>
+            </g>
+          </svg>
+        </blockquote>
+      </dd>
+      <dt>Supranta ir sukuria DOM elementus iš <q>unclosed tags</q></dt>
+      <dd>
+        <p><img src="images/20201011_145244_DOM tree.png" alt="" width="281" height="196"/></p>
+      </dd>
+      <dt>Lentelėms visada sukuria <code>TBODY</code> elementą</dt>
+      <dd>
+        <p><img src="images/20201011_145718_DOM tree.png" alt="" width="310" height="219"/></p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>DOM node'ų &quot;selektorių&quot; grąžinamos reikšmės</h4>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p> In the DOM, the <code>null</code> value means &quot;doesn't exist&quot; or &quot;no such node&quot;.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>DOM node'ų tipai / Data type (Interface)</h2>
+<p>ir HTML DOM</p>
+<h3>Bendriniai-baziniai</h3>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm">
+  <div>
+    <h4><code>Node</code></h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node - Web APIs | MDN</a></p>
+    <p>Bazinis node'ų tipas visiems galutiniams DOM medį sudarantiems node'ams:</p>
+    <blockquote>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/Glossary/DOM">DOM</a> <strong>Node</strong> interface is an abstract base class upon which many other DOM API objects are based, thus letting those object types to be used similarly and often interchangeably. As an abstract class, there is no such thing as a plain Node object. All objects that implement Node functionality are based on one of its subclasses. Most notable are <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment">DocumentFragment</a>.</p>
+      <p>In addition, every kind of DOM node is represented by an interface based on Node. These include <a href="https://developer.mozilla.org/en-US/docs/Web/API/Attr">Attr</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/CharacterData">CharacterData</a> (which <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">Text</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Comment">Comment</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/CDATASection">CDATASection</a> are all based on), <a href="https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction">ProcessingInstruction</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentType">DocumentType</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notation">Notation</a>, <a rel="nofollow" title="Page has not yet been created.">Entity</a>, and <a rel="nofollow" title="Page has not yet been created.">EntityReference</a>.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>NodeList</code></h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList - Web APIs | MDN</a>    </p>
+    <blockquote>
+      <p><code>NodeList</code> objects are collections of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">nodes</a>, usually returned by properties such as <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes">Node.childNodes</a> and methods such as <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">document.querySelectorAll()</a>.</p>
+    </blockquote>
+    <p>Yra du būdai nuskaityti NodeList'o elementus:</p>
+    <blockquote>
+      <p>Items in a nodeList are accessed by index in either of two ways:</p>
+      <ul>
+        <li>list.item(1)</li>
+        <li>list[1]</li>
+      </ul>
+      <p>These two are equivalent. In the first, item() is the single method on the nodeList object. The latter uses the typical array syntax to fetch the second item in the list.</p>
+    </blockquote>
+    <p>Pačio DOM collection'o keisti negalima:</p>
+    <blockquote>
+      <p>DOM collections are read-only</p>
+      <p>DOM collections, and even more – <em>all</em> navigation properties listed in this chapter are read-only.</p>
+      <p>We can't replace a child by something else by assigning <code>childNodes[i] = ....</code></p>
+    </blockquote>
+    <h5><code>NodeList</code>'ų apdorojimas loop'e</h5>
+    <blockquote>
+      <p>Although <code>NodeList</code> is not an <code>Array</code>, it is possible to iterate over it with <code>forEach()</code>. It can also be converted to a real <code>Array</code> using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a>.</p>
+      <p>However, some older browsers have not implemented <code>NodeList.forEach()</code> nor <code>Array.from()</code>. This can be circumvented by using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Array.prototype.forEach()</a> — see this document's <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList#Example">Example</a>.</p>
+    </blockquote>
+    <p>NodeList'ų loop'inimo būdai:</p>
+    <dl>
+      <dt> su <code>for</code></dt>
+      <dd>
+        <figure class="c-figure c-figure--code" style="mmax-width:400px">
+          <div class="c-figure__content">
+            <pre><code>let nodes = document.body.childNodes;
+for (let i = 0; i &lt; nodes.length; i++) {
+  let node = nodes[i];
+  ...
+}</code></pre>
+            <div class="c-pvs c-pvs--title c-pvs--border c-pvs--parent-border c-pvs--btnHvrOnc">
+              <p>Demonstracija</p>
+              <div class="c-pvs__parent" style="">
+                <p>vienas</p>
+                <p>du</p>
+              </div>
+              <button onclick="let nodeList = this.previousElementSibling.childNodes;
+for (let i = 0; i < nodeList.length; i++) {
+  console.log(nodeList[i]);
+}">išvesti DevTools'ų konsolėje</button>
+            </div>
+          </div>
+          <figcaption>NodeList'o loop'inimas su <code>for</code> kaip masyvą</figcaption>
+        </figure>
+      </dd>
+      <dt>su <code>for...of</code></dt>
+      <dd>
+        <blockquote>
+          <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for...of" title="/en-US/docs/JavaScript/Reference/Statements/for...of">for...of</a> loops <strong>will</strong> loop over NodeList objects correctly:</p>
+          <pre><code>const list = document.querySelectorAll('input[type=checkbox]');
+for (let checkbox of list) {
+  checkbox.checked = true;
+}</code></pre>
+        </blockquote>
+      </dd>
+      <dt>su <code>for...in</code></dt>
+      <dd>
+        <div class="c-em-alert c-em--narrow">
+          <p><code>NodeList</code>'ų apdorojimui nenaudoti <code>for...in</code> ciklo:</p>
+          <blockquote>
+            <p><strong>Don't use <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for...in" title="JavaScript/ Reference/Statements/for...in">for...in</a> to enumerate the items in NodeLists</strong>, since they will <em>also</em> enumerate its length and item properties and cause errors if your script assumes it only has to deal with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">element</a> objects. Also, for..in is not guaranteed to visit the properties in any particular order.</p>
+          </blockquote>
+        </div>
+      </dd>
+      <dt><code>forEach() entries() values() keys()</code></dt>
+      <dd>
+        <blockquote>
+          <p>Recent browsers also support iterator methods (<a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach">forEach()</a>) as well as <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList/entries">entries()</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList/values">values()</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList/keys">keys()</a>.</p>
+        </blockquote>
+        <p>Internet Explorer'iui:</p>
+        <blockquote>
+          <p>There is also an Internet Explorer-compatible way to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Array.prototype.forEach</a> for iteration:</p>
+          <pre><code>const list = document.querySelectorAll('input[type=checkbox]');
+Array.prototype.forEach.call(list, function (checkbox) {
+  checkbox.checked = true;
+});</code></pre>
+        </blockquote>
+      </dd>
+      <dt>su <code>Array.from</code> gauti NodeList'ą kaip standartinį JS masyvą</dt>
+      <dd><p><code>let NodeListArr = Array.from(document.body.childNodes);</code></p>
+      </dd>
+    </dl>
+    <h5>Live  <code>NodeList</code>'ai</h5>
+    <p><dfn>Live collection</dfn></p>
+    <blockquote>
+      <p>In some cases, the <code>NodeList</code> is <em>live</em>, which means that changes in the DOM automatically update the collection.</p>
+      <p>For example, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes">Node.childNodes</a> is live:</p>
+      <pre><code>const parent = document.getElementById('parent');
+let child_nodes = parent.childNodes;
+console.log(child_nodes.length); // let's assume "2"
+parent.appendChild(document.createElement('div'));
+console.log(child_nodes.length); // outputs "3"</code></pre>
+    </blockquote>
+    <h5>Static <code>NodeList</code>'ai    </h5>
+    <p><dfn>Static collection</dfn></p>
+    <blockquote>
+      <p>In other cases, the NodeList is <em>static, </em>where any changes in the DOM does not affect the content of the collection. The ubiquitous <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">document.querySelectorAll()</a> method returns a <em>static</em> NodeList.</p>
+      <p>It's good to keep this distinction in mind when you choose how to iterate over the items in the NodeList, and whether you should cache the list's length.</p>
+    </blockquote>
+  </div>
+  <div>
+    <h4>ParentNode</h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/ParentNode">ParentNode - Web APIs | MDN</a>    </p>
+    <blockquote>
+      <p>The <strong>ParentNode</strong> mixin contains methods and properties that are common to all types of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a> objects that can have children. It's implemented by <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment">DocumentFragment</a> objects.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Galutiniai, sudarantys DOM medį</h3>
+<blockquote>
+  <p>There are <a href="https://dom.spec.whatwg.org/#node">12 node types</a>. In practice we usually work with 4 of them:</p>
+  <ol>
+    <li>document – the "entry point" into DOM.</li>
+    <li>element nodes – HTML-tags, the tree building blocks.</li>
+    <li>text nodes – contain text.</li>
+    <li>comments – sometimes we can put information there, it won't be shown, but JS can read it from the DOM.</li>
+  </ol>
+</blockquote>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm">
+  <div>
+    <h4><code>Document</code></h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document - Web APIs | MDN</a></p>
+    <p>HTML DOM'e tai yra <code>window.document</code></p>
+    <p>Naršyklės lange rodomo puslapio šakninis objektas:</p>
+    <blockquote>
+      <p>The <code>document</code> object is the main "entry point" to the page. We can change or create anything on the page using it.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>An HTML/XML document is represented inside the browser as the DOM tree.</p>
+      <ul>
+        <li>Tags become element nodes and form the structure.</li>
+        <li>Text becomes text nodes.</li>
+        <li>…etc, everything in HTML has its place in DOM, even comments.</li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p><code>document</code> naudojimo pvz.:</p>
+    <pre><code>// change the background color to red
+document.body.style.background = "red";
+
+// change it back after 1 second
+setTimeout(
+  () => document.body.style.background = "",
+  1000
+);</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>Element</code> ir <code>HTMLElement</code></h4>
+    <ul>
+      <li> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element - Web APIs | MDN</a></li>
+      <li> <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement">HTMLElement - Web APIs | MDN</a></li>
+    </ul>
+    <figure class="c-figure--shadow" style="width: 70%; mmin-width: max-content">
+      <div class="c-figure__content" style="mmin-width: max-content">
+        <img src="images/html-dom-hierarchy-2020-11-03.svg" wwidth="300" alt=""/>
+      </div>
+      <figcaption>Core DOM ir HTML DOM tagų-elementų tipo paveldimumo schema    </figcaption>
+    </figure>
+    <p><code>Element</code> yra bazinis Core DOM tipas dokumento tagams-elementams:</p>
+    <blockquote>
+      <p><code>Element</code> is the most general base class from which all element objects (i.e. objects that represent elements) in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from <code>Element</code>. </p>
+      <p>For example, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement">HTMLElement</a>   interface is the base interface for HTML elements, while the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement">SVGElement</a> interface is the basis for all SVG elements.</p>
+    </blockquote>
+    <p><code>HTMLElement</code> yra galutinis HTML DOM tipas dokumento tagams-elementams, kuris paveldi <code>Element</code>:</p>
+    <blockquote>
+      <p>The <strong>HTMLElement</strong> interface represents any <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a> element.</p>
+    </blockquote>
+    <p>Ir yra galutiniai specifinių HTML tagų-elementų tipai, pvz.: <code>HTMLAnchorElement</code>, <code>HTMLUListElement</code> ir t. t.. Paveldimumo schema: ????????????????????? </p>
+  </div>
+  <div>
+    <h4><code>Text</code></h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">Text - Web APIs | MDN</a></p>
+    <p>Tai yra tekstas taguose-elementuose ir atributuose:</p>
+    <blockquote>
+      <p>The <strong>Text</strong> interface represents the textual content of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Attr">Attr</a>.</p>
+    </blockquote>
+    <p>Kai tage-elemente yra tik tekstas:</p>
+    <blockquote>
+      <p>If an element has no markup within its content, it has a single child implementing Text that contains the element's text.</p>
+    </blockquote>
+   <p>Nematomi simboliai:</p>
+   <blockquote>
+     <p>Please note the special characters in text nodes:</p>
+     <ul>
+       <li>a newline: ↵ (in JavaScript known as \n)</li>
+       <li>a space: ␣</li>
+     </ul>
+     <p>Spaces and newlines are totally valid characters, like letters and digits. They form text nodes and become a part of the DOM.</p>
+   </blockquote>
+   <p>Išimtys, kai nematomi–space'iniai simboliai nesukuria text node'o:</p>
+   <blockquote>
+     <p>There are only two top-level exclusions:</p>
+     <ol>
+       <li>Spaces and newlines before &lt;head&gt; are ignored for historical reasons.</li>
+       <li>If we put something after &lt;/body&gt;, then that is automatically moved inside the body, at the end, as the HTML spec requires that all content must be inside &lt;body&gt;. So there can't be any spaces after &lt;/body&gt;.</li>
+     </ol>
+     <p>In other cases everything's straightforward – if there are spaces (just like any character) in the document, then they become text nodes in the DOM, and if we remove them, then there won't be any.</p>
+   </blockquote>
+   <p>Naršyklės DevTool'sų Elements panelėje <q>space-only text nodes</q> dažniausiai nerodo, nors faktiškai tie node'ai yra:</p>
+   <blockquote>
+<p>Spaces at string start/end and space-only text nodes are usually hidden in tools</p>
+<p>Browser tools (to be covered soon) that work with DOM usually do not show spaces at the start/end of the text and empty text nodes (line-breaks) between tags.</p>
+      <p>Developer tools save screen space this way.</p>
+      <p>On further DOM pictures we'll sometimes omit them when they are irrelevant. Such spaces usually do not affect how the document is displayed.</p>
+   </blockquote>
+   <p>&nbsp;</p>
+</div>
+  <div>
+    <h4><code>Comment</code></h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Comment">Comment - Web APIs | MDN</a></p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Navigacija DOM elementų medyje / Walking the DOM</h2>
+<p> <a href="https://javascript.info/dom-navigation">Walking the DOM</a></p>
+<div class="o-mcl o-mcl--W5 o-mcl--N2 -o-mcl--continuous-all">
+  <figure class="figure--img-bigCaption"><img src="images/20201022_225239_Window.png" alt="" width="399" height="387" />
+    <figcaption> Visų tipų DOM node'ų  selektoriai</figcaption>
+  </figure>
+  <figure class="figure--img-bigCaption o-mcl__start"><img src="images/20201115_232442_Walking the DOM.png" alt="" width="430" height="309" />
+    <figcaption>
+      <p>Element DOM node'ų  selektoriai</p>
+    </figcaption>
+  </figure>
+</div>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h3>Šakniniai-viršutiniai DOM elementai</h3>
+    <p> <a href="https://javascript.info/dom-navigation#on-top-documentelement-and-body">Walking the DOM — On top: documentElement and body</a></p>
+    <pre><code>&lt;!doctype html&gt;
+&lt;html lang=en&gt;.... document.documentElement
+  &lt;head&gt;.......... document.head
+  &lt;/head&gt;
+  &lt;body&gt;.......... document.body
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>&nbsp;</p>
+    <div class="c-em-note c-em--small">
+      <p>Kreiptis į <code>document.body</code> reikia kai <code>&lt;body&gt;</code> elementas yra sukurtas:</p>
+      <blockquote>
+        <p><img src="images/20201022_231213_Window.png" alt="" width="143" height="111"/></p>
+      </blockquote>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Hierarchiniai aukštyn-žemyn parent-child DOM medžio &quot;selektoriai&quot;</h3>
+    <p>Vaikinių elementų &quot;selektoriai&quot;</p>
+    <h4>Tėvinis-parent node'as</h4>
+    <h5><code>node.parentNode</code></h5>
+    <pre><code>// parent of &lt;body&gt; is &lt;html&gt;
+alert( document.body.parentNode === document.documentElement ); // true</code></pre>
+    <h5><code>node.parentElement</code></h5>
+    <div class="c-em-important c-em--small">
+      <p>Yra vienintelė situacija, kai tėvinis-parent node'as yra ne elementas:</p>
+      <p><img src="images/20201116_131222_Walking the DOM.png" alt="" width="146" height="56"/></p>
+    </div>
+<p><code>node.parentElement</code> panaudojimo pvz.:</p>
+<blockquote>
+  <p><img src="images/20201116_133205_Walking the DOM.png" alt="" width="214" height="51"/></p>
+</blockquote>
+<h4>Vaikiniai-children node'ai</h4>
+<p><a href="https://javascript.info/dom-navigation#children-childnodes-firstchild-lastchild">Walking the DOM — Children: childNodes, firstChild, lastChild</a></p>
+<h5><code>elementNode.childNodes</code></h5>
+<blockquote>
+      <p>The <code>childNodes</code> collection lists all child nodes, including text nodes.</p>
+    </blockquote>
+    <p>Tai yra — <q>a <em>collection</em> – a special array-like iterable object</q>:   </p>
+    <blockquote>
+      <p>As we can see, childNodes looks like an array. But actually it's not an array, but rather a <em>collection</em> – a special array-like iterable object.</p>
+    </blockquote>
+    <div class="c-pvs c-pvs--title c-pvs--btnHvrOnc c-pvs--border c-pvs--parent-border">
+      <p>childNodes'ų išvedimas</p>
+      <div class="c-pvs__parent" style="">
+        <p>Sakinys.</p>
+        <ul>
+          <li>Sąrašas 1</li>
+          <li>Sąrašas 2</li>
+        </ul>
+      </div>
+      <button onClick="
+        const targ = this.previousElementSibling;
+        // console.dir(targ.childNodes);
+        console.log(targ.childNodes);
+        ">išvesti DevTools'ų konsolėje</button>
+    </div>
+    <del tabindex="0"><pre><code class="BGCL2c B361c">document.getElementsByTagName('div').childNodes
+&lt;div&gt;
+  &lt;p&gt;Tekstas&lt;/p&gt;
+&lt;/div&gt;</code></pre></del>
+    <h5><code>elementNode.children</code></h5>
+    <p>&nbsp;</p>
+    <h5><code>elementNode.firstChild elementNode.lastChild</code></h5>
+    <div class="c-em-note c-em--narrow">
+      <p>Tai yra shorthand'ai:</p>
+      <blockquote>
+        <p>They are just shorthands. If there exist child nodes, then the following is always true:</p>
+        <pre><code>elem.childNodes[0] === elem.firstChild
+elem.childNodes[elem.childNodes.length - 1] === elem.lastChild</code></pre>
+      </blockquote>
+    </div>
+    <h5><code>elementNode.firstElementChild elementNode.lastElementChild</code></h5>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Kaimyninių-sibling elementų &quot;selektoriai&quot;</h3>
+    <p>Kaimyniniai-siblinginiai elementai — tiesioginiai vaikai to pačio tėvinio elemento:</p>
+    <p><img src="images/20201115_201653_Walking the DOM.png" alt="" width="168" height="93"/></p>
+    <h4><code>node.nextSibling node.nextElementSibling</code>    </h4>
+    <pre><code>// after &lt;head&gt; goes &lt;body&gt;
+alert( document.head.nextSibling ); // HTMLBodyElement</code></pre>
+    <p>&nbsp;</p>
+    <h4><code>node.previousSibling node.previousElementSibling</code>    </h4>
+    <pre><code>// before &lt;body&gt; goes &lt;head&gt;
+alert( document.body.previousSibling ); // HTMLHeadElement</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>HTML lentelių-tables</h3>
+    <ul>
+      <li> <a href="https://html.spec.whatwg.org/multipage/tables.html">HTML Standard — Tabular data</a></li>
+      <li><a href="https://javascript.info/dom-navigation#dom-navigation-tables">Walking the DOM — More links: tables</a></li>
+    </ul>
+    <p><code>&lt;table&gt;</code>    </p>
+    <blockquote>
+      <p style="margin: 0px 0px 12px; padding: 0px; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><strong>The <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;table&gt;</code></strong> element supports (in addition to the given above) these properties:</p>
+      <ul style="margin: 0px 0px 22px; padding: 0px 0px 0px 21px; list-style: none; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">table.rows</code> – the collection of <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tr&gt;</code> elements of the table.</li>
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">table.caption/tHead/tFoot</code> – references to elements <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;caption&gt;</code>, <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;thead&gt;</code>, <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tfoot&gt;</code>.</li>
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">table.tBodies</code> – the collection of <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tbody&gt;</code> elements (can be many according to the standard, but there will always be at least one – even if it is not in the source HTML, the browser will put it in the DOM).    </li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p style="margin: 12px 0px; padding: 0px; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><strong><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;thead&gt;</code>, <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tfoot&gt;</code>, <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tbody&gt;</code></strong> elements provide the <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">rows</code> property:</p>
+      <ul style="margin: 0px 0px 22px; padding: 0px 0px 0px 21px; list-style: none; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">tbody.rows</code> – the collection of <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tr&gt;</code> inside.    </li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p style="margin: 12px 0px; padding: 0px; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><strong><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tr&gt;</code>:</strong></p>
+      <ul style="margin: 0px 0px 22px; padding: 0px 0px 0px 21px; list-style: none; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">tr.cells</code> – the collection of <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;td&gt;</code> and <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;th&gt;</code> cells inside the given <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tr&gt;</code>.</li>
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">tr.sectionRowIndex</code> – the position (index) of the given <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tr&gt;</code> inside the enclosing <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;thead&gt;/&lt;tbody&gt;/&lt;tfoot&gt;</code>.</li>
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">tr.rowIndex</code> – the number of the <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tr&gt;</code> in the table as a whole (including all table rows).    </li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p style="margin: 12px 0px; padding: 0px; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><strong><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;td&gt;</code> and <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;th&gt;</code>:</strong></p>
+      <ul style="margin: 0px 0px 22px; padding: 0px 0px 0px 21px; list-style: none; color: rgb(51, 51, 51); font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+        <li style="margin: 0.3em 0px;"><code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">td.cellIndex</code> – the number of the cell inside the enclosing <code style="font-family: Consolas, 'Lucida Console', Menlo, Monaco, monospace; padding: 2px 4px; border-radius: 2px;">&lt;tr&gt;</code>.    </li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=en&gt;..................document.documentElement
+  &lt;head&gt;........................document.head
+    &lt;meta charset=utf-8&gt;
+    &lt;title&gt;Pavadinimas&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;........................document.body
+    &lt;p&gt;Tekstas&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>&nbsp;</p>
+<h2>DOM elementų paieška — nuorodų gavimas / searching methods</h2>
+<p> <a href="https://javascript.info/searching-elements-dom">Searching: getElement*, querySelector*</a></p>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm">
+  <div>
+    <h3>Nuorodų gavimas — paieška visame dokumente /  DOM medyje — pagal elemento atributą <code>id</code></h3>
+    <h4><code>document.getElementById()</code>    </h4>
+    <pre><code>&lt;div id="kasnors"&gt;...&lt;/div&gt;
+&lt;script&gt;
+  let tagas = document.getElementById('kasnors');
+  tagas.style.background = 'red';
+&lt;/script&gt;</code></pre>
+    <p>Nėra element'inio šio metodo, tai būtų <code>element.getElementById()</code>:</p>
+    <blockquote>
+      <p>Unlike some other element-lookup methods such as <a href="https://devdocs.io/dom/document/queryselector">Document.querySelector()</a> and <a href="https://devdocs.io/dom/document/queryselectorall">Document.querySelectorAll()</a>, <code>getElementById()</code> is only available as a method of the global document object, and <em>not</em> available as a method on all element objects in the DOM. Because ID values must be unique throughout the entire document, there is no need for "local" versions of the function.</p>
+    </blockquote>
+    <h4>Automatiškai sukuriamas globalus JS kintamasis — nuoroda į DOM elementą</h4>
+    <p> Kiekvienam tagui-elementui su atributu <code>id</code> automatiškai sukuriamas globalus JS kintamasis — nuoroda į DOM elementą, kurio pavadinimas, id reikšmė.    </p>
+    <figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+        <pre><code>&lt;div id="kasnors"&gt;...&lt;/div&gt;
+&lt;script&gt;
+  kasnors.style.background = 'red';
+&lt;/script&gt;</code></pre>
+      </div>
+      <figcaption>paprastas naudojimas</figcaption>
+    </figure>
+    <figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+        <pre><code>&lt;div id="kas-nors"&gt;...&lt;/div&gt;
+&lt;script&gt;
+  window['kas-nors'].style.background = 'red';
+&lt;/script&gt;</code></pre>
+      </div>
+      <figcaption>kai <code>id</code> su brūkšneliu</figcaption>
+    </figure>
+    <div class="c-em-alert c-em--narrow">
+      <p>Jeigu sukuriamas tokio pačio pavadinimo JS kintamasis, DOM nuoroda į elementą prapuola:</p>
+      <pre><code>&lt;div id="kasnors"&gt;...&lt;/div&gt;
+&lt;script&gt;
+  alert(kasnors); // [object HTMLDivElement]
+  let kasnors = 7;
+  alert(kasnors) // 7
+&lt;/script&gt;</code></pre>
+    </div>
+    <div class="c-em-note c-em--narrow">
+      <p>Automatiškai sukuriamus kintamuosius naudoti tik paprastesnėse situacijose, kai &quot;matomas&quot; HTML'as, JS'as <q>inlined into HTML</q>:</p>
+      <blockquote>
+        <p><strong>Please don't use id-named global variables to access elements</strong></p>
+        <p>This behavior is described <a href="http://www.whatwg.org/specs/web-apps/current-work/#dom-window-nameditem">in the specification</a>, so it's kind of standard. But it is supported mainly for compatibility.</p>
+        <p>The browser tries to help us by mixing namespaces of JS and DOM. That's fine for simple scripts, inlined into HTML, but generally isn't a good thing. There may be naming conflicts. Also, when one reads JS code and doesn't have HTML in view, it's not obvious where the variable comes from.</p>
+        <p>Here in the tutorial we use id to directly reference an element for brevity, when it's obvious where the element comes from.</p>
+        <p>In real life <code>document.getElementById</code> is the preferred method. </p>
+      </blockquote>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Nuorodų gavimas — DOM zonoje / medžio šakoje — pagal CSS selector'ius</h3>
+    <h4><code>*.querySelectorAll()</code></h4>
+    <p><a href="https://javascript.info/searching-elements-dom#querySelectorAll">Searching: getElement*, querySelector* — querySelectorAll</a>    </p>
+    <p><code>elementList = parentNode.querySelectorAll(selectors);</code>    </p>
+    <p>Šis metodas yra bendrinio-mixin'o DOM tipo <code>ParentNode</code>:    </p>
+    <blockquote>
+      <p>The <a href="https://devdocs.io/dom/parentnode">ParentNode</a> mixin defines the <strong>querySelectorAll()</strong> method as returning a <a href="https://devdocs.io/dom/nodelist">NodeList</a> representing a list of elements matching the specified group of selectors which are descendants of the object on which the method was called.</p>
+    </blockquote>
+    <div class="c-em-note c-em--small c-em--narrow">
+      <blockquote>
+        <p>Can use pseudo-classes as well</p>
+        <p>Pseudo-classes in the CSS selector like <code>:hover</code> and <code>:active</code> are also supported. For instance, <code>document.querySelectorAll(':hover')</code> will return the collection with elements that the pointer is over now (in nesting order: from the outermost <code>&lt;html&gt;</code> to the most nested one). </p>
+      </blockquote>
+    </div>
+    <div class="c-em-important c-em--small c-em--narrow">
+      <p><code>*.querySelectorAll()</code> grąžina <i>static collection</i></p>
+      <blockquote>
+        <p><code>querySelectorAll</code> returns a <em>static</em> collection. It's like a fixed array of elements.</p>
+        <pre><code>&lt;div&gt;First div&lt;/div&gt;
+
+&lt;script&gt;
+  let divs = document.querySelectorAll('div');
+  alert(divs.length); // 1
+&lt;/script&gt;
+
+&lt;div&gt;Second div&lt;/div&gt;
+
+&lt;script&gt;
+  alert(divs.length); // 1
+&lt;/script&gt;</code></pre>
+      </blockquote>
+    </div>
+    <dl>
+      <dt><code>document.querySelectorAll()</code></dt>
+      <dd>
+        <p>Ieško-selektina visame DOM medyje.</p>
+        <figure class="c-figure c-figure--code" style="wwidth:95%">
+          <div class="c-figure__content">
+            <pre><code>&lt;ul&gt;
+  <mark>&lt;li&gt;pirmas&lt;/li&gt;</mark>
+  <mark>&lt;li&gt;antras&lt;/li&gt;</mark>
+&lt;/ul&gt;
+&lt;script&gt;
+  let elements = document.querySelectorAll('ul &gt; li');
+&lt;/script&gt;</code></pre>
+          </div>
+          <figcaption>paprastas naudojimas</figcaption>
+        </figure>
+      </dd>
+      <dt><code>Element.querySelectorAll()</code></dt>
+      <dd>
+        <div class="c-pvs c-pvs--title c-pvs--btnHvrOnc c-pvs--border c-pvs--parent-border">
+          <p>Pats tagas-elementas kurio metodą <code>.querySelectorAll()</code> iškviečiame, CSS selektoriaus yra nematomas </p>
+          <div class="c-pvs__parent" style="">
+            <p>Paragrafas</p>
+            <div>Divas</div>
+          </div>
+          <button onclick="const targ = this.previousElementSibling;
+console.log(targ.querySelectorAll('div'));">išvesti DevTools'ų konsolėje</button>
+        </div>
+      </dd>
+      <dt><code>DocumentFragment.querySelectorAll()</code></dt>
+      <dd>
+        <p>...</p>
+      </dd>
+    </dl>
+    <h4><code>*.querySelector()</code></h4>
+    <p>Veikia kaip <code>*.querySelectorAll()</code>, tik grąžina pirmąjį suselektintą elementą:</p>
+    <blockquote>
+      <p>The call to <code>elem.querySelector(css)</code> returns the first element for the given CSS selector.</p>
+    </blockquote>
+    <div class="c-em-important c-em--small c-em--narrow">
+      <p>Tą patį rezultatą grąžina <code>*.querySelectorAll(css)[0]</code>, bet <code>*.querySelector()</code> veikia greičiau:</p>
+      <blockquote>
+        <p>In other words, the result is the same as <code>elem.querySelectorAll(css)[0]</code>, but the latter is looking for <em>all</em> elements and picking one, while elem.querySelector just looks for one. So it's faster and also shorter to write.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div>
+    <h3>Nuorodų gavimas — pagal DOM medžio hierarchiją / DOM child-parent relationship — pagal CSS selector'ius</h3>
+    <h4><code>Element.closest()</code></h4>
+    <p><code>let element = element.closest(selectors)</code></p>
+    <p>Grąžina vieno artimiausio DOM protėvio, t. y. DOM medžiu aukštyn (arba pačio elemento, kuriam iškviestas šis metodas), atitinkančio CSS selector'ių,  nuorodą.</p>
+    <blockquote>
+      <p>The <code>Element.closest()</code> method returns the closest ancestor of the current element (or the current element itself) which matches the selectors given in parameter. If there isn't such an ancestor, it returns null.</p>
+    </blockquote>
+    <pre><code>&lt;h1&gt;Contents&lt;/h1&gt;
+&lt;div class="contents"&gt;
+  &lt;ul class="book"&gt;
+    &lt;li class="chapter"&gt;Chapter 1&lt;/li&gt;
+    &lt;li class="chapter"&gt;Chapter 1&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  // LI
+  let chapter = document.querySelector('.chapter');
+
+  // UL
+  alert(chapter.closest('.book'));
+
+  // DIV
+  alert(chapter.closest('.contents'));
+
+  // null (because h1 is not an ancestor)
+  alert(chapter.closest('h1'));
+&lt;/script&gt;</code></pre>
+  </div>
+  <div>
+    <h3>Elementų patikrinimas — CSS selector'iais</h3>
+    <h4><code>Element.matches(css)</code></h4>
+    <p> <a href="https://dom.spec.whatwg.org/#dom-element-matches">DOM Standard — matches(selectors)</a>    </p>
+    <blockquote>
+      <p>The <code>Element.matches()</code> method returns <code>true</code> if the element would be selected by the specified selector string; otherwise, returns <code>false</code>.</p>
+    </blockquote>
+    <div class="c-pvs c-pvs--title c-pvs--btnHvrOnc c-pvs--border c-pvs--parent-border">
+      <p>Naudojimo būdas — DOM elementų masyvo apdorojimas cikle, kad rasti dominantį elementą, su kuriuo galima atlikti reikalingus veiksmus.</p>
+      <blockquote>
+        <p>The method comes in handy when we are iterating over elements (like in an array or something) and trying to filter out those that interest us.</p>
+      </blockquote>
+      <div class="c-pvs__parent" style="">
+        <p>vienas</p>
+        <p data-antras>du</p>
+        <p>trys</p>
+      </div>
+      <button onclick="const targ = this.previousElementSibling;
+for (let elem of targ.children) {
+  if (elem.matches('[data-antras]')) {
+    console.log(elem);
+  }
+}">išvesti DevTools'ų konsolėje</button>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Elementų patikrinimas — pagal DOM medžio hierarchiją / DOM child-parent relationship</h3>
+    <h4><code>Element.contains()</code></h4>
+    <p><code>node.contains(otherNode)</code></p>
+    <blockquote>
+      <p>And let's mention one more method here to check for the child-parent relationship, as it's sometimes useful:</p>
+      <ul>
+        <li><code>elemA.contains(elemB)</code> returns <code>true</code> if <code>elemB</code> is inside <code>elemA</code> (a descendant of <code>elemA</code>) or when <code>elemA==elemB</code>.</li>
+      </ul>
+    </blockquote>
+    <figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+        <pre><code>function isInPage(node) {
+  return (node === document.body)
+  ? false
+  : document.body.contains(node);
+}</code></pre>
+      </div>
+      <figcaption>This function checks to see if an element is in the page's body. As <code>contains</code> is inclusive and determining if the body contains itself isn't the intention of <code>isInPage</code> this case explicitly returns <code>false</code>.</figcaption>
+    </figure>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Senesni <code>*.getElementsBy*()</code> metodai    </h3>
+    <div class="c-em-important c-em--small c-em--narrow">
+      <blockquote>
+        <p>Today, they are mostly history, as <code>*.querySelector*()</code> is more powerful and shorter to write.</p>
+      </blockquote>
+    </div>
+    <p>Visi <code>*.getElementsBy*()</code> grąžina <i>live collections</i>:</p>
+    <blockquote>
+      <p>Live collections</p>
+      <p>All methods "<code>getElementsBy*</code>" return a <em>live</em> collection. Such collections always reflect the current state of the document and "auto-update" when it changes.</p>
+      <p>In the example below, there are two scripts.</p>
+      <ol>
+        <li>The first one creates a reference to the collection of <code>&lt;div&gt;</code>. As of now, its length is 1.</li>
+        <li>The second scripts runs after the browser meets one more <code>&lt;div&gt;</code>, so its length is 2.</li>
+      </ol>
+      <pre><code>&lt;div&gt;First div&lt;/div&gt;
+
+&lt;script&gt;
+  let divs = document.getElementsByTagName('div');
+  alert(divs.length); // 1
+&lt;/script&gt;
+
+&lt;div&gt;Second div&lt;/div&gt;
+
+&lt;script&gt;
+  alert(divs.length); // 2
+&lt;/script&gt;</code></pre>
+    </blockquote>
+    <h4><code>*.getElementsByTagName()</code></h4>
+    <pre><code>HTMLCollection = Document|Element.getElementsByTagName(tagName)</code></pre>
+    <blockquote>
+      <p>The <code>Element.getElementsByTagName()</code> method returns a live <a href="https://devdocs.io/dom/htmlcollection">HTMLCollection</a> of elements with the given <a href="https://devdocs.io/dom/element/tagname">tag name</a>. All descendants of the specified element are searched, but not the element itself. The returned list is <em>live</em>, which means it updates itself with the DOM tree automatically. </p>
+    </blockquote>
+    <p>Parametras gali būti:</p>
+    <ul>
+      <li><code>*.getElementsByTagName(&quot;div&quot;)</code> — tago-elemento pavadinimas — <code></code>grąžina visų <code>&lt;div&gt;</code> masyvą</li>
+      <li><code>*.getElementsByTagName(&quot;*&quot;)</code> — grąžina visus elementus    </li>
+    </ul>
+    <figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+        <pre><code>elms = document.getElementsByTagName(&quot;div&quot;);
+elms = document.querySelectorAll(&quot;div&quot;);</code></pre>
+      </div>
+      <figcaption>Kaip tą patį padaryti su <code>*.querySelectorAll()</code></figcaption>
+    </figure>
+    <figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+        <pre><code>// doesn't work
+document.getElementsByTagName('input').value = 5;
+
+// should work (if there's an input)
+document.getElementsByTagName('input')[0].value = 5;</code></pre>
+      </div>
+      <figcaption>It returns a collection, not an element!</figcaption>
+    </figure>
+    <p>Dėl SVG:</p>
+    <blockquote>
+      <p>When called on an HTML element in an HTML document, <code>getElementsByTagName</code> lower-cases the argument before searching for it. This is undesirable when trying to match camel-cased SVG elements (such as <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient">&lt;linearGradient&gt;</a>) in an HTML document. Instead, use <a href="https://developer.mozilla.org/en-US/docs/Web/API/element/getElementsByTagNameNS">Element.getElementsByTagNameNS()</a>, which preserves the capitalization of the tag name.</p>
+    </blockquote>
+    <h4><code>*.getElementsByClassName()</code></h4>
+    <p><code>HTMLCollection = Document|Element.getElementsByClassName(tagName)</code></p>
+    <blockquote>
+      <p>The <a href="https://devdocs.io/dom/element">Element</a> method <code>getElementsByClassName()</code> returns a live <a href="https://devdocs.io/dom/htmlcollection">HTMLCollection</a> which contains every descendant element which has the specified class name or names.</p>
+    </blockquote>
+    <figure class="c-figure c-figure--code" style="wwidth:95%">
+      <div class="c-figure__content">
+        <pre><code>elms = document.getElementsByClassName(&quot;c-important&quot;);
+elms = document.querySelectorAll(&quot;.c-important&quot;);</code></pre>
+      </div>
+      <figcaption>Kaip tą patį padaryti su <code>*.querySelectorAll()</code></figcaption>
+    </figure>
+    <h4><code>document.getElementsByName()</code></h4>
+    <p><code>HTMLCollection = document.getElementsByName(name)</code>    </p>
+    <blockquote>
+      <p><code>document.getElementsByName(name)</code> returns elements with the given name attribute, document-wide. Very rarely used.</p>
+    </blockquote>
+    <p>Pvz.:</p>
+    <pre><code>&lt;form name="my-form"&gt;
+  &lt;div class="article"&gt;Article&lt;/div&gt;
+  &lt;div class="long article"&gt;Long article&lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // find by name attribute
+  let form = document.getElementsByName('my-form')[0];
+
+  // find by class inside the form
+  let articles = form.getElementsByClassName('article');
+
+  // 2, found two elements with class "article"
+  alert(articles.length);
+&lt;/script&gt;</code></pre>
+  </div>
+</div>
+<h2>HTML DOM — BOM</h2>
+<h3><code>window.navigator</code></h3>
+<blockquote>
+  <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator">navigator</a> object provides background information about the browser and the operating system. </p>
+</blockquote>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>the two most widely known:</p>
+      <ul>
+        <li><code>navigator.userAgent</code> – about the current browser</li>
+        <li><code>navigator.platform</code> – about the platform (can help to differ between Windows/Linux/Mac etc) </li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3><code>window.location</code></h3>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location">Location - Web APIs | MDN</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/location">Window.location - Web APIs | MDN</a> </p>
+    <p>Kas tai yra, ką galima daryti:</p>
+    <blockquote>
+      <p>The <code>window.location</code> read-only property returns a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location">Location</a> object with information about the current location of the document.</p>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/location">location</a> object allows us to read the current URL and can redirect the browser to a new one.</p>
+    </blockquote>
+    <p>Galimas shorthand'inis naudojimas:</p>
+    <blockquote>
+      <p>Though <code>window.location</code> is a <em>read-only</em> Location object, you can also assign a <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString">DOMString</a> to it. This means that you can work with location as if it were a string in most cases: <code>location = 'http://www.example.com'</code> is a synonym of <code>location.href = 'http://www.example.com'</code>.</p>
+    </blockquote>
+    <div class="c-em-important c-em--small c-em--narrow">
+      <p>Both the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window">Window</a> interface have such a linked Location, accessible via <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/location">Document.location</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/location">Window.location</a> respectively.</p>
+    </div>
+    <p>Naršyklės DevTool'sų Console'ėje galima išvesti:</p>
+    <p><img src="images/20201011_153523_DevTools - konspektas.local_dom.pagrindai.html.png" alt="" width="178" height="91"/></p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>Kito puslapio, t. y. kitokio adreso, atidarymas naršyklėlėje — <q>navigate to a new page</q>:</p>
+    <pre><code>location = "http://www.mozilla.org";
+location.href = "http://www.mozilla.org";
+location.assign("http://www.mozilla.org");</code></pre>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Pure browser methods of communicating with the user</h3>
+<blockquote>
+  <p>Functions <code>alert/confirm/prompt</code> are also a part of BOM: they are directly not related to the document, but represent pure browser methods of communicating with the user.</p>
+</blockquote>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <h4><code>window.alert</code></h4>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code> window.confirm</code></h4>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>window.prompt</code></h4>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<figure class="c-figure c-figure--code" style="mmax-width:400px">
+  <div class="c-figure__content">
+    <p>&nbsp;</p>
+  </div>
+  <figcaption>Tai yra shorthand'ai</figcaption>
+</figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

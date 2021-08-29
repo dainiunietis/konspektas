@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+  <title>-</title>
+  <!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  <style>
+  </style>
+  <!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Section'ai</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</p>
+
+<h2>"Plikas" section'as</h2>
+<section>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</p>
+</section>
+<h3><code>.section--gaps</code> — section'as su tarpais</h3>
+<section class="section--gaps">
+  <p>Etiam ante purus, consectetuer</p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</p>
+</section>
+
+<h2>Section'as su pavadinimu</h2>
+<h3><code>.section__title</code></h3>
+<section>
+  <p class="section__title">Etiam ante purus, consectetuer</p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</p>
+</section>
+<h4><code>.section__title .section--gaps</code></h4>
+<section class="section--gaps">
+  <p class="section__title">Etiam ante purus, consectetuer</p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</p>
+</section>
+<h3><code>.section--titleFirst</code></h3>
+<section class="section--titleFirst">
+  <p>Etiam ante purus, consectetuer</p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</p>
+</section>
+<h4><code>.section--titleFirst .section--gaps</code></h4>
+<section class="section--titleFirst section--gaps">
+  <p>Etiam ante purus, consectetuer</p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</p>
+</section>
+
+
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

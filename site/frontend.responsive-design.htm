@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Responsive design</h1>
+<h2>Media queries</h2>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">Media queries - CSS: Cascading Style Sheets | MDN</a></p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+     <h3>Kokius
+       breakpoint'us naudoti? </h3>
+     <p>&nbsp;</p>
+     <blockquote>
+       <p>Let's say that you set breakpoints at 43em (688px), 62em (992px), and 82em (1312px) wide. You know that phones will all be under 688px, most tablets will fall somewhere between 688px and 992px, smaller screens will be between 992px to 1312px, and larger screens will be greater than 1312px.</p>
+       <p><img src="images/20200411221154.png" width="393" height="162"></p>
+       <p> <a href="https://coder-coder.com/media-query-breakpoints/">What media query breakpoints should you use? - Coder Coder</a></p>
+     </blockquote>
+     <p>&nbsp;</p>
+     <blockquote>
+       <p> <a href="https://flaviocopes.com/css-breakpoints/">What are good CSS Breakpoint values for Responsive Design?</a></p>
+       <p>We have 5 major device sizes to worry about:</p>
+       <ul>
+         <li>mobile portrait</li>
+         <li>mobile landscape</li>
+         <li>tablet portrait</li>
+         <li>tablet landscape</li>
+         <li>laptop</li>
+       </ul>
+       <p>Those devices map to those pixel values:</p>
+       <ul>
+         <li>mobile portrait: less than 640px</li>
+         <li>mobile landscape: &gt; 640px</li>
+         <li>tablet portrait: &gt; 768px</li>
+         <li>tablet landscape: &gt; 1024px</li>
+         <li>laptop: &gt; 1280px     </li>
+       </ul>
+       <pre><code>/* Small (sm) */
+@media (min-width: 640px) { ... }
+
+/* Medium (md) */
+@media (min-width: 768px) { ... }
+
+/* Large (lg) */
+@media (min-width: 1024px) { ... }
+
+/* Extra Large (xl) */
+@media (min-width: 1280px) { ... }</code></pre>
+   </blockquote>
+     <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>Kokius matavimo vienetus naudoti breakpoint'ams </h3>
+      <p><a href="https://css-tricks.com/zooming-squishes/">Zooming Squishes | CSS-Tricks</a> — Geresnis tinklapių zoom'ingas kai MQ nurodomi su <code>em</code>'ais</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

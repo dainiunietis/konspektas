@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>margin:</h1>
+<p><a href="http://konspektas-prev.local/client-side/css/css/properties/margin.htm">konspektas-prev.local — margin</a></p>
+<p> <a href="https://www.smashingmagazine.com/2019/07/margins-in-css/">Everything You Need To Know About CSS Margins — Smashing Magazine</a></p>
+<p>Margin'sų collapsing'o lokalus, t. y. vienai box'o kraštinei, išjungimas</p>
+<p>&nbsp;</p>
+<p>Baigti konspektuoti: <a href="https://www.smashingmagazine.com/2019/07/margins-in-css/">Everything You Need To Know About CSS Margins — Smashing Magazine</a><br>
+  nuo: Margin Strategies For Your Site</p>
+<p>&nbsp;</p>
+<h2>Margin'sų collapsing'as</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>Kurie margin'sai collapse'uoja</h3>
+      <p>CSS1 specifikacijoje nustatyta, kad vertikalūs margin'sai collapse'inasi:</p>
+      <blockquote>
+        <p>The CSS1 specification, as it defined margins, also defined that vertical margins <em>collapse</em>.</p>
+      </blockquote>
+      <p>Naujesnėse specifikacijose nustatyta lanksčiau, kad  margin'sai collapse'uoja <i>block direction</i> kryptimi</p>
+      <blockquote>
+        <p>Margins only collapse in the block direction, such as between paragraphs.</p>
+      </blockquote>
+      <p>O kokia tai kryptis, vertikali ar horizontali, priklauso nuo <i>writing mode</i>:      </p>
+      <blockquote>
+        <p>In CSS2, only vertical margins are specified to collapse — that is the top and bottom margins on an element if you are in a horizontal writing mode.</p>
+      </blockquote>
+      <h3>Kaip vyksta collapsing'as</h3>
+      <blockquote>
+        <p>When margins collapse, they will combine so that the space between the two elements becomes the larger of the two margins. The smaller margin essentially ending up inside the larger one.</p>
+      </blockquote>
+      <h3>Kodėl buvo įvestas margin'sų collapsing'as</h3>
+      <blockquote>
+        <p>Margin collapsing makes sense if you consider that in those early days, CSS was being used as a documenting formatting language. Margin collapsing means that when a heading with a bottom margin, is followed by a paragraph with a top margin, you do not get a huge gap between those items.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>Kokiomis sąlygomis vertikalūs margin'sai collapse'ina</h3>
+      <blockquote>
+        <p>Margins collapse in the following situations:</p>
+        <ul>
+          <li><a href="https://www.smashingmagazine.com/2019/07/margins-in-css/#adjacent-siblings">Adjacent siblings</a></li>
+          <li><a href="https://www.smashingmagazine.com/2019/07/margins-in-css/#completely-empty-boxes">Completely empty boxes</a></li>
+          <li><a href="https://www.smashingmagazine.com/2019/07/margins-in-css/#parent-first-last-child-element">Parent and first or last child element</a></li>
+        </ul>
+      </blockquote>
+      <h4>Adjacent siblings</h4>
+      <p>&nbsp;</p>
+      <h4>Completely empty boxes</h4>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">tago be turinio savo margin'sų collapse'inimo išjungimo būdai</p>
+        <p class="c-pvz__title">vidurinis be turinio tagas su veikiančiu savo margin'sų collapsing'u — faktiškai tuščio tago tarsi nėra, o jo margin'sai dalyvauja collapsing'e tarp gretimų tagų</p>
+        <div class="c-pvz__container" style="">
+          <div style="background: mistyrose; margin-bottom: 10px">&nbsp;</div>
+          <div style="background: lemonchiffon; margin: 30px 0 40px"></div>
+          <div style="background: khaki; margin-top: 20px">&nbsp;</div>
+        </div>
+        <p class="c-pvz__title">collapsing'as išjungtas su <code>padding:</code> — tuščias tagas tarsi yra, jo viršutinis margin'sas collapse'uoja su aukščiau esančio tago margin'su, o apatinis su žemiau esančio</p>
+        <div class="c-pvz__container" style="">
+          <div style="background: mistyrose; margin-bottom: 10px">&nbsp;</div>
+          <div style="background: lemonchiffon; margin: 30px 0 40px; padding-top: 1px;"></div>
+          <div style="background: khaki; margin-top: 20px">&nbsp;</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <h4>Parent and first or last child element</h4>
+      <p>Tago pirmas ir paskutinis vaikiniai tagai dalyvauja margin'sų collapsing'e lygiai taip pat, kaip ir tėvinis.      </p>
+      <p>Tai reiškia, pirmojo vaikinio tago viršutinis-top margin'sas atsiranda virš tėvinio tago, ir kartu su tėvinio viršutiniu-top margin'su dalyvauja collapsing'o varžybose. Tas pats su vaikinio apatiniu-bottom margin'su.      </p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">paprasčiausias pvz. kaip margin'sų collapse'e dalyvauja ne tik sibling'iniai tagų margin'sai, bet ir jų pirmieji ir paskutiniai vaikai</p>
+        <p class="c-pvz__title">laimi tėvinis</p>
+        <div class="c-pvz__container" style="">
+          <div class="-c-pvz__target" style="background: mistyrose; margin-bottom: 20px">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin-top: 30px">
+            <div class="-c-pvz__target" style="background: lemonchiffon; margin-top: 10px">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">laimi tėvinio pirmasis vaikas</p>
+        <div class="c-pvz__container" style="">
+          <div class="-c-pvz__target" style="background: mistyrose; margin-bottom: 20px">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin-top: 10px">
+            <div class="-c-pvz__target" style="background: lemonchiffon; margin-top: 30px">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">margin'sų išlindimo už tėvinio tago išjungimo būdai</p>
+        <p class="c-pvz__title">su <code>padding:</code></p>
+        <div class="c-pvz__container" style="">
+          <div style="background: mistyrose; margin-bottom: 20px">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin-top: 10px; padding-top: 1px;">
+            <div style="background: lemonchiffon; margin-top: 30px">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">su <code>display: flow-root</code></p>
+        <blockquote>
+          <p>CREATING A BLOCK FORMATTING CONTEXT</p>
+          <p>A new Block Formatting Context (BFC) will also prevent margin collapsing through the containing element. If we look again at the example of the first and last child, ending up with their margins outside of the wrapper, and give the wrapper <code>display: flow-root</code>, thus creating a new BFC, the margins stay inside.</p>
+        </blockquote>
+        <div class="c-pvz__container" style="">
+          <div style="background: mistyrose; margin-bottom: 20px">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin-top: 10px; display: flow-root">
+            <div style="background: lemonchiffon; margin-top: 30px">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">su <code>overflow: auto</code></p>
+        <blockquote>
+          <p>Changing the value of the <code>overflow</code> property to <code>auto</code> will have the same effect, as this also creates a new BFC, although it may also create scrollbars that you didn’t want in some scenarios.</p>
+        </blockquote>
+        <div class="c-pvz__container" style="">
+          <div style="background: mistyrose; margin-bottom: 20px">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin-top: 10px; overflow: auto">
+            <div style="background: lemonchiffon; margin-top: 30px">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">margin'sai collapse'e dalyvauja 3-jų tagų margin'sai        </p>
+        <p class="c-pvz__title">gaubiančio tago vertikalūs margin'sai MAŽESNI nei siblinginio ir savo vaikinių, todėl susicollapse'ina</p>
+        <div class="c-pvz__container" style="">
+          <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin: 10px 0">
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+          </div>
+          <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+        </div>
+        <p class="c-pvz__title">... DIDESNI, todėl yra pritaikomas</p>
+        <div class="c-pvz__container" style="">
+          <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin: 30px 0">
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+          </div>
+          <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+        </div>
+        <p class="c-pvz__title">... DIDESNI, todėl yra pritaikomas</p>
+        <div class="c-pvz__container" style="">
+          <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+          <div style="outline: 1px solid hsl(230,100%,50%); margin: 30px 0">
+            <div class="-c-pvz__target" style="margin: 20px 0">
+              <div style="margin: 40px 0; background: hsl(157,84%,73%)">&nbsp;</div>
+            </div>
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+            <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+          </div>
+          <div class="c-pvz__target" style="margin: 20px 0">&nbsp;</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>Yra CSS savybės, su kuriomis tagui margin'sų collapsing'as neveikia</h3>
+      <p>Kokios CSS savybės išjungia margin'sų collapsing'ą:</p>
+      <blockquote>
+        <p>Margins never collapse if an item has absolute positioning, or is floated.</p>
+      </blockquote>
+      <p>Margin'sų collapsing'o tarp gretimų tagų neveikia Flex ir Grid tagų vaikams:      </p>
+      <blockquote>
+        <p>Flex and Grid containers establish Flex and Grid <em>formatting contexts</em> for their children, so they have different behavior to block layout. One of those differences is that margins do not collapse</p>
+      </blockquote>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">kaip Flex vaikams neveikia margin'sų collapsing'as</p>
+        <p class="c-pvz__title">be Flex'o</p>
+        <div class="c-pvz__container" style="">
+          <div style="background: orchid; margin: 20px">item 1</div>
+          <div style="background: yellowgreen; margin: 20px">item 2</div>
+          <div style="background: peru; margin: 20px">item 2</div>
+        </div>
+        <p class="c-pvz__title">su Flex'u</p>
+        <div class="c-pvz__container" style="display: flex; flex-direction: column;">
+          <div style="background: orchid; margin: 20px">item 1</div>
+          <div style="background: yellowgreen; margin: 20px">item 2</div>
+          <div style="background: peru; margin: 20px">item 2</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookmarklet</title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+</head>
+<style>
+
+  /*=================================================
+    === variantas — absolute-relative
+    =================================================*/
+
+  a:hover:after {
+    position:      absolute;
+    transform:     translate(0, -100%);
+    padding:       0.35em 0.8em 0.45em;
+    left:          7px;
+    width:         calc(100% - 16px);
+    font:          1.45rem "IBM Plex Mono";
+    color:         hsla(49, 100%, 85%, 0.7);
+    background:    hsla(49, 20%, 15%, 0.97);
+    border-radius: 27px;
+    box-shadow:    0px 0px 17px 0px hsla(49, 50%, 80%, 0.7);
+    content:       attr(href);
+    z-index:       10000;
+  }
+
+    /*border:        1px hsla(49, 20%, 15%, 1) solid;*/
+  /*border:        1px hsla(49, 20%, 100%, 0.3) solid;*/
+  /*box-shadow:    4px 4px 4px 0 hsla(49, 5%, 5%, 0.35);*/
+
+  /*=================================================
+    === variantas — relative-absolute
+    =================================================*/
+
+  /*a:hover {*/
+  /*  position: relative;*/
+  /*}*/
+
+  /*a:hover:after {*/
+  /*  position: absolute;*/
+  /*  width: auto;*/
+  /*  font: 1.5rem InputSansNarrow;*/
+  /*  color: hsl(49, 20%, 70%);*/
+  /*  background: hsl(49, 20%, 17%);*/
+  /*  border: 2px hsl(49, 20%, 40%) solid;*/
+  /*  content: attr(href);*/
+  /*}*/
+
+  /*=================================================
+    === variantas — fixed
+    =================================================*/
+
+  /*a:hover:after {*/
+  /*  position: fixed;*/
+  /*  top: 5px;*/
+  /*  left: 5px;*/
+  /*  right: 5px;*/
+  /*  padding: 0.1em 0.4em;*/
+  /*  font: 1.8rem "IBM Plex Mono";*/
+  /*  color: hsl(49, 20%, 70%);*/
+  /*  background: hsl(49, 20%, 17%);*/
+  /*  border: 2px hsl(49, 20%, 30%) solid;*/
+  /*  border-radius: 3px;*/
+  /*  content: attr(href);*/
+  /*}*/
+
+</style>
+<body style="-background: hsl(49, 20%, 8%);">
+
+<h1>bookmarklet: Link hover — show href (relative)</h1>
+
+<p>Patį bookmarklet'ą darome su — https://mcdlr.com/css-inject/</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lorem ipsum dolor sit amet, <a href="https://rwt.io/typography-tips/figureground-composition-text-image-and-color">consectetur
+  adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam
+  faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  <style>
+    .pc-pvz {
+      /*height: 92vh;*/
+      /*outline: 1px dotted black;*/
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+
+    .pc-pvz--flexDirCol {
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      align-items: center;
+      /*justify-content: space-between;*/
+    }
+
+    .pc-pvz > * {
+      margin: 5px 7px;
+      padding: 0.6em 0.3em;
+      width: 100px;
+      color: hsl(0, 0%, 0%);
+    }
+
+    .pc-pvz__color {
+      /*box-sizing: content-box;*/
+      /*flex-basis: 5em;*/
+      /*flex-grow: 1;*/
+      /*width: fit-content;*/
+      /*height: 50px;*/
+      /*background: hsla(24,100%,40%,1.00);*/
+      /*font-family: "IBM Plex Mono", monospace;*/
+      /*font-family: "InputMonoCompressed", monospace;*/
+      font: 1.3em "InputMono", monospace;
+      /*font-family: "Gabriola", monospace;*/
+      /*font-style: italic;*/
+      /*font-size: 2em;*/
+      text-align: center;
+      /*height: 3em;*/
+    }
+
+    .pc-pvz__sep {
+      /*font: .9em Iosevka, monospace;*/
+      /*font: italic .9em "IBM Plex Mono", monospace;*/
+      /*font: 500 1em "IBM Plex Sans", monospace;*/
+      font: 800 1.4em "IBM Plex Sans Condensed", monospace;
+      /*font: 400 .9em "Iosevka", monospace;*/
+      /*font: 700 1.1em "Fira Code", monospace;*/
+      /*font:  1.9em "Haettenschweiler", monospace;*/
+      /*font: 700 1.4em "Fira Sans", monospace;*/
+      /*font: 700 1.3em "Segoe UI", monospace;*/
+      /*font: 1em "InputMonoCompressed", monospace;*/
+      /*font: 1em "InputMono", monospace;*/
+      /*border-radius: 0.5em;*/
+      /*background-color: hsl(0, 0%, 85%);*/
+      text-shadow: 2px 1px 3px hsla(0, 0%, 0%, .25);
+    }
+
+    .pc-pvz__sep--1 {
+      width: 110%;
+      text-align: center;
+      /*height: 0.7em;*/
+      /*border-radius: 1em;*/
+      /*background-color: black;*/
+    }
+
+    .pc-pvz__sep--2 {
+      /*flex-basis: 100%;*/
+      /*width: 1em;*/
+      /*height: 1em;*/
+      /*color: wheat;*/
+      /*background-color: hsl(0, 0%, 22%);*/
+    }
+  </style>
+  <!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>SASS'o border'iai &#8212; Design Style Guide</h1>
+
+<p><code>sass/_utilities.box.border.scss</code></p>
+
+<h2>Variations</h2>
+<p>Failai:</p>
+<ul>
+  <li><code>sass.szm/_tools.box.border.designStyle.scss</code></li>
+  <li><code>sass/_tools.box.border.designStyle.scss</code></li>
+</ul>
+<p>Class'ų pattern'as:</p>
+<ul>
+  <li><code>.u-border-&lt;line-style-value&gt;-&lt;line-color-name&gt;-&lt;line-width-name&gt;</code></li>
+  <li><code>.B&lt;line-style-nr&gt;&lt;line-color-nr&gt;&lt;line-width-nr&gt;</code></li>
+</ul>
+
+<div id="20200219133802" class="pc-pvz -pc-pvz--flexDirCol -B361c"></div>
+<script>
+  let markup = '';
+  for (let styleIndex = 1; styleIndex <= 4; styleIndex++) {
+    markup += `<div class="pc-pvz__sep pc-pvz__sep--1">style: ${styleIndex}</div>`;
+    for (let colorIndex = 1; colorIndex <= 7; colorIndex++) {
+      markup += `<div class="pc-pvz__sep pc-pvz__sep--2">color: ${colorIndex}</div>`;
+      for (let widthIndex = 1; widthIndex <= 5; widthIndex++) {
+        markup += `<div class="pc-pvz__color B${styleIndex}${colorIndex}${widthIndex}">.B${styleIndex}${colorIndex}${widthIndex}</div>`;
+      }
+    }
+  }
+  // console.log(markup);
+  document.getElementById("20200219133802").innerHTML = markup;
+</script>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

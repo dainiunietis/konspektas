@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>.c-navTree</h1>
+
+<p><a href="#aaa">laid out by positioning and aligning it into a grid</a></p>
+
+<!--<div class="o-flx o-flx&#45;&#45; o-gfx o-gfx&#45;&#45;N2">-->
+<div class="o-clm o-clm--equal">
+  <div>
+    <h2>.c-navTree--clean</h2>
+    <nav class="c-navTree" aria-label="page table of content">
+      <ul><li><a href="#Visų_Grid_layout_savybių_suvestinė">Visų Grid layout savybių suvestinė</a></li><li><a href="#Susitarimai">Susitarimai</a></li><li><a href="#Apibendrinimai">Apibendrinimai</a><ul><li><a href="#backwards_(negative)_numerical_grid_coordinates">backwards (negative) numerical grid coordinates</a></li></ul></li><li><a href="#Apibendrinimai_1">Apibendrinimai</a><ul><li><a href="#vertical_lines_which_create_a">vertical lines which create a</a><ul><li><a href="#alignment_and_spacing">alignment and spacing</a></li></ul></li></ul></li><li><a href="#Apibendrinimai_2">Apibendrinimai</a></li><li><a href="#Apibendrinimai_3">Apibendrinimai</a></li><li><a href="#Grid_Layout_Concepts_and_Terminology">Grid Layout Concepts and Terminology</a></li><li><a href="#Naršyklių_palaikymas-suderinamumas">Naršyklių palaikymas-suderinamumas</a></li><li><a href="#Naudojimas,_galimos_klaidos">Naudojimas, galimos klaidos</a></li><li><a href="#Grid'o_HTML_tagai-elementai_/_grid_elements">Grid'o HTML tagai-elementai / grid elements</a><ul><li><a href="#grid_container">grid container</a><ul><li><a href="#display:_grid_|_inline-grid_—_sukuria_grid_container'į">display: grid | inline-grid — sukuria grid container'į</a></li><li><a href="#Kuo_grid_formatting_context_skiriasi_nuo_block_formatting_context">Kuo grid formatting context skiriasi nuo block formatting context</a></li></ul></li><li><a href="#grid_items">grid items</a></li></ul></li><li><a href="#/_Reordering_and_Accessibility">/ Reordering and Accessibility</a><ul><li><a href="#order:">order:</a></li></ul></li><li><a href="#Grid'o_sukūrimas-nustatymas_/_Defining_the_Grid">Grid'o sukūrimas-nustatymas / Defining the Grid</a><ul><li><a href="#Nustatytas_grid'as_/_explicit_grid_(defined_grid)">Nustatytas grid'as / explicit grid (defined grid)</a><ul><li><a href="#grid-template-rows:">grid-template-rows:</a><ul><li><a href="#Kaip_veikia_skirtingi_matavimo_vienetai">Kaip veikia skirtingi matavimo vienetai</a></li><li><a href="#Grid_line'ų_užvardinimas_(grid_line_names)">Grid line'ų užvardinimas (grid line names)</a></li></ul></li><li><a href="#grid-template-columns:">grid-template-columns:</a></li><li><a href="#grid-template-areas:">grid-template-areas:</a></li></ul></li><li><a href="#Numanomas_grid'as_/_The_Implicit_Grid">Numanomas grid'as / The Implicit Grid</a></li><li><a href="#grid-auto-rows:">grid-auto-rows:</a></li><li><a href="#grid-auto-columns:">grid-auto-columns:</a><ul><li><a href="#grid-auto-flow:">grid-auto-flow:</a><ul><li><a href="#grid-auto-flow:_row">grid-auto-flow: row</a></li><li><a href="#grid-auto-flow:_column">grid-auto-flow: column</a></li><li><a href="#grid-auto-flow:_dense">grid-auto-flow: dense</a></li></ul></li></ul></li></ul></li><li><a href="#Grid_item'ams_skirtos_CSS_savybės_—_grid_items_positioning_against_grid_lines">Grid item'ams skirtos CSS savybės — grid items positioning against grid lines</a><ul><li><a href="#grid-row-start:_grid-row-end:">grid-row-start: grid-row-end:</a><ul><li><a href="#Dalinis_grid_item'ų_pozicionavimas_—_nurodant_tik_vieną_...">Dalinis grid item'ų pozicionavimas — nurodant tik vieną ...</a></li><li><a href="#<grid-line>_variantas_su_span">&lt;grid-line&gt; variantas su span</a></li></ul></li><li><a href="#_grid-column-start:_grid-column-end:"> grid-column-start: grid-column-end:</a><ul><li><a href="#Dalinis_grid_item'ų_pozicionavimas_—_pavyzdžiai_naudojant_tik_vieną_iš_grid-column:_reikšmių_">Dalinis grid item'ų pozicionavimas — pavyzdžiai naudojant tik vieną iš grid-column: reikšmių </a></li><li><a href="#Dalinis_grid_item'ų_pozicionavimas_—_pavyzdžiai_naudojant_abi_grid-column:_reikšmes">Dalinis grid item'ų pozicionavimas — pavyzdžiai naudojant abi grid-column: reikšmes</a></li></ul></li><li><a href="#grid-row:_grid-column:_grid-area:">grid-row: grid-column: grid-area:</a></li><li><a href="#Kartu_grid-row:_ir_grid-column:_veikimas">Kartu grid-row: ir grid-column: veikimas</a><ul><li><a href="#Pozicionuotų_grid_item'ų_sąveika">Pozicionuotų grid item'ų sąveika</a></li></ul></li></ul></li><li><a href="#Grid'o_matavimo_vienetas_fr_(CSS_data_type_—_fractional_unit)">Grid'o matavimo vienetas fr (CSS data type — fractional unit)</a></li><li><a href="#Grid'o_funkcijos">Grid'o funkcijos</a><ul><li><a href="#repeat()">repeat()</a></li><li><a href="#minmax()">minmax()</a></li><li><a href="#fit-content()">fit-content()</a></li></ul></li><li><a href="#Grid'ai_grid'uose_(nesting_grids)">Grid'ai grid'uose (nesting grids)</a><ul><li><a href="#Nesusiję_įterpti_grid'ai">Nesusiję įterpti grid'ai</a></li><li><a href="#Susiję_įterpti_grid'ai_(subgrid)">Susiję įterpti grid'ai (subgrid)</a></li></ul></li><li><a href="#Grid'o_item'ų_sluoksniai_(layering_items)">Grid'o item'ų sluoksniai (layering items)</a></li></ul>
+    </nav>
+  </div>
+  <div>
+    <h2>.c-navTree--number</h2>
+    <nav class="c-navTree c-navTree--numbered" aria-label="page table of content">
+      <ul><li><a href="#Visų_Grid_layout_savybių_suvestinė">Visų Grid layout savybių suvestinė</a></li><li><a href="#Susitarimai">Susitarimai</a></li><li><a href="#Apibendrinimai">Apibendrinimai</a><ul><li><a href="#backwards_(negative)_numerical_grid_coordinates">backwards (negative) numerical grid coordinates</a></li></ul></li><li><a href="#Apibendrinimai_1">Apibendrinimai</a><ul><li><a href="#vertical_lines_which_create_a">vertical lines which create a</a><ul><li><a href="#alignment_and_spacing">alignment and spacing</a></li></ul></li></ul></li><li><a href="#Apibendrinimai_2">Apibendrinimai</a></li><li><a href="#Apibendrinimai_3">Apibendrinimai</a></li><li><a href="#Grid_Layout_Concepts_and_Terminology">Grid Layout Concepts and Terminology</a></li><li><a href="#Naršyklių_palaikymas-suderinamumas">Naršyklių palaikymas-suderinamumas</a></li><li><a href="#Naudojimas,_galimos_klaidos">Naudojimas, galimos klaidos</a></li><li><a href="#Grid'o_HTML_tagai-elementai_/_grid_elements">Grid'o HTML tagai-elementai / grid elements</a><ul><li><a href="#grid_container">grid container</a><ul><li><a href="#display:_grid_|_inline-grid_—_sukuria_grid_container'į">display: grid | inline-grid — sukuria grid container'į</a></li><li><a href="#Kuo_grid_formatting_context_skiriasi_nuo_block_formatting_context">Kuo grid formatting context skiriasi nuo block formatting context</a></li></ul></li><li><a href="#grid_items">grid items</a></li></ul></li><li><a href="#/_Reordering_and_Accessibility">/ Reordering and Accessibility</a><ul><li><a href="#order:">order:</a></li></ul></li><li><a href="#Grid'o_sukūrimas-nustatymas_/_Defining_the_Grid">Grid'o sukūrimas-nustatymas / Defining the Grid</a><ul><li><a href="#Nustatytas_grid'as_/_explicit_grid_(defined_grid)">Nustatytas grid'as / explicit grid (defined grid)</a><ul><li><a href="#grid-template-rows:">grid-template-rows:</a><ul><li><a href="#Kaip_veikia_skirtingi_matavimo_vienetai">Kaip veikia skirtingi matavimo vienetai</a></li><li><a href="#Grid_line'ų_užvardinimas_(grid_line_names)">Grid line'ų užvardinimas (grid line names)</a></li></ul></li><li><a href="#grid-template-columns:">grid-template-columns:</a></li><li><a href="#grid-template-areas:">grid-template-areas:</a></li></ul></li><li><a href="#Numanomas_grid'as_/_The_Implicit_Grid">Numanomas grid'as / The Implicit Grid</a></li><li><a href="#grid-auto-rows:">grid-auto-rows:</a></li><li><a href="#grid-auto-columns:">grid-auto-columns:</a><ul><li><a href="#grid-auto-flow:">grid-auto-flow:</a><ul><li><a href="#grid-auto-flow:_row">grid-auto-flow: row</a></li><li><a href="#grid-auto-flow:_column">grid-auto-flow: column</a></li><li><a href="#grid-auto-flow:_dense">grid-auto-flow: dense</a></li></ul></li></ul></li></ul></li><li><a href="#Grid_item'ams_skirtos_CSS_savybės_—_grid_items_positioning_against_grid_lines">Grid item'ams skirtos CSS savybės — grid items positioning against grid lines</a><ul><li><a href="#grid-row-start:_grid-row-end:">grid-row-start: grid-row-end:</a><ul><li><a href="#Dalinis_grid_item'ų_pozicionavimas_—_nurodant_tik_vieną_...">Dalinis grid item'ų pozicionavimas — nurodant tik vieną ...</a></li><li><a href="#<grid-line>_variantas_su_span">&lt;grid-line&gt; variantas su span</a></li></ul></li><li><a href="#_grid-column-start:_grid-column-end:"> grid-column-start: grid-column-end:</a><ul><li><a href="#Dalinis_grid_item'ų_pozicionavimas_—_pavyzdžiai_naudojant_tik_vieną_iš_grid-column:_reikšmių_">Dalinis grid item'ų pozicionavimas — pavyzdžiai naudojant tik vieną iš grid-column: reikšmių </a></li><li><a href="#Dalinis_grid_item'ų_pozicionavimas_—_pavyzdžiai_naudojant_abi_grid-column:_reikšmes">Dalinis grid item'ų pozicionavimas — pavyzdžiai naudojant abi grid-column: reikšmes</a></li></ul></li><li><a href="#grid-row:_grid-column:_grid-area:">grid-row: grid-column: grid-area:</a></li><li><a href="#Kartu_grid-row:_ir_grid-column:_veikimas">Kartu grid-row: ir grid-column: veikimas</a><ul><li><a href="#Pozicionuotų_grid_item'ų_sąveika">Pozicionuotų grid item'ų sąveika</a></li></ul></li></ul></li><li><a href="#Grid'o_matavimo_vienetas_fr_(CSS_data_type_—_fractional_unit)">Grid'o matavimo vienetas fr (CSS data type — fractional unit)</a></li><li><a href="#Grid'o_funkcijos">Grid'o funkcijos</a><ul><li><a href="#repeat()">repeat()</a></li><li><a href="#minmax()">minmax()</a></li><li><a href="#fit-content()">fit-content()</a></li></ul></li><li><a href="#Grid'ai_grid'uose_(nesting_grids)">Grid'ai grid'uose (nesting grids)</a><ul><li><a href="#Nesusiję_įterpti_grid'ai">Nesusiję įterpti grid'ai</a></li><li><a href="#Susiję_įterpti_grid'ai_(subgrid)">Susiję įterpti grid'ai (subgrid)</a></li></ul></li><li><a href="#Grid'o_item'ų_sluoksniai_(layering_items)">Grid'o item'ų sluoksniai (layering items)</a></li></ul>
+    </nav>
+  </div>
+</div>
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

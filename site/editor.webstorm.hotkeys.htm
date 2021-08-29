@@ -1,0 +1,1868 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>WebStorm: shortcuts, hotkeys, keymap</h1>
+<p><a href="http://konspektas-prev.local/redaktoriai/phpstorm/sutkatai.htm">http://konspektas-prev.local/redaktoriai/phpstorm/sutkatai.htm</a></p>
+<h2>Sutartinis žymėjimas</h2>
+<p>Shortcut'ų parametrai:</p>
+<dl>
+  <dt><kbd>tas+anas</kbd> @AHKremap:</dt>
+  <dd>
+    <p>Šį hotkeys'ą remap'ina Autohotkey, t. y. šį hotkeys'ą pagauna Autohotkey ir kitus klavišų paspaudimus, kuriuos ir gauna WS.  </p>
+  </dd>
+  <dt><kbd>tas+anas</kbd> @AHKscript:</dt>
+  <dd>
+    <p>šį hotkeys'ą pagauna Autohotkey ir atlieka daugiau veiksmų.</p>
+  </dd>
+</dl>
+<p>Plugin'ų žymėjimas: </p>
+<ul>
+  <li>plugin::Dash</li>
+</ul>
+<p>Komandos, nustatymai:</p>
+<dl>
+  <dt>[Kažkas &gt; Anas]</dt>
+  <dd>
+    Pagrindinio programos lango meniu.
+  </dd>
+  <dt>[<strong>R</strong>][Kažkas &gt; Anas]</dt>
+  <dd>
+    <p>Kontekstinis meniu <strong>R</strong>edaktoriuje.</p>
+  </dd>
+  <dt>[<strong>P</strong>][Kažkas &gt; Anas]</dt>
+  <dd>
+    <p>Tool Windows'ų <strong>P</strong>roject ir <strong>P</strong>roject Files kontekstinis meniu.</p>
+  </dd>
+  <dt>[<strong>C</strong>][Kažkokia action-<strong>C</strong>ommand]</dt>
+  <dd>
+    <p>[<u>H</u>elp &gt; <u>F</u>ind Action...]</p>
+  </dd>
+  <dt>[<strong>S</strong>][Kažkas &gt; Anas]</dt>
+  <dd>
+    <p>[File &gt; <strong>S</strong>ettings...]    </p>
+    <p>Pvz.:</p>
+    <p>[S][Editor &gt; Font] <br>
+    Size: 14</p>
+    <p>[S][Appearance &amp; Behavior &gt; Appearance] Size: 14 <br>
+    Cyclic scrolling in list: <strong>ON</strong></p>
+  </dd>
+  <dt>[<strong>K</strong>][Kažkas &gt; Anas]</dt>
+  <dd>
+    <p>[S][Keymap]</p>
+    <p>Pvz.:</p>
+    <p>[K][Plug-ins &gt; CodeGlance &gt; Toggle CodeGlance]  </p>
+  </dd>
+  <dt>[<strong>M</strong>][Kažkokia action-<strong>C</strong>ommand]</dt>
+  <dd>
+    <p>Tai per [Edit &gt; Macros] sukurtos komandos-makrosai, kuriems per [S][Keymap] galima priskirti hotkeys'ą.</p>
+  </dd>
+</dl>
+<h2>Kaip galima aiškintis kokius veiksmus (actions) galima atlikti ir kokie hotkeys'ai yra priskirti</h2>
+<div class="c-em-important">
+  <p>WS plugin'as &quot;Keymap exporter&quot; prideda meniu komandą [Help &gt; Print Keymap] &#8212; ji generuoja PDF'ą su dabartiniais hotkey'sais.</p>
+  <p>Paskutinį laikau &#8212; <a href="file:///D|/progs_stuf/WebStorm/Keymap -Default ZM (Help -- Print Keymap).pdf">Keymap -Default ZM (Help -- Print Keymap)</a></p>
+</div>
+<table width="939" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="50%"><h3>Fuzzy-search'indami WS komandas-actions</h3>
+      <p>Su [Help &gt; Find Action...] </p>
+      <p><img src="images/20170602183402.png" width="60" height="76"></p>
+      <p>Setting'uose [File &gt; Settings...]</p>
+    <p><img src="images/image_11.png" alt="" width="91" height="63"/></p></td>
+    <td width="50%"><h3>Nuspausdami hotkeys'us</h3>
+    <p>Setting'uose [File &gt; Settings...]</p>
+    <p><img src="images/20170602180458.png" width="167" height="44"></p>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Bendri principai</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Fuzzy search'uose ir autocomplete'uose
+      </h3>
+      <h4>CamelCase'ų radimas pagal initial letters'us</h4>
+      <blockquote>
+        <p>In case of CamelCase or snake_case names, type the initial letters only. WebStorm automatically recognizes and matches the initial letters.</p>
+      </blockquote>
+      <figure class="c-figure--dashedTB" style="">
+        <blockquote>
+          <p>This navigation honors CamelCase and snake_case capitalization. </p>
+        </blockquote>
+        <p><img src="images/2018.08.06_11-18-52-.png" alt="" width="181" height="48"/></p>
+        <figcaption>Ieško pirmųjų sudėtinių žodžių raidžių.</figcaption>
+      </figure>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Bendri-įvairūs / General</h2>
+<pre>plugin::Extra Actions
+Break Quotes
+Move to Next Paragraph
+Move to Next Paragraph with Selection
+Move to Previous Paragraph
+Move to Previous Paragraph with Selection
+Search Online
+Select In Project
+Split Selection
+Toggle Quotes</pre>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Visko fuzzy-search'ai
+    </h3>
+      <div class="c-editor-command o-collapse-locdep"> <p><kbd>shift X2</kbd></p>
+        <p>[C][Search Everywhere]</p>
+      <p>Fuzzy-search'ina: </p>
+      <ul>
+        <li>projekto failus (pagal jų pavadinimą), </li>
+        <li>projekto kodo simbolius,</li>
+        <li>WebStorm'o komandas-actions,</li>
+        <li> WebStorm'o setting'us.</li>
+      </ul>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+\</kbd> (prie Lctrl, ir Enter)</p>
+      <del tabindex="0">
+        <p><kbd>Ctrl X2</kbd> @AHKremap:</p>
+      </del>
+      <p>[<u>H</u>elp &gt; <u>F</u>ind Action...]</p>
+      <p>Fuzzy-search'ina:</p>
+      <ul>
+        <li>WebStorm'o komandas-actions,</li>
+        <li> WebStorm'o setting'us.</li>
+      </ul>
+  </div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Plugins'ai
+    </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[S][Plugins]</p>
+        <p>Sąrašas visų suinstaliuotų plugins'ų.        </p>
+        <figure class="c-figure c-figure--image-bigCaption"><img src="images/2018.05.24_12-35-28-Settings.png" alt="" width="117" height="62"/>
+          <figcaption>
+          <p>1. Atidaro naują langą, kuriame išveda sąrašą tik pačio JetBrains'o plugins'us, ir jau suinstaliuotus, ir kuriuos galima suinstaliuoti.</p>
+          <p>2. Naujame lange išveda ir JetBrains'o, ir kitų sukurtus plugins'us.</p>
+        </figcaption>
+  </figure>
+      </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p class="c-editor-command__title">Plugins'ų enable/disable</p>
+      <figure class="c-figure c-figure--image-bigCaption"><img src="images/2018.05.24_12-11-32-Settings.png" alt="" width="165" height="51"/>
+        <figcaption>Per [S][Plugins].</figcaption>
+      </figure>
+      <figure class="c-figure c-figure--image-bigCaption"><img src="images/2018.05.24_13-25-32-konspektas [D__webdev_konspektas] - ..._site_assets_sass__component.figure.scss .png" alt="" width="162" height="49"/>
+        <figcaption>
+          <p>Su WebStorm'o action'u [C][plugins'o pavadinimas]</p>
+          <p>Pvz. su plugin: Main Menu toggler</p>
+          <p>1. Pačio plugin'o komanda.</p>
+          <p>2. Atidaro [S][Plugins] Main Menu toggler</p>
+          <p>3. Parodo kokia šiuo metu plugin'o būsena (enabled/disabled) ir pasirinkus ją keičia.</p>
+        </figcaption>
+    </figure>
+</div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Refactor'ingas
+      </h3>
+      <p>Kur galima daryti refactor'ingą:</p>
+      <ul>
+        <li>aktyviame redaktoriuje-faile prog. kalbos simboliams: kintamiesiems, funkcijų pavadinimams ir t. t.,</li>
+        <li>Project window'se failų ir katalogų pavadinimams,</li>
+        <li>Structure tool window'se prog. kalbos simboliams.      </li>
+      </ul>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>F5</kbd> / <kbd>F6</kbd></p>
+        <p>[Refactor &gt; <strong>Copy / Move</strong> ...]</p>
+        <p>&nbsp;</p>
+        <p class="c-em-note">Su [Refactor &gt; Copy...] galima daryti failų dublikatus-kopijas tame pačiame kataloge.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>shift+F6</kbd></p>
+        <p>[Refactor &gt; Rename...]      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+Delete</kbd></p>
+        <p>[Refactor &gt; Safe Delete...] </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+V</kbd></p>
+        <p>[Refactor &gt; Extract &gt;
+      Variable...] </p>
+        <p><a href="https://www.jetbrains.com/help/webstorm/extract-variable-for-sass.html">extract-variable-for-sass.html</a></p>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>Refactoring<br>
+        Ctrl + Alt + Shift +T  Refactor this<br>
+        F5 / F6  Copy / Move<br>
+        Alt + Delete  Safe Delete<br>
+        Shift + F6  Rename<br>
+        Ctrl + F6  Change function signature<br>
+        Ctrl + Alt + N  Inline Variable<br>
+        Ctrl + Alt + M  Extract Method<br>
+        Ctrl + Alt + V  Extract Variable<br>
+        Ctrl + Alt + C  Extract Constant <br>
+    Ctrl + Alt + P  Extract Parameter</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><h3>Teksto-kodo paieška</h3>
+      <h3>Paieška aktyviame redaktoriuje-faile</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+F</kbd></p>
+        <p>[Edit &gt; Find &gt; Find...]</p>
+        <p>Paieška aktyviame redaktoriuje-faile.</p>
+        <p>Jeigu prieš paspaudžiant yra pažymėjimas — jis įkeliamas į ieškomo teksto laukelį, taip pat veikia jei paieškos panelė jau yra atidaryta.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+R</kbd></p>
+        <p>[Edit &gt; Find &gt; Replace...]</p>
+        <p>Paieška ir replace'as aktyviame redaktoriuje-faile. </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>shift+F3</kbd> / <kbd>F3</kbd></p>
+        <p>[Edit &gt; Find &gt; Find Next / Move to Next Occurrence]</p>
+        <p>[Edit &gt; Find &gt; Find Previous / Move to Previous Occurrence]</p>
+        <p><strong>Atgal / pirmyn</strong> ieško teksto kuris yra paieškos panelės laukelyje. Veikia ir kai paieškos panelė atidaryta, ir uždaryta. Pažymėtas tekstas veikimo neįtakoja. </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+F3</kbd></p>
+        <p>[Edit &gt; Find &gt; Find Word at Caret]</p>
+        <p>Ieško pirmyn pažymėto teksto, o jeigu nėra pažymėjimo &#8212; žodžio, kuriame yra kursorius (tame tarpe ir kai kursorius yra prie vieno iš žodžio šonų). </p>
+        <p>Ieškotas žodis įvedamas į Find ir Replace panel'ių  ieškomo teksto laukelį, tai padaro nepriklausomai atidaryta panelė ar ne. </p>
+      </div>
+      <h3>Paieška failuose      </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+F</kbd></p>
+        <p>[Edit &gt; Find &gt; Find in Path...]</p>
+        <p>&nbsp;</p>
+        <p>Paieška aktyviame redaktoriuje-faile.</p>
+        <p>Jeigu prieš paspaudžiant yra pažymėjimas — jis įkeliamas į ieškomo teksto laukelį, taip pat veikia jei paieškos panelė jau yra atidaryta.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+R</kbd></p>
+        <p>[Edit &gt; Find &gt;  Replace in Path...]</p>
+        <p>&nbsp;</p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><h3>Programavimo kalbų pagalba-help'as, dokumentacija</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>F1</kbd> plugin::Dash</p>
+        <p>[Tools &gt; Smart-Search Documentation]</p>
+        <p>Ieško žodžio kuriame yra kursorius arba pažymėjimo su programavimo kalbos nurodymu.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Tools &gt; Search all Documentation] plugin::Dash</p>
+        <p>ieško be programavimo kalbos nurodymo.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+F1</kbd> || <kbd>alt+MouseWheel</kbd></p>
+        <p>[View &gt; Quick Documentation]</p>
+        <p>Parodo help'ą žodžiui, kuriame yra kursorius.</p>
+        <blockquote>
+          <p>Quick Documentation Look-up lets you view reference for symbols from your project and from its dependencies as well as for standard JavaScript objects and methods.</p>
+        </blockquote>
+        <p>Help'as-dokumentacija gali būti rodoma 2 būdais:</p>
+        <ul>
+          <li><q>in the Documentation Pop-up Window</q></li>
+          <li><q>in the Documentation Tool Window</q></li>
+        </ul>
+        <P>Help'o rodymo būdo pakeitimas:</p>
+        <dl>
+          <dt>kai rodoma <q>Pop-up Window</q>se &#8212; į <q>Tool Window</q>są</dt>
+          <dd>
+            <p><img src="images/20180816_104618_site_assets_sass__tools.colors.scss  - WebStorm.png" alt="" width="85" height="60"/></p>
+          </dd>
+          <dt>atvirkščiai</dt>
+          <dd>
+            <p><img src="images/20180816_110950_editor.webstorm.hotkeys.htm.png" alt="" width="84" height="32"/></p>
+          </dd>
+        </dl>
+        <p class="em-important">Help'o rodymo būdą galima pakeisti pakartotinai įvykdžius šią komandą, kai <q>Pop-up Window</q>sas ar <q>Tool Window</q>sas yra atidaryti.      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[View &gt; External Documentation]</p>
+        <p>šiuo metu kaip ir nieko nedaro</p>
+      </div>
+      <p>Inteligentinės informacijos parodymo</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>shift+F1</kbd></p>
+        <p>[View &gt; Parameter Info]</p>
+        <p>Tooltip'e parodo kokias galimas reikšmes-parametrus turi kodo struktūra kurioje yra kursorius.</p>
+      </div>
+    </td>
+    <td><h3>WebStorm'o help'as</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+F1</kbd></p>
+        <p>[C][Context Help]</p>
+        <p>Sufokusuotam WebStorm'o sąsajos elementui atidato jam skirtą dokumentacijos-pagalbos puslapį naršyklėje.</p>
+      </div>
+      <h4> Mokinimasis naudoti WebStorm'ą</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Help &gt; Productivity Guide]</p>
+        <p>Geri patarimai kaip naudoti WebStorm'ą.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Help &gt; Tip of the Day]      </p>
+      </div>
+      <p>&nbsp;</p>
+    <p>[Help &gt; Keymap Reference] atidaro <code><br>
+      C:\Program Files\JetBrains\WebStorm 2017.1.3\help\ReferenceCard.pdf</code></p>
+    </td>
+    <td>
+      <h3>Gedimai</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[File &gt; Invalidate Caches / Restart...]</p>
+        <p>Matyt turi padėti kai pradeda kas nors blogai veikti.</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Konfigūravimas</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Apskritai apie WebStorm'o konfigūravimą</h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+`</kbd></p>
+        <p>[View &gt; Quick Switch Scheme...]      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+\</kbd> (prie Lctrl, ir Enter)</p>
+        <p>[<u>F</u>ile &gt; Se<u>t</u>tings...] </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>F</u>ile &gt; Def<u>a</u>ult Settings...] </p>
+    </div></td>
+    <td width="25%"><h3>Kodo spalvinimas (Color Scheme)</h3>
+      <p>[File &gt; Import Settings...] &#8212; per čia reikia pridėti *.jar'us su kodo spalvinimu</p>
+      <blockquote>
+        <p>Webstorm --&gt; Preferences <br>
+          Editor --&gt; Color Scheme --&gt; Settings (Gear-Wheel) --&gt; Import Scheme</p>
+        <p>and simply import the .icls file.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[C][Jump to Colors and Fonts]</p>
+        <p>Atidaro aktyvaus Color Scheme'o redagavimo langą su pažymėtu elementu, kuriame tuo metu yra kursorius.</p>
+      </div>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Sąsaja / interface</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Sąsajos režimai</h3>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>F11</kbd></p>
+      <p>[View &gt; Toggle Full Screen mode]</p>
+    </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+F11</kbd></p>
+      <p>[View &gt; Toggle Distraction Free mode]    </p>
+    </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>shift+F11</kbd></p>
+      <p>[View &gt; Toggle Presentation mode]    </p>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Atskirų sąsajos elementų valdymas</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+F11</kbd></p>
+        <p> [C][Main menu]        </p>
+        <p>Pagrindinį standartinį programos lango meniu parodo paletėje.      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+F11</kbd></p>
+        <p>plugin::Main Menu toggler</p>
+        <p>[View &gt; Toggle Main Menu]</p>
+        <p>[C][View: Main Menu]</p>
+        <p>Paslepia-parodo pagrindinį standartinį programos lango meniu.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+F11</kbd></p>
+      <p> [C][Toggle CodeGlance]</p>
+      <p> [K][Plug-ins &gt; CodeGlance &gt; Toggle CodeGlance]</p>
+  </div>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Bendros Tool Windows'ų valdymo komandos</h3>
+      <del tabindex="0"><p>Tool Windows'ų valdymas</p></del>
+      <p>Visos [Window &gt;  Active Tool Window &gt; ...] komandos veikia Tool Window'są kuris:</p>
+      <ul>
+        <li>šiuo metu aktyvus</li>
+        <li>buvo paskutinis aktyvus, o šiuo metu aktyvus redaktorius      </li>
+      </ul>
+      <h4>Tool Windows'ų deaktyvavimo ir paslėpimo komandos      </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Esc</kbd>        </p>
+        <p>Esant aktyviam Tool Window'sui gražina fokusą redaktoriui ir jo neuždaro.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>shift+Esc</kbd></p>
+        <p>[Window &gt;  Active Tool Window &gt; Hide <strong>Active</strong> Tool Window]</p>
+        <p>Kai aktyvus:</p>
+        <dl>
+          <dt>kuris nors Tool Window'sas</dt>
+          <dd> jį uždaro ir gražina fokusą redaktoriui</dd>
+          <dt>redaktorius</dt>
+          <dd>uždaro paskutinį aktyvų Tool Window'są, fokusas išlieka redaktoriuje      </dd>
+        </dl>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>win+Esc</kbd> @AHKremap:</p>
+        <p>[Window &gt;  Active Tool Window &gt; Hide <strong>Side</strong> Tool Windows ]</p>
+        <p>Kai aktyvus:</p>
+        <dl>
+          <dt>kuris nors Tool Window'sas</dt>
+          <dd> uždaro visus tos pusės Tool Windows'us ir gražina fokusą redaktoriui</dd>
+          <dt>redaktorius</dt>
+          <dd>
+            <p>uždaro paskutinio aktyvaus Tool Window'so pusės visus Tool Windows'us, fokusas išlieka redaktoriuje</p>
+            <p>dar kartą įvykdžius &#8212; uždaro priešpaskutinio Tool Window'so pusės visus Tool Windows'us</p>
+            <p class="c-em-note c-em--small">kartais, nors dar yra atidarytų Tool Windows'ų, bet jie nelaikomi priešpaskutiniais</p>
+          </dd>
+        </dl>
+      </div>
+      <h4>Tool Windows'ų aktyvavimo ir parodymo komandos</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>F12</kbd></p>
+        <p>[Window &gt;  Active Tool Window &gt; Jump to Last Tool Window] </p>
+        <blockquote>
+          <p>Go back to previous tool window.</p>
+        </blockquote>
+      </div>
+      <h4>Grupinės Tool Windows'ų paslėpimo–parodymo komandos      </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>+</kbd></p>
+        <p>[Window &gt; Store Current Layout as Default]</p>
+        <p>[Window &gt; Restore Default Layout] </p>
+        <blockquote>
+          <p id="d97134e">You can save the way the tool window are currently arranged by choosing <span data-skip-index="skip">Window | Store Current Layout as Default</span> in the main menu.</p>
+          <p id="d97134e329">At a later time, you can return to the saved workspace layout by choosing <span data-skip-index="skip">Window | Restore Default Layout</span> (Shift+F12).</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+Esc</kbd> @AHKremap:</p>
+        <p>[Window &gt;  Active Tool Window &gt; <mark>Hide All</mark> / <mark>Restore</mark> Windows]</p>
+        <p>[K][Window &gt;  Active Tool Window &gt; Hide All Tool Windows]</p>
+        <p>Kai yra atidarytų Tool Windows'ų, įvykdžius šią komandą, įsimenami atidaryti Tool Windows'ai ir uždaromi. Tada, kai nėra atidaryto nei vieno Tool Window'so, ši komanda atstato įsimintus Tool Windows'us. </p>
+        <p>Kada koks šios komanda meniu tekstas rodomas:</p>
+        <dl>
+          <dt>Kai yra atidarytų Tool Windows'ų</dt>
+          <dd>&quot;<mark>Hide All</mark> Windows&quot;</dd>
+          <dt>kai nėra, ir prieš tai buvo įvykdyta &quot;<mark>Hide All</mark> Windows&quot;</dt>
+          <dd>&quot;<mark>Restore</mark> Windows&quot;</dd>
+        </dl>
+        <blockquote>
+          <p> Toggle maximizing editor.</p>
+        </blockquote>
+      </div>
+      <h4>Tool Windows'ų savybės ir operacijos jame, kai jis aktyvus</h4>
+      <dl>
+        <dt>Split Mode</dt>
+        <dd>
+          <p>Šoniniuose Tool Windows'uose savybė &quot;Split Mode&quot; = ON laiko Tool Window'są apatinėje grupėje, o &quot;Split Mode&quot; = OFF &#8212; viršutinėje.</p>
+          <p>Su nuspaustu <kbd>Alt</kbd> galima drag'inti Tool Window'są tarp apatinės ir viršutinės grupių.</p>
+        </dd>
+      </dl>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+F4</kbd></p>
+        <p>[Window &gt;  Active Tool Window &gt; Close Active Tab]      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+F12</kbd></p>
+        <p>[Window &gt;  Active Tool Window &gt; Maximize Tool Window / Restore tool window size]</p>
+        <p>Kai aktyvus bet kuris Tool Window'sas &#8212; padidina jį redaktoriaus sąskaita, o kai jis jau padidintas &#8212; sumažina iki buvusio.</p>
+      </div>
+    </td>
+    <td width="25%"><h3>Konkrečių Tool Windows'ų parodymas-paslėpimas</h3>
+      <p>Komandų [View &gt; Tool Windows &gt; ...], skirtų parodyti-paslėpti Tool Windows'us, veikimas. Kai target'inis window'sas:</p>
+      <dl>
+        <dt>Uždarytas:</dt>
+        <dd>
+          <p>jį atidaro ir aktyvuoja.</p>
+        </dd>
+        <dt>Atidarytas ir neaktyvus:</dt>
+        <dd>
+          <p>jį aktyvuoja. </p>
+        </dd>
+        <dt>Aktyvus-sufokusuotas:</dt>
+        <dd>
+          <p>jį uždaro ir gražina fokusą redaktoriui. </p>
+        </dd>
+      </dl>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+F1</kbd></p>
+        <p>[Navigate &gt; Select In...]</p>
+        <p>Navigacija tarp sąsajos elementų </p>
+        <blockquote>
+          <p>Press Alt+F1 to invoke the Select Target pop-up window, and choose the desired IDE component.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Navigation Bar'as</h3>
+      <p>Paskirtis:</p>
+      <blockquote>
+        <p>Navigation Bar is a quick alternative to the <a href="https://www.jetbrains.com/help/webstorm/project-tool-window.html">Project view</a>. Use this tool to <a href="https://www.jetbrains.com/help/webstorm/navigating-with-navigation-bar.html">navigate</a> through the project and <a href="https://www.jetbrains.com/help/webstorm/opening-and-reopening-files-in-the-editor.html">open files for editing</a>.</p>
+      </blockquote>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[View &gt; Navigation Bar] </p>
+        <p>Parodo-paslepia Navigation Bar'ą po programos lango pagrindiniu menu'su.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+Home</kbd>&nbsp;</p>
+        <p>[Navigate &gt; Jump to Navigation Bar]</p>
+        <p>Jeigu Navigation Bar'as<strong> </strong>po programos lango pagrindiniu menu'su:</p>
+        <ul>
+          <li><strong>yra</strong> &#8212; jį aktyvuoja.</li>
+          <li><strong>nėra</strong> &#8212; parodo ir suaktyvuoja Navigation Bar'ą:
+            <ul>
+              <li>kai aktyvus redaktorius &#8212; per vidurį redaguojamo failo (floating),</li>
+              <li>kai aktyvus Project windows'as &#8212; prie pažymėto failo ar katalogo.</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="c-em-note">Patogu pamatyti koks redaguojamo failo kelias.</p>
+      </div>
+    </td>
+    <td><h3>Programos lango Title Bar'o customize'inimas</h3>
+      <p> <a href="https://plugins.jetbrains.com/plugin/9681-custom-title">Custom Title :: JetBrains Plugin Repository</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[S][Appearance &amp; Behavior &gt; Custom Title]</p>
+        <p>Pavyzdžiai:</p>
+        <dl>
+          <dt>Project Title Template:</dt>
+          <dd>
+            <p><code>&lt;% if (projectDefaultTitle) { %&gt;&lt;%= projectName %&gt;&lt;% } %&gt;</code><br>
+              rodo tik projekto pavadinimą </p>
+          </dd>
+          <dt>File Title Template:</dt>
+          <dd>
+            <p><code>&lt;% if (fileDefaultTitle) { %&gt;&lt;%= filePath.slice(projectPath.length+1) %&gt;&lt;% } %&gt;</code><br>
+            rodo aktyvaus redaktoriaus failo kelią nuo projekto šakninio katalogo </p>
+          </dd>
+        </dl>
+      </div>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Failai</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>Failų sukūrimas, atidarymas, uždarymas</p>
+    </td>
+    <td width="25%">
+      <p>Navigacija tarp atidarytų failų</p>
+    </td>
+    <td width="25%">
+      <p>Failų pavadinimai-keliai</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Projektas &#8212; tinklapio failai</h2>
+<p><a href="editor.webstorm.project.htm">WebStorm'o projektai</a></p>
+<p>[S][Appearance &amp; Behavior &gt; Appearance]<br>
+Drag-n-Drop with ALT pressed only</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Project Tool Window'sas</h3>
+      <p>[S][Appearance &amp; Behavior &gt; Appearance]<br>
+      Drag-n-Drop with ALT pressed only</p>
+      <p><a href="editor.webstorm.project.htm#pagal-pattern-failai-ar-katalogai-būtų-projekte-visai-nematomi">Kaip Project Tool Window'se paslėpti failus ar katalogus pagal pattern'ą</a>      </p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+E</kbd></p>
+        <p>[View &gt; Tool Windows &gt; Project]</p>
+        <p>Parodo-paslepia Project Tool Window'są.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+E</kbd></p>
+        <p>[C][Select in Project View]</p>
+        <p>Aktyvuoja Project Windows'ą  ir jame pažymi redaguojamą-aktyvų failą.</p>
+        <hr>
+        <p><kbd>alt+F1</kbd>&nbsp; <kbd>1</kbd></p>
+        <p>[Navigate &gt; Select In...] [1. Project View &gt; 1. Project]      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+win+E</kbd> @AHKremap:</p>
+        <p>[C][Show in Explorer]</p>
+        <p>Atidaro naują Windows'ų Explorer'io langą, kuriame pažymi redaguojamą-aktyvų failą.</p>
+        <hr>
+        <p><kbd>alt+F1</kbd>&nbsp; <kbd>7</kbd></p>
+        <p>[Navigate &gt; Select In...]  [7. Show in Explorer]      </p>
+      </div>
+      <h4>Operacijos aktyviame Project Tool Window'se su failais-katalogais      </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Enter</kbd></p>
+        <p>Atidaro pažymėtą failą redaktoriuje, fokusas lieka Project Window'se.        </p>
+        <p><kbd>shift+Enter</kbd></p>
+        <p>Atidaro pažymėtą naujame programos lange, fokusas naujai atidarytame lange.        </p>
+        <p><kbd>ctrl+alt+Enter</kbd></p>
+        <p>[C][Show Quick Actions Popup]        </p>
+        <p><kbd>ctrl+Enter</kbd></p>
+      </div>
+      <h4>Project Tool Window'so nustatymai</h4>
+      <div id="project-tool-window-rodyti-arba-paslepti-excluded-root" class="c-editor-command o-collapse-locdep">
+        <p>Galima rodyti arba paslėpti Excluded Root katalogus:</p>
+        <p><img src="images/20190322_181913_konspektas - WebStorm.png" alt="" width="87" height="51"/></p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><h3>&quot;Aktyvacinės&quot; operacijos su failais</h3>
+      <p>Navigacija tarp failų</p>
+      <p>Failų sukūrimas, atidarymas, uždarymas, aktyvacija      </p>
+      <h4>Failų atidarymas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>F</u>ile &gt; <u>O</u>pen...] </p>
+        <p>Atidaro langą su visų kompo diskų katalogų-failų medžiais. Leidžia atidaryti bet kurį kompo failą arba projektą, t. y. katalogą.</p>
+        <p class="c-em-note">Veikia &quot;search as you type&quot;. </p>
+        <blockquote>
+          <p>Open a project or a file in editor.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+O</kbd></p>
+        <p>[Navigate &gt; File...] </p>
+        <p>Leidžia atidaryti failą redaktoriuje arba katalogą Project window'se fuzzy-search'inant visus projekto failus.        </p>
+        <p>Kaip ieško, kai paieškos input'e yra:</p>
+        <dl>
+          <dt><code>&lt;alphanumeric&gt;</code> &#8212; raidės ir skaičiai</dt>
+          <dd>
+            <p>ieško failų ir katalogų fuzzy-search'inant visą kelią ieškant kiekvienos atskirai raidės iš kairės į dešnę, pvz. taip randa:</p>
+            <p><img src="images/2018.08.01_13-37-35-.png" alt="" width="154" height="33"/></p>
+            <p>o taip ne:</p>
+            <p><img src="images/2018.08.01_13-43-00-site_assets_sass.mokykla.css_TEST.css  - WebStorm.png" alt="" width="134" height="20"/></p>
+            <p class="c-em-note c-em--small">Pirmiau-labiau ieško failo ar katalogo pavadinime.</p>
+          </dd>
+          <dt><code>&lt;alphanumeric&gt;[\/]</code></dt>
+          <dd>
+            <p>kai paieškos string'o pabaigoje <code>\</code> arba <code>/</code> &#8212; ieško tik katalogų          </p>
+          </dd>
+        </dl>
+        <p>Paieškos rezultatų rūšiavimo principai:</p>
+        <ul>
+          <li>
+            <p>pirmiau-aukščiau rodomi failai-katalogai, kurių pavadinime daugiau paieškos string'o ir jis labiau nuo to pavadinimo pradžios (ne visada, gal dar sukūrimo data vertinama), pvz.:</p>
+            <p><img src="images/2018.08.01_12-50-54-.png" alt="" width="124" height="49"/></p>
+          </li>
+          <li>
+            <p>kai paieškos rezultatas itentiškas failui ir katalogui, pirmiau rodomi failai          </p>
+          </li>
+        </ul>
+      </div>
+      <h4>Atidarytų failų aktyvacija</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[C][Switcher]</p>
+<p><kbd>ctrl+Tab</kbd> | <kbd>ctrl+shift+Tab</kbd></p>
+        <p>Vaikšto tarp atidarytų failų ir tool windows'ų.</p>
+        <blockquote>
+          <p>Switch between tabs and tool window.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>plugin::TabSwitcher Extreme</p>
+        <p><kbd>ctrl+`</kbd></p>
+        <del tabindex="0">
+        <p><kbd>ctrl+Tab</kbd> | <kbd>ctrl+shift+Tab</kbd> @AHKremap:        </p>
+        </del>
+        <p>[C][Switch To Next Tab...]        </p>
+        <p>Vaikšto tarp atidarytų failų.</p>
+      </div>
+      <h4>Failų aktyvacija arba atidarymas pagal veiksmus su jais</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+O</kbd> / <kbd>alt+shift+O</kbd></p>
+        <p>[View &gt; Recent Files <mark>/</mark> Recently Changed Files]</p>
+        <p>Atidaro tokį patį kaip [C][Switcher] langą, bet skiriasi: </p>
+        <ul>
+          <li>
+            <p>dešnėje pusėje paskutiniai <mark>aktyvuoti</mark> / <mark>redaguoti</mark> failai (gali būti ir uždaryti)</p>
+          </li>
+          <li>
+            <p>kaip ir <kbd>ctrl+Tab</kbd>, pakartotinai paspaudus, pasirenkamas kitas sąrašo failas, bet atleidus <kbd>ctrl</kbd> pažymėto failo aktyvacija neįvyksta, toliau galima su rodyklių klavišais pasirinkti, ir su <kbd>Enter</kbd> aktyvuoti</p>
+            <p class="c-em-note">Čia dar veikia filtracija &quot;search as you type&quot;. </p>
+          </li>
+        </ul>
+      </div>
+      <h4>Failų uždarymas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+F4</kbd></p>
+        <p>[C][Close] (Editor Close Actions)</p>
+        <hr>
+        <p>[C][Close Active Editor] ????????????? </p>
+    </div></td>
+    <td width="25%"><h3>&quot;Redagcinės&quot; operacijos su failais</h3>
+      <p>Naujų failų sukūrimas, Failų pervardijimas, perkėlimas, kopijavimas</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p class="c-editor-command__title">Naujo failo sukūrimas</p>
+        <p><kbd>alt+Insert</kbd> TODO: <kbd>ctrl+N</kbd></p>
+        <p>[File &gt; New &gt; failo tipas] </p>
+        <p>Per meniu yra viena galimybe daugiau &#8212; Scratch File.</p>
+        <p> Naujo failo vieta nustatoma: </p>
+        <dl>
+          <dt>Kai aktyvus redaktorius:</dt>
+          <dd>
+            <p>redaguojamo failo katalogas.</p>
+          </dd>
+          <dt>Kai aktyvus  Project windows'as:</dt>
+          <dd>
+            <ul>
+              <li>Kai pažymėtas failas &#8212; to failo kataloge.</li>
+              <li>Kai pažymėtas katalogas &#8212; tame kataloge. </li>
+            </ul>
+          </dd>
+        </dl>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+S</kbd></p>
+        <p>[<u>F</u>ile &gt; Save As...]</p>
+        <p>Leidžia sukurti failo kopiją, input'e &quot;New name:&quot; nurodant naują failo pavadinimą, o &quot;To directory:&quot; galima pakeisti katalogą.        </p>
+        <p>Kur ir kaip veikia:</p>
+        <dl>
+          <dt>kai aktyvus redaktorius</dt>
+          <dd>
+            <p>sukuria  redaguojamo failo kopiją          </p>
+          </dd>
+          <dt>kai aktyvus  Project windows'as</dt>
+          <dd>
+            <p>sukuria  pažymėto failo kopiją            </p>
+            <p class="em-important c-em--small">kai pažymėtas  katalogas &#8212; nieko nedaro, tą pačią komandą iškviečia [<u>R</u>efactor &gt; C<u>o</u>py...] </p>
+          </dd>
+        </dl>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+S</kbd></p>
+        <p>[C][Rename File...]        </p>
+        <p>Kur ir kaip veikia:</p>
+        <dl>
+          <dt>kai aktyvus redaktorius</dt>
+          <dd>
+            <p>pervardina redaguojamą failą </p>
+          </dd>
+          <dt>kai aktyvus  Project windows'as</dt>
+          <dd>
+            <p>pervardina pažymėtą failą </p>
+            <p class="em-important c-em--small">kai pažymėtas  katalogas &#8212; nieko nedaro, tą pačią komandą iškviečia [<u>R</u>efactor &gt; <u>R</u>ename...]</p>
+          </dd>
+        </dl>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Failų pavadinimai-keliai</h3>
+      <h4>Įvedimas redaktoriuje (paths autocomplete, completing a path)</h4>
+      <p>&nbsp;</p>
+      <h4>Kopijavimas (copy file name-path)</h4>
+      <p>Failų kelių kopijavimas</p>
+      <p>Šios komandos veikia kai aktyvus:</p>
+      <dl>
+        <dt>redaktorius</dt>
+        <dd>kopijuoja atidaryto-redaguojamo failo kelią</dd>
+        <dt>Project Tool Windows'as</dt>
+        <dd>kopijuoja pažymėtų failų kelius</dd>
+      </dl>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Edit &gt; Copy Path...]</p>
+        <p>Atidaro meniu su WS built-in komandomis.      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+P</kbd></p>
+        <p>[Edit &gt; Copy Path... &gt; 1. Absolute Path]</p>
+        <p>[C][Absolute Path]</p>
+        <div class="c-em-alert c-em--small">
+          <p>WS 2019.3.3</p>
+          <p>O [C][Absolute Path] pačiame [S][Keymap] nėra.<strong></strong></p>
+        </div>
+        <div class="c-em-alert c-em--small">
+          <p>WS 2019.3.3</p>
+          <p>[K][Main menu &gt; Edit &gt; Copy Paths] — rodo, yra tokia meniu komanda, bet realiai pačiame meniuse jos nėra.</p>
+          <p><strong>Bet [S][Keymap] patį hotkey'są reikia priskirti būtent šiai komandai.</strong>        </p>
+        </div>
+        <p>Kopijuoja operacinės visą failo kelią, pvz.:<br>
+        <code>D:\webdev\konspektas\site\css.syntax.htm</code></p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+P</kbd>        </p>
+        <p>[Edit &gt; Copy Path with Helper] plugin::Copy Path Helper</p>
+        <p>Kopijuoja  failo pavadinimą, pvz.: <br>
+        <code>css.syntax.htm</code></p>
+        <p>Konfigūruojame, kad kopijuotų failo pavadinimą per [Tools &gt; Copy Path Helper Setting]</p>
+        <p class="c-em-alert c-em--small">Deja projekto tool window'se veikia nepilnai.</p>
+        <del tabindex="0">
+        <p><kbd>Lalt+C</kbd> @AHKscript:</p>
+          <p>Kopijuoja  failo pavadinimą, pvz.: <br>
+            <code>css.syntax.htm</code></p>
+          <p class="em-important c-em--small">Su <kbd>Ralt+C</kbd> iškviečiamas [<u>C</u>ode &gt; ..]</p>
+      </del> </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+P</kbd></p>
+        <p>[Edit &gt; Copy Paths &gt; 3. Path From Content Root] </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Edit &gt; Copy Reference]</p>
+        <del tabindex="0"><p><kbd>alt+shift+P</kbd></p></del>
+        <p>[Edit &gt; Copy Path... &gt; 2. Path With Line Number]</p>
+        <p>Kopijuoja  failo kelią nuo projekto šakninio katalogo su kursoriaus pozicijos eilutės numeriu, pvz.:<br>
+<code>site/css.syntax.htm:27</code></p>
+      </div>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h3>Navigacija projekte per [Navigate &gt; ...] </h3>
+      <p><a href="http://127.0.0.1:63342/help/navigating-to-class-file-or-symbol-by-name.html">Navigating to Class, File or Symbol by Name - Help | WebStorm</a></p>
+      <p class="c-em-note">Veikia fuzzy-search'o rezultatuose aktyvaus failo turinio peržiūra su [View &gt; Quick Definition]      </p>
+      <p>Atidarius vieną iš [Navigate &gt; Class/File/Symbol], galima su hotkey'su pereiti į kitą:</p>
+      <blockquote>
+        <p>If while typing in one of the Navigate to Class/File/Symbol pop-up windows you notice that you need another one, just invoke the necessary dialog box. The text you have already entered will not disappear.</p>
+      </blockquote>
+    <p>&nbsp;</p></td>
+    <td><h3>Navigacija projekte pagal kodo <strong>struktūras</strong> (kintamieji, funkcijos, ...)</h3>
+      <h4>Fuzzy-search'inimas visame projekte</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+G</kbd></p>
+        <p>[Navigate &gt; Symbol...]</p>
+        <p>Fuzzy-search'ina visus projekto&#8211;tinklapio Symbol'ius.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+win+G</kbd> @AHKremap:</p>
+        <p>[Navigate &gt; Class...]</p>
+      </div>
+      <h4>Navigacija pagal IDE kontekstą</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Q</kbd></p>
+        <p>[<u>V</u>iew &gt; Quic<u>k</u> Definition]</p>
+        <p> <a href="http://127.0.0.1:63342/help/webstorm/2018.1/viewing-definition.html">Viewing Definition - Help | WebStorm</a></p>
+        <p>Pagal tai kas yra sufokusuota, ar redaktoriuje kur yra kursorius, ar kokiame Tool Window'se kas yra pažymėta &#8212; atidaro atskirame laikiname lange sufokusuotą kodo struktūrą, ar visą failą.</p>
+        <p class="c-em-note c-em--small"> Šiame lange galima kodą pažymėti ir nukopijuoti, bet negalima redaguoti.</p>
+        <blockquote>
+          <p><i>Quick Definition Lookup</i> shows you where and how your project symbols (tags, classes, methods/functions, fields, etc) are defined.</p>
+        </blockquote>
+        <p>Kur ir kaip veikia:</p>
+        <dl>
+          <dt>Redaktoriuje</dt>
+          <dd>
+            <p>&nbsp;</p>
+          </dd>
+          <dt>Project Tool Window'se</dt>
+          <dd>
+            <p>Parodo pažymėto failo turinį atskirame laikiname lange.          </p>
+          </dd>
+        </dl>
+        <figure class="figure--image-bigCaption"><img src="images/20180815_200927_site_assets_sass__tools.colors.scss  - WebStorm.png" alt="" width="102" height="53"/>
+          <figcaption>
+          kodo struktūrinio simbolio paieškos
+          išsaugojimas Find Tool Window'se </figcaption>
+        </figure>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+Q</kbd></p>
+        <p>[<u>V</u>iew &gt; Jump to Source]</p>
+        <p>Kur ir kaip veikia:</p>
+        <dl>
+          <dt>Redaktoriuje</dt>
+          <dd>
+            <p>Kai kursorius redaktoriaus kode, kuris yra iškvietimas, panaudojimas ar importavimas kažko kito, kas yra kitur apibrėžta: failo, funkcijos, kintamojo &#8212; nukelia (atidaro failą jei reikia) į apibrėžimą.</p>
+          </dd>
+        </dl>
+      </div>
+      <h4>Navigacija per kodą</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+G</kbd> || <kbd>ctrl+MouseLeft</kbd> || <kbd>MouseWheel</kbd></p>
+      <p>[<u>N</u>avigate &gt; <u>D</u>eclaration]</p>
+      <p> <a href="http://127.0.0.1:63342/help/navigating-to-declaration-or-type-declaration-of-a-symbol.html">Navigating to Declaration or Type Declaration of a Symbol - Help | WebStorm</a></p>
+      <p>Kai kursorius yra kintamajame ar funkcijos iškvietime (Code Reference-Symbol), perkelia kursorių į to kintamojo ar funkcijos pirmąjį priskyrimą ar apibrėžimą:</p>
+      <blockquote>
+        <p>While editing your source code, you might need to navigate to the location where a particular named code reference (a symbol) has been first declared. <span data-skip-index="skip">Navigate | Declaration</span> command enables you to navigate back to the initial declaration of a symbol from any place in the source code, even if it is from inside another class, or comment.</p>
+      </blockquote>
+      <p>Kam veikia:</p>
+      <blockquote>
+        <p>Applies to the symbols of source code, CSS, HTML or XML tags and attributes, DTD and schema elements and attributes, and references in comments.</p>
+      </blockquote>
+      <hr>
+      <p>Navigacija su pele:      </p>
+      <ul>
+        <li>Click the Middle Mouse Button &#8212; <kbd>MouseWheel</kbd> &#8212; paspaudus ant <i>code reference-symbol</i>, jokių papildomų dalykų, tik įvykdo [<u>N</u>avigate &gt; Declaration]</li>
+        <li>
+          <p>Kai pelės kursorius yra virš <i>code reference-symbol</i> su nuspaustu <kbd>Ctrl</kbd>, parodo:</p>
+          <p><img src="images/20190408_135102_Greenshot.png" alt="" width="200" height="55"/></p>
+          <p>nuspaudus<kbd>ctrl+MouseLeft</kbd> &#8212; įvykdo [<u>N</u>avigate &gt; Declaration]        </p>
+        </li>
+  </ul>
+  </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>+</kbd></p>
+      <p>[<u>N</u>avigate &gt; <u>T</u>ype Declaration] </p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>+</kbd>      </p>
+      <p>[<u>N</u>avigate &gt; Implementation(s)]</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>+</kbd></p>
+      <p>[<u>N</u>avigate &gt; Super Method]</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>+</kbd></p>
+      <p>[<u>N</u>avigate &gt; Related Symbol...]</p>
+    </div>
+    </td>
+    <td>
+      <h3>Operacijos su projektais</h3>
+      <h4>Atidarymas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p> [<u>F</u>ile &gt; <u>O</U>pen...] </p>
+        <p>Pasirinkus katalogą:</p>
+        <ul>
+          <li>jei jis jau yra projekto šakninis gatalogas &#8212; jis bus atidarytas, </li>
+          <li>jei ne &#8212; bus sukurtas projekto šakninis gatalogas (tai reiškia <code>.idea</code> katalogas jame) ir atidarytas      </li>
+        </ul>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>F</u>ile &gt; Open <u>R</u>ecent &gt;  ...]</p>
+        <p>Pačiame meniu yra išvardinti naudoti-radaguoti projektai, pasirinkus galima jį atidaryti. </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>F</u>ile &gt; Open <u>R</u>ecent &gt; Manage Projects...]</p>
+        <p>Atidaro popup window'są su redaguotų projektų sąrašu.</p>
+      </div>
+      <p></p>
+      <h4>Sukūrimas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[File &gt; New &gt; Project...]</p>
+        <p>WS projekto sukūrimas.</p>
+        <p>Galima sukurti projektą ir atidarant su [<u>F</u>ile &gt; <u>O</U>pen...] katalogą, kuris nėra WS projektas, tas katalogas tampa <i>project directory</i>, jame iškarto sukuriamas <code>.idea</code> katalogas.</p>
+        <p>Daugiau būdų &#8212; <a href="http://127.0.0.1:63342/help/webstorm/creating-projects-in-product.html">Creating Projects - Help | WebStorm</a></p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Git</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Git file colors</p>
+        <p>File status colors can be changed at:<br>
+          Settings | Version Control | File Status Colors</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Redaktorius: navigacija, paieška, žymėjimas</h2>
+<p>Redaktorius: kodo struktūros</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Navigacija</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+G</kbd> </p>
+        <p>[<u>N</u>avigate &gt; Line/Column...] </p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Žymėjimas</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+A</kbd></p>
+        <p>[Edit &gt; Select All] </p>
+      </div>
+      <p></p>
+    </td>
+    <td width="25%">
+      <h3>Žymėjimas   ir navigacija pagal kodo <strong>simbolius</strong></h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+A</kbd> / <kbd>ctrl+shift+A</kbd></p>
+        <p>[Edit &gt; <mark>Extend</mark> / <mark>Shrink</mark> Selection]</p>
+        <p>Selektina struktūrą <mark>platyn</mark> / <mark>siauryn</mark> (Incremental expression selection).</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+[</kbd> / <kbd>ctrl+]</kbd></p>
+        <p>[Editor Actions: Move Caret to Code Block <strong>Start</strong> / <strong>End</strong>]</p>
+        <p>CSS, JS kode kursorius keliauja prie artimiausio <code>{</code> ir <code>}</code> ,  HTML'e analogiškai keliauja per tagus, jeigu kursorius jau yra kairio-pirmojo tago tai Ctrl+[ nukelia kursorių ant tėvinio tago kairio-pirmojo, analogiškai su dešniuoju. </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+[</kbd> / <kbd>ctrl+shift+]</kbd></p>
+        <p>[Editor Actions: Move Caret to Code Block <strong>Start</strong> / <strong>End</strong> with Selection] </p>
+      </div>
+      <p>&nbsp;</p>
+      <p>Navigacija per UI viename faile &#8212; parodo failo kodo struktūras </p>
+      <p>Žymėjimas ir navigacija pagal kodo <strong>struktūras</strong> (kintamieji, funkcijos, ...) </p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>win+G</kbd>  @AHKremap:</p>
+        <p>[<u>N</u>avigate &gt; F<u>i</u>le Structure]</p>
+        <p class="c-em-alert c-em--small">buvo &#8212; <kbd>ctrl+G</kbd> &#8212; bet atsisakiau, nes negalima padaryti, kad pastoviai dokumento struktūrą rodytų kaip yra kode, naujai atidarius rodo su nustatytu &quot;Sort Alphabetically&quot;.        </p>
+        <p>hotkeys'ai jame:</p>
+        <ul>
+          <li><kbd>Enter</kbd> &#8212; perkelia kursorių prie pažymėto elemento ir uždaro langą</li>
+          <li><kbd>ctrl+Enter</kbd> &#8212; tą patį, tik neuždaro lango</li>
+        </ul>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+G</kbd>  <del tabindex="0"><kbd>win+G</kbd></del>        </p>
+        <p>[View &gt; Tool Windows &gt; Structure]</p>
+        <p>Parodo-paslepia Structure Window'są. </p>
+        <p>Structure windows'e rodo:</p>
+        <ul>
+          <li>kai aktyvus-sufokusuotas redaktorius &#8212; jame atidaryto failo prog. kalbos struktūrą-simbolius,</li>
+          <li>kai aktyvus-sufokusuotas Project windows'as &#8212; pažymėto failo prog. kalbos struktūrą-simbolius. </li>
+        </ul>
+      </div>
+    </td>
+    <td width="25%">
+      <h3>Daugybinis pažymėjimas (multiple carets and selections) atrandant pažymėtą kodą</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+D</kbd></p>
+        <p>[Edit &gt; Find &gt;
+          Add Selection for Next Occurrence]</p>
+        <dl>
+          <dt>Kai nėra pažymėjimo</dt>
+          <dd>
+            <ul>
+              <li>Jei kursorius yra žodyje arba prie žodžio &#8212; pažymi tą žodį, bet kitaip nei Sublime'e, kursorius išsaugo savo poziciją, t. y. jei kursorius buvo žodžio viduryje, po viso žodžio pažymėjimo, jis lieka toje pačioje pozicijoje.</li>
+              <li>Jei kursorius yra white space'e, t. y. jis yra tarp dviejų tarpų &#8212; nieko nedaroma. </li>
+            </ul>
+          </dd>
+          <dt>Kai yra pažymėjimas</dt>
+          <dd>
+            <p>Nuo pažymėjimo link dokumento galo ieško pažymėto teksto, jei randa pirmąjį egzempliorių &#8212; jį pažymi, ir daugiau nebeieško. </p>
+          </dd>
+        </dl>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+D</kbd></p>
+        <p>[Edit &gt; Find &gt;
+          Unselect Occurrence]</p>
+        <p>Veikia kaip undo'sas, t. y. undo'sina su <br>
+          [Edit &gt; Find &gt;
+          Add Selection for Next Occurrence] <br>
+          padarytus pažymėjimus. </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+D</kbd></p>
+        <p>[Edit &gt; Find &gt;
+          Select All Occurrences] </p>
+        <p>Tą patį daro:</p>
+        <ol>
+          <li>yra pažymėjimas</li>
+          <li>[Edit &gt; Find &gt; Find...]</li>
+          <li><kbd>alt+Enter</kbd></li>
+        </ol>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Blokinis pažymėjimas (column selection)</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>tempti-ratuku</kbd></p>
+        <p>Leidžia padaryti vieną  blokinį pažymėjimą. </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+MouseWheel</kbd></p>
+        <p>[Editor Actions: Create Rectangular Selection]</p>
+        <p>Leidžia padaryti vieną blokinį pažymėjimą nuo kursoriaus pozicijos iki paklaksėtos vietos.</p>
+        <blockquote>
+          <p>This is specially helpful, if you want to avoid dragging.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl x2</kbd> &gt; <kbd>Up</kbd> / <kbd>Right</kbd> / <kbd>Down</kbd> / <kbd>Left</kbd></p>
+        <p>[C][Clone Caret <strong>Above / Below</strong>]</p>
+        <p>Laikant nuspaustą antrą kartą paspaustą <kbd>ctrl</kbd> &#8212; <kbd>Up</kbd> / <kbd>Right</kbd> / <kbd>Down</kbd> / <kbd>Left</kbd> &#8212; daro vieną blokinį pažymėjimą.</p>
+        <blockquote>
+          <p>you can press Ctrl (for Windows or UNIX) / Alt (for macOS) twice, and then without releasing it, press the up or down arrow keys.</p>
+        </blockquote>
+        <hr>
+        <del tabindex="0">
+          <p><kbd>Rshift+Up</kbd> / <kbd>Rshift+Down</kbd> @AHKremap: </p>
+        </del>
+        <p>[Editor Actions: Clone Caret <strong>Above / Below</strong>]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>win+A</kbd> @AHKremap:</p>
+        <p>[Edit &gt;  Column Selection Mode]</p>
+        <p>Įjungia-išjungia &quot;Column Selection Mode&quot;, kuris leidžia daryti 100% blokinį pažymėjimą, pvz.:</p>
+        <p><img src="images/20180817_130652_site_assets_sass__components.table-layout.scss  - WebStorm.png" alt="" width="110" height="80"/></p>
+        <p>Su <kbd>alt+MouseLeft</kbd> galima daryti daug blokinių pažymėjimų.</p>
+        <p>Įjungtas režimas indikuojamas Status Bar'e:</p>
+        <p><img src="images/20180817_125442_editor.webstorm.hotkeys.htm.png" alt="" width="110" height="44"/></p>
+      </div>
+      <h4>Blokinis-daugybinis pažymėjimas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+MouseLeft</kbd></p>
+        <p>[Editor Actions: Add or Remove Caret]</p>
+        <p>Daugybinis ir blokinis pažymėjimas &#8212; leidžia daryti daug blokinių pažymėjimų.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+shift+mouseLeft</kbd></p>
+        <p>[Editor Actions: Add Rectangular Selection on Mouse Drag] </p>
+        <p>Leidžia daryti daugybinį-blokinį pažymėjimą.</p>
+      </div>
+    </td>
+    <td>
+      <h3>Navigacija per kursorių-pažymėjimų ir redagavimų istoriją</h3>
+      <h4>Kursorių-pažymėjimų istorija</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+Left</kbd> / <kbd>alt+Right</kbd></p>
+        <p>[Navigate &gt; <mark>Back</mark> / <mark>Forward</mark>]</p>
+        <p>Kursorius naviguoja-šokinėja per kursoriaus pozicijų ir pažymėjimų  istoriją: </p>
+        <ul>
+          <li>Pirma naudojame &quot;Back&quot; &#8212;  keliaujame atgal per kursoriaus pozicijų ir pažymėjimų  istoriją.</li>
+          <li>Pakeliavus  atgal galima su &quot;Forward&quot; keliauti pirmyn. </li>
+        </ul>
+      </div>
+      <h4>Redagavimų istorija</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+Left</kbd> / <kbd>alt+shift+Right</kbd></p>
+        <p>[Navigate &gt; <mark>Last</mark> / <mark>Next</mark> Edit Location]</p>
+        <p>Kursorius naviguoja-šokinėja per redagavimų istoriją: </p>
+        <ul>
+          <li>Pirma naudojame &quot;Last Edit Location&quot; &#8212; kursorius keliauja atgal per redaguotos vietos, t. y. pirmą kartą įvykdžius kursorius nušoka prie paskutinės redaguotos vietos, dar kartą &#8212; prie prieš tai redaguotos, ir t. t.</li>
+          <li>Pakeliavus redagavimų istorija atgal, galima su &quot;Next Edit Location&quot; keliauti pirmyn.      </li>
+        </ul>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+O</kbd></p>
+        <p>[View &gt; Recent locations] </p>
+        <blockquote>
+          <p id="v2019-1-recent-locations2" title="Recent locations">2019.1</p>
+          <p title="Recent locations">Recent locations popup</p>
+          <p>The <em>Recent Locations</em> popup (<em>Cmd-Shift-E</em> / <em>Ctrl+Shift+E</em>) is a new way to <strong>navigate around the project</strong>. It shows a list of all the files and lines of code in them that you have recently opened in the editor. You can start typing to filter the results and jump to the code you need.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Kodo Bookmarks</h3>
+      <p>Kodo žymėjimas-atžymos</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+F7</kbd> / <kbd>ctrl+shift+F7</kbd></p>
+        <p>[Navigate &gt; Bookmarks          &gt; <b>Toggle Bookmark / Toggle Bookmark with Mnemonic</b>]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>F7</kbd> / <kbd>F8</kbd></p>
+        <p>[Navigate &gt; Bookmarks &gt; <b>Previous Bookmark</b> / <b>Next Bookmark</b>]        </p>
+        <p>Kursorius šokinėja tarp aktyvaus failo bookmark'ų. </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>-</kbd> / <kbd>-</kbd></p>
+        <p>plugin::Bookmark Actions</p>
+        <p>[Navigate &gt; Bookmarks &gt; <b>Previous global Bookmark</b> / <b>Next global Bookmark</b>]      </p>
+        <p>Kursorius šokinėja tarp visų projekto failų bookmark'ų. </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+F7</kbd>        </p>
+        <p>[Navigate &gt; Bookmarks &gt; Show Bookmarks]        </p>
+        <p class="c-em-note c-em--small">Čia rodo visus projekto bookmark'us, galima norimus pažymėti ir su <kbd>delete</kbd> ištrinti.      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+1-9-0</kbd> / <kbd>ctrl+1-9-0</kbd></p>
+        <p>[C][<b>Toggle Bookmark 1-9-0 / Go to Bookmark 1-9-0</b>]</p>
+        <p>Sukūrimas ir vaikščiojimas tarp numerinių bookmark'ų.</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>plugin::LineOps</p>
+      <blockquote>
+        <p>Operations on lines:</p>
+        <ul>
+          <li>Batch bookmark lines</li>
+          <li>Invert bookmarks</li>
+          <li>Clear bookmarks</li>
+          <li>Copy bookmarked lines</li>
+          <li>Cut bookmarked lines</li>
+          <li>Delete bookmarked lines</li></ul></blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Failų Favorites</h3>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+F8</kbd></p>
+        <p>[File &gt; Add to Favorites] </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+F8</kbd></p>
+        <p>[View &gt; Tool Windows &gt; Favorites] </p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Redaktorius:    redagavimas (ir gali būti žymėjimas)</h2>
+<p>Redaktorius: navigacija, paieška, selektinimas, redagavimas</p>
+<p>Operacijos redaktoriuje</p>
+<p>Redagavimas — kodą-tekstą keičiančios operacijos</p>
+<p>Dublikavimas-klonavimas</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Bendri</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+shift+Insert</kbd></p>
+        <p>[K][Editor Actions &gt; Toggle Insert/Overwrite]</p>
+        <p>[C][Toggle Insert/Overwrite]</p>
+      </div>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Kodo eilutės (code lines-rows)</h3>
+      <p>plugin::Missing In Actions</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+C</kbd></p>
+        <p>[M][Lines Copy] </p>
+        <p><strong>perdaryti su</strong>:<br>
+        [C][Split Selection into Lines]        <br>
+        [C][Select Line at Caret]        </p>
+        <p>Kopijuoja eilutes, kuriose yra kursorius ir pažymėjimas.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+X</kbd></p>
+        <p>[M][Lines Cut]</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+V</kbd></p>
+        <p>[M][Lines Paste Insert]      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+V</kbd></p>
+        <p>[M][Lines Paste Replace]</p>
+        <p>Paste'uoja replace'indamas eilutes, kuriose yra kursorius ar pažymėjimas.</p>
+      </div>
+      <h4>Eilučių žymėjimas</h4>
+      <p>[C][Toggle Between Carets and Line Selection]</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[C][Select Line at Caret]</p>
+        <p>Pažymi eilutę, kurioje yra kursorius. Jeigu yra pažynėjimas &#8212; jis prapuola.</p>
+        <p>Kitaip nei VS Code [C][expandLineSelection] ir Sublime Text [Selection &gt; Expand Selection to Line] (pas abu hotkeys'as <kbd>ctrl+L</kbd>) &#8212; antrą kartą įvykdžius-paspaudus, nepažymi sekančios eilutės.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+L</kbd></p>
+        <p>[M][Expand Selection to Line]        </p>
+        <p>Pažynėjimą-kursorių išplečia iki visų eilučių, kuriose yra pažymėjimas ar kursorius.      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+L</kbd></p>
+        <p>[C][Split Selection into Lines] plugin::Extra Actions        </p>
+        <p>Veikia tiksliai kaip  Sublime Text [Selection &gt; Split into Lines] ir panašai VS Code [CP][Add Cursors to Line Ends]</p>
+        <p>Kai vientisas pažymėjimas yra per kelias eilutes, sukuria daugybinį pažymėjimą, kiekvienai eilutei po atskirą, pati pažymėjimo zona nesikeičia, kursoriai padedami dešnėje. </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p class="c-editor-command__title">Gauti kursorius eilučių pabaigose ar pradžiose        </p>
+        <p> Būdai:</p>
+        <dl>
+          <dt>su paprastu pažymėjimu</dt>
+          <dd>
+            <ol>
+              <li>padaryti paprastą pažymėjimą per kelias eilutes </li>
+              <li>
+                <p>vienu iš būdų padaryti kursorius kiekvienoje pažymėjimo eilutėje:</p>
+                <ul>
+                  <li>[C][Split Selection into Lines] plugin::Extra Actions</li>
+                  <li>[Edit &gt; Column Selection Mode]</li>
+                </ul>
+              </li>
+              <li>Tada <kbd>Home</kbd> arba <kbd>End</kbd>          </li>
+            </ol>
+          </dd>
+          <dt>su blokiniu pažymėjimu</dt>
+          <dd>
+            <ol>
+              <li>
+                <p>vienu iš būdų padaryti blokinį pažymėjimą:</p>
+                <ul>
+                  <li>su [C][Clone Caret <strong>Above / Below</strong>] padarome kursorius eilutėse.</li>
+                  <li>arba įjungus [Edit &gt; Column Selection Mode]</li>
+                </ul>
+              </li>
+              <li>Tada <kbd>Home</kbd> arba <kbd>End</kbd>          </li>
+            </ol>
+          </dd>
+        </dl>
+      </div>
+      <h4>Naujų eilučių sukūrimas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>shift+Enter</kbd> / <kbd>ctrl+Enter</kbd></p>
+        <p>[C][<strong>Start New Line Before Current / Start New Line</strong>]</p>
+        <p>Sukuria naują eilutę ir padeda joje kursorių <strong>virš / po</strong> eilute, kurioje yra kursorius. Kursoriaus pozicija ir yra pažymėjimas ar ne &#8212; nesvarbu.</p>
+      </div>
+      <h4>Eilučių stumdymas &#8212; pozicijos keitimas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Up</kbd> / <kbd>ctrl+Down</kbd>        </p>
+        <p>[Code &gt; Move Statement <strong>Up / Down</strong>] </p>
+        <p>Perstumtoms eilutėms padaromas indentavimas pagal aplinkinio kodo struktūrą.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+Up</kbd> / <kbd>ctrl+shift+Down</kbd></p>
+        <p>[Code &gt; Move Line <strong>Up / Down</strong>] </p>
+      </div>
+      <h4>Eilučių dublikavimas-klonavimas      </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Insert</kbd></p>
+        <p>[Edit &gt;  Duplicate Line or Selection]</p>
+        <blockquote>
+          <p>Duplicate current line or selected block.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Insert</kbd></p>
+      <p>[C][Duplicate Entire Lines]</p>
+      <p>Jei nėra pažymėjimo — dublikuoja eilutę kurioje yra kursorius, jei yra — visas eilutes, kuriose yra pažymėjimas.</p>
+</div>
+      <h4>Eilučių sujungimas    </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+L</kbd></p>
+      <p>[Edit &gt;
+        Join Lines]</p>
+      </div>
+      <h4>Eilučių trynimas</h4>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>shift+Delete</kbd></p>
+      <p>[C][Delete Line]</p>
+      <p>Trina visas eilutes, kuriose yra kursorius ir pažymėjimas.</p>
+    </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p class="c-editor-command__title">Delete Blank Lines      </p>
+      <p><kbd>ctrl+shift+Delete</kbd>      </p>
+      <p>[Edit &gt; String Manipulation &gt; Filter/Remove/Trim... &gt; Remove empty lines] plugin::String Manipulation    </p>
+    </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p class="c-editor-command__title">Delete Surplus Blank Lines      </p>
+      <p>WS tokios komandos neturi. </p>
+      <p>Bet [Code &gt; Reformat Code] kartu su kitais formatavimai daro ir tai.    </p>
+    </div>
+    </td>
+    <td width="25%"><h3>Simbolius keičiančios-transformuojančios operacijos
+      </h3>
+      <h4>Operacijos su didžiosiomis-mažosiomis</h4>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-3">
+        <p><kbd>ctrl+U</kbd></p>
+        <p>[Edit &gt; Toggle Case]</p>
+        <blockquote>
+          <p>Toggle case for word at caret or selected
+            block.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-">
+        <p><kbd>ctrl+shift+U</kbd></p>
+        <p>[Edit &gt; Switch case...] plugin::String Manipulation      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-2">
+        <p><kbd>alt+U</kbd></p>
+        <p>[Edit &gt; Popup String Manipulation...] plugin::String Manipulation </p>
+        <p>Atidaro meniu su visomis šio plugin'o komandomis.</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Completion'ai</h3>
+      <p>Completions'ai ir auto-completions'ai    </p>
+      <p>context-aware code completion</p>
+      <h4>Programavimo kalbų simbolių</h4>
+      <p><a href="editor.webstorm.completion.htm">Completion'ų veikimas</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Space</kbd></p>
+      <p>[C][Basic]</p>
+      <p>Completion Basic      </p>
+      <blockquote>
+        <p>Basic code completion helps you complete the names of classes, methods, and keywords within the visibility scope. When you invoke code completion, WebStorm analyses the context and suggests the choices that are reachable from the current caret position (suggestions also include <a href="http://127.0.0.1:63342/help/webstorm/2018.1/using-live-templates.html">Live templates</a>).</p>
+      </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+Space</kbd></p>
+      <p>[C][SmartType]      </p>
+      <p>Completion SmartType    </p>
+  </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+Space</kbd></p>
+        <p>[C][]</p>
+        <p>Class Name Completion</p>
+      </div>
+      <h4>Žodžių redaguojamame dokumente</h4>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>alt+/</kbd> / <kbd>alt+shift+/</kbd></p>
+      <p>[Code &gt; Completion &gt; <mark>Cyclic Expand Word</mark> / <mark>Cyclic Expand Word (Backward)</mark>]</p>
+      <p>[C][<mark>Cyclic Expand Word</mark> / <mark>Cyclic Expand Word (Backward)</mark>]      </p>
+      <blockquote>
+        <p>Hippie completion is a completion engine that analyses your text in the visible scope and generates suggestions from the current context. It helps you complete any word from any of the currently opened files.</p>
+    </blockquote>
+      <dl>
+        <dt>Cyclic Expand Word</dt>
+        <dd>
+          <p>Ieško žodžių nuo kursoriaus pozicijos atgal-aukštyn.</p>
+          <blockquote>
+            <p>to search for matching words before the caret</p>
+          </blockquote>
+        </dd>
+        <dt>Cyclic Expand Word (Backward)</dt>
+        <dd>
+          <blockquote>
+            <p>to search for matching words after the caret and in other open files</p>
+        </blockquote>
+        </dd>
+    </dl>
+    </div>
+    <h4>Completion'ų setting'ai (Configure code completion settings)</h4>
+<p>[S][Editor &gt; General &gt; Code Completion]</p>
+<h4>Postfix code completion</h4>
+<p> <a href="http://127.0.0.1:63342/help/webstorm/2018.1/auto-completing-code.html#postfix_completion">Auto-Completing Code and Paths - Help | WebStorm</a></p>
+    <p> <a href="http://127.0.0.1:63342/help/webstorm/2018.1/settings-postfix-completion.html">Postfix Completion - Help | WebStorm</a></p>
+    <blockquote>
+      <p>Postfix completion options are shown as part of the basic completion suggestions list. To see a full list of postfix completions applicable in the current context, press </p>
+    </blockquote>
+    <p class="c-em-note">Savo Postfix'ų sukurti negalima.</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Kodo formatavimas &#8212; indent'avimas</h3>
+      <p> Kodo formatavimas white space'su eilučių pradžioje, t. y. atitraukimais-indent'ais. </p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Tab</kbd> / <kbd>shift+Tab</kbd></p>
+        <p>[Edit &gt; <mark>Indent Selection</mark> / <mark>Unindent Line or Selection</mark>] </p>
+        <blockquote>
+          <p>Change indentation of a text fragment.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[C][Indent Line or Selection]</p>
+        <p>Indent'uoja ir kai nėra pažymėjimo, ir kai yra.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+I</kbd></p>
+        <p>[Code &gt; Auto-Indent lines]</p>
+        <p>Indent'uoja eilutes, tai daroma pagal aplink esantį kodą. </p>
+        <p>Veikia pagal esantį pažymėjimą:</p>
+        <dl>
+          <dt>nėra pažymėjimo</dt>
+          <dd>
+            <p>Indent'uoja visą dokumentą.</p>
+          </dd>
+          <dt>yra pažymėjimas</dt>
+          <dd>
+            <p>Indent'uoja tik tas eilutes, kuriose yra pažymėtas pirmasis eilutės simbolis arba white space'as prieš jį.</p>
+          </dd>
+        </dl>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+I</kbd></p>
+        <p>plugin::String Manipulation<br>
+          [C][Align to Columns]<br>
+        [Code &gt; Align to Columns]</p>
+        <p>Turime:</p>
+        <pre><code>$border: (
+  thin: coral,
+  dashed: red,
+  thick: deeppink
+);</code></pre>
+        <p>Gauname:</p>
+        <pre><code>$border: (
+  thin:   coral,
+  dashed: red,
+  thick:  deeppink
+);</code>
+        </pre>
+        <hr>
+        <p> <a href="https://plugins.jetbrains.com/plugin/7465-front-end-alignment">Front End Alignment - Plugins | JetBrains</a> — atrodo geresnis      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Edit &gt; Convert Indents &gt; To <mark>Spaces</mark> / <mark>Tabs</mark>]</p>
+        <p>Pakeičia indent'avimo simbolius aktyviame redaktoriuje-faile.</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td>
+      <h3>Kodo formatavimas &#8212; pagal nustatytą stilių (code style)</h3>
+      <p><a href="https://www.jetbrains.com/help/webstorm/reformatting-source-code.html">https://www.jetbrains.com/help/webstorm/reformatting-source-code.html</a></p>
+      <blockquote>
+        <p>WebStorm lets you reformat source code to meet the requirements of your code style. WebStorm will lay out spacing, indents, keywords etc. Reformatting can apply to the selected text, entire file, or entire project.</p>
+      </blockquote>
+      <p>Kodo formatavimas daromas pagal čia nustatytas taisykles: <br>
+        [File &gt; Settings] &gt;  [Editor &gt; Code Style] <br>
+  <a href="https://www.jetbrains.com/help/webstorm/code-style.html">https://www.jetbrains.com/help/webstorm/code-style.html</a></p>
+      <p>Su specialiais kodo komentarais galima atjungti formatavimą kodo fragmentams: <a href="https://www.jetbrains.com/help/webstorm/reformatting-source-code.html#formatter_options">reformatting-source-code.html#formatter_options</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+I</kbd></p>
+        <p>[Code &gt;
+          Reformat Code]</p>
+        <p>Įvykdo [Code &gt;
+          Show Reformat File Dialog]  su default'iniais nustatymais.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+I</kbd></p>
+        <p>[Code &gt;
+          Show Reformat File Dialog] </p>
+        <p>Formatuoja pažymėtą (arba viso failo, jei nėra pažymėjimo) kodą.</p>
+        <p>Kodo formatavimo buit-in operacijos:</p>
+        <ul>
+          <li>Indent'uoja pažymėtas eilutes,  bet kitaip nei [Code &gt; Auto-Indent lines]. </li>
+        </ul>
+        <p>Kodo formatavimo dialoginiame lange pasirenkamos operacijos:</p>
+        <dl>
+          <dt>Optimize imports</dt>
+          <dd>
+            <blockquote>
+              <p>Select this check box to remove unused import statements from the code within the selected scope.</p>
+            </blockquote>
+          </dd>
+          <dt>Rearrange code</dt>
+          <dd>
+            <blockquote>
+              <p>Select this check box to reorder your source code entries according to the configurations specified in the Arrangement tab of your <a href="https://www.jetbrains.com/help/webstorm/code-style.html">Code Style settings</a>.</p>
+            </blockquote>
+          </dd>
+        </dl>
+        <div class="c-em-note c-em--small c-em--narrow">
+          <p>Galima formatuoti viso katalogo failus:</p>
+          <blockquote>
+            <p>To reformat code for a directory, follow these steps:</p>
+            <ol>
+              <li>In the Project tool window, select the directory you want to apply your reformatting to.</li>
+              <li>Choose <span data-swiftype-index="false">Code | Reformat Code</span> on the main menu or press Ctrl+Alt+L.</li>
+              <li>In the <a href="https://www.jetbrains.com/help/webstorm/reformat-code-on-directory-dialog.html">Reformat Code</a> dialog box, specify the necessary options and filters for your reformatting and click Run.</li>
+            </ol>
+          </blockquote>
+        </div>
+      </div>
+    </td>
+    <td><h3>Kodo formatavimas &#8212; </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+Enter</kbd></p>
+        <p>[C][Complete Current Statement]</p>
+        <p>Statements completion </p>
+        <blockquote>
+          <p>Statements completion enables you to create syntactically correct code constructs. It inserts the necessary syntax elements (parentheses, braces, semicolons etc.) and gets you in a position where you can start typing the next statement.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Spalvų kodai / color</h3>
+      <p> Spalvos kodo įvedimas ir esamo redagavimas</p>
+      <p><a href="#editCmd-show-intention-actions">[Other &gt; Show intention actions]</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[C][Change color]</p>
+        <p>Deja šios komandos nėra [S][Keymap], ją galima iškviesti, kai kursorius yra spalvos kode, per [C][Show intention actions]</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Other &gt; Show Color Picker]</p>
+        <p>Deja pasirinkus neįterpia į kodą.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>pelės kursorius virš spalvos kodo</kbd> + <kbd>Shift</kbd></p>
+        <p>Parodo spalvą mažame popup'e.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[C][Show Material Palette Dialog]</p>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>HTML</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+Delete</kbd></p>
+        <p>[Code &gt; Unwrap/Remove...]</p>
+        <p>Leidžia pasirinkti ir ištrinti tėvinį tagą.</p>
+      </div>
+    <p>&nbsp;</p>
+    <pre>Plug-in: Refactor—X
+  Add Attribute...
+  Add Subtag...
+  Change Attribute Value..
+  Convert Tag Contents To Attribute...
+  Delete Attribute...
+  Delete Tag...
+  Move Attribute In...
+  Move Attribute Out...
+  Rename Attribute...
+  Rename Tag...
+  Replace Attribute with Tag...
+  Replace Tag with Attribute...
+  Unwrap Tag...
+  Wrap Tag Contents...
+  Wrap Tag...</pre>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Kodo įterpimas arba wrap'inimas pažymėto kodo, kodo snippet'ai-template'ai</h3>
+      <p>Live Template'ai laikomi [S][Editor &gt; Live Templates]</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+J</kbd></p>
+        <p>[Code &gt; Surround With...]</p>
+      <p>Parodo meniu su komandomis, kurios parenkamos pagal kursoriaus kontekstą.</p><p>Duoda pasirinkti Live Template'ą, kuris pritaikomas su pažymėjimu.</p>
+      <p>Jeigu nėra pažymėjimo, naudoja eilutę, kurioje yra kursorius.      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+J</kbd></p>
+        <p>[Code &gt; Surround with Live Template...]      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+J</kbd></p>
+        <p>[C][Surround with Emmet]</p>
+        <p>Veikia tik HTML'e.      </p>
+      </div>
+    </td>
+    <td>
+      <h3>Kabutės / Quotes</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+&quot;</kbd></p>
+        <p>[C][Toggle Quotes]</p>
+        <blockquote>
+          <p>Switches between single and double quotes inside a string literal. It works in most languages and with multiple carets. For JavaScript/CoffeeScript plugin "JavaScript Intention Power Pack" must be enabled.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+&quot;</kbd></p>
+        <p>[C][Break Quotes]</p>
+        <blockquote>
+          <p>Splits string literal at the caret position and adds concatenation operators with the caret between them. For example: </p>
+          <pre>var a = "Hello |world."; </pre>
+          <p>will become </p>
+          <pre>var a = "Hello " + | + "world."</pre>
+          <p>It works in most languages and with multiple carets.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td><h3>&nbsp;</h3></td>
+  </tr>
+  <tr>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td><h3>Komandos pagal kursoriaus redaktoriuje kontekstą</h3>
+      <p>Inteligentinės operacijos ...
+      </p>
+      <div id="editCmd-show-intention-actions" class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+Enter</kbd></p>
+        <p>[C][Show intention actions]</p>
+        <p>Pagal tai, kokiame kodo simbolyje yra kursorius, išveda galimų komandų meniu.</p>
+        <blockquote>
+          <p>Show the list of available intention actions.</p>
+        </blockquote>
+        <p>Kai kursorius yra:</p>
+        <dl>
+          <dt>spalvos kode</dt>
+          <dd>
+            <p>Galima įvykdyti:</p>
+            <p>[C][Change color]<br>
+              [C][Convert color to HEX]<br>
+              [C][Convert color to HSL]<br>
+              [C][Convert color to HWB]<br>
+              [C][Convert color to RGB]<br>
+              [C][Expand CSS shorthand property]</p>
+          </dd>
+        </dl>
+      </div>
+      <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<figure class="c-figure--shadow" style="max-width:95%">
+  <div class="c-figure__content">
+    <p>Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</p>
+    <p>Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text. For example, the following pair of hotkeys scrolls horizontally instead of vertically when you turn the wheel while holding down the left Control key.</p>
+    <p>By means of the <a href="https://autohotkey.com/docs/commands/Hotkey.htm">Hotkey</a> command, hotkeys can be created dynamically while the script is running. The Hotkey command can also modify, disable, or enable the script's existing hotkeys individually. Some of the most useful hotkeys for the mouse wheel involve alternate modes of scrolling a window's text.</p>
+  </div>
+  <figcaption>Dideliauskas tekstas</figcaption>
+</figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Iš ko formatavimas susideda:</p>
+<dl>
+  <dt>Daroma visada:</dt>
+  <dd>
+    <ul>
+      <li>Indent'uoja pažymėtas eilutes,  bet kitaip nei [Code &gt; Auto-Indent lines].      </li>
+    </ul>
+    <p>&nbsp;	</p>
+  </dd>
+  <dt>Galima formatavimo dialoginiame lange pasirinkti:</dt>
+  <dd>
+    <dl>
+      <dt>Optimize imports</dt>
+      <dd>
+        <blockquote>
+          <p>Select this check box to remove unused import statements from the code within the selected scope.</p>
+        </blockquote>
+      </dd>
+      <dt>Rearrange code</dt>
+      <dd>
+        <blockquote>
+          <p>Select this check box to reorder your source code entries according to the configurations specified in the Arrangement tab of your <a href="https://www.jetbrains.com/help/webstorm/code-style.html">Code Style settings</a>.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="c-editor-command o-collapse-locdep">
+  <p><kbd>ctrl+shift+</kbd></p>
+  <p>[View &gt; ] &#8212; </p>
+</div>
+<p>&nbsp;</p>
+<div class="c-editor-command o-collapse-locdep">
+  <p><kbd>ctrl+shift+</kbd></p>
+  <p>[View &gt; ] &#8212; </p>
+</div>
+<p>&nbsp;</p>
+<div class="c-editor-command o-collapse-locdep">
+  <p><kbd>ctrl+shift+</kbd></p>
+  <p>[View &gt; ] &#8212; </p>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

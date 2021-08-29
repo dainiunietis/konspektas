@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////
+//
+//  #
+//
+////////////////////////////////////////////////////////////
+
+/*20200214181122*/
+
+@include szm-spacing-outputUtilities-sizes-px;
+
+/////////////////////////////////////////////////////////////////
+//
+//  #
+//
+////////////////////////////////////////////////////////////
+
+:root {
+  --szm-spacing-size-px-tiny: #{szm-spacing-size("tiny")};
+  --szm-spacing-size-px-small: #{szm-spacing-size("small")};
+  --szm-spacing-size-px-medium: #{szm-spacing-size("medium")};
+  --szm-spacing-size-px-large: #{szm-spacing-size("large")};
+  --szm-spacing-size-px-huge: #{szm-spacing-size("huge")};
+}
+
+/////////////////////////////////////////////////////////////////
+//
+//  #
+//
+////////////////////////////////////////////////////////////
+
+// SPacing Vertical Margin
+//.u-spcVerMrg {
+//.u-spcVM,
+.u-spvm, .u-spvm-c > * {
+  margin-bottom: $szm-spacing-vertical-paragraph !important;
+}
+
+// SPacing Vertical Padding
+
+//.u-spcVerPdd {
+//.u-spcVP,
+.u-spvp, .u-spvp-c > * {
+  padding-bottom: $szm-spacing-vertical-paragraph !important;
+}
+
+/////////////////////////////////////////////////////////////////
+//
+//  #
+//
+////////////////////////////////////////////////////////////
+
+:root {
+  --szm-spacing-vertical-paragraph: #{$szm-spacing-vertical-paragraph};
+}
+
+

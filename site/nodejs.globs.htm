@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Globs (Globbing in Node)</h1>
+<p> <a href="https://github.com/begin/globbing">begin/globbing: Introduction to "globbing" or glob matching, a programming concept that allows "filepath expansion" and matching using wildcards.</a></p>
+<p>Kas tai yra:</p>
+<blockquote>
+  <p>What is "globbing"?</p>
+  <p>The term "globbing", also referred to as "glob matching" or "filepath expansion", is a programming concept that describes the process of using wildcards, referred to as "glob patterns" or "globs", for matching file paths or other similar sets of strings.</p>
+</blockquote>
+<table width="34%" class="c-table-linesGrid -u-table-equelCols">
+  <caption>Pattern'ų pavyzdžių žymėjimas</caption>
+  <tr>
+    <td width="36%">
+      <pre><code>images/**/*.{png,svg}</code></pre>
+    </td>
+    <td width="64%">
+      <pre><code><mark>images/logo.png</mark> &lt;&lt;&lt; rastas-sumatch'intas
+images/kas.gif</code></pre>
+    </td>
+  </tr>
+</table>
+<h2>globbing'o npm package'ai</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>glob</h3>
+      <p> <a href="https://github.com/isaacs/node-glob">isaacs/node-glob: glob functionality for node.js</a></p>
+      <p> <a href="https://gulpjs.com/docs/en/getting-started/explaining-globs">Explaining Globs · gulp.js</a></p>
+      <p> <a href="https://dustinpfister.github.io/2017/11/28/nodejs-glob/">Working with glob patterns in node.js using the glob npm package | Dustin John Pfister at github pages</a></p>
+      <p>Atrodo, kad pagrinde naudojama ši globbing'o implementacija.</p>
+      <p>Svarbu:</p>
+      <ul>
+        <li>
+          <p>node-glob patį match'inimą daro su <a href="https://github.com/isaacs/minimatch">isaacs/minimatch: a glob matcher in javascript</a>:</p>
+          <blockquote>
+            <p>It uses the minimatch library to do its matching</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>minimatch</p>
+            <p>This is the matching library used internally by npm.</p>
+            <p>It works by converting glob expressions into JavaScript RegExp objects.</p>
+          </blockquote>
+        </li>
+      </ul>
+    </td>
+    <td width="25%">
+      <h3>multimatch</h3>
+      <p>Pagerintas minimatch &#8212; <a href="">GitHub - sindresorhus/multimatch: Extends minimatch.match() with support for multiple patterns</a></p>
+      <p>Jo testeris &#8212; <a href="">Glob online tester</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>micromatch</h3>
+      <p>Atrodo šiuo metu geriausias. <strong>Naudoja Gulp'as.</strong></p>
+      <p> <a href="">GitHub - micromatch/micromatch: Highly optimized wildcard and glob matching library. Faster, drop-in replacement to minimatch and multimatch. Used by babel core, yarn, jest, browser-sync, documentation.js, stylelint, nyc, and many others!</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Bendras veikimas</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td>
+      <h3>Glob pattern'o  struktūra</h3>
+      <dl>
+        <dt>glob segment (a single path portion)</dt>
+        <dd>
+          <blockquote>
+            <p>A segment is everything between separators.</p>
+          </blockquote>
+        </dd>
+        <dt>glob separator</dt>
+        <dd>
+          <p>Katalogams atskirti:</p>
+          <ul>
+            <li> nenaudoti windows'inio Back-slashe &#8212; <code>c:\ten\tas.txt</code></li>
+            <li>o naudoti Forward-slashe &#8212; <code>c:/ten/tas.txt</code></li>
+          </ul>
+          <blockquote>
+            <p>The separator in a glob is always the <code>/</code> character - regardless of the operating system - even in Windows where the path separator is <code>\\</code>. In a glob, <code>\\</code> is reserved as the escape character.</p>
+          </blockquote>
+        </dd>
+      </dl>
+    </td>
+    <td>
+      <h3>Šakninis-darbinis katalogas</h3><p>Failų match'inimas daromas nuo sąlyginio šakninio darbinio katalogo —
+        working directory.</p>
+      <p>Pavyzdžiui šakninis-darbinis katalogas yra <code>D:\kazkas</code>, tada:</p>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td>
+            <pre><code>*.js</code></pre>
+          </td>
+          <td>
+            <pre><code><mark>D:\kazkas\index.js</mark>
+D:\kazkas\kitas\main.js</code></pre>
+          </td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Pritaikymas iš eilės</h3>
+      <p>Globs'ų masyvas pritaikomas iš eilės, t. y. dešniau esantys pattern'ai turi didesnį svorį, gali ir pridėti, ir atimti failus.</p>
+      <blockquote>
+        <p>Note that globs are evaluated in order, which means this is possible:</p>
+        <pre><code>// exclude every JS file that starts with a b except bad.js
+['*.js', '!b*.js', 'bad.js']</code></pre>
+      </blockquote>
+      <p>If any non-negative globs follow a negative, nothing will be removed from the later set of matches.</p>
+      <pre><code>['script/**/*.js', '!scripts/vendor/', 'scripts/vendor/react.js']</code></pre>
+      <div class="c-em-note c-em--narrow">
+        <p>Kad greičiau veiktų, neigiamas pattern'as turi būti ne iki pačio failo:</p>
+        <blockquote>
+          <p>Negative globs can be used as an alternative for restricting double-star globs.</p>
+          <pre><code>['**/*.js', '!node_modules/']</code></pre>
+          <p>In the previous example, if the negative glob was <code>!node_modules/**/*.js</code>, every match would have to be compared against the negative glob, which would be extremely slow.</p>
+        </blockquote>
+      </div>
+    </td>
+    <td>
+      <blockquote>
+        <p>Results from absolute patterns such as <code>/foo/*</code> are mounted onto the root setting using path.join. On windows, this will by default result in <code>/foo/*</code> matching <code>C:\foo\bar.txt</code>.</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%">
+      <blockquote>
+        <p>Empty Sets</p>
+        <p>If no matching files are found, then an empty array is returned. This differs from the shell, where the pattern itself is returned. For example:</p>
+        <pre><code>$ echo a*s*d*f a*s*d*f</code></pre>
+        <p>To get the bash-style behavior, set the nonull:true in the options.</p>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <blockquote>
+        <p>Basename Matching</p>
+        <p>If you set <code>matchBase:true</code> in the options, and the pattern has no slashes in it, then it will seek for any file anywhere in the tree with a matching basename. For example, <code>*.js</code> would match <code>test/simple/basic.js</code>.</p>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <h3>Spec. simbolių užkodavimas</h3>
+      <blockquote>
+        <p>Here, the <code>*</code> is escaped, so it is treated as a literal instead of a wildcard character.</p>
+        <pre><code>'glob_with_uncommon_\\*_character.js'</code></pre>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Sintaksė — simbolių match'inimo spec. simboliai (special character) — bazinis globbing'as (basic wildcard matching)</h2>
+<blockquote>
+  <p><a href="https://github.com/begin/globbing#wildcards">Wildcards</a></p>
+  <p>The commonly supported characters supported across globbing implementations for basic wildcard matching are <code>*</code>, <code>?</code> and a simplified version of regex brackets for matching any of a given set of characters.</p></blockquote>
+<table width="1883" class="c-tableCols c-tableCols--h4h5 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><i>single-star</i> &#8212; <code>*</code></h3>
+      <p>Ką daro:</p>
+      <blockquote>
+        <p>Matches any amount - including none - of characters within a single segment. Useful for globbing files within one directory.      </p>
+      </blockquote>
+      <p>Tas pats kitais žodžiais:</p>
+      <blockquote>
+        <p>Matches any character zero or more times, except for <code>/</code>.      </p>
+      </blockquote>
+      <p>Daugiau nei dvi <code>*</code>:</p>
+      <blockquote>
+        <p>More than two stars in a glob path segment are typically interpreted as <em>a single star</em> (e.g. <code>/***/</code> is the same as <code>/*/</code></p>
+      </blockquote>
+      <p>Išimtis (special exception):</p>
+      <blockquote>
+        <p>Special exceptions:</p>
+        <ul>
+          <li><code>*</code> &#8212; typically does not match dotfiles (file names starting with a <code>.</code>) unless explicitly enabled by the user <a href="https://github.com/begin/globbing#common-options">via options</a>      </li>
+        </ul>
+      </blockquote>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <caption>Pavyzdžiai</caption>
+        <tr>
+          <td width="25%">
+            <pre><code>*.js</code></pre>
+          </td>
+          <td width="25%">
+            <pre><code><mark>index.js</mark>
+scripts/main.js</code></pre>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%">
+      <h3><i>double-star</i> &#8212; <code>**</code></h3>
+      <p>Ką daro:</p>
+      <blockquote>
+        <p>Matches any amount - including none - of characters across segments. Useful for globbing files in nested directories. Make sure to appropriately restrict your double-star globs, to avoid matching large directories unnecessarily.</p>
+      </blockquote>
+      <p>Tas pats kitais žodžiais:</p>
+      <blockquote>
+        <p>Matches any character zero or more times, including <code>/</code>.</p>
+      </blockquote>
+      <p>Kai        <code>**</code> vienintelis segmente:</p>
+      <blockquote>
+        <p>If a "globstar" is alone in a path portion, then it matches zero or more directories and subdirectories searching for matches. It does not crawl symlinked directories.</p>
+      </blockquote>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <caption>
+          Pavyzdžiai
+        </caption>
+        <tr>
+          <td width="25%">
+            <pre><code>**.js</code></pre>
+          </td>
+          <td width="25%">
+            <pre><code><mark>index.js</mark>
+scripts/main.js
+scripts/cool/stick.js</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <pre><code>**/*.js</code></pre>
+          </td>
+          <td>
+            <pre><code><mark>index.js</mark>
+<mark>scripts/main.js</mark>
+<mark>scripts/cool/stick.js</mark></code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <pre><code>scripts/**/*.js</code></pre>
+          </td>
+          <td>
+            <pre><code>index.js
+<mark>scripts/main.js</mark>
+<mark>scripts/cool/stick.js</mark></code></pre>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%">
+      <h3><i>...</i> &#8212; <code>?</code></h3>
+      <p>Ką daro:</p>
+      <blockquote>
+        <p>Matches any character one time.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>Išimtis (special exception):</p>
+      <blockquote>
+        <p>also typically does not match the leading dot</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4><i>...</i> &#8212; <code>[ ]</code></h4>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Matches any of the specified characters </p>
+        <p>Matches a range of characters, similar to a RegExp range. If the first character of the range is <code>!</code> or <code>^</code> then it matches any character not in the range.</p>
+      </blockquote>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Sintaksė</h2>
+<table width="1883" class="c-tableCols c-tableCols--h4h5 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><i>braced sections</i> &#8212; <code>{...}</code></h3>
+      <p><code>{pattern, pattern, pattern}</code></p>
+      <p>Kaip veikia:</p>
+      <ul>
+        <li>reiškia turi būti kuris nors vienas komponentas, regExp atitikmuo &#8212; <code>(pattern|pattern|pattern)</code></li>
+        <li>apdorojamos pirmiausiai</li>
+        <li>jo komponente gali būti &#8212; <code>/</code></li>
+      </ul>
+      <blockquote>
+        <p>Before parsing the path part patterns, braced sections are expanded into a set. Braced sections start with <code>{</code> and end with <code>}</code>, with any number of comma-delimited sections within. Braced sections may contain slash characters, so <code>a{/b/c,bcd}</code> would expand into <code>a/b/c</code> and <code>abcd</code>.</p>
+      </blockquote>
+      <div class="c-em-alert c-em--small">
+        <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+          <caption>komponente visi tarpai "užsiskaito"</caption>
+          <tr>
+            <td width="25%">
+              <pre><code>site/*.{html, php}</code></pre>
+            </td>
+            <td width="25%">
+              <pre><code><mark>site/index.html'</mark>
+site/index.php'<mark></mark></code></pre>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>&nbsp;</p>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="25%">
+            <pre><code>images/**/*.{png,svg}</code></pre>
+          </td>
+          <td width="25%">
+            <pre><code><mark>images/logo.png
+images/logo.svg</mark>
+images/kas.gif
+<mark>images/icons/home.svg
+images/icons/phone.png</mark></code></pre>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="25%">
+      <h3><i>negative</i> &#8212; <code>!</code></h3>
+      <blockquote>
+        <p>Special character: <code>!</code> (negative)</p>
+        <p>Since globs are matched in array order, a negative glob must follow at least one non-negative glob in an array. The first finds a set of matches, then the negative glob removes a portion of those results. These are most performant when they only include literal characters.</p>
+        <pre><code>['script/**/*.js', '!scripts/vendor/']</code></pre>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <blockquote>
+        <p>Dots</p>
+        <p>If a file or directory path portion has a <code>.</code> as the first character, then it will not match any glob pattern unless that pattern's corresponding path part also has a <code>.</code> as its first character.</p>
+        <p>For example, the pattern <code>a/.*/c</code> would match the file at a/.b/c. However the pattern <code>a/*/c</code> would not, because <code>*</code> does not start with a dot character.</p>
+        <p>You can make glob treat dots as normal characters by setting <code>dot:true</code> in the options.</p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>The following characters have special magic meaning when used in a path portion:</p>
+        <ul>
+          <li><code>!(pattern|pattern|pattern)</code> Matches anything that does not match any of the patterns provided.</li>
+          <li><code>?(pattern|pattern|pattern)</code> Matches zero or one occurrence of the patterns provided.</li>
+          <li><code>+(pattern|pattern|pattern)</code> Matches one or more occurrences of the patterns provided.</li>
+          <li><code>*(a|b|c)</code>  Matches zero or more occurrences of the patterns provided</li>
+          <li><code>@(pattern|pat*|pat?erN)</code> Matches exactly one of the patterns provided</li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote>
+  <p><a href="https://css-tricks.com/gulp-for-beginners/#article-header-id-7">https://css-tricks.com/gulp-for-beginners/#article-header-id-7</a></p>
+  <p>Most workflows with Gulp tend to only require 4 different globbing patterns:</p>
+  <ol>
+    <li>*.scss: The * pattern is a wildcard that matches any pattern in the current directory. In this case, we're matching any files ending with .scss in the root folder (project).</li>
+    <li>**/*.scss: This is a more extreme version of the * pattern that matches any file ending with .scss in the root folder and any child directories.</li>
+    <li>!not-me.scss: The ! indicates that Gulp should exclude the pattern from its matches, which is useful if you had to exclude a file from a matched pattern. In this case, not-me.scss would be excluded from the match.</li>
+    <li>*.+(scss|sass): The plus + and parentheses () allows Gulp to match multiple patterns, with different patterns separated by the pipe | character. In this case, Gulp will match any file ending with .scss or .sass in the root folder.</li>
+  </ol>
+</blockquote>
+<p>&nbsp;</p>
+<pre><code>gulp.task('sass', function() {
+  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
+             .pipe(sass())
+             .pipe(gulp.dest('app/css'))
+})</code>
+</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

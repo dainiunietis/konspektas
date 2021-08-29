@@ -1,0 +1,195 @@
+@charset "utf-8";
+
+// G:\arch sync -- nebenaudoju\webdev\codes\html\assets\sass\lib\_typography-helper-single-property.scss
+
+//////////////////////////////////////////////////////////////////
+//
+//  font-family:
+//
+/////////////////////////////////////////////////////////////
+
+// .FF-antonio-regular, .FF-antonio-regular--all * { font-family: 'antonioregular'; }
+
+//////////////////////////////////////////////////////////////////
+//
+//  font-weight: the weight (or boldness) of the font
+//
+/////////////////////////////////////////////////////////////
+
+// iš programos "dp4 Font Viewer"
+//   Weight class:
+//     thin
+//     extra light
+//     light
+//     normal
+//     medium
+//     semi bold
+//     bold
+//     extra bold
+//     black
+
+// hairline	  font-weight: 100
+// thin     	font-weight: 200
+// light    	font-weight: 300
+// normal	    font-weight: 400
+// medium	    font-weight: 500
+// semibold	  font-weight: 600
+// bold	      font-weight: 700
+// extrabold  font-weight: 800
+// black	    font-weight: 900
+
+// Keyword values relative to the parent:
+// –––––––––––––––––––––––––––––––––––––––––––
+// lighter
+// bolder
+// –––––––––––––––––––––––––––––––––––––––––––
+
+// Numeric keyword values — A <number> value between 1 and 1000, inclusive.
+// –––––––––––––––––––––––––––––––––––––––––––
+// Value  Common weight name
+// –––––––––––––––––––––––––––––––––––––––––––
+// 100	  Thin (Hairline)
+// 200	  Extra Light (Ultra Light)
+// 300	  Light
+// 400	  Normal
+// 500	  Medium
+// 600	  Semi Bold (Demi Bold)
+// 700	  Bold
+// 800	  Extra Bold (Ultra Bold)
+// 900	  Black (Heavy)
+// –––––––––––––––––––––––––––––––––––––––––––
+
+$szm-text-fontWeights: (
+  thin        T 100: 100,  // hairline
+  extralight LX 200: 200,  // ultralight
+  light       L 300: 300,
+  normal      N 400: 400,  // normal
+  medium      M 500: 500,
+  semibold   BS 600: 600,  // demibold
+  bold        B 700: 700,  // bold
+  extrabold  BX 800: 800,  // ultrabold
+  "black"    BK 900: 900,  // heavy, be kabučių neveikia, SASS'as paverčia į #000000
+  lighter    LR  LR: lighter,
+  bolder     BR  BR: bolder,
+);
+
+@each $weightName, $weightValue in $szm-text-fontWeights {
+  //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // testas
+  //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // .sss777 {
+  //   #{$weightName}: #{$weightValue};
+  //   type_of_name: type_of($weightName);
+  //   @if type_of($weightName) == list {
+  //     pirmas: nth($weightName, 1);
+  //     antras: nth($weightName, 2);
+  //   }
+  // }
+  //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+  //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // veikiantis variantas
+  //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // $nameFull: null;
+  // $nameShort: null;
+  // @if type_of($weightName) == list {
+  //   $nameFull: nth($weightName, 1);
+  //   $nameShort: nth($weightName, 2);
+  // }
+  // @else {
+  //   $nameFull: $weightName;
+  //   $nameShort: to_upper_case(str_slice($weightName, 1, 1));
+  // }
+  //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+  //$nameList:  type_of($weightName) == list;
+  //$nameFull:  if($nameList, nth($weightName, 1), $weightName);
+  //$nameShort: if($nameList, nth($weightName, 2), to_upper_case(str_slice($weightName, 1, 1)));
+
+  $selectorFull: nth($weightName, 1);
+  $selectorShortLetters: nth($weightName, 2);
+  $selectorShortNumbers: nth($weightName, 3);
+
+  //.u-fontweight-#{$selectorFull},
+  .FW#{$selectorShortLetters},
+  .FW#{$selectorShortNumbers},
+  .FW#{$selectorShortNumbers}c > *,
+  .FW#{$selectorShortNumbers}d * {
+    font-weight: $weightValue !important;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//   font-size:
+//
+//////////////////////////////////////////////////////////////////////////
+
+// .u-fontsize-N{unit} .FSN{unit}
+
+@mixin szm-text-fontSize-utilities($size-start: 0.5, $size-step: 0.05, $size-end: 3, $units: "em" "rem") {
+  $size: $size-start;
+  @while $size <= $size-end {
+    $size_str: quote($size + "");
+    $size_str: str-replace($size_str, ".", "\\.");
+    @each $unit in $units {
+      //.u-fontsize-#{$size_str}#{$unit},
+      .FS#{$size_str}#{$unit} {
+        font-size: #{$size}#{$unit}
+      }
+    }
+    $size: $size + $size-step;
+  }
+}
+
+//@for $i from 1 through 99 {
+//  $size: 0.05 + (0.05 * $i);
+//  $size_str: quote($size + "");
+//  $size_str: str-replace($size_str, ".", "\\.");
+//  @each $unit in "em", "rem" {
+//    .u-fontsize-#{$size_str}#{$unit}, .FS#{$size_str}#{$unit} {
+//      font-size: #{$size}#{$unit}
+//    }
+//  }
+//}
+//
+//$size-start: 1%;
+//$step: 1%;
+//@each $property, $propertyShort in ("width": W, "height": H) {
+//  $size: $size-start;
+//  @while $size <= 100% {
+//    $sizeStr: quote($size + "");
+//    $sizeStr: str-replace($sizeStr, ".", "\\.");
+//    $sizeStr: str-replace($sizeStr, "%", "\\%");
+//
+//    $selector: "u-" + $property + "-" + $sizeStr;
+//    $selectorShort: $propertyShort + $sizeStr;
+//    //.#{$selector}, .#{$selector}-d *, .#{$selector}-c > *,
+//    .#{$selectorShort}, .#{$selectorShort}d *, .#{$selectorShort}c > * {
+//      #{$property}: $size !important;
+//    }
+//
+//    $size: $size + $step;
+//  }
+//}
+
+//@for $i from 1 through 99 {
+//  $size: 0.05 + (0.05 * $i);
+//  $size_str: quote($size + "");
+//  $size_str: str-replace($size_str, ".", "\\.");
+//  @each $unit in "em", "rem" {
+//    .u-fontsize-#{$size_str}#{$unit}, .FS#{$size_str}#{$unit} {
+//      font-size: #{$size}#{$unit}
+//    }
+//  }
+//}
+
+
+
+
+
+
+
+
+
+

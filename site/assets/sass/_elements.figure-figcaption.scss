@@ -1,0 +1,430 @@
+@charset "utf-8";
+
+// demo: http://konspektas.local/!elements.figure.htm
+
+$element-figure-clmGap: 1em;
+
+///////////////////////////////////////////////////////////////////////
+//
+//   defaultinis tagu apiforminimas
+//
+///////////////////////////////////////////////////////////////////
+
+figure {
+  display: block;
+  //margin: rem(17px) auto rem(16px);
+  padding: .5em 0;
+  z-index: 100;
+  position: relative;
+  > img {
+    // display: block;
+    border-radius: 3px;
+    line-height: 0;
+    vertical-align: bottom;
+    &:last-of-type {
+      margin-bottom: 0.2rem;
+    }
+  }
+  > pre {
+    //margin: rem(15px) rem(13px) rem(0px);
+    //margin: 0.5em 0 0;
+    //padding: rem(10px) rem(12px);
+
+    //background-color: scale-color($color-code, $lightness: 95%, $saturation: 0%);
+
+    //display: inline-block;
+    //vertical-align: top;
+    &:first-child {
+      //margin-top: 0;
+    }
+    > code {
+      //margin: 0;
+      //padding: 0;
+      //border: hsla(0, 0%, 48%, 0.3) dotted 1px;
+      //border: none;
+      //outline: hsla(0, 0%, 48%, 0.3) dotted 1px;
+      //outline-offset: 3px;
+      //background: none !important;
+    }
+    + pre {
+      //margin-top: 0;
+      //margin-left: 1em;
+      // border-left: cadetblue dotted 1px;
+    }
+    + figcaption {
+      // color: red;
+    }
+  }
+  > p, h1, h2, h3, h4, h5, h6 {
+    // margin-left: 10px;
+    // margin-right: 3em;
+    &:first-child {
+      // margin-top: .9rem;
+    }
+    &:last-child {}
+    + figcaption {
+      // text-align: center;
+    }
+  }
+
+  //> *:last-child:not(figcaption) {
+  //  margin-bottom: 0;
+  //}
+
+}
+
+figcaption {
+  margin: 0px;
+  padding: 0;
+  //font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+  //font-family: "Recursive Mono Casual Static", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+  font-family: "Recursive Sans Linear Static", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  //font-size: 0.9rem;
+  text-align: right;
+}
+
+///////////////////////////////////////////////////////////////////////
+//
+//   default'o variacija-modifier'is
+//
+///////////////////////////////////////////////////////////////////
+
+//.figure {
+//  //$thisBlock: &;
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .figure--img-bigCaption — skirta img'ui
+//
+////////////////////////////////////////////////////////////////////
+
+//<figure class="figure--img-bigCaption">
+//  <img src="">
+//  <figcaption>...</figcaption>
+//</figure>
+
+.figure--img-bigCaption {
+  text-align: center;
+  > figcaption {
+    margin-top: rem(2px);
+    text-align: center;
+    > p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .figure--img-shadow -- skirta img'ui
+//
+////////////////////////////////////////////////////////////////////
+
+//<figure class="figure--img-shadow">
+//  <img src="">
+//  <figcaption>...</figcaption>
+//</figure>
+
+.figure--img-shadow {
+  //margin-bottom: 0.9rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  border-radius: 3px;
+  padding: 0;
+  > figcaption {
+    margin: rem(8px) 0 0 0;
+    padding: 0 rem(10px) rem(11px);
+    text-align: center;
+  }
+  > img {
+    border-radius: 3px 3px 0 0;
+    // + figcaption {
+    // }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+////////////////////////////////////////////////////////////////////
+
+//%figure--removeLastBtmMRG {
+//  > * :nth-last-child(2):not(figcaption) {
+//    margin-bottom: 0;
+//  }
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .figure--dashedTB --  default'o variacija-modifier'is
+//
+////////////////////////////////////////////////////////////////////
+
+//<figure class="figure--dashedTB">
+//  ...
+//  <figcaption>...</figcaption>
+//</figure>
+
+.figure--dashedTB {
+  --figure-border-width: 1px;
+  --figure-border-style: dashed;
+  //margin: rem(15px) rem(20px) rem(7px);
+  padding: rem(8px) 0 0;
+  border-top: var(--figure-border-width) var(--figure-border-style) #505050;
+  // > *:last-child {
+  > *:nth-last-child(1n+2) {
+    //margin-bottom: 0;
+    // background: red;
+  }
+  > figcaption {
+    //margin: rem(7px) rem(0px) 0;
+    margin: -#{$szm-spacing-vertical-paragraph - 0.5em} rem(0px) 0;
+    padding: rem(7px) rem(0px) 0;
+    text-align: center;
+    border-top: var(--figure-border-width) var(--figure-border-style) #505050;
+  }
+
+  &-1 {
+    @extend .figure--dashedTB;
+    --figure-border-width: 2px;
+  }
+
+  &-2 {
+    @extend .figure--dashedTB;
+    --figure-border-width: 3px;
+  }
+}
+
+.figure--solidTB {
+  @extend .figure--dashedTB;
+  --figure-border-style: solid;
+
+  &-1 {
+    @extend .figure--solidTB;
+    --figure-border-width: 2px;
+  }
+
+  &-2 {
+    @extend .figure--solidTB;
+    --figure-border-width: 3px;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # .figure--dl
+//
+////////////////////////////////////////////////////////////////////
+
+.figure--dl {
+
+  //$this: &;
+  //
+  //&---addedbyjs {
+  //  @extend #{$this};
+  //}
+
+  @include szm-js-extendThisWithAddedByJs;
+
+  //&, &__js {
+  //}
+
+  > figcaption {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
+
+    border: solid $elements-dl-brdClr;
+    //border-width: 1px 0 0 0;
+    border-width: 3px 0 0 3px;
+
+    border-image-source: linear-gradient(100grad, transparentize($elements-dl-brdClr, 0), hsla(0, 0%, 0%, 0));
+    //border-image-width: 3px 0 0 0;
+
+
+    //border-image: linear-gradient(to right bottom, #260B3C, #a053df);
+    border-image-slice: 1;
+
+
+    //width: fit-content;
+
+    padding: .9em 1em .85em .8em;
+    //padding: .5em 1em .5em calc(.8em + 3px);
+    //padding: .45em 3em .28em .8em;
+    //padding-left: .8em;
+    margin: 0 0 0 0;
+
+    //background: $elements-dl-brdClr;
+    //background: linear-gradient(-100grad, transparentize($elements-dl-brdClr, 0.7), hsla(0, 0%, 0%, 0));
+
+    //margin: -.2em 0 0 0;
+    //padding: .3em 0;
+    //
+    //color: scale-color($color-code, $lightness: -20%);
+    //border-radius: 0 0 20px 20px;
+    //border-top: 1px dashed #505050;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .figure--code
+//
+////////////////////////////////////////////////////////////////////
+
+// <figure class="figure--code">
+
+.figure--code {
+  @include szm-js-extendThisWithAddedByJs;
+  $bgClr: scale-color($color-code, $lightness: 92%);
+  //margin: rem(0px) rem(0px) rem(0px);
+  //padding: rem(10px) rem(12px);
+  //padding-top: 1px;
+  //background: scale-color($color-code, $lightness: 96%, $saturation: 0%);
+  //border-top: 1px dashed #505050;
+  // > *:last-child {
+
+  //display: flex;
+
+  > pre {
+    //margin: rem(9px) rem(13px) rem(0px);
+    //padding: rem(0px) rem(0px);
+
+    //display: inline-block;
+    //vertical-align: top;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    > code {
+      // margin: 0;
+      // padding: 0;
+      //border: hsla(0, 0%, 48%, 0.3) dotted 1px;
+      //border: none;
+      //outline: hsla(0, 0%, 48%, 0.3) dotted 1px;
+      //outline-offset: 3px;
+      //background: none !important;
+    }
+    + pre {
+      //margin-top: 0;
+      //margin-left: 1em;
+      // border-left: cadetblue dotted 1px;
+    }
+    + figcaption {
+      // color: red;
+    }
+  }
+
+  > *:nth-last-child(1n+2) {
+    //margin-bottom: 0;
+    // background: red;
+  }
+
+  > figcaption {
+    margin: -.2em 0 0 0;
+    padding: .3em 0;
+    background: $bgClr;
+    color: scale-color($color-code, $lightness: -20%);
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+    //border-top: 1px dashed #505050;
+    font-size: 1.1em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # .figure--grd-equal
+//
+////////////////////////////////////////////////////////////////////
+
+// <figure class="figure--grd-equal">
+
+.figure--grd-equal {
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: space-between;
+  margin-left: -#{$element-figure-clmGap};
+
+  > *:not(figcaption) {
+    //outline: 1px dotted red;
+    //width: min-content;
+    flex: 1 1 0%;
+
+    margin: 0 0 $element-figure-clmGap $element-figure-clmGap;
+
+    //&:nth-child(1n+2) {
+    //  margin-left: 1em;
+    //}
+  }
+  > figcaption {
+    //outline: 1px dotted grey;
+    width: 100%;
+    margin-left: $element-figure-clmGap;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # .figure--grd-minContentGrow
+//
+////////////////////////////////////////////////////////////////////
+
+// <figure class="figure--grd-minContentGrow">
+
+.figure--grd-minContentGrow {
+  display:     flex;
+  flex-wrap:   wrap;
+  //justify-content: space-between;
+  //overflow:    hidden;
+
+  //margin-right: -#{$clmGap};
+  margin-left: -#{$element-figure-clmGap};
+
+  //width: 100%;
+  //width:       calc(100% + #{$element-figure-clmGap});
+
+  //clip-path: padding-box;
+  //clip-path: inset(0 7em 0 0);
+
+  > *:not(figcaption) {
+    //outline: 1px dotted red;
+    //background:  hsla(80, 40%, 50%, 0.2);
+
+    width: min-content;
+    flex: auto;
+
+    margin: 0 0 $element-figure-clmGap $element-figure-clmGap;
+    //margin-right: $clmGap;
+
+    //margin-right: -#{$clmGap};
+    //padding-right: #{$clmGap};
+
+    //&:nth-child(1n+2) {
+    //  margin-left: 1em;
+    //}
+  }
+  > figcaption {
+    //outline: 1px dotted grey;
+    width: 100%;
+    flex:  auto;
+    margin-left: $element-figure-clmGap;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

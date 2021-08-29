@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" href="assets/sass/master.css" as="style">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Teksto kalba / Internationalization, localization</h1>
+<p><a href="https://www.w3.org/TR/css-writing-modes-3/">CSS Writing Modes Level 3</a></p>
+<h2><code>writing-mode:</code></h2>
+<p>Nustato du parametrus:</p>
+<dl>
+  <dt>inline direction (axes)</dt>
+  <dd>
+    <p>Nustato kokia ašimi — horizontaliai ar vertikaliai — atvaizduojant dėliojami:</p>
+    <ul>
+      <li> teksto raidės ir kiti simboliai,</li>
+      <li>inline-level elementai-container'iai.</li>
+    </ul>
+  </dd>
+  <dt>block direction (axes)</dt>
+  <dd>
+    <p>Nustato kokia ašimi ir kryptimi atvaizduojant dėliojami / block flow direction:</p>
+    <ul>
+      <li> teksto simbolių eilutės,</li>
+      <li>block-level elementai-container'iai.</li>
+    </ul>
+  </dd>
+</dl>
+<del tabindex="0">
+<p>Nustato teksto simbolių dėliojimą:</p>
+<ul>
+  <li>kaip tekstas rašomas: horizontaliai ar vertikaliai, t. y. raidžių ir kitų simbolių dėliojimo ašis,</li>
+  <li>ir kokia kryptimi dėliojamos teksto eilutės.</li>
+</ul>
+<blockquote>
+  <p>The <code>writing-mode</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> property sets whether lines of text are laid out horizontally or vertically, as well as the direction in which blocks progress. </p>
+</blockquote>
+<p>Taip pat nustato block-level ir inline-level elementų-container'ių dėliojimo ašį ir kryptį:</p>
+<ul>
+  <li>inline-level — dėliojimo ašis kaip teksto simbolių,</li>
+  <li>block-level — dėliojimo ašis ir kryptis kaip teksto eilučių.</li>
+</ul>
+<blockquote>
+  <p>This property specifies the <em>block flow direction</em>, which is the direction in which block-level containers are stacked, and the direction in which inline-level content flows within a block container. </p>
+</blockquote>
+</del>
+<p>&nbsp;</p>
+<div class="c-em-note c-em--small">
+  <p>Geroji praktika</p>
+  <blockquote>
+    <p>When set for an entire document, it should be set on the root element (<code>html</code> element for HTML documents).</p>
+  </blockquote>
+</div>
+<p>&nbsp;</p>
+<p><code>writing-mode: horizontal-tb</code> — default'inis nustatymas, ką reiškia reikšmė:</p>
+<ul>
+  <li> <code>horizontal</code> — tekstas rašomas horizontaliai, krypties: left-to-right ar
+    right-to-left nenustato</li>
+  <li><code>tb</code> — Top-to-Bottom, teksto eilutės dėliojamos iš viršaus į apačią</li>
+</ul>
+<p>&nbsp;</p>
+<p><code>writing-mode: horizontal-tb</code> — skirta kalboms:</p>
+<blockquote>
+  <p>This covers all Western and some Middle Eastern languages,
+  which may differ in the direction of their horizontal writing.</p>
+</blockquote>
+<p>Konkrečiaus:</p>
+<dl>
+  <dt>Western languages</dt>
+  <dd>
+    <blockquote>
+      <p>For ltr scripts, content flows horizontally from left to right. </p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>Hebrew and Arabic</dt>
+  <dd>
+    <blockquote>
+      <p>For rtl scripts, content flows horizontally from right to left. The next horizontal line is positioned below the previous line.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border -c-pvs--child-bg c-pvs--hover">
+  <p><code>writing-mode: horizontal-tb</code> — default'ė reikšmė</p>
+  <blockquote>
+    <p>The default value, <code>horizontal-tb</code>, means &quot;a horizontal inline direction, and a top-to-bottom block direction.&quot;</p>
+  </blockquote>
+  <p><code>direction: ltr</code> — default'ė reikšmė</p>
+  <div data-diah-style-top class="c-pvs__parent" style="writing-mode: horizontal-tb; direction: ltr">
+    <p>Lietuvoje gyvena dvi kiškių rūšys – <i>pilkasis kiškis</i> ir <i>baltasis kiškis</i>. Pilkasis kiškis žiemą vasarą pilkas. Baltasis mažesnis ir žiemą visiškai baltas, <strong>tik ausų galiukai juodi</strong>.</p>
+    <p>Mažiai iškart puldavo graužti žolės, <em>bet nuo urvo toliau nei per penkis šuolius nenutoldavo</em>. O į bet kokį pavojų <strong>reaguodavo daug greičiau nei tėvai</strong> ir vos per akimirką dingdavo urve.</p>
+  </div>
+  <p><code>direction: rtl</code></p>
+  <div data-diah-style-top class="c-pvs__parent" style="writing-mode: horizontal-tb; direction: rtl">
+    <p>Lietuvoje gyvena dvi kiškių rūšys – <i>pilkasis kiškis</i> ir <i>baltasis kiškis</i>. Pilkasis kiškis žiemą vasarą pilkas. Baltasis mažesnis ir žiemą visiškai baltas, <strong>tik ausų galiukai juodi</strong>.</p>
+    <p>Mažiai iškart puldavo graužti žolės, <em>bet nuo urvo toliau nei per penkis šuolius nenutoldavo</em>. O į bet kokį pavojų <strong>reaguodavo daug greičiau nei tėvai</strong> ir vos per akimirką dingdavo urve.</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<h2>Kryptys kalboms</h2>
+<p><a href="css.logical-physical-properties-values.htm#pagefrg-20201231004000">Pavyzdys, kai fizinių / physical CSS nustatymų naudojimas apiforminime, trukdo korektiškai atvaizduoti skirtingomis kalbomis</a></p>
+<p><code> direction:</code></p>
+<p>&nbsp;</p>
+<p><code>unicode-bidi: </code></p>
+<p>&nbsp;</p>
+<h2>Skirtingų kalbų palaikymas / Internationalization, localization</h2>
+<blockquote>
+  <p>internationalization and localization — adapting computer software to different languages, regional peculiarities and technical requirements of a target locale.</p>
+</blockquote>
+<dl>
+  <dt>internationalization = i18n</dt>
+  <dd>
+    <blockquote>
+      <p>the terms abbreviated to the <a href="https://en.wikipedia.org/wiki/Numeronym" title="Numeronym">numeronyms</a> <em><strong>i18n</strong></em> (where <em>18</em> stands for the number of letters between the first <em>i</em> and the last <em>n</em> in the word <em>internationalization</em>.</p>
+    </blockquote>
+  </dd>
+  <dt>localization = L10n </dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p> <a href="https://www.w3.org/International/">Internationalization Activity Blog</a></p>
+<p><a href="https://www.w3.org/2009/cheatsheet/#i18n">W3C cheatsheet — internationalization quicktips</a></p>
+<p> <a href="https://www.w3.org/International/techniques/authoring-html">Authoring HTML & CSS</a> — labai išsamiai</p>
+<p>Skyrybos ženklai skirtingose kalbose — <a href="https://docs.google.com/spreadsheets/d/13zjKGzWxcQImDsrW-dVp6PzOCafhHwQqbl-toPIwnN4/edit#gid=0">Punctuation Cheat Sheet - Google Drive</a> (kopija mano gdrive — <a href="https://drive.google.com/open?id=1VIrlL2aMg9IOunIl0q4nWdBxGiZlljhu">Punctuation Cheat Sheet - Jens Oliver Meiert.xlsx</a>, G:\gdrive Laptop autosync\konspektas\Punctuation Cheat Sheet - Jens Oliver Meiert.xlsx) </p>
+<p> <a href="https://www.w3.org/International/questions/qa-reference-links">Internationalization tips for linking to headings & figures</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

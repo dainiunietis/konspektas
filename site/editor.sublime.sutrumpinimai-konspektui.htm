@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Sutrumpinimai konspektui &#8212; Sublime Text</h1>
+<h2>ST package'ų žymėjimas</h2>
+<p>package::packageName</p>
+<p>Konkretus pvz.:</p>
+<ul>
+  <li>package::FuzzyFileNav</li>
+  <li>instaliacija: Data\Installed Packages\FuzzyFileNav.sublime-package</li>
+</ul>
+<h2>ST komandos</h2>
+<dl>
+		<dt>[<mark>M</mark>][...] </dt>
+		<dd>
+				<p><mark>M</mark>eniusai, jie apibrėžiami failuose <code>*.sublime-menu</code>.</p>
+				<p>Variantai:</p>
+				<dl>
+						<dt>[M][Kažkas &gt; Anas] arba trumpiau be prefikso [Kažkas &gt; Anas]</dt>
+						<dd>
+								<p>Globalus-pagrindinis ST Meniu.		</p>
+						</dd>
+						<dt>[M<mark>SB</mark>][Kažkas &gt; Anas]</dt>
+						<dd>
+								<p><mark>S</mark>ide <mark>B</mark>ar'o kontekstinis meniu.		</p>
+						</dd>
+						<dt>[M<mark>R</mark>][Kažkas &gt; Anas]</dt>
+						<dd>
+								<p>Kontekstinis Meniu <mark>R</mark>edaktoriuje.</p>
+						</dd>
+				</dl>
+		</dd>
+		<dt>[<mark>CP</mark>][...]</dt>
+		<dd>
+				<p>Ką matome [Tools &gt; <mark>C</mark>ommand <mark>P</mark>alette...], t. y. kas yra failuose <code>*.sublime-commands</code> komandos objekto-įrašo elementas <code>caption</code>, pvz.:</p>
+				<p>[CP][Kažkokia komanda] == [CP][Kažkokia komanda][kažkokia_komanda] == <code>{                  &quot;command&quot;: &quot;kažkokia_komanda&quot;, &quot;caption&quot;: &quot;
+								<mark>Kažkokia komanda</mark>&quot;     }</code>:		</p>
+		</dd>
+		<dt>[<mark>C</mark>][...]</dt>
+		<dd>
+				<p>Package'o <mark>C</mark>ommand'a, failuose <code>*.sublime-commands</code>, <code>*.sublime-menu</code>, <code>*.sublime-keymap</code> nurodoma objektų-įrašų elementu <em>command</em>, pvz.:</p>
+				<dl>
+						<dt>[C][kažkokia_komanda]</dt>
+						<dd>
+								<p><strong>Be</strong> parametrų-argumentų, faile <code>*.sublime-keymap</code> &gt;&gt;&gt; <code>{ &quot;keys&quot;: [&quot;ctrl+t&quot;], &quot;command&quot;: &quot;<mark>kažkokia_komanda</mark>&quot; }</code>						</p>
+						</dd>
+						<dt>[C][kažkokia_komanda(tas:taip,anas:kitaip)]</dt>
+						<dd>
+								<p><strong>Su</strong> parametrais-argumentais, faile <code>*.sublime-keymap</code> &gt;&gt;&gt; <code>{ &quot;keys&quot;: [&quot;ctrl+t&quot;], &quot;command&quot;: &quot;<mark>kažkokia_komanda</mark>&quot;, &quot;args&quot;: {&quot;<mark>tas</mark>&quot;: &quot;<mark>taip</mark>&quot;, &quot;<mark>anas</mark>&quot;: &quot;<mark>kitaip</mark>&quot;} }</code>						</p>
+						</dd>
+						<dt>[C][<code>&quot;command&quot;: &quot;kažkokia_komanda&quot;, &quot;args&quot;: {&quot;tas&quot;: &quot;taip&quot;, &quot;anas&quot;: &quot;kitaip&quot;}</code>]</dt>
+						<dd>
+								<p>Arba, kad būtų greičiau tiesiog copy-paste: </p>
+						</dd>
+				</dl>
+		</dd>
+</dl>
+<!--<dl>
+  <dt>[
+    <mark>M</mark>
+    ][...] </dt>
+  <dd>
+    <p>
+      <mark>M</mark>
+      eniusai, jie apibrėžiami failuose <code>*.sublime-menu</code>.</p>
+    <p>Variantai:</p>
+    <dl>
+      <dt>[M][Kažkas &gt; Anas] arba trumpiau be prefikso [Kažkas &gt; Anas]</dt>
+      <dd>
+        <p>Globalus-pagrindinis ST Meniu. </p>
+      </dd>
+      <dt>[M
+        <mark>SB</mark>
+        ][Kažkas &gt; Anas]</dt>
+      <dd>
+        <p>
+          <mark>S</mark>
+          ide
+          <mark>B</mark>
+          ar'o kontekstinis meniu. </p>
+      </dd>
+      <dt>[M
+        <mark>R</mark>
+        ][Kažkas &gt; Anas]</dt>
+      <dd>
+        <p>Kontekstinis Meniu
+          <mark>R</mark>
+          edaktoriuje.</p>
+      </dd>
+    </dl>
+  </dd>
+  <dt>[
+    <mark>CP</mark>
+    ][...]</dt>
+  <dd>
+    <p>Ką matome [Tools &gt;
+      <mark>C</mark>
+      ommand
+      <mark>P</mark>
+      alette...], t. y. kas yra failuose <code>*.sublime-commands</code> komandos objekto-įrašo elementas <code>caption</code>, pvz.:</p>
+    <p>[CP][Kažkokia komanda] == [CP][Kažkokia komanda][kažkokia_komanda] == <code>{                  &quot;command&quot;: &quot;kažkokia_komanda&quot;, &quot;caption&quot;: &quot;
+      <mark>Kažkokia komanda</mark>
+      &quot;     }</code>: </p>
+  </dd>
+  <dt>[
+    <mark>C</mark>
+    ][...]</dt>
+  <dd>
+    <p>Package'o
+      <mark>C</mark>
+      ommand'a, failuose <code>*.sublime-commands</code>, <code>*.sublime-menu</code>, <code>*.sublime-keymap</code> nurodoma objektų-įrašų elementu <em>command</em>, pvz.:</p>
+    <dl>
+      <dt>[C][kažkokia_komanda]</dt>
+      <dd>
+        <p><strong>Be</strong> parametrų-argumentų, faile <code>*.sublime-keymap</code> &gt;&gt;&gt; <code>{ &quot;keys&quot;: [&quot;ctrl+t&quot;], &quot;command&quot;: &quot;
+          <mark>kažkokia_komanda</mark>
+          &quot; }</code></p>
+      </dd>
+      <dt>[C][kažkokia_komanda(tas:taip,anas:kitaip)]</dt>
+      <dd>
+        <p><strong>Su</strong> parametrais-argumentais, faile <code>*.sublime-keymap</code> &gt;&gt;&gt; <code>{ &quot;keys&quot;: [&quot;ctrl+t&quot;], &quot;command&quot;: &quot;
+          <mark>kažkokia_komanda</mark>
+          &quot;, &quot;args&quot;: {&quot;
+          <mark>tas</mark>
+          &quot;: &quot;
+          <mark>taip</mark>
+          &quot;, &quot;
+          <mark>anas</mark>
+          &quot;: &quot;
+          <mark>kitaip</mark>
+          &quot;} }</code></p>
+      </dd>
+      <dt>[C][<code>&quot;command&quot;: &quot;kažkokia_komanda&quot;, &quot;args&quot;: {&quot;tas&quot;: &quot;taip&quot;, &quot;anas&quot;: &quot;kitaip&quot;}</code>]</dt>
+      <dd>
+        <p>Arba, kad būtų greičiau tiesiog copy-paste: </p>
+      </dd>
+    </dl>
+  </dd>
+</dl>-->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

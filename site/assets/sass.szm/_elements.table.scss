@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////
+
+// 1. Su `table-layout: fixed` galima tiksliai nustatyti stulpelių plotį.
+//    Kiek pabandžiau, nesvarbu kurios eilutės cell'ei nustatyti plotį.
+//
+//    | Table and column widths are set by the widths of table and col elements or by the width of the first row of cells.
+//    | Cells in subsequent rows do not affect column widths.
+//
+//    | The layout is fixed based on the first row. Set the width of those, and the rest of the table follows.
+
+table {
+  table-layout: fixed;           // 1.
+  //border-collapse: separate;
+
+  //border-spacing: 0;
+  //border: none;
+  //margin-bottom: .7em;
+  //border-style: dotted;
+  //border-width: 1px;
+}
+
+caption {
+  font-weight: bold;
+  font-size: 1.15em;
+  font-style: italic;
+
+  //margin: 0 0 2px 0;
+  //padding: .5em 0 .4em .7em;
+  //text-align: center;
+  //background-color: #CCC;
+  //color: #868686;
+}
+
+//tbody {
+//  //border-color: inherit;
+//  border-style: dotted;
+//  border-width: 3px;
+//}
+
+td, th {
+  border: inset #CFD8DC 1px;
+  //padding: 0.27em 0.4em 0.1em;
+  padding: 0.27rem 0.4rem 0.1rem;
+  //> h2, > h3, > h4, > h5, > h6 {
+  //  margin-top: 0;
+  //  margin-bottom: .5em;
+  //}
+}
+
+//td {
+//  > *:last-child {
+//    margin-bottom: 0;
+//  }
+//}
+
+//td, th {
+//  //padding: 0;
+//
+//  /*width: 300px!important;*/
+//  /*display: inline-block;*/
+//  /*white-space: normal;*/
+//
+//  /*width: 30px;
+//    overflow: hidden;*/
+//
+//  /*overflow: hidden;*/
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////
+
+.table--stickyHead {
+  //thead { // neveikia ant Chrome https://caniuse.com/#feat=css-sticky
+  th {
+    position: sticky;
+    top: 0;
+  }
+}
+
+
+

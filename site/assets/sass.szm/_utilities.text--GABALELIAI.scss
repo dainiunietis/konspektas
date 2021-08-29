@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+// G:\arch sync -- nebenaudoju\webdev\codes\html\assets\sass\lib\_typography-helper-single-property.scss
+
+//////////////////////////////////////////////////////////////////
+//
+//  font-family:
+//
+/////////////////////////////////////////////////////////////
+
+// .FF-antonio-regular, .FF-antonio-regular--all * { font-family: 'antonioregular'; }
+
+//.FF-antonio-regular, .FF-antonio-regular--all * { font-family: 'antonioregular'; }
+//.FF-antonio-light,   .FF-antonio-light--all *   { font-family: 'antoniolight'; }
+//.FF-antonio-bold,    .FF-antonio-bold--all *    { font-family: 'antoniobold'; }
+
+//////////////////////////////////////////////////////////////////
+//
+//  font-size:
+//
+/////////////////////////////////////////////////////////////
+
+// X == 1.1 1.2 ... 5.0
+//
+// .u-fontsize-Xem	.u-fontsize-Xrem
+// .u-fs-Xem	.u-fs-Xrem
+// .FSXem	.FSXrem
+
+//@for $i from 1 through 99 {
+//	$size: 0.05 + (0.05 * $i);
+//	$size_str: quote($size + "");
+//	$size_str: str-replace($size_str, ".", "\\.");
+//
+//	.u-fontsize-#{$size_str}em,
+//	.u-fs-#{$size_str}em,
+//  .FS#{$size_str}em {
+//    font-size: #{$size}em
+//  }
+//
+//  .u-fontsize-#{$size_str}rem,
+//	.u-fs-#{$size_str}rem,
+//  .FS#{$size_str}rem {
+//    font-size: #{$size}rem
+//  }
+//}
+
+// @for $i from 1 through 20 {
+// 	.u-fontsize-big-#{$i}, .FS-big-#{$i}, FS-b#{$i}     { font-size: 1em + (0.2 * $i) }
+// 	.u-fontsize-small-#{$i}, .FS-small-#{$i}, FS-s#{$i} { font-size: 1em - (0.05 * $i) }
+// }
+
+// .FS-big-1,  .u-fontsize-1  { font-size: 1.2em }
+// .FS-big-2,  .u-fontsize-2  { font-size: 1.4em }
+// .FS-big-3,  .u-fontsize-3  { font-size: 1.6em }
+// .FS-big-4,  .u-fontsize-4  { font-size: 1.8em }
+// .FS-big-5,  .u-fontsize-5  { font-size: 2em }
+// .FS-big-6,  .u-fontsize-6  { font-size: 2.2em }
+// .FS-big-7,  .u-fontsize-7  { font-size: 2.4em }
+// .FS-big-8,  .u-fontsize-8  { font-size: 2.6em }
+// .FS-big-9,  .u-fontsize-9  { font-size: 2.8em }
+// .FS-big-10, .u-fontsize-10 { font-size: 3em }
+
+// .FS-small-1 { font-size: 0.95em }
+// .FS-small-2 { font-size: 0.9em }
+// .FS-small-3 { font-size: 0.85em }
+// .FS-small-4 { font-size: 0.8em }
+// .FS-small-5 { font-size: 0.75em }
+// .FS-small-6 { font-size: 0.7em }
+// .FS-small-7 { font-size: 0.65em }
+// .FS-small-8 { font-size: 0.6em }
+// .FS-small-9 { font-size: 0.55em }
+// .FS-small-10 { font-size: 0.5em }
+
+//////////////////////////////////////////////////////////////////
+//
+//  text-align:
+//
+/////////////////////////////////////////////////////////////
+
+//.u-textAlign-left,     .u-ta-left,    .u-TAL, .TAL { text-align: left!important }
+//.u-textAlign-center,   .u-ta-center,  .u-TAC, .TAC { text-align: center!important }
+//.u-textAlign-right,    .u-ta-right,   .u-TAR, .TAR { text-align: right!important }
+//.u-textAlign-justify,  .u-ta-justify, .u-TAJ, .TAJ { text-align: justify!important }
+
+
+
+
+
+
+
+
+

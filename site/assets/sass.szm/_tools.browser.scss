@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+// @TODO: daug versijų brauzerių
+// https://github.com/saadeghi/browser-hack-sass-mixins/blob/master/_hacks.scss
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+//@mixin FF-only {
+//  @-moz-document url-prefix() { @content; }
+//}
+
+@mixin firefox-only {
+  @at-root {
+    @-moz-document url-prefix() {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+///*! @TEST 20190313142857 */
+//
+//.test-111 {
+//  color: yellow;
+//  @include firefox-only {
+//    color: blue;
+//  }
+//}
+//
+///*!***********************************/
+//
+//@include firefox-only {
+//  .test-2 {
+//    color: blue;
+//  }
+//}
+//
+///*!***********************************/
+//
+//.test-3 {
+//  color: yellow;
+//  &[id=kazkas] {
+//    @include firefox-only {
+//      color: blue;
+//    }
+//  }
+//}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+

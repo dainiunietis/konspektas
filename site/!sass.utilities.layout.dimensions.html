@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title>utilities-trump class'ai nustatantys width: ir height:</title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+</head>
+<body class="-s-page-pvz">
+
+<h1>utilities-trump class'ai nustatantys <code>width:</code> ir <code>height:</code></h1>
+
+<!--<p>iš failo: <code>sass/_utilities.layout.dimensions.scss</code></p>-->
+
+<h2><code>auto</code> ir <code>0</code></h2>
+<div class="B361c M">
+  <div class="WA"><code>.WA</code></div>
+  <div class="W0"><code>.W0</code></div>
+  <div class="HA"><code>.HA</code></div>
+  <div class="H0"><code>.H0</code></div>
+</div>
+
+<h2><code>.W[5px 10px..200px]</code></h2>
+<div id="20200216211811" class="B361c">
+  <!-- turi generuoti:
+  <div class="W5px"><code>.W5px</code></div>
+  <div class="W10px"><code>.W10px</code></div>
+  ...
+  <div class="W200px"><code>.W200px</code></div>
+  -->
+</div>
+<script type="module">
+  let markup = '';
+  for (let i = 5; i <= 200; i += 5) {
+    markup += `<div class="W${i}px"><code>.W${i}px</code></div>`;
+  }
+  // console.log(markup);
+  document.getElementById("20200216211811").innerHTML = markup;
+</script>
+
+<h2><code>.W[1% 2%..100%]</code></h2>
+<div id="20200218103039" class="B311c"></div>
+<script type="module">
+  let markup = '';
+  for (let i = 1; i <= 100; i++) {
+    markup += `<div class="W${i}%"><code>.W${i}%</code></div>`;
+  }
+  // console.log(markup);
+  document.getElementById("20200218103039").innerHTML = markup;
+</script>
+
+
+
+
+
+
+</body>
+</html>

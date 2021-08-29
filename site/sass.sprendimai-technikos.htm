@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title></title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Sass sprendimai-technikos</h1>
+<p><strong>Pasidėti:</strong></p>
+<table width="1880" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <pre><code>
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+) !default;
+
+// Width and height
+
+@each $prop, $abbrev in (width: w, height: h) {
+  @each $size, $length in $sizes {
+    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+  }
+}
+
+--------------------------------------------------
+
+masyvo apdorojimas
+
+@each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+  #{$header} {
+    font-size: $size;
+  }
+}
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+-------------------------------------------------</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <pre><code>$cols-count: null;
+$cols-gutter: null;
+
+@mixin cols-columns($gutter: null, $count: null) {
+  @if $count  == null { $count: $cols-count; }
+  @if $gutter == null { $gutter: $cols-gutter; }
+  ...
+  padding: $gutter;
+}
+
+// using case with no parameters
+
+$cols-count: 3;
+$cols-gutter: 1em;
+
+.something {
+  @include cols-columns();
+}
+
+// using case with ...
+
+</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <pre><code>@mixin display (
+  $disp,
+  $padding: null,
+  $r-margin: null,
+  $l-margin: null) {
+    display: $disp;
+    padding: $padding;
+    margin-left: $l-margin;
+    margin-right: $r-margin;
+}
+
+.nav__item {
+  @include display(inline-block, $l-margin: 20px);
+}
+
+.nav__link {
+  @include display(block, 10px 5px);
+}
+
+--------------------------------------------
+
+.nav__item {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.nav__link {
+  display: block;
+  padding: 10px 5px;
+}</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <pre>.c-kažkas {
+  $this: &amp;;
+  &amp;--small#{$this}--narrow {
+    ...
+  }
+}
+
+.c-kažkas--small.c-kažkas--narrow {
+  ...
+}
+
+&lt;div class=&quot;c-kažkas c-kažkas--small c-kažkas--narrow&quot;&gt;
+</pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Architektūriniai-komponentiniai sprendimai</h2>
+<table width="1880" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Dizaino modifikacijų kūrimas </h3>
+      <h4> Pridedant modifikacijos class'o selektorių prie bazinio dizaino selektoriaus su <code class="format-code">@extend</code>      </h4>
+      <figure>
+  <pre><code class="format-code">.message {
+  border: 1px solid #ccc;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+}</code></pre>
+      <pre><code class="format-code">.message, .success, .error {
+  border: 1px solid #cccccc;
+}
+
+.success {
+  border-color: green;
+}
+
+.error {
+  border-color: red;
+}</code></pre>
+        <figcaption></figcaption>
+    </figure>
+      <h4>Kai bazinio dizaino selektoriaus-class'o nereikia naudoti tiesiogiai HTML'e, naudojame <code>%placeholderis</code> ir <code class="format-code">@extend</code></h4>
+      <figure>
+<pre><code class="format-code">%button-reset {
+  margin: 0;
+  padding: .5em 1.2em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.save {
+  @extend %button-reset;
+  color: white;
+  background: #blue;
+}
+
+.delete {
+  @extend %button-reset;
+  color: white;
+  background: red;
+}</code></pre>
+      <pre><code class="format-code">.save, .delete {
+  margin: 0;
+  padding: .5em 1.2em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.save {
+  color: white;
+  background: #blue;
+}
+
+.delete {
+  color: white;
+  background: red;
+}</code></pre>
+        <figcaption></figcaption>
+      </figure>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Moduliniai mixin'ai</h3>
+    <p>Turi mixin'ų failą _decoration-mixins.scss:</p>
+    <pre><code>$border-position-all: all !default;
+$border-default-size: 1px !default;
+$border-default-pattern: solid !default;
+$border-default-color: $black !default;
+
+@mixin add-border($border-position: $border-position-all,
+  $border-size: $border-default-size,
+  $border-pattern: $border-default-pattern,
+  $border-color: $border-default-color) {
+
+  @if $border-position == $border-position-all {
+    border: $border-size $border-pattern $border-color;
+  }
+  @else {
+    border-#{$border-position}: $border-size
+    $border-pattern $border-color;
+  }
+}</code></pre>
+    <p>Galime pasikeisti default'us:</p>
+    <pre><code>@import "decoration-mixins";
+
+$border-default-pattern: dotted;
+$border-default-color: lighten($gray, 25%);
+
+.block-border {
+  @include add-border($border-size: 2px);
+}</code></pre>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>---</h2>
+<table width="1880" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Operacijos su selektoriais</h3>
+      <figure>
+        <pre><code>@function headings($from:1, $to:6) {
+    @if $from == $to {
+        @return 'h#{$from}';
+    } @else {
+        @return 'h#{$from},' + headings($from+1, $to);
+    }
+}
+
+#{headings(1,6)} {
+  color: grey;
+}
+</code></pre>
+        <pre><code class="format-code">h1, h2, h3, h4, h5, h6 {
+  color: grey;
+}</code></pre>
+        <figcaption>Pattern'inių selektorių generavimas su rekursine funkcija</figcaption>
+      </figure>
+      <h4>Kai </h4>
+      <figure>
+        <pre><code class="format-code">---</code></pre>
+        <pre><code class="format-code">---</code></pre>
+        <figcaption></figcaption>
+      </figure>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <p>...</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Programiniai sprendimai</h2>
+<table width="1880" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Duomenų tipai &#8212; Map (key / value pairs)
+      </h3>
+      <figure>
+        <pre><code>$colors: (
+  "primary": tomato,
+  "secondary": hotpink
+);
+
+@function color($key) {
+  @return map-get($colors, $key);
+}
+
+// panaudojimas
+.el {
+  background-color: color(primary);
+}</code></pre>
+        <pre><code>.el {
+  background-color: tomato;
+}</code></pre>
+        <figcaption>Sava funkcija imti Map'o value pagal nurodytą key'są</figcaption>
+      </figure>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>Debug'inimas
+      </h3>
+      <figure>
+        <pre><code><mark></mark>// turime map'ą
+$mapas: (
+  "keysas-1": valuesas,
+);
+
+// turimę map'o key'są, kurio value'są norime gauti
+$keysas: kazkas;
+
+// prieš reikšmės iš map'o paėmimą patikriname ar
+key'sas yra map'e
+@if not map-has-key($mapas, $keysas) {
+  @warn "Key'sas #{$keysas} nerastas";
+}
+
+// panaudojimas
+.el {
+  color: map-get($mapas, $keysas);
+}</code></pre>
+        <figcaption>Patikrinimas ar key'sas yra map'e, ir jeigu nėra — warn'ingo išvedimas į CMD konsolę</figcaption>
+      </figure>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre><code>$dev-colors-light-2: #FDDB6D #EFDBC5 #CD9575;
+
+@mixin dev-bg2($index) {
+  background-color: nth($dev-colors-light-2, $index);
+}
+
+.kazkas { @include dev-bg2(2); }</code></pre>
+<p>&nbsp;</p>
+<pre><code>%h-clm-span {
+  @include vendor(column-span, all);
+}
+
+<!--// &lt;div class=&quot;h-clm&quot;&gt; -->
+<!--//   &lt;p class=&quot;h-clm__span&quot;&gt; -->
+.h-clm__span {
+  @extend %h-clm-span;
+}
+
+$h-clm-span-tags: h1 h2 h3 h4 h5 h6 pre;
+// gauname:
+// .h-clm--span-h1 &gt; h1 {...}
+@each $tag in $h-clm-span-tags {
+  .h-clm--span-#{$tag} &gt; #{$tag} {
+    @extend %h-clm-span;
+  }
+}</code></pre>
+<p>&nbsp;</p>
+<p>Galima nest'inti BEM'inius komponentus:</p>
+<pre><code class=" scss">.foto {
+  text-align: center;
+  &amp;--link {
+    border: 1px red;
+  }
+}</code></pre>
+<pre><code class=" css">.foto {
+  text-align: center;
+}
+
+.foto--link {
+  border: 1px red;
+}</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    /*body {*/
+    /*  font: 1.2em "IBM Plex Sans", sans-serif;*/
+    /*  margin: 1em;*/
+    /*}*/
+  </style>
+</head>
+<body>
+<!--kad darytų turinį-->
+<script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>
+<script type="module" src="assets/js/master.js"></script>
+<div class="c-sidePanel c-sidePanel--left c-controlPanel--links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="Lay-ControlPanel-Toc" class="c-sidePanel c-sidePanel--left c-controlPanel--toc">
+  <ul id="Lay-ControlPanel-Toc2"></ul>
+</div>
+
+<h1>CSS funkcijos: <code>min() max() clamp()</code></h1>
+<p> <a href="https://css-tricks.com/when-sass-and-new-css-features-collide/">When Sass and New CSS Features Collide | CSS-Tricks</a></p>
+<p> <a href="https://css-tricks.com/min-max-and-clamp-are-css-magic/">min(), max(), and clamp() are CSS magic! | CSS-Tricks</a></p>
+
+<p class="c-em-important">Galutinis argumentų palyginimas daromas visus ne <code>px</code> apskaičiavus pikseliais.</p>
+
+<h2>Kas bendra</h2>
+<div class="c-pvz">
+  <p class="c-pvz__caption">The <code>min()</code> and <code>max()</code> functions can take more than two values</p>
+    <p class="c-pvz__title"><code>width: min(700px, 75%, 60vh)</code></p>
+  <!--  <p class="c-pvz__comment">O taip ir anaip, yra kaip ir taip. </p>-->
+  <div class="c-pvz__container" style="">
+    <div class="~MA ~M100px:10 ~Mred">
+      <div class="c-pvz__target" style="width: min(700px, 75%, 60vh)">-</div>
+    </div>
+  </div>
+</div>
+<div class="c-pvz">
+  <p class="c-pvz__caption">argumentas gali būti expression'as — <q>You don’t need a <code>calc()</code> to do math inside!</q></p>
+    <p class="c-pvz__title"><code>width: min(700px, 50vw + 30%)</code></p>
+  <div class="c-pvz__container" style="">
+    <div class="~MA ~M100px:10 ~Mred">
+      <div class="c-pvz__target" style="width: min(700px, 50vw + 30%)">-</div>
+    </div>
+  </div>
+  <p class="c-pvz__title"><code>font-size: clamp(1rem, 2.5vw, 1rem + 1vw)</code></p>
+  <div class="c-pvz__container" style="">
+    <div class="-c-pvz__target" style="font-size: clamp(1rem, 2.5vw, 1rem + 1vw)" data-DIAH-style-bottom>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</div>
+  </div>
+</div>
+<h2>Kaip su <code>min()</code> ir <code>max()</code> padaryti tą patį kaip ir <code>clamp()</code></h2>
+<div class="c-pvs c-pvs--title c-pvs--border" style="">
+  <p>min ir max dydžių tekstui nustatymas</p>
+  <p style="font-size: 1rem" data-DIAH-style-bottom>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p style="font-size: min(max(1rem, .9rem + .7vw), 2rem)" data-DIAH-style-bottom>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p style="font-size: 2rem" data-DIAH-style-bottom>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+</div>
+<div class="c-pvs c-pvs--title c-pvs--border" style="">
+  <p>min ir max dydžių tekstui nustatymas</p>
+  <blockquote>
+    <p>You can actually use min and max together and have the same result with clump. You can write min(23px,max(16px, 23/1280 * 100vw)) where 23px is in fact the biggest font size you want to give to your text and in the opposite with max you give the smallest size which is 16px. Then you say that when you reach at 1280px viewport width take the 23px and start shrink them and that's it, all the browsers support this</p>
+    <p>https://css-tricks.com/min-max-and-clamp-are-css-magic/#comment-1756640</p>
+  </blockquote>
+  <p><code>font-size: 1rem</code></p>
+  <p style="font-size: 1rem">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p><code>font-size: min(23px,max(16px, 23 / 1280 * 100vw))</code></p>
+  <p style="font-size: min(23px,max(16px, 23 / 1280 * 100vw))">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p><code>font-size: 2rem</code></p>
+  <p style="font-size: 2rem">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+</div>
+<h2><code>min()</code></h2>
+<div class="c-pvz">
+  <p class="c-pvz__caption">kaip tą patį padaryti su:<br>
+ <code>width: N%; max-width: Npx;</code><br>
+ ir:<br>
+ <code>width: min(N%, Npx)</code></p>
+<!--  <p class="c-pvz__comment">O taip ir anaip, yra kaip ir taip. </p>-->
+  <p class="c-pvz__title"><code>width: 75%; max-width: 700px;</code></p>
+  <div class="c-pvz__container" style="">
+    <div class="~MA ~M100px:10 ~Mred">
+      <div class="c-pvz__target" style="width: 75%; max-width: 700px;">-</div>
+    </div>
+  </div>
+  <p class="c-pvz__title"><code>width: min(75%, 700px)</code></p>
+  <div class="c-pvz__container" style="">
+    <div class="~MA ~M100px:10 ~Mred">
+      <div class="c-pvz__target" style="width: min(75%, 700px)">-</div>
+    </div>
+  </div>
+</div>
+<h2><code>max()</code></h2>
+<p>&nbsp;</p>
+<h2><code>clamp()</code></h2>
+<div class="c-pvs c-pvs--title c-pvs--border">
+  <p>iliustracijos <code>width = 300px &lt; 50vw &lt; 400px</code></p>
+  <div class="~MA ~M100px:10 ~Mred">
+    <img style="width: clamp(300px, 50vw, 400px);" src="images/graphics/vaizdelis.jpg" alt="">
+  </div>
+</div>
+<div class="c-pvs c-pvs--title c-pvs--border" style="">
+  <p>teksto <code>font-size = 1rem &lt; 1rem + 1vw &lt; 2rem</code></p>
+  <p data-DIAH-style-bottom style="font-size: 1rem">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p data-DIAH-style-bottom style="font-size: clamp(1rem, 1rem + 1vw, 2rem)">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p data-DIAH-style-bottom style="font-size: 2rem">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<!--<div class="~MA ~M100px:10 ~Mred BGCM1c">-->
+<!--</div>-->
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

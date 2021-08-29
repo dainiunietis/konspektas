@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="lt" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+<title> &#8212; Design Style Guide</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+<script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>
+<script type="module" src="assets/js/master.js"></script>
+<script>
+//--- kad naršyklėje neveiktų CSS failai –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  <style>
+    .local-pvz {
+      /*height: 92vh;*/
+      /*outline: 1px dotted black;*/
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+
+    .local-pvz--flexDirCol {
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      align-items: center;
+      /*justify-content: space-between;*/
+    }
+
+    .local-pvz > * {
+      margin: 5px 7px;
+      padding: 0.6em 0.3em;
+      width: 100px;
+      color: hsl(0, 0%, 0%);
+    }
+
+    .local-pvz__color {
+      /*box-sizing: content-box;*/
+      /*flex-basis: 5em;*/
+      /*flex-grow: 1;*/
+      /*width: fit-content;*/
+      /*height: 50px;*/
+      /*background: hsla(24,100%,40%,1.00);*/
+      /*font-family: "IBM Plex Mono", monospace;*/
+      /*font-family: "InputMonoCompressed", monospace;*/
+      font: 1.3em "InputMono", monospace;
+      /*font-family: "Gabriola", monospace;*/
+      /*font-style: italic;*/
+      /*font-size: 2em;*/
+      text-align: center;
+      /*height: 3em;*/
+    }
+
+    .local-pvz__sep {
+      /*font: .9em Iosevka, monospace;*/
+      /*font: italic .9em "IBM Plex Mono", monospace;*/
+      /*font: 500 1em "IBM Plex Sans", monospace;*/
+      font: 800 1.4em "IBM Plex Sans Condensed", monospace;
+      /*font: 400 .9em "Iosevka", monospace;*/
+      /*font: 700 1.1em "Fira Code", monospace;*/
+      /*font:  1.9em "Haettenschweiler", monospace;*/
+      /*font: 700 1.4em "Fira Sans", monospace;*/
+      /*font: 700 1.3em "Segoe UI", monospace;*/
+      /*font: 1em "InputMonoCompressed", monospace;*/
+      /*font: 1em "InputMono", monospace;*/
+      /*border-radius: 0.5em;*/
+      /*background-color: hsl(0, 0%, 85%);*/
+      text-shadow: 2px 1px 3px hsla(0, 0%, 0%, .25);
+    }
+
+    .local-pvz__sep--1 {
+      width: 110%;
+      text-align: center;
+      /*height: 0.7em;*/
+      /*border-radius: 1em;*/
+      /*background-color: black;*/
+    }
+
+    .local-pvz__sep--2 {
+      /*flex-basis: 100%;*/
+      /*width: 1em;*/
+      /*height: 1em;*/
+      /*color: wheat;*/
+      /*background-color: hsl(0, 0%, 22%);*/
+    }
+  </style>
+  <script src="assets/node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left c-controlPanel--links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="Lay-ControlPanel-Toc" class="c-sidePanel c-sidePanel--left c-controlPanel--toc">
+	<ul id="Lay-ControlPanel-Toc2"></ul>
+</div>
+<h1>SASS'o border'iai &#8212; Design Style Guide</h1>
+<p><strong>!!! kažkodėl nebeveikia VUE generavimas !!!</strong></p>
+<p><code>sass/_utilities.box.border.scss</code></p>
+<h2>Variations</h2>
+<p>Failai:</p>
+<ul>
+  <li><code>sass.szm/_tools.box.border.designStyle.scss</code></li>
+  <li><code>sass/_tools.box.border.designStyle.scss</code></li>
+</ul>
+<p>Class'ų pattern'as:</p>
+<ul>
+  <li><code>.u-border-&lt;line-style-value&gt;-&lt;line-color-name&gt;-&lt;line-width-name&gt;</code></li>
+  <li><code>  .B&lt;line-style-nr&gt;&lt;line-color-nr&gt;&lt;line-width-nr&gt;</code></li>
+</ul>
+<div id="app" class="local-pvz -local-pvz--flexDirCol">
+  <!--<template v-for="styleIndex in 3">-->
+    <!--<template v-for="colorIndex in 3">-->
+      <!--<template v-for="widthIndex in 3">-->
+  <template v-for="styleIndex in 4">
+    <div class="local-pvz__sep local-pvz__sep--1">style: {{styleIndex}}</div>
+    <template v-for="colorIndex in 7">
+      <div class="local-pvz__sep local-pvz__sep--2">color: {{colorIndex}}</div>
+      <template v-for="widthIndex in 5">
+        <div class="local-pvz__color" v-bind:class="'B'+styleIndex+colorIndex+widthIndex">.B{{styleIndex}}{{colorIndex}}{{widthIndex}}</div>
+      </template>
+    </template>
+  </template>
+
+  <!--<span v-for="n in 4">{{ n }}—</span>-->
+  <!--<div>-->
+    <!--<p>{{ kazkas }}</p>-->
+  <!--</div>-->
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      kazkas: 'OOOOOOOOOOOOOOOO !!!',
+    },
+    methods: {
+      // humanizeURL: function (url) {
+      //   return url
+      //     .replace(/^https?:\/\//, '')
+      //     .replace(/\/$/, '')
+      // }
+    }
+  })
+</script>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

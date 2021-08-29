@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+
+
+
+
+<script>
+//--- kad veiktų naršyklėje, pakrauname "master.css" –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//// veikiantis, bet su daugiau kodo
+// let link  = document.createElement('link');
+// link.rel  = 'stylesheet';
+// link.type = 'text/css';
+// link.href = "../assets/sass/master.css";
+// link.onload = function() {
+//  alert("Pasikrovė:\n../assets/sass/master.css")
+// }
+// document.getElementsByTagName('head')[0].appendChild(link);
+  
+document.getElementsByTagName('head')[0].appendChild(
+//  Object.assign(document.createElement('link'), {rel: "stylesheet", type: "text/css", href: "assets/sass/master.css"})
+  Object.assign(document.createElement('link'), {rel: "stylesheet", href: "assets/sass/master.css"})
+);
+</script>
+
+  
+  
+  
+  
+
+
+
+<!--<script data-main="assets/js/load.require" src="../assets/bower_components/requirejs/require.js"></script>-->
+
+
+
+
+<!--
+=== VEIKIA gerai ===
+<link rel="stylesheet" href="../assets/bower_components/highlight-js/src/styles/atelier-savanna-light.css">
+<script src="../assets/js.vendor/highlight-js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+-->
+
+
+
+
+
+
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/normalize.css" />-->
+
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/layout.css">-->
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/content.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/content_oldai.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/links.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/dom_scripting.css">-->
+<!--[if IE]>
+<![endif]-->
+<!--<link rel="stylesheet" type="text/css" href="../assets/css/dom_scripting_ie.css">-->
+
+
+
+<!--<script src="../_js/vendors/less-1.5.0.min.js"></script>-->
+<script type="text/javascript" src="../_js/vendors/yepnope.1.5.4-min.js"></script>
+<!--<script type="text/javascript" src="../_js/vendors/yepnope.preload.js"></script>-->
+<script type="text/javascript" src="../_js/vendors/yepnope.css-prefix.js"></script>
+
+<!--<script type="text/javascript" src="../_js/vendors/jquery-2.0.3.js"></script>-->
+
+
+
+
+
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_utils/yepnope/yepnope.1.5.3-min.js"></script>-->
+<script type="text/javascript" src="../_js/vendors/yepnope.1.5.3-min.js"></script> 
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_libs/jquery/jquery-latest.min.js"></script>-->
+<script type="text/javascript" src="../_js/vendors/jquery-2.0.3.js"></script> 
+<!--<script src="/js/_apache_alias/js.libraries/jquery/plugins/disable-text-select/normal.js" type="text/javascript"></script>-->
+<script type="text/javascript" src="../_js/common.js"></script>
+
+<!--<script src="/js/_apache_alias/js.savo/om.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/om.event.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/om.dom.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/om.data.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/om.dataObjects.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/om.string.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/om.developing.js" type="text/javascript"></script>-->
+
+<!--<script src="/js/_apache_alias/js.savo/DocBehave.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/DocBehave.blockquote.js" type="text/javascript"></script>
+<script src="/js/_apache_alias/js.savo/DocBehave.HideShow.js" type="text/javascript"></script>-->
+
+
+
+
+
+<!-- =============================================================
+     === pajungiame: /_common-resources/_js/syntaxHighlighter/ ===
+     ============================================================= -->
+
+<link href="/_js/vendors/syntaxHighlighter/styles/shCore.css" rel="stylesheet" />
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shThemeDefault.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreFadeToGrey.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreMDUltra.css" rel="stylesheet" /> -->
+<!--<link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreMidnight.css" rel="stylesheet" />-->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreRDark.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shThemeDjango.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shThemeEclipse.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shThemeEmacs.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shThemeFadeToGrey.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shThemeMDUltra.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shThemeMidnight.css" rel="stylesheet" /> -->
+<link href="/_js/vendors/syntaxHighlighter/styles/shThemeRDark.css" rel="stylesheet" /> 
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreDefault.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreDjango.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreEclipse.css" rel="stylesheet" /> -->
+<!-- <link href="/_common-resources/_js/syntaxHighlighter/styles/shCoreEmacs.css" rel="stylesheet" /> -->
+<script src="/_js/vendors/syntaxHighlighter/shCore.js"></script>
+<script src="/_js/vendors/syntaxHighlighter/shBrushPlain.js"></script>
+<script src="/_js/vendors/syntaxHighlighter/shBrushXml.js"></script>
+<script src="/_js/vendors/syntaxHighlighter/shBrushCss.js"></script>
+<script src="/_js/vendors/syntaxHighlighter/shBrushSass.js"></script>
+<script src="/_js/vendors/syntaxHighlighter/shBrushJScript.js"></script>
+<script src="/_js/vendors/syntaxHighlighter/shBrushPhp.js"></script>
+<script src="/_js/vendors/syntaxHighlighter/shBrushPython.js"></script>
+
+
+
+</head>
+<body>
+
+<div id="Lay-ControlPanel-Links" class="Lay-ControlPanel">
+	<a href="../index_.html" target="_top">pradžia</a>
+	<!--&sect;
+	<script type="text/javascript">document.write('<a href="../index_.htm">atgal</a>')</script>
+	&sect;
+	<script type="text/javascript">document.write('<a href="index_.htm">čia</a>')</script>-->
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

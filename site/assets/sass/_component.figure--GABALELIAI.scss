@@ -1,0 +1,144 @@
+//@charset "utf-8";
+//
+//.figure--minimal {
+//	> figcaption {
+//		text-align: right;
+//	}
+//}
+//
+//.figure--shadow {
+//	margin-bottom: 0.9rem;
+//	box-shadow: 4px 5px 27px rgba(27, 27, 27, 0.45);
+//	box-shadow: 3px 3px 20px -5px rgba(0,0,0,0.6);
+//	box-shadow: 0px 0px 33px -5px rgba(0,0,0,1);
+//	box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.5);
+//}
+//
+//	// border-bottom: 1px dashed #505050;
+//	// border-width: 1px 0 0 0;
+//	// border-color: #000;
+//	// border-style: wave;
+//	// border: 1px solid #7E7E7E;
+//
+//figcaption {
+//	margin: rem(5px) 0 0 0;
+//	padding: 0;
+//	// padding-top: .5em;
+//	// padding-bottom: .2em;
+//	// background: rgba(67, 160, 71, 0.3);
+//	font-style: italic;
+//	// text-align: center;
+//	font-size: 0.8rem;
+//	// font-style: italic;
+//	// font-weight: bold;
+//	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+//	text-align: right;
+//}
+//
+//
+//
+//figure {
+//	// @extend .figure--minimal;
+//	// @extend .figure--shadow;
+//	// display: inline-block;
+//
+//	// &:nth-last-of-type(1n+2) {	// figure:nth-last-child(1n+2)
+//	// 	margin-right: .7em;
+//	// 	// border: #dbffdb 5px solid;
+//	// }
+//
+///* figure + figure {
+//	margin-left: .7em;
+//} */
+//
+//
+//}
+//
+//// .figure--blueSea {
+//// 	box-shadow: 0px 0px 17px -2px hsla(187,100%,42%,0.5);
+//// 	> figcaption {
+//// 		background: rgba(0,72,217,1);
+//// 		background: hsla(187,100%,42%,1);
+//// 	}
+//// }
+//
+//
+//
+//// .figure--code {
+//// }
+//// .figure--code > figcaption {
+//// 	color: red;
+//// }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+////////////////////////////////////////////////////////////////////////
+//   .c-figure--shadow--code > .c-figure__content
+////////////////////////////////////////////////////////////////////
+
+//<figure class="c-figure c-figure--shadow c-figure--shadow--code">
+//  <div class="c-figure__content">
+//    <pre><code>...</code></pre>
+//  </div>
+//  <figcaption>...</figcaption>
+//</figure>
+
+//&--content-shadow--code {
+//  //c-figure__content--code {
+//  pre {
+//    > code {
+//      //border: none;
+//    }
+//  }
+//  > .c-figure__content {
+//  }
+//  > figcaption {
+//  }
+//}
+
+
+
+//pre {
+//  // margin: 0;
+//  // padding: 0;
+//
+//  //display: inline-block;
+//  //vertical-align: top;
+//
+//  > code {
+//    // margin: 0;
+//    // padding: 0;
+//    //border: hsla(0, 0%, 48%, 0.3) dotted 1px;
+//    //border: none;
+//    //outline: hsla(0, 0%, 48%, 0.3) dotted 1px;
+//    //outline-offset: 3px;
+//    background: none !important;
+//  }
+//  + pre {
+//    margin-top: 0;
+//    //margin-left: 1em;
+//    // border-left: cadetblue dotted 1px;
+//  }
+//  + figcaption {
+//    // color: red;
+//  }
+//}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+$szm-project-config-data: (
+  env: dev, //.................. dev | prod
+  // healthcheck: false,
+  debug: true,
+  //markNS-c: 0,
+  //markNS-o: 0,
+) !default;
+
+// @USAGE:
+// @if (szm-project-config(debug) == true) {
+// }
+@function szm-project-config($key) {
+  @return map-get($szm-project-config-data, $key);
+}
+
+
+
+
+
+
+
+
+

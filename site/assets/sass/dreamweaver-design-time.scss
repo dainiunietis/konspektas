@@ -1,0 +1,148 @@
+
+// generuojame CSS failą per CMD:
+// D:\webdev\konspektas\site\assets (master) (konspektas-assets@1.0.0)
+// λ sass sass\dreamweaver-design-time.scss:sass\dreamweaver-design-time.css
+
+//body {
+//  background-color: red;
+//}
+
+// html > body * {
+//   position: static !important;
+// }
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//b {
+//  background: none;
+//}
+
+i {
+  position: static;
+  //border-bottom: 1px dotted currentColor;
+  background-color: transparent!important;
+}
+
+blockquote {
+  font-size: 1em;
+  position: static;
+  // z-index: auto;
+  // margin-left: 0;
+  // margin-right: 0;
+  // // padding-left: 0;
+
+  // margin: 0;
+  // padding: 0;
+
+  // &:before {
+  //   display: none !important;
+  //   position: static;
+  // }
+}
+
+td, th {
+  vertical-align: top;
+}
+
+details, summary {
+  display: block;
+}
+
+
+del {
+  & > * {
+    display: unset;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+.o-collapse-locdep {
+  // margin: 0;
+  // padding: 0;
+  position: static;
+  // border: none;
+  // box-shadow: initial;
+  > *:last-child {
+    // margin-bottom: 0;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+.c-figure {
+  position: static !important;
+}
+
+html > body figure {
+  position: static !important;
+}
+
+figure {
+  position: static !important;
+}
+
+.figure--img-bigCaption, .c-figure--dashedTB {
+  position: static !important;
+}
+
+// [class*="figure"] {
+//   position: static !important;
+// }
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+.c-pvz__title code {
+  background-color: transparent;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//.Lay-ControlPanel {
+//	/*display: none;*/
+//}
+//
+//
+//blockquote {
+//	opacity: 1!important;
+//	border-left: dashed 1px #4A4A4A!important;
+//	border-right: dashed 1px #4A4A4A!important;
+//	background-color: #FBFBFB!important;
+//}
+//
+//section {
+//	border-color: rgb(158,133,80);
+//}
+//
+//section.Command {
+//	/*-webkit-box-sizing: border-box!important;
+//	-moz-box-sizing: border-box!important;
+//	box-sizing: border-box!important;*/
+//	width: 100%!important;
+//	margin: 0 0 .5em!important;
+//	border: 1px dotted rgb(158,133,80)!important;
+//}
+//
+///*h2, h3, h4, h5, h6 {
+//	background-color: rgb(142,71,140)!important;
+//}*/
+//
+//hr {
+//	border-color: rgb(142,71,140);
+//}
+//
+//
+//
+//
+//figure {
+//  display: block!important;
+///*  margin: 10px; padding: 5px;
+//  border: 10px solid white;
+//  box-shadow: 4px 5px 27px rgba(27, 27, 27, 0.45);*/
+//}
+
+
+
+
+
+

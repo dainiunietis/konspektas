@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="lt" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title></title>
+  <script src="assets/node_modules/vue/dist/vue.min.js"></script>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <style>
+    .pvz-bg > *::before {
+      content: attr(class);
+    }
+  </style>
+</head>
+<body class="-s-page-pvz">
+
+<h1>Example html generavimas su js vue</h1>
+
+<h2><code>.W[1% 2%..100%]</code></h2>
+<p><code>width: 1% 2%..100%</code></p>
+<div class="pvz-bg B361c">
+  <template v-for="width in 100">
+    <div v-bind:class="'W'+width+'%'"></div>
+    <div v-bind:class="'W'+(width+0.5)+'%'"></div>
+  </template>
+</div>
+<script>
+  var app = new Vue({
+    el: '.cp-pvz',
+    data: {},
+    methods: {}
+  })
+</script>
+
+
+
+
+
+
+</body>
+</html>

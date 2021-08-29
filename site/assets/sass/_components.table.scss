@@ -1,0 +1,334 @@
+@charset "utf-8";
+
+// @USAGE:
+// <table class="c-table-clean">
+
+.c-table-clean {
+  border-collapse: collapse;
+  margin: szm-spacing-size("large") 0 szm-spacing-size("huge");
+  //margin: 0.9rem 0 1.1rem;
+  > caption {
+    margin: 0;
+    padding-bottom: 0.2em;
+  }
+  > tbody > tr {
+    > td, > th {
+      padding: 0.25em 2em 0.2em 0;
+      //padding: 0.25em 2em 0.2em 0;
+      //text-align: left;
+      //font-size: 1.1em;
+      border: none;
+      vertical-align: top;
+    }
+    > td {
+      > table:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//   .c-table-linesVer
+//   .c-table-linesVer-inside
+//
+/////////////////////////////////////////////////////////////
+
+$cv-table-linesBorder: solid hsl(0, 0%, 40%);
+
+@mixin cm-table-linesVer-tdth {
+  border:        $cv-table-linesBorder;
+  padding-left:  0.5em;
+  padding-right: 1.5em;
+}
+
+.c-table-linesVer {
+  @extend .c-table-clean;
+  > tbody > tr {
+    > td, > th {
+      @include cm-table-linesVer-tdth;
+      border-width: 0 1px;
+    }
+  }
+}
+
+.c-table-linesVer-inside {
+  @extend .c-table-clean;
+  > tbody > tr {
+    > td, > th {
+      @include cm-table-linesVer-tdth;
+      border-width: 0 0 0 1px;
+      &:first-child {
+        padding-left: 0;
+        border: none;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//   .c-table-linesHor
+//
+/////////////////////////////////////////////////////////////
+
+.c-table-linesHor {
+  @extend .c-table-clean;
+  caption {
+    margin-bottom: 0.3em;
+  }
+  > tbody > tr {
+    border:       $cv-table-linesBorder;
+    border-width: 1px 0;
+    > td, > th {
+      padding-top: 0.5em;
+      padding-bottom: 0.35em;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////
+//
+//   .c-table-3dHorBg-Inset
+//
+/////////////////////////////////////////////////////////////
+
+.c-table-3dHorBg-Inset {
+  @extend .c-table-clean;
+  background: hsl(0, 0%, 94%);
+  caption {
+    padding: 0.7em 0 0.5em;
+    background: inherit;
+  }
+  > tbody {
+    > tr {
+      > td, > th {
+        padding-top: 0.5em;
+        padding-bottom: 0.35em;
+        border: inset hsl(0, 0%, 97%);
+        border-width: 3px 0;
+        &:first-child {
+          padding-left: 0.7em;
+        }
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////
+//
+//   .c-table-3dGrid-insetRidge
+//
+/////////////////////////////////////////////////////////////
+
+.c-table-3dGrid-insetRidge {
+  @extend .c-table-clean;
+  //background: hsl(0, 0%, 94%);
+  border-collapse: separate;
+  border-spacing: 0;
+  border: ridge 4px hsl(0, 0%, 88%);
+  caption {
+    //margin-bottom: 0.3em;
+    padding: 0.1em 0 0.4em;
+    background: inherit;
+  }
+  > tbody {
+    > tr {
+      > td, > th {
+        padding: 0.5em 0.7em 0.35em;
+        border: inset 1px hsl(0, 0%, 88%);
+        border-radius: 0px;
+        &:first-child {
+        }
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////
+//
+//   .c-table-linesGrid
+//
+/////////////////////////////////////////////////////////////
+
+.c-table-linesGrid {
+  $this: &;
+  $paddTop: szm-spacing-size("tiny") + 1px;
+  $paddHor: szm-spacing-size("small");
+  $paddBottom: szm-spacing-size("tiny");
+
+  @extend .c-table-clean;
+  box-shadow: 0 0 5px 0 hsl(0, 0%, 95%);
+  > tbody > tr {
+    > td, > th {
+      // tiny | small | medium | large | huge]
+      padding: $paddTop $paddHor $paddBottom;
+      //padding: 0.5em 0.7em 0.35em;
+      border-style: solid;
+      border-color: hsl(0, 0%, 60%);
+      border-width: 1px;
+      //box-shadow: inset 0px 0px 2px 0px hsl(0, 0%, 90%), 0px 0px 2px 0px hsl(0, 0%, 90%);
+      //box-shadow: 0px 0px 7px 2px hsl(0, 0%, 60%);
+      //box-shadow: 0px 0px 5px 2px hsl(0, 0%, 20%), inset 0px 0px 5px 2px hsl(0, 0%, 20%);
+      //box-shadow: inset 0 0 5px 0 hsl(0, 0%, 97%);
+    }
+    th {
+      padding-top: calc(#{$paddTop} + .3em);
+      padding-bottom: calc(#{$paddBottom} + .3em);
+    }
+  }
+
+  @at-root .c-table-linesGrid--sameInsideCollapse {
+    > tbody > tr > td > #{$this} {
+
+      @mixin common {
+        width: calc(100% + #{$paddHor * 2} + 2px);
+        margin-right: calc(-#{$paddHor} - 1px);
+        margin-left: calc(-#{$paddHor} - 1px);
+      }
+
+      @include common;
+
+      &:first-child {
+        //@include common;
+        margin-top: -#{$paddTop + 1px};
+        //margin-top: calc(-0.5em - 1px);
+      }
+
+      &:last-child {
+        //@include common;
+        margin-bottom: -#{$paddBottom + 1px};
+        //margin-bottom: calc(-0.35em - 0px);
+      }
+      //&:first-child:last-child {
+      //  //@include common;
+      //  margin-bottom: calc(-0.35em - 1px);
+      //  margin-top:    calc(-0.5em - 1px);
+      //  //margin: calc(-0.5em - 1px) calc(-0.7em - 1px) calc(-0.35em - 1px);
+      //}
+    }
+    //&-thinGap {
+    //  > tbody > tr > td > #{$this} {
+    //    width: calc(100% + 1.4em - 4px);
+    //    margin-right: calc(-0.7em + 2px);
+    //    margin-left: calc(-0.7em + 2px);
+    //  }
+    //}
+  }
+}
+
+.c-table-linesGrid--emTh {
+  > tbody > tr > th {
+    $clr: hsl(0, 0%, 90%);
+    background: $clr;
+    //border: solid $clr 1px;
+    //&, & *:not(code) {
+    //  color: hsl(0, 0%, 100%, .85);
+    //}
+  }
+}
+
+.c-table-linesGrid--sticky {
+  > tbody > tr > th {
+    position:   sticky;
+    top:        0;
+    background: hsl(0, 0%, 100%);
+  }
+}
+
+.c-table-linesGrid--sticky-1row {
+  > tbody > tr:first-child > th {
+    position:   sticky;
+    top:        0;
+    background: hsl(0, 0%, 100%, .9);
+  }
+}
+
+//.c-table-linesGrid-shadow {
+//}
+
+////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////
+
+.c-table-folders {
+  @extend .c-table-clean;
+  > tbody > tr {
+    border: dashed hsl(0, 0%, 80%);
+    border-width: 1px 0;
+    &:hover {
+      //border-color: hsl(0, 0%, 0%);
+      //border-width: 1px 0 1px;
+      > td {
+        border:       dashed hsl(0, 0%, 60%);
+        border-width: 1px 0;
+        background:   hsl(0, 0%, 97%);
+      }
+    }
+    > td {
+      padding-top: 0.2em;
+      padding-bottom: 0em;
+      vertical-align: middle;
+      //border: solid hsl(0, 0%, 90%);
+      //border-width: 1px 0;
+      > pre {
+        margin: 0;
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////
+
+.c-table-code {
+  @extend .c-table-clean;
+  //border-collapse: collapse;
+  > tbody > tr > td {
+    padding:        3px 3px;
+    vertical-align: top;
+    border-style:   solid;
+    border-color:   rgb(215, 230, 244);
+    border-width:   1px 0;
+
+    &:first-child {
+      background-color: #F4F9FD;
+      > pre {
+        margin:      0;
+        padding:     0;
+        //color:       #0066CC;
+        //font-family: "Consolas", "DejaVu Sans", "Droid Sans Mono", "Courier New", Courier, monospace;
+        > code {
+          margin:     0;
+          padding:    0;
+          background: none;
+          outline: none;
+        }
+      }
+    }
+
+    &:last-child p {
+      font-size: .85em;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+

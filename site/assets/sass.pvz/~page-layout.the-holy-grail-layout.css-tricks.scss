@@ -1,0 +1,98 @@
+
+@import "../sass/tools.master-imports";
+
+////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////
+
+//body {
+//  font:   1.2em "IBM Plex Sans", sans-serif;
+//  margin: 1em;
+//}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:     #ffffff;
+  font:           800 130% system-ui, sans-serif;
+  height:         100vh;
+  margin:         0;
+  padding:        5px;
+  text-transform: uppercase;
+}
+
+.page-wrap {
+  background:            white;
+  //box-shadow:            0 0 3px rgba(black, 1);
+  display:               grid;
+  gap:                   5px;
+  grid-template-columns: minmax(10px, 1fr) minmax(10px, 3fr);
+  grid-template-rows: min-content min-content 1fr min-content;
+  height:                calc(100vh - 10px);
+
+  > * {
+    padding:    1rem;
+    text-align: center;
+  }
+
+  @include szm-palette-bgChild($szm-palette-sizzling);
+  //@include szm-palette-bgChild($szm-palette-aero);
+  //@include szm-palette-bgChild($szm-palette-timberGreen);
+  //@include szm-palette-bgChild($szm-palette-baby);
+
+  //@include szm-palette-customProps($szm-palette-sizzling);
+
+  @media (max-width: 600px) {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    > * {
+      grid-column: 1 / -1 !important;
+      grid-row:    auto !important;
+    }
+  }
+}
+
+.page-header {
+  background:  #ffcdd2;
+  grid-column: 1 / -1;
+}
+
+.page-sidebar {
+  background:  #e1bee7;
+  grid-column: 1 / 2;
+  grid-row:    2 / 4;
+}
+
+.page-nav {
+  background:  #bbdefb;
+  grid-column: 2 / 3;
+}
+
+.page-main {
+  background:  #dcedc8;
+  grid-column: 2 / 3;
+}
+
+.page-footer {
+  background:  #ffecb3;
+  grid-column: 1 / -1;
+}
+
+details p {
+  text-align:     left;
+  text-transform: none;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   color set data
+//
+/////////////////////////////////////////////////////////////////////////////
+
+$szm-colorSet-data: (
+
+  //... CSS color keywords .............................................................................................
+  keywordsAll:
+    // CSS Level 1
+    black silver gray white maroon red purple fuchsia green lime olive yellow navy blue teal aqua
+    // CSS Level 2 (Revision 1)
+    orange
+    // CSS Color Module Level 3
+    aliceblue antiquewhite aquamarine azure beige bisque blanchedalmond blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen gainsboro ghostwhite gold goldenrod greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow limegreen linen magenta mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite oldlace olivedrab orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna skyblue slateblue slategray slategrey snow springgreen steelblue tan thistle tomato turquoise violet wheat whitesmoke yellowgreen
+    // CSS Color Module Level 4
+    rebeccapurple,
+
+  keywordsLightExtra: aliceblue antiquewhite azure beige bisque cornsilk mistyrose floralwhite gainsboro ghostwhite khaki honeydew ivory lavender lavenderblush lemonchiffon lightcyan lightgoldenrodyellow lightyellow navajowhite linen mintcream moccasin oldlace palegoldenrod papayawhip peachpuff seashell blanchedalmond snow wheat whitesmoke,
+
+  keywordsDarker: gray maroon navy teal brown crimson darkcyan darkgreen darkolivegreen darkslateblue darkslategray firebrick indigo midnightblue saddlebrown,
+
+  keywordsMiddle: burlywood cadetblue coral cornflowerblue darkgoldenrod darkgray darkkhaki darkorange darksalmon darkseagreen goldenrod lightblue lightcoral lightgreen lightgrey lightpink lightsalmon lightskyblue lightsteelblue limegreen mediumaquamarine mediumorchid mediumseagreen mediumspringgreen mediumturquoise orchid palevioletred peru plum powderblue rosybrown salmon sandybrown skyblue tan thistle tomato turquoise violet yellowgreen,
+  keywordsSaturated: red fuchsia lime yellow aqua orange aquamarine chartreuse deeppink deepskyblue gold greenyellow hotpink lawngreen mediumspringgreen orangered orchid skyblue springgreen tomato turquoise violet yellowgreen,
+
+  //... http://www.mattgroeber.com/utilities/random-color-generator/ ...................................................
+  mattgenLightSaturated:     rgb(247,191,233) rgb(127,122,225) rgb(151,225,91) rgb(107,214,214) rgb(217,231,247) rgb(128,126,241) rgb(215,222,244) rgb(164,240,76) rgb(114,228,152) rgb(228,252,217) rgb(111,193,231) rgb(164,210,112) rgb(225,122,168) rgb(180,232,248) rgb(146,247,235) rgb(231,182,220) rgb(214,122,46) rgb(201,231,171) rgb(162,219,112) rgb(173,249,169) rgb(204,112,225) rgb(202,203,247) rgb(234,200,225) rgb(95,236,220) rgb(208,251,244) rgb(215,106,192) rgb(212,232,247) rgb(224,87,167) rgb(155,228,237) rgb(223,73,180) rgb(247,199,250) rgb(176,247,135) rgb(169,229,200) rgb(246,208,225) rgb(198,245,213) rgb(215,142,172) rgb(247,196,227) rgb(227,130,214) rgb(132,198,245) rgb(196,110,212) rgb(177,219,118) rgb(229,212,252) rgb(80,220,106) rgb(79,222,82) rgb(215,244,216) rgb(220,249,248) rgb(233,196,225) rgb(228,170,218) rgb(217,94,96) rgb(104,185,207) rgb(144,228,147) rgb(170,233,63) rgb(133,205,224) rgb(159,143,229) rgb(209,188,235) rgb(85,221,178) rgb(200,249,169) rgb(207,68,238) rgb(175,228,193) rgb(172,246,201) rgb(165,226,162) rgb(211,207,242) rgb(247,222,233) rgb(225,186,233) rgb(99,233,126) rgb(190,220,238) rgb(134,166,208) rgb(148,97,214) rgb(222,235,247) rgb(159,160,229) rgb(220,248,186) rgb(151,208,221) rgb(205,249,219) rgb(109,208,194) rgb(252,212,223) rgb(165,182,248) rgb(243,225,89) rgb(136,246,144) rgb(248,249,174),
+  mattgenLightPaleSortByHue: rgb(233,211,211) rgb(225,195,193) rgb(206,168,156) rgb(228,211,200) rgb(226,209,197) rgb(231,219,207) rgb(178,140,98) rgb(236,234,217) rgb(206,205,156) rgb(189,189,122) rgb(196,199,142) rgb(175,184,111) rgb(221,226,197) rgb(175,188,118) rgb(226,231,207) rgb(234,238,221) rgb(130,181,105) rgb(215,231,207) rgb(185,216,176) rgb(152,199,142) rgb(172,211,166) rgb(216,235,214) rgb(108,183,116) rgb(173,215,182) rgb(118,188,141) rgb(163,210,178) rgb(156,206,175) rgb(221,238,228) rgb(217,236,226) rgb(211,233,222) rgb(118,188,154) rgb(221,238,231) rgb(98,178,146) rgb(183,220,206) rgb(163,210,194) rgb(193,225,215) rgb(221,238,234) rgb(221,238,235) rgb(132,194,183) rgb(163,210,201) rgb(132,194,187) rgb(183,220,218) rgb(163,210,210) rgb(224,239,240) rgb(132,190,194) rgb(163,203,210) rgb(139,185,198) rgb(190,213,223) rgb(224,234,240) rgb(221,230,238) rgb(146,172,201) rgb(135,163,196) rgb(163,183,210) rgb(173,190,215) rgb(125,150,191) rgb(118,131,188) rgb(149,159,203) rgb(197,201,226) rgb(156,163,206) rgb(122,128,189) rgb(183,186,220) rgb(117,115,186) rgb(152,149,203) rgb(133,125,191) rgb(148,139,198) rgb(222,217,236) rgb(180,166,211) rgb(198,187,221) rgb(136,111,184) rgb(142,98,178) rgb(164,125,191) rgb(181,135,196) rgb(203,163,210) rgb(192,142,199) rgb(200,152,205) rgb(191,129,193) rgb(196,135,196) rgb(208,159,205),
+  mattgenPastelVeryLight:    rgb(202,219,199) rgb(172,201,183) rgb(207,181,203) rgb(235,237,227) rgb(217,206,196) rgb(172,165,197) rgb(190,194,213) rgb(170,168,199) rgb(234,235,224) rgb(233,239,230) rgb(227,237,233) rgb(222,224,204) rgb(243,239,245) rgb(227,220,234) rgb(170,203,195) rgb(233,241,235) rgb(221,202,197) rgb(228,238,226) rgb(159,198,163) rgb(209,223,200) rgb(227,207,221) rgb(199,163,158) rgb(186,201,161) rgb(244,242,236) rgb(158,199,161) rgb(221,212,197) rgb(161,201,189) rgb(233,229,216) rgb(220,193,200) rgb(167,205,170) rgb(203,196,222) rgb(235,219,221) rgb(191,205,167) rgb(192,177,211) rgb(230,229,240) rgb(237,232,242) rgb(228,206,207) rgb(229,241,239) rgb(206,166,198) rgb(235,219,233) rgb(185,209,169) rgb(235,242,244) rgb(228,218,205) rgb(203,163,159) rgb(214,228,205) rgb(165,207,201) rgb(223,213,195) rgb(219,232,211) rgb(222,201,227) rgb(245,246,238) rgb(232,211,220) rgb(219,184,193) rgb(205,187,157) rgb(205,209,163) rgb(218,220,236) rgb(236,231,243) rgb(220,224,194) rgb(230,218,236) rgb(173,215,188) rgb(224,240,228) rgb(231,225,207) rgb(187,173,215) rgb(242,231,227) rgb(205,152,153) rgb(226,227,196) rgb(205,162,210) rgb(237,229,217) rgb(203,225,230) rgb(214,169,205) rgb(210,193,162) rgb(219,179,217) rgb(201,227,196) rgb(234,227,210) rgb(218,237,217) rgb(220,196,178) rgb(164,213,207) rgb(242,241,227) rgb(182,221,194),
+
+  contrastLight: #FDDB6D #EFDBC5 #CD9575 #78DBE2 #87A96B #FFA474 #FAE7B5 #9F8170 #FD7C6E #ADADD6 #B0B7C6 #1CD3A2 #9ACEEB #FDDB6D #EFCDB8 #B5C8FA #B5FAE7 #E7B5FA,
+
+  fullSat: #00C8FF #17E800 #FFCA00 #E83100 #AE00FF #00FFE7 #73E800 #FFAD00 #E80B00 #5E00FF #00FF92 #D3E800 #FF8C00 #E80065 #0C00FF #00FF18 #E8C700 #FF4D00 #C500E8 #0066FF,
+  //fullSatLight:       <<< pridėta žemiau su map_merge()
+  //fullSatLightExtra:  <<<
+);
+
+$szm-colorSet-data: map_merge($szm-colorSet-data, (fullSatLight: scale-color-list(map_get($szm-colorSet-data, fullSat), $lightness: 50%)));
+$szm-colorSet-data: map_merge($szm-colorSet-data, (fullSatLightExtra: scale-color-list(map_get($szm-colorSet-data, fullSat), $lightness: 75%)));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

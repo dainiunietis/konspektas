@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//   .u-border-none
+//
+/////////////////////////////////////////////////////////////
+
+// .u-border-none,                         .B0
+// .u-border-[top|right|bottom|left]-none, .B[T|R|B|L]0
+// .u-border-[horizontal|vertical]-none,   .B[H|V]0
+
+@each $sideName, $sideProps in $szm-box-sides {
+  $selectorShort: "B" + to_upper_case(str_slice($sideName, 1, 1)) + "0";
+  
+  //@if $sideName != "" {             <<< VEIKIA, bet daugiau kodo
+  //  $sideName: "-" + $sideName;
+  //}
+  //$selector: u-border#{$sideName}-none;
+  $selector: u-border#{if($sideName=="","","-")}#{$sideName}-none;
+  
+  //.#{$selector}, .#{$selector}-c > *, .#{$selector}-d *,
+  .#{$selectorShort}, .#{$selectorShort}c > *, .#{$selectorShort}d * {
+    @each $prop in $sideProps {
+      border#{$prop}-style: none !important;
+    }
+  }
+}
+
+
+
+

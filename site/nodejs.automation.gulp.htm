@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Gulp</h1>
+<p> <a href="https://gulpjs.com">gulp.js - The streaming build system</a></p>
+<p><code>D:\webdev\sites_test\automation</code> &#8212; testinis gulp'o tinklalapis</p>
+<p> <a href="https://gist.github.com/dainiunietis/1fd5547e8321797ed3d2ad0d9cffeefc">Gulp 4.X sprendimai-technikos</a> &#8212; savo gist'ai</p>
+<dl>
+  <dt>Mokytuvai: </dt>
+  <dd>
+    <p><a href="https://gulpjs.com/docs/en/api/concepts">API Concepts · gulp.js</a> &#8212; pagrindai, iš ko sudaryta ir kaip veikia</p>
+    <p> <a href="https://gulpjs.com/docs/en/getting-started/quick-start">Quick Start · gulp.js</a> &#8212; trumpai-drūtai kaip instaliuoti ir Hello World'as</p>
+    <p>E:\bib wd video -- skirstyti\Udacity Web Tooling &amp; Automation\ &#8212; praėjau, kiek paviršutiniškas</p>
+    <p><a href="https://www.udacity.com/course/web-tooling-automation--ud892">https://www.udacity.com/course/web-tooling-automation--ud892</a> &#8212; pradėjau žiūrėti</p>
+    <p><a href="https://www.sitepoint.com/introduction-gulp-js/">https://www.sitepoint.com/introduction-gulp-js/</a></p>
+    <p><a href="http://engineroom.teamwork.com/10-things-to-know-about-gulp/">http://engineroom.teamwork.com/10-things-to-know-about-gulp/</a></p>
+  </dd>
+  <dt>Sprendimai:</dt>
+  <dd>
+    <p><a href="https://github.com/gulpjs/gulp/tree/master/docs/recipes">https://github.com/gulpjs/gulp/tree/master/docs/recipes</a></p>
+  </dd>
+</dl>
+<p class="em-alert"><strong>Note for Windows users:</strong> Node.js and Gulp run on Windows but some plug-ins may not install or run if they depend on native Linux binaries such as image compression libraries. One option for Windows 10 users is the new <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">bash command-line</a>; this solves many issues but is a beta product and could introduce alternative problems.</p>
+<h2>Gulp API</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3> Private task'ų apibrėžimas su paprasta funkcija ir public task'ų su <code>exports</code> &#8212; rekomenduotina praktika</h3>
+      <p><a href="https://gulpjs.com/docs/en/getting-started/creating-tasks">Creating Tasks · gulp.js</a></p>
+      <p>Kaip apibrėžiami ir įvykdomi Gulp'o task'ai per CMD</p>
+      <p>Gulp task'ai yra dviejų tipų &#8212; <i>public</i> ir <i>private</i>:</p>
+      <blockquote>
+        <p>Tasks can be considered <strong>public</strong> or <strong>private</strong>.</p>
+        <ul>
+          <li><strong>Public tasks</strong> are exported from your gulpfile, which allows them to be run by the gulp command.</li>
+          <li><strong>Private tasks</strong> are made to be used internally, usually used as part of series() or parallel() composition.      </li>
+        </ul>
+      </blockquote>
+      <div class="c-em-note c-em--small">
+        <p>Gulp task'ų sukūrimui ant gulp@4.X rekomenduotina naudoti <code>exports</code>:</p>
+        <blockquote>
+          <p>In the past, <code>task()</code> was used to register your functions as tasks. While that API is still available, exporting should be the primary registration mechanism, except in edge cases where exports won't work.</p>
+        </blockquote>
+      </div>
+      <dl>
+        <dt>paprasčiausias Gulp task'ų sukūrimas</dt>
+        <dd>
+          <p>Tai visas ir veikiantis <code>gulpfile.js</code> turinys, </p>
+          <pre><code>function kazkas_private(cb) {
+  console.log("Gulp task: kazkas_private");
+  cb();
+}
+
+function kazkas_public(cb) {
+  console.log("Gulp task: kazkas_public");
+  cb();
+}
+
+exports.kazkas_public = kazkas_public;</code></pre>
+          <p>įvykdys public Gulp task'ą: <br>
+            <code>&gt; gulp kazkas_public</code></p>
+          <p>           o private  task'as nepasileis:<br>
+<code>&gt; gulp kazkas_private</code></p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>task([taskName], taskFunction)</code></h3>
+      <p> <a href="https://gulpjs.com/docs/en/api/task">task() · gulp.js</a></p>
+      <div class="c-em-alert c-em--narrow">
+        <P>Geriau naudoti <code>exports</code>, o ne <code>task()</code>.</p>
+        <blockquote>
+          <p><strong>Reminder</strong>: This API isn't the recommended pattern anymore - <a href="https://gulpjs.com/docs/en/getting-started/creating-tasks">export your tasks</a>.</p>
+        </blockquote>
+      </div>
+      <h4>Public task'ų sukūrimas</h4>
+      <p><code>exports</code> ir <code>task()</code> daro tą patį (sukuria public task'ą, kurį galima įvykdyti per CMD: <code>&gt; gulp build</code>):</p>
+      <dl>
+        <dt>Register a named function as a task </dt>
+        <dd>
+          <pre><code>const { task } = require('gulp');
+
+function build(cb) {
+  // body omitted
+  cb();
+}
+
+task(build);
+exports.build = build;  // tas pats</code>
+        </pre>
+        </dd>
+        <dt>Register an anonymous function as a task</dt>
+        <dd>
+          <pre><code>const { task } = require('gulp');
+
+task('build', function(cb) {
+  // body omitted
+  cb();
+});
+
+exports.build = function(cb) {  // tas pats
+  // body omitted
+  cb();
+}</code>
+        </pre>
+        </dd>
+      </dl>
+      <h4>Task'o funkcijos gavimas</h4>
+      <div class="c-em-important c-em--small">
+        <p>Atrodo tai dalykas, ko nepadarysi su <code>exports</code> &#8212; public-užregistruoto, t. y. įvykdomo per CMD, task'o funkcijos gavimas <q>Retrieve a task that has been registered previously</q>:</p>
+        <pre><code>const { task } = require('gulp');
+
+task('build', function(cb) {
+  // body omitted
+  cb();
+});
+
+const build = task('build');</code></pre>
+      </div>
+      <h4>gulp@3.X sintaksė</h4>
+      <p><code>gulpfile.js</code> šakniniame projekto kataloge, sukuriamas Gulp'o task'as &quot;padaryti&quot;:</p>
+      <pre><code>var gulp = require('gulp');
+gulp.task('padaryti', function(done) {<mark></mark>
+  console.log(&quot;vykdomas Gulp taskas &#8212; padaryti&quot;);
+  done();
+});</code></pre>
+      <p>Per CMD, esant Gulp'o šakniniame projekto kataloge, įvykdo Gulp'o task'ą &quot;padaryti&quot;:</p>
+      <p><code>&gt; gulp padaryti</code>    </p>
+    </td>
+    <td>
+      <h3>Task'ų sujungimas (compose tasks)</h3>
+      <blockquote>
+        <p>Gulp provides two powerful composition methods, <code>series()</code> and <code>parallel()</code>, allowing individual tasks to be composed into larger operations. Both methods accept any number of task functions or composed operations. <code>series()</code> and <code>parallel()</code> can be nested within themselves or each other to any depth.</p>
+      </blockquote>
+      <p>Faktiškai  <code>series()</code> ir  <code>parallel()</code> sukuria-grąžina private task'ą:</p>
+      <pre><code>const { series } = require('gulp');
+
+const kazkas_visi = series(function kazkas_1(cb) {
+  console.log("Gulp task: kazkas_1");
+  cb();
+}, function kazkas_2(cb) {
+  console.log("Gulp task: kazkas_2");
+  cb();
+});
+
+exports.default = kazkas_visi;</code>
+      </pre>
+      <h4>Task'ų architektūra &#8212;  <code>series()</code> ir <code>parallel()</code> kombinavimas</h4>
+      <dl>
+        <dt>blogai</dt>
+        <dd>
+          <pre><code>// This is INCORRECT
+const { series, parallel } = require('gulp');
+
+const clean = function(cb) {
+  // body omitted
+  cb();
+};
+
+const css = series(clean, function(cb) {
+  // body omitted
+  cb();
+});
+
+const javascript = series(clean, function(cb) {
+  // body omitted
+  cb();
+});
+
+exports.build = parallel(css, javascript);</code></pre>
+        </dd>
+        <dt>gerai</dt>
+        <dd>
+          <pre><code>const { series, parallel } = require('gulp');
+
+function clean(cb) {
+  // body omitted
+  cb();
+}
+
+function css(cb) {
+  // body omitted
+  cb();
+}
+
+function javascript(cb) {
+  // body omitted
+  cb();
+}
+
+exports.build = series(clean, parallel(css, javascript));</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3><code>series(...tasks)</code></h3>
+      <p>Task'ai  įvykdomi iš eilės, vienas po kito, sulaukiant vieno pasibaigimo, tada vykdomas sekantis:</p>
+      <blockquote>
+        <p>Combines task functions and/or composed operations into larger operations that will be executed one after another, in sequential order.      </p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <dl>
+        <dt>public Gulp task'o sukūrimas iš kitų task'ų (gali būti tiek <i>public</i>, tiek  <i>private</i>), perduodant task'ų funkcijų nuorodas</dt>
+        <dd>
+          <pre><code>const { series } = require('gulp');
+
+function kazkas_1(cb) {
+  console.log("Gulp task: kazkas_1");
+  cb();
+}
+
+function kazkas_2(cb) {
+  console.log("Gulp task: kazkas_2");
+  cb();
+}
+
+exports.kazkas_visi = series(kazkas_1, kazkas_2);</code>
+          </pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3><code>parallel(...tasks)</code>      </h3>
+      <blockquote>
+        <p>Combines task functions and/or composed operations into larger operations that will be executed simultaneously.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <pre><code>const { parallel } = require('gulp');
+
+function javascript(cb) {
+  // body omitted
+  cb();
+}
+
+function css(cb) {
+  // body omitted
+  cb();
+}
+
+exports.build = parallel(javascript, css);</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div class="o-mcl o-mcl--N2 o-mcl--start-h3 o-mcl--continuous-pre">
+  <h3>Gulp'o task'o turinys</h3>
+  <p>Paprasčiausias Gulp'o plugin'o panaudojimas:</p>
+  <pre><code>var gulp = require('gulp');
+var aGulpPlugin = require('a-gulp-plugin');
+gulp.task('task-name', function() {
+  return gulp.src('source-files')      // Get source files with gulp.src
+    .pipe(aGulpPlugin())               // Sends it through a gulp plugin
+    .pipe(gulp.dest('destination'))    // Outputs the file in the destination folder
+})</code></pre>
+  <p></p>
+</div>
+<h2>Projekto failų struktūra</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <blockquote>
+        <p>In this structure, we'll use the app folder for development purposes, while the dist (as in "distribution") folder is used to contain optimized files for the production site. </p>
+        <p>Since app is used for development purposes, all our code will be placed in app. </p>
+        <pre><code>app/
+  css/
+  fonts/
+  images/
+  js/
+  scss/
+  index.html
+dist/
+  ...
+node_modules/
+gulpfile.js
+package.json</code></pre>
+        <p><a href="https://css-tricks.com/gulp-for-beginners/">Gulp for Beginners | CSS-Tricks</a></p>
+      </blockquote>
+    </td>
+    <td width="20%">
+      <blockquote>
+        <pre><code>public/
+|  assets/
+|  |  stylesheets/
+|  |  |  style.css
+|  |  javascript/
+|  |  |  vendor/
+|  |  |  |  jquery.min.js
+|  |  |  bundle.js
+source/
+|  javascript/
+|  |  courage.js
+|  |  wisdom.js
+|  |  power.js
+|  scss/
+|  |  styles.scss
+|  |  grid.scss
+gulpfile.js
+packages.json</code></pre>
+        <p><a href="https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js">Automate Your Tasks Easily with Gulp.js ― Scotch.io</a></p>
+      </blockquote>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

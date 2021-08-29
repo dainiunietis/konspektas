@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>regexp cheatsheet Jonny Fox</h1>
+<p> <a href="https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285">Regex tutorial  —  A quick cheatsheet by examples – Factory Mind – Medium</a></p>
+<h2>Basic topics</h2>
+<div class="o-gfx o-gfx--boxed">
+  <div>
+    <h4 name="d75a" id="d75a2"><strong>Anchors — ^ and $</strong></h4>
+    <pre name="8b03" id="8b03"><strong>^The</strong>        matches any string that <strong>starts with</strong> <strong>The </strong>-&gt;<a href="https://regex101.com/r/cO8lqs/2" data-href="https://regex101.com/r/cO8lqs/2" rel="noopener nofollow" target="_blank"><strong>Try it!</strong></a></pre>
+    <pre name="64bd" id="64bd"><strong>end$        </strong>matches a string that <strong>ends with</strong> <strong>end</strong></pre>
+    <pre name="b761" id="b761"><strong>^The end$   exact string match</strong> (starts and ends with <strong>The end</strong>)</pre>
+    <pre name="f846" id="f846"><strong>roar        </strong>matches any string that <strong>has the text roar in it</strong></pre>
+  </div>
+  <div>
+    <h4 name="0090" id="00902"><strong>Quantifiers — * + ? and {}</strong></h4>
+    <pre name="1e35" id="1e35">abc<strong>*</strong>        matches a string that has <strong>ab followed by zero or more c </strong>-&gt;<a href="https://regex101.com/r/cO8lqs/1" data-href="https://regex101.com/r/cO8lqs/1" rel="noopener nofollow" target="_blank"><strong>Try it!</strong></a></pre>
+    <pre name="9970" id="9970">abc<strong>+</strong>        matches a string that has <strong>ab followed by one or more c</strong></pre>
+    <pre name="f0a8" id="f0a8">abc<strong>?</strong>        matches a string that has <strong>ab followed by zero or one c</strong></pre>
+    <pre name="7b51" id="7b51">abc<strong>{2}</strong>      matches a string that has <strong>ab followed by 2 c</strong></pre>
+    <pre name="dae4" id="dae4">abc<strong>{2,}</strong>     matches a string that has <strong>ab followed by 2 or more c</strong></pre>
+    <pre name="b425" id="b425">abc<strong>{2,5}</strong>    matches a string that has <strong>ab followed by 2 up to 5 c</strong></pre>
+    <pre name="8465" id="8465">a<strong>(bc)*      </strong>matches a string that has <strong>a followed by zero or more copies of the sequence bc</strong></pre>
+    <pre name="f9c0" id="f9c0">a<strong>(bc){2,5}  </strong>matches a string that has<strong> a followed by 2 up to 5 copies of the sequence bc</strong>
+  </pre>
+  </div>
+  <div>
+    <h4 name="164d" id="164d2">OR operator — | or []</h4>
+    <pre name="67fb" id="67fb"><strong>a(b|c)</strong>     matches a string that has <strong>a followed by b or c -&gt; </strong><a href="https://regex101.com/r/cO8lqs/3" data-href="https://regex101.com/r/cO8lqs/3" rel="noopener nofollow" target="_blank"><strong>Try it!</strong></a></pre>
+    <pre name="88a5" id="88a5"><strong>a[bc]</strong>      same as previous</pre>
+  </div>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+<div>
+  <p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+<div>
+  <p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h4 name="d75a" id="d75a">&nbsp;</h4>
+    </td>
+    <td width="25%">
+      <h4 name="0090" id="0090">&nbsp;</h4>
+    </td>
+    <td width="25%">
+      <h4 name="164d" id="164d">&nbsp;</h4>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

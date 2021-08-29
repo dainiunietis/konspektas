@@ -1,0 +1,262 @@
+@charset "utf-8";
+
+//@debug printVarIndent($g-spacing-sizes-em-data);
+
+// $elements-ulol-innerVerSpacing-medium: szm-spacing-size("tiny+", em);
+// $elements-ulol-innerVerSpacing-medium: $szm-spacing-vertical-paragraph / 2;
+$elements-ulol-innerVerSpacing-medium: 0;
+$elements-ulol-innerVerSpacing-small:  szm-spacing-size("tiny-", em);
+
+$elements-ulol-leftMargin-medium: szm-spacing-size(large-, em);
+$elements-ulol-leftMargin-small: 1.15em;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   bendri nustatymai <ul> <ol> ir list'ai list'uose
+//
+///////////////////////////////////////////////////////////////////////
+
+ul, ol {
+  margin-left: $elements-ulol-leftMargin-medium; // - 0.1em
+  list-style-position: outside;
+
+  ul, ol {
+    margin-bottom: $elements-ulol-innerVerSpacing-medium;
+  }
+
+  ul {
+    margin-left: 1.25em;
+  }
+
+  ol {
+    margin-left: 1.15em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   atskiriems tagams
+//
+///////////////////////////////////////////////////////////////////////
+
+ul {
+  list-style: square;
+}
+
+ol {
+}
+
+li {
+  margin-bottom: $elements-ulol-innerVerSpacing-medium;
+  > p {
+    margin-bottom: inherit;
+    //&:last-child {
+    //  margin-bottom: 0;
+    //}
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+.ol--lowerAlpha { list-style-type: lower-alpha; }
+.ol--upperAlpha { list-style-type: upper-alpha; }
+
+.ol--lowerRoman { list-style-type: lower-roman; }
+.ol--upperRoman { list-style-type: upper-roman; }
+
+.ol--decimal { list-style-type: decimal; }
+
+.ol--zeroDecimal { list-style-type: decimal-leading-zero; }
+
+.ol--symbol-arrowOrn1 { list-style-type: "⪢"; }
+.ol--symbol-arrowOrn2 { list-style-type: "⫸"; }
+.ol--symbol-asterisk { list-style-type: "⁕"; }
+
+.ol--emoji-thumbsUp { list-style-type: "\1F44D"; } // thumbs up sign }
+.ol--emoji-grapes { list-style-type: "🍇"; }
+.ol--emoji-ok { list-style-type: "✔"; }
+.ol--emoji-lily { list-style-type: "⚜"; }
+
+//.ol--emoji- { list-style-type: "🍇🍓🥏🎯💎";
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+.ulol--compact {
+  margin-left: $elements-ulol-leftMargin-small;
+  li {
+    margin-bottom: $elements-ulol-innerVerSpacing-small;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+$ulol--lines-borderClr-base: hsl(0, 0%, 0%);
+
+@mixin ulol--lines {
+  $ulol--lines-borderClr:           scale_color($ulol--lines-borderClr-base, $alpha: -20%);
+  $ulol--lines-borderClr-topBottom: scale_color($ulol--lines-borderClr-base, $alpha: -20%);
+  //$borderClr: colorScheme-site('1HD1');
+  margin: szm-spacing-size(medium-, em) 0 szm-spacing-size(medium-, em) 0;
+  li {
+    padding: 0 0 szm-spacing-size(tiny, em) 0;
+    list-style: none;
+    border: $ulol--lines-borderClr solid;
+    border-width: 0 0 1px;
+    &:first-child {
+      padding-top: szm-spacing-size("tiny+", em);
+      border-top-width: 3px;
+      border-top-color: $ulol--lines-borderClr-topBottom;
+    }
+    &:last-child {
+      padding-bottom: szm-spacing-size("tiny+", em);
+      border-bottom-width: 3px;
+      border-bottom-color: $ulol--lines-borderClr-topBottom;
+    }
+  }
+}
+
+.ulol--lines {
+  @include ulol--lines;
+
+  &-dashed {
+    @include ulol--lines;
+    li {
+      border-style: dashed;
+    }
+  }
+
+  &-thick {
+    @include ulol--lines;
+    $ulol--lines-borderClr:           scale_color($ulol--lines-borderClr-base, $alpha: -60%);
+    $ulol--lines-borderClr-topBottom: scale_color($ulol--lines-borderClr-base, $alpha: -30%);
+    li {
+      padding: 0 0 .45em 0;
+      margin:  0 0 .4em 0;
+      border-color: $ulol--lines-borderClr;
+      border-width: 0 0 7px;
+      &:first-child {
+        border-top-width: 7px;
+        border-top-color: $ulol--lines-borderClr-topBottom;
+      }
+      &:last-child {
+        border-bottom-width: 7px;
+        border-bottom-color: $ulol--lines-borderClr-topBottom;
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+%elements-ulol--flow {
+  --sideMrg:   0.35rem;
+
+  line-height: 1.6;
+  list-style:  none;
+  margin-left: 0;
+  //margin-right: 0.3em;
+
+  li {
+    margin-right: var(--sideMrg);
+    border:         2px solid hsla(200, 70%, 40%, 0);
+    padding: .1em .1em;
+
+    &:hover {
+      background:     hsla(200, 70%, 40%, 0.1);
+      border:         2px solid hsla(200, 70%, 40%, 0.9);
+      //outline:        2px solid hsla(200, 70%, 40%, 0.9);
+      //outline-offset: 2px;
+      //padding-top: .2em;
+      //padding-bottom: .2em;
+    }
+  }
+}
+
+.ulol--flow-inline {
+  @extend %elements-ulol--flow;
+
+  li {
+    display: inline;
+
+    &:hover {
+    }
+  }
+}
+
+.ulol--flow-inlineSep {
+  @extend .ulol--flow-inline;
+
+  li {
+    margin-right: .9em;
+
+    &:not(:last-child)::after {
+      margin-right: -1.2em;
+      margin-left: var(--sideMrg);
+      padding: 0 0em 0 0;
+      font: 1em "Segoe UI Symbol", sans-serif;
+      // ⌇
+      // ⌁ ↯ ⚡
+      // ⌘
+      // ⊚ ⌾ ◎
+      // ⁜ ※
+      // ⁞
+      // ◆
+      content: "✶";
+      //---------------------------------------------------------------
+      //font: 1em "Segoe UI Emoji", sans-serif;
+      // ⚜ 🌷 ☘ 🌻
+      // 🌲 🌳 🌴 🌵
+      // 📎 📍
+      //content: "☘";
+    }
+  }
+}
+
+//--------------------------------------------------------------------------
+
+.ulol--flow-flex {
+  @extend %elements-ulol--flow;
+
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+  gap: .1em;
+  border-color: hsla(200, 70%, 40%, 0.3);
+
+  li {
+    //--sideMrg: 0.2rem;
+    //display: inline;
+    //margin-right: var(--sideMrg);
+    //margin-bottom: $elements-ulol-innerVerSpacing-small;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+//.list--wideVer {
+//  li, &_c > li {
+//    margin-bottom: 0.7em;
+//  }
+//}
+
+

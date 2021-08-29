@@ -1,0 +1,218 @@
+@charset "utf-8";
+
+//@import url(master.utilities.css);
+
+//@import url("../fonts/Recursive/font-face-recursive.css");
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Settings
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "../sass.szm/settings.project";
+@import "settings.project";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Tools
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "tools.master-imports";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Settings needs tools
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// !!! čia geriau laikyti, tada setting'uose galima naudoti naudoti tool'sus
+
+@import "settings.misc";
+
+@import "../sass.szm/settings.misc";
+@import "../sass.szm/settings.box";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Generic
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Box-sizing...........Better default `box-sizing`.
+// Normalize.css........A level playing field using @necolas’ Normalize.css.
+// Reset................A tiny reset to complement Normalize.css.
+// Shared...............Sensibly and tersely share some global commonalities
+//                      (particularly useful when managing vertical rhythm).
+
+//@import "../bower_components/inuitcss/generic/generic.box-sizing";
+//@import "../bower_components/inuitcss/generic/generic.normalize";
+//@import "../bower_components/inuitcss/generic/generic.reset";
+//@import "../bower_components/inuitcss/generic/generic.shared";
+
+@import "../sass.szm/generic.defaults";
+@import "../sass.szm/generic.user-interaction";
+@import "generic.layout.spacing";
+
+//@import "generic.typography.font-face";
+@import "generic.typography";
+
+//--- font-awesome --------------------------------------------
+//@import "../fonts/font-awesome-4.1.0/scss/font-awesome.scss";
+//------------------------------------------- variantas be scss
+// @import "../../fonts/font-awesome-4.1.0/css/font-awesome.min.css";
+// @font-face {
+//   font-family: 'FontAwesome';
+//   src: url('assets/fonts/antonio/../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+//-------------------------------------------------------------
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # elements
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Page.................Set up our document’s default `font-size` and `line-height`.
+// Headings.............Very minimal (i.e. only font-size information) for headings 1 through 6.
+// Images...............Base image styles.
+// Tables...............Simple table styles.
+
+//@import "../bower_components/inuitcss/elements/elements.page";
+//@import "../bower_components/inuitcss/elements/elements.headings";
+//@import "../bower_components/inuitcss/elements/elements.images";
+//@import "../bower_components/inuitcss/elements/elements.tables";
+
+@import "elements.html-body";
+@import "elements.misc";
+@import "elements.blockquote-cite-q";
+@import "elements.headings";
+@import "elements.p-paragraph";
+@import "elements.list.ul-ol";
+@import "elements.list.dl";
+@import "elements.figure-figcaption";
+
+@import "../sass.szm/elements.table";
+//@import "elements.table";
+
+@import "elements.text-format";
+
+@import "elements.pre-code";
+// @import "elements.pre-code_2"; // nauja versija, dar nebaigta
+
+@import "elements-pseudo.user-interaction";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Objects
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Wrapper..............Page constraint object.
+// Layout...............Generic layout module.
+// Media................Image- and text-like content side by side. The poster-child of OOCSS.
+// Flag.................Table-layout-based advancement on the Media object.
+// List-bare............Lists with no bullets or indents.
+// List-inline..........A list whose items all site in a line.
+// Box..................Simple boxing abstraction.
+// Block................Image-on-top-of-text object.
+// Ratio................A container for maintaining aspect ratio of content.
+// Crop.................Provide a cropping context for media (images, etc.).
+// Tables...............Classes for manipulating `table`s.
+// Pack.................Pack items into available horizontal space.
+
+//@import "../bower_components/inuitcss/objects/objects.task";
+//@import "../bower_components/inuitcss/objects/objects.layout";
+//@import "../bower_components/inuitcss/objects/objects.media";
+//@import "../bower_components/inuitcss/objects/objects.flag";
+//@import "../bower_components/inuitcss/objects/objects.list-bare";
+//@import "../bower_components/inuitcss/objects/objects.list-inline";
+//@import "../bower_components/inuitcss/objects/objects.box";
+//@import "../bower_components/inuitcss/objects/objects.block";
+//@import "../bower_components/inuitcss/objects/objects.ratio";
+//@import "../bower_components/inuitcss/objects/objects.crop";
+//@import "../bower_components/inuitcss/objects/objects.table";
+//@import "../bower_components/inuitcss/objects/objects.pack";
+
+@import "objects.collapse";
+
+@import "../sass.szm/objects.grd-ibk-flt-flx";
+@import "../sass.szm/objects.gfx";
+@import "../sass.szm/objects.clm";
+@import "../sass.szm/objects.mcl";
+
+@import "../sass.szm/objects.fullBleedInLimited";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Components
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+//--- assets/bower_components/inuitcss/ -----------------------------------------------
+
+// Buttons..............An example button component, and how it fits into the inuitcss framework.
+
+//@import "components/example.components.buttons";
+
+//--- sass.szm ------------------------------------------------------------------------
+
+@import "../sass.szm/components.pvz";
+@import "../sass.szm/components.pvs";
+
+//--- vietiniai -----------------------------------------------------------------------
+
+@import "component-tag.mark";
+@import "elements.section";
+
+@import "components.tableCols";
+@import "components.table";
+
+@import "components.sidePanel";
+@import "components.jquery-toc";
+
+@import "component.side-fixed-panel";
+@import "component.figure";
+@import "component.emphasize";
+@import "component.editor-command";
+
+@import "components.list.dl";
+@import "components.list.navTree";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # scopes
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "scopes.page.pvz";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Utilities-Trumps
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// master.utilities.scss — visus utilities surenkame atskirame master'yje
+// master.utilities.css  — arba prijungiame šio failo pradžioje
+//                         arba pačiame HTML faile
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Development-Debuging
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// master.dev.css — prijungiame pačiame HTML faile
+
+// jei prireiktų viską laikyti viename faile
+//@import "../sass.szm/dev.master-import";
+//@import "dev.components.measuring.mesh";
+
+
+
+
+

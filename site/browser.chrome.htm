@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Google Chrome
+</h1>
+<h2>DevTools</h2>
+<p> <a href="https://developers.google.com/web/tools/chrome-devtools">Chrome DevTools  |  Google Developers</a></p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>DevTools'ų atidarymo būdai:</p>
+    <ul>
+      <li>
+        <p>Atidaro-uždaro DevTools'us nekeičiant panelių aktyvacijos:        </p>
+        <ul>
+          <li><kbd>ctrl+shift+i</kbd> arba <kbd>F12</kbd></li>
+          <li>Per naršyklės pagrindinį meniu — <img class="VAM" src="images/20200924_023956_browser.chrome.htm_.png" alt="" width="110" height="108"/></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Elements panel'ė</h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>Norimo  DOM elemento aktyvavimas Elements panel'ėje pasirinkus pačiame puslapyje, yra du būdai:</p>
+    <dl>
+      <dt>Per kontekstinį meniu puslapyje</dt>
+      <dd>
+        <p><img src="images/20200924_010424_Google Chrome ψ WebDev konspektas.png" alt="" width="93" height="89"/></p>
+      </dd>
+      <dt>Per interaktyvų DOM elemento pasirinkimo režimą</dt>
+      <dd>
+        <p>Jį galima įjungti:</p>
+        <ul>
+          <li><kbd>ctrl+shift+C</kbd></li>
+          <li>arba <img src="images/20200924_015533_Google Chrome ψ WebDev konspektas.png" alt="" width="164" height="50"/></li>
+        </ul>
+        <p>Jo veikimas:</p>
+        <p><img src="images/20200924_011706_Google Chrome ψ WebDev konspektas.png" alt="" width="108" height="71"/></p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Console panel'ė</h3>
+<p> <a href="https://developers.google.com/web/tools/chrome-devtools/console">Console Overview  |  Chrome DevTools  |  Google Developers</a></p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h4>Console panel'ės atidarymas-uždarymas</h4>
+    <p><kbd>ctrl+shift+j</kbd> — jeigu paspaudžiamas, kai jau yra atidaryti DevTools'ai — juos uždaro, nepriklausomai yra atidaryta ar aktyvuota Console panel'ė ar ne.  </p>
+  </div>
+  <div>
+    <h4>Konsolės kintamieji — nuorodos į Elements panel'ėje pažymėtus DOM elementus</h4>
+    <ul>
+      <li>
+        <p><code>$0</code> — Elements panel'ėje pažymėtas DOM elementas</p>
+<figure class="c-figure c-figure--shadow">
+<!--  <div class="c-figure__content" style="width:clamp(150px,min-content,max-content)">-->
+  <div class="c-figure__content" style="width: fit-content">
+    <p><img src="images/20201019_012406_Window.png" alt="" width="70" /></p>
+  </div>
+  <figcaption><code>$0</code> — išveda pažymėto DOM elemento nuorodą-mirror'ą</figcaption>
+</figure>
+<figure class="c-figure c-figure--shadow">
+<!--  <div class="c-figure__content" style="width:150px">-->
+<!--  <div class="c-figure__content" style="min-width:150px; width:90%; max-width:min-content">-->
+  <div class="c-figure__content" style="width: fit-content">
+    <p><img src="images/20201011_131823_DevTools - konspektas.local_dom.pagrindai.html.png" alt="" width="70" /></p>
+  </div>
+  <figcaption><code>console.dir($0)</code>— išveda pažymėto DOM elemento savybes</figcaption>
+</figure>
+<figure class="c-figure c-figure--shadow" style="">
+  <div class="c-figure__content" style="width: fit-content">
+    <p><img src="images/20201019_142305_Window.png" alt="" width="70" /></p>
+  </div>
+  <figcaption><code>$0.style.background = 'red'</code> — keičia pažymėto DOM elemento savybes</figcaption>
+</figure>
+      </li>
+      <li><code>$1..N</code> — prieš tai Elements panel'ėje pažymėti DOM elementai</li>
+    </ul>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>inspect(node)</code> — pažymi DOM elementą Elements panelėje ir išveda DOM elemento nuorodą-mirror'ą  Console'ėje</h4>
+    <p class="c-em-alert"><code>inspect(node)</code> veikia tik Console'ėje</p>
+    <figure class="c-figure c-figure--shadow" style="width:93%">
+      <div class="c-figure__content">
+    <ol>
+      <li>
+        <p>Pažymime DOM elementą Elements panelėje ir sukuriame <q>a variable referencing a DOM node</q>, tksliau kintamajį <code>vidurinis</code></p>
+        <p><img src="images/20201020_220620_Window.png" alt="" width="102" height="103"/></p>
+      </li>
+      <li>
+        <p>Elements panelėje pažymime kokį kitą DOM elementą</p>
+        <p><img src="images/20201020_222820_Window.png" alt="" width="96" height="94"/></p>
+      </li>
+      <li>
+        <p>Console'ėje įvykdžius <code>inspect(vidurinis)</code> Elements panelėje pažymimas priskirtas DOM elementas</p>
+        <p><img src="images/20201020_223142_Window.png" alt="" width="90" height="93"/></p>
+      </li>
+    </ol>
+  </div>
+  <figcaption>Demonstracija <code>inspect(node)</code> naudojimo su <q>a variable referencing a DOM node</q></figcaption>
+</figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>DOM elementų nuorodos-mirror'ai</h4>
+    <p>Galima sukurti:</p>
+    <ul>
+      <li>Konsolės kintamaisiais <code>$0-N</code>,</li>
+      <li>arba DOM selektoriais, pvz.: <code>document.body</code></li>
+    </ul>
+    <p>Konsolėje išvestas DOM elemento nuoroda-mirror'as veikia taip pat kaip ir Elements panel'ėje:</p>
+    <ul>
+      <li>
+        <p>Veikia mouse'o hoveris:</p>
+        <p><img src="images/20201022_024029_Window.png" alt="" width="77" height="62"/></p>
+      </li>
+      <li>
+        <p>Galima keisti elemento savybes:</p>
+        <p>Redaguojame:</p>
+        <p><img src="images/20201022_024400_Window.png" alt="" width="77" height="71"/></p>
+        <p>Įvedus pakeitimai matyti ir puslapyje ir Elements panel'ėje:</p>
+        <p><img src="images/20201022_024553_Window.png" alt="" width="75" height="69"/></p>
+      </li>
+    </ul>
+    <p>Elements panel'ėje padarius pakeitimus, matomi ir Konsolėje išvestame DOM elemento nuorodoje-mirror'e, padarius pakeitimus Styles panelėje:</p>
+    <p><img src="images/20201022_025611_Window.png" alt="" width="85" height="58"/></p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Command Menu</h3>
+<p> <a href="https://developers.google.com/web/tools/chrome-devtools/command-menu">Run Commands With The Chrome DevTools Command Menu  |  Google Developers</a></p>
+<p> <a href="https://blog.bitsrc.io/10-tips-to-improve-productivity-using-chrome-dev-tools-7918fc8203f3">10 Tips to Improve Productivity using Chrome Dev Tools | by Rumesh Eranga Hapuarachchi | Aug, 2020 | Bits and Pieces</a></p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h4>Kaip atidaryti Command Menu</h4>
+    <p>Atidaryti galima:</p>
+    <dl>
+      <dt>Per DevTools'ų meniu:</dt>
+      <dd>
+        <p><img src="images/20200923_211821_WebDev konspektas ψ WebDev konspektas.png" alt="" width="289" height="116"/></p>
+      </dd>
+      <dt>Su hotkey'su <kbd>ctrl+shift+p</kbd></dt>
+      <dd>
+        <p>Veikia kai:</p>
+        <ul>
+          <li>atidaryti ir sufokusuoti-aktyvūs patys DevTools'ai</li>
+          <li>ir kai DevTools'ai atidaryti, bet sufokusuotas pats naršyklės puslapis, kuriam DevTools'ai atidaryti</li>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+  <div>
+    <h4>Puslapio screenshot'inimas </h4>
+    <p>Daro puslapio vaizdo screenshot'us.</p>
+    <p>Kaip veikia: </p>
+    <ul>
+      <li><strong>Capture screenshot</strong> — daro viewport'o, t. y. matomos puslapio zonos, screenshot'ą — VEIKIA GERAI.</li>
+      <li><strong>Capture full size screenshot</strong> — daro viso puslapio turinio pagal esamą viewport'o plotį screenshot'ą — VEIKIA GERAI.</li>
+      <li><strong>Capture node screenshot</strong> — VEIKIA KREIVAI.</li>
+    </ul>
+    <p><img src="images/20190316_234542.png" alt="" width="344" height="95"/></p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>DevTools extensions</h2>
+<h3>CSS palaikymo reguliavimas</h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h4><a href="https://github.com/keithclark/css-feature-toggle-devtools-extension">CSS Feature Toggle</a> extension by Keith Clark</h4>
+    <p> <a href="https://css-tricks.com/how-supports-works/#there-are-browser-extensions-for-playing-with-supports">How @supports Works | CSS-Tricks</a>    </p>
+    <p><strong>Leidžia atjungti: CSS modulius, funkcionalo fragmentus, &quot;CSS Features&quot;.</strong></p>
+    <figure class="figure--solidTB-1" style="">
+      <p>Pvz. yra naudojamas CSS grid'as:</p>
+      <p><img src="images/20200823_122018_konspektas.local_8000_~css-grid.fallback-flexbox.htm.png" alt="" width="197" height="121"/></p>
+      <p>Atjungiame per extension'ą CSS grid'ą:</p>
+      <p><img src="images/20200823_122305_konspektas.local_8000_~css-grid.fallback-flexbox.htm.png" alt="" width="194" height="119"/></p>
+      <p>Pažiūrime kaip veikia:</p>
+      <p><img src="images/20200823_122630_konspektas.local_8000_~css-grid.fallback-flexbox.htm.png" alt="" width="187" height="115"/></p>
+      <figcaption>Pasiaiškinimas kaip veikia</figcaption>
+    </figure>
+  </div>
+  <div>
+    <h4><a href="https://github.com/ireade/feature-queries-manager">Feature Queries Manager</a> by Ire Aderinokun</h4>
+    <p><a href="https://css-tricks.com/how-supports-works/#there-are-browser-extensions-for-playing-with-supports">How @supports Works | CSS-Tricks</a></p>
+    <p><strong>O šitas parodo visus puslapio @supports ir leidžia juos kiekvieną atskirai atjungti.</strong></p>
+    <blockquote>
+      <p>Ire's tool, which she wrote about in the article <a href="https://www.smashingmagazine.com/2018/05/feature-queries-manager-devtools-extension/">Creating The Feature Queries Manager DevTools Extension</a>, has a slightly different approach in that it shows the feature queries <em>that you actually wrote</em> in your CSS and provides toggles to flip them on and off. I don't think it works through iframes though, so I popped open <a href="https://blog.codepen.io/documentation/views/debug-view/">Debug Mode</a> to use it on CodePen.</p>
+      <figure class="figure--img-bigCaption" style="-width:75%; -background: hsla(70,80%,34%,0.50)">
+        <video src="images/flip-grid.mp4" controls name=""></video>
+        <figcaption></figcaption>
+      </figure>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

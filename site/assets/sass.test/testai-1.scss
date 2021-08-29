@@ -1,0 +1,470 @@
+
+
+
+//.tas {
+//  width: min(20em, 50vh); // čia bus vykdoma SASS'o funkcija min()
+//}
+
+.tas {
+  $va: "aaa bbb ccc";
+  $clr: hsl(0, 50%, 50%);
+  --clr: hsl(0, 50%, 50%);
+
+  //filter: invert(var(--kiek));
+  //filter: invert($clr);
+  color: invert($clr);
+  color: invert(var(--clr));
+
+  //@debug $va;
+  //@debug inspect($va);
+
+  //color: $clr;
+  //color: darken($clr, 20%);
+  //color: darken($clr, calc(20% + 10%));
+}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+////$content: "aaa";
+//
+//$content: "defaultas" !default;
+//$content: null;
+//
+//.tas {
+//  color: red;
+//  content: $content;
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//.sss {
+//  width: Min(1in, 1cm);
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//.module {
+//  padding: 10px;
+//  .child {
+//    color: red;
+//  }
+//}
+//
+//.news {
+//  padding: 5px;
+//  @extend .child;
+//  //@extend .module;
+//}
+//
+//.module {
+//  padding: 10px }
+//
+//.module .child, .module .news {
+//  color: red }
+//
+//.news {
+//  padding: 5px }
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//.geras {
+//  color: blue;
+//  &-labai { color: red }
+//}
+
+//$this: str_slice(&, 2);
+
+//.geras {
+//  $this: &;
+//  $thisName: str_slice(& + "", 2);
+//  color: blue;
+//
+//  //&-labai { color: red }
+//  //#{$this}-labai { color: red }
+//
+//  .labai-#{$thisName} { color: red }
+//  @at-root {
+//    .labai-#{$thisName} { color: red }
+//  }
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//nav {
+//  > ul { color: blue };
+//  & > p { color: grey };
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//a {
+//  font-weight: bold;
+//  body.firefox & { font-weight: normal; }
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//$str: "";
+//@each $k, $v in $listas {
+//  $str: "#{$str} -- #{$k}: [#{$v}] \000D\000A";
+//}
+//@debug $str;
+
+//$listas: aaa bbb ccc;
+//$listas2: aaa bbb (key1: value111, key2: value2, key3: value3) ccc;
+//$listas3: ".foo.bar" ".baz.bang", ".bip.qux";
+////@debug $listas;
+//@debug printVarIndent($listas3);
+//@debug inspect($listas3);
+//
+//
+//.foo.bar .baz.bang, .bip.qux {
+//  //.fooz {
+//  @debug printVarIndent(&);
+//  //@debug inspect(&);
+//  $this: &;
+//  //@debug $this;
+//  //$thisPrint: print-map($this);
+//  //@debug $thisPrint;
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//$type: monster;
+//
+//p {
+//  @if $type == ocean {
+//    color: blue;
+//  } @else if $type == monster {
+//    color: green;
+//  } @else {
+//    color: black;
+//  }
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//@for $i from 6 through 3 {
+//  .item-#{$i} { width: 2em * $i; }
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//$ilgis: 33px;
+//@error $ilgis;
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//.parent {
+//  padding: 0;
+//  // forma "single inline" — galima išnest'inti tik vieną ruleset'ą
+//  @at-root .child-1 { padding: 1em }
+//
+//  // forma "block"
+//  @at-root {
+//    .child-2 { padding: 2em }
+//    .child-3 { padding: 3em }
+//  }
+//
+//  .child-4 { padding: 4em }
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//@media print {
+//  .parent {
+//    padding: 0;
+//
+//    .child-1 { padding: 1em }
+//
+//    @at-root .child-2 { padding: 2em }
+//
+//    @at-root (with: rule) {
+//      .child-3 { padding: 3em }
+//    }
+//
+//    @at-root (with: media) {
+//      .child-4 { padding: 4em }
+//    }
+//
+//    @at-root (without: all) {
+//      .child-5 { padding: 5em }
+//    }
+//  }
+//}
+
+//@media print {
+//  .parent {
+//    @at-root (with: rule) {
+//      .child-with-rule { color: red; }
+//    }
+//
+//    @at-root (without: rule) {
+//      .child-without-rule { color: red }
+//    }
+//
+//    @at-root (with: media) {
+//      .child-with-media { color: red; }
+//    }
+//
+//    @at-root (without: media) {
+//      .child-without-media { color: red }
+//    }
+//  }
+//}
+
+//.parent {
+//  @at-root (with: rule) {
+//    .child-with-rule { color: red; }
+//  }
+//
+//  @at-root (without: rule) {
+//    .child-without-rule { color: red }
+//  }
+//}
+
+//@media print {
+//  @at-root (with: media) {
+//    .with-media { color: red; }
+//  }
+//
+//  @at-root (without: media) {
+//    .without-media { color: red }
+//  }
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//@mixin big {
+//  margin: 1em;
+//  .kitas {
+//    color: blue;
+//  }
+//  //* html & { height: 1px }
+//}
+//
+//.kazkas {
+//  color: red;
+//  @include big;
+//}
+
+
+//@mixin big-paragraph {
+//  .big-paragraph {
+//    font-size: 2em;
+//  }
+//}
+//
+//@include big-paragraph;
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//@mixin kazkas($args...) {
+//  @debug $args;
+//  content: $args;
+//}
+//
+//a {
+//  @include kazkas(vienas, du, trys);
+//  @include kazkas($a: one, $b: two, $c: three);
+//}
+
+
+//@mixin kazkas($args...) {
+//  @debug $args;
+//  @debug keywords($args);
+//  content: map_values(keywords($args));
+//}
+//
+//a {
+//  @include kazkas(vienas, du, trys);
+//  @include kazkas($a: one, $b: two, $c: three);
+//}
+
+
+//@mixin kazkas($args...) {
+//  @debug $args;
+//  @debug keywords($args);
+//
+//  $argsMap: keywords($args);
+//  @if length($argsMap) > 0 {
+//    $args: map_values($argsMap);
+//  }
+//  content: $args;
+//}
+//
+//a {
+//  @include kazkas(vienas, du, trys);
+//  @include kazkas($a: one, $b: two, $c: three);
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//@mixin kazkas($args...) {
+//  @debug "$args == " $args;
+//  @debug "keywords($args) == " keywords($args);
+//
+//  width: $args;
+//}
+//
+//@mixin kitas($args...) {
+//  //@debug "$args == " $args;
+//  //@debug "keywords($args) == " keywords($args);
+//  @debug $args;
+//  @debug keywords($args);
+//
+//  font-weight: bold;
+//  @include kazkas($args...);
+//}
+//
+//.kazkas {
+//  @include kitas(red, $width: 100px);
+//}
+
+
+//@mixin kazkas($args...) {
+//  $argsNamed: keywords($args);
+//
+//  @debug $args;      // red, 10px
+//  @debug $argsNamed; // (plotis: 100px)
+//
+//  color: nth($args, 1);
+//  padding: nth($args, 2);
+//  width: map_get($argsNamed, plotis);
+//}
+//
+//div {
+//  @include kazkas(red, 10px, $plotis: 100px);
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//@mixin kazkas($args...) {
+//  @debug $args;
+//  content: $args;
+//  color: nth($args, 1);
+//  padding: nth($args, 2);
+//}
+//
+//div {
+//  @include kazkas(red, 10px);
+//}
+
+
+//@mixin kazkas($args...) {
+//  @debug keywords($args); // (spalva: red, tarpai: 10px)
+//
+//  $argsNamed: keywords($args);
+//
+//  content: "#{$argsNamed}";
+//  color: map_get($argsNamed, spalva);
+//  padding: map_get($argsNamed, tarpai);
+//}
+//
+//div {
+//  @include kazkas($spalva: red, $tarpai: 10px);
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//@mixin apply-to-ie6-only {
+//  * html {
+//    @content;
+//  }
+//}
+//
+//@include apply-to-ie6-only {
+//  p {
+//    font-size: 1em;
+//  }
+//}
+
+
+//@mixin kazkas {
+//  @content;
+//}
+//
+//@include kazkas {
+//  p {
+//    font-size: 1em;
+//  }
+//}
+
+
+//@mixin kazkas {
+//  @if content-exists() {
+//    div {
+//      @content;
+//    }
+//  } @else {
+//    div > & {
+//      color: green;
+//    }
+//  }
+//}
+//
+//@include kazkas {
+//  p {
+//    font-size: 1em;
+//  }
+//}
+//
+//p {
+//  @include kazkas;
+//  //font-size: 1em;
+//}
+
+
+//@mixin needs-content {
+//  @if not content-exists() {
+//    @error "You must pass a content block!"
+//  }
+//  @content;
+//}
+//
+//@include needs-content {
+//  p {
+//    font-size: 3em;
+//  }
+//}
+//@include needs-content;
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+//.parent-999 {
+//
+//  background-imageckground-color: "black";
+//  color: #0500;
+//
+//  @at-root .child {
+//    bottom: 0;
+//  }
+//  font-family: "Andale Mono", "Courier New", Courier, monospace;
+//  visibility: hidden;
+//}
+
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//.div20200214111501 {
+//  @include szm-spacing-size-boxSides(margin, medium, right);
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//div {
+//  @include szm-spacing-size-boxSides(margin, medium, right);
+//  @include szm-spacing-size-boxSides(padding, small, horizontal);
+//}
+
+//div {
+//  padding:       szm-spacing-size(tiny);
+//  margin-bottom: szm-spacing-size(tiny, em);
+//}
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+//––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––

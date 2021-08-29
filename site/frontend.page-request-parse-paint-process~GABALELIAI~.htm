@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>3. CSS  pritaikymas</h2>
+<p> <a href="https://alistapart.com/article/braces-to-pixels">Braces to Pixels · An A List Apart Article</a></p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>3.1 CSS parsing'as</h3>
+      <p> <a href="https://alistapart.com/article/braces-to-pixels#section1">Braces to Pixels · An A List Apart Article</a></p>
+      <h4>Visų CSS surinkimas į vieną struktūrą</h4>
+      <p>Kaip vyksta CSS parsing'as:</p>
+      <blockquote>
+        <p>Similar to what we learned about HTML in "<a href="https://alistapart.com/article/tags-to-dom">Tags to DOM</a>," once CSS is downloaded by the browser, the CSS parser is spun up to handle any CSS that it encounters. This can be CSS within individual documents, inside of <code>&lt;style&gt;</code> tags, or inline within the <code>style</code> attribute of a DOM element. All the CSS is parsed out and tokenized in accordance with the <a href="https://drafts.csswg.org/css-syntax-3/">syntax specification</a>. At the end of this process, we have a data structure with all the selectors, properties, and properties' respective values.</p>
+      </blockquote>
+      <p>CSS parsing'as prasideda HTML DOM'o parsingo metu, kai CSS atsiunčiamas savo failu, ar DOM'o parsingo metu randamas dokumente. Pabaigus CSS parsing'ą:</p>
+      <blockquote>
+        <p>After this is done, the engine continues constructing the DOM tree.</p>
+      </blockquote>
+      <div class="c-em-note c-em--narrow">
+        <p>Suparsintoje CSS duomenų struktūroje nėra CSS savybių-shorthand'ų: </p>
+        <blockquote>
+          <p>One thing that is worth noting is that the browser exploded the shorthands of <code>background</code> and <code>border</code> into their longhand variants, as shorthands are primarily for developer ergonomics; the browser only deals with the longhands from here on.</p>
+        </blockquote>
+      </div>
+      <p>Pavyzdys kaip suparsinamas vienas ruleset'as:</p>
+      <blockquote>
+        <p>For example, consider the following CSS:</p>
+        <pre><code>.fancy-button {
+  background: green;
+  border: 3px solid red;
+  font-size: 1em;
+}</code></pre>
+        <p>That will result in the following data structure for easy utilization later in the process:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Property</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>.fancy-button</td>
+              <td>background-color</td>
+              <td>rgb(0,255,0)</td>
+            </tr>
+            <tr>
+              <td>.fancy-button</td>
+              <td>border-width</td>
+              <td>3px</td>
+            </tr>
+            <tr>
+              <td>.fancy-button</td>
+              <td>border-style</td>
+              <td>solid</td>
+            </tr>
+            <tr>
+              <td>.fancy-button</td>
+              <td>border-color</td>
+              <td>rgb(255,0,0)</td>
+            </tr>
+            <tr>
+              <td>.fancy-button</td>
+              <td>font-size</td>
+              <td>1em</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+      <h4>CSS savybių reikšmių normalizavimas </h4>
+      <blockquote>
+        <p>COMPUTATION</p>
+        <p>Now that we have parsed out all styles within the readily available content, it's time to do style computation on them. All values have a standardized computed value that we try to reduce them to. When leaving the computation stage, any dimensional values are reduced to one of three possible outputs: auto, a percentage, or a pixel value. For clarity, let's take a look at a few examples of what the web developer wrote and what the result will be following computation:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Web Developer</th>
+              <th>Computed Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>font-size: 1em</td>
+              <td>font-size: 16px</td>
+            </tr>
+            <tr>
+              <td>width: 50%</td>
+              <td>width: 50%</td>
+            </tr>
+            <tr>
+              <td>height: auto</td>
+              <td>height: auto</td>
+            </tr>
+            <tr>
+              <td>width: 506.4567894321568px</td>
+              <td>width: 506.46px</td>
+            </tr>
+            <tr>
+              <td>line-height: calc(10px + 2em)</td>
+              <td>line-height: 42px</td>
+            </tr>
+            <tr>
+              <td>border-color: currentColor</td>
+              <td>border-color: rgb(0,0,0)</td>
+            </tr>
+            <tr>
+              <td>height: 50vh</td>
+              <td>height: 540px</td>
+            </tr>
+            <tr>
+              <td>display: grid</td>
+              <td>display: grid</td>
+            </tr>
+          </tbody>
+        </table>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

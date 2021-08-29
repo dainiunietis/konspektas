@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////
+//
+//   szm-designStyle-border
+//
+///////////////////////////////////////////////////////////////////
+
+//-----------------------------------------------------------------
+// @EXAMPLE:
+// toks kintamasis turi būti tokiame pačiame projekto faile
+//-----------------------------------------------------------------
+//$szm-designStyle-border-data: (
+//  thin:       solid coral 1px,
+//  thinDotted: dotted deeppink 1px,
+//  dashed:     dashed scale-color(coral, $lightness:   -20%) 2px,
+//  thick:      solid scale-color(deeppink, $lightness: -60%) 3px
+//) !default;
+//-----------------------------------------------------------------
+
+// @USAGE:
+// .kazkas {
+//   border: szm-designStyle-border(thin);
+//   border-top: szm-designStyle-border(dashed);
+// }
+
+@function szm-designStyle-border($name) {
+  @if map_has_key($szm-designStyle-border-data(), $name) == false {
+    @error unquote("$szm-designStyle-border-data()") neturi elemento quote($name)
+  }
+  @return map_get($szm-designStyle-border-data(), $name);
+}
+
+//@mixin szm-designStyle-border-variation-utilities {
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   szm-designStyle-border-variation
+//
+///////////////////////////////////////////////////////////////////
+
+//-----------------------------------------------------------------
+// @EXAMPLE:
+// toks kintamasis turi būti tokiame pačiame projekto faile
+//-----------------------------------------------------------------
+//$szm-designStyle-border-variation-data: (
+//  styles: dotted dashed solid double,
+//  widths: map_values($g-line-thickness),
+//  // du galimi list'o reikšmių variantai:
+//  //   magenta          <<< color name and value
+//  //   (red: crimson)   <<< red — color name
+//  //                        crimson — color value
+//  colors: red magenta gold coral aqua blue deeppink,
+//) !default;
+//-----------------------------------------------------------------
+
+// @USAGE:
+// $style: szm-designStyle-border-variation-nth(styles, 3);
+
+@function szm-designStyle-border-variation-nth($element, $elementNr) {
+  $elementValues: map_get(szm-designStyle-border-variation-data(), $element);
+  @if ($elementNr < 1) OR ($elementNr > length($elementValues)) {
+    @error unquote("$g-border-variations.")$element turi length($elementValues) elementus, o perduota $elementNr
+  }
+  @return nth($elementValues, $elementNr);
+}
+
+// @USAGE:
+// .kazkas {
+//   border: szm-designStyle-border-variation(3, 1, 1);
+// }
+
+@function szm-designStyle-border-variation($styleNr, $widthNr, $colorNr) {
+  $style: szm-designStyle-border-variation-nth(styles, $styleNr);
+  $width: szm-designStyle-border-variation-nth(widths, $widthNr);
+  $color: szm-designStyle-border-variation-nth(colors, $colorNr);
+  @if type-of($color) == map {
+    $color: map-get-nth($color, 1);
+  }
+  @return $style $width $color;
+}
+
+@mixin szm-designStyle-border-variation-utilities {
+  //.u-border-<line-style-value>-<line-color-name>-<line-width-name>, .-c > *, .-d *,
+  //.B<line-style-nr><line-color-nr><line-width-nr>, .c > *, .d *
+
+  $borderStyles: map_get(szm-designStyle-border-variation-data(), styles);
+  $borderColors: map_get(szm-designStyle-border-variation-data(), colors);
+  $borderWidths: $szm-line-thickness;
+
+  $iStyle:       1;
+  @each $style in $borderStyles {
+    $iColor: 1;
+    @each $color in $borderColors {
+      $colorName: null;
+      @if type-of($color) == map {
+        $colorName: map-get-nthKey($color, 1);
+        //@debug unquote("$colorName:") $colorName;
+        $color:     map-get-nth($color, 1);
+        //@debug unquote("$color:") $color;
+      }
+      $iWidth: 1;
+      @each $widthName, $width in $borderWidths {
+        $selector: u-border-#{$style}-#{if($colorName, $colorName, $color)}-#{$widthName};
+        $selectorShort: B#{$iStyle}#{$iColor}#{$iWidth};
+        //.#{$selector}, .#{$selector}-c > *, .#{$selector}-d *,
+        .#{$selectorShort}, .#{$selectorShort}c > *, .#{$selectorShort}d * {
+          border: $style $color $width;
+        }
+        $iWidth: $iWidth + 1;
+      }
+      $iColor: $iColor + 1;
+    }
+    $iStyle: $iStyle + 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

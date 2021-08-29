@@ -1,0 +1,169 @@
+@charset "utf-8";
+
+//$spacing-directions: (
+//  //null: null,
+//  "": "",
+//  "-top": "-top",
+//  "-right": "-right",
+//  "-bottom": "-bottom",
+//  "-left": "-left",
+//  "-horizontal": "-left" "-right",
+//  "-vertical": "-top" "-bottom",
+//);
+//
+////$spacing-directions: (
+////  //null: null,
+////  top: "-top",
+////  right: "-right",
+////  bottom: "-bottom",
+////  left: "-left",
+////  horizontal: "-left" "-right",
+////  vertical: "-top" "-bottom",
+////);
+//
+////.hhhhh {
+////  $a: nth($spacing-directions, 2);
+////  $b: nth($a, 1);
+////  color: $b;
+////  z-index: str-length($b);
+////}
+//
+////$dirIndex: 1;
+////@each $direction in $spacing-directions {
+////  $type: type_of($direction);
+////  $a: nth($direction, 1);
+////  //$b: str_length($a);
+////
+////  $d1: nth($spacing-directions, $dirIndex);
+////  $d2: nth($d1, 1);
+////  $dLengh: str_length($d2);
+////
+////  .ooo {
+////    color: $direction;
+////  }
+////
+////  $dirIndex: $dirIndex + 1;
+////}
+//
+////@for $i from 1 through 3 {
+////  $d1: nth($spacing-directions, $i);
+////  $d2: nth($d1, 1);
+////  $dL: str_length($d2);
+////  .item-#{$i} { width: $dL; }
+////}
+//
+////@each $direction in $spacing-directions {
+////  $type: type_of($direction);
+////  $a: nth($direction, 1);
+////  //$b: str_length($a);
+////
+////  $d1: nth($spacing-directions, $dirIndex);
+////  $d2: nth($d1, 1);
+////  $dLengh: str_length($d2);
+////
+////  .ooo {
+////    color: $direction;
+////  }
+////
+////  $dirIndex: $dirIndex + 1;
+////}
+//
+//@each $property in padding, margin {
+//  $shortProp: to_upper_case(str_slice($property, 1, 1));
+//  @each $direction-name, $direction-rules in $spacing-directions {
+//    //$a: str_length($direction-name);
+//    $shortSize: 0;
+//    $shortDir: to_upper_case(str_slice($direction-name, 2, 2));
+//    //$shortBegin: str_slice($property, 1, 1);
+//
+//    //@error ">>> " + type_of($direction-name);
+//    //$aaa: type_of($direction-name);
+//    //$aaa: str_slice(unquote($direction-name), 2, 1);
+//    //$bbb: #{$direction-name};
+//    //$aaa: str_index(#{$direction-name}, "-");
+//    ////@error ">>> #{$aaa}";
+//    //.KKKKK {
+//    //  color: #{$aaa};
+//    //}
+//    //$aaa: ;
+//    //.KKK {
+//    //  //$aaa: "aaa" + nth($direction-name, 1);
+//    //  //$aaa: "aaa" + $direction-name;
+//    //  //$aaa: $direction-name;
+//    //  //$bbb: $aaa + "bbb";
+//    //  //color: $bbb;
+//    //  //color: type_of($direction-name);
+//    //  //color: type_of($spacing-directions);
+//    //  //z-index: str-length($aaa);
+//    //  //color: nth($direction-name, 1);
+//    //  //font: $direction-name;
+//    //  //font: #{$direction-name};
+//    //  //color: str_slice($direction-name, 2, 1);
+//    //}
+//
+//    @each $size-name, $size in $g-spacing-sizes {
+//      //$short: str_slice($property, 1, 1) str_slice($direction-name, 2, 1);
+//      .u-#{$property}#{$direction-name}-#{$size-name},
+//      .#{$shortProp}#{$shortDir}#{$shortSize} {
+//        @each $direction in $direction-rules {
+//          #{$property}#{$direction}: $size !important;
+//        }
+//      }
+//      $shortSize: $shortSize + 1;
+//    }
+//  }
+//}
+//
+//
+//
+////$spacing-sizes: (
+////  //null: $inuit-global-spacing-unit,
+////  "-none": 0,
+////  "-tiny":   $g-spacing-tiny,
+////  "-small":  $g-spacing-small,
+////  "-medium": $g-spacing-medium,
+////  "-large":  $g-spacing-large,
+////  "-huge":   $g-spacing-huge,
+////) !default;
+//
+//
+
+
+// /////////////////////////////////////////////////////////////////
+// //
+// //    margin:
+// //
+// ////////////////////////////////////////////////////////////
+
+// .u-margin-all-none,
+// .u-margin-all-none--desc *,   .u-margin-all-none--D *,
+// .u-margin-all-none--chil > *, .u-margin-all-none--C > *,
+// .MAN,                      // Margin All None
+// .MAN--D *,   .MANd *,      // Margin All None Descendants
+// .MAN--C > *, .MANc > * {   // Margin All None Child
+// 	margin: 0;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

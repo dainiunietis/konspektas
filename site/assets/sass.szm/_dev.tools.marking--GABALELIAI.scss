@@ -1,0 +1,38 @@
+
+//
+// default'inis <p class="D1 - D18">
+// ir pririštas prie spalvų rinkinio Nr <p class="D2_1 - D2_18">
+//
+$i: 1;
+@each $color in $dev-colors-light-1 {
+  .D#{$i}, .D2_#{$i} { background-color: $color !important; }
+  $i: $i + 1 !global;
+}
+
+//
+// <div class="dev-childs-bg2">
+//   <p>...</p>
+//   <p>...</p>
+// </div>
+//
+$i: 1;
+@each $color in $dev-colors-light-1 {
+  .dev-childs-bg2 > :nth-child(#{$i}) { background-color: $color; }
+  $i: $i + 1 !global;
+}
+
+
+
+//////////////////////////////////////////////////////
+// @if (global-config(debug) == true) {
+//   [class^="c-"],
+//   [class*=" c-"] {
+//       outline: 5px solid cyan;
+//   }
+// }
+//////////////////////////////////////////////////////
+
+
+
+
+

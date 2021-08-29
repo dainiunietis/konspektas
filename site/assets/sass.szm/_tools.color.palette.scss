@@ -1,0 +1,141 @@
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # color palettes data
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// .kazkas {
+//   color: map_get($szm-palette-navyBlues, "blue-green");
+// }
+
+$szm-palette-navyBlues: (
+  navy-blue:             hsla(239, 94%, 19%, 1),
+  dark-cornflower-blue:  hsla(214, 97%, 27%, 1),
+  star-command-blue:     hsla(201, 100%, 36%, 1),
+  blue-green:            hsla(195, 100%, 39%, 1),
+  cerulean-crayola:      hsla(190, 100%, 42%, 1),
+  sky-blue-crayola:      hsla(190, 74%, 59%, 1),
+  sky-blue-crayola-2:    hsla(189, 75%, 75%, 1),
+  blizzard-blue:         hsla(190, 76%, 82%, 1),
+  powder-blue:           hsla(190, 77%, 88%, 1)
+);
+
+$szm-palette-sizzling: (
+  sizzling-red:          hsla(358, 100%, 67%, 1),
+  sunglow:               hsla(44, 100%, 61%, 1),
+  yellow-green:          hsla(83, 68%, 47%, 1),
+  green-blue-crayola:    hsla(203, 77%, 43%, 1),
+  royal-purple:          hsla(265, 32%, 44%, 1)
+);
+
+$szm-palette-timberGreen: (
+  timberwolf:            hsla(46, 15%, 83%, 1),
+  laurel-green:          hsla(82, 20%, 62%, 1),
+  fern-green:            hsla(119, 19%, 42%, 1),
+  hunter-green:          hsla(131, 22%, 29%, 1),
+  brunswick-green:       hsla(150, 20%, 25%, 1)
+);
+
+$szm-palette-baby: (
+  baby-blue:             hsla(197, 100%, 72%, 1),
+  french-pink:           hsla(337, 100%, 72%, 1),
+  light-salmon:          hsla(16, 100%, 72%, 1),
+  orange-yellow-crayola: hsla(43, 100%, 72%, 1),
+  mindaro:               hsla(69, 100%, 72%, 1)
+);
+
+$szm-palette-aero: (
+  carnation-pink:        hsla(332, 100%, 80%, 1),
+  blond:                 hsla(54, 91%, 86%, 1),
+  aero-blue:             hsla(143, 62%, 89%, 1),
+  uranian-blue:          hsla(200, 87%, 82%, 1),
+  mauve:                 hsla(278, 82%, 87%, 1)
+);
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// .kazkas {
+//   color: map_get($szm-palette-navyBlues, "blue-green");
+// }
+
+//@function szm-palette-get($name) {
+//  @if variable_exists("szm-palette-" + $name) {
+//    @return map_get($szm-palettes-data, $name);
+//  }
+//  @else {
+//    @error unquote("$szm-palettes-data") neturi palette\: $name;
+//  }
+//}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// .kazkas {
+//   @include szm-palette-customProps($szm-palette-navyBlues)
+// }
+
+@mixin szm-palette-customProps($palette) {
+  @each $name, $color in $palette {
+    --#{$name}: #{$color};
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// SASS:
+//   .kazkas {
+//     @include szm-palette-bgChild($szm-palette-sizzling);
+//   }
+// CSS:
+//   .kazkas > *:nth-child(5n+1) {
+//     background-color: #ff575c;
+//   }
+//   .kazkas > *:nth-child(5n+2) {
+//     background-color: #ffca38;
+//   }
+//   ...
+
+@mixin szm-palette-bgChild($palette, $setTextAccessibleContrastColor: false) {
+  $clrs: map_values($palette);
+  $clrsNum: length($clrs);
+  @for $i from 1 through $clrsNum {
+    $color: nth($clrs, $i);
+    & > *:nth-child(#{ $clrsNum + "n+" + $i }) {
+      background-color: $color;
+      //  border: solid;
+      @if $setTextAccessibleContrastColor == true {
+        //$colorDeclaration: invert($color); // << SASS'o built-in
+        //$colorDeclaration: jonkat-getColorAccessibleContrast-ratio($color);
+        //$colorDeclaration: jonkat-getColorAccessibleContrast-fixed($color);
+        //$colorDeclaration: sergom-choose-contrast-color($color);
+        $colorDeclaration: bresau-color-contrast($color);
+        color: transparentize($colorDeclaration, 0.1);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

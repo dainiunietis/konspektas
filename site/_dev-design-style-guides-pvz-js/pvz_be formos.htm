@@ -1,0 +1,65 @@
+<!--
+TODO kažką
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sprendimai su string'ais-eilutėmis</title>
+<style type="text/css">
+body { margin:1.7em; }
+body, pre { color:#CC2B13; font:12px Tahoma, Verdana, Arial, Helvetica, sans-serif; }
+pre { line-height: 1.7; }
+</style>
+  <script type="text/javascript" src="../assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_zm/debug_data.js"></script>-->
+<script type="text/javascript">
+var pvz_id;
+
+function writas(label, txt) {
+	$('#'+pvz_id).append(label + ': ' + txt + '\n');
+	return txt;
+}
+
+function writeTekstas(txt) {
+	return writas('Tekstas', txt);
+}
+
+function writeRasti(txt) {
+	return writas('Rasti', txt);
+}
+
+function writeRezultatas(txt) {
+	return writas('Rezultatas', txt);
+}
+
+</script>
+</head>
+<body>
+
+<input type="button" value="Gauti prieš rastą" onclick="priesRasta()" />
+<pre id="priesRasta"></pre>
+<script type="text/javascript">
+function priesRasta() {
+	pvz_id = 'priesRasta';
+	var output;
+	var tekstas = writeTekstas('bėgo kiškis pievute');
+	var rasti = writeRasti('kiškis');
+
+	/*var offset = tekstas.indexOf(rasti);			//be RegExp
+	if (offset == -1) output = 'nerasta';
+	else output = tekstas.substring(0,offset);*/
+
+	var pattern = new RegExp(rasti);					//su RegExp
+	var result = pattern.exec(tekstas)
+	if (result) output = RegExp.leftContext;
+	else output = 'nerasta';
+
+	writeRezultatas(output);
+}
+</script>
+
+<hr />
+
+</body>
+</html>

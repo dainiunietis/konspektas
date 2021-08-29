@@ -1,0 +1,2111 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>SASS'o sintaksės-gramatikos suvestinė (cheat sheet)</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1 class="text-transform: capitalize;">SASS'o sintaksės-gramatikos suvestinė (cheat sheet)</h1>
+<h3>Bendrai</h3>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+	<tr>
+		<td width="25%"><h3>Komentarai
+		  </h3>
+		  <dl>
+		    <dt><code>/* ... */</code></dt>
+		    <dd>
+		      <p>Palaiko <q>standard multiline CSS comments</q>, išvedimas CSS output'e: </p>
+          <ul>
+            <li>kai CSS output'as yra NE &quot;compressed output mode&quot;, tada išveda (<q>preserved in the CSS output</q>),</li>
+            <li>o kai yra &quot;compressed output mode&quot; &#8212; neišveda. </li>
+          </ul>
+		    </dd>
+		    <dt><code>/*! ... */</code></dt>
+		    <dd>
+		      <p>Visada išveda CSS output'e.</p>
+		    </dd>
+		    <dt><code>// ... </code></dt>
+		    <dd>
+		      <p>Palaiko <q>single-line comments</q>, CSS output'e neišvedami-pašalinami.</p>
+		    </dd>
+	  </dl></td>
+		<td width="25%">
+		  <h3>SASS failai</h3>
+		  <p>Yra dviejų tipų SASS failai:</p>
+		  <dl>
+		    <dt>paprasti-normalūs</dt>
+		    <dd>
+		      <p><code>kažkas.scss</code> &#8212; SASS generatorius generuoja &#8212;  <code>kažkas.css</code></p>
+		    </dd>
+		    <dt>Partial failai (partial Sass files)</dt>
+		    <dd>
+		      <p>Skirti prijungti prie kito SASS failo su @import.</p>
+		      <p><code>_kažkas.scss</code> &#8212; SASS generatorius negeneruoja CSS failo</p>
+	      </dd>
+	    </dl>
+		  <p>&nbsp;</p>
+		  <blockquote>
+		    <p>A partial is simply a Sass file named with a leading underscore. You might name it something like <code>_partial.scss</code>. The underscore lets Sass know that the file is only a partial file and that it should not be generated into a CSS file.</p>
+	    </blockquote>
+		  <h4><code>@import</code></h4>
+      <p>yra failas <code>kazkas.scss</code>, kitame <code>*.scss</code> faile:</p>
+      <pre><code>@import &quot;kazkas&quot;;</code></pre>
+      <p><i>Import partials</i>, yra failas <code>_tas.scss</code>, kitame <code>*.scss</code> faile:</p>
+      <pre><code>@import &quot;tas&quot;;</code></pre>
+		</td>
+		<td width="25%">
+		  <h3>SASS'o ir CSS funkcijų su vienodais pavadinimais kolizija</h3>
+      <p> <a href="https://css-tricks.com/when-sass-and-new-css-features-collide/">When Sass and New CSS Features Collide | CSS-Tricks</a></p>
+      <div class="o-gfx o-gfx--boxed u-spvm">
+        <div>
+          <p>SASS'as turi tokių pačių funkcijų kaip CSS, pvz.: <code>min()</code> ir <code>max()</code>:</p>
+          <p>SASS:</p>
+          <pre><code>.tas {
+  width: min(1in, 1cm);
+}</code></pre>
+          <p>CSS:</p>
+          <pre><code>.tas {
+  width: 1cm;
+}</code></pre>
+        </div>
+        <div>
+          <p>Bet pridėjus bent vieną didžiąją raidę, SASS'as nebeatpažysta funkcijos, ir be pakeitimų perkelia į CSS, o CSS funkcijoms yra case-insensitive:</p>
+          <blockquote>
+            <p>The trick here is to remember that <strong>Sass is case-sensitive, but CSS isn't.</strong></p>
+            <p>That means we can write <code>Min(20em, 50vh)</code> and Sass won't recognize it as its own <code>min()</code> function. No errors will be thrown and it's still valid CSS that works as intended. Similarly, writing <code>HSL()</code> / <code>HSLA()</code> / <code>RGB() </code>/ <code>RGBA()</code> or <code>Invert()</code> allows us to avoid issues we looked at earlier.</p>
+          </blockquote>
+          <p>SASS:</p>
+          <pre><code>.tas {
+  width: Min(1in, 1cm);
+}</code></pre>
+          <p>CSS:</p>
+          <pre><code>.tas {
+  width: Min(1in, 1cm);
+}</code></pre>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+		</td>
+		<td width="25%">
+		  <h3>SASS'o operacijose ir SASS'o funkcijų argumentuose negali dalyvauti CSS funkcijos		  </h3>
+		  <p>SASS:</p>
+      <pre><code>.tas {
+  $clr: hsl(328, 79%, 42%);
+  color: darken($clr, 20%);             // VEIKIA
+  color: darken($clr, calc(20% + 10%)); // ERROR
+}</code>
+      </pre>
+      <p>SASS:</p>
+      <pre><code>.tas {
+  $clr: hsl(0, 50%, 50%);
+  --clr: hsl(0, 50%, 50%);
+  color: invert($clr);       // VEIKIA
+  color: invert(var(--clr)); // ERROR
+}</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+	  <td>
+	    <h3>Debug'inimas</h3>
+      <p>Nukėlimas į naują eilutę CMD:</p>
+      <pre><code>@error pirma eilutė
+       unquote(&quot;\0A&quot;)
+       antra eilutė;</code></pre>
+      <h4><code>@debug</code></h4>
+      <p>Skirta išvesti į terminalą-konsolę, išveda kelią failo ir eilutės kurioje yra pati <code>@debug</code> direktyva:</p>
+      <pre><code>$ilgis: 33px;
+@debug $ilgis;</code></pre>
+      <pre><code>D:/webdev/libs/frontend/site/assets/sass/_test.scss:114 DEBUG: 33px</code></pre>
+      <h4><code>@warn</code></h4>
+      <p>Pagrinde skirta pranešti apie klaidingą mixin'ų ir funkcijų naudojimą:</p>
+      <blockquote>
+        <p>It's useful for libraries that need to warn users of deprecations or recovering from minor mixin usage mistakes.</p>
+      </blockquote>
+      <p><q>There are two major distinctions between <code>@warn</code> and <code>@debug</code></q>:      </p>
+      <dl>
+        <dt><q>You can turn warnings off with the <code>--quiet</code> command-line option or the <code>:quiet</code> Sass option.</q></dt>
+        <dd>
+          <p>&nbsp;</p>
+        </dd>
+        <dt><q>A stylesheet trace will be printed out along with the message so that the user being warned can see where their styles caused the warning.</q></dt>
+        <dd>
+          <p>Parodo ir SASS failų suinclude'inimą (<q>stylesheet trace</q>):</p>
+          <pre><code>$ilgis: 33px;
+@warn $ilgis;</code></pre>
+          <pre><code>WARNING: 33px
+         on line 114 of ../libs/frontend/site/assets/sass/_test.scss <mark>&lt;&lt;&lt; šio failo 114 eilutėje yra pati @warn direktyva</mark>
+         from line 229 of site/assets/sass/master.scss               <mark>&lt;&lt;&lt; šio failo 229 eilutėje suinclude'intas viršutinis failas</mark></code></pre>
+        </dd>
+      </dl>
+      <p>Geras naudojimo pvz.:</p>
+      <pre><code>@mixin adjust-location($x, $y) {
+  @if unitless($x) {
+    @warn "Assuming #{$x} to be in pixels";
+    $x: 1px * $x;
+  }
+  @if unitless($y) {
+    @warn "Assuming #{$y} to be in pixels";
+    $y: 1px * $y;
+  }
+  position: relative; left: $x; top: $y;
+}</code></pre>
+      <h4><code>@error</code></h4>
+      <p>Išveda į terminalą-konsolę ir <strong>nutraukia CSS failų generavimą</strong>:</p>
+      <blockquote>
+        <p>The <code>@error</code> directive throws the value of a SassScript expression as a fatal error, including a nice stack trace.</p>
+      </blockquote>
+      <pre><code>$ilgis: 33px;
+@error $ilgis;</code></pre>
+      <pre><code>Error in plugin "sass"
+Message:
+    ..\libs\frontend\site\assets\sass\_test.scss
+Error: 33px
+        on line 114 of ../libs/frontend/site/assets/sass/_test.scss
+        from line 229 of site/assets/sass/master.scss
+>> @error $ilgis;
+
+   -------^</code>
+      </pre>
+      <h4><code>inspect()</code></h4>
+      <p>...</p>
+	  </td>
+	  <td>
+	    <h3>CSS Savybių nesting'as (nested properties)</h3>
+      <pre><code>.funky {
+  font: {
+    family: fantasy;
+    size: 30em;
+    weight: bold; } }</code></pre>
+      <pre><code>.funky {
+  font-family: fantasy;
+  font-size: 30em;
+  font-weight: bold; }</code></pre>
+      <p>O gi: <q>The property namespace itself can also have a value</q>:</p>
+      <pre><code>.funky {
+  font: 2px/3px {
+    family: fantasy;
+    size: 30em;
+    weight: bold; } }</code></pre>
+      <pre><code>.funky {
+  font: 2px/3px;
+  font-family: fantasy;
+  font-size: 30em;
+  font-weight: bold; }</code></pre>
+      <p>&nbsp;</p>
+	  </td>
+	  <td>
+	    <h3>Kai reikia, kad SASS'as neintepretuotų — <code>#{"..."}</code></h3>
+	    <p>Kai reikia, kad SASS'as neatliktų matematinės operacijos, galima:</p>
+      <dl>
+        <dt>vieną operandą patalpinti į <code>#{"..."}</code></dt>
+        <dd><pre><code>div {
+  width: calc((99%/ #{2}) - 16px);
+}</code></pre></dd>
+        <dt>abu operandus</dt>
+        <dd><pre><code>div {
+  font-size: clamp(100%, #{"50% + 0.66vw"}, 150%);
+}</code></pre></dd>
+      </dl>
+      <p>&nbsp;</p>
+	    <p>&nbsp;</p>
+	  </td>
+	  <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Operatoriai, operacijos (operators)</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Palyginimo operacijos (equality operations)</h3>
+      <p>&nbsp;</p>
+      <h4><code>==</code> ir <code>!=</code> — Lygybės operacijos (equality operations)      </h4>
+      <blockquote>
+        <p>All types support equality operations (<code>==</code> and <code>!=</code>). In addition, each type has its own operations that it has special support for.</p>
+      </blockquote>
+      <h4><code>&lt;</code> | <code>&gt;</code> | <code>&lt;=</code> | <code>&gt;=</code> — didesnis-mažesnis operacijos</h4>
+      <blockquote>
+        <p>Relational operators (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>) are also supported for numbers.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Matematinės-aritmetinės operacijos su skaičiais (number operations, arithmetic operations on numbers)</h3>
+      <p> <a href="">Sass / Number operations — DevDocs</a></p>
+      <p>Sass'as turi operatorius: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></p>
+      <blockquote>
+        <p>SassScript supports the standard arithmetic operations on numbers (addition <code>+</code>, subtraction <code>-</code>, multiplication <code>*</code>, division <code>/</code>, and modulo <code>%</code>).</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <pre><code>.container { width: 100%; }
+
+article[role="main"] {
+  float: left;
+  width: 600px / 960px * 100%;
+}
+
+aside[role="complimentary"] {
+  float: right;
+  width: 300px / 960px * 100%;
+}</code></pre>
+      <pre><code>.container {
+  width: 100%;
+}
+
+article[role="main"] {
+  float: left;
+  width: 62.5%;
+}
+
+aside[role="complimentary"] {
+  float: right;
+  width: 31.25%;
+}</code>
+    </pre>
+    </td>
+    <td width="25%">
+      <h3>Loginės operacijos (boolean operations)</h3>
+      <p> <a href="">Sass / Boolean operations — DevDocs</a></p>
+      <blockquote>
+        <p>SassScript supports <code>and</code>, <code>or</code>, and <code>not</code> operators for boolean values.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Operacijos su spalvų kodais (color operations)</h3>
+      <p> <a href="">Sass / Color operations — DevDocs</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Operacijos su eilutėmis (string operations)</h3>
+      <p> <a href="">Sass / String operations — DevDocs</a></p>
+      <p><a href="#(h)">Sudėjimas-sujungimas (string concatenation)</a></p>
+      <p><a href="#$:header:contains('string concatenation')">Sudėjimas-sujungimas (string concatenation)</a></p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Operacijos su selektoriais</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><code>@extend</code></h3>
+      <p> <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#extend">File: SASS_REFERENCE — Documentation by YARD 0.9.12</a></p>
+      <p><a href="http://css-tricks.com/the-extend-concept/">http://css-tricks.com/the-extend-concept/</a></p>
+      <p>Terminai:</p>
+      <pre><code>.module {...} //.........<i>extend target</i>
+
+.news { //...............<i>extend source</i>
+  @extend .module; //....<i>extend selector</i>
+}</code></pre>
+      <div class="c-em-note c-em--narrow c-em--small">
+        <p><a href="https://css-tricks.com/the-extend-concept/#article-header-id-8">https://css-tricks.com/the-extend-concept/#article-header-id-8</a></p>
+        <p>Su <code>@extend</code> gali prigeneruoti daug CSS kodo:</p>
+        <blockquote>
+          <p>might be better of with an actual class and dropping it into the HTML as needed. Or a mixin might even produce less code in some cases depending on how deep the nesting goes.</p>
+        </blockquote>
+      </div>
+      <div class="c-em-note c-em--narrow c-em--small">
+        <blockquote>
+          <p>@extend in Directives</p>
+          <p>If you use @extend within @media (or other CSS directives), you may only extend selectors that appear within the same directive block.</p>
+        </blockquote>
+        <p><code>@media</code> bloke galima extend'inti tik jame esančius selektorius:</p>
+        <p>Gerai:</p>
+        <pre><code>@media print {
+  .error {
+    border: 1px #f00;
+  }
+
+  .seriousError {
+    @extend .error;
+    border-width: 3px;
+  }
+}</code></pre>
+        <p>Negerai:</p>
+        <pre><code>.error { <br>  border: 1px #f00; <br>} <br> <br>@media print { <br>  .seriousError { <br>    @extend .error; <br>    border-width: 3px; <br>  } <br>}</code></pre>
+        <p></p>
+      </div>
+      <h4>Paprasčiausias variantas &#8212; visi vieno komponento selektoriai</h4>
+      <p>Selektorius <code>.anas</code> pridedamas prie <code>.tas</code>:</p>
+      <pre><code>.tas {
+  padding: 1em;
+}
+
+.anas {
+  @extend .tas;
+  color: red;
+}</code></pre>
+      <pre><code>.tas, .anas {
+  padding: 1em; }
+
+.anas {
+  color: red; }</code></pre>
+      <p>Praktinis pritaikymas, turimas bazinis stilius, ir jo variacijos: </p>
+      <pre><code>&lt;div class="message"&gt;&lt;/div&gt;
+&lt;div class="success"&gt;&lt;/div&gt;
+&lt;div class="error"&gt;&lt;/div&gt;</code></pre>
+      <pre><code>.message {
+  border: 1px solid #ccc;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+}</code></pre>
+      <pre><code>.message, .success, .error {
+  border: 1px solid #cccccc; }
+
+.success {
+  border-color: green; }
+
+.error {
+  border-color: red; }</code></pre>
+      <h4><i>extend target</i> su SASS nesting'u (tiksliau CSS combinator'iais)</h4>
+      <p>extend'ina ir sunestintus ruleset'us (extends all nested selectors)</p>
+      <p>Parent'inio selektoriaus komponento extend'inimas:</p>
+      <pre><code>.module {
+  padding: 10px;
+  .child {
+    color: red;
+  }
+}
+
+<mark>.news</mark> {
+  padding: 5px;
+  @extend .module;
+}</code></pre>
+      <pre><code>.module, <mark>.news</mark> {
+  padding: 10px }
+
+.module .child, <mark>.news</mark> .child {
+  color: red }
+
+<mark>.news</mark> {
+  padding: 5px }</code></pre>
+      <p>Child'inio selektoriaus komponento extend'inimas:</p>
+      <pre><code>.module {
+  padding: 10px;
+  .child {
+    color: red;
+  }
+}
+
+<mark>.news</mark> {
+  padding: 5px;
+  @extend .child;
+}</code></pre>
+      <pre><code>.module {
+  padding: 10px }
+
+.module .child, .module <mark>.news</mark> {
+  color: red }
+
+<mark>.news</mark> {
+  padding: 5px }</code></pre>
+      <div class="c-em-note c-em--narrow c-em--small">
+        <p> extend'inant SASS nesting'as:</p>
+        <pre><code>.module {
+  .child {...}
+}
+
+.news {
+  @extend .child;
+}</code></pre>
+        <p>veikia taip pat kaip ir realus CSS atitikmuo: </p>
+        <pre><code>.module {...}
+
+.module .child {...}
+
+.news {
+  @extend .child;
+}</code></pre>
+        <p>todėl abejeis atvejais bus sugeneruotas toks pat CSS</p>
+      </div>
+      <h4><i>extend selector</i> su CSS combinator'iais</h4>
+      <div class="c-em-alert c-em--narrow c-em--small">
+        <p> negalima extend'inti sudėtinio selektoriaus su kombinatoriumi:</p>
+        <pre><code>.module {
+  padding: 10px;
+  .child {
+    color: red;
+  }
+}
+
+.news {
+  @extend .module .child; <mark>&lt;&lt;&lt; klaida</mark>
+  padding: 5px;
+}</code></pre>
+      </div>
+      <h4><i>extend target</i> yra &quot;sukabinti&quot; class'ai</h4>
+      <pre><code>&lt;div class="error"&gt;&lt;/div&gt;
+&lt;div class="error intrusion"&gt;&lt;/div&gt;
+&lt;div class="seriousError"&gt;&lt;/div&gt;
+&lt;div class="seriousError intrusion"&gt;&lt;/div&gt;</code></pre>
+      <pre><code>.error {
+  border: 1px #f00;
+}
+
+.error.intrusion {
+  background-image: url("/image/hacked.png");
+}
+
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}</code></pre>
+      <pre><code>.error, .seriousError {
+  border: 1px #f00;
+}
+
+.error.intrusion, .seriousError.intrusion {
+  background-image: url("/image/hacked.png");
+}
+
+.seriousError {
+  border-width: 3px;
+}</code></pre>
+      <h4><i>extend selector</i> &#8212; complex selector</h4>
+      <p>Paprastas variantas:</p>
+      <pre><code>a:hover {
+  text-decoration: underline;
+}
+
+.hoverlink {
+  @extend a:hover;
+}</code></pre>
+      <pre><code>a:hover, .hoverlink {
+  text-decoration: underline;
+}</code></pre>
+      <p>Sudėtingesnis:</p>
+      <pre><code>.comment a.user:hover {
+  font-weight: bold;
+}
+
+.hoverlink {
+  @extend a:hover;
+}</code></pre>
+      <pre><code>.comment a.user:hover,
+.comment .user.hoverlink {
+  font-weight: bold;
+}</code></pre>
+      <h4><i>extend source</i> gali turėti kelis <code>@extend</code> (multiple extends)</h4>
+      <pre><code>.attention {
+  font-size: 3em;
+  background-color: #ff0;
+}
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.seriousError {
+  @extend .error;     // arba trumpiau:
+  @extend .attention; // @extend .error, .attention;
+  border-width: 3px;
+}</code></pre>
+      <pre><code>.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.attention, .seriousError {
+  font-size: 3em;
+  background-color: #ff0;
+}
+
+.seriousError {
+  border-width: 3px;
+}</code></pre>
+      <h4>Chaining Extends</h4>
+      <pre><code>.error {
+  border: 1px red;
+}
+
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+
+.criticalError {
+  @extend .seriousError;
+  border-width: 9px;
+}</code></pre>
+      <pre><code>.error, .seriousError, .criticalError {
+  border: 1px red;
+}
+
+.seriousError, .criticalError {
+  border-width: 3px;
+}
+
+.criticalError {
+  border-width: 9px;
+}</code></pre>
+      <h4><i>extend source</i> ir <i>extend target</i> yra su kombinatoriais</h4>
+      <p>Merging Selector Sequences:</p>
+      <pre><code>#admin .tabbar a {
+  font-weight: bold;
+}
+#demo .overview .fakelink {
+  @extend a;
+}</code></pre>
+      <pre><code>#admin .tabbar a,
+#admin .tabbar #demo .overview .fakelink,
+#demo .overview #admin .tabbar .fakelink {
+  font-weight: bold;
+}</code></pre>
+      <p><q>If the two sequences do share some selectors, then those selectors will be merged together and only the differences (if any still exist) will alternate</q>:</p>
+      <pre><code>#admin .tabbar a {
+  font-weight: bold;
+}
+
+#admin .overview .fakelink {
+  @extend a;
+}</code></pre>
+      <pre><code>#admin .tabbar a,
+#admin .tabbar .overview .fakelink,
+#admin .overview .tabbar .fakelink {
+  font-weight: bold;
+}</code></pre>
+    </td>
+    <td width="25%">
+      <h3><code>@extend</code> &#8212; the <code>!optional</code> flag</h3>
+      <blockquote>
+        <p>Normally when you extend a selector, it&rsquo;s an error if that <code>@extend</code> doesn&rsquo;t work. For example, if you write <code>a.important { @extend .notice }</code>, it&rsquo;s an error if there are no selectors that contain .notice. It&rsquo;s also an error if the only selector containing <code>.notice</code> is <code>h1.notice</code>, since <code>h1</code> conflicts with <code>a</code> and so no new selector would be generated.</p>
+        <p>Sometimes, though, you want to allow an <code>@extend</code> not to produce any new selectors. To do so, just add the <code>!optional</code> flag after the selector.</p>
+      </blockquote>
+      <pre><code>a.important {
+  @extend .notice !optional;
+}</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>%kazkas</code> &#8212; placeholder selector</h3>
+      <p>Kada naudoti:</p>
+      <blockquote>
+        <p>Sometimes you&rsquo;ll write styles for a class that you only ever want to <code>@extend</code>,   and never want to use directly in your HTML. This is especially true   when writing a Sass library, where you may provide styles for users to <code>@extend</code> if they need and ignore if they don&rsquo;t.</p>
+      </blockquote>
+      <p>&quot;placeholder selector&quot; yra &quot;@extend only selector&quot;, t. y. jį galima panaudoti tik su <code>@extend</code>.</p>
+      <p><code>@extend %placeholderis</code> ne įterpia placeholder'io deklaracijas, o sukuria vieną rule set'ą, ir jam prideda selektorius: </p>
+      <pre><code>%red-text {
+  color: red;
+}
+
+.tas {
+  @extend %red-text;
+  font-size: 1em;
+}
+
+.anas {
+  @extend %red-text;
+  font-size: 2em;
+}</code></pre>
+      <pre><code>.tas, .anas {
+  color: red; }
+
+.tas {
+  font-size: 1em; }
+
+.anas {
+  font-size: 2em; }</code></pre>
+      <p>Sudėtingesnis selektorius:</p>
+      <pre><code>#context a%extreme {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.notice {
+  @extend %extreme;
+}</code></pre>
+      <pre><code>#context a.notice {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em; }</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Selector Functions</h3>
+      <p> <a href="https://www.tutorialsteacher.com/sass/sass-selector-functions">Sass selector functions</a></p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Selector functions are very liberal in the formats they support for selector arguments. They can take a plain string, a list of lists as returned by `&amp;` or anything in between:</p>
+        <ul>
+          <li>A plain string, such as `".foo .bar, .baz .bang"`.</li>
+          <li>A space-separated list of strings such as `(".foo" ".bar")`.</li>
+          <li>A comma-separated list of strings such as `(".foo .bar", ".baz .bang")`.</li>
+          <li>A comma-separated list of space-separated lists of strings such as `((".foo" ".bar"), (".baz" ".bang"))`.</li>
+        </ul>
+        <p>In general, selector functions allow placeholder selectors (`%foo`) but disallow parent-reference selectors (`&amp;`).</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#selector_nest-instance_method" title="Sass::Script::Functions#selector_nest (method)">selector-nest($selectors…)</a> <br>
+Nests selector beneath one another like they would be nested in the stylesheet.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#selector_append-instance_method" title="Sass::Script::Functions#selector_append (method)">selector-append($selectors…)</a> <br>
+        Appends selectors to one another without spaces in between.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#selector_extend-instance_method" title="Sass::Script::Functions#selector_extend (method)">selector-extend($selector, $extendee, $extender)</a><br>
+        Extends `$extendee` with `$extender` within `$selector`.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#selector_replace-instance_method" title="Sass::Script::Functions#selector_replace (method)">selector-replace($selector, $original, $replacement)</a><br>
+        Replaces `$original` with `$replacement` within `$selector`.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#selector_unify-instance_method" title="Sass::Script::Functions#selector_unify (method)">selector-unify($selector1, $selector2)</a><br>
+        Unifies two selectors to produce a selector that matches elements matched by both.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#is_superselector-instance_method" title="Sass::Script::Functions#is_superselector (method)">is-superselector($super, $sub)</a><br>
+        Returns whether `$super` matches all the elements `$sub` does, and possibly more.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#simple_selectors-instance_method" title="Sass::Script::Functions#simple_selectors (method)">simple-selectors($selector)</a><br>
+        Returns the simple selectors that comprise a compound selector.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#selector_parse-instance_method" title="Sass::Script::Functions#selector_parse (method)">selector-parse($selector)</a><br>
+        Parses a selector into the format returned by `&amp;`.      </p>
+      <p>&nbsp;</p>
+      <p>&nbsp; </p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Operacijos su ruleset'ais</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Ruleset'ų nesting'as (nested rules)      </h3>
+      <h4>Sunest'inti selektoriai SU kombinatoriais</h4>
+      <p>Paprasčiausias naudojimas &#8212; descendant combinator'iaus sukūrimas CSS'e:      </p>
+      <pre><code>nav {
+  ul {...}    // sutrumpinta forma
+  &amp; li {...}  // pilna forma
+}</code></pre>
+      <pre><code>nav ul {...}
+nav li {...}</code></pre>
+      <p>Child combinator'iaus sukūrimas CSS'e:</p>
+      <pre><code>nav {
+  &gt; ul {...}   // sutrumpinta forma
+  &amp; &gt; p {...}  // pilna forma
+}</code></pre>
+      <pre><code>nav &gt; ul {...}
+nav &gt; p {...}</code></pre>
+      <p><i>parent selector</i> gali būti ne pradžioje:</p>
+      <pre><code>a {
+  font-weight: bold;
+  body.firefox &amp; { font-weight: normal; }
+}</code></pre>
+      <pre><code>a { font-weight: bold; }
+body.firefox a { font-weight: normal; }</code></pre>
+      <h4>Sunest'inti selektoriai BE kombinatorių</h4>
+      <p>Paprasčiausias pvz. kaip sukuriamas naujas class'as, selektoriaus pradžioje esantis <code>&amp;</code> panaikina sutrumpintos formos descendant selektorių:</p>
+      <pre><code>.geras {
+  color: blue;
+  &amp;-labai { color: red }
+}</code></pre>
+      <pre><code>.geras { color: blue; }
+.geras-labai { color: red; }</code></pre>
+      <p>Hover'io sukūrimas:</p>
+      <pre><code>a {
+  color: blue;
+  &amp;:hover { color: red; }
+}</code></pre>
+      <pre><code>a { color: blue }
+a:hover { color: red }</code></pre>
+      <p>Jeigu per kintamąjį &#8212; descendant selektorius bus sukurtas, nors pačio class'o pavadinimas toks pats:</p>
+      <pre><code>.geras {
+  $this: &amp;;
+  color: blue;
+  #{$this}-labai { color: red }
+}</code></pre>
+      <pre><code>.geras { color: blue; }
+.geras .geras-labai { color: red; }</code></pre>
+      <h4>Kaip gauti parent'inio selektoriaus pavadinimą ne pradžioje ir be descendant combinator'iaus</h4>
+      <div class="c-em-alert c-em--narrow c-em--small">
+        <p>Taip bus klaida, nes &#8212; <q>&quot;<code>&amp;</code>&quot; may only be used at the beginning of a compound selector</q>:</p>
+        <pre><code>.geras {
+  color: blue;
+  .labai-&amp; { color: red }
+}</code></pre>
+      </div>
+      <p>Taip gauname su descendant combinator'iumi:</p>
+      <pre><code>.geras {
+  $thisName: str_slice(&amp; + "", 2);
+  color: blue;
+
+  .labai-#{$thisName} { color: red }
+}</code></pre>
+      <pre><code>.geras { color: blue; }
+
+.geras .labai-geras { color: red; }</code></pre>
+      <p>Su <code>@at-root</code> ganame norimą rezultatą:</p>
+      <pre><code>.geras {
+  $thisName: str_slice(&amp; + "", 2);
+  color: blue;
+
+  @at-root {
+    .labai-#{$thisName} { color: red }
+  }
+}</code></pre>
+      <pre><code>.geras { color: blue; }
+
+.labai-geras { color: red; }</code></pre>
+    </td>
+    <td width="25%">
+      <h3><code>&amp;</code> &#8212; current <i>parent selector</i></h3>
+      <p>parent reference with <code>&amp;</code></p>
+      <p> <a href="https://devdocs.io/sass/index#in-sassscript">Sass / & in sassScript — DevDocs</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>@at-root</code></h3>
+      <h4>Default'inė–sutrumpinta forma</h4>
+      <p>Sunest'intus ruleset'us išnest'ina:</p>
+      <blockquote>
+        <p>The <code>@at-root</code> directive causes one or more rules to be emitted at the root of the document, rather than being nested beneath their parent selectors.</p>
+      </blockquote>
+      <div class="c-em-note c-em--small">
+        <p>Pilna default'inės–sutrumpintos forma:</p>
+        <pre><code>@at-root (without: rule) {
+  .kazkas {...}
+}</code></pre>
+      </div>
+      <pre><code>.parent {
+  padding: 0;
+  // forma "single inline" — galima išnest'inti tik vieną ruleset'ą
+  @at-root .child-1 { padding: 1em }
+
+  // forma "block"
+  @at-root {
+    .child-2 { padding: 2em }
+    .child-3 { padding: 3em }
+  }
+
+  .child-4 { padding: 4em }
+}</code></pre>
+      <pre><code>.parent { padding: 0; }
+
+.child-1 { padding: 1em; }
+
+.child-2 { padding: 2em; }
+
+.child-3 { padding: 3em; }
+
+.parent .child-4 { padding: 4em; }</code></pre>
+      <h4><code>@at-root (without:...)</code></h4>
+      <blockquote>
+        <p>You can use <code>@at-root (without:...)</code> to move outside of any directive.</p>
+      </blockquote>
+      <pre><code>@media print {
+  .page {
+    width: 8in;
+    @at-root (without: media) {
+      color: red;
+    }
+  }
+}</code></pre>
+      <pre><code>@media print {
+  .page {
+    width: 8in;
+  }
+}
+.page {
+  color: red;
+}</code></pre>
+      <blockquote>
+        <p>You can also do it with multiple directives separated by a space: <code>@at-root (without: media supports)</code> moves outside of both <code>@media</code> and <code>@supports</code> queries.</p>
+      </blockquote>
+      <pre><code>.</code></pre>
+      <pre><code>.</code></pre>
+      <blockquote>
+        <p><code>@at-root (without: all)</code>  means that the styles should be moved outside of <em>all</em> directives and CSS rules.</p>
+      </blockquote>
+      <pre><code>@</code></pre>
+      <pre><code>.</code></pre>
+      <h4><code>@at-root (with: ...)</code></h4>
+      <blockquote>
+        <p>If you want to specify which directives or rules to include, rather than listing which ones should be excluded, you can use  <code>with</code>  instead of  <code>without</code>. For example,  <code>@at-root (with: rule)</code>  will move outside of all directives, but will preserve any CSS rules.</p>
+      </blockquote>
+      <p><code>with: rule</code> ir <code>without: rule</code> daro tą patį, <strong>kodėl ??????????????</strong>:</p>
+      <pre><code>.parent {
+  @at-root (with: rule) {
+    .child-with-rule { color: red; }
+  }
+
+  @at-root (without: rule) {
+    .child-without-rule { color: red }
+  }
+}</code></pre>
+      <pre><code>.child-with-rule {
+  color: red;
+}
+
+.child-without-rule {
+  color: red;
+}</code></pre>
+      <p>o <code>with: media</code> ir <code>without: media</code> kaip ir turėtų:</p>
+      <pre><code>@media print {
+  @at-root (with: media) {
+    .with-media { color: red; }
+  }
+
+  @at-root (without: media) {
+    .without-media { color: red }
+  }
+}</code></pre>
+      <pre><code>@media print {
+  .with-media {
+    color: red;
+  }
+}
+
+.without-media {
+  color: red;
+}</code></pre>
+      <p>Dvigubas <code>@media</code> ir <code>.parent</code> nest'inimas:</p>
+      <pre><code>@media print {
+  .parent {
+    @at-root (with: rule) {
+      .child-with-rule { color: red; }
+    }
+
+    @at-root (without: rule) {
+      .child-without-rule { color: red }
+    }
+
+    @at-root (with: media) {
+      .child-with-media { color: red; }
+    }
+
+    @at-root (without: media) {
+      .child-without-media { color: red }
+    }
+  }
+}</code></pre>
+      <pre><code>.child-with-rule {
+  color: red;
+}
+
+@media print {
+  .child-without-rule {
+    color: red;
+  }
+  .child-with-media {
+    color: red;
+  }
+}
+
+.child-without-media {
+  color: red;
+}</code></pre>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Operacijos su deklaracijomis ir ruleset'ais</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Mixins</h3>
+      <p>Mixin'ų užvardinimas:</p>
+      <blockquote>
+        <p>For historical reasons, mixin names (and all other Sass identifiers) can use hyphens and underscores interchangeably. For example, if you define a mixin called <code>add-column</code>, you can include it as <code>add_column</code>, and vice versa.</p>
+      </blockquote>
+      <h4>Paprasčiausias naudojimas su deklaracijomis</h4>
+      <p> Be parametro:</p>
+      <pre><code>@mixin border-big {
+  border: solid 10px red;
+}
+
+.box {
+  @include border-big;
+}</code></pre>
+      <pre><code>.box {
+  border: solid 10px red;
+}</code></pre>
+      <p>Su parametru:</p>
+      <pre><code>@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box {
+  @include border-radius(10px);
+}</code></pre>
+      <pre><code>.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}</code></pre>
+      <h4>Tik ruleset'ų išvedimas</h4>
+      <blockquote>
+        <p>Mixins may also be included outside of any rule (that is, at the root of the document) as long as they don't directly define any properties or use any parent references. </p>
+      </blockquote>
+      <pre><code>@mixin big-paragraph {
+  p {
+    font-size: 2em;
+  }
+}
+
+@include big-paragraph;</code></pre>
+      <pre><code>p {
+  font-size: 2em;
+}</code></pre>
+      <h4>Deklaracijos ir ruleset'ai kartu</h4>
+      <pre><code>@mixin big {
+  margin: 1em;
+  .kitas {
+    color: blue;
+  }
+}
+
+.kazkas {
+  color: red;
+  @include big;
+}</code></pre>
+      <pre><code>.kazkas {
+  color: red;
+  margin: 1em;
+}
+
+.kazkas .kitas {
+  color: blue;
+}</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>@content</code>      </h3>
+      <blockquote>
+        <p>It is possible to pass a block of styles to the mixin for placement within the styles included by the mixin. The styles will appear at the location of any <code>@content</code> directives found within the mixin. This makes it possible to define abstractions relating to the construction of selectors and directives.      </p>
+      </blockquote>
+      <p>Paprasčiausias, bet praktinės naudos neturintis naudojimo pvz.:</p>
+      <pre><code>@mixin kazkas {
+  @content;
+}
+
+@include kazkas {
+  p {
+    font-size: 1em;
+  }
+}</code></pre>
+      <pre><code>p {
+  font-size: 1em;
+}</code></pre>
+      <p>kai <code>@content</code> yra ruleset'e:</p>
+      <pre><code>@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+
+@include apply-to-ie6-only {
+  p {
+    font-size: 1em;
+  }
+}</code></pre>
+      <pre><code>* html p {
+  font-size: 1em;
+}</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>content-exists()</code>      </h3>
+      <blockquote>
+        <p>Some mixins may require a passed content block or may have different behavior depending on whether a content block was passed. The <code>content-exists()</code> function will return true when a content block is passed to the current mixin and can be used to implement such behaviors.</p>
+      </blockquote>
+      <p class="c-em-alert c-em--small">Šiuo metu veikia tik ant Dart Sass.</p>
+      <pre><code>@mixin needs-content {
+  @if not content-exists() {
+    @error "You must pass a content block!"
+  }
+  @content;
+}</code></pre>
+      <p>Pvz. skirtingo veikimo kai yra perduotas <q>a block of styles</q>, ir kai nėra:</p>
+      <pre><code>@mixin kazkas {
+  @if content-exists() {
+    div {
+      @content;
+    }
+  } @else {
+    div > & {
+      color: green;
+    }
+  }
+}
+
+@include kazkas {
+  p {
+    font-size: 5em;
+  }
+}
+
+p {
+  @include kazkas;
+}</code></pre>
+      <pre><code>div p {
+  font-size: 5em;
+}
+
+div &gt; p {
+  color: green;
+}</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Mixin'ų ir funkcijų parametrai ir argumentai</h3>
+      <h4>Parametrai su default'ine reikšme (Sass mixin with optional arguments)</h4>
+      <pre><code>@mixin borderis($style: solid, $color: red, $width: 1px) {
+  border: $style $color $width;
+}</code></pre>
+      <p>Iškvietimas be parametrų:</p>
+      <pre><code>.boxas {
+  @include borderis;
+}</code></pre>
+      <pre><code>.boxas {
+  border: solid red 1px;
+}</code></pre>
+      <h4>Yra dviejų tipų argumentai</h4>
+      <dl>
+        <dt><q>positional argument</q></dt>
+        <dd>
+          <p>Iškvietimas su vienu pirmu parametru:</p>
+          <pre><code>.boxas {
+  @include borderis(dashed);
+}</code></pre>
+          <pre><code>.boxas {
+  border: dashed red 1px;
+}</code></pre>
+        </dd>
+        <dt> <q>explicit keyword arguments</q> arba <q>keyword-style argument</q> arba <q>named arguments</q></dt>
+        <dd>
+          <p>Argumentų pozicija nesvarbi:</p>
+          <pre><code>.boxas {
+  @include borderis($width: 3px, $color: blue);
+}</code></pre>
+          <pre><code>.boxas {
+  border: solid blue 3px;
+}</code></pre>
+        </dd>
+      </dl>
+      <h4>Laisvas parametrų mixin'o ar funkcijos apibrėžime skaičius &#8212; <q>variable arguments, an unknown number of arguments</q></h4>
+      <blockquote>
+        <p>Sass supports "variable arguments," which are arguments at the end of a mixin or function declaration that take all leftover arguments and package them up as a <a href="https://devdocs.io/sass/index#lists">list</a>.</p>
+      </blockquote>
+      <p><q>positional arguments</q> valdymas: </p>
+      <pre><code>@mixin kazkas($args...) {
+  content: $args;
+  color: nth($args, 1);
+  padding: nth($args, 2);
+}
+
+div {
+  @include kazkas(red, 10px);
+}</code></pre>
+      <pre><code>div {
+  content: red, 10px;
+  color: red;
+  padding: 10px;
+}</code></pre>
+      <p>Atvejis, kai reikia kablelį tarsi užkoduoti:</p>
+      <pre><code>@mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}</code></pre>
+      <pre><code>.shadows {
+  box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+}</code></pre>
+      <h4>List'o arba map'o spreed'inimas argumentuose &#8212; <q>variable arguments when calling a mixin</q></h4>
+      <pre><code>@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+$values: #ff0000, #00ff00, #0000ff;
+.primary {
+  @include colors($values...);
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+.secondary {
+  @include colors($value-map...);
+}</code></pre>
+      <pre><code>.primary {
+  color: #ff0000;
+  background-color: #00ff00;
+  border-color: #0000ff;
+}
+
+.secondary {
+  color: #00ff00;
+  background-color: #0000ff;
+  border-color: #ff0000;
+}</code></pre>
+      <p>Galima spreed'inti ir patį <q>variable arguments</q> kintamąjį:</p>
+      <pre><code>@mixin kazkas($args...) {
+  padding: nth($args, 1);
+  margin: nth($args, 2);
+  @include kitas($args...);
+}
+
+@mixin kitas($args...) {
+  top: nth($args, 1);
+  bottom: nth($args, 2);
+}
+
+div {
+  @include kazkas(1em, 3em);
+}</code></pre>
+      <pre><code>div {
+  padding: 1em;
+  margin: 3em;
+  top: 1em;
+  bottom: 3em;
+}</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3><code>keywords()</code></h3>
+      <p>Skirta naudoti:</p>
+      <ul>
+        <li>mixin'uose ir funkcijose su <q>variable arguments</q> jų apibrėžimuose,</li>
+        <li>ir kai yra iškviesti su <q>named arguments</q>.</li>
+      </ul>
+      <blockquote>
+        <p>Returns the map of named arguments passed to a function or mixin that takes a variable argument list. The argument names are strings, and they do not contain the leading <code>$</code>.</p>
+        <pre><code>@mixin foo($args...) {
+  @debug keywords($args); //= (arg1: val, arg2: val)
+}
+
+@include foo($arg1: val, $arg2: val);</code></pre>
+      </blockquote>
+      <h4><q>explicit keyword arguments</q> valdymas</h4>
+      <pre><code>@mixin kazkas($args...) {
+  @debug keywords($args); // (spalva: red, tarpai: 10px)
+
+  $argsNamed: keywords($args);
+
+  content: "#{$argsNamed}";
+  color: map_get($argsNamed, spalva);
+  padding: map_get($argsNamed, tarpai);
+}
+
+div {
+  @include kazkas($spalva: red, $tarpai: 10px);
+}</code></pre>
+      <pre><code>div {
+  content: "(spalva: red, tarpai: 10px)";
+  color: red;
+  padding: 10px;
+}</code></pre>
+      <h4><q>positional arguments</q> ir <q>explicit keyword arguments</q> valdymas</h4>
+      <pre><code>@mixin kazkas($args...) {
+  $argsNamed: keywords($args);
+
+  @debug $args;      // red, 10px
+  @debug $argsNamed; // (plotis: 100px)
+
+  color: nth($args, 1);
+  padding: nth($args, 2);
+  width: map_get($argsNamed, plotis);
+}
+
+div {
+  @include kazkas(red, 10px, $plotis: 100px);
+}</code></pre>
+      <pre><code>div {
+  color: red;
+  padding: 10px;
+  width: 100px;
+}</code></pre>
+      <h4>Universalus
+        Mixin'as  išvedantis ir su <q>positional arguments</q>, ir su <q>explicit keyword arguments</q></h4>
+      <pre><code>@mixin kazkas($args...) {
+  $argsMap: keywords($args);
+  @if length($argsMap) > 0 {
+    $args: map_values($argsMap);
+  }
+  content: $args;
+}
+
+a {
+  @include kazkas(vienas, du, trys);
+  @include kazkas($a: one, $b: two, $c: three);
+}</code></pre>
+      <pre><code>a {
+  content: vienas, du, trys;
+  content: one, two, three;
+}</code></pre>
+    </td>
+    <td>
+      <h3>Funkcijos</h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Kintamieji (Variables)</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Paprasčiausias naudojimas</h3>
+      <p>Sintaksė &#8212; <code>$kintamasis: reikšmė;</code>      </p>
+      <figure class="-c-figure -c-figure--shadow -figure--dashedTB figure--code">
+          <pre><code class="scss">$text-color: blue;
+
+body {
+  color: $text-color;
+}</code></pre>
+          <pre><code>body {
+  color: blue;
+}</code></pre>
+        <figcaption>Paprasčiausias naudojimas</figcaption>
+      </figure>
+      <div class="c-em-note c-em--narrow c-em--small">
+        <p>Kintamųjų pavadinimuose brūkšneliai (dashes) ir pabraukimai (underscores) laikomi tais pačiais simboliais </p>
+        <blockquote>
+          <p>In this  example, <code>$link-color</code> and <code>$link_color</code> both refer  to the  same  variable.</p>
+          <pre><code>$link-color: blue;
+a {
+  color: $link_color;
+}</code></pre>
+        </blockquote>
+      </div>
+      <h4>Variable inside variable</h4>
+      <pre><code>$highlight-color: #000;
+$highlight-border: 1px $hightlight-color solid;
+.select {
+  border: $highlight-border;
+}</code></pre>
+      <pre><code>.select {
+  border: 1px #000 solid;
+}</code></pre>
+      <h4>Kintamojo interpoliacija (interpolation)</h4>
+      <p>Kintamojo išvedimas deklaracijos pavadinime:</p>
+      <pre><code>$wk: -webkit-;
+
+.rounded-box {
+  #{$wk}border-radius: 4px; }</code></pre>
+      <pre><code>.rounded-box {
+  -webkit-border-radius: 4px; }</code></pre>
+      <p>Kintamojo išvedimas selektoriuje: </p>
+      <pre><code>$kas: petras;
+
+.ten-#{$kas} { }</code></pre>
+      <pre><code>.ten-petras { }</code></pre>
+      <p>Interpoliacijos naudojimas, kad išvengti matematinės operacijos: </p>
+      <pre><code>@mixin border-radius($radius, $vertical-radius) {
+  border-radius: #{$radius} / #{$vertical-radius};
+}
+
+.foo {
+  @include border-radius(20px, 10px);
+}</code></pre>
+      <pre><code>.foo {
+  border-radius: 20px / 10px;
+}</code></pre>
+    </td>
+    <td width="25%">
+      <h3>Flagas <code>!default</code>      </h3>
+      <blockquote>
+        <p>Placing <code>!default</code> at the end of a variable declaration will have the following effect:</p>
+        <ul>
+          <li>If the variable already has an assignment, it will not be re-assigned</li>
+          <li>Variables with <code>null</code> value will be considered unassigned and will be assigned with <code>!default</code></li>
+        </ul>
+      </blockquote>
+      <p>Paprasčiausias naudojimas:      </p>
+      <pre><code>$content: "First content";
+$content: "Second content" !default;
+
+.kazkas {
+  content: $content;
+}</code></pre>
+      <pre><code>.kazkas {
+  content: "First content";
+}</code></pre>
+      <p>&nbsp;</p>
+      <div class="c-em-note c-em--small c-em--narrow c-em--small">
+        <p>Tai yra būdas suteikti galimybę overwrite'inti kintamąjį tiek prieš, tiek po jo.</p>
+        <p>Be <code>!default</code>:</p>
+        <pre><code class="scss">// taip  overwrite'ina — $content=="custom content"
+$content: "default content";
+$content: "custom content";
+
+// o taip ne — $content=="default content"
+$content: "custom content";
+$content: "default content";</code></pre>
+        <p>Su <code>!default</code>:</p>
+        <pre><code class="scss">// taip  overwrite'ina — $content=="custom content"
+$content: "default content" !default;
+$content: "custom content";
+
+// ir taip  overwrite'ina — $content=="custom content"
+$content: "custom content";
+$content: "default content&quot; !default;</code></pre>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Flagas <code>!global</code></h3>
+      <p>Be  <code>!global</code> ruleset'e sukuriamas lokalus kintamasis:</p>
+      <pre><code>$text-color: blue;
+
+.error {
+  $text-color: red; // This is now a new local scoped variable
+  color: $text-color;
+}
+
+.normal-text {
+  color: $text-color;
+}</code></pre>
+      <pre><code>.error {
+  color: red;
+}
+
+.normal-text {
+  color: blue;
+}</code></pre>
+      <p>Su <code>!global</code> &#8212; keičiamas globalus kintamasis:</p>
+      <pre><code>$text-color: blue;
+
+.error {
+  $text-color: red !global;
+  color: $text-color;
+}
+
+.normal-text {
+  color: $text-color;
+}</code></pre>
+      <pre><code>.error {
+  color: red;
+}
+
+.normal-text {
+  color: red;
+}</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Vykdymo kontrolė (flow control)</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+	<tr>
+		<td width="25%"><h3><code>@if		  @else</code></h3>
+      <p>Gali &quot;išvesti&quot; tiek deklaracijas, tiek ruleset'us:</p>
+      <pre><code>$big-links: true;
+
+// variantas išvesti deklaracijas
+a {
+  color: blue;
+  @if $big-links == true {
+    font-size: 1.5em;
+  }
+}
+
+// ir variantas išvesti visą ruleset'ą
+@if $big-links == true {
+  a {
+    font-size: 1.5em;
+  }
+}</code></pre>
+      <p>Su <code>@else</code>:</p>
+      <pre><code>$type: monster;
+
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}</code></pre>
+      <p>Neišveda viso selektoriaus, jei neišvedama nei viena deklaracija:</p>
+    <pre><code>$debug: false;
+
+// neišves: div {}
+div {
+  @if ($debug == true) {
+    outline: 5px solid cyan;
+  }
+}
+
+// išves: div { background: red; }
+div {
+  @if ($debug == true) {
+    outline: 5px solid cyan;
+  }
+  background: red;
+}</code></pre></td>
+		<td width="25%">
+		  <h3><code>@for</code></h3>
+      <p>Yra dvi formos <q>The directive has two forms</q>:</p>
+      <dl>
+        <dt><code>@for $var from &lt;start&gt; through &lt;end&gt;</code></dt>
+        <dd>
+          <blockquote>
+            <p>For the form <code>from ... through</code>, the range <em>includes</em> the values of <code>&lt;start&gt;</code> and <code>&lt;end&gt;</code></p>
+          </blockquote>
+          <pre><code>@for $i from 1 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}</code></pre>
+          <pre><code>.item-1 { width: 2em; }
+.item-2 { width: 4em; }
+.item-3 { width: 6em; }</code></pre>
+        </dd>
+        <dt><code>@for $var from &lt;start&gt; to &lt;end&gt;</code></dt>
+        <dd>
+          <blockquote>
+            <p>the form <code>from ... to</code> runs up to <em>but not including</em> the value of <code>&lt;end&gt;</code></p>
+          </blockquote>
+          <pre><code>@for $i from 1 to 3 {
+  .item-#{$i} { width: 2em * $i; }
+}</code></pre>
+          <pre><code>.item-1 { width: 2em; }
+.item-2 { width: 4em; }</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <div class="c-em-note c-em--narrow">
+        <blockquote>
+          <p>When <code>&lt;start&gt;</code> is greater than <code>&lt;end&gt;</code> the counter will decrement instead of increment.</p>
+        </blockquote>
+        <pre><code>@for $i from 6 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}</code></pre>
+        <pre><code>.item-6 { width: 12em; }
+.item-5 { width: 10em; }
+.item-4 { width: 8em; }
+.item-3 { width: 6em; }</code></pre>
+      </div>
+      <p>&nbsp;</p>
+		</td>
+		<td width="25%"><h3><code>@while</code></h3>
+		  <p>&nbsp;</p>
+		  <p>&nbsp;</p>
+		  <p>&nbsp;</p>
+		</td>
+		<td width="25%"><h3><code>@each</code></h3>
+		  <p>&nbsp;</p>
+		  <p>&nbsp;</p>
+		  <p>&nbsp;</p>
+		</td>
+	</tr>
+</table>
+<h2>Duomenų tipai&#8211;struktūros</h2>
+<h3>Kaip SASS'as palygina skirtingų matavimo vienetų reikšmes</h3>
+<dl>
+  <dt>Kad palygintų skirtingus matavimo vienetus, jie abu turi būti absoliutūs ir <q>have a fixed relation between them</q>:</dt>
+  <dd>
+    <blockquote>
+      <p>Sass cannot perform any sort of computation using two values with units that don't have a fixed relation between them.</p>
+      <p>For example, <code>cm</code> and <code>in</code> units have a fixed relation between them, so Sass can figure out what's the result of <code>min(20in, 50cm)</code> and doesn't throw an error when we try to use it in our code.</p>
+      <p>The same things goes for other units. Angular units, for example, all have a fixed relation between them: <code>1turn</code>, <code>1rad</code> or <code>1grad</code> always compute to the same <code>deg</code> values. Same goes for <code>1s</code> which is always <code>1000ms</code>, <code>1kHz</code> which is always <code>1000Hz</code>, <code>1dppx</code> which is always <code>96dpi</code>, and <code>1in</code> which is always <code>96px</code>. This is why Sass can <a href="https://github.com/sass/sass/blob/a1e6302437dd967eac5288f0793e758e2b0ba5ee/lib/sass/script/value/number.rb#L470-L503">convert between them</a> and mix them in computations and inside functions such as its own min() function.</p>
+    </blockquote>
+    <p>Palyginami matavimo vienetai:</p>
+    <ul>
+      <li><code>1in == 2.54cm == 96px</code></li>
+      <li><code>1s == 1000ms</code></li>
+      <li><code>1kHz == 1000Hz</code>  </li>
+    </ul>
+  </dd>
+  <dt> Negali palyginti absoliučių ir santykinių matavimo vienetų:</dt>
+  <dd>
+    <p>...</p>
+  </dd>
+  <dt>Taip pat negali palyginti skirtingų santykinių matavimo vienetų:</dt>
+  <dd>
+    <p>Įvyks SASS'o klaida ir CSS failas nebus sugeneruotas — <code>Internal Error: Incompatible units: 'vh' and 'em'</code>:</p>
+    <pre><code>.tas {
+  width: min(20em, 50vh); // čia bus vykdoma SASS'o funkcija min()
+}</code></pre>
+    <p>Bet CSS gali, taip veiks:</p>
+    <pre><code>.tas {
+  width: Min(20em, 50vh); // vykdoma CSS funkcija
+}</code></pre>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Eilutė (string)</h3>
+      <p>Yra dviejų tipų string'ai: apskliausti ir neapskliausti kabėmis:</p>
+      <p><code>$fontas: CourierNew</code> &#8212; Unquoted string</p>
+      <p><code>$fontas: "Courier New"</code> &#8212; Quoted string      </p>
+      <h4>Konvertacija tarp Quoted ir Unquoted</h4>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#unquote-instance_method" title="Sass::Script::Functions#unquote (method)">unquote($string)</a> <br>
+Removes quotes from a string.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#quote-instance_method" title="Sass::Script::Functions#quote (method)">quote($string)</a><br>
+        Adds quotes to a string.</p>
+<figure>
+  <pre><code><mark>SASS</mark>                            <mark>CSS</mark>
+$kaimynas: "Antanas";
+p {                             p {
+  content: $kaimynas;             content: "Antanas";
+  content: #{$kaimynas};          content: Antanas;
+  content: unquote($kaimynas);    content: Antanas;
+}                               }
+</code></pre>
+	<figcaption>Quoted string'o vertimas į Unquoted</figcaption>
+</figure>
+<figure>
+  <pre><code><mark>SASS</mark>                           <mark>CSS</mark>
+$kaimynas: Antanas;
+p {                            p {
+  content: $kaimynas;            content: Antanas;
+  content: $kaimynas + "";       content: Antanas;
+  content: "" + $kaimynas;       content: "Antanas";
+  content: "$kaimynas";          content: "$kaimynas";
+  content: "#{$kaimynas}";       content: "Antanas";
+  content: quote($kaimynas);     content: "Antanas";
+}                              }</code></pre>
+  <figcaption>Ir atvirkščiai &#8212; Unquoted į Quoted</figcaption>
+</figure>
+<h4>Sudėjimas-sujungimas (string concatenation)</h4>
+      <figure>
+        <pre><code><mark>SASS</mark>                 <mark>CSS</mark>
+p {                  p {
+  a:  aaa  +  bbb;     a: aaabbb;
+  a: "aaa" + "bbb";    a: "aaabbb";
+
+  a: "aaa" +  bbb;     a: "aaabbb";  <mark>|pirmas operandas nustato</mark>
+  a:  aaa  + "bbb";    a: aaabbb;    <mark>|koks bus rezultate string'as</mark>
+}                    }
+</code></pre>
+        <figcaption>Quote-Unquote string'ų sudėjimas-sujungimas</figcaption>
+      </figure>
+      <figure>
+        <pre><code><mark>SASS</mark>                  <mark>CSS</mark>
+p {                   p {
+  a:  aaa  + 1;         a: aaa1;
+  a: "aaa" + 1;         a: "aaa1";
+
+  a:  1 +  bbb;         a: 1bbb;
+  a:  1 + "bbb";        a: "1bbb";
+}                     }</code></pre>
+        <figcaption>Quote-Unquote string'ų sudėjimas-sujungimas su skaičiais (Kaip veikia sudėties operatorius, kai bent vienas iš operandų yra string'as)</figcaption>
+      </figure>
+      <h4>Savybių gavimas</h4>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#str_length-instance_method" title="Sass::Script::Functions#str_length (method)">str-length($string)</a> <br>
+      Returns the number of characters in a string.</p>
+      <h4>Paieška, fragmento paėmimas</h4>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#str_index-instance_method" title="Sass::Script::Functions#str_index (method)">str-index($string, $substring)</a><br>
+Returns the index of the first occurrence of `$substring` in `$string`.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#str_slice-instance_method" title="Sass::Script::Functions#str_slice (method)">str-slice($string, $start-at, [$end-at])</a><br>
+Extracts a substring from `$string`.</p>
+      <h4>Redagavimas      </h4>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#str_insert-instance_method" title="Sass::Script::Functions#str_insert (method)">str-insert($string, $insert, $index)</a> <br>
+      Inserts `$insert` into `$string` at `$index`.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#to_upper_case-instance_method" title="Sass::Script::Functions#to_upper_case (method)">to-upper-case($string)</a><br>
+      Converts a string to upper case.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#to_lower_case-instance_method" title="Sass::Script::Functions#to_lower_case (method)">to-lower-case($string)</a><br>
+      Converts a string to lower case.      </p>
+      <h4>Skaičiaus konvertacija į string'ą</h4>
+      <p>...</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Map</h3>
+      <pre><code>$mapas: (
+  aa: pirmas,
+  bb: antras,
+  cc: trecias,
+  dd: ketvirtas,
+  ee: penktas);</code></pre>
+      <h4>Veikia visos list'ų funkcijos</h4>
+      <p>List'ų funkcijos map'o key-value porą traktuoja kaip list'ą iš dviejų elementų.</p>
+      <blockquote>
+        <p>All list functions work for maps as well, treating them as lists of pairs.</p>
+      </blockquote>
+      <dl>
+        <dt><code>index()</code></dt>
+        <dd>
+          <p>įrodymas, kaip list'ų funkcijos traktuoja map'o key-value porą</p>
+          <pre><code>$result: index($mapas, <mark>(bb antras)</mark>);  //= 2
+$result: index($mapas, <mark>(bb: antras)</mark>); //= null</code>
+        </pre>
+        </dd>
+        <dt><code>nth()</code></dt>
+        <dd>
+          <pre><code>$result-1: nth($mapas, 2);  //= (bb antras)
+$result-2: nth($mapas, -2); //= (dd ketvirtas)</code>
+        </pre>
+        </dd>
+      </dl>
+      <h4>Map'inės funkcijos</h4>
+      <blockquote>
+        <p>Maps in Sass are immutable; all map functions return a new map rather than updating the existing map in-place.</p>
+      </blockquote>
+      <h4>Savybių gavimas</h4>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#map_has_key-instance_method" title="Sass::Script::Functions#map_has_key (method)">map-has-key($map, $key)</a><br>
+Returns whether a map has a value associated with a given key.</p>
+      <h4>Elementų gavimas ir keitimas </h4>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method" title="Sass::Script::Functions#map_get (method)">map-get($map, $key)</a><br>
+        Returns the value in a map associated with a given key.      </p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#map_remove-instance_method" title="Sass::Script::Functions#map_remove (method)">map-remove($map, $keys…)</a><br>
+      Returns a new map with keys removed.</p>
+      <hr>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#map_keys-instance_method" title="Sass::Script::Functions#map_keys (method)">map-keys($map)</a><br>
+      Returns a list of all keys in a map.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#map_values-instance_method" title="Sass::Script::Functions#map_values (method)">map-values($map)<br>
+    </a>Returns a list of all values in a map.      </p>
+      <h4>Sujungimas</h4>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#map_merge-instance_method" title="Sass::Script::Functions#map_merge (method)">map-merge($map1, $map2)<br>
+      </a>Merges two maps together into a new map.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#keywords-instance_method" title="Sass::Script::Functions#keywords (method)">keywords($args)</a> ?????????????<br>
+      Returns the keywords passed to a function that takes variable arguments.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Naudojimo pvz.: </p>
+      <pre><code>$map: (
+  twitter: "twitter.png",
+  facebook: "facebook.png"
+);
+
+@each $network, $image in $map {
+  .icon-#{$network} {
+    background: image-url("icons/#{$image}");
+  }
+}</code></pre>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>List</h3>
+      <p> <a href="https://www.tutorialsteacher.com/sass/sass-list-functions">Sass List Functions</a></p>
+      <p>D:\webdev\konspektas\site\assets\sass.mokykla\data-type.list.scss</p>
+      <p>List'ai yra faktiškai visos reikšmės:</p>
+      <blockquote>
+        <p>Lists are how Sass represents the values of CSS declarations like <code>margin: 10px 15px 0 0</code> or <code>font-face: Helvetica, Arial, sans-serif</code>. Lists are just a series of other values, separated by either spaces or commas. In fact, individual values count as lists, too: they're just lists with one item.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Lists in Sass are immutable; all list functions return a new list rather than updating the existing list in-place.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p><code>$kazkas: ();</code> — an empty list</p>
+      <p>&nbsp;</p>
+      <pre><code>$a: &quot;hello there&quot;  // a list with the single item
+$b: hello there    // a list with two items</code></pre>
+      <p>&nbsp;</p>
+      <p>listas iš vieno elemento, o pats tas elementas yra listas iš dviejų elementų:</p>
+      <pre><code>$kazkas: (vienas antras);</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>kaip padaryti listą liste:</p>
+      <pre><code>$kazkas: vienas du;
+$kazkas: list-append($kazkas, trys keturi);
+$kazkas: list-append($kazkas, penki sesi);
+@debug $kazkas; // vienas du trys keturi penki sesi</code></pre>
+      <pre><code>$kazkas: (vienas du);
+$kazkas: list-append($kazkas, trys keturi);
+$kazkas: list-append($kazkas, penki sesi);
+@debug $kazkas; // vienas du trys keturi penki sesi</code></pre>
+      <pre><code>$kazkas: vienas du<mark>,</mark>;
+$kazkas: list-append($kazkas, trys keturi);
+$kazkas: list-append($kazkas, penki sesi);
+@debug $kazkas;    // vienas du, trys keturi, penki sesi</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <pre><code>$listas: pirmas antras trecias ketvirtas penktas;</code></pre>
+      <p>&nbsp;</p>
+      <h4>Savybių gavimas</h4>
+      <dl>
+        <dt><code>length($list)</code></dt>
+        <dd>
+          <blockquote>
+            <p>Returns the length of a list.          </p>
+          </blockquote>
+          <pre><code>$result: length($listas) // == 5</code>
+        </pre>
+        </dd>
+        <dt><code>list-separator($list)</code></dt>
+        <dd>
+          <blockquote>
+            <p> Returns the separator of a list. </p>
+          </blockquote>
+          <pre><code>list-separator($listas) // == space</code>
+        </pre>
+        </dd>
+        <dt><code>is-bracketed($list)</code></dt>
+        <dd>
+          <blockquote>
+            <p>Returns whether a list has square brackets.</p>
+          </blockquote>
+          <pre><code>is-bracketed($listas)  // == false</code></pre>
+        </dd>
+      </dl>
+      <h4>Elementų gavimas ir keitimas      </h4>
+      <dl>
+        <dt><code>nth($list, $n)</code></dt>
+        <dd>
+          <blockquote>
+            <p>Returns a specific item in a list.</p>
+          </blockquote>
+          <pre><code>// teigiamas skaičius ieško nuo pradžios
+$result: nth($listas, 2); // == antras
+// neigiamas &#8212; nuo pabaigos
+$result: nth($listas, -2); // == ketvirtas</code></pre>
+        </dd>
+        <dt><code>set-nth($list, $n, $value)</code></dt>
+        <dd>
+          <blockquote>
+            <p>Replaces the nth item in a list.</p>
+          </blockquote>
+          <pre><code>$result: set_nth($listas, 2, NAUJAS); // == (pirmas NAUJAS trecias ketvirtas penktas)</code>
+        </pre>
+        </dd>
+      </dl>
+      <h4>Paieška      </h4>
+      <dl>
+        <dt><code>index($list, $value)</code></dt>
+        <dd>
+          <blockquote>
+            <p>Returns the position of a value within a list.</p>
+          </blockquote>
+          <pre><code>$result: index($listas, antras); // == 2</code>
+        </pre>
+        </dd>
+      </dl>
+      <h4>Naujų elementų pridėjimas</h4>
+      <p><code>append($list1, $val, [$separator])</code><br>
+      Appends a single value onto the end of a list.</p>
+      <h4>Sujungimas</h4>
+      <p><code>join($list1, $list2, [$separator, $bracketed])</code><br>
+      Joins together two lists into one.      </p>
+      <p><code>zip($lists...)</code><br>
+      Combines several lists into a single multidimensional list.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><a href="http://hugogiraudel.com/2013/07/15/understanding-sass-lists/">http://hugogiraudel.com/2013/07/15/understanding-sass-lists/</a></p>
+      <p>In Sass, a list is the equivalent to an array in other languages. A value that happens to have listas a type (checked with the <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#type_of-instance_method">type-of</a> function) is a collection of several values that have a specific type (number, string, bool, color, list, map or null).</p>
+      <p>http://sass-lang.com/documentation/Sass/Script/Functions.html#type_of-instance_method</p>
+      <pre><code>type-of(100px)  = number
+type-of(asdf)   = string
+type-of("asdf") = string
+type-of(true)   = bool
+type-of(#fff)   = color
+type-of(blue)   = color</code></pre>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Reikšmė <code>null</code>      </h3>
+      <p>Deklaracijos pašalinimas CSS output'e priskiriant <code>null</code>:</p>
+      <pre><code>@mixin alertas( $fs: 3px, $color: red) {
+  font-size: $fs;
+  color: $color;
+}
+
+.boxas-svarbu {
+  @include alertas(null, yellow);
+}</code></pre>
+      <pre><code>.boxas-svarbu {
+  color: yellow;
+}</code>
+      </pre>
+      <p>Prieš <code>!default</code> esantis <code>null</code> palieka galioti default'inę reikšmę:</p>
+      <pre><code>$content: null;
+$content: "defaultas" !default;
+
+.tas {
+  color: red;
+  content: $content;
+}</code></pre>
+      <pre><code>.tas {
+  color: red;
+  content: "defaultas";
+}</code></pre>
+      <p>O po <code>!default</code> — priskiriamas <code>null</code>:</p>
+      <pre><code>$content: "defaultas" !default;
+$content: null;
+
+.tas {
+  color: red;
+  content: $content;
+}</code></pre>
+      <pre><code>.tas {
+  color: red;
+}</code>
+      </pre>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Skaičiai (number)</h3>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#percentage-instance_method" title="Sass::Script::Functions#percentage (method)">percentage($number)</a><br>
+      Converts a unitless number to a percentage.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#round-instance_method" title="Sass::Script::Functions#round (method)">round($number)</a><br>
+      Rounds a number to the nearest whole number.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#ceil-instance_method" title="Sass::Script::Functions#ceil (method)">ceil($number)</a><br>Rounds a number up to the next whole number.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#floor-instance_method" title="Sass::Script::Functions#floor (method)">floor($number)</a><br>Rounds a number down to the previous whole number.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#abs-instance_method" title="Sass::Script::Functions#abs (method)">abs($number)</a><br>Returns the absolute value of a number.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#min-instance_method" title="Sass::Script::Functions#min (method)">min($numbers…)</a><br>Finds the minimum of several numbers.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#max-instance_method" title="Sass::Script::Functions#max (method)">max($numbers…)</a><br>Finds the maximum of several numbers.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/$limit">random()</a><br>Returns a random number.</p>
+      <p>&nbsp;</p>
+      <p>Introspection Functions</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#unit-instance_method" title="Sass::Script::Functions#unit (method)">unit($number)</a><br>
+      Returns the unit(s) associated with a number.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#unitless-instance_method" title="Sass::Script::Functions#unitless (method)">unitless($number)</a><br>
+      Returns whether a number has units.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#comparable-instance_method" title="Sass::Script::Functions#comparable (method)">comparable($number1, $number2)</a><br>
+      Returns whether two numbers can be added, subtracted, or compared.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Spalvos (color)</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>But what if I <em>really</em> need a specific format?</p>
+        <p>If you absolutely must have a specific format, you can turn it into a string:</p>
+        <pre>$color: #{'#F00'}; // or `unquote('#F00')`
+.foo {
+  color: $color;
+}</pre>
+        <p>Output:</p>
+        <pre>.foo {
+  color: #F00;
+}</pre>
+        <p>Just keep in mind that when you do this, your "color" will not work with color manipulation functions like lighten() or darken().      </p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <hr>
+      <p>## RGB Functions</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#rgb-instance_method" title="Sass::Script::Functions#rgb (method)">rgb($red, $green, $blue)</a> <br>
+      Creates a <a href="https://sass-lang.com/documentation/Sass/Script/Value/Color.html" title="Sass::Script::Value::Color (class)">Color</a> from red, green, and blue values.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#rgba-instance_method" title="Sass::Script::Functions#rgba (method)">rgba($red, $green, $blue, $alpha)</a>  <br>
+      Creates a <a href="https://sass-lang.com/documentation/Sass/Script/Value/Color.html" title="Sass::Script::Value::Color (class)">Color</a> from red, green, blue, and alpha values.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#red-instance_method" title="Sass::Script::Functions#red (method)">red($color)</a>  <br>
+      Gets the red component of a color.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#green-instance_method" title="Sass::Script::Functions#green (method)">green($color)</a><br>
+      Gets the green component of a color.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#blue-instance_method" title="Sass::Script::Functions#blue (method)">blue($color)</a>  <br>
+      Gets the blue component of a color.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#mix-instance_method" title="Sass::Script::Functions#mix (method)">mix($color1, $color2, [$weight])</a>  <br>
+      Mixes two colors together.</p>
+      <hr>
+      <p>## HSL Functions</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#hsl-instance_method" title="Sass::Script::Functions#hsl (method)">hsl($hue, $saturation, $lightness)</a> : <br>
+      Creates a <a href="https://sass-lang.com/documentation/Sass/Script/Value/Color.html" title="Sass::Script::Value::Color (class)">Color</a> from hue, saturation, and lightness values.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#hsla-instance_method" title="Sass::Script::Functions#hsla (method)">hsla($hue, $saturation, $lightness, $alpha)</a> <br>
+      Creates a <a href="https://sass-lang.com/documentation/Sass/Script/Value/Color.html" title="Sass::Script::Value::Color (class)">Color</a> from hue, saturation, lightness, and alpha values.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#hue-instance_method" title="Sass::Script::Functions#hue (method)">hue($color)</a>  <br>
+      Gets the hue component of a color.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#saturation-instance_method" title="Sass::Script::Functions#saturation (method)">saturation($color)</a><br>
+      Gets the saturation component of a color.      </p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#lightness-instance_method" title="Sass::Script::Functions#lightness (method)">lightness($color)</a>  <br>
+      Gets the lightness component of a color.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#adjust_hue-instance_method" title="Sass::Script::Functions#adjust_hue (method)">adjust-hue($color, $degrees)</a> <br>
+      Changes the hue of a color.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#lighten-instance_method" title="Sass::Script::Functions#lighten (method)">lighten($color, $amount)</a> <br>
+      Makes a color lighter.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#darken-instance_method" title="Sass::Script::Functions#darken (method)">darken($color, $amount)</a> <br>
+      Makes a color darker.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#saturate-instance_method" title="Sass::Script::Functions#saturate (method)">saturate($color, $amount)</a><br>
+      Makes a color more saturated.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#desaturate-instance_method" title="Sass::Script::Functions#desaturate (method)">desaturate($color, $amount)</a> <br>
+      Makes a color less saturated.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#grayscale-instance_method" title="Sass::Script::Functions#grayscale (method)">grayscale($color)</a> <br>
+      Converts a color to grayscale.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#complement-instance_method" title="Sass::Script::Functions#complement (method)">complement($color)</a> <br>
+      Returns the complement of a color.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#invert-instance_method" title="Sass::Script::Functions#invert (method)">invert($color, [$weight])</a> <br>
+      Returns the inverse of a color.</p>
+      <hr>
+      <p>## Opacity Functions</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#alpha-instance_method" title="Sass::Script::Functions#alpha (method)">alpha($color)</a> / <a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#opacity-instance_method" title="Sass::Script::Functions#opacity (method)">opacity($color)</a> : Gets the alpha component (opacity) of a color.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#rgba-instance_method" title="Sass::Script::Functions#rgba (method)">rgba($color, $alpha)</a> : Changes the alpha component for a color.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#opacify-instance_method" title="Sass::Script::Functions#opacify (method)">opacify($color, $amount)</a> / <a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#fade_in-instance_method" title="Sass::Script::Functions#fade_in (method)">fade-in($color, $amount)</a> : Makes a color more opaque.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#transparentize-instance_method" title="Sass::Script::Functions#transparentize (method)">transparentize($color, $amount)</a> / <a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#fade_out-instance_method" title="Sass::Script::Functions#fade_out (method)">fade-out($color, $amount)</a> : Makes a color more transparent.</p>
+      <hr>
+      <p>## Other Color Functions</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#adjust_color-instance_method" title="Sass::Script::Functions#adjust_color (method)">adjust-color($color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha])</a> : Increases or decreases one or more components of a color.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#scale_color-instance_method" title="Sass::Script::Functions#scale_color (method)">scale-color($color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha])</a> : Fluidly scales one or more properties of a color.</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#change_color-instance_method" title="Sass::Script::Functions#change_color (method)">change-color($color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha])</a> : Changes one or more properties of a color.</p>
+      <p>&nbsp;</p>
+      <p><a href="https://sass-lang.com/documentation/Sass/Script/Functions.html#ie_hex_str-instance_method" title="Sass::Script::Functions#ie_hex_str (method)">ie-hex-str($color)</a> : Converts a color into the format understood by IE filters.    </p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>aaa</p>
+<table width="1883" class="c-tableCols-grid--h3h4LikeTable u-table-equelCols">
+	<tr>
+		<td width="25%">
+	  <h3>&nbsp;</h3></td>
+		<td width="25%">
+	  <p>&nbsp;</p></td>
+		<td width="25%">
+		  <p>&nbsp;</p>
+		</td>
+		<td width="25%">
+		  <p>&nbsp;</p>
+		</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<figure class="-c-figure -c-figure--shadow -figure--dashedTB figure--code">
+  <div class="c-figure__content">
+    <pre><code class="scss">$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}</code></pre>
+    <pre><code>body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}</code></pre>
+  </div>
+  <figcaption>Paprasčiausias naudojimas</figcaption>
+</figure>
+<p>&nbsp;</p>
+<table width="1037" class="Tag-Code -c-table-linesGrid -u-table-equelCols">
+	<tr>
+		<td width="44%">&nbsp;</td>
+		<td width="56%"><p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,91 @@
+@charset "UTF-8";
+:root {
+  --bgimgurl-svgtxt-peilis: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">🔪</div></foreignObject></svg>');
+  --bgimgurl-svgtxt-hammerWrench: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">🛠</div></foreignObject></svg>');
+  --bgimgurl-svgtxt-zirkles: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">✂</div></foreignObject></svg>');
+  --bgimgurl-svgtxt-taikliai: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">🎯</div></foreignObject></svg>');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+  font: 800 130% system-ui, sans-serif;
+  height: 100vh;
+  margin: 0;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.page-wrap {
+  background: white;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: minmax(10px, 1fr) minmax(10px, 3fr);
+  grid-template-rows: min-content min-content 1fr min-content;
+  height: calc(100vh - 10px);
+}
+.page-wrap > * {
+  padding: 1rem;
+  text-align: center;
+}
+.page-wrap > *:nth-child(5n+1) {
+  background-color: #ff575c;
+}
+.page-wrap > *:nth-child(5n+2) {
+  background-color: #ffca38;
+}
+.page-wrap > *:nth-child(5n+3) {
+  background-color: #8bc926;
+}
+.page-wrap > *:nth-child(5n+4) {
+  background-color: #1981c2;
+}
+.page-wrap > *:nth-child(5n+5) {
+  background-color: #6a4c94;
+}
+@media (max-width: 600px) {
+  .page-wrap {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+  .page-wrap > * {
+    grid-column: 1/-1 !important;
+    grid-row: auto !important;
+  }
+}
+
+.page-header {
+  background: #ffcdd2;
+  grid-column: 1/-1;
+}
+
+.page-sidebar {
+  background: #e1bee7;
+  grid-column: 1/2;
+  grid-row: 2/4;
+}
+
+.page-nav {
+  background: #bbdefb;
+  grid-column: 2/3;
+}
+
+.page-main {
+  background: #dcedc8;
+  grid-column: 2/3;
+}
+
+.page-footer {
+  background: #ffecb3;
+  grid-column: 1/-1;
+}
+
+details p {
+  text-align: left;
+  text-transform: none;
+}
+
+/*# sourceMappingURL=~page-layout.the-holy-grail-layout.css-tricks.css.map */

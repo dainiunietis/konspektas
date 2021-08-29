@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Flexbox - Flexible Box Layout || CSS savybės-deklaracijos (CSS properties)</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>HSL</h1>
+<ul>
+  <li><a href="http://dev.w3.org/csswg/css-color/#the-hsl-notation">W3: HSL Colors</a>, <a href="https://www.w3.org/TR/css3-color/#hsl-color">https://www.w3.org/TR/css3-color/#hsl-color</a></li>
+  <li><a href="http://hslpicker.com/">HSL Color Picker</a>, http://mothereffinghsl.com &#8212; HSL picker'iai</li>
+  <li><a href="http://demosthenes.info/blog/61/An-Easy-Guide-To-HSL-Color-In-CSS3">An Easy Guide To HSL Color In CSS3</a></li>
+  <li><a href="http://demosthenes.info/blog/576/Three-Ways-You-Should-Be-Using-HSL-Color-In-Your-Site-Today">Three Ways You Should Be Using HSL Color In Your Site Today</a></li>
+  <li><a href="http://dev.opera.com/articles/view/color-in-opera-10-hsl-rgb-and-alpha-transparency/">Color in Opera 10 — HSL, RGB and Alpha Transparency</a></li>
+  <li><a href="http://itpastorn.github.io/webbteknik/future-stuff/svg/color-wheel.html">HSL Color Wheel Demo</a></li>
+  <li><a href="http://mothereffinghsl.com/">Paul Irish's Mother-effing HSL</a></li>
+  <li><a href="http://www.useragentman.com/blog/2010/08/28/coding-colors-easily-using-css3-hsl-notation/">Coding Colors Easily Using CSS3 hsl() Notation</a></li>
+  <li><a href="http://www.youtube.com/watch?v=IdSsSaTU4lk">Treehouse Quick Tip: HSLa Color Values in CSS</a></li>
+  <li><a href="http://tallys.github.io/color-theory/">http://tallys.github.io/color-theory/</a></li>
+</ul>
+<p>&nbsp;</p>
+<p><img src="images/color-circle.png" alt=""/> <img src="images/hsl-color-wheel.png" alt=""/></p>
+<p>&nbsp;</p>
+<p><code>hsl(&lt;Hue&gt;, &lt;Saturation&gt;, &lt;Lightness&gt;)</code></p>
+<p><code>hsl(0-360, 0-100%, 0-100%)</code></p>
+<p>Hue</p>
+<p>Saturation</p>
+<p> Lightness (or Luminance)</p>
+<p>&nbsp;</p>
+<blockquote>
+  <ul>
+    <li><strong>Hue</strong> - Think of a color wheel. Around 0o and 360o are reds 120oare greens, 240o are blues. Use anything in between 0-360. Values above and below will be modulus 360.</li>
+    <li><strong>Saturation</strong> - 0% is completely denatured (grayscale). 100% is fully saturated (full color).</li>
+    <li><strong>Lightness</strong> - 0% is completely dark (black). 100% is completely light (white). 50% is average lightness.</li>
+    <li><strong>alpha</strong> - Opacity/Transparency value. 0 is fully transparent. 1 is fully opaque. 0.5 is 50% transparent.</li>
+  </ul>
+</blockquote>
+<p>&nbsp;</p>
+<table width="741" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="10%" style="background-color: hsl(240,100%,50%)">&nbsp;</td>
+    <td width="90%"><p><code>hsl(240,100%,50%)</code></p>
+      <p>&nbsp;</p>
+      <p>S=100% &#8212; full saturation</p>
+    <p>L=50% &#8212;     half lightness</p></td>
+  </tr>
+  <tr>
+    <td style="background-color: hsl(240,100%,50%)">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

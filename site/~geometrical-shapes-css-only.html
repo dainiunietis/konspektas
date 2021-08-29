@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  <style>
+    :root {
+      --shapeClr: hsl(237, 69%, 47%);
+    }
+    .pvs {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pvz-bg {
+      background: var(--shapeClr);
+    }
+  </style>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>pavadinimas</h1>
+<p><a href="https://css-tricks.com/the-shapes-of-css/">The Shapes of CSS | CSS-Tricks</a></p>
+<h2>Elementarios-bazinės geometrinės figūros / Basic geometrical shapes</h2>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw1 WNNCc hx--small-d">
+  <div>
+    <h3>Stačiakampis / Rectangle</h3>
+    <div style="width: 200px; height: 100px" class="pvz pvz-bg"></div>
+  </div>
+  <div>
+    <h3>Kvadratas / Square</h3>
+    <div style="width: 100px; height: 100px" class="pvz pvz-bg"></div>
+  </div>
+  <div>
+    <style>
+      .shape-diamondSquare {
+        width: 0;
+        height: 0;
+        border: 50px solid transparent;
+        border-bottom-color: var(--shapeClr);
+        position: relative;
+        top: -50px;
+      }
+      .shape-diamondSquare:after {
+        content: '';
+        position: absolute;
+        left: -50px;
+        top: 50px;
+        width: 0;
+        height: 0;
+        border: 50px solid transparent;
+        border-top-color: var(--shapeClr);
+      }
+    </style>
+    <h3>Diamond Square</h3>
+    <p><a href="http://josephsilber.com/">via Joseph Silber</a></p>
+    <div style="" class="shape-diamondSquare pvz pvz -pvz-bg"></div>
+  </div>
+  <div>
+    <h3>Apskritimas / Circle</h3>
+    <div style="width: 100px; height: 100px; border-radius: 50%" class="pvz pvz-bg"></div>
+  </div>
+  <div>
+    <h3>Oval</h3>
+    <div style="width: 200px; height: 100px; border-radius: 50%" class="pvz pvz-bg"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Up</h3>
+    <div style="width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Down</h3>
+    <div style="width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Left</h3>
+    <div style="width: 0; height: 0; border-top: 50px solid transparent; border-bottom: 50px solid transparent; border-right: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Right</h3>
+    <div style="width: 0; height: 0; border-top: 50px solid transparent; border-bottom: 50px solid transparent; border-left: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Top Left</h3>
+    <div style="width: 0; height: 0; border-right: 100px solid transparent; border-top: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Top Right</h3>
+    <div style="width: 0; height: 0; border-left: 100px solid transparent; border-top: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Bottom Left</h3>
+    <div style="width: 0; height: 0; border-right: 100px solid transparent; border-bottom: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trikampis / Triangle Bottom Right</h3>
+    <div style="width: 0; height: 0; border-left: 100px solid transparent; border-bottom: 100px solid var(--shapeClr)" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Trapezoid</h3>
+    <div style="border-bottom: 50px solid var(--shapeClr); border-left: 25px solid transparent; border-right: 25px solid transparent; height: 0; width: 100px;" class="pvz"></div>
+  </div>
+  <div>
+    <h3>Parallelogram</h3>
+    <div style="width: 150px; height: 100px; transform: skew(20deg)" class="pvz pvz-bg"></div>
+  </div>
+  <div>
+    <style>
+      .shape-pentagon {
+        position: relative;
+        width: 54px;
+        box-sizing: content-box;
+        border-width: 50px 18px 0;
+        border-style: solid;
+        border-color: var(--shapeClr) transparent;
+      }
+      .shape-pentagon:before {
+        content: "";
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: -85px;
+        left: -18px;
+        border-width: 0 45px 35px;
+        border-style: solid;
+        border-color: transparent transparent var(--shapeClr);
+      }
+    </style>
+    <h3>Pentagon</h3>
+    <div style="margin-top: 1.5em" class="shape-pentagon pvz -pvz-bg"></div>
+  </div>
+  <div>
+    <style>
+      .shape-hexagon {
+        width: 100px;
+        height: 55px;
+        background: var(--shapeClr);
+        position: relative;
+      }
+      .shape-hexagon:before {
+        content: "";
+        position: absolute;
+        top: -25px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 25px solid var(--shapeClr);
+      }
+      .shape-hexagon:after {
+        content: "";
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 25px solid var(--shapeClr);
+      }
+    </style>
+    <h3>Hexagon</h3>
+    <div style="margin-top: 1em" class="shape-hexagon pvz -pvz-bg"></div>
+  </div>
+  <div>
+    <style>
+      .shape-octagon {
+        width: 100px;
+        height: 100px;
+        background: var(--shapeClr);
+        position: relative;
+      }
+      .shape-octagon:before {
+        content: "";
+        width: 100px;
+        height: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom: 29px solid var(--shapeClr);
+        border-left: 29px solid white;
+        border-right: 29px solid white;
+      }
+      .shape-octagon:after {
+        content: "";
+        width: 100px;
+        height: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-top: 29px solid var(--shapeClr);
+        border-left: 29px solid white;
+        border-right: 29px solid white;
+      }
+    </style>
+    <h3>Octagon</h3>
+    <div style="-margin-top: 1em" class="shape-octagon pvz -pvz-bg"></div>
+  </div>
+</div>
+<h2>Žvaigždės / Stars</h2>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw1 WNNCc hx--small-d">
+  <div>
+    <style>
+      #star-six {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid var(--shapeClr);
+        position: relative;
+      }
+      #star-six:after {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 100px solid var(--shapeClr);
+        position: absolute;
+        content: "";
+        top: 30px;
+        left: -50px;
+      }
+    </style>
+    <h3>Star (6-points)</h3>
+    <div id="star-six" style="margin-bottom: 2em;" class="pvz"></div>
+  </div>
+</div>
+<h2>Sudėtiniai</h2>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw1 WNNCc hx--small-d">
+  <div>
+    <style>
+      #curvedarrow {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-top: 9px solid transparent;
+        border-right: 9px solid var(--shapeClr);
+        transform: rotate(10deg);
+      }
+      #curvedarrow:after {
+        content: "";
+        position: absolute;
+        border: 0 solid transparent;
+        border-top: 3px solid var(--shapeClr);
+        border-radius: 20px 0 0 0;
+        top: -12px;
+        left: -9px;
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+      }
+    </style>
+    <h3>Curved Tail Arrow</h3>
+    <p><a href="https://about.me/fwd">via Ando Razafimandimby</a></p>
+    <div id="curvedarrow" style="" class="pvz"></div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

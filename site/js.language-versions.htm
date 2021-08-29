@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>JavaScript versijos</h1>
+<h2>ECMAScript standarto versijos</h2>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed">
+  <div>
+    <p>Apie ECMAScript ir JavaScript:</p>
+    <blockquote>
+      <p>ECMAScript	(also	called ES) is the name of the	JavaScript standard. JavaScript	is an implementation of that standard.</p>
+    </blockquote>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Edition</th>
+          <th align="center">Official name</th>
+          <th align="right">Date published</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ES10</td>
+          <td align="center"><a href="https://flaviocopes.com/es2019/">ES2019</a></td>
+          <td align="right">Summer 2019</td>
+        </tr>
+        <tr>
+          <td>ES9</td>
+          <td align="center"><a href="https://flaviocopes.com/es2018/">ES2018</a></td>
+          <td align="right">June 2018</td>
+        </tr>
+        <tr>
+          <td>ES8</td>
+          <td align="center"><a href="https://flaviocopes.com/es2017/">ES2017</a></td>
+          <td align="right">June 2017</td>
+        </tr>
+        <tr>
+          <td>ES7</td>
+          <td align="center"><a href="https://flaviocopes.com/es2016/">ES2016</a></td>
+          <td align="right">June 2016</td>
+        </tr>
+        <tr>
+          <td><a href="https://flaviocopes.com/es6/">ES6</a></td>
+          <td align="center">ES2015</td>
+          <td align="right">June 2015</td>
+        </tr>
+        <tr>
+          <td>ES5.1</td>
+          <td align="center">ES5.1</td>
+          <td align="right">June 2011</td>
+        </tr>
+        <tr>
+          <td>ES5</td>
+          <td align="center">ES5</td>
+          <td align="right">December 2009</td>
+        </tr>
+        <tr>
+          <td>ES4</td>
+          <td align="center">ES4</td>
+          <td align="right">Abandoned</td>
+        </tr>
+        <tr>
+          <td>ES3</td>
+          <td align="center">ES3</td>
+          <td align="right">December 1999</td>
+        </tr>
+        <tr>
+          <td>ES2</td>
+          <td align="center">ES2</td>
+          <td align="right">June 1998</td>
+        </tr>
+        <tr>
+          <td>ES1</td>
+          <td align="center">ES1</td>
+          <td align="right">June 1997</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p> <a href="https://exploringjs.com/impatient-js/ch_history.html#timeline-of-ecmascript-versions">3.3 Timeline of ECMAScript versions • History and evolution of JavaScript • JavaScript for impatient programmers (ES2020 edition)</a></p>
+      <p>This is a brief timeline of ECMAScript versions:</p>
+      <ul>
+        <li>ECMAScript 1 (June 1997): First version of the standard.</li>
+        <li>ECMAScript 2 (June 1998): Small update to keep ECMA-262 in sync with the ISO standard.</li>
+        <li>ECMAScript 3 (December 1999): Adds many core features – "[…] regular expressions, better string handling, new control statements [do-while, switch], try/catch exception handling, […]"</li>
+        <li>ECMAScript 4 (abandoned in July 2008): Would have been a massive upgrade (with static typing, modules, namespaces, and more), but ended up being too ambitious and dividing the language's stewards.</li>
+        <li>ECMAScript 5 (December 2009): Brought minor improvements – a few standard library features and <a href="https://exploringjs.com/impatient-js/ch_syntax.html#strict-mode"><em>strict mode</em></a>.</li>
+        <li>ECMAScript 5.1 (June 2011): Another small update to keep Ecma and ISO standards in sync.</li>
+        <li>ECMAScript 6 (June 2015): A large update that fulfilled many of the promises of ECMAScript 4. This version is the first one whose official name – <em>ECMAScript 2015</em> – is based on the year of publication.</li>
+        <li>ECMAScript 2016 (June 2016): First yearly release. The shorter release life cycle resulted in fewer new features compared to the large ES6.</li>
+        <li>ECMAScript 2017 (June 2017). Second yearly release.</li>
+        <li>Subsequent ECMAScript versions (ES2018, etc.) are always ratified in June.</li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Kokią JS versiją pasirinkti konkrečiam projektui?</h2>
+<p> <a href="https://en.wikipedia.org/wiki/ECMAScript">ECMAScript - Wikipedia</a></p>
+<p> Naudoti ES6
+  (ECMAScript 2015):</p>
+<blockquote>
+  <p>ES6 is simply javascript. It's the current standard, though the board that oversees ECMAscript (which is simply the formal-ish name of javascript) are constantly revising and updating the various releases and drafts.</p>
+  <p>But if you are asking if that's something you need to know "for the test", then my answer would be "heck yes."</p>
+  <p>ES6 introduced a <em>lot</em> of higher-order functions to javascript. When we do things like Array.map(...), that's an ES6 feature. When we do Array.every(...) we are using ES6. You'll learn about "fat-arrow functions", which are being used <em>everywhere</em> now… thanks to ES6.</p>
+  <p>Javascript is in a constant state of evolution, sure, but the changes rolled in with ES6 are fundamental to modern, thoughtful javascript.</p>
+  <p>And the question I gotta ask… "find a new version": are you planning to write your own browser to support the latest pre-release drafts?</p>
+  <p>The version of the javascript spec that you write to depends entirely on what browser you're working for or with. We don't code (most of us, anyway) to support the Mosaic browser, or the earliest versions of Netscape/IE. "modern browsers" all work to a standard spec, and right now, it's ES6. Some support newer features, as new drafts are being developed, but the <em>standard</em> is what it is.</p>
+</blockquote>
+<h2>JS versijų suderinamumas (backward compatibility)</h2>
+<p> <a href="https://exploringjs.com/impatient-js/ch_history.html#backward-compatibility">3.7 Evolving JavaScript: Don't break the web • History and evolution of JavaScript • JavaScript for impatient programmers (ES2020 edition)</a></p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed">
+  <div>
+    <p>Jeigu naujos JS versijos nelaikytų suderinamumo su ankstesnėmis:</p>
+    <blockquote>
+      <p>One idea that occasionally comes up is to clean up JavaScript by removing old features and quirks. While the appeal of that idea is obvious, it has significant downsides.</p>
+      <p>Let's assume we create a new version of JavaScript that is not backward compatible and fix all of its flaws. As a result, we'd encounter the following problems:</p>
+      <ul>
+        <li>JavaScript engines become bloated: they need to support both the old and the new version. The same is true for tools such as IDEs and build tools.</li>
+        <li>Programmers need to know, and be continually conscious of, the differences between the versions.</li>
+        <li>You can either migrate all of an existing code base to the new version (which can be a lot of work). Or you can mix versions and refactoring becomes harder because you can't move code between versions without changing it.</li>
+        <li>You somehow have to specify per piece of code – be it a file or code embedded in a web page – what version it is written in. Every conceivable solution has pros and cons. For example, <a href="https://exploringjs.com/impatient-js/ch_syntax.html#strict-mode"><em>strict mode</em></a> is a slightly cleaner version of ES5. One of the reasons why it wasn't as popular as it should have been: it was a hassle to opt in via a directive at the beginning of a file or a function.</li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>Bet yra išlaikomas senesnių versijų palaikymas:</p>
+    <blockquote>
+      <p>The approach that was chosen for ES6 is called "One JavaScript":</p>
+      <ul>
+        <li>New versions are always completely backward compatible (but there may occasionally be minor, hardly noticeable clean-ups).</li>
+        <li>Old features aren't removed or fixed. Instead, better versions of them are introduced. One example is declaring variables via let – which is an improved version of var.</li>
+        <li>If aspects of the language are changed, it is done inside new syntactic constructs. That is, you opt in implicitly. For example, yield is only a keyword inside generators (which were introduced in ES6). And all code inside modules and classes (both introduced in ES6) is implicitly in strict mode.</li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>JS kalbos konstrukcijų palaikymas skirtingose JS versijose</h2>
+  <blockquote>
+    <p><a href="https://exploringjs.com/impatient-js/ch_faq-language.html#how-do-i-find-out-what-javascript-features-are-supported-where">4.2 How do I find out what JavaScript features are supported where? • FAQ: JavaScript • JavaScript for impatient programmers (ES2020 edition)</a></p>
+    <p>This book usually mentions if a feature is part of ECMAScript 5 (as required by older browsers) or a newer version. For more detailed information (including pre-ES5 versions), there are several good compatibility tables available online:</p>
+    <ul>
+      <li><a href="http://kangax.github.io/compat-table/es5/">ECMAScript compatibility tables for various engines</a> (by <a href="https://twitter.com/kangax">kangax</a>, <a href="https://twitter.com/webbedspace">webbedspace</a>, <a href="https://twitter.com/zloirock">zloirock</a>)</li>
+      <li><a href="https://node.green/">Node.js compatibility tables</a> (by <a href="https://twitter.com/williamkapke">William Kapke</a>)</li>
+      <li>Mozilla's <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN web docs</a> have tables for each feature that describe relevant ECMAScript versions and browser support.</li>
+      <li><a href="https://caniuse.com/">"Can I use…"</a> documents what features (including JavaScript language features) are supported by web browsers.</li>
+    </ul>
+  </blockquote>
+  <h2>directive &quot;use strict&quot; — įjungia &quot;the modern mode&quot;</h2>
+  <div class="o-gfx o-gfx--W1 o-gfx--boxed">
+    <div>
+      <p><a href="https://javascript.info/strict-mode">The modern mode, "use strict"</a></p>
+      <p>Skirta, kad nebenaudoti senesnių JS versijų konsktrukcijų, kurios pašalintos ar pakeistos naujausiose JS versijose:</p>
+      <blockquote>
+        <p>For a long time, JavaScript evolved without compatibility issues. New features were added to the language while old functionality didn't change.</p>
+        <p>That had the benefit of never breaking existing code. But the downside was that any mistake or an imperfect decision made by JavaScript's creators got stuck in the language forever.</p>
+      </blockquote>
+      <p>Pradėta naudoti ECMAScript 5 (ES5): </p>
+      <blockquote>
+        <p>This was the case until 2009 when ECMAScript 5 (ES5) appeared. It added new features to the language and modified some of the existing ones. To keep the old code working, most such modifications are off by default. You need to explicitly enable them with a special directive: "use strict". </p>
+      </blockquote>
+    </div>
+    <div>
+      <div class="c-em-note c-em--small c-em--narrow">
+        <p>Automatiškai &quot;modern mode&quot; įjungiamas</p>
+        <blockquote>
+          <p>Modern JavaScript supports "classes" and "modules" – advanced language structures (we'll surely get to them), that enable use strict automatically. So we don't need to add the "use strict" directive, if we use them.</p>
+        </blockquote>
+      </div>
+      <p><code>&quot;use strict&quot;</code> visada turi būti kodo pradžioje ir gali būti: </p>
+      <dl>
+        <dt>JS faile — &quot;modern mode&quot; bus naudojamas visame faile:</dt>
+        <dd>
+          <pre><code>&quot;use strict&quot;
+...</code></pre>
+        </dd>
+        <dt>HTML failo <code>&lt;script&gt;</code> tage — &quot;modern mode&quot; bus naudojamas tik tame tage:</dt>
+        <dd>
+          <pre><code>&lt;script&gt;
+&quot;use strict&quot;;
+...
+&lt;script&gt;</code></pre>
+        </dd>
+        <dt>Funkcijoje — &quot;modern mode&quot; bus naudojamas tik toje funkcijoje:</dt>
+        <dd>
+          <pre><code>function kažkas() {
+  &quot;use strict&quot;
+  ...
+}</code></pre>
+        </dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Naudojimas devtools console'ėje</h3>
+      <p>Default'iškai devtools console'ėje vykdant JS kodą nenaudojamas &quot;modern mode&quot;:</p>
+      <blockquote>
+        <p>When you use a developer console to run code, please note that it doesn't use strict by default.</p>
+      </blockquote>
+      <p>Devtools console'ėje reikia su <kbd>Shift</kbd>+<kbd>Enter</kbd> pradžioje įvesti <code>'use strict';</code>, o tada JS kodą:</p>
+      <pre><code>'use strict'; &lt;Shift+Enter for a newline&gt;
+//  ...your code
+&lt;Enter to run&gt;</code></pre>
+      <p>Senesnėse naršyklėse:</p>
+      <blockquote>
+        <p>If it doesn't, e.g. in an old browser, there's an ugly, but reliable way to ensure use strict. Put it inside this kind of wrapper:</p>
+        <pre><code>(function() {
+  'use strict';
+  // ...your code here...
+})()</code></pre>
+      </blockquote>
+      <p>&nbsp;</p>
+    </div>
+    <div>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

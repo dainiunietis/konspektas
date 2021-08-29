@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  <script>
+    // $(() => document.getElementsByTagName('body')[0].className = "hr--dotted-c");
+    $(() => document.getElementsByTagName('body')[0].className = "hr--dashed-c");
+    // $(function() {
+    //   document.getElementsByTagName('body')[0].className = "hr--dotted-c";
+    // });
+  </script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1><code>.o-gfx</code> — flexbox'inis grid'as, kurio gutter'iai padaryti su <code>gap:</code></h1>
+
+<h2>Default'as</h2>
+<h3><code>class=&quot;o-gfx&quot;</code></h3>
+<dl>
+  <dt>flex container: </dt>
+  <dd>
+    <p><code>flex-flow: wrap;</code></p>
+  </dd>
+  <dt>flex item:</dt>
+  <dd>
+    <p><code>flex:      1 1 0px;<br>
+min-width: min-content;<br>
+width:     auto;</code></p>
+  </dd>
+</dl>
+<div class="o-gfx u-spvm B161c">
+  <div>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </div>
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</div>
+  <div>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</div>
+</div>
+<hr>
+<div class="o-gfx u-spvm B161c">
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</div>
+  <div>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</div>
+  <div>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</div>
+</div>
+
+<h2>Flex item'ai su <code>width: max-content</code></h2>
+<h3><code>class=&quot;o-gfx o-gfx--mxcntShrink&quot;</code> — default'inis flex item'ų veikimas</h3>
+<div class="o-gfx o-gfx--mxcntShrink u-spvm B161c">
+  <div>Apsakymas – tai nedidelės apimties <br>
+  epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </div>
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</div>
+  <div>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</div>
+</div>
+<hr>
+<div class="o-gfx o-gfx--mxcntShrink u-spvm B161c">
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</div>
+  <div>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</div>
+  <div>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</div>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--mxcntFix&quot;</code></h3>
+<p><strong>Gali toks būti, bet ar reikia?</strong> flex item:<br>
+  <code>width: max-content;<br>
+flex: 0 0;</code></p>
+<h3><code>class=&quot;o-gfx o-gfx--mxcntGrow&quot;</code></h3>
+<div class="c-em-note c-em--narrow">
+  <p>flex item'ą:</p>
+  <ul>
+    <li><strong>Didina</strong> — kai jam nustačius <code>width: max-content</code> dar yra laisvos vietos flex container'yje.</li>
+    <li><strong>Perkelia į kitą eilutę</strong> — antrą ar dar kitą flex item'ą, kurio <code>width: max-content</code> netelpa flex container'yje.</li>
+    <li><strong>Nemažina</strong> — jo <code>width: max-content</code>.</li>
+  </ul>
+</div>
+<div class="o-gfx o-gfx--mxcntGrow u-spvm B161c">
+  <div>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </div>
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</div>
+  <div>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </div>
+  <div>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </div>
+  <div>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</div>
+</div>
+<hr>
+<div class="o-gfx o-gfx--mxcntGrow u-spvm B161c">
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</div>
+  <div>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</div>
+  <div>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</div>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--mxcntScale&quot;</code></h3>
+<div class="c-em-note c-em--narrow">
+  <p>flex item'ą:</p>
+  <ul>
+    <li><strong>Mažina</strong> — tik kai jo <code>width: max-content</code> netelpa į flex container'į.</li>
+    <li><strong>Didina</strong> — kai jam nustačius <code>width: max-content</code> dar yra laisvos vietos flex container'yje.</li>
+    <li><strong>Perkelia į kitą eilutę</strong> — antrą ar dar kitą flex item'ą, kurio <code>width: max-content</code> netelpa flex container'yje.</li>
+  </ul>
+</div>
+<div class="o-gfx o-gfx--mxcntScale u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--mxcntScale u-spvm B161c M0c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h2>Flex item'ai su <code>width: min-content</code></h2>
+
+<h3><code>class=&quot;o-gfx o-gfx--mncntFix&quot;</code></h3>
+<p><strong>gali toks būti, bet ar reikia?</strong> flex item:<br>
+  <code>width: min-content;<br>
+flex: 0 0 auto;</code></p>
+
+<h3><code>class=&quot;o-gfx o-gfx--mncntGrow&quot;</code></h3>
+<div class="o-gfx o-gfx--mncntGrow u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymassssssssssssssssssssssssssssssssssssssssssssssssssssss – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-grd o-grd--spcVer o-flx o-flx--minContentGrow B161c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h2>Stulpelių skaičiaus reguliavimas — nustatant minimalų stulpelių plotį</h2>
+
+<h3><code>class=&quot;o-gfx o-gfx--W1&quot;</code></h3>
+<!--<p class="B321 W15em">width: 15em</p>-->
+<div class="d-ruler d-ruler--guide-right d-ruler--guide-200px" style="width: 15em">15em</div>
+<div class="o-gfx o-gfx--W1 u-spvm B161c M0c">
+  <p>incididunt ut labore et dolore magna aliqua</p>
+  <p>reprehenderit in voluptate velit esse</p>
+  <p>lobortis feugiat vivamus</p>
+  <p>arcu cursus vitae congue mauris rhoncus aenean</p>
+  <p>parturient montes nascetur ridiculus</p>
+  <p>scelerisque mauris pellentesque pulvinar</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--W1 u-spvm B161c M0c">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+  <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+  <p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--W2&quot;</code></h3>
+<p class="B321 W20em">width: 20em</p>
+<div class="o-gfx o-gfx--W2 u-spvm B161c M0c">
+  <p>incididunt ut labore et dolore magna aliqua</p>
+  <p>reprehenderit in voluptate velit esse</p>
+  <p>lobortis feugiat vivamus</p>
+  <p>arcu cursus vitae congue mauris rhoncus aenean</p>
+  <p>parturient montes nascetur ridiculus</p>
+  <p>scelerisque mauris pellentesque pulvinar</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--W2 u-spvm B161c M0c">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+  <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+  <p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--W3&quot;</code></h3>
+<p class="B321 W25em">width: 25em</p>
+<div class="o-gfx o-gfx--W3 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--W3 u-spvm B161c M0c">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+  <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+  <p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--W4&quot;</code></h3>
+<p class="B321 W30em">width: 30em</p>
+<div class="o-gfx o-gfx--W4 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--W4 u-spvm B161c M0c">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+  <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+  <p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--W5&quot;</code></h3>
+<p class="B321 W35em">width: 35em</p>
+<div class="o-gfx o-gfx--W5 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--W5 u-spvm B161c M0c">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+  <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+  <p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+</div>
+
+<h2>Stulpelių skaičiaus reguliavimas — nustatant fiksuotą stulpelių skaičių</h2>
+
+<h3><code>class=&quot;o-gfx o-gfx--N2&quot;</code></h3>
+<div class="o-gfx o-gfx--N2 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-grd o-grd--spcVer o-flx o-flx--clsn2 B161c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--N3&quot;</code></h3>
+<div class="o-gfx o-gfx--N3 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--N3 u-spvm B161c M0c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-o-gfx--N4&quot;</code></h3>
+<div class="o-gfx o-gfx--N4 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--N4 u-spvm B161c M0c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--N5&quot;</code></h3>
+<div class="o-gfx o-gfx--N5 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--N5 u-spvm B161c M0c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--N6&quot;</code></h3>
+<div class="o-gfx o-gfx--N6 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--N6 u-spvm B161c M0c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h3><code>class=&quot;o-gfx o-gfx--N7&quot;</code></h3>
+<div class="o-gfx o-gfx--N7 u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>tai nedidelės <br>apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties <br>epikos <br>kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>nedidelės <br>apimties <br>epikos kūrinys.</p>
+</div>
+<hr>
+<div class="o-gfx o-gfx--N7 u-spvm B161c M0c">
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</p>
+  <p>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</p>
+  <p>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</p>
+</div>
+
+<h2>Lygiavimas vertikaliai</h2>
+
+<h3><code>class=&quot;o-gfx o-gfx--top&quot;</code></h3>
+<div class="o-gfx o-gfx--top u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--centerVrt&quot;</code></h3>
+<div class="o-gfx o-gfx--centerVrt u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--bottom&quot;</code></h3>
+<div class="o-gfx o-gfx--bottom u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--baseline&quot;</code></h3>
+<div class="o-gfx o-gfx--baseline u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p style="padding: 1.5em 1.7em">Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p style="border: 2em solid forestgreen">It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p style="margin: 2em; border: solid 1em dimgrey; padding: 1em 1.2em">Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h2>Lygiavimas horizontaliai</h2>
+<h3><code>class=&quot;o-gfx o-gfx--centerHrz&quot;</code></h3>
+<div class="o-gfx o-gfx--centerHrz o-gfx--mxcntShrink u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--right&quot;</code></h3>
+<div class="o-gfx o-gfx--right o-gfx--mxcntShrink u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--between&quot;</code></h3>
+<div class="o-gfx o-gfx--between o-gfx--mxcntShrink u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--evenly&quot;</code></h3>
+<div class="o-gfx o-gfx--evenly o-gfx--mxcntShrink u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--around&quot;</code></h3>
+<div class="o-gfx o-gfx--around o-gfx--mxcntShrink u-spvm B161c M0c">
+  <p>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>Apsakymasssssssssssssssssssss – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </p>
+  <p>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</p>
+  <p>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </p>
+  <p>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</p>
+</div>
+<h2>Įvairūs</h2>
+<h3><code>class=&quot;o-gfx--exact&quot;</code> — flex item'ams nustato <code>min-width: auto</code></h3>
+<p class="c-em-note">Default'iškai <code>.o-gfx</code> flex item'ams yra nustatyta <code>min-width: min-content</code></p>
+<p><code>class=&quot;o-gfx o-gfx--W1&quot;</code></p>
+<div class="o-gfx o-gfx--W1 u-spvm B161c M0c">
+  <p>incididunt ut labore et dolore magna aliqua</p>
+  <p>reprehenderittttttttttttttttttttttttttttttttttttttttttttttttttttt in voluptate velit esse</p>
+  <p>lobortis feugiat vivamus</p>
+  <p>arcu cursus vitae congue mauris rhoncus aenean</p>
+  <p>parturient montes nascetur ridiculus</p>
+  <p>scelerisque mauris pellentesque pulvinar</p>
+</div>
+<p><code>class=&quot;o-gfx o-gfx--W1 o-gfx--exact&quot;</code></p>
+<div class="o-gfx o-gfx--W1 o-gfx--exact u-spvm B161c M0c">
+  <p>incididunt ut labore et dolore magna aliqua</p>
+  <p>reprehenderittttttttttttttttttttttttttttttttttttttttttttttttttttt in voluptate velit esse</p>
+  <p>lobortis feugiat vivamus</p>
+  <p>arcu cursus vitae congue mauris rhoncus aenean</p>
+  <p>parturient montes nascetur ridiculus</p>
+  <p>scelerisque mauris pellentesque pulvinar</p>
+</div>
+<h3><code>class=&quot;o-gfx--gutterSmall&quot;</code> —</h3>
+<div class="o-gfx o-gfx--gutterSmall u-spvm B161c">
+  <div>Apsakymas – tai nedidelės apimties <br>
+  epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </div>
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</div>
+  <div>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</div>
+</div>
+<hr>
+<div class="o-gfx o-gfx--gutterSmall u-spvm B161c">
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</div>
+  <div>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</div>
+  <div>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</div>
+</div>
+<h3><code>class=&quot;o-gfx o-gfx--gutterLarge&quot;</code> —</h3>
+<div class="o-gfx o-gfx--gutterLarge u-spvm B161c">
+  <div>Apsakymas – tai nedidelės apimties <br>
+    epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos kūrinys. </div>
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going and going like hamsters on a wheel. Neither of us can bring ourselves to talk about it, to be vulnerable in it even in the most vulnerable confessions of our biographies.</div>
+  <div>Apsakymas – <br>
+    tai nedidelės <br>
+    apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai nedidelės <br>
+    apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties <br>
+    epikos <br>
+    kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės apimties epikos kūrinys. </div>
+  <div>Apsakymas – tai <br>
+    nedidelės <br>
+    apimties <br>
+    epikos kūrinys.</div>
+</div>
+<hr>
+<div class="o-gfx o-gfx--gutterLarge u-spvm B161c">
+  <div>It’s such a powerful piece because it illuminates just how silent we are even though this madness is happening inside of us and we’re going hamsters on a wheel.</div>
+  <div>Neither of us can bring ourselves to talk about it, to be vulnerable in it even.</div>
+  <div>He, too, at the Poets and Writers Gala was drinking, as he says in his essay. He did it to just try and fit in, so that he could subdue this pain, and that’s exactly what I was doing.</div>
+</div>
+<h2>Apiforminimas</h2>
+
+<h3><code>class=&quot;o-gfx o-gfx--boxed&quot;</code></h3>
+<div class="o-gfx o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p>incididunt ut labore et dolore magna aliqua</p>
+    <p>reprehenderit in voluptate velit esse</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+  </div>
+  <div>
+    <p>lobortis feugiat vivamus</p>
+    <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+    <p>arcu cursus vitae congue mauris rhoncus aenean reprehenderit in voluptate velit esse</p>
+  </div>
+  <div>
+    <p>parturient montes nascetur ridiculus arcu cursus vitae congue mauris rhoncus aenean scelerisque mauris pellentesque pulvinar</p>
+    <p>scelerisque mauris pellentesque pulvinar</p>
+    <p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+    <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+  </div>
+  <div>
+    <p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+    <p>arcu cursus vitae congue mauris rhoncus aenean reprehenderit in voluptate velit esse</p>
+    <p>Lobortis feugiat vivamus. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies.</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="background-color: aquamarine">&nbsp;</p>
+<div style="background-color: yellow">a way or track laid down for walking or made by continual treading.</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,261 @@
+@charset "utf-8";
+
+//// reikalingas, nes WebStorm'as refactoring'uodamas sutrumpina kelią
+//// o mums reikia, kad šis failas include'intas sass/ imagus imtų iš sass.szm/
+//$selfPath-sassszm: "../sass.szm/";
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   su background-image: failas.png prisegtame tage
+//
+/////////////////////////////////////////////////////////////////////////
+
+//@each $color in black, blue {         // <<< VEIKIA GERAI !!!
+//  @each $opacity in 30, 50, 100 {
+//    .d-mesh10-#{$color}#{$opacity} {
+//      background: url("#{$selfPath-sassszm}images/dev.mesh-10.#{$color}-#{$opacity}.png");
+//    }
+//  }
+//}
+
+////.d-mesh10-black {
+////  background: url("#{$selfPath-sassszm}images/dev.mesh-10.black.png");
+////}
+////
+//////.d-mesh-10px-black-opacity50 {
+////.d-mesh10-black50 {
+////  background: url("#{$selfPath-sassszm}images/dev.mesh-10.black-50.png");
+////}
+////
+////.d-mesh10-black30 {
+////  background: url("#{$selfPath-sassszm}images/dev.mesh-10.black-30.png");
+////}
+//
+////----------------------------------------------------------------------
+//
+////.d-mesh10-blue {
+////  background: url("#{$selfPath-sassszm}images/dev.mesh-10.blue.png");
+////}
+////
+////.d-mesh10-blue50 {
+////  background: url("#{$selfPath-sassszm}images/dev.mesh-10.blue-50.png");
+////}
+////
+////.d-mesh10-blue30 {
+////  background: url("#{$selfPath-sassszm}images/dev.mesh-10.blue-30.png");
+////}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// variantas, kai pagrindinės ir pagalbinės linijos gula viena ant kitos
+//////////////////////////////////////////////////////////////////////////////////////////////
+//
+//@mixin szm-dev-mesh-uniform-background-gradient($lineMainColor, $lineSubColor, $lineMainDistance, $lineSubDistance) {
+//  background:
+//    // pagrindinės linijos — horizontali pirmoji viršutinė
+//    linear-gradient(0grad, $lineMainColor, $lineMainColor) no-repeat 0 0 / 100% 1px,
+//
+//    // pagrindinės linijos — vertikali pirmoji kairėje
+//    linear-gradient(-100grad, $lineMainColor, $lineMainColor) no-repeat 0 1px / 1px calc(100% - 2px),
+//    // //linear-gradient(0grad, $lineSubColor, $lineSubColor) repeat-y 1px 0 / calc(100% - 2px) #{$lineSubDistance},
+//
+//    // pagrindinės linijos — tinklelis
+//    linear-gradient(0grad, $lineMainColor 1px, transparent 1px) repeat-y 1px 0 / calc(100% - 2px) #{$lineMainDistance},
+//    linear-gradient(-100grad, $lineMainColor 1px, transparent 1px) repeat-x 0 1px / #{$lineMainDistance} calc(100% - 2px),
+//
+//    // pagalbinės linijos — tinklelis
+//     linear-gradient(0grad, $lineSubColor 1px, transparent 1px) repeat-y 1px 0 / calc(100% - 2px) #{$lineSubDistance},
+//     linear-gradient(-100grad, $lineSubColor 1px, transparent 1px) repeat-x 0 1px / #{$lineSubDistance} calc(100% - 2px);
+//}
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//.d-mesh50-red50 {
+//  $lineMainColor:    hsla(0, 100%, 50%, 0.5);
+//  $lineSubColor:     scale_color($lineMainColor, $alpha: -50%); //transparentize($lineMainColor, 0.5);
+//  $lineMainDistance: 50px;
+//  $lineSubDistance:  25px;
+//  @include szm-dev-mesh-uniform-background-gradient($lineMainColor, $lineSubColor, $lineMainDistance, $lineSubDistance);
+//}
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   su background-image: failas.png prisegto tago pseudo elemente ::after
+//
+/////////////////////////////////////////////////////////////////////////
+
+// !!! VEIKIA GERAI !!!
+
+//%d-mesh-pseudoAfter {
+//  position: relative;
+//  &::after {
+//    content: "";
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    height: 100%;
+//    //filter: grayscale(100%);
+//    //opacity: ;
+//  }
+//}
+//
+//.d-mesh10-black-pseudoAfter {
+//  @extend %d-mesh-pseudoAfter;
+//  &::after {
+//    background: url("#{$selfPath-sassszm}images/dev.mesh-10.black-100.png");
+//  }
+//}
+//
+//.d-mesh10-black50-pseudoAfter {
+//  @extend .d-mesh10-black-pseudoAfter;
+//  &::after {
+//    opacity: 0.5;
+//  }
+//}
+//
+//.d-mesh10-black30-pseudoAfter {
+//  @extend .d-mesh10-black-pseudoAfter;
+//  &::after {
+//    opacity: 0.3;
+//  }
+//}
+
+
+
+
+//&-pseudoAfter {
+//  @extend %szm-dev-mesh-pseudoAfter;
+//  &::after {
+//    //$lineMainColor: hsla(0, 100%, 50%, 0.8);
+//    //$lineSubColor:  scale_color($lineMainColor, $alpha: -75%);
+//    //@include szm-dev-mesh-uniform-background-gradient($lineMainColor, $lineSubColor, 50px, 5);
+//    background: $background-gradient;
+//  }
+//}
+
+
+//%szm-dev-mesh-pseudoAfter {
+//  position: relative;
+//  &::after {
+//    content: "";
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    height: 100%;
+//  }
+//}
+
+
+
+//$stopForUnit: ();
+//@if unit($gridSize) == px {
+//  $stopForUnit: $gridSizeSubStep + 1;
+//}
+//@else {
+//  $stopForUnit: calc(#{$gridSizeSubStep} + 1px);
+//}
+
+//@for $i from 1 to $gridSubNumber {
+//  $gridSizeSubStep: $gridSizeSub * $i;
+//  $gradientStops: append($gradientStops, transparent $gridSizeSubStep, comma);
+//  $gradientStops: append($gradientStops, $lineSubColor $gridSizeSubStep, comma);
+//  @if unit($gridSize) == px {
+//    $gradientStops: append($gradientStops, $lineSubColor $gridSizeSubStep + 1, comma);
+//    $gradientStops: append($gradientStops, transparent $gridSizeSubStep + 1, comma);
+//  }
+//  @else {
+//    $gradientStops: append($gradientStops, $lineSubColor calc(#{$gridSizeSubStep} + 1px), comma);
+//    $gradientStops: append($gradientStops, transparent calc(#{$gridSizeSubStep} + 1px), comma);
+//  }
+//}
+
+
+
+//@if unit($gridSize) == "%" {
+//  @debug $gridSizeSub;
+//  @debug unit($gridSize);
+//  @for $i from 1 to $gridSubNumber {
+//    $gridSizeSubStep: $gridSizeSub * $i;
+//    $gradientStops: append($gradientStops, transparent $gridSizeSubStep, comma);
+//    $gradientStops: append($gradientStops, $lineSubColor $gridSizeSubStep, comma);
+//    @if unit($gridSize) == px {
+//      $gradientStops: append($gradientStops, $lineSubColor $gridSizeSubStep + 1, comma);
+//      $gradientStops: append($gradientStops, transparent $gridSizeSubStep + 1, comma);
+//    }
+//    @else {
+//      $gradientStops: append($gradientStops, $lineSubColor calc(#{$gridSizeSubStep} + 1px), comma);
+//      $gradientStops: append($gradientStops, transparent calc(#{$gridSizeSubStep} + 1px), comma);
+//    }
+//  }
+//}
+//@else {
+//}
+
+
+
+//@if unit($gridSize) == "%" {
+//  $gridSizeSub: 100% / $gridSubNumber;
+//}
+
+
+
+
+//.d-mesh50-red-pseudoAfter {
+////  @extend %d-mesh-pseudoAfter;
+////  &::after {
+
+//--transparent: hsl(0,0%,0%,0);
+//--line: hsl(0,100%,50%);
+//--lineSemi: hsl(0,100%,50%,0.5);
+//$transparent: hsla(0,0%,0%,0);
+
+//linear-gradient(180deg, transparent 9px, $lineSemi 9px, $lineSemi 10px) repeat-y 1px 0 / calc(100% - 2px) 10px,
+//linear-gradient(90deg, transparent 9px, $lineSemi 9px, $lineSemi 10px) repeat-x 0 1px / 10px calc(100% - 2px),
+
+//linear-gradient(180deg, $line 1px, transparent 1px) repeat 1px 1px / 49px 49px,
+//linear-gradient(90deg, $line 1px, transparent 1px) no-repeat 0px 0px / 49px 49px;
+
+
+//linear-gradient(180deg, transparent 49px, $line 49px, $line 50px) repeat-y 1px 0 / calc(100% - 2px) 50px,
+//linear-gradient(90deg, transparent 49px, $line 49px, $line 50px) repeat-x 0 1px / 50px calc(100% - 2px),
+//linear-gradient(180deg, $line 0, $line 1px) no-repeat 0 0 / 100% 1px, // viršutinė
+//linear-gradient(90deg, $line 0px, $line 1px) no-repeat 0 1px / 1px calc(100% - 1px); // kairioji
+
+
+//linear-gradient(0deg, red, green) no-repeat 0px 0px / 49px 49px;
+
+
+//linear-gradient(180deg, transparent 9px, $lineSemi 9px, $lineSemi 10px) repeat 100% 0 / 100% 10px;
+
+//background-image:
+//  repeating-linear-gradient(0deg,
+//  $transparent 1px, $transparent 9px,
+//  $lineSemi 9px, $lineSemi 10px);
+
+
+//background-image: repeating-linear-gradient(
+//  $line 0px, $line 2px,
+//  $transparent 2px, $transparent 10px,
+//  $lineSemi 10px, $lineSemi 11px,
+//  $transparent 11px, $transparent 10px
+//
+//                  );
+
+
+
+
+
+
+
+
+
+
+
+
+

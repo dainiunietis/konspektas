@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   dev colors
+//
+/////////////////////////////////////////////////////////////////////////
+
+$dev-colors-20: #00C8FF #17E800 #FFCA00 #E83100 #AE00FF #00FFE7 #73E800 #FFAD00 #E80B00 #5E00FF #00FF92 #D3E800 #FF8C00 #E80065 #0C00FF #00FF18 #E8C700 #FF4D00 #C500E8 #0066FF;
+// Color Set Light 1 (for bgs)
+$dev-colors-light-1: #FDDB6D #EFDBC5 #CD9575 #78DBE2 #87A96B #FFA474 #FAE7B5 #9F8170 #FD7C6E #ADADD6 #B0B7C6 #1CD3A2 #9ACEEB #FDDB6D #EFCDB8 #B5C8FA #B5FAE7 #E7B5FA;
+// Color Set Light 2 (for bgs)
+$dev-colors-light-2: #D0D5D7 #93C0E2 #8FE4C0 #BFEF96 #E4F499 #F5ED9A #F5DF9A #F5CE9A #F5B49A #F096B1 #E28EE2 #B896E4 #9D9DE5;
+
+$dev-colors-fullSat-24: szm-colorSet-generate(24);
+//.ggg {
+//  content: $dev-colors-fullSat-24-hsl24;
+//}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   Mark tags by class Name Space
+//
+/////////////////////////////////////////////////////////////////////////
+
+@mixin dev_markForDebug($styleNr: 1, $colorNr: 1) {
+  $colors: rgba(0,255,255,0.5) rgba(237, 20, 61, 0.5);
+  @if ($styleNr == 1) {
+    outline: 10px solid nth($colors, $colorNr);
+    // outline: unquote("5px dashed $color-#{$colorNr}");
+  }
+  @else if ($styleNr == 2) {
+    outline: 10px dashed nth($colors, $colorNr);
+  }
+}
+
+[class^="c-"], [class*=" c-"] {
+  @if (global-config(markNS-c) == 1) {
+    @include dev_markForDebug();
+  }
+}
+
+[class^="o-"], [class*=" o-"] {
+  @if (global-config(markNS-o) == 1) {
+    @include dev_markForDebug(2, 2);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   Class'ės žymėjimui-mark'inimui
+//
+/////////////////////////////////////////////////////////////////////////
+
+$dev-colors-marking: szm-colorSet-generate(20);
+
+@for $i from 1 through length($dev-colors-marking) {
+  //scale-color($color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha])
+  //scale-color($color, $red: 10%, $green: 90%, $blue: 20%)
+  //$color: lighten(nth($dev-colors-marking, $i), 50%);
+  $color-light: scale-color(nth($dev-colors-marking, $i), $lightness: 70%, $saturation: -30%);
+  
+  // class'ai spalvinantys savąjį tagą:
+  // <p class="D1..24">...........trumpiausias-default'inis
+  // <p class="DBG1..24">.........trumpesnis
+  // <p class="d-bg-1..24">.....pilnas
+  
+  .D#{$i}, .DBG#{$i}, .d-bg-#{$i} {
+    background-color: $color-light !important;
+  }
+  
+  // class'as spalvinantis tiesioginius vaikus:
+  // <div class="d-bg_c DBG_c D_c">
+  //   ...
+  // </div>
+  
+  .D_c, .DBG_c, .d-bg_c {
+  > :nth-child(#{$i}) {
+      background-color: $color-light !important;
+    }
+  }
+
+  //$outline: 1px dashed scale-color(nth($dev-colors-marking, $i), $lightness: -10%, $saturation: 0%);
+  $outline: 1px dashed darken(nth($dev-colors-marking, $i), 10%);
+  //$outline: 1px dashed nth($dev-colors-marking, $i);
+
+  
+  // <p class="DOL1..24 || d-ol-1..24">
+  
+  .DOL#{$i}, .d-ol-#{$i} {
+    outline: $outline;
+  }
+  
+  //<div class="d-ol_c || DOL_c">
+  //  ...
+  //</div>
+
+  .DOL_c, .d-ol_c {
+    > :nth-child(#{$i}) {
+      outline: $outline;
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   mixin'ai žymėjimui-mark'inimui
+//
+/////////////////////////////////////////////////////////////////////////
+
+// .kazkas { @include dev-mark-bg(1..20); }
+
+@mixin dev-mark-bg($index) {
+  background-color: lighten(nth($dev-colors-marking, $index), 50%);
+}
+
+// .kazkas { @include dev-mark-ol(1..20); }
+
+@mixin dev-mark-ol($colorIndex, $width: 1px, $style: dotted) {
+  outline: $width $style lighten(nth($dev-colors-marking, $colorIndex), 0%);
+}
+
+
+
+
+
+
+
+//$colors: red, orange, yellow, green, blue, purple;
+//
+//@for $i from 1 through length($colors) {
+//  li:nth-child(#{length($colors)}n+#{$i}) {
+//    background: lighten(nth($colors, $i), 20%);
+//  }
+//}
+
+
+

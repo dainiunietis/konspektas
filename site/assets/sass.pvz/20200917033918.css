@@ -1,0 +1,124 @@
+
+:root {
+  --navy-blue:             hsla(239, 94%, 19%, 1);
+  --dark-cornflower-blue:  hsla(214, 97%, 27%, 1);
+  --star-command-blue:     hsla(201, 100%, 36%, 1);
+  --blue-green:            hsla(195, 100%, 39%, 1);
+  --cerulean-crayola:      hsla(190, 100%, 42%, 1);
+  --sky-blue-crayola:      hsla(190, 74%, 59%, 1);
+  --sky-blue-crayola-2:    hsla(189, 75%, 75%, 1);
+  --blizzard-blue:         hsla(190, 76%, 82%, 1);
+  --powder-blue:           hsla(190, 77%, 88%, 1);
+
+  --sizzling-red:          hsla(358, 100%, 67%, 1);
+  --sunglow:               hsla(44, 100%, 61%, 1);
+  --yellow-green:          hsla(83, 68%, 47%, 1);
+  --green-blue-crayola:    hsla(203, 77%, 43%, 1);
+  --royal-purple:          hsla(265, 32%, 44%, 1);
+
+  --timberwolf:            hsla(46, 15%, 83%, 1);
+  --laurel-green:          hsla(82, 20%, 62%, 1);
+  --fern-green:            hsla(119, 19%, 42%, 1);
+  --hunter-green:          hsla(131, 22%, 29%, 1);
+  --brunswick-green:       hsla(150, 20%, 25%, 1);
+
+  --baby-blue:             hsla(197, 100%, 72%, 1);
+  --french-pink:           hsla(337, 100%, 72%, 1);
+  --light-salmon:          hsla(16, 100%, 72%, 1);
+  --orange-yellow-crayola: hsla(43, 100%, 72%, 1);
+  --mindaro:               hsla(69, 100%, 72%, 1);
+
+  --carnation-pink:        hsla(332, 100%, 80%, 1);
+  --blond:                 hsla(54, 91%, 86%, 1);
+  --aero-blue:             hsla(143, 62%, 89%, 1);
+  --uranian-blue:          hsla(200, 87%, 82%, 1);
+  --mauve:                 hsla(278, 82%, 87%, 1);
+
+  --clrBg-page-1:          hsla(220, 70%, 17%, 1);
+  --clrBg-page-2:          hsla(220, 70%, 33%, 1);
+  --clrBg-page-3:          hsla(220, 70%, 50%, 1);
+  --clrBg-page-4:          hsla(220, 70%, 63%, 1);
+  --clrBg-page-5:          hsla(220, 70%, 77%, 1);
+
+  --text-dark:             hsla(0, 0%, 0%, .7);
+  --text-light:            hsla(0, 0%, 100%, .7);
+}
+
+html { box-sizing: border-box; }
+*, ::before, ::after { box-sizing: inherit; }
+
+body {
+  font: 1.2em "IBM Plex Sans", sans-serif;
+  margin: 0;
+}
+
+/*————————————————————————————————————————————————————————————————————————*/
+
+.page {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/*.page > * {*/
+.page__1, .page__2, .page__3, .page__4, .page__5 {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.8em;
+
+  /*color: hsla(0, 0%, 100%, .8);*/
+  /*text-shadow: 4px 4px 0px hsla(0, 0%, 0%, .5);*/
+
+  /*color: hsla(0, 0%, 100%, 1);*/
+  /*mix-blend-mode: difference;*/
+}
+
+.page b {
+  /*text-align: center;*/
+  color: hsla(0, 0%, 100%, 1);
+  /*text-shadow: .15em .08em 1px hsla(0, 0%, 0%, .6);*/
+  text-shadow:
+    /*0 0 .1em hsla(0, 0%, 0%, 1),*/
+    0 0 .1em var(--clrBg-page-1),
+    0 0 .15em var(--clrBg-page-1),
+    0 0 .2em var(--clrBg-page-1),
+    0 0 .25em var(--clrBg-page-1);
+  opacity: .7;
+  /*mix-blend-mode: soft-light;*/
+}
+
+/*.page > * > p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}*/
+
+/*————————————————————————————————————————————————————————————————————————*/
+
+.page__1 {
+  /*color: var(--text-light);*/
+  background-color: var(--clrBg-page-1);
+}
+
+.page__2 {
+  /*color: var(--text-light);*/
+  background-color: var(--clrBg-page-2);
+}
+
+.page__3 {
+  /*color: var(--text-light);*/
+  background-color: var(--clrBg-page-3);
+}
+
+.page__4 {
+  /*color: var(--text-dark);*/
+  background-color: var(--clrBg-page-4);
+}
+
+.page__5 {
+  /*color: var(--text-dark);*/
+  background-color: var(--clrBg-page-5);
+}
+

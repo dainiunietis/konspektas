@@ -1,0 +1,1995 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" href="assets/sass/master.css" as="style">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Flex layout (Flexbox, The Flexible Box Layout)</h1>
+<p>&nbsp;</p>
+<blockquote>
+  <p><a href="https://www.chromestatus.com/features/6031643502444544">Gutters in flexbox: row-gap and column-gap properties</a>Chrome 84</p>
+  <p>This css property allows you to specify spacing between flex items and/or flex lines.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p> <a href="https://meyerweb.github.io/csstdg4figs/12-flexbox/index.html">Flexible Box Layout (Chapter 12)</a> [lokaliai — <a href="file:///G:/bib%20wd%20book/Eric%20Meyer,%20Estelle%20Weyl%20-%20CSS.%20The%20Definitive%20Guide%20(4th)%20-%202017/ru%201/978-5-907114-56-2/12-flexbox/index.html">Flexible Box Layout (Chapter 12)</a>]— <strong>daug demonstracinių pvz.</strong></p>
+<dl>
+  <dt>Oficiali dokumentacija</dt>
+  <dd><p><a href="http://www.w3.org/TR/css-flexbox-1/">http://www.w3.org/TR/css-flexbox-1/</a> &#8212; Flexible Box Layout Module
+  </p>
+    <p><a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a> </p>
+  </dd>
+  <dt>CSS savybių suvestinės-santraukos (Flexbox CSS  properties cheat sheets)</dt>
+  <dd>
+    <p><a href="https://gapintelligence.com/blog/2017/the-flexbox-one-page-cheat-sheet">https://gapintelligence.com/blog/2017/the-flexbox-one-page-cheat-sheet</a></p>
+    <p><a href="https://rachelandrew.co.uk/css/cheatsheets/box-alignment">https://rachelandrew.co.uk/css/cheatsheets/box-alignment</a> (<a href="file:///D|/webdev/docs.cheat-sheets/Box Alignment Cheatsheet - rachelandrew.co.uk.mhtml">lokaliai</a>)  </p>
+  </dd>
+  <dt>Įvairios įpatybės</dt>
+  <dd>
+    <p> <a href="">11 вещей которые я узнал, читая спецификацию flexbox / Habr</a></p>
+  </dd>
+  <dt>mokytuvai-vadovai: pagrindai</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>mokytuvai-vadovai: viskas</dt>
+  <dd>
+    <p><a href="https://internetingishard.com/html-and-css/flexbox/">https://internetingishard.com/html-and-css/flexbox/</a> &#8212; </p>
+    <p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a> &#8212; labai praktišk</p>
+    <p> <a href="https://www.freecodecamp.org/news/understanding-flexbox-everything-you-need-to-know-b4013d4dc9af/">Understanding Flexbox: Everything you need to know</a> (<a href="file:///G|/bib wd book/understanding-flexbox.pdf">Understanding Flexbox</a>)</p>
+    <p>&nbsp;</p>
+    <p><a href="https://medium.freecodecamp.org/flexbox-in-10-minutes-7295497804ed">https://medium.freecodecamp.org/flexbox-in-10-minutes-7295497804ed</a></p>
+    <p><a href="https://github.com/afonsopacifer/awesome-flexbox">https://github.com/afonsopacifer/awesome-flexbox</a></p>
+    <p><a href="http://konspektas-prev.local/client-side/css/css/properties/flexbox.html">http://konspektas-prev.local/client-side/css/css/properties/flexbox.html</a></p>
+    <p>&nbsp;</p>
+    <p><a href="https://medium.freecodecamp.org/an-animated-guide-to-flexbox-d280cf6afc35">https://medium.freecodecamp.org/an-animated-guide-to-flexbox-d280cf6afc35</a></p>
+    <p><a href="http://cssreference.io/flexbox/">http://cssreference.io/flexbox/</a></p>
+    <p>&nbsp;</p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes</a></p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox</a></p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Advanced_layouts_with_flexbox">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Advanced_layouts_with_flexbox</a></p>
+    <p>&nbsp;</p>
+    <p><a href="https://tympanus.net/codrops/css_reference/flexbox/">https://tympanus.net/codrops/css_reference/flexbox/</a></p>
+    <p>&nbsp;</p>
+    <p><a href="http://learnlayout.com/flexbox.html">http://learnlayout.com/flexbox.html</a></p>
+    <p>&nbsp;</p>
+    <p><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties">https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties</a></p>
+    <p><a href="https://medium.freecodecamp.com/css-flexbox-explained-by-road-tripping-across-the-country-1217b69c390e?source=read_next_metabar----------40">https://medium.freecodecamp.com/css-flexbox-explained-by-road-tripping-across-the-country-1217b69c390e?source=read_next_metabar----------40</a></p>
+  </dd>
+  <dt>Flexbox'o suderinamumas-palaikymas</dt>
+  <dd>
+    <p><a href="https://kyusuf.com/post/almost-complete-guide-to-flexbox-without-flexbox">https://kyusuf.com/post/almost-complete-guide-to-flexbox-without-flexbox</a></p>
+  </dd>
+  <dt>Pavyzdžiai kaip konkrečiai ką nors padaryti</dt>
+  <dd>
+    <p>https://www.canonium.com/articles/tutorial-create-flexbox-navbar  </p>
+  </dd>
+</dl>
+<p>Kodai:<br>
+D:\webdev\codes\titon-toolkit\toolkit-2.1.6\scss\toolkit\mixins\_flex.scss </p>
+<p>Pavyzdžiai savam pasidaryti: <br>
+<a href="http://solid.buzzfeed.com/flexbox.html">http://solid.buzzfeed.com/flexbox.html</a></p>
+<h2>Susitarimai</h2>
+<div class="o-mcl o-mcl--N3 o-mcl--start-h3">
+  <h3><a href="https://www.w3.org/TR/css-writing-modes-3/#writing-mode">Writing mode</a> nustatymai</h3>
+  <p>Jei nenurodyta kitaip, naudojami default'iniai <i>writing mode</i> nustatymai:</p>
+  <ul>
+    <li><code>html { writing-mode: horizontal-tb }</code></li>
+    <li><code>&lt;html dir="ltr"&gt;</code> <br>
+      arba <br>
+      <code>html { direction: ltr }</code></li>
+  </ul>
+  <h3>Paaiškinimo simboliai</h3>
+  <p>Dokumento elementų-tagų eiliškumo dizaine ir kode išraiška — [1] [2] [3]:</p>
+  <ul>
+    <li>skaičius reiškia  eiliškumą kode,</li>
+    <li>fizinė pozicija — dizaine.</li>
+  </ul>
+  <p>Pavyzdžiai:</p>
+  <ul>
+    <li>[1] [2] [3] — kodo ir dizaino eiliškumas sutampa,</li>
+    <li>[3] [2] [1] — o čia priešingas.</li>
+  </ul>
+  <h3 id="paaikinimo-formatavimas2">Paaiškinimo formatavimas</h3>
+  <dl>
+    <dt>default'inė reikšmė su tag'inama su <code>&lt;em&gt;</code></dt>
+    <dd>
+      <p><code>flex-wrap: <em>nowrap</em> | wrap | wrap-reverse</code></p>
+    </dd>
+  </dl>
+</div>
+<h2>Apie Flexbox'ą</h2>
+<div class="o-flx o-flx--col3max -o-clm -o-clm--maxContentScale u-spvm -B161c -BGCL1c">
+  <div>
+    <h3>Ką ir kaip daro Flexbox'as</h3>
+    <p>Paprastai:</p>
+    <blockquote>
+      <p>Compared to CSS Grid (which is bi-dimensional), flexbox is <strong>a one-dimensional layout model</strong>. It will control the layout based on a row or on a column, but not together at the same time.</p>
+    </blockquote>
+    <p>Sudėtingai:</p>
+    <blockquote>
+      <p>The main idea behind the flex layout is to give the container the ability to alter its items' width/height (and order) to best fill the available space (mostly to accommodate to all kind of display devices and screen sizes). A flex container expands items to fill available free space, or shrinks them to prevent overflow.</p>
+      <p>Most importantly, the flexbox layout is direction-agnostic as opposed to the regular layouts (block which is vertically-based and inline which is horizontally-based). While those work well for pages, they lack flexibility (no pun intended) to support large or complex applications (especially when it comes to orientation changing, resizing, stretching, shrinking, etc.).</p>
+    </blockquote>
+</div>
+  <div>
+    <h3>Kam naudoti Flexbox'ą</h3>
+    <blockquote>
+      <p>Flexbox layout is most appropriate to the components of an application, and small-scale layouts, while the <a href="http://css-tricks.com/snippets/css/complete-guide-grid/">Grid</a> layout is intended for larger scale layouts.</p>
+      <p>Although you can certainly create entire page layouts with Flexbox, it is
+        most suitable for working with interface elements and smaller components.
+        When working with whole page layouts, consider using the Grid Layout
+        Module. But if you’re building a user
+        interface or an app (especially an app with a lot of buttons, form elements,
+        or interactive regions), you’ll find Flexbox extremely useful.</p>
+    </blockquote>
+  </div>
+</div>
+<h2>Flexbox'o terminai-sąvokos</h2>
+<blockquote>
+  <p>Since flexbox is a whole module and not a single property, it involves a lot of things including its whole set of properties. Some of them are meant to be set on the container (parent element, known as "flex container") whereas the others are meant to be set on the children (said "flex items").</p>
+  <p>If regular layout is based on both block and inline flow directions, the flex layout is based on "flex-flow directions". Please have a look at this figure from the specification, explaining the main idea behind the flex layout.</p>
+  <p><img src="images/image_7.png" alt="" width="363" height="153"/> <img src="images/flex_terms.png" alt="" width="278" height="164"/></p>
+  <p>Basically, items will be laid out following either the main axis (from main-start to main-end) or the cross axis (from cross-start to cross-end).</p>
+  <ul>
+    <li><strong>main axis</strong> - The main axis of a flex container is the primary axis along which flex items are laid out. Beware, it is not necessarily horizontal; it depends on the flex-direction property (see below).</li>
+    <li><strong>main-start | main-end</strong> - The flex items are placed within the container starting from main-start and going to main-end.</li>
+    <li><strong>main size</strong> - A flex item's width or height, whichever is in the main dimension, is the item's main size. The flex item's main size property is either the 'width' or 'height' property, whichever is in the main dimension.</li>
+    <li><strong>cross axis</strong> - The axis perpendicular to the main axis is called the cross axis. Its direction depends on the main axis direction.</li>
+    <li><strong>cross-start | cross-end</strong> - Flex lines are filled with items and placed into the container starting on the cross-start side of the flex container and going toward the cross-end side.</li>
+    <li><strong>cross size</strong> - The width or height of a flex item, whichever is in the cross dimension, is the item's cross size. The cross size property is whichever of 'width' or 'height' that is in the cross dimension.</li>
+  </ul>
+  <p></p>
+</blockquote>
+<h3>Base size</h3>
+<blockquote>
+  <p>What sets the base size of the item?</p>
+  <ol>
+    <li>Is flex-basis set to auto, and does the item have a width set? If so, the size will be based on that width.</li>
+    <li>Is flex-basis set to auto or content (in a supporting browser)? If so, the size is based on the item size.</li>
+    <li>Is flex-basis a length unit, but not zero? If so this is the size of the item.</li>
+    <li>Is flex-basis set to 0? if so then the item size is not taken into consideration for the space-sharing calculation.</li></ol></blockquote>
+<h2>Naršyklių palaikymas-suderinamumas</h2>
+<p><a href="https://seesparkbox.com/foundry/Progressive_Enhancement_Is_A_Team_Sport">https://seesparkbox.com/foundry/Progressive_Enhancement_Is_A_Team_Sport</a> &#8212; paprastas ir konkretus sprendimas</p>
+<p><a href="https://www.slideshare.net/zomigi/enhancing-responsiveness-with-flexbox-smashing-conference">https://www.slideshare.net/zomigi/enhancing-responsiveness-with-flexbox-smashing-conference</a> &#8212; atrodo išsamiai</p>
+<dl>
+  <dt>Naršykių palaikymas-suderinamumas</dt>
+  <dd>
+    <p><a href="https://github.com/luisrudge/postcss-flexbugs-fixes">https://github.com/luisrudge/postcss-flexbugs-fixes</a></p>
+    <p><a href="https://www.google.lt/search?q=flexbox+progressive+enhancement&amp;oq=flexbox+progressive+enhancement&amp;aqs=chrome..69i57.5407j0j7&amp;sourceid=chrome&amp;ie=UTF-8">https://www.google.lt/search?q=flexbox+progressive+enhancement&oq=flexbox+progressive+enhancement&aqs=chrome..69i57.5407j0j7&sourceid=chrome&ie=UTF-8</a> </p>
+    <p><a href="http://blog.formkeep.com/progressive-enhancement-start-using-css-without-breaking-older-browsers/">http://blog.formkeep.com/progressive-enhancement-start-using-css-without-breaking-older-browsers/</a> </p>
+    <p><a href="https://www.sitepoint.com/migrating-flexbox-cutting-mustard/">https://www.sitepoint.com/migrating-flexbox-cutting-mustard/</a></p>
+  </dd>
+</dl>
+<blockquote>
+  <ul>
+    <li>
+      <p> Build layouts for actual applications. These aren't your grandma's flexbox layouts.</p>
+    </li>
+    <li>
+      <p>Use flexbox in production today, not five years from now.</p>
+    </li>
+    <li>
+      <p>Write flexbox in pure CSS without the need for vendor prefixes, polyfills, libraries or hacks.</p>
+    </li>
+    <li>
+      <p>Sidestep the major flexbox browser bugs, quirks and inconsistencies.</p>
+    </li>
+    <li>
+      <p>Create responsive flexbox layouts that work great on phones, tablets, desktops and everything in-between.</p>
+    </li>
+    <li>
+      <p>Gracefully degrade on older browsers without reimplementing your layouts.</p>
+    </li>
+    <li>
+      <p>Write your very own responsive grid system. Say goodbye to clunky float-based layouts.</p>
+    </li>
+  </ul>
+  <p><a href="https://unravelingflexbox.com/">https://unravelingflexbox.com/</a></p>
+</blockquote>
+<h2>Visų Flexbox'o savybių suvestinė</h2>
+<table width="1582" class="c-table-linesGrid c-table-linesGrid--sameInsideCollapse -u-table-equelCols">
+  <tr>
+    <th colspan="2">&nbsp;</th>
+    <th width="714">flex container'io savybės</th>
+    <th width="651">flex item'o savybės</th>
+  </tr>
+  <tr>
+    <th colspan="2">&nbsp;</th>
+    <td>
+      <pre><code>display: flex |
+         flex inline |
+         inline-flex   &lt;display-legacy&gt; value</code></pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th width="57" rowspan="3">main axis</th>
+    <th width="115">flexibility</th>
+    <td>&nbsp;</td>
+    <td>
+      <p><code>flex-basis: content | &lt;'width'&gt;</code></p>
+      <p><code>flex-grow: &lt;number 0..N&gt;</code></p>
+      <p><code>flex-shrink: &lt;number 0..N&gt;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <th>orientation, ordering</th>
+    <td>
+      <p>main direction</p>
+      <pre><code>flex-direction: <b>
+row</b> | column | row-reverse | column-reverse</code></pre>
+      <p>&nbsp;</p>
+      <p>flex item wrap</p>
+      <pre><code>flex-wrap: <b>
+nowrap</b> | wrap | wrap-reverse</code></pre>
+    </td>
+    <td>
+      <p><code>order: &lt;integer -N..0..N&gt;</code></p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <th>alignment</th>
+    <td>
+      <p>main align</p>
+      <pre><code>justify-content:
+<b>normal</b> | &lt;content-distribution&gt; | &lt;overflow-position&gt;? [ &lt;content-position&gt; | left | right ]
+
+&lt;content-distribution&gt; = space-between | space-around | space-evenly | stretch
+&lt;overflow-position&gt; = unsafe | safe
+&lt;content-position&gt; = center | start | end | flex-start | flex-end</code></pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>cross axis</th>
+    <th>alignment</th>
+    <td>
+      <p>cross align</p>
+      <pre><code>align-items:
+normal | stretch | &lt;baseline-position&gt; | [ &lt;overflow-position&gt;? &lt;self-position&gt; ]
+
+&lt;baseline-position&gt; = [ first | last ]? baseline
+&lt;overflow-position&gt; = unsafe | safe
+&lt;self-position&gt; = center | start | end | self-start | self-end | flex-start | flex-end</code></pre>
+      <p>&nbsp;</p>
+      <p>flex item wrap</p>
+      <pre><code>align-content:
+normal | &lt;baseline-position&gt; | &lt;content-distribution&gt; | &lt;overflow-position&gt;? &lt;content-position&gt;
+
+&lt;baseline-position&gt; = [ first | last ]? baseline
+&lt;content-distribution&gt; = space-between | space-around | space-evenly | stretch
+&lt;overflow-position&gt; = unsafe | safe
+&lt;content-position&gt; = center | start | end | flex-start | flex-end</code></pre>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+      <pre><code>align-self:
+auto | normal | stretch | &lt;baseline-position&gt; | &lt;overflow-position&gt;? &lt;self-position&gt;
+
+&lt;baseline-position&gt; = [ first | last ]? baseline
+&lt;overflow-position&gt; = unsafe | safe
+&lt;self-position&gt; = center | start | end | self-start | self-end | flex-start | flex-end</code></pre>
+      <blockquote>
+        <p>allows <code>align-items:</code> default alignment to be overridden for individual <em>flex items</em></p>
+      </blockquote>
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2">shorthand'ai</th>
+    <td><p><code>flex-flow: &lt;'flex-direction'&gt; || &lt;'flex-wrap'&gt;</code></p>
+      <blockquote>
+        <p>This is a shorthand <code>flex-direction:</code> and <code>flex-wrap:</code> properties, which together define the flex container's main and cross axes. Default is <code>row nowrap</code>.</p>
+      </blockquote>
+    <p></p></td>
+    <td>
+      <pre><code>flex: none | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt;? || &lt;'flex-basis'&gt; ]</code></pre>
+      <p>&nbsp;</p>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="120">
+            <p><code>flex: none</code></p>
+          </td>
+          <td>
+            <p><code>0 0 auto</code></p>
+            <p>Kaip veikia:</p>
+            <blockquote>
+              <p>The item is sized according to its width and height properties. It is fully inflexible: it neither shrinks nor grows in relation to the flex container.</p>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td><code>flex: auto</code></td>
+          <td>
+            <p><code>1 1 auto</code></p>
+            <p>Kaip veikia:</p>
+            <blockquote>
+              <p>The item is sized according to its width and height properties, but grows to absorb any extra free space in the flex container, and shrinks to its minimum size to fit the container.</p>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td><code>flex: initial</code></td>
+          <td>
+            <p><code>0 1 auto</code></p>
+            <p>default'as, t. y. visų trijų sudėtinių savybių default'inės reikšmės</p>
+            <p>Kaip veikia:</p>
+            <blockquote>
+              <p>The item is sized according to its width and height properties. It shrinks to its minimum size to fit the container, but does not grow to absorb any extra free space in the flex container.</p>
+            </blockquote>
+          </td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" class="c-table-linesGrid -u-table-equelCols">
+  <tr>
+    <td>
+      <p>aaa</p>
+    </td>
+    <td>
+      <p>aaa</p>
+    </td>
+    <td>
+      <p>aaa </p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h2>Flex container'iui skirtos CSS savybės</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><code>display: </code>      </h3>
+      <p><code>flex | inline-flex</code></p>
+      <p>Ką padaro:<code></code></p>
+      <blockquote>
+        <p>Creates the flex container — the parent element that will create a new formatting context for its contents.</p>
+        <p>Flexbox formatting context is immediately  initiated.</p>
+      </blockquote>
+      <p class="em-note">Reikšmės <code>flex | inline-flex</code> įtakoja tik patį flex container'į, flex item'ai abejais atvejais veikia vienodai.</p>
+      <pre><code>#container { display: flex }</code></pre>
+      <pre><code>&lt;div id=&quot;container&quot;&gt;..... flex container
+  &lt;div&gt;..................|flex items
+  &lt;div&gt;..................|
+&lt;/div&gt;</code></pre>
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>display: flex</code> &#8212; a block-level flex container</p>
+        kažkas prieš
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="">flex item A</div>
+          <div class="c-pvz__target" style="">flex item B</div>
+          <div class="c-pvz__target" style="">flex item C</div>
+        </div>
+        kažkas po
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>display: inline-flex</code> &#8212; an inline-level flex container</p>
+        kažkas prieš
+        <div class="c-pvz__container" style="display: inline-flex">
+          <div class="c-pvz__target" style="">flex item A</div>
+          <div class="c-pvz__target" style="">flex item B</div>
+          <div class="c-pvz__target" style="">flex item C</div>
+        </div>
+        kažkas po
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3><code>flex-direction:</code></h3>
+      <p><code><em>row</em>
+      | column | row-reverse | column-reverse</code></p>
+      <p>Nustato:</p>
+      <dl>
+        <dt> &quot;the main-axis&quot; arba &quot;main direction&quot;  (&quot;cross axis&quot; tampa statmena jai kryptis), t. y. flex item'ų dėstymo ašį:</dt>
+        <dd>
+          <ul class="list--compact">
+            <li><code>row  | row-reverse</code> &#8212; horizontaliai</li>
+            <li><code>column | column-reverse</code> &#8212; vertikaliai        </li>
+          </ul>
+        </dd>
+        <dt>ir kryptį &quot;the direction&quot; iš kurios pusės pradeda dėstyti flex item'us (nustato eiliškumą):</dt>
+        <dd>
+          <ul class="list--compact">
+            <li><code>row</code> &#8212; iš kairės į dešnę, main-start yra kairėje, o main-end dešnėje: <br>
+              [1] [2] [3]</li>
+            <li><code>row-reverse</code> &#8212; atvirkščiai: <br>
+              [3] [2] [1]</li>
+            <li><code>column </code>&#8212;  iš viršaus į apačią, main-start yra viršuje, o main-end apačioje: <br>
+              [1] <br>
+              [2] <br>
+              [3]</li>
+            <li><code>column-reverse</code> &#8212;atvirkščiai: <br>
+              [3] <br>
+              [2] <br>
+              [1]        </li>
+          </ul>
+        </dd>
+      </dl>
+      <blockquote>
+        <p>This establishes <strong>the main-axis</strong>, thus defining <strong>the direction</strong> flex items are placed in the flex container. </p>
+        <p>Flexbox is (aside from optional wrapping) <strong>a single-direction layout concept</strong>. Think of flex items as primarily laying out either in horizontal rows or vertical columns.</p>
+      </blockquote>
+      <div class="em-note em--narrow">
+        <p>Tikroji flex item'ų dėstymo kryptis priklauso nuo kalbos krypties, kuri nustatoma:</p>
+        <ul>
+          <li> HTML'e atributu: <code>&lt;p dir=&quot;ltr | rtl&quot;&gt;</code></li>
+          <li>arba CSS'u: <code>direction: ltr | rtl;</code></li>
+        </ul>
+        <blockquote>
+          <ul>
+            <li><code>row</code> (default): left to right in ltr; right to left in rtl</li>
+            <li><code>row-reverse</code>: right to left in ltr; left to right in rtl</li>
+            <li><code>column</code>: same as row but top to bottom</li>
+            <li><code>column-reverse</code>: same as row-reverse but bottom to top </li>
+          </ul>
+        </blockquote>
+        <blockquote>
+          <p> By default, flex
+            items are laid out in the direction of the document text—that is, from
+            left to right for languages such as English, from right to left for languages
+            such as Arabic (specified with the dir HTML attribute or direction CSS
+            property), and from top to bottom for languages such as Japanese (set
+          with the text-direction CSS property, but not yet broadly supported).</p>
+        </blockquote>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>flex-direction: row;</code> &#8212; default'inė reikšmė</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: row;">
+          <div>flex item A</div>
+          <div>flex item B</div>
+          <div>flex item C</div>
+        </div>
+      </div>
+
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>flex-direction: row-reverse;</code> &#8212; </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: row-reverse;">
+          <div>flex item A</div>
+          <div>flex item B</div>
+          <div>flex item C</div>
+        </div>
+      </div>
+
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>flex-direction: column;</code> &#8212; </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column;">
+          <div>flex item A</div>
+          <div>flex item B</div>
+          <div>flex item C</div>
+        </div>
+      </div>
+
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>flex-direction: column-reverse;</code> &#8212; </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column-reverse;">
+          <div>flex item A</div>
+          <div>flex item B</div>
+          <div>flex item C</div>
+        </div>
+      </div></td>
+    <td width="25%"><h3><code>flex-wrap:</code></h3>
+    <p><code><em>nowrap</em> | wrap | wrap-reverse</code></p>
+    <p>Nustato ar &quot;main axis&quot; kryptimi dėstomi fex item'ai wrap'inami kai nebesutelpa, ar ne.</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>flex-wrap: nowrap</code></p>
+      <p class="c-pvz__title">Su default'ine Flex item'ų <code>flex-shrink: 1</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: nowrap">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+        <div>flex item E</div>
+        <div>flex item F</div>
+        <div>flex item G</div>
+      </div>
+      <p class="c-pvz__title">Su Flex item'ų <code>flex-shrink: 0</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: nowrap">
+        <div style="flex-shrink:0">flex item A</div>
+        <div style="flex-shrink:0">flex item B</div>
+        <div style="flex-shrink:0">flex item C</div>
+        <div style="flex-shrink:0">flex item D</div>
+        <div style="flex-shrink:0">flex item E</div>
+        <div style="flex-shrink:0">flex item F</div>
+        <div style="flex-shrink:0">flex item G</div>
+      </div>
+    </div>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>flex-wrap: wrap</code></p>
+      <p class="c-pvz__title">Su default'ine Flex item'ų <code>flex-grow: 0</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+        <div>flex item E</div>
+        <div>flex item F</div>
+        <div>flex item G</div>
+      </div>
+      <p class="c-pvz__title">Su Flex item'ų <code>flex-grow: 1</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap">
+        <div style="flex-grow: 1">flex item A</div>
+        <div style="flex-grow: 1">flex item B</div>
+        <div style="flex-grow: 1">flex item C</div>
+        <div style="flex-grow: 1">flex item D</div>
+        <div style="flex-grow: 1">flex item E</div>
+        <div style="flex-grow: 1">flex item F</div>
+        <div style="flex-grow: 1">flex item G</div>
+      </div>
+    </div>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>flex-wrap: wrap-reverse</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap-reverse">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+        <div>flex item E</div>
+        <div>flex item F</div>
+        <div>flex item G</div>
+      </div>
+  </div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3><code>align-content:</code></h3>
+      <pre><code class="language-css"><em>stretch</em> | space-between | space-around | space-evenly
+flex-start | center | flex-end
+start | end | left | right</code></pre>
+      <p>Formuoja flex item'ų wrap'o eilučių cross-axis plotį ir poziciją flex container'yje.</p>
+      <p>Turi poveik</p>
+      <blockquote>
+        <p>This aligns a flex container's lines within when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.</p>
+        <p><strong>Note:</strong> this property has no effect when there is only one line of flex items.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">kaip veikia wrap'as, kai flex item'ai sutelpa vienoje eilutėje &#8212; yra <q>extra space in the main-axis</q></p>
+        <p class="c-pvz__section">su kitomis default'inėmis CSS savybių reikšmėmis        </p>
+        <p class="c-pvz__title"><code>flex-wrap: nowrap</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; height: 70px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex
+            item <br>
+            3</div>
+          <div>flex item 4</div>
+          <div>flex <br>
+          item <br>
+          5</div>
+          <div>flex item 6</div>
+        </div>
+        <p class="c-pvz__title"><code>flex-wrap: wrap</code><br>
+        veikia vienodai </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; height: 70px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex
+            item <br>
+            3</div>
+          <div>flex item 4</div>
+          <div>flex <br>
+            item <br>
+            5</div>
+          <div>flex item 6</div>
+        </div>
+        <p class="c-pvz__title"><code>flex-wrap: wrap <br>
+        align-content: flex-start</code><br>
+        wrap'o eilutės cross-axis aukštis ne be per visą flex container'į</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-content: flex-start; height: 70px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex
+            item <br>
+            3</div>
+          <div>flex item 4</div>
+          <div>flex <br>
+            item <br>
+            5</div>
+          <div>flex item 6</div>
+        </div>
+        <p class="c-pvz__section"><code>align-items: flex-start</code></p>
+        <p class="c-pvz__title"><code>flex-wrap: nowrap</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: flex-start; height: 70px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex
+            item <br>
+            3</div>
+          <div>flex item 4</div>
+          <div>flex <br>
+            item <br>
+            5</div>
+          <div>flex item 6</div>
+        </div>
+        <p class="c-pvz__title"><code>flex-wrap: wrap</code><br>
+          <code>align-content: flex-end</code><br>
+          wrap'o eilutė        flex container'io apačioje</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: flex-start; flex-wrap: wrap; align-content: flex-end; height: 70px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex
+            item <br>
+            3</div>
+          <div>flex item 4</div>
+          <div>flex <br>
+            item <br>
+            5</div>
+          <div>flex item 6</div>
+        </div></div>
+      <h4>Positional alignment</h4>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>align-content: flex-start</code></p>
+        <p class="c-pvz__title"><code>flex-direction: row</code>        </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-content: flex-start; flex-wrap: wrap; ~align-items: flex-end; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex <br>
+          item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__title"><code>flex-direction: column</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-flow: column wrap; align-content: flex-start; ~align-items: flex-end; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex <br>
+          item <br>
+          3</div>
+          <div>flex item 4</div>
+          <div>flex itemmm 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex itemmm 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>align-content: flex-end</code>        </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-content: flex-end; ~align-items: flex-end; height: 80px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>align-content: center</code>        </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-content: center; flex-wrap: wrap; ~align-items: flex-end; height: 80px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+      </div>
+      <h4>Distributed alignment</h4>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>align-content: stretch</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__title"><code>flex-direction: column</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-flow: column wrap; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__section"><code>align-items: flex-start</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-items: flex-start; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__title">Skirtingo dydžio flex item'ai</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-items: flex-start; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div style="font-size: 1.9em">flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__title"><code>flex-direction: column</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-flow: column wrap; align-items: flex-start; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__section"><code>align-items: center</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-items: center; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__section"><code>align-items: flex-end</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-content: stretch; align-items: flex-end; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+        <p class="c-pvz__section"><code>align-items: baseline</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-content: stretch; align-items: baseline; height: 190px">
+          <div>item 1</div>
+          <div style="font-size: 2em">item 2</div>
+          <div>item 3</div>
+          <div>item 4</div>
+          <div style="font-size: 2.8em">item 5</div>
+          <div>item 6</div>
+          <div>item 7</div>
+          <div>item 8</div>
+          <div style="font-size: 2.3em">item 9</div>
+          <div>item 10</div>
+          <div>item 11</div>
+          <div style="font-size: 2.5em">item 12</div>
+          <div>item 13</div>
+          <div style="font-size: 2em">item 14</div>
+          <div>item 15</div>
+        </div>
+        <p class="c-pvz__title">Su skirtingo dydžio flex item'ais veikia kaip <code>align-items: flex-start</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap; align-content: stretch; align-items: baseline; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>align-content: space-between</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-content: space-between; flex-wrap: wrap; ~align-items: flex-end; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"> <code>align-content: space-around</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-content: space-around; flex-wrap: wrap; ~align-items: flex-end; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>align-content: space-evenly</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-content: space-evenly; flex-wrap: wrap; ~align-items: flex-end; height: 100px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex item 3</div>
+          <div>flex item 4</div>
+          <div>flex item 5</div>
+          <div>flex item 6</div>
+          <div>flex item 7</div>
+          <div>flex item 8</div>
+          <div>flex item 9</div>
+          <div>flex item 10</div>
+          <div>flex item 11</div>
+          <div>flex item 12</div>
+          <div>flex item 13</div>
+          <div>flex item 14</div>
+          <div>flex item 15</div>
+        </div>
+      </div></td>
+  </tr>
+  <tr>
+    <td><h3><code>justify-content: </code></h3>
+    <pre><code class="language-css"><em>flex-start</em> | center | flex-end
+start | end | left | right
+space-between | space-around | space-evenly</code></pre>
+    <p>&nbsp;</p>
+    <pre><code>normal | &lt;content-distribution&gt; | &lt;overflow-position&gt;? [ &lt;content-position&gt; | left | right ]
+
+&lt;content-distribution&gt; = space-between | space-around | space-evenly | stretch
+&lt;overflow-position&gt; = unsafe | safe
+&lt;content-position&gt; = center | start | end | flex-start | flex-end</code></pre>
+    <p>&nbsp;</p>
+    <pre><code>normal |
+[space-between | space-around | space-evenly | stretch] |       &lt;content-distribution&gt;
+[unsafe | safe]?                                                &lt;overflow-position&gt;
+[ center | start | end | flex-start | flex-end |                &lt;content-position&gt;
+left | right ]</code></pre>
+    <p>&nbsp;</p>
+    <p>Nustato flex item'ų lygiavimą-alignment'ą &quot;main axis&quot; ašyje, jeigu tarp flex item'ų yra <q>extra free space</q>, bet <strong>neįtakoja eiliškumo</strong>:</p>
+    <blockquote>
+      <p>This defines the alignment along the main axis. It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. It also exerts some control over the alignment of items when they overflow the line.</p>
+  </blockquote>
+  <p><code>justify-content: </code>pritaikomas tik po kitų CSS savybių, turinčių įtakos flex item'ų užimamam plotui ant &quot;main axis&quot;: <code>width: height: padding: margin: border:</code>. Taip pat pirmiau pritaikoma pačio flexbox'o savybė  <code>flex-grow:</code></p>
+  <blockquote>
+    <p>The alignment is done after the lengths and auto margins are applied, meaning that, if in a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout">Flexbox layout</a> there is at least one flexible element, with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow" title="The flex-grow CSS property specifies the flex grow factor of a flex item. It specifies what amount of space inside the flex container the item should take up.">flex-grow</a> different from 0, it will have no effect as there won't be any available space.</p>
+  </blockquote>
+  <p>Akivaizdi demonstracija kaip veikia <code>justify-content:</code>&#8212; &quot;main axis&quot; <strong>turi</strong> &quot;extra free space&quot;  &#8212; visi flex item'ai užima <strong>vienodą</strong> plotį ant &quot;main axis&quot;</p>
+  <h4>Positional alignment    </h4>
+  <div class="c-pvz">
+    <p class="c-pvz__section">Visur veikia</p>
+    <p class="c-pvz__title"><code>justify-content: flex-start</code> </p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: flex-start">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>justify-content: flex-end</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: flex-end">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>justify-content: center</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: center">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__section">Chrome neveikia, Firefox veikia      </p>
+      <p class="c-pvz__title"><code>justify-content: start</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: start">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>justify-content: end</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: end">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>justify-content: left</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: left">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>justify-content: right</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: right">
+        <div>flex item A</div>
+        <div>flex item B</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+</div>
+  <h4>Distributed alignment</h4>
+  <div class="c-pvz">
+    <p class="c-pvz__title"><code>justify-content: space-between</code></p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-between">
+      <div>flex item A</div>
+      <div>flex item B</div>
+      <div>flex item C</div>
+      <div>flex item D</div>
+    </div>
+    <p class="c-pvz__title"><code>justify-content: space-around</code></p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-around">
+      <div>flex item A</div>
+      <div>flex item B</div>
+      <div>flex item C</div>
+      <div>flex item D</div>
+    </div>
+    <p class="c-pvz__title"><code>justify-content: space-evenly</code></p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-evenly">
+      <div>flex item A</div>
+      <div>flex item B</div>
+      <div>flex item C</div>
+      <div>flex item D</div>
+    </div>
+    <p class="c-pvz__title"><code>justify-content: stretch</code> — Nematyti jokio poveikio !!! </p>
+    <blockquote>
+      <p>Distribute items evenly Stretch 'auto'-sized items to fit the container.</p>
+      <p>If the combined size of the items is less than the size of the alignment container, any auto-sized items have their size increased equally (not proportionally), while still respecting the constraints imposed by <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-height" title="The max-height CSS property sets the maximum height of an element. It prevents the used value of the height property from becoming larger than the value specified for max-height.">max-height</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-width" title="The max-width CSS property sets the maximum width of an element. It prevents the used value of the width property from becoming larger than the value specified by max-width.">max-width</a> (or equivalent functionality), so that the combined size exactly fills the alignment container along the main axis.</p>
+    </blockquote>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: stretch">
+      <div style="width: auto">flex item A</div>
+      <div style="width: auto">flex item B</div>
+      <div style="width: auto">flex item C</div>
+      <div style="width: auto">flex item D</div>
+    </div>
+  </div>
+  <h4>Overflow alignment — <STRONG>NEMATYTI JOKIO POVEIKIO !!!</STRONG></h4>
+  <div class="c-pvz">
+    <p class="c-pvz__title"><code>justify-content: center</code></p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: center">
+      <div>flex_item_A</div>
+      <div>flex_item_B</div>
+      <div>flex_item_C</div>
+      <div>flex_item_D</div>
+      <div>flex_item_E</div>
+      <div>flex_item_F</div>
+      <div>flex_item_G</div>
+      <div>flex_item_L</div>
+    </div>
+    <p class="c-pvz__title"><code>justify-content: safe center</code></p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: safe center">
+      <div>flex_item_A</div>
+      <div>flex_item_B</div>
+      <div>flex_item_C</div>
+      <div>flex_item_D</div>
+      <div>flex_item_E</div>
+      <div>flex_item_F</div>
+      <div>flex_item_G</div>
+      <div>flex_item_L</div>
+    </div>
+    <p class="c-pvz__title"><code>justify-content: unsafe center</code></p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: unsafe center">
+      <div>flex_item_A</div>
+      <div>flex_item_B</div>
+      <div>flex_item_C</div>
+      <div>flex_item_D</div>
+      <div>flex_item_E</div>
+      <div>flex_item_F</div>
+      <div>flex_item_G</div>
+      <div>flex_item_L</div>
+    </div>
+  </div>
+  <h4>Baseline alignment</h4>
+  <blockquote>
+    <p>Specifies participation in first- or last-baseline alignment: aligns the alignment baseline of the box's first or last baseline set with the corresponding baseline in the shared first or last baseline set of all the boxes in its baseline-sharing group.<br>
+      The fallback alignment for <code>first baseline</code> is <code>start</code>, the one for <code>last baseline</code> is <code>end</code>.</p>
+  </blockquote>
+   <div class="c-pvz">
+     <p class="c-pvz__title"><code>justify-content: baseline</code></p>
+     <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: baseline; align-items: baseline">
+       <div>flex A</div>
+       <div style="font-size: 1.8em">flex B</div>
+       <div>flex C</div>
+       <div style="font-size: 2.7em">flex D</div>
+       </div>
+     <p class="c-pvz__title"><code>justify-content: first baseline</code></p>
+     <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: first baseline; align-items: flex-start">
+       <div>flex A</div>
+       <div style="font-size: 1.8em">flex B</div>
+       <div>flex C</div>
+       <div style="font-size: 2.7em">flex D</div>
+       </div>
+     <p class="c-pvz__title"><code>justify-content: last baseline</code></p>
+     <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: last baseline; align-items: flex-start">
+       <div>flex A</div>
+       <div style="font-size: 1.8em">flex B</div>
+       <div>flex C</div>
+       <div style="font-size: 2.7em">flex D</div>
+       </div>
+   </div>
+   <h4>&quot;main axis&quot; <strong>neturi</strong> &quot;extra free space&quot;  &#8212; vienas  flex item'as užima visą laisvą plotį, <code>justify-content:</code> neturi poveikio</h4>
+    <div class="c-pvz">
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-between">
+        <div>flex item A</div>
+        <div style="margin: 1em auto">margin: 1em auto</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-between">
+        <div>flex item A</div>
+        <div style="flex-grow: 1">flex-grow: 1</div>
+        <div>flex item C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title">Kaip analogiškai veikia kai item'ai &#8212; <code>float: left</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="height: 3em;">
+        <div style="float: left">flex item A</div>
+        <div style="float: left; margin: 1em auto">margin: 1em auto</div>
+        <div style="float: left">flex item C</div>
+        <div style="float: left">flex item D</div>
+      </div>
+      <p class="c-pvz__title">Kaip analogiškai veikia kai item'ai &#8212; <code>display: inline-block</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="">
+        <div style="display: inline-block">flex item A</div>
+        <div style="display: inline-block; margin: 1em auto">margin: 1em auto</div>
+        <div style="display: inline-block">flex item C</div>
+        <div style="display: inline-block">flex item D</div>
+      </div>
+    </div>
+    <h4>Kai  flex item'ai ant &quot;main axis&quot; užima <strong>per daug </strong>vietos </h4>
+    <div class="c-pvz">
+      <p class="c-pvz__title">Yra šiek tiek <q>extra free space</q> &#8212; suveikia <code>justify-content: space-between</code> </p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-between">
+        <div style="width: 30%">width: 30%</div>
+        <div style="width: 30%">width: 30%</div>
+        <div style="width: 35%">width: 35%</div>
+    </div>
+    <p class="c-pvz__title">Nėra <q>extra free space</q> &#8212; flex item'ai savo pločiu užima visą  &quot;main axis&quot;</p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-between">
+      <div style="width: 30%">width: 30%</div>
+      <div style="width: 30%">width: 30%</div>
+      <div style="width: 40%">width: 40%</div>
+    </div>
+    <p class="c-pvz__title"><q>extra free space</q> minuse &#8212; flex item'ai savo pločiu viršija &quot;main axis&quot; plotį</p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-between">
+        <div style="width: 30%">width: 30%</div>
+        <div style="width: 30%">width: 30%</div>
+        <div style="width: 60%">width: 60%</div>
+    </div>
+    <p class="c-pvz__title">Dar labiau viršija </p>
+    <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; justify-content: space-between">
+        <div style="width: 30%">width: 30%</div>
+        <div style="width: 30%">width: 30%</div>
+        <div style="width: 90%">width: 90%</div>
+    </div>
+    </div></td>
+    <td><h3><code>align-items:</code></h3>
+    <pre><code class="language-css"><em>stretch</em>
+flex-start | center | flex-end
+baseline | first baseline | last baseline
+start | end | self-start | self-end</code></pre>
+    <blockquote>
+      <p>This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the <code>justify-content:</code> version for the cross-axis (perpendicular to the main-axis).</p>
+    </blockquote>
+    <div class="c-pvz">
+      <p class="c-pvz__title"><code>align-items: stretch</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: stretch; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br> B</div>
+        <div>flex <br> item <br> C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title">Kaip <code>align-items: stretch</code> paveikia <code>height: min-height: max-height:</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: stretch; height: 80px">
+        <div style="height: 50px">height: 50px</div>
+        <div style="min-height: 50px">min-height: 50px</div>
+        <div style="max-height: 50px">max-height: 50px</div>
+        <div>flex item D</div>
+      </div>
+  </div>
+    <h4>Positional alignment    </h4>
+    <div class="c-pvz">
+      <p class="c-pvz__section">Visur veikia      </p>
+      <p class="c-pvz__title"><code>align-items: flex-start</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: flex-start; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br> B</div>
+        <div>flex <br> item <br> C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: flex-end</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: flex-end; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br>
+          B</div>
+        <div>flex <br>
+          item <br>
+          C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: center</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: center; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br>
+          B</div>
+        <div>flex <br>
+          item <br>
+          C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: safe center</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: safe center; height: 85px">
+        <div>flex A</div>
+        <div style="font-size: 1.8em">flex B</div>
+        <div>flex C</div>
+        <div style="font-size: 2.7em">flex D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: unsafe center</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: unsafe center; height: 85px">
+        <div>flex A</div>
+        <div style="font-size: 1.8em">flex B</div>
+        <div>flex C</div>
+        <div style="font-size: 2.7em">flex D</div>
+      </div>
+      <p class="c-pvz__section">Chrome neveikia, Firefox veikia </p>
+      <p class="c-pvz__title"><code>align-items: start</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: start; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br>
+          B</div>
+        <div>flex <br>
+          item <br>
+          C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: end</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: end; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br>
+          B</div>
+        <div>flex <br>
+          item <br>
+          C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: self-start</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: self-start; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br>
+          B</div>
+        <div>flex <br>
+          item <br>
+          C</div>
+        <div>flex item D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: self-end</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: self-end; height: 80px">
+        <div>flex item A</div>
+        <div>flex item <br>
+          B</div>
+        <div>flex <br>
+          item <br>
+          C</div>
+        <div>flex item D</div>
+      </div>
+    </div>
+    <h4>Baseline alignment</h4>
+    <div class="c-pvz">
+      <p class="c-pvz__title"><code>align-items: baseline</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: baseline; height: 85px">
+        <div>flex A</div>
+        <div style="font-size: 1.8em">flex B</div>
+        <div>flex C</div>
+        <div style="font-size: 2.7em">flex D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: first baseline</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: first baseline; height: 85px">
+        <div>flex A</div>
+        <div style="font-size: 1.8em">flex B</div>
+        <div>flex C</div>
+        <div style="font-size: 2.7em">flex D</div>
+      </div>
+      <p class="c-pvz__title"><code>align-items: last baseline</code></p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; align-items: last baseline; height: 85px">
+        <div>flex A</div>
+        <div style="font-size: 1.8em">flex B</div>
+        <div>flex C</div>
+        <div style="font-size: 2.7em">flex D</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    </td>
+    <td><p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Flex item'ui skirtos CSS savybės</h2>
+<blockquote>
+  <p>Алгоритм раскладки во флексах<br>
+    1. Определение базовых размеров. <br>
+    2. Перераспределение свободного места: <br>
+    2.1. Изменение размеров гибких элементов. <br>
+    2.2. Автоматические отступы. <br>
+    2.3. Выравнивание элементов. <br>
+    3. Применение ограничений размеров (min-width, max-width, min-height, max-height). </p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>margin: auto <br>
+    • Работает во всех направлениях. <br>
+    • «Съедает» свободное место. <br>
+    • Если у нескольких элементов есть автоматические
+    отступы, то свободное место делится поровну. <br>
+    • Свободное место «съедается» до работы выравниваний
+    — выравнивания «ломаются».</p>
+  <p><img src="images/20180109152608.png" alt="" width="352" height="218"/></p>
+</blockquote>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><code>order:</code></h3>
+      <p><code> -N | <em>0</em> | N</code></p>
+      <p>Pirmesnes pozicijas užima su mažesnėmis <code>order:</code> reikšmėmis.</p>
+      <p>Kaip veikia skirtingos <code>order:</code> skaitinės reikšmės:</p>
+      <blockquote>
+        <p>The value of
+          the property is a number that creates an ordinal group that groups together
+          items with the same value and orders them by their ordinal group: All items
+          in the lowest numbered group come first, then all items in the second-lowest
+          numbered group, and so on.</p>
+      </blockquote>
+      <p class="em-note em--small">Flex item'ai be nustatyto <code>order:</code> turi default'inę reikšmę <code>order: 0</code>, todėl flex item'ai ir be nustatyto <code>order:</code>, ir su nustatytu <code>order: 0</code>, priklauso tai pačiai &quot;an ordinal group&quot;. </p>
+      <div class="c-pvz">
+        <style>
+          /*#pvz-order-1 > :nth-child(1) { order: 0; }*/
+          /*#pvz-order-1 > :nth-child(2) { order: 0; }*/
+          /*#pvz-order-1 > :nth-child(3) { order: 0; }*/
+          /*#pvz-order-1 > :nth-child(4) { order: 0; }*/
+        </style>
+        <p class="c-pvz__title">Tos pačios <code>order:</code> reikšmės flex item'ai tarpusavyje dėstomi pagal poziciją kode (source order)</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column">
+          <div style="order: 1">[1] order: 1</div>
+          <div>[2] order: 0</div>
+          <div style="order: 1">[3] order: 1</div>
+          <div>[4] order: 0</div>
+        </div>
+        <p class="c-pvz__title"><code>order:</code> gali būti bet kokių reikšmių</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column">
+          <div style="order: 10">[1] order: 10</div>
+          <div style="order: 5">[2] order: 5</div>
+          <div style="order: -10">[3] order: -10</div>
+          <div style="order: 7">[4] order: 7</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <style>
+          #pvz-order-1 > *:after { color: red; margin-left: 2em; }
+          #pvz-order-1 > :nth-child(1):after { content: ':nth-child(1)' }
+          #pvz-order-1 > :nth-child(2):after { content: ':nth-child(2)' }
+          #pvz-order-1 > :nth-child(3):after { content: ':nth-child(3)' }
+          #pvz-order-1 > :nth-child(4):after { content: ':nth-child(4)' }
+          #pvz-order-1 > :nth-child(5):after { content: ':nth-child(5)' }
+        </style>
+        <p class="c-pvz__title"><code>:nth-*()</code> veikimas išlieka toks pats &#8212; pagal tagų eiliškumą DOM'e, t. y. HTML kode-markup'e.</p>
+        <div id="pvz-order-1" class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column">
+          <div style="order: 1">[1] order: 1</div>
+          <div>[2] order: 0</div>
+          <div style="order: 1">[3] order: 1</div>
+          <div style="order: -1">[4] order: -1</div>
+        </div>
+      </div>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3><code>align-self:</code></h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Flex item'ui skirtos CSS savybės &#8212; sizing</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Controlling_Ratios_of_Flex_Items_Along_the_Main_Ax">Controlling Ratios of Flex Items Along the Main Axis - CSS - MDN</a></p>
+<blockquote>
+  <p>Our three properties control the following aspects of a flex item's flexibility:</p>
+  <ul>
+    <li><code>flex-grow:</code> How much of the positive free space does this item get?</li>
+    <li><code>flex-shrink:</code> How much negative free space can be removed from this item?</li>
+    <li><code>flex-basis:</code> What is the size of the item before growing and shrinking happens?</li>
+  </ul>
+  <p>The properties are usually expressed as the shorthand <code>flex:</code> property. </p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>How the flex properties work to control <strong>ratios</strong> along the <strong>main axis</strong>. These relate to the <strong><em>natural size</em></strong> of flex items before any growing or shrinking takes place, and to the concept of <strong><em>free space</em></strong>.</p>
+  <p>The concept of <strong>positive and negative free space</strong>:</p>
+  <ul>
+    <li>positive free space &#8212; When a flex container has positive free space, it has more space than is required to display the flex items inside the container. </li>
+    <li>negative free space &#8212; We have negative free space when the natural size of the items adds up to larger than the available space in the flex container.</li>
+  </ul>
+</blockquote>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><code> flex-basis:</code></h3>
+      <p><code>content | &lt;'width'&gt; /* default auto */</code></p>
+      <p>Nustato pradinį <strong>flex item</strong>'o <strong>main size</strong>'ą, t. y. tai ką nustato <code>width:</code> arba <code>height:</code> (priklausomai nuo <code>flex-direction:</code> reikšmės) ant <strong>main axis</strong>.</p>
+      <blockquote>
+        <p>The <strong>flex-basis</strong> CSS property specifies the initial <strong>main size</strong> of a flex item. This property determines the size of the content-box unless specified otherwise using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing" title="The CSS box-sizing property is used to alter the default CSS box model used to calculate width and height of the elements.">box-sizing</a>.</p>
+      </blockquote>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>flex-basis:</code> veikimas priklauso nuo <code>flex-direction:</code> reikšmės<br>
+        Flex item &#8212; <code>flex-basis: 60px</code></p>
+        <p class="c-pvz__title">Flex container &#8212; <code>flex-direction: row</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: row">
+          <div style="flex-basis: 60px">flex 1</div>
+          <div style="flex-basis: 60px">flex 2</div>
+          <div style="flex-basis: 60px">flex 3</div>
+        </div>
+        <p class="c-pvz__title">Flex container &#8212; <code>flex-direction: column</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column">
+          <div style="flex-basis: 60px">flex 1</div>
+          <div style="flex-basis: 60px">flex 2</div>
+          <div style="flex-basis: 60px">flex 3</div>
+        </div>
+      </div>
+      <h4><code>flex-basis: auto</code>      </h4>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>flex-basis: auto</code> nurodo imti reikšmę iš <code>width:</code> arba <code>height:</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-basis: auto; width: 100px">flex item 1</div>
+          <div style="flex-basis: auto; width: min-content">flex item 2</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">kai <code>flex-basis: auto</code>, tada <code>width: auto</code> paverčiamas į <code>width: max-content</code></p>
+        <blockquote>
+          <p>If your item is instead auto-sized, then auto resolves to the size of its content. At this point your knowledge of <code>min-</code> and <code>max-content</code> sizing becomes useful, as flexbox will take the <code>max-content</code> size of the item as the <code>flex-basis</code>.</p>
+        </blockquote>
+        <p class="c-pvz__title">praktiškai tai reiškia, kad <code>width: auto | max-content | fit<code>-content</code></code> (kartu su
+          <co><code>flex-basis: auto</code></co>
+          ) daro tą patį</p>
+        <p class="c-pvz__title">su <code>flex-wrap: nowrap</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: auto">flex item 1</div>
+          <div style="width: auto">flex item 2</div>
+        </div>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: auto">flex item 1</div>
+          <div style="width: auto">flex item 2</div>
+          <div style="width: auto">flex item 3</div>
+          <div style="width: auto">flex item 4</div>
+          <div style="width: auto">flex item 5</div>
+          <div style="width: auto">flex item 6</div>
+          <div style="width: auto">flex item 7</div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: max-content">flex item 1</div>
+          <div style="width: max-content">flex item 2</div>
+        </div>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: max-content">flex item 1</div>
+          <div style="width: max-content">flex item 2</div>
+          <div style="width: max-content">flex item 3</div>
+          <div style="width: max-content">flex item 4</div>
+          <div style="width: max-content">flex item 5</div>
+          <div style="width: max-content">flex item 6</div>
+          <div style="width: max-content">flex item 7</div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: fit-content">flex item 1</div>
+          <div style="width: fit-content">flex item 2</div>
+        </div>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: fit-content">flex item 1</div>
+          <div style="width: fit-content">flex item 2</div>
+          <div style="width: fit-content">flex item 3</div>
+          <div style="width: fit-content">flex item 4</div>
+          <div style="width: fit-content">flex item 5</div>
+          <div style="width: fit-content">flex item 6</div>
+          <div style="width: fit-content">flex item 7</div>
+        </div>
+
+        <p class="c-pvz__title">su <code>flex-wrap: wrap</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap">
+          <div style="width: auto">flex item 1</div>
+          <div style="width: auto">flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2</div>
+          <div style="width: auto">flexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx item 2</div>
+        </div>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap">
+          <div style="width: max-content">flex item 1</div>
+          <div style="width: max-content">flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2</div>
+          <div style="width: max-content">flexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx item 2</div>
+        </div>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-wrap: wrap">
+          <div style="width: fit-content">flex item 1</div>
+          <div style="width: fit-content">flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2 flex item 2</div>
+          <div style="width: fit-content">flexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx item 2</div>
+        </div>
+      </div>
+      <h4><code>flex-basis:  &lt;length&gt; | &lt;percentage&gt;</code>      </h4>
+      <div class="c-pvz">
+        <p class="c-pvz__title"> nugali-override'ina <code>width:</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: 100px">width: 100px</div>
+          <div style="width: 100px; flex-basis: 200px">width: 100px<br>
+            flex-basis: 200px</div>
+        </div>
+      </div>
+      <h4><code>flex-basis: 0</code></h4>
+      <blockquote>
+        <p>If you want flexbox to completely ignore the size of the item when doing space distribution then set <code>flex-basis</code> to 0. This essentially tells flexbox that all the space is up for grabs, and to share it out in proportion. </p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">&nbsp;</p>
+        <p class="c-pvz__title">su default'inėmis <code>flex-grow: 0</code> ir <code>flex-shrink: 1</code> reikšmėmis, <code>flex-basis: 0</code> veikia kaip <code>flex-basis: auto; width: min-content</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="flex-basis: auto; width: min-content">flex item 1</div>
+          <div style="flex-basis: 0; flex-grow: 0; flex-shrink: 1">flex item 2</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>flex-basis: 0</code> nugali-override'ina visas <code>width:</code> reikšmes , išskyrus <code>min-width:</code>, ir priskiria <code>width: min-content</code></p>
+        <p class="c-pvz__title">su <code>flex-basis: auto</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="flex-basis: auto; width: max-content">flex 1</div>
+          <div style="flex-basis: auto; width: min-content">flex 2</div>
+          <div style="flex-basis: auto; width: 100px">flex 3</div>
+          <div style="flex-basis: auto; max-width: 100px">flex 4</div>
+          <div style="flex-basis: auto; min-width: 100px">flex 5</div>
+        </div>
+        <p class="c-pvz__title">su <code>flex-basis: 0</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="flex-basis: 0; width: max-content">flex 1</div>
+          <div style="flex-basis: 0; width: min-content">flex 2</div>
+          <div style="flex-basis: 0; width: 100px">flex 3</div>
+          <div style="flex-basis: 0; max-width: 100px">flex 4</div>
+          <div style="flex-basis: 0; min-width: 100px">flex 5</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <h4><code>flex-basis: content</code></h4>
+      <p>Ignoruoja nustatytą <code>width: &lt;length&gt; | &lt;percentage&gt;</code> , vietoj to naudoja <code>width: max-content</code></p>
+      <blockquote>
+        <p>In addition to the <code>auto</code> keyword, you can use the <code>content</code> keyword as the flex-basis. This will result in the <code>flex-basis</code> being taken from the content size even if there is a width set on the item. This is a newer keyword and <strong>has less browser support</strong>, however you can always get the same effect by using <code>auto</code> as the <code>flex-basis</code> and ensuring that your item does not have a <code>width</code> set, in order that it will be auto-sized. </p>
+      </blockquote>
+      <div class="c-pvz">
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-basis: content;">flex item 1</div>
+          <div style="flex-basis: content; width: 100px">flex item 2</div>
+          <div style="flex-basis: content; width: auto">flex item 3</div>
+        </div>
+      </div>
+      <h4>Intrinsic sizing keywords &#8212; <code>flex-basis: fill</code></h4>
+      <div class="c-pvz">
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-basis: fill;">flex item 1</div>
+          <div style="flex-basis: fill; width: 100px">flex item 2</div>
+          <div style="flex-basis: fill; width: 50px">flex item 3</div>
+        </div>
+      </div>
+      <h4>Intrinsic sizing keywords &#8212; <code>flex-basis: max-content</code></h4>
+      <p class="em-alert em--small">Neveikia.</p>
+      <div class="c-pvz">
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-basis: max-content;">flex item 1</div>
+          <div style="flex-basis: max-content; width: 100px">flex item 2</div>
+          <div style="flex-basis: max-content; width: 50px">flex item 3</div>
+        </div>
+      </div>
+      <h4>Intrinsic sizing keywords &#8212; <code>flex-basis: min-content</code></h4>
+      <p class="em-alert em--small">Neveikia.      </p>
+      <div class="c-pvz">
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-basis: min-content;">flex item 1</div>
+          <div style="flex-basis: min-content; width: 100px">flex item 2</div>
+          <div style="flex-basis: min-content; width: 50px">flex item 3</div>
+        </div>
+      </div>
+      <h4>Intrinsic sizing keywords &#8212; <code>flex-basis: fit-content</code></h4>
+      <div class="c-pvz">
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-basis: fit-content;">flex item 1</div>
+          <div style="flex-basis: fit-content; width: 100px">flex item 2</div>
+          <div style="flex-basis: fit-content; width: 50px">flex item 3</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>9. Flex-basis тонкое и важное свойство</p>
+        <p>Когда твои требования перерастут ключевые слова <strong>initial</strong>, <strong>auto</strong> и <strong>none</strong>, все станет немного сложнее, и теперь, когда я понял <strong>flex-basis</strong>, забавно, знаешь, я не могу придумать как закончить это предложение. Оставь комментарий, если у тебя есть идеи.</p>
+        <p>Если у тебя есть три flex-элемента с flex-значениями 3, 3, 4, тогда они гарантированно займут 30%, 30% и 40% доступного пространства, независимо от их содержимого, если их <strong>flex-basis</strong> равен 0. И <em>только</em>если он равен нулю.</p>
+        <p>Тем не менее, если ты хочешь чтобы flex вел себя в более дружественной, предсказуемой манере, используй <strong>flex-basis: auto</strong>. В этом случае flexbox примет твои flex-значения во внимание, но также учтет и другие факторы, подумает немного, и подберет ширины, подходящие по его мнению тебе.</p>
+        <p>Взгляни на эту четкую диаграмму из спецификации:</p>
+        <p><img src="https://habrastorage.org/web/848/cb6/ac1/848cb6ac19af4fa195baf466e545a74c.png"></p>
+        <p>Я уверен, что это упомянуто по меньшей мере в одном из блог-постов про flex, которые я читал, но по какой-то причине, не проникся пока не увидел эту картинку в спецификации (schmick pick in the spec)(тройная рифма если ты из Новой Зеландии).</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <pre><code>flex-basis:
+  /* &lt;'width'&gt; / atstumas / a length */
+  <em>auto</em> | 10em | 3px
+  /* intrinsic sizing keywords */
+  fill | max-content | min-content | fit-content
+  /*Automatically size based on the flex item's content: */
+  content</code></pre>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>This defines the default size of an element before the remaining space is distributed.</p>
+        <p>Flex-basis controls the default size of an element, <em>before it is manipulated by other Flexbox properties</em>. </p>
+        <p>Flex-basis affects an element's size <em>across the main axis.</em>  Flex-basis thus alternately determines width <strong>or</strong> height, depending on flex-direction.</p>
+      </blockquote>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>flex-basis: auto</code></p>
+        <p class="c-pvz__title">&nbsp;</p>
+        <p class="c-pvz__title">naudojama <code>width:</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="width: 100px">width: 100px</div>
+          <div style="width: min-content">width: min-content</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><span class="c-pvz__title">...</span></p>
+        <p class="c-pvz__title"><code>flex-basis: min-content | max-content</code> neveikia, o <code>width: min-content</code> veikia</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="flex-basis: min-content">item 1</div>
+          <div style="width: min-content">item 2</div>
+        </div>
+        <!--
+        <p class="c-pvz__title">&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex">
+          <div style="flex-basis: auto">item 1</div>
+          <div style="flex-basis: auto; width: auto">item 1</div>
+          <div style="flex-basis: auto; width: 100px">item 1</div>
+          <div style="flex-basis: auto; width: min-content">item 1</div>
+          <div style="width: 100px">item 1</div>
+          <div style="width: auto">item 2</div>
+          <div style="width: max-content">item 3</div>
+          <div style="width: min-content">item 4</div>
+          <div style="flex-basis: auto">item 5</div>
+          <div style="flex-basis: content">item 6</div>
+          <div style="width: 70px; flex-basis: content">item 6</div>
+        </div>
+-->
+      </div>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3><code>flex-grow:</code></h3>
+      <p><code>&lt;number&gt; /* default 0 */</code>      </p>
+      <p>Ką daro:</p>
+      <blockquote>
+        <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow" title="The flex-grow CSS property specifies the flex grow factor of a flex item. It specifies what amount of space inside the flex container the item should take up. The flex grow factor of a flex item is relative to the size of the other children in the flex-container.">flex-grow</a> property specifies the <strong>flex grow factor</strong>, which determines how much the flex item will grow relative to the rest of the flex items in the flex container when <strong>the positive free</strong> space is distributed.</p>
+      </blockquote>
+      <h4><code>flex-grow: N &gt; 0</code></h4>
+      <div class="c-pvz">
+        <p class="c-pvz__title">Vienas flex item'as su <code>flex-grow: 1</code> (gali būti bet kokia teigiama reikšmė) užima visą laisvą plotą, jeigu jo yra</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div>flex-grow: 0</div>
+          <div style="flex-grow: 1">flex-grow: 1</div>
+          <div>flex-grow: 0</div>
+        </div>
+      </div>
+      <h4><code>flex-grow: 0</code></h4>
+      <blockquote>
+        <p>The element will <strong>not</strong> grow if there's space available. It will only use the space it needs.</p>
+      </blockquote>
+      <h4>Vienodos <code>flex-grow:</code> reikšmės</h4>
+      <p>Flex item'ai su vienodomis <code>flex-grow:</code> reikšmėmis pasidalina visą laisvą plotą po lygiai, nepriklausomai kokio dydžio yra jie patys:</p>
+      <blockquote>
+        <p>If all of your items have the same <code>flex-grow</code> factor then space will be distributed evenly between all of them. If this is the situation that you want then typically you would use 1 as the value, however you could give them all a <code>flex-grow</code> of <code>88</code>, or <code>100</code>, or <code>1.2</code> if you like — it is a ratio. If the factor is the same for all, and there is positive free space in the flex container then it will be distributed equally to all.</p>
+      </blockquote>
+      <div class="c-pvz">
+        <p class="c-pvz__title">Flex item'ai su vienodomis<code>flex-grow:</code> reikšmėmis pasidalina visą laisvą plotą po lygiai        </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div>flex-grow: 0</div>
+          <div>flex-grow: 0</div>
+          <div>flex-grow: 0</div>
+        </div>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div>flex-grow: 0</div>
+          <div style="flex-grow: 1">flex-grow: 1</div>
+          <div style="flex-grow: 1">flex-grow: 1</div>
+        </div>
+      </div>
+      <h4>Skirtingos <span class="c-pvz__title"><code>flex-grow:</code></span> reikšmės </h4>
+      <p>Skirtingos <span class="c-pvz__title"><code>flex-grow:</code></span> reikšmės veikia taip:</p>
+      <ul>
+        <li>sumuojamos visos <span class="c-pvz__title"><code>flex-grow:</code></span>  reikšmės, </li>
+        <li>visas laisvas plotis dalinamas iš tos sumos, gaunamas vieno flex-grow'so dydis,</li>
+        <li>kiekvienas flex item'as padidinamas atitinkamu flex-grow'so skaičiumi.</li>
+      </ul>
+      <div class="c-pvz">
+        <p class="c-pvz__title"> flex-grow'sų skaičius: 3, antras flex item'as gauna: 1/3 laisvo ploto, trečias: 2/3</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div>flex-grow: 0</div>
+          <div style="flex-grow: 1">flex-grow: 1</div>
+          <div style="flex-grow: 2">flex-grow: 2</div>
+        </div>
+      </div>
+      <h4>Kaip <code>flex-grow:</code> sąveikauja su kitomis CSS savybėmis</h4>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">Ką <code>flex-grow:</code> plečia, o ką ne</p>
+        <p class="c-pvz__title"><code>width:</code> &#8212; plečia </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-grow: 1; width: 100px">w: 100px</div>
+          <div style="flex-grow: 1; width: 200px">w: 200px</div>
+        </div>
+
+        <p class="c-pvz__title"><code>min-width:</code> &#8212; plečia </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-grow: 1; min-width: 100px">min-w: 100px</div>
+          <div style="flex-grow: 1; min-width: 200px">min-w: 200px</div>
+        </div>
+
+        <p class="c-pvz__title"><code>max-width:</code> &#8212; NEplečia </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div style="flex-grow: 1; max-width: 100px">max-w: 100px</div>
+          <div style="flex-grow: 1; max-width: 200px">max-w: 200px</div>
+        </div>
+      </div>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%"><h3><code>flex-shrink:</code></h3>
+    <pre><code>&lt;number&gt;; /* default 1 */</code></pre>
+    <p>&nbsp;</p>
+    <p>• Если есть отрицательное пространство, то элемент может <br>
+      его поглотить и уменьшиться. <br>
+      • Для этого flex-shrink должен быть больше 0. <br>
+      • flex-shrink: 1 — значение по умолчанию. <br>
+      • Если элементов с положительным flex-shrink несколько, <br>
+      то они делят отрицательное пространство <br>
+      пропорционально своим flex-shrink и базовым размерам.    </p>
+    <h4><code>flex-shrink: 0</code></h4>
+    <div class="c-pvz">
+      <p class="c-pvz__title">Flex item'ai su <code>flex-shrink: 0</code> nesumažinami jeigu yra &quot;negative free space&quot;</p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+        <div style="width:170px; flex-shrink:0">item 1</div>
+        <div style="width:170px; flex-shrink:0">item 2</div>
+        <div style="width:170px; flex-shrink:0">item 3</div>
+      </div>
+    </div>
+    <h4><code>flex-shrink: N &gt; 0</code>    </h4>
+    <div class="c-pvz">
+      <p class="c-pvz__title">Kai visi flex item'ai su vienodais <code>flex-shrink: N &gt; 0</code> &#8212; visi sumažinami vienodai, t. y. po lygiai pasidalina &quot;negative free space&quot;</p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+        <div style="width:170px; flex-shrink:1">item 1</div>
+        <div style="width:170px; flex-shrink:1">item 2</div>
+        <div style="width:170px; flex-shrink:1">item 3</div>
+      </div>
+  </div>
+    <h4>Skirtingos <span class="c-pvz__title"><code>flex-shrink:</code></span> reikšmės    </h4>
+    <div class="c-pvz">
+      <p class="c-pvz__title">Vienas flex item'as su <code>flex-shrink: N &gt; 0</code> &#8212; yra vienintelis sumažinamas, jeigu yra &quot;negative free space&quot;</p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+        <div style="width:200px; flex-shrink:0">item 1</div>
+        <div style="width:200px; flex-shrink:0">item 2</div>
+        <div style="width:200px; flex-shrink:1">item 3</div>
+      </div>
+      <p class="c-pvz__title">Keli flex item'ai su vienodomis <code>flex-shrink: N &gt; 0</code> &#8212; po lygiai pasidalina &quot;negative free space&quot;, jeigu jos yra</p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+        <div style="width:200px; flex-shrink:0">item 1</div>
+        <div style="width:200px; flex-shrink:1">item 2</div>
+        <div style="width:200px; flex-shrink:1">item 3</div>
+      </div>
+      <p class="c-pvz__title">Keli flex item'ai su skirtingomis <code>flex-shrink: N &gt; 0</code> &#8212; proporcingai <code>flex-shrink:</code>reikšmei pasidalina  &quot;negative free space&quot;</p>
+      <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+        <div style="width:200px; flex-shrink:0">item 1</div>
+        <div style="width:200px; flex-shrink:1">item 2</div>
+        <div style="width:200px; flex-shrink:3">item 3</div>
+      </div>
+  </div>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Kaip kitos CSS deklaracijos veikia &#8212; flex item'us</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>flex item'ų sizing'as</h3>
+      <p> <a href="https://www.smashingmagazine.com/2018/09/flexbox-sizing-flexible-box/?utm_medium=email&utm_source=topic+optin&utm_campaign=awareness&utm_content=20180926+web+nl&mkt_tok=eyJpIjoiTXpJM1lUZGxOMlpoT0dJeSIsInQiOiI2RjcybEg2TTB3YlJCc2pNMm13dDJqNWpUdU5vaGNwa1JQR3J0Z1gxOVpOSTRXdENoZFgwZXczaFoxWVJ2UUdKY1NMaDVpMlZmZ1ZEK1F0eFBzOUJWbUk2OFNUdW5WcitqNnhWVDVLbDFqZ2N3UGE4Y2c2MkplbnV3THlDZFRVYyJ9">Flexbox: How Big Is That Flexible Box? — Smashing Magazine</a></p>
+      <p> <a href="https://www.w3.org/TR/css-sizing-3/">CSS Intrinsic & Extrinsic Sizing Module Level 3</a></p>
+      <blockquote>
+        <p>There is space at the end of the flex container which the items do not grow into because the initial value of <code>flex-grow</code> is <code>0</code>, do not grow.</p>
+      </blockquote>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">Kai yra free space</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div>animavimas</div>
+          <div>išmoksite</div>
+          <div>Mokysitės generuoti</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>The boxes are assigned a portion of the space in the container which corresponds to how much text is in each box — an item with a longer string of text is assigned more space. This means that we don't end up with a tall skinny column with a lot of text when the next door item only contains a single word.</p>
+      </blockquote>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">Kai nėra free space</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div>Banerių animavimas, kompozicija ir informacijos architektūra.</div>
+          <div>išmoksite ne tik atpažinti</div>
+          <div>Mokysitės generuoti idėjas bei jas įgyvendinti efektyviausiais ir kokybiškiausiais būdais. Taip pat išmoksite analizuoti skaitmeninius produktus, jų veikimą, kurti patogų grafinį interfeisą, analizuoti vartotojo patirtį.</div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+        <p class="c-pvz__title">..</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex;">
+          <div>Banerių animavimas, kompozicija ir informacijos architektūra.</div>
+          <div>išmoksite ne tik atpažinti</div>
+          <div>Mokysitės generuoti idėjas bei jas įgyvendinti efektyviausiais ir kokybiškiausiais būdais. Taip pat išmoksite analizuoti skaitmeninius produktus, jų veikimą, kurti patogų grafinį interfeisą, analizuoti vartotojo patirtį.</div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+        <p class="c-pvz__title">&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>FLEX ITEM MAIN SIZE</p>
+      <blockquote>
+        <p>The <em><a href="https://www.w3.org/TR/css-flexbox-1/#box-model">main size</a></em> of a flex item is the size it has in the main dimension. If you are working in a row — in English — then the main size is the width. In a column in English, the main size is the height.</p>
+        <p>Items also have a minimum and maximum main size as defined by their min-width or min-height on the main dimension.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3><code>margin:</code></h3>
+      <p><code>margin: auto</code> veikia kaip ir turėtų flex item'ams:</p>
+      <div class="c-pvz">
+        <p class="c-pvz__title">Be jokio <code>margin:</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; height: 60px">
+          <div>[1]</div>
+          <div>[2]</div>
+          <div>[3]</div>
+          <div>[4]</div>
+        </div>
+        <p class="c-pvz__title">Su <code>margin: auto 0</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; height: 60px">
+          <div style="margin: auto 0">[1]</div>
+          <div style="margin: auto 0">[2]</div>
+          <div style="margin: auto 0">[3]</div>
+          <div style="margin: auto 0">[4]</div>
+        </div>
+        <p class="c-pvz__title">Su <code>margin: 0 auto</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; height: 60px">
+          <div style="margin: 0 auto">[1]</div>
+          <div style="margin: 0 auto">[2]</div>
+          <div style="margin: 0 auto">[3]</div>
+          <div style="margin: 0 auto">[4]</div>
+        </div>
+        <p class="c-pvz__title">Su <code>margin: auto</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; height: 60px">
+          <div style="margin: auto">[1]</div>
+          <div style="margin: auto">[2]</div>
+          <div style="margin: auto">[3]</div>
+          <div style="margin: auto">[4]</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&#8212; default'inė reikšmė</p>
+<p>Pavyzdžiai su vienodomis <code>flex-grow:</code> reikšmėmis:</p>
+<p>&nbsp;</p>
+<p class="em-note em--small">Flex item'ai be <code>order:</code> rodomi pirmiau už su nustatytu:</p>
+<blockquote>
+  <p>Any items without a declared value are shown
+    first because they have the default value of 0.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>Kodo gabalai užkomentuoti:</p>
+<!--
+<style>
+[id^="c-pvz-order-"]:nth-child(even) { background-color: red; }
+#pvz-order-3 { order: 1; }
+#pvz-order-1 { order: 2; }
+#pvz-order-2, #pvz-order-4 { order: 3; }
+</style>
+<p class="c-pvz__title">Sukeičia vietomis</p>
+<div class="c-pvz__container" style="display: flex;">
+  <div id="c-pvz-order-5" class="c-pvz__target">flex item A</div>
+  <div id="c-pvz-order-6" class="c-pvz__target">flex item B</div>
+  <div id="c-pvz-order-7" class="c-pvz__target">flex item C</div>
+  <div id="c-pvz-order-8" class="c-pvz__target">flex item D</div>
+</div>
+
+<p class="c-pvz__title">Sukeičia vietomis</p>
+<div class="c-pvz__container" style="display: flex;">
+  <div class="c-pvz__target" style="order: 2">flex item A</div>
+  <div class="c-pvz__target" style="order: 1">flex item B</div>
+</div>
+-->
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Convection", sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+body {
+  margin: 0;
+}
+
+.c-article {
+  min-height: 100vh;
+  padding: 27px 30px;
+  display: grid;
+  grid-template-rows: 70px 140px 1fr 70px;
+  grid-template-columns: 1fr 1fr 1fr 200px;
+  gap: 10px;
+}
+
+.c-article > * {
+  background-color: #d5d3ce;
+  padding: 5px 10px;
+}
+
+.c-page__header {
+  grid-row: 1 / 2;
+  grid-column: 1 / -1;
+}
+
+.c-page__sidebar {
+  grid-row: 2 / -2;
+  grid-column: -2 / -1;
+}
+
+.c-page__content {
+  grid-row: -3 / -2;
+  grid-column: 1 / -2;
+}
+
+.c-page__footer {
+  grid-row: -1 / -2;
+  grid-column: 1 / -1;
+}
+
+/*# sourceMappingURL=css.property.group.grid_pvz.kurso-namų-darbai.1.css.map */

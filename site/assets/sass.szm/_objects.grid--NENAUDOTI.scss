@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+    /*********************************/
+   /****                         ****/
+  /***           grids           ***/
+ /****                         ****/
+/*********************************/
+
+.grid { list-style-type: none; margin: 0; padding: 0; }
+.grid > * { padding: 0 5px 10px 5px; margin: 0 0 .7em; list-style-type: none; }
+.grid > *:first-child { padding-left: 0; }
+.grid > *:last-child { padding-right: 0; }
+.grid > *:hover { outline: 1px dotted rgba(255,32,143,1); }
+/*.grid > * { margin: 0 0 10px 10px; padding: 0; }*/
+/*.grid > *:first-child { margin-left: 0; }*/
+// ul.grid { margin: 0; padding: 0; }
+
+/////////////////////////////////////////////////////////////
+//
+//		grid type
+//
+//////////////////////////////////////////////////////////
+
+/*** inline block ***/
+
+.grid--inlBlk {
+	> * { display: inline-block; vertical-align: top; }
+}
+.grid--inlBlk-widthProc > * { margin-right: -.4%; }
+
+.grid--inlBlk-bottom > * { vertical-align: bottom; }
+.grid--inlBlk-center > * { vertical-align: middle; }
+
+/*** float ***/
+
+.grid--float {
+	&:before,
+	&:after { content: " "; display: table; }
+	&:after { clear: both; }
+	& > * { float: left; }
+}
+
+/////////////////////////////////////////////////////////////
+//
+//		grid widths
+//
+//////////////////////////////////////////////////////////
+
+.grid--w200 > * { width: 200px; }
+.grid--w300 > * { width: 300px; }
+.grid--w400 > * { width: 400px; }
+
+.grid--w10p > * { width: 10%; }
+.grid--w20p > * { width: 20%; }
+.grid--w25p > * { width: 25%; }
+.grid--w50p > * { width: 50%; }
+.grid--w75p > * { width: 75%; }
+
+/////////////////////////////////////////////////////////////
+//
+//		grid features
+//
+//////////////////////////////////////////////////////////
+
+.grid--paint-diff > * {
+	padding: 0.3em 0.5em;
+	margin-right: 0.5em;
+	margin-bottom: 0.75em;
+	&:last-child { margin-right: 0; }
+	> h2, > h3 {
+		background-color: rgba(247,238,247,.5);
+		background: none;
+		}
+}
+
+$grid-colors: #FDDB6D #EFDBC5 #CD9575 #78DBE2 #87A96B #FFA474 #FAE7B5 #9F8170 #FD7C6E #ADADD6 #B0B7C6 #1CD3A2 #9ACEEB #FDDB6D #EFCDB8 #B5C8FA #B5FAE7 #E7B5FA;
+$i: 1;
+@each $color in $grid-colors {
+	.grid--paint-diff > :nth-child(#{$i}) { background-color: lighten($color, 10%); }
+	$i: $i + 1 !global;
+}
+
+/////////////////////////////////////////////////////////////
+//
+//		grid features
+//
+//////////////////////////////////////////////////////////
+
+.grid--noMrg { margin: 0; padding: 0; }
+
+.grid--headings > * {
+	> h2:first-child { margin-top: 0; }
+	> h3:first-child { margin-top: 0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*ul.grid { margin: 0; padding: 0; list-style-type: none; }
+
+ul.grid > li {
+	display: inline-block;
+	margin: 0 0 10px 10px;*/
+	/* IE7 hack to mimic inline-block on block elements */
+	/* *display: inline; */
+	/* *zoom: 1; */
+/*}*/
+
+/*ul.grid-width-200 > li { width: 200px; }
+ul.grid-width-300 > li { width: 300px; }
+ul.grid-width-400 > li { width: 400px; }*/
+
+
+/*grid-nonfixed*/
+
+
+
+
+
+
+
+
+
+

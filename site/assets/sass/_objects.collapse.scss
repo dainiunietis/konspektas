@@ -1,0 +1,215 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////
+//
+//  # NAUJASIS, naudoti šį
+//
+/////////////////////////////////////////////////////////////
+
+// veikimą palaiko: assets\js\component.collapse-2.js
+
+*[data-cpnt-collapse="hide"], *[data-cpnt-collapse="show"] {
+  padding: 6px 4px 0 4px;
+  margin: 0 0 .5em;
+  border: 1px solid colorScheme-site('2HL2');
+  border-radius: 5px;
+  position: relative;
+  box-shadow: inset 0 0 25px 0px colorScheme-site('2HL4');
+
+  &:hover {
+    box-shadow: inset 0 0 40px 0px colorScheme-site('2HL3');
+  }
+
+  > *:first-child {
+    padding: .26em 3px .3em;
+    margin: -5px -3px .3em -3px;
+    border: 1px solid hsla(0,0%,0%,0);
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: colorScheme-site('2HL2');
+      //background-color: hsla(41, 33%, 47%, 0);
+    }
+  }
+
+  //> *:last-child {
+  //  margin-bottom: .4em;
+  //}
+
+  &::before {
+    content: " ";
+    //position: "absolute", top: "-4px", right: "3px", "font-size": "1.7em", "font-family": "Consolas", cursor: "pointer"
+    position: absolute;
+    top: 18px;
+    line-height: 0;
+    right: 8px;
+    font-size: 2.7em;
+    color: colorScheme-site('2HD2');
+    font-weight: 700;
+  }
+}
+
+*[data-cpnt-collapse="hide"] {
+  &::before {
+    //content: "➕";
+    content: "+";
+  }
+
+  > *:not(:first-child) {
+    display: none;
+  }
+}
+
+*[data-cpnt-collapse="show"] {
+  &::before {
+    //content: "➖";
+    content: "–";
+  }
+}
+
+//<section class="o-collapse-locdep">
+//  <p>...</p>
+//  <p>...</p>
+//</section>
+
+/////////////////////////////////////////////////////////////////
+//
+//    .o-collapse-savas-locdep --- Location Dependent Styles
+//
+/////////////////////////////////////////////////////////////
+
+.o-collapse-locdep {
+  padding: 6px 4px 0 4px;
+  // margin: 0 -3px .5em;
+  margin: 0 0 .5em;
+  border: 1px solid colorScheme-site('2HL2');
+  border-radius: 5px;
+  //background-color: scale-color(colorScheme-site('2HL3'), $alpha:-60%);
+  //background-color: colorScheme-site('2HL4');
+  position: relative;
+  box-shadow: inset 0 0 25px 0px colorScheme-site('2HL4');
+
+  &:hover {
+    //border-color: hsl(41, 33%, 47%);
+    //background-color: hsla(41, 33%, 70%, 0.1);
+    //border: 1px dashed hsla(41, 33%, 40%, 1);
+    //background-color: colorScheme-site('2HL4');
+
+    //border-style: dashed;
+    //border-color: colorScheme-site('2HD1');
+
+    box-shadow: inset 0 0 40px 0px colorScheme-site('2HL3');
+  }
+
+  // > p:first-child, > h1:first-child, > a:first-child > * {
+  // 	font-family: inherit; font-size: 1em; text-align: left; color: inherit;
+  // 	padding: .35em 3px; margin: -5px -3px .3em -3px;
+  // 	border: 1px dotted rgba(158,133,80,0);
+  // 	border-radius: 5px;
+  // 	background-color: rgba(158,133,80,0);
+  // }
+  > *:first-child {
+    // font-family: inherit;
+    // font-size: 1em;
+    // text-align: left;
+    // color: inherit;
+
+    padding: .26em 3px .3em;
+    margin: -5px -3px .3em -3px;
+    border: 1px solid hsla(0,0%,0%,0);
+    border-radius: 5px;
+
+    //background-color: hsla(41, 33%, 47%, 0);
+    &:hover {
+      border-color: colorScheme-site('2HL2');
+      //background-color: hsla(41, 33%, 47%, 0);
+    }
+  }
+
+  > *:last-child {
+    margin-bottom: .4em;
+  }
+
+  // > h1 {
+  // 	&:before { content: ""; }
+  // 	strong { font-weight: bold; background: none; }
+  // }
+
+  &--link {
+    border-color: rgba(0,0,255,.8);
+
+    &:hover {
+      border-color: rgba(0,0,255,1);
+      background-color: rgba(0,0,255,.05);
+    }
+
+    h1 {
+      //border-color: rgba(0,0,255,.4);
+      &:hover {
+        border-color: rgba(0,0,255,1);
+        //border-color: rgba(0,0,255,.4);
+        background-color: rgba(0,0,255,.04);
+      }
+    }
+
+    > a:first-child {
+      text-decoration: none;
+    }
+
+    // > a:first-child kbd {
+    // 	color: rgb(0,0,255);
+    // }
+  }
+
+
+
+  // #{&}--aaa { font-weight: bold }
+  // &--aaa { font-weight: bold }
+
+
+
+}
+
+
+// .collapse-savas-locdep--link {
+// 	border-color: rgba(0,0,255,.8);
+
+// 	&:hover {
+// 		border-color: rgba(0,0,255,1);
+// 		background-color: rgba(0,0,255,.05);
+// 	}
+
+// 	h1 {
+// 		border-color: rgba(0,0,255,.4);
+// 		&:hover {
+// 			border-color: rgba(0,0,255,1);
+// 			border-color: rgba(0,0,255,.4);
+// 			background-color: rgba(0,0,255,.04);
+// 		}
+// 	}
+
+// 	> a:first-child {
+// 		text-decoration: none;
+// 	}
+
+// 	> a:first-child kbd {
+// 		color: rgb(0,0,255);
+// 	}
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

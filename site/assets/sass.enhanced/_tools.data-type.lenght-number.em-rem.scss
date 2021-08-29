@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   Convert PX to EM
+//
+///////////////////////////////////////////////////////////////////////////////
+
+// h1 {font-size: em(30px);
+// $pixels  - px's need to convert to em's
+// $context - base font size
+@function em($pixels, $context: $szm-text-baseFontSize) {
+  @if $pixels == 0 {
+    @return 0
+  }
+  // @return #{$pixels/$context}em  // <<<< returns string
+  @return $pixels / $context + 0em; // <<<< returns number
+  // @return ($pixels / $context) * 1em; // <<<< daro tą patį
+}
+
+@function rem($pixels, $context: $szm-text-baseFontSize) {
+  @if $pixels == 0px {
+    @return 0
+  }
+  @return $pixels / $context + 0rem;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////////////
+
+@function torem($num) {
+  @return strip-unit($num) + 0rem;
+}
+
+
+
+
+

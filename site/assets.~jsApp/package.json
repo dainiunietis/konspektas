@@ -1,0 +1,14 @@
+{
+  "name": "assets.testjsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zm",
+  "license": "ISC",
+  "dependencies": {
+    "jquery.toc": "^0.4.0"
+  }
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Kodas, code &#8212; Design Style Guide</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Kodas, code &#8212; Design Style Guide</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Nebaigtas kodo variantas _code2.scss:</p>
+<pre><code class="language-scss">/* Vendor Dependencies */
+@import "compass";
+
+/* Authored Dependencies */
+@import "global/colors";
+@import "global/mixins";
+
+/* Patterns */
+@import "global/tabs";
+@import "global/modals";
+
+/* Sections */
+@import "global/header";
+@import "global/footer";</code></pre>
+<p>&nbsp;</p>
+<pre><code class="language-scss">$(document).ready(function() {
+	$("img").css({cursor: "ne-resize"}).click(function(){ // pointer crosshair col-resize e-resize ew-resize n-resize ne-resize
+		var img = $(this);
+		//
+		// img'o atributai width ir height
+		//
+		if (img.attr("width") || img.attr("height")) {
+			// img'as yra SU atributais width ir/ar height
+			// console.log(img.data());
+			img.data("width", img.attr("width"));
+			img.data("height", img.attr("height"));
+			// console.log(img.data());
+			img.removeAttr("height width");
+		}
+		else if (img.data("width") || img.data("height")) {
+			// img'as turi data's ir yra be atributų width ir height — grąžiname juos
+			// alert("YRA data'os");
+			img.attr("width", img.data("width"));
+			img.attr("height", img.data("height"));
+			img.removeData("width height");
+		}
+		//
+		// img'o CSS'as
+		//
+		var style = img.prop('style');
+		if (style.maxWidth == "") {
+			// alert("IMG'as nekeistas");
+			img.css({ "max-width": "none" });
+		}
+		else {
+			// alert("IMG'as keistas");
+			img.css({ "max-width": "" });
+		}
+	});
+});</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+// highlight
+
+@mixin um-gener-markClass($colors, $markNr) {
+  @for $i from 1 through length($colors) {
+    //$color: scale-color(nth($colors, $i), $lightness: 70%, $saturation: -30%);
+    $color: nth($colors, $i);
+    .u-mark#{$markNr}-bg#{$i}, .UM#{$markNr}BG#{$i}  {
+      background-color: $color !important;
+    }
+    .u-mark#{$markNr}-bg_c, .UM#{$markNr}BG_c {
+      > :nth-child(#{$i}) {
+        background: $color !important;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   Default'inės class'ės žymėjimui-mark'inimui
+//
+//////////////////////////////////////////////////////////////////////////////
+
+$util-colorSet-marking: szm-colorSet-generate(20);
+
+@for $i from 1 through length($util-colorSet-marking) {
+  $color-light: scale-color(nth($util-colorSet-marking, $i), $lightness: 70%, $saturation: -30%);
+  
+  // <p class="u-mark-bg1..N">......pilnas
+  // <p class="UMBG1..N">...........trumpas
+  .u-mark-bg#{$i}, .UMBG#{$i}  {
+    background-color: $color-light !important;
+  }
+  
+  // <div class="u-mark-bg_c || UMBG_c">
+  // <p>...</p>
+  // </div>
+  .u-mark-bg_c, .UMBG_c {
+    > :nth-child(#{$i}) {
+      background-color: $color-light !important;
+    }
+  }
+  //$outline: 1px dashed scale-color(nth($dev-colors-marking, $i), $lightness: -10%, $saturation: 0%);
+  //$outline: 1px dashed nth($dev-colors-marking, $i);
+  $outline: 1px dashed darken(nth($util-colorSet-marking, $i), 10%);
+  
+  // <p class="u-mark-ol1..N || UMOL1..N">
+  .u-mark-ol#{$i}, .UMOL#{$i} {
+    outline: $outline;
+  }
+  
+  // <div class="u-mark-ol_c || UMOL_c">
+  //   <p>...</p>
+  // </div>
+  .u-mark-ol_c, .UMOL_c {
+    > :nth-child(#{$i}) {
+      outline: $outline;
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   Nr. 1 class'ės žymėjimui-mark'inimui
+//
+//////////////////////////////////////////////////////////////////////////////
+
+//@include um-gener-markClass($zm-colorSet-mattgen-lightPaleSortByHue, 1);
+@include um-gener-markClass(szm-colorSet-getSet(mattgenLightPaleSortByHue), 1);
+
+//$colors: $global-colors-mattgen-lightPaleSortByHue;
+//@for $i from 1 through length($colors) {
+//  //$color: scale-color(nth($colors, $i), $lightness: 70%, $saturation: -30%);
+//  $color: nth($colors, $i);
+//  .u-mark1-bg#{$i}, .UM1BG#{$i}  {
+//    background-color: $color !important;
+//  }
+//  .u-mark1-bg_c, .UM1BG_c {
+//    > :nth-child(#{$i}) {
+//      background-color: $color !important;
+//    }
+//  }
+//}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   Nr.2 class'ės žymėjimui-mark'inimui
+//
+//////////////////////////////////////////////////////////////////////////////
+
+//@include um-gener-markClass($zm-colorSet-mattgen-lightSaturated, 2);
+@include um-gener-markClass(szm-colorSet-getSet(mattgenLightSaturated), 2);
+
+//$colors: $global-colors-mattgen-lightSaturated;
+//$markNr: 2;
+//@for $i from 1 through length($colors) {
+//  //$color: scale-color(nth($colors, $i), $lightness: 70%, $saturation: -30%);
+//  $color: nth($colors, $i);
+//  .u-mark#{$markNr}-bg#{$i}, .UM#{$markNr}BG#{$i}  {
+//    background-color: $color !important;
+//  }
+//  .u-mark#{$markNr}-bg_c, .UM#{$markNr}BG_c {
+//    > :nth-child(#{$i}) {
+//      background-color: $color !important;
+//    }
+//  }
+//}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   Nr.3 class'ės žymėjimui-mark'inimui
+//
+//////////////////////////////////////////////////////////////////////////////
+
+//@include um-gener-markClass($zm-colorSet-mattgen-pastelVeryLight, 3);
+@include um-gener-markClass(szm-colorSet-getSet(mattgenPastelVeryLight), 3);
+
+//$colors: $global-colors-mattgen-pastelVeryLight;
+//$markNr: 3;
+//@for $i from 1 through length($colors) {
+//  //$color: scale-color(nth($colors, $i), $lightness: 70%, $saturation: -30%);
+//  $color: nth($colors, $i);
+//  .u-mark#{$markNr}-bg#{$i}, .UM#{$markNr}BG#{$i}  {
+//    background-color: $color !important;
+//  }
+//  .u-mark#{$markNr}-bg_c, .UM#{$markNr}BG_c {
+//    > :nth-child(#{$i}) {
+//      background-color: $color !important;
+//    }
+//  }
+//}
+
+@include um-gener-markClass(szm-colorSet-getSet(contrastLight), 4);
+
+@include um-gener-markClass(szm-colorSet-generate(10), 5);
+
+@include um-gener-markClass(szm-colorSet-getSet(fullSatLightExtra), 6);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

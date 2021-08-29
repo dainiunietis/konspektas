@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+// galimi pavadinimai:
+//   _settings.global-config.scss
+//   _settings.project-config.scss
+
+// A map of global config settings. Define any project-level configuration,
+// feature switches, etc. in here.
+
+$g-project-config: (
+  env: dev, //.................. dev | prod
+  // healthcheck: false,
+  debug: true,
+  markNS-c: 0,
+  markNS-o: 0,
+);
+
+// @USAGE:
+// @if (g-project-config(debug) == true) {
+//
+// }
+
+@function g-project-config($key) {
+  @return map-get($g-project-config, $key);
+}
+
+
+

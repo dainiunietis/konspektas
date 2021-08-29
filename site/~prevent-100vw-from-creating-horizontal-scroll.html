@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prevent 100vw from creating horizontal scroll</title>
+  <style>
+    html {box-sizing: border-box;}
+    *, *:before, *:after {box-sizing: inherit;}
+
+    /*
+    #f2b0cc
+    #b9ccff
+    #b1f2c6
+
+    #b6e685
+    #d9f7be
+    */
+
+    html {
+      background: hsl(90, 60%, 70%);
+      /*overflow-y: scroll;*/
+      /*overflow-y: hidden;*/
+      /*min-height:  90vh;*/
+      /*height: 80vh;*/
+      height: 300px;
+      width:       100vw;
+    }
+
+    body {
+      margin:      0;
+      /*padding:     1rem 1.5rem;*/
+      /*font-family: "Roboto", sans-serif;*/
+      /*font-family: "Georgia Pro", serif;*/
+      font-family: "Recursive Sans Linear Static", serif;
+      background:  hsl(90, 60%, 80%);
+      color:       hsl(224, 100%, 10%);
+      /*font-size: 1.2em;*/
+      /*overflow-x:  hidden; !* <<< !!!!!!!!!!!!!!!  *!*/
+      overflow-y: hidden;
+
+    }
+
+    .liniuote {
+      background: hsl(0, 0%, 10%);
+      color: hsl(0, 0%, 90%);
+      text-align: center;
+      padding: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+<!--<h1>Prevent 100vw from creating horizontal scroll</h1>-->
+
+<p>&nbsp;</p>
+
+<!--<p class="liniuote" style="width: 100%">width: 100%</p>-->
+<!--<p class="liniuote" style="width: 100vw">width: 100vw</p>-->
+
+<p style="height: 110vh;">&nbsp;</p>
+
+
+
+
+</body>
+</html>

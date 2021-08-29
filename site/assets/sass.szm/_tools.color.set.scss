@@ -1,0 +1,278 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   szm-colorSet-generate()
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// @PARAMS:
+//   $colorsNumber: kiek spalvų sugeneruoti
+//
+// @TODO:
+//   $hueStart: 0, $hueEnd: 360, $saturation: 100%, $lightness: 50%
+
+@function szm-colorSet-generate($colorsNumber) {
+  //$hueSteps: 360 / $hueStep;
+  $hueStep: 360 / $colorsNumber;
+  //@debug $hueStep;
+  $hueStep: floor($hueStep);
+  //@debug $hueStep;
+  //hsl(0, 100%, 50%)
+  //append($list, $val, $separator:auto)
+
+  $colors: ();
+  $hue: 0;
+  @for $i from 1 through $colorsNumber {
+    $colors: append($colors, hsla($hue,100%,50%,1));
+    //$colors: append($colors, unquote('hsl(' + $hue + ',100%,50%)'));
+    $hue: $hue + $hueStep;
+    //@debug $hue;
+  }
+  //@debug $colors;
+  @return $colors;
+
+  //$colors: ();
+  //$hue: 0;
+  //@for $i from 1 through 24 {
+  //  $colors: append($colors, hsl($hue, 100%, 50%));
+  //  $hue: $hue + 15;
+  //}
+  //@return $colors;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   color set data
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// color collection
+// color palette
+
+// @EXAMPLE:
+// toks kintamasis turėtų būti tokiame pačiame projekto faile, su projekto spalvų rinkiniais
+
+$szm-colorSet-data: (
+  saturated: red fuchsia lime yellow aqua orange skyblue violet
+) !default;
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   szm-colorSet-getSet() szm-colorSet-getColor()
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// $colors: szm-colorSet-getSet($colorSetName);
+
+@function szm-colorSet-getSet($name) {
+  @if map_has_key($szm-colorSet-data, $name) {
+    @return map_get($szm-colorSet-data, $name);
+  }
+  @else {
+    @error unquote("$szm-colorSet-data") neturi color set\: $name;
+  }
+}
+
+// @USAGE:
+// .kazkas {
+//   color: szm-colorSet-getColor(colorSetName, 1);
+// }
+
+@function szm-colorSet-getColor($setName, $colorIndex) {
+  $colors: szm-colorSet-getSet($setName);
+  @if $colorIndex > 0 AND $colorIndex <= length($colors) {
+    @return nth($colors, $colorIndex);
+  }
+  @else {
+    @error unquote("$szm-colorSet-data") color setas "#{$setName}" neturi spalvos eilės numeriu $colorIndex;
+  }
+  //@if map_has_key($zm-colorSet-data, $setName) {
+  //  $colors: map_get($zm-colorSet-data, $setName);
+  //  @if $colorIndex > 0 AND $colorIndex <= length($colors) {
+  //    @return nth($colors, $colorIndex);
+  //  }
+  //  @else {
+  //    @error unquote("$zm-colorSet-data") color setas "#{$setName}" neturi spalvos eiles numeriu $colorIndex;
+  //  }
+  //}
+  //@else {
+  //  @error unquote("$zm-colorSet-data") neturi color seto "#{$setName}";
+  //}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   .c-szmtest-colorSet-[name]
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// <div class="c-szmtest-colorSet-[name]">
+//   <div></div>
+//   ...
+// </div>
+
+@mixin szm-colorSet-testComponent {
+  @each $setName, $setColors in $szm-colorSet-data {
+    .c-szmtest-colorSet-#{$setName} {
+      margin: 4em 0;
+      outline: 1px dotted black;
+      //outline-offset: 5px;
+      display: flex;
+      flex-wrap: wrap;
+
+      $counterName: c-zmtest-colorSet;
+      counter-reset: $counterName;
+
+      position: relative;
+
+      &::before {
+        content: "color set'as: #{$setName}";
+        font-size: 2em;
+        position: absolute;
+        top: -40px;
+      }
+
+      > * {
+        padding: .8em 1em;
+        margin: 3px 3px 2px;
+        flex-grow: 1;
+        text-align: center;
+
+        @include szm-colorSet-bgNthChild($setName, $setTextAccessibleContrastColor: true, $repeatNthChild: false);
+
+        &::before {
+          counter-increment: $counterName;
+          content: counter($counterName) ". ";
+        }
+        $i: 1;
+        @each $color in $setColors {
+          &:nth-child(#{$i}) {
+            &::after {
+              content: "#{$color}";
+            }
+          }
+          $i: $i + 1;
+        }
+
+        //$i: 1;
+        //@each $color in $setColors {
+        //  &:nth-child(#{$i}) {
+        //    background: $color;
+        //
+        //    //color: invert($color); // << SASS'o built-in
+        //    color: jonkat-getColorAccessibleContrast-ratio($color);
+        //    //color: sergom-choose-contrast-color($color);
+        //    //color: bresau-color-contrast($color);
+        //
+        //    //&::before {
+        //    &::after {
+        //      //content: attr(id);
+        //      //content: "[#{$i}]\a#{$name}";
+        //      content: "#{$color}";
+        //    }
+        //  }
+        //  $i: $i + 1;
+        //}
+
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//   @mixin szm-colorSet-bgNthChild
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// turi būti naudojamas ruleset'e
+// @USAGE:
+// SCSS:
+//   .kazkas {
+//     > * {
+//       @include szm-colorSet-bgNthChild(contrastLight, 7);
+//       @include szm-colorSet-bgNthChild(fullSatLight, 9, $repeatNthChild: false);
+//     }
+//   }
+// CSS:
+//   .kazkas > *:nth-child(1..7) {
+//     background-color: #XXXXXX;
+//   }
+
+//.a20190504141434 {
+//  //> *:nth-child(3n+0) {
+//    //background-color: cornflowerblue;
+//  > * {
+//    @include szm-colorSet-bgNthChild(fullSatLight, 9, $repeatNthChild: false);
+//  }
+//}
+
+@mixin szm-colorSet-bgNthChild($colorSet, $childsNumber: "likeColorSet", $setTextAccessibleContrastColor: false, $repeatNthChild: true) {
+  $colors: szm-colorSet-getSet($colorSet);
+  @if $childsNumber == "likeColorSet" {
+    $childsNumber: length($colors);
+  }
+  $ics: 1;
+  @for $i from 1 through $childsNumber {
+    $color: nth($colors,$ics);
+    $nthChildArg: if($repeatNthChild == true, $childsNumber + "n+" + $i, $i);
+    &:nth-child(#{$nthChildArg}) {
+      background-color: $color;
+      @if $setTextAccessibleContrastColor == true {
+        //$colorDeclaration: invert($color); // << SASS'o built-in
+        //$colorDeclaration: jonkat-getColorAccessibleContrast-ratio($color);
+        //$colorDeclaration: jonkat-getColorAccessibleContrast-fixed($color);
+        //$colorDeclaration: sergom-choose-contrast-color($color);
+        $colorDeclaration: bresau-color-contrast($color);
+        color: transparentize($colorDeclaration, 0.1);
+      }
+    }
+    $ics: if($ics == length($colors), 1, $ics + 1);
+  }
+}
+
+
+
+
+
+//$colors-src: $zm-colorSet-2-fullSat;
+//
+//$colors-new: ();
+//@for $i from 1 through length($colors-src) {
+//  $color: scale_color(nth($colors-src, $i), $lightness: 30%);
+//  $colors-new: append($colors-new, $color);
+//}
+//$zm-colorSet-2-fullSat-lighter: $colors-new;
+//
+//$colors-new: ();
+//@for $i from 1 through length($colors-src) {
+//  $color: scale_color(nth($colors-src, $i), $lightness: 60%);
+//  $colors-new: append($colors-new, $color);
+//}
+//$zm-colorSet-2-fullSat-lighter2: $colors-new;
+
+
+//$i: 1;
+//@each $color in $grid-colors {
+//  .grid--paint-diff > :nth-child(#{$i}) { background-color: lighten($color, 10%); }
+//  $i: $i + 1 !global;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+    <!--<link rel="stylesheet" type="text/css" href="assets/sass/master.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="assets/sass/master.utilities.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="assets/sass/master.dev.css">-->
+  <style>
+    body {
+      font: 1.2em "IBM Plex Sans", sans-serif;
+      margin: 1em;
+    }
+
+    button {
+      font: inherit;
+      font-weight: 600;
+      font-size: .9em;
+      float: left;
+      clear: both;
+      margin-bottom: .5em;
+    }
+    *[data-test] {
+      /*background: hsl(120, 61%, 80%);*/
+      outline: 1px dotted;
+    }
+    *[data-test] + div {
+      display: flow-root;
+    }
+
+    .result {
+      color: hsl(240, 100%, 60%);
+      margin-left: .5em;
+      font-size: 1.1em;
+      float: left;
+    }
+    .result::before {
+      content: ">";
+      font-size: 1.2em;
+      margin-right: .05em;
+    }
+    .result::after {
+      content: "<";
+      font-size: 1.2em;
+      margin-left: .05em;
+    }
+
+    .text-red {
+      color: red;
+    }
+    .bg-yellow {
+      background: yellow;
+    }
+  </style>
+  <script>
+    function outputResult(value) {
+      event.target.nextElementSibling.innerHTML = value;
+      console.log(value);
+    }
+    function elmTest() {
+      return event.target.parentElement.previousElementSibling;
+      // res = event.target.previousElementSibling;
+      // while (res.nodeName !== "p") {
+      //   res = res.previoustElementSibling;
+      // }
+    }
+  </script>
+</head>
+<body>
+
+<h1>Add remove class attribute values</h1>
+
+<p><strong>Išvedimas daromas ir šalia paspausto button'o, ir į console'ę.</strong></p>
+
+<h2>element.className</h2>
+<p data-test>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+<div>
+  <button onclick="outputResult(elmTest().className)">išvesti kokie class'ai yra priskirti</button>
+  <code class="result"></code>
+  <button onclick="elmTest().className = elmTest().className + ' text-red'">pridėti class'ą 'text-red'</button>
+  <button onclick="elmTest().className = ''">ištrinti visus class'us</button>
+</div>
+
+<h2>element.classList</h2>
+<p data-test>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+<div>
+  <button onclick="outputResult(elmTest().className)">išvesti kokie class'ai yra priskirti</button>
+  <code class="result"></code>
+  <button onclick="elmTest().classList.add('text-red')">pridėti class'ą 'text-red' su element.classList.add()</button>
+</div>
+
+
+
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

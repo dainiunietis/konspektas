@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Flexbox - Flexible Box Layout || CSS savybės-deklaracijos (CSS properties)</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p>
+      <p>kaip veikia</p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>The value of the flex-grow property is basically a ratio that’s used to distribute the empty space between the flex items so they expand</p>
+      </blockquote>
+      <p class="c-pvz__title">Paprasčiausias</p>
+      <div class="c-pvz-comment">
+        <p>Flex item'ai:</p>
+        <ul>
+          <li>be nustatyto pločio,</li>
+          <li><code>flex-grow: 1</code> - vienodai-proporcingai didina visus flex item'us.</li>
+        </ul>
+        <p>Galima per Devtools'us nuimti ant vieno flex item'o uždėtą flex-grow: 1; ir pamatyti kaip tas sumažėja iki savo dydžio, o likę padidėja ir užima visą laisvą plotą.</p>
+      </div>
+      <style>
+#pvz-grow1 { display: flex; width: 400px; }
+/*#pvz-grow1 > * { flex-grow: 1; }*/
+#pvz-grow1 > :nth-child(1) { flex-grow: 1; }
+#pvz-grow1 > :nth-child(2) { flex-grow: 1; }
+#pvz-grow1 > :nth-child(3) { flex-grow: 1; }
+      </style>
+      <div id="c-pvz-grow4" class="c-pvz__container">
+        <div class="c-pvz__target">flex item A</div>
+        <div class="c-pvz__target">flex item B</div>
+        <div class="c-pvz__target">flex item C</div>
+      </div>
+      <p class="c-pvz__title"><code>flex-grow: 1</code> - flex item'ai su nustatytais skirtingais pločiais.</p>
+      <style>
+/*[id^="c-pvz-grow-"] { flex-grow: 1; }*/
+#pvz-grow2 { display: flex; width: 400px; }
+/*#pvz-grow2 > * { flex-grow: 1; }*/
+#pvz-grow2 > :nth-child(1) { flex-grow: 1; width: 50px; }
+#pvz-grow2 > :nth-child(2) { flex-grow: 1; width: 100px; }
+#pvz-grow2 > :nth-child(3) { flex-grow: 1; width: 150px; }
+/*#pvz-grow2-1 {  }
+#pvz-grow2-2 {  }
+#pvz-grow2-3 {  }*/
+      </style>
+      <div id="c-pvz-grow5" class="c-pvz__container">
+        <div class="c-pvz__target">A</div>
+        <!-- id="c-pvz-grow2-1"  -->
+        <div class="c-pvz__target">B</div>
+        <!-- id="c-pvz-grow2-2"  -->
+        <div class="c-pvz__target">C</div>
+        <!-- id="c-pvz-grow2-3"  -->
+      </div>
+      <p class="c-pvz__title">flex item'ai su skirtingais <code>flex-grow:</code> - flex item'ai  didinami skirtingai, atitinkamai suteiktam koeficientui.</p>
+      <style>
+/*[id^="c-pvz-grow-"] { flex-grow: 1; }*/
+#pvz-grow3 { display: flex; width: 400px; }
+#pvz-grow3 > * { width: 50px; }
+#pvz-grow3 > :nth-child(1) { flex-grow: 1; }
+#pvz-grow3 > :nth-child(2) { flex-grow: 2; }
+#pvz-grow3 > :nth-child(3) { flex-grow: 10; }
+/*#pvz-grow3-1 {  }
+#pvz-grow3-2 {  }
+#pvz-grow3-3 {  }*/
+      </style>
+      <div id="c-pvz-grow6" class="c-pvz__container">
+        <div class="c-pvz__target">A</div>
+        <div class="c-pvz__target">B</div>
+        <div class="c-pvz__target">C</div>
+      </div>
+      <p></p>
+      <p>&nbsp;</p>
+    <p></p></td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <dl>
+        <dt><code>flex: none</code></dt>
+        <dd>
+          <p><code>0 0 auto</code></p>
+          <p>Kaip veikia:</p>
+          <blockquote>
+            <p>The item is sized according to its width and height properties. It is fully inflexible: it neither shrinks nor grows in relation to the flex container.</p>
+          </blockquote>
+          <p>&nbsp;</p>
+        </dd>
+        <dt><code>flex: auto</code></dt>
+        <dd>
+          <p><code>1 1 auto</code></p>
+          <p>Kaip veikia:</p>
+          <blockquote>
+            <p>The item is sized according to its width and height properties, but grows to absorb any extra free space in the flex container, and shrinks to its minimum size to fit the container.</p>
+          </blockquote>
+        </dd>
+        <dt><code>flex: initial</code></dt>
+        <dd>
+          <p><code>0 1 auto</code></p>
+          <p>default'as, t. y. visų trijų sudėtinių savybių default'inės reikšmės</p>
+          <p>Kaip veikia:</p>
+          <blockquote>
+            <p>The item is sized according to its width and height properties. It shrinks to its minimum size to fit the container, but does not grow to absorb any extra free space in the flex container.</p>
+          </blockquote>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<style>
+
+:root {
+  --spalva-red: red;
+  --spalva-black: black;
+  --spalva-blue: blue;
+  --spalva-yellow: yellow;
+
+  --spalva-tamsus: darkblue;
+  --spalva-sviesus: wheat;
+
+  --spalva-bg: palegoldenrod;
+  --spalva-txt: indigo;
+
+  --spalva-gera: cornflowerblue;
+  --spalva-geresne: var(--spalva-gera);
+}
+
+/*********************************************/
+
+.p-pvz {
+  padding: 0.5em;
+  outline: 1px dashed gray;
+}
+
+.p-pvz__target {
+  padding: 0.35em 0.5em;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/*********************************************/
+
+.p-pvz--1 .p-pvz__target {
+  background-color: var(--spalva-sviesus);
+  color: var(--spalva-tamsus);
+}
+
+/*********************************************/
+
+.p-pvz--2 .p-pvz__wrap {
+  --spalva-lokali: slategray;
+}
+
+.p-pvz--2 .p-pvz__target {
+  background-color: var(--spalva-lokali);
+}
+
+/*********************************************/
+
+.p-pvz--3 .p-pvz__target {
+  background-color: var(--spalva-sviesus);
+  color: var(--spalva-tamsus);
+}
+
+.p-pvz--3 .p-pvz__wrap {
+  --spalva-tamsus: forestgreen;
+}
+
+/*********************************************/
+
+.p-pvz--inheritance .p-pvz__target {
+  background-color: var(--spalva-geresne);
+}
+
+.p-pvz--inheritance .p-pvz__wrap-1 {
+  --spalva-gera: coral;
+}
+
+.p-pvz--inheritance .p-pvz__wrap-2 {
+  --spalva-geresne: coral;
+  /*border: 3px solid yellowgreen;*/
+}
+
+</style>
+<script>
+
+var ElmRoot = document.querySelector(':root');
+// var ElmRootStyles = getComputedStyle(ElmRoot);
+// var red = ElmRootStyles.getPropertyValue('--red');
+// console.log('red: ', red);
+
+function changeRootVar(contextElm) {
+  console.log(contextElm);
+  ElmRoot.style.setProperty('--spalva-sviesus', 'orange')
+}
+
+function changeRootVarLocaly(contextElm) {
+  console.log(contextElm.parentNode);
+  contextElm.parentNode.style.setProperty('--spalva-sviesus', 'aquamarine');
+  console.log(contextElm.parentNode);
+}
+
+</script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS kintamieji (variables, custom properties)</h1>
+<h2>1. Paprasčiausias root'inių CSS kintamųjų naudojimas</h2>
+<div class="p-pvz p-pvz--1">
+  <div class="p-pvz__target">PVZ</div>
+</div>
+
+<h2>2. Paprasčiausias NEroot'inių CSS kintamųjų naudojimas ir demonstracija CSS kintamųjų matomumo-scope'o (arba CSS terminologija kalbant &#8212; cascade'o)</h2>
+<div class="p-pvz p-pvz--2">
+  <div class="p-pvz__target">PVZ — negauna <code>background-color: var(--spalva-lokali)</code>, nes nėra vaikas <code>.p-pvz__wrap</code></div>
+  <div class="p-pvz__wrap">
+    <div class="p-pvz__target">PVZ wrap</div>
+  </div>
+</div>
+
+<h2>3. CSS kintamųjų overriding'as</h2>
+<div class="p-pvz p-pvz--3">
+  <div class="p-pvz__target">PVZ 1</div>
+  <div class="p-pvz__wrap">
+    <div class="p-pvz__target">PVZ wrap — teksto spalva pakeista, nes <code>.p-pvz__wrap</code> priskirta kita <code>--spalva-tamsus</code> reikšmė</div>
+  </div>
+</div>
+
+<h2>4. CSS kintamųjų keitimas su JavaScript</h2>
+<div class="p-pvz p-pvz--3">
+  <div class="p-pvz__target">PVZ</div>
+  Keisti :root var'ą <code>--spalva-bg</code>:
+  <button onclick="changeRootVar(this)">Globaliai</button>
+  <button onclick="changeRootVarLocaly(this)">Lokaliai</button>
+</div>
+
+<h2>5. CSS kintamajam priskiriant kitą kitamąjį, priskiriama reikšmė, ne nuoroda į priskiriamą kintamąjį (inheritance'as)</h2>
+<div class="p-pvz p-pvz--inheritance">
+  <div class="p-pvz__target">PVZ — <code>var(--spalva-geresne)</code> tiesiai iš <code>:root</code></div>
+  <div class="p-pvz__wrap-1">
+    <div class="p-pvz__target">PVZ wrap — pakeistas <code>var(--spalva-gera)</code> lokaliai, parent'iniam tagui, bet neturi poveikio</div>
+  </div>
+  <div class="p-pvz__wrap-2">
+    <div class="p-pvz__target">PVZ wrap — pakeistas <code>var(--spalva-geresne)</code> lokaliai, parent'iniam tagui, poveikis yra</div>
+  </div>
+</div>
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%"><p>&nbsp;</p></td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%"><p>&nbsp;</p>
+      <p></p></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//   width: height: auto | 0
+//
+/////////////////////////////////////////////////////////////
+
+@mixin szm-utilities-layout-dimensions-widthHeightAuto {
+  /* @mixin szm-utilities-layout-dimensions-widthHeightAuto */
+  @each $property, $propertyShort in ("width": W, "height": H) {
+    @each $value, $valueShort in ("auto": A, "0": "0") {
+      //.u-#{$property}-#{$value}, .u-#{$property}-#{$value}-d *, .u-#{$property}-#{$value}-c > *,
+      .#{$propertyShort}#{$valueShort}, .#{$propertyShort}#{$valueShort}d *, .#{$propertyShort}#{$valueShort}c > * {
+        #{$property}: #{$value} !important;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//
+//
+/////////////////////////////////////////////////////////////
+
+@mixin szm-utilities-layout-dimensions-widthHeight($unit, $start: 1, $step: 1, $end: 100) {
+  /* @mixin szm-utilities-layout-dimensions-widthHeight */
+  @each $property, $propertyShort in ("width": W, "height": H) {
+    $size: $start;
+    @while $size <= $end {
+      $unitEscaped: str-replace($unit, ".", "\\.");
+      $unitEscaped: str-replace($unitEscaped, "%", "\\%");
+
+      $selector: "u-" + $property + "-" + $size + $unitEscaped;
+      $selectorShort: $propertyShort + $size + $unitEscaped;
+
+      //.#{$selector}, .#{$selector}-d *, .#{$selector}-c > *,
+      .#{$selectorShort}, .#{$selectorShort}c > * { //, .#{$selectorShort}d *
+        #{$property}: #{$size}#{$unit} !important;
+      }
+
+      $size: $size + $step;
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//
+//
+/////////////////////////////////////////////////////////////
+
+.WNNC, .WNNCc > * {
+  min-width: min-content !important;
+}
+
+.WNXC, .WNXCc > * {
+  min-width: max-content !important;
+}
+
+//-----------------------------------------------------------
+
+.WXNC, .WXNCc > * {
+  max-width: min-content !important;
+}
+
+.WXXC, .WXXCc > * {
+  max-width: max-content !important;
+}
+
+
+
+

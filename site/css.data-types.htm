@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS savybių reikšmių duomenų tipai (CSS data types)</h1>
+<p>Specifikacijos:</p>
+<ul>
+  <li> <a href="https://www.w3.org/TR/css-values-3/">CSS Values and Units Module Level 3</a> — Candidate Recommendation (CR)</li>
+  <li><a href="https://drafts.csswg.org/css-values-4/" hreflang="en" lang="en" rel="noopener" title="The 'CSS Values and Units Module Level 4' specification">CSS Values and Units Module Level 4</a> — Editor's Draft (ED)</li>
+  <li><a href="https://www.w3.org/TR/CSS22/syndata.html#values">Syntax and basic data types</a> — Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</li>
+</ul>
+<p>Kita:</p>
+<ul>
+  <li> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types">CSS basic data types - CSS: Cascading Style Sheets | MDN</a> — visų duomenų tipų indeksas</li>
+</ul>
+<p class="c-em-important">Čia naudojame naujausios veikiančios specifikacijos <a href="https://www.w3.org/TR/css-values-3/">CSS Values and Units Module Level 3</a> terminus ir apibrėžimus.</p>
+<h2>Textual data types</h2>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <h3>&lt;ident&gt;</h3>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/ident">ident - CSS: Cascading Style Sheets | MDN</a></p>
+    <p> <a href="https://www.w3.org/TR/css3-values/#css-identifier">CSS identifier — CSS Values and Units Module Level 3</a>    </p>
+    <div class="c-em-note">
+      <p>Tai yra bazinis duomenų tipas kitiems tipams išvesti:</p>
+      <blockquote>
+        <p>As this type is not a real type but a convenience type used to simplify the definition of other CSS syntax.</p>
+      </blockquote>
+    </div>
+    <p>Reikalavimai pačiam <code>&lt;ident&gt;</code>:</p>
+    <dl>
+      <dt>Gali būti naudojami nurodyti simboliai</dt>
+      <dd>
+        <blockquote>
+          <p>It consists of one or more characters, where characters can be any of the following:</p>
+          <ul>
+            <li>any alphabetical character (A to Z, or a to z),</li>
+            <li>any decimal digit (0 to 9),</li>
+            <li>a hyphen (-),</li>
+            <li>an underscore (_),</li>
+            <li>an escaped character (preceded by a backslash, \),</li>
+            <li>a <a href="http://en.wikipedia.org/wiki/Unicode" rel="noopener">Unicode</a> character (in the format of a backslash, \, followed by one to six hexadecimal digits, representing its Unicode code point)</li>
+          </ul>
+        </blockquote>
+      </dd>
+      <dt>Apribojimai pirmam simboliui</dt>
+      <dd>
+        <blockquote>
+          <p>Moreover, the first character must not be a decimal digit, nor a hyphen (-) followed by a decimal digit or another hyphen.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <div class="c-em-note">
+      <p>Negali būti apskliaustas:</p>
+      <blockquote>
+        <p>A <code>&lt;custom-ident&gt;</code> must not be placed between single or double quotes as this would be identical to a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" title="The <string> CSS data type represents a sequence of characters. Strings are used in numerous CSS properties, such as content, font-family, and quotes.">&lt;string&gt;</a>.</p>
+      </blockquote>
+    </div>
+    <p>Savybės:</p>
+    <dl>
+      <dt>is <a href="http://en.wikipedia.org/wiki/Case_sensitivity" rel="noopener">case-sensitive</a></dt>
+      <dd>
+        <blockquote>
+          <p>Note that id1, Id1, iD1 and ID1 are all different identifiers as they are <a href="http://en.wikipedia.org/wiki/Case_sensitivity" rel="noopener">case-sensitive</a>.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>Pvz.:</p>
+    <blockquote>
+      <p>Valid identifiers</p>
+      <pre>nono79      	A mix of alphanumeric characters and numbers
+ground-level	A mix of alphanumeric characters and a dash
+-test       	A dash followed by alphanumeric characters
+--toto      	A custom-property like identifier
+_internal   	An underscore followed by alphanumeric characters
+\22 toto    	A Unicode character followed by a sequence of alphanumeric characters
+bili\.bob   	A correctly escaped period</pre>
+      <p>Invalid identifiers</p>
+      <pre>34rem   	It must not start with a decimal digit.
+-12rad  	It must not start with a dash followed by a decimal digit.
+bili.bob	Only alphanumeric characters, _, and - needn't be escaped.
+'bilibob'	This would be a &lt;string&gt;.
+&quot;bilibob&quot;	This would be a &lt;string&gt;.</pre>
+    </blockquote>
+  </div>
+  <div>
+    <h3>&lt;custom-ident&gt;</h3>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident">&lt;custom-ident&gt; - CSS: Cascading Style Sheets | MDN</a></p>
+    <p> <a href="https://www.w3.org/TR/css3-values/#custom-idents">Author-defined Identifiers: the &lt;custom-ident&gt; type — CSS Values and Units Module Level 3</a></p>
+    <p>Išvestinis duomenų tipas:</p>
+    <blockquote>
+      <p><code>&lt;custom-ident&gt;</code> – A restricted subset of <code>&lt;ident&gt;</code> values excluding CSS-wide keywords, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*" title="The documentation about this has not yet been written; please consider contributing!">custom properties</a> and other per-property values.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>Pvz.:</p>
+    <blockquote>
+      <p>Valid identifiers</p>
+      <pre>nono79            A mix of alphanumeric characters and numbers
+ground-level      A mix of alphanumeric characters and a dash
+-test             A dash followed by alphanumeric characters
+_internal         An underscore followed by alphanumeric characters
+\22 toto          A Unicode character followed by a sequence of alphanumeric characters
+bili\.bob         A correctly escaped period</pre>
+      <p>Invalid identifiers</p>
+      <pre>34rem             It must not start with a decimal digit.
+-12rad            It must not start with a dash followed by a decimal digit.
+bili.bob          Only alphanumeric characters, _, and - needn't be escaped.
+--toto            It must not start with two dashes. This would be a custom property.
+'bilibob'         This would be a &lt;string&gt;.
+&quot;bilibob&quot;         This would be a &lt;string&gt;.</pre>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>&lt;string&gt;</h3>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string">&lt;string&gt; - CSS: Cascading Style Sheets | MDN</a></p>
+    <p>Tai yra:</p>
+    <blockquote>
+      <p>The &lt;string&gt; data type is composed of any number of <a href="http://en.wikipedia.org/wiki/Unicode" rel="noopener">Unicode</a> characters surrounded by either double (<code>"</code>) or single (<code>'</code>) quotes.</p>
+    </blockquote>
+    <p>Pagal tas pačias CSS taisykles galima string'e užkoduoti Unicode simbolius šešioliktainiais skaičiais:</p>
+    <blockquote>
+      <p>All characters can also be represented with their respective <a href="http://en.wikipedia.org/wiki/Unicode#Code_point_planes_and_blocks" rel="noopener">Unicode code points</a> in hexadecimal, in which case they are preceded by a backslash (<code>\</code>). For example, <code>\22</code> represents a double quote, <code>\27</code> a single quote (<code>'</code>), and <code>\A9</code> the copyright symbol (<code>©</code>).</p>
+    </blockquote>
+    <hr>
+    <figure class="c-figure -c-figure--ridgeBox c-figure--shadow" style="mmax-width:400px">
+      <div class="c-figure__content">
+      <blockquote>
+        <p>Importantly, certain characters which would otherwise be invalid can be escaped with a backslash.</p>
+      </blockquote>
+      <p>Pvz. — tą patį simbolį galima escape'inti ir įvedant jį patį, ir Unicode kodą:</p>
+      <pre><code>&quot;va \&quot;geras\22 dėdė&quot; == va &quot;geras&quot; dėdė
+'va \'geras\27 dėdė' == va 'geras' dėdė
+&quot;tas \\ ten&quot;         == tas \ ten</code></pre>
+  </div>
+  <figcaption>Taip pat galima su backslash'u escape'inti spec simbolius, kurių tiesiogiai negalima naudoti</figcaption>
+</figure>
+    <hr>
+    <figure class="c-figure -c-figure--ridgeBox c-figure--shadow" style="mmax-width:400px">
+      <div class="c-figure__content">
+        <blockquote>
+          <p>To output new lines, you must escape them with a line feed character such as <code>\A</code> or <code>\00000A</code>.</p>
+        </blockquote>
+        <div class="c-pvz">
+          <style>
+    .pvz-20200630231748::before {
+      content: "pirma eilutė \A antra eilutė \A trečia eilutė";
+      white-space: pre;
+    }
+  </style>
+  <p class="c-pvz__caption">naujos eilutės <code>::before</code> pseudo elemente</p>
+<!--  <p class="c-pvz__title"></p>-->
+  <p class="c-pvz__comment"><code>content: "pirma eilutė \A antra eilutė \A trečia eilutė"</code></p>
+  <div class="c-pvz__container pvz-20200630231748" style="">
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+<!--    <div class="c-pvz__target" style="">PVZ 1</div>-->
+<!--    <div class="c-pvz__target" style="">PVZ 2</div>-->
+<!--    <div class="c-pvz__target" style="">PVZ 3</div>-->
+  </div>
+</div>
+      </div>
+      <figcaption>Naujos eilutės simbolio įvedimas su <code>\A</code></figcaption>
+    </figure>
+    <hr>
+    <figure class="c-figure -c-figure--ridgeBox c-figure--shadow" style="mmax-width:400px">
+      <div class="c-figure__content">
+        <blockquote>
+          <p>In your code, however, strings can span multiple lines, in which case each new line must be escaped with a <code>\</code> as the last character of the line.</p>
+          <pre><code>/* String spanning two lines of code (these two strings will have identical output) */
+"A really long \
+awesome string"
+"A really long awesome string"</code></pre>
+        </blockquote>
+        <p>Pagal CSS sintaksę stringas negali turėti perkėlimo į kitą eilutę, tai aiškiai indikuoja WebStorm'as:</p>
+        <p><img src="images/20200701_001726_konspektas – ~test-css.htm WebStorm.png" alt="" width="196" height="78"/></p>
+        <p>Į eilutės galą pridėjus <code>&quot;\&quot;</code> — klaidos nebėra:</p>
+        <p><img src="images/20200701_001806_konspektas – ~test-css.htm WebStorm.png" alt="" width="195" height="77"/></p>
+      </div>
+      <figcaption>Kaip padaryti  CSS string'ą per kelias eilutes</figcaption></figure>
+  </div>
+  <div>
+    <h3>&lt;url&gt;</h3>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/url">&lt;url&gt; - CSS: Cascading Style Sheets | MDN</a></p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<hr>
+<hr>
+<p>&nbsp;</p>
+<dl>
+  <dt>Generiniai-bendri duomenų tipai (<i>generic data types</i>)</dt>
+  <dd>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p> <a href="https://bitsofco.de/generic-css-data-types/">All the Generic CSS Data Types</a></p>
+      <p>Generic data types are not related to any specific property. For example we can have a value of <code>10px</code>, which is a <code>&lt;length&gt;</code> data type, for the <code>margin</code>, <code>font-size</code> or a number of other propertes.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>CSS specifikacijoje <a href="https://www.w3.org/TR/css3-values/#component-types">CSS Values and Units Module Level 3</a> apibrėžta: <i>keywords</i> <code>&lt;ident&gt;</code> ir visi <i>basic data types</i> <code>&lt;length&gt; &lt;percentage&gt;</code> ..:</p>
+    <blockquote>
+      <ol>
+        <li><a href="https://www.w3.org/TR/css3-values/#keywords">keyword</a> values (such as auto, <a data-link-type="maybe" href="https://www.w3.org/TR/css-counter-styles-3/#disc" id="ref-for-disc">disc</a>, etc.), which appear literally, without quotes (e.g. auto)</li>
+        <li>basic data types, which appear between &lt; and &gt; (e.g., <a data-link-type="type" href="https://www.w3.org/TR/css3-values/#length-value" id="ref-for-length-value①" title="Expands to: em | advance measure | ch | in | cm | vmin | pc | vh | px | rem | pt | q | mm | ex | vw | vmax">&lt;length&gt;</a>, <a data-link-type="type" href="https://www.w3.org/TR/css3-values/#percentage-value" id="ref-for-percentage-value">&lt;percentage&gt;</a>, etc.).</li>
+      </ol>
+    </blockquote>
+    <p>&nbsp; </p>
+    <blockquote>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types">CSS basic data types - CSS: Cascading Style Sheets | MDN</a></p>
+      <p><strong>CSS basic data types</strong> define typical values (including keywords and units) accepted by CSS properties and functions. They are a special kind of <a href="https://www.w3.org/TR/css3-values/#component-types" rel="noopener">component value type</a>.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>Specifiniai duomenų tipai (<i>specific data types</i>)</dt>
+  <dd>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Specific data types are related a single property or a small group of properties. For example, the <code>&lt;transform-function&gt;</code> data type is used as the value for the <code>transform:</code> property alone.    </p>
+    </blockquote>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<h2>Textual Data Types (value definition type category-group)</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Keyword'ai (pre-defined keywords)</h3>
+      <p><a href="https://www.w3.org/TR/css3-values/#keywords">Pre-defined Keywords</a></p>
+      <p>value definition type:  <code>&lt;ident&gt;</code></p>
+      <blockquote>
+        <p>        The <code>&lt;ident&gt;</code> data type refers to the pre-defined keywords in CSS. This includes both the unique values for certain properties, for example <code>block</code> for the <code>display</code> property, as well as the CSS-wide values <code>initial</code>, <code>inherit</code> and <code>unset</code>.
+        </p>
+      </blockquote>
+      <p>Pvz.:</p>
+      <p>value definition &#8212; <code>border-collapse: collapse | separate</code><br>
+CSS &#8212; <code>table { border-collapse: separate }</code></p>
+      <p>CSS &#8212; <code></code><code>div { color: red }</code></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>Visų CSS savybių keyword'ai (CSS-wide keywords, global values)</h3>
+      <p><a href="https://www.w3.org/TR/css3-values/#common-keywords">CSS-wide keywords</a>      </p>
+      <p> <a href="https://bitsofco.de/initial-inherit-unset-and-revert/">Initial, Inherit, Unset, and Revert</a></p>
+      <p>value definition type: <code>&lt;ident&gt;</code></p>
+      <blockquote>
+        <p>There are four values that theoretically can be applied to any CSS property (besides <code>none</code>). These are the explicit defaulting values - <code>initial</code>, <code>inherit</code>, <code>unset</code>, and <code>revert</code>. </p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <ul>
+        <li>Use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/unset" title="The unset CSS keyword resets a property to its inherited value if it inherits from its parent, and to its initial value if not. ">unset</a> to set a property to its inherited value if it inherits, or to its initial value if not.</li>
+        <li>Use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/revert" title="The revert CSS keyword rolls back the cascade so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent).">revert</a> to reset a property to the value established by the user-agent stylesheet (or by user styles, if any exist).</li>
+        <li>Use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inherit" title="The inherit CSS keyword causes the element for which it is specified to take the computed value of the property from its parent element.">inherit</a> to make an element's property the same as its parent.</li>
+        <li>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/all" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a> property lets you reset all properties to their initial, inherited, reverted, or unset state at once.</li>
+      </ul>
+      <p>&nbsp;</p>
+      <h4>Keyword'as &#8212; <code>initial</code></h4>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial">initial - CSS: Cascading Style Sheets | MDN</a></p>
+      <p><a href="https://codepen.io/zyma/pen/vVXPdw">CSS — data types — CSS-wide keywords</a></p>
+      <p>&nbsp;</p>
+      <p>CSS savybei priskiria <a href="http://konspektas.local/css.properties-calculations.initial-specified-computed-actual-used-resolved.htm#(h)">Pradinė-default'inė reikšmė (initial value)</a>:      </p>
+      <blockquote>
+        <p>The <i>initial</i> CSS keyword applies the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value">initial (or default) value</a> of a property to an element. It can be applied to any CSS property. </p>
+      </blockquote>
+      <div class="c-em-alert c-em--narrow">
+        <p>&nbsp;</p>
+        <blockquote>
+          <p><strong>Note:</strong> On <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#Inherited_properties">inherited properties</a>, the initial value may be unexpected. You should consider using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inherit" title="The inherit CSS keyword causes the element for which it is specified to take the computed value of the property from its parent element.">inherit</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/unset" title="The unset CSS keyword resets a property to its inherited value if it inherits from its parent, and to its initial value if not. ">unset</a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/revert" title="The revert CSS keyword rolls back the cascade so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent).">revert</a> keywords instead.</p>
+        </blockquote>
+      </div>
+    <h4>Keyword'as &#8212; <code>inherit</code></h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inherit">inherit - CSS: Cascading Style Sheets | MDN</a></p>
+    <blockquote>
+      <p>The <code>inherit</code> CSS keyword causes the element for which it is specified to take the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value">computed value</a> of the property from its parent element.</p>
+    </blockquote>
+    <div class="c-pvz">
+      <style>
+        .p-pvz-inherit-1 {
+          color: red;
+          border: 3px solid red;
+        }
+        .p-pvz-inherit-1__child {
+          color: blue;
+          border: 3px dotted blue;
+        }
+      </style>
+      <p class="c-pvz__caption">kaip veikia <code>inherit</code> keyword'as paveldimoms ir nepaveldimoms CSS savybėms</p>
+      <p class="c-pvz__title">...</p>
+      <div class="c-pvz__container -c-pvz__container--childTarget">
+        <div class="p-pvz-inherit-1">
+          <div>be child class'o — paveldi paveldimas CSS savybes iš parent'o</div>
+          <div class="p-pvz-inherit-1__child">su child class'u — paveldimoms ir nepaveldimoms CSS savybėms nustatytos kitos reikšmės</div>
+          <div class="p-pvz-inherit-1__child" style="color: inherit; border: inherit">su child class'u ir tage nustatytu inherit joms — paveldi visas CSS savybes iš parent'o</div>
+        </div>
+      </div>
+  </div>
+    <h4>Keyword'as &#8212; <code>unset</code>    </h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/unset">unset - CSS: Cascading Style Sheets | MDN</a></p>
+    <p>Paveldimoms CSS savybėms <code>unset</code> priskiria <code>inherit</code>, o nepaveldimoms &#8212; <code>initial</code>:</p>
+    <blockquote>
+      <p>The <code>unset</code> CSS keyword <em>resets</em> a property to its inherited value if it inherits from its parent, and to its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value">initial value</a> if not.</p>
+      <p>When <code>unset</code> is applied to a property, it will apply either <code>initial</code> or <code>inherit</code>, depending on what the property's default behaviour is. If the property by default inherits, the <code>inherit</code> will be applied. Otherwise, <code>initial</code> will be applied.</p>
+    </blockquote>
+    <p class="">Atrodo tinkamiausias <code>unset</code> </p>
+    <div class="c-pvz">
+      <style>
+        .p-pvz-inherit-1 {
+          color: red;
+          border: 3px solid red;
+        }
+        .p-pvz-inherit-1__child {
+          color: blue;
+          border: 3px dotted blue;
+        }
+      </style>
+      <p class="c-pvz__caption">kaip veikia <code>inherit</code> keyword'as paveldimoms ir nepaveldimoms CSS savybėms</p>
+      <p class="c-pvz__title">...</p>
+      <div class="c-pvz__container -c-pvz__container--childTarget">
+        <div class="p-pvz-inherit-1">
+          <div>be child class'o — paveldi paveldimas CSS savybes iš parent'o</div>
+          <div class="p-pvz-inherit-1__child">su child class'u — paveldimoms ir nepaveldimoms CSS savybėms nustatytos kitos reikšmės</div>
+          <div class="p-pvz-inherit-1__child" style="color: inherit; border: inherit">su child class'u ir tage nustatytu inherit joms — paveldi visas CSS savybes iš parent'o</div>
+        </div>
+      </div>
+      <p class="c-pvz__title">&nbsp;</p>
+    </div>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Skaičiai (Numeric Data Types)</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Atstumai-išmatavimai (Distance Units)</h2>
+<p>&nbsp;</p>
+<p>: the &lt;length&gt; type</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid -u-table-equelCols" width="468">
+  <thead>
+    <tr>
+      <th width="130">Category</th>
+      <th width="165">Name</th>
+      <th width="157">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">Textual</td>
+      <td>Keywords</td>
+      <td>&lt;ident&gt;</td>
+    </tr>
+    <tr>
+      <td>Custom Keywords</td>
+      <td>&lt;custom-ident&gt;</td>
+    </tr>
+    <tr>
+      <td>Quoted Strings</td>
+      <td>&lt;string&gt;</td>
+    </tr>
+    <tr>
+      <td>Resource Locators</td>
+      <td>&lt;url&gt;</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Basic Numeric</td>
+      <td>Integers</td>
+      <td>&lt;integer&gt;</td>
+    </tr>
+    <tr>
+      <td>Real Numbers</td>
+      <td>&lt;number&gt;</td>
+    </tr>
+    <tr>
+      <td>Ratios</td>
+      <td>&lt;ratio&gt;</td>
+    </tr>
+    <tr>
+      <td>Percentages</td>
+      <td>&lt;percentage&gt;</td>
+    </tr>
+    <tr>
+      <td rowspan="5">Dimensions</td>
+      <td>Distances</td>
+      <td>&lt;length&gt;</td>
+    </tr>
+    <tr>
+      <td>Angles</td>
+      <td>&lt;angle&gt;</td>
+    </tr>
+    <tr>
+      <td>Duration</td>
+      <td>&lt;duration&gt;</td>
+    </tr>
+    <tr>
+      <td>Frequency</td>
+      <td>&lt;frequency&gt;</td>
+    </tr>
+    <tr>
+      <td>Resolution</td>
+      <td>&lt;resolution&gt;</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Other</td>
+      <td>Colours</td>
+      <td>&lt;color&gt;</td>
+    </tr>
+    <tr>
+      <td>Images</td>
+      <td>&lt;image&gt;</td>
+    </tr>
+    <tr>
+      <td>Position</td>
+      <td>&lt;position&gt;</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

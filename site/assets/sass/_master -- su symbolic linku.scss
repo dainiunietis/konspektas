@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+//$pathTo_outside_libs-frontend-assets: "../../../../libs/frontend/site/assets/sass/";
+//$pathTo_bower_inuitcss: "../bower_components/inuitcss/";
+//@import $pathTo_bower_inuitcss + "settings/settings.core";
+//$vendor_libs-frontend: "../../../../libs/frontend/site/assets/sass/";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+// Settings
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+$inuit-global-line-height:  20px;
+
+/**
+ * Config...............Project-level configuration and feature switches.
+ * Core.................inuitcss’ core and setup settings.
+ * Global...............Project-wide variables and settings.
+ */
+//@import "../bower_components/inuitcss/settings/example.settings.config";
+@import "../bower_components/inuitcss/settings/settings.core";
+//@import "../bower_components/inuitcss/settings/example.settings.global";
+
+@import "../vendor/lib-frontend/sass/settings.colors";
+
+@import "settings.project";
+@import "settings.misc";
+@import "settings.color";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+// Tools
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+/**
+ * Rem..................Tools for converting pixel inputs into their rem equivalents.
+ * Font-size............A mixin which guarantees baseline-friendly line-heights.
+ * Clearfix.............Micro clearfix mixin.
+ * Hidden...............Mixin for hiding elements.
+ * Sass MQ..............inuitcss’ default media query manager.
+ */
+//@import "../bower_components/inuitcss/tools/tools.rem";
+@import "../bower_components/inuitcss/tools/tools.font-size";
+@import "../bower_components/inuitcss/tools/tools.clearfix";
+@import "../bower_components/inuitcss/tools/tools.hidden";
+@import "../bower_components/sass-mq/mq";
+
+@import "../vendor/lib-frontend/sass/tools.color";
+
+@import "../node_modules/sass-lumen/sass/lumen";
+
+@import "../sass.szm/tools.text.font-face";
+@import "tools.string";
+@import "../sass.enhanced/tools.data-type.lenght-number";
+//@import "tools.colors-tallys";
+@import "tools.color.scheme";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+// Generic
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+/**
+ * Box-sizing...........Better default `box-sizing`.
+ * Normalize.css........A level playing field using @necolas’ Normalize.css.
+ * Reset................A tiny reset to complement Normalize.css.
+ * Shared...............Sensibly and tersely share some global commonalities
+ *                      (particularly useful when managing vertical rhythm).
+ */
+@import "../bower_components/inuitcss/generic/generic.box-sizing";
+@import "../bower_components/inuitcss/generic/generic.normalize";
+@import "../bower_components/inuitcss/generic/generic.reset";
+//@import "../bower_components/inuitcss/generic/generic.shared";
+
+@import "generic.typography.font-face";
+@import "generic.typography.font-face.ubuntu";
+@import "generic.shared";
+
+//--- font-awesome --------------------------------------------
+
+@import "../fonts/font-awesome-4.1.0/scss/font-awesome.scss";
+//--- variantas be scss
+// @import "../../fonts/font-awesome-4.1.0/css/font-awesome.min.css";
+// @font-face {
+//   font-family: 'FontAwesome';
+//   src: url('assets/fonts/antonio/../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+//-------------------------------------------------------------
+
+// TODO: ar gerai taip va generic.typography?
+@import "generic.typography";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+/**
+ * Page.................Set up our document’s default `font-size` and `line-height`.
+ * Headings.............Very minimal (i.e. only font-size information) for headings 1 through 6.
+ * Images...............Base image styles.
+ * Tables...............Simple table styles.
+ */
+@import "../bower_components/inuitcss/elements/elements.page";
+@import "../bower_components/inuitcss/elements/elements.headings";
+@import "../bower_components/inuitcss/elements/elements.images";
+//@import "../bower_components/inuitcss/elements/elements.tables";
+
+@import "elements.misc";
+@import "elements.figure-figcaption";
+@import "elements.blockquote-cite-q";
+@import "elements.headings";
+@import "elements.html-body";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+// Objects
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+/**
+ * Wrapper..............Page constraint object.
+ * Layout...............Generic layout module.
+ * Media................Image- and text-like content side by side. The poster-child of OOCSS.
+ * Flag.................Table-layout-based advancement on the Media object.
+ * List-bare............Lists with no bullets or indents.
+ * List-inline..........A list whose items all site in a line.
+ * Box..................Simple boxing abstraction.
+ * Block................Image-on-top-of-text object.
+ * Ratio................A container for maintaining aspect ratio of content.
+ * Crop.................Provide a cropping context for media (images, etc.).
+ * Tables...............Classes for manipulating `table`s.
+ * Pack.................Pack items into available horizontal space.
+ */
+//@import "../bower_components/inuitcss/objects/objects.task";
+@import "../bower_components/inuitcss/objects/objects.layout";
+@import "../bower_components/inuitcss/objects/objects.media";
+@import "../bower_components/inuitcss/objects/objects.flag";
+@import "../bower_components/inuitcss/objects/objects.list-bare";
+@import "../bower_components/inuitcss/objects/objects.list-inline";
+@import "../bower_components/inuitcss/objects/objects.box";
+@import "../bower_components/inuitcss/objects/objects.block";
+@import "../bower_components/inuitcss/objects/objects.ratio";
+@import "../bower_components/inuitcss/objects/objects.crop";
+@import "../bower_components/inuitcss/objects/objects.table";
+@import "../bower_components/inuitcss/objects/objects.pack";
+
+@import "objects.collapse_nenaudoti";
+@import "objects.collapse";
+@import "../sass.szm/objects.grid_NENAUDOTI";
+@import "objects.grid";
+
+@import "../vendor/lib-frontend/sass/objects.cols";
+
+//@import "../../../../libs/frontend/site/assets/sass/_object.layout.cols--nenaudoti";
+//@import "../../../../libs/frontend/site/assets/sass/_object.layout.cols";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+// Components
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+//--- assets/bower_components/inuitcss/ --------------------------------------
+
+/**
+ * Buttons..............An example button component, and how it fits into the inuitcss framework.
+ */
+//@import "components/example.components.buttons";
+
+//--- assets/vendor/lib-frontend/sass ----------------------------------------
+
+@import "../vendor/lib-frontend/sass/components.pvz";
+
+//--- vietiniai --------------------------------------------------------------
+
+@import "component-tag.list__nenaudoti";
+@import "component-tag.list";
+@import "component-tag.dlist_NENAUDOTI";
+@import "elements.list.dl";
+@import "component-tag.mark_NENAUDOTI";
+@import "component-tag.mark";
+@import "component-tag.sec_NENAUDOTI";
+@import "elements.section";
+
+@import "components.layout-table";
+@import "components.sidePanel";
+@import "components.jquery-toc";
+
+@import "elements.pre-code";
+// @import "code2"; // nauja versija, dar nebaigta
+@import "component.side-fixed-panel";
+@import "component.figure";
+@import "component.emphasize_NENAUDOTI";
+@import "component.emphasize";
+@import "component.editor-command";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+// Utilities-Trumps
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+/**
+ * Clearfix.............Bind our clearfix onto a utility class.
+ * Widths...............Simple width helper classes.
+ * Headings.............Reassigning our heading styles to helper classes.
+ * Spacing..............Nudge bits of the DOM around with these spacing classes.
+ * Print................Reset-like styles taken from the HTML5 Boilerplate.
+ * Hide.................Helper classes to hide content
+ */
+@import "../bower_components/inuitcss/utilities/utilities.clearfix";
+$inuit-offsets: true;
+@import "../bower_components/inuitcss/utilities/utilities.widths";
+@import "../bower_components/inuitcss/utilities/utilities.headings";
+@import "../bower_components/inuitcss/utilities/utilities.spacings";
+@import "../bower_components/inuitcss/utilities/utilities.print";
+@import "../bower_components/inuitcss/utilities/utilities.hide";
+
+@import "utilities.site-specific";
+@import "util.font";
+@import "../sass.szm/utilities.layout.spacing";
+
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+// Development-Debuging
+//▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+//--- assets/vendor/lib-frontend/sass ----------------------------------------
+
+@import "../vendor/lib-frontend/sass/utilities.marking";
+@import "../vendor/lib-frontend/sass/dev.marking";
+
+
+
+
+
+
+
+/*******************************************************/
+/****                                               ****/
+/***                      aaaaa                      ***/
+/****                                               ****/
+/*******************************************************/
+
+
+

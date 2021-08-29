@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Layout'o CSS-SASS taktikos-technikos</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Vertical spacing'o (vertical rhythm) valdymo technikos</h2>
+<pre>
+.kasNors:not(:last-child) {
+  margin-bottom: 1.5rem;
+}</pre>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p>
+      <p><a href="https://css-tricks.com/spacing-the-bottom-of-modules/">https://css-tricks.com/spacing-the-bottom-of-modules/</a> </p>
+      <pre><code>.module &gt; *:last-child,
+.module &gt; *:last-child &gt; *:last-child,
+.module &gt; *:last-child &gt; *:last-child &gt; *:last-child {
+  margin: 0;
+}</code></pre>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>p + p { margin-top: 1em; }</p>
+      <p>&nbsp;</p>
+      <p>Patarimas naudoti tik <code>margin-top:</code></p>
+      <p>h<a href="#">ttps://css-tricks.com/spacing-the-bottom-of-modules/#comment-505054</a></p>
+      <blockquote>
+        <p>I suggest just using top margin for general spacing, as when planning a specific page you most of the time know what content you'll have at the beginning of the page. You usually don't know how a page will end – will there be a paging component, action buttons, author information or whatever (depending on the dynamics of specific template). This way you can arrange the whole page as a train set – locomotive is the first one with no damper and each following coach has its own spacer designed just for this specific item. First item of the page is 99% time the same, a heading or breadcrumb so you basically just have to deal with this. If you have to focus just on one side spacer then it's more easier to follow general design grid/spacing.</p>
+        <p>I've been using just top margin for spacing for years and have never had any problems with this approach. So just to throw a special in – IE7 supports first-child: (so you can use it) and doesn't support last-child:</p>
+      </blockquote>
+      <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+    <p><a href="https://css-tricks.com/spacing-the-bottom-of-modules/#comment-504672">https://css-tricks.com/spacing-the-bottom-of-modules/#comment-504672</a>, </p>
+    <pre><code>.module &gt; *:last-child:after {
+  content: ' ';
+  margin: 1em 0 -1em;
+  padding: 0;
+  display: block;
+  height: 0;
+}</code></pre>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+    <p>module &gt; * ~ * {padding-top:1em} // every child after the first element</p>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

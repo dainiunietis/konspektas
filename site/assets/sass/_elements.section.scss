@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+section {
+  --section-bdrClr: hsla(41, 33%, 67%);
+  margin-bottom:    $szm-spacing-vertical-paragraph;
+  outline:          1px solid var(--section-bdrClr);
+
+  &:hover {
+    background-color: hsla(41, 33%, 47%, 0.13);
+    outline-offset:   4px;
+    //box-shadow: 0 0 12px -3px hsla(41, 33%, 47%, 1);
+    //box-shadow: inset 0 0 30px hsla(41, 33%, 37%, 0.2), 0 0 15px hsla(41, 33%, 37%, 0.1);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # .section--gaps
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+$elements-section-gapTop: .6rem;
+
+.section--gaps {
+  padding: $elements-section-gapTop .85rem;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # .section__title .section--titleFirst
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+%elements-section-title {
+  font-size:   1.5em;
+  font-family: "Helvetica Neue LT W1G Condensed", sans-serif;
+  font-weight: 700;
+  background:  var(--section-bdrClr);
+  padding:     0 .5em;
+  margin:      0 0 $elements-section-gapTop;
+  color:       scale_color($g-text-color-main, $alpha: -15%);
+}
+
+%elements-section-gapsTitle {
+  margin: -#{$elements-section-gapTop} -.85rem $elements-section-gapTop;
+}
+
+.section__title {
+  @extend %elements-section-title;
+
+  .section--gaps > & {
+    @extend %elements-section-gapsTitle;
+  }
+}
+
+.section--titleFirst {
+  & > *:first-child {
+    @extend %elements-section-title;
+  }
+
+  &.section--gaps > *:first-child {
+    @extend %elements-section-gapsTitle;
+  }
+}
+
+
+

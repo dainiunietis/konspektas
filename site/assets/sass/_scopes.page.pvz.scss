@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+/**
+ * dažniausias naudojimas:
+ * 	 <body class="s-page-pvz">
+ * bet galima ir kokią dalį dokumente apskliausti:
+ * 	 <div class="s-page-pvz">
+ */
+.s-page-pvz {
+  padding: 1.5em 1em;
+  //font-family: "Droid Sans", sans-serif; /* Candara "Segoe UI" "Myriad Pro" */
+  /*font:76% Candara,"Segoe UI",Tahoma,Geneva,Verdana,Arial,sans-serif; */
+  > h1, > h2, > h3, > h4, > h5, > h6 {
+    //font-family: "Segoe UI";
+    //font-family: "Envy Code R";
+    //font-family: "Ubuntu Condensed";
+    //font-family: "Ubuntu Light";
+    //font-family: "Ubuntu Mono";
+    //font-family: "Ubuntu";
+    font-family: "Calibri", sans-serif;
+    font-weight: normal;
+    color: #F0F0F0; background-color: #595959;
+    margin: 1em 0; padding: .2em .3em; clear:both;
+    border-radius: 2px;
+    text-shadow: 3px 2px 3px #292929;
+    &:hover {
+      //color: #3B3B3B; background-color: #F0F0F0;
+      //color: #FFFFFF; background-color: #232323;
+      background: none;
+      color: #232323;
+      text-shadow: 3px 2px 3px #c1c1c1;
+      //text-shadow: 1px 1px 1px #b9b9b9;
+      //border: 2px dotted cornflowerblue;
+      //border-radius: 5px;
+      outline: 2px solid #595959;
+    }
+    &:before { font: 10px Tahoma; font-weight: normal; vertical-align: super }
+    a { font-size: small; font-weight: normal; }
+  }
+  // h1:before, h2:before, h3:before, h4:before { font: 10px Tahoma; font-weight: normal; vertical-align: super }
+  > h1:before { content: "1 "; }
+  > h2 {
+    font-size: 1.3em;
+    &:before { content: "2 "; }
+  }
+  > h3 {
+    font-size: 1.1em;
+    &:before { content: "3 "; }
+  }
+  > h4:before { content: "4 "; }
+  > h5:before { content: "5 "; }
+  > h6:before { content: "6 "; }
+  > hr { margin: 0 0 .7em 0; border: none; border-bottom: dashed 1px rgb(255, 84, 96); } //dotted
+}
+
+
+
+

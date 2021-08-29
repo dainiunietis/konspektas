@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+// <figure>
+// 	...
+// 	<figcaption>...</figcaption>
+// </figure>
+
+////////////////////////////////////////////////////////////////////////
+//
+//   default'inis tag'ų apiforminimas
+//
+////////////////////////////////////////////////////////////////////
+
+// <figure style="width:300px">
+//   <img src="">
+//   <figcaption>...</figcaption>
+// </figure>
+
+// <figure>
+//   <pre><code>...</code></pre>
+//   <figcaption>...</figcaption>
+// </figure>
+
+//figure {
+//	display: block;
+//	margin: rem(13px) auto rem(12px);
+//	padding: 0;
+//	//-----------------------------------
+//	// image'as
+//	//-----------------------------------
+//	> img {
+//		// display: block;
+//		border-radius: 3px;
+//		line-height: 0;
+//		vertical-align: bottom;
+//	}
+//	//-----------------------------------
+//	// kodas
+//	//-----------------------------------
+//	pre {
+//		// margin: 0;
+//		// padding: 0;
+//		display: inline-block;
+//		vertical-align: top;
+//		> code {
+//			// margin: 0;
+//			// padding: 0;
+//			border: rgba(123,123,123,0.4) dotted 1px;
+//			background: none !important;
+//		}
+//		+ pre {
+//			margin-top: 0;
+//			// border-left: cadetblue dotted 1px;
+//		}
+//		+ figcaption {
+//			// color: red;
+//		}
+//	}
+//	//-----------------------------------
+//	// tekstas
+//	//-----------------------------------
+//	// <figure>
+//	// 	<h2>...</h2>
+//	// 	<p>...</p>
+//	// 	<figcaption>...</figcaption>
+//	// </figure>
+//	> p, h1, h2, h3, h4, h5, h6 {
+//		// margin-left: 10px;
+//		// margin-right: 3em;
+//		&:first-child {
+//			// margin-top: .9rem;
+//		}
+//		&:last-child {}
+//		+ figcaption {
+//			// text-align: center;
+//		}
+//	}
+//}
+//
+//figcaption {
+//	margin: rem(2px) 0 0 0;
+//	padding: 0;
+//	font-style: italic;
+//	font-size: 0.8rem;
+//	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+//	text-align: right;
+//}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//figure {
+//  display: block;
+//  margin: rem(13px) auto rem(12px);
+//  padding: 0;
+//
+//  > img {
+//    // display: block;
+//    border-radius: 3px;
+//    line-height: 0;
+//    vertical-align: bottom;
+//  }
+//
+//  > pre {
+//    // margin: 0;
+//    // padding: 0;
+//    display: inline-block;
+//    vertical-align: top;
+//    > code {
+//      // margin: 0;
+//      // padding: 0;
+//      border: rgba(123,123,123,0.4) dotted 1px;
+//      background: none !important;
+//    }
+//    + pre {
+//      margin-top: 0;
+//      // border-left: cadetblue dotted 1px;
+//    }
+//    + figcaption {
+//      // color: red;
+//    }
+//  }
+//
+//  // <figure>
+//  //   <h2>...</h2>
+//  //   <p>...</p>
+//  //   <figcaption>...</figcaption>
+//  // </figure>
+//  > p, h1, h2, h3, h4, h5, h6 {
+//    // margin-left: 10px;
+//    // margin-right: 3em;
+//    &:first-child {
+//      // margin-top: .9rem;
+//    }
+//    &:last-child {}
+//    + figcaption {
+//      // text-align: center;
+//    }
+//  }
+//
+//  > figcaption {
+//    margin: rem(2px) 0 0 0;
+//    padding: 0;
+//    font-style: italic;
+//    font-size: 0.8rem;
+//    font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+//    text-align: right;
+//  }
+//}

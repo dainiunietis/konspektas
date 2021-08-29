@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>pavadinimas</h1>
+<p><a href="skirstyti-pasideti.htm">_skirstyti-pasideti</a></p>
+<p>&nbsp;</p>
+
+../gulpfile -- testinis veikia gerai.js
+
+<div class="c-pvz">
+  <style>
+    /*#pvz-order-1 > :nth-child(1) { order: 0; }*/
+    /*#pvz-order-1 > :nth-child(2) { order: 0; }*/
+    /*#pvz-order-1 > :nth-child(3) { order: 0; }*/
+    /*#pvz-order-1 > :nth-child(4) { order: 0; }*/
+  </style>
+  <p class="c-pvz__title">Tos pačios <code>order:</code> reikšmės flex item'ai tarpusavyje dėstomi pagal poziciją kode (source order)</p>
+
+  <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column">
+    <div style="order: 1">[1] order: 1</div>
+    <div>[2] order: 0</div>
+    <div style="order: 1">[3] order: 1</div>
+    <div>[4] order: 0</div>
+  </div>
+  <p class="c-pvz__title"><code>order:</code> gali būti bet kokių reikšmių</p>
+  <div class="c-pvz__container c-pvz__container--childTarget" style="display: flex; flex-direction: column">
+    <div style="order: 10">[1] order: 10</div>
+    <div style="order: 5">[2] order: 5</div>
+    <div style="order: -10">[3] order: -10</div>
+    <div style="order: 7">[4] order: 7</div>
+  </div>
+</div>
+
+
+
+
+
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

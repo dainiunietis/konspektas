@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>
+<!-- #BeginEditable "body" -->
+<h1>CSS kintamieji (CSS variables, CSS custom properties)</h1>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*">https://developer.mozilla.org/en-US/docs/Web/CSS/--*</a></p>
+<p>Senojo konspekto testas: <a href="http://konspektas-prev.local/client-side/css/_pvz/css-custom-properties-variables.html">http://konspektas-prev.local/client-side/css/_pvz/css-custom-properties-variables.html</a></p>
+<hr>
+<p> <a href="https://blog.maximeheckel.com/posts/the-power-of-composition-with-css-variables">The Power of Composition with CSS Variables - Maxime Heckel's Blog</a></p>
+<p>&nbsp;</p>
+<pre><code>--base-blue: 222, 89%; /* All my colors here share the same hue and saturation */
+--palette-blue-10: hsla(var(--base-blue), 10%, 100%);
+--palette-blue-20: hsla(var(--base-blue), 20%, 100%);
+--palette-blue-30: hsla(var(--base-blue), 30%, 100%);
+--palette-blue-40: hsla(var(--base-blue), 40%, 100%);
+--palette-blue-50: hsla(var(--base-blue), 50%, 100%);
+--palette-blue-60: hsla(var(--base-blue), 60%, 100%);
+--palette-blue-70: hsla(var(--base-blue), 70%, 100%);
+--palette-blue-80: hsla(var(--base-blue), 80%, 100%);
+--palette-blue-90: hsla(var(--base-blue), 90%, 100%);
+--palette-blue-100: hsla(var(--base-blue), 100%, 100%);</code></pre>
+<p>&nbsp;</p>
+<pre><code>--base-blue: 222, 89%; /* All my colors here share the same hue and saturation */
+
+/*
+  Here I declared my color palette.
+  Each color is a partial value
+*/
+--palette-blue-10: var(--base-blue), 10%;
+--palette-blue-20: var(--base-blue), 20%;
+--palette-blue-30: var(--base-blue), 30%;
+--palette-blue-40: var(--base-blue), 40%;
+--palette-blue-50: var(--base-blue), 50%;
+--palette-blue-60: var(--base-blue), 60%;
+--palette-blue-70: var(--base-blue), 70%;
+--palette-blue-80: var(--base-blue), 80%;
+--palette-blue-90: var(--base-blue), 90%;
+--palette-blue-100: var(--base-blue), 100%;
+
+/*
+  Here I compose a color based on its meaning:
+  - primary and emphasis are composed by using --palette-blue-50
+  - they use a different opacity level thus they have different meaning:
+    - primary is a bold color used for buttons and primary CTA
+    - emphasis is used to highlight content or for the background of my callout cards
+*/
+--primary: hsla(var(--palette-blue-50), 100%);
+--emphasis: hsla(var(--palette-blue-50), 8%);</code></pre>
+<p>&nbsp;</p>
+<pre><code>***</code></pre>
+<p>&nbsp;</p>
+<pre><code>***</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<p><strong>Mokintis:</strong></p>
+<ul>
+  <li><a href="https://ishadeed.com/article/css-vars-101/">CSS Variables 101</a></li>
+  <li> <a href="https://ishadeed.com/snippet/proportional-resizing-css-variables/">Proportional Resizing with CSS Variables</a></li>
+  <li><a href="https://www.smashingmagazine.com/2018/05/css-custom-properties-strategy-guide/">https://www.smashingmagazine.com/2018/05/css-custom-properties-strategy-guide/</a></li>
+</ul>
+<h2>The Raven Technique</h2>
+<p>@TODO: </p>
+<p><a href="https://css-tricks.com/the-raven-technique-one-step-closer-to-container-queries/">The Raven Technique: One Step Closer to Container Queries | CSS-Tricks</a></p>
+<h2>CSS kintamųjų trūkumai, privalumai</h2>
+<p>CSS kintamųjų trūkumai:</p>
+<blockquote>
+  <p>First, while I find CSS variables immensely useful and have used them for almost everything for the past three years, it's good to keep in mind that they come with a performance cost and that tracing where something went wrong in a maze of calc() computations can be a pain with our current DevTools. I try not to overuse them to avoid getting into a territory where the downsides of using them outweigh the benefits.</p>
+  <p> <a href="https://css-tricks.com/when-sass-and-new-css-features-collide/">When Sass and New CSS Features Collide | CSS-Tricks</a></p>
+</blockquote>
+<p>Kada naudoti SASS kintamuosius:</p>
+<blockquote>
+  <p>In general, if it acts like a constant, doesn't change element-to-element or state-to-state (in which case custom properties are definitely <a href="https://css-tricks.com/dry-switching-with-css-variables-the-difference-of-one-declaration/">the way to go</a>) or reduce the amount of compiled CSS (<a href="https://lea.verou.me/2016/09/autoprefixing-with-css-variables/">solving the repetition problem</a> created by prefixes), then I'm going to use a Sass variable.</p>
+</blockquote>
+<table width="1875" class="c-tableCols c-tableCols--h2h3 -u-table-equelCols">
+  <tr>
+    <td width="25%"><h2>Pagrindai</h2>
+      <p>Sintaksė ir naudojimo būdas:</p>
+      <blockquote>
+        <p>Property names that are prefixed with <code>--</code>, like <code>--example-name</code>, represent <em>custom properties</em> that contain a value that can be reused throughout the document using the (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var" title="The var() CSS function can be used to insert the value of a custom property (sometimes called a 'CSS variable') instead of any part of a value of another property.">var()</a>) function.</p>
+        <p>Custom properties have the same rules about where they can be used as normal CSS properties. It's far better to think of them as <strong>dynamic properties</strong> than variables. </p>
+      </blockquote>
+      <h3>CSS kintamųjų matomumas-scope'as</h3>
+    <blockquote>
+      <p>Custom properties participate in the cascade: each of them can appear several times, and the value of the variable will match the value defined in the custom property decided by the cascading algorithm.</p>
+    </blockquote>
+    <h3>Reikšmės panaudojimas su funkcija <code>var()</code></h3>
+    <p><code>var()</code> &#8212; CSS funkcija CSS kintamojo reikšmės panaudojimui</p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/var">https://developer.mozilla.org/en-US/docs/Web/CSS/var</a></p>
+    <pre><code>var( &lt;custom-property-name&gt; [, &lt;declaration-value&gt; ]? )</code></pre>
+    <p>Kam skirta, kur naudoti, ir kaip veikia:</p>
+    <blockquote>
+      <p>The <strong>var()</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> function can be used to insert the value of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*">custom property</a> (sometimes called a "CSS variable") instead of any part of a value of another property.</p>
+      <p> The <code>var()</code> function cannot be used in property names, selectors or anything else besides property values. (Doing so usually produces invalid syntax, or else a value whose meaning has no connection to the variable.)</p>
+    </blockquote>
+    <p>argumentai:</p>
+    <dl>
+      <dt>Pirmas argumentas &#8212; CSS custom property</dt>
+      <dd>
+        <blockquote>
+          <p>The first argument to the function is the name of the custom property to be substituted. </p>
+        </blockquote>
+      </dd>
+      <dt>Antras argumentas &#8212; fallback value</dt>
+      <dd>
+        <blockquote>
+          <p>An optional second argument to the function serves as a fallback value. If the custom property referenced by the first argument is invalid, the function uses the second value.</p>
+        </blockquote>
+        <div class="em-note em--small">
+          <p>Nors pagal formalią sintaksę yra galimas tik antras parametras, bet praktiškai gali atrodyti daugiau:</p>
+          <blockquote>
+            <p>The syntax of the fallback, like that of custom properties, allows commas. For example, <code>var(--foo, red, blue)</code> defines a fallback of <code>red, blue</code>; that is, anything between the first comma and the end of the function is considered a fallback value.</p>
+          </blockquote>
+        </div>
+        <p>fallback'u gali būti ir kitas CSS kintamasis:</p>
+        <pre><code>p { background-color: var(--my-var, var(--my-other, pink)); }</code></pre>
+      </dd>
+    </dl></td>
+    <td width="25%"><h2>Globalūs CSS kintamieji</h2>
+      <p>Root'iniai CSS kintamieji matomi visur, pvz.:<br>
+      <a href="css.custom-properties-variables_pvz-1.htm#(h)">1. Paprasčiausias root'inių CSS kintamųjų naudojimas</a></p>
+      <pre><code>// :root == html
+:root {
+  --spalva-sviesus: wheat;
+}
+
+body {
+  --spalva-tamsus: darkblue;
+}
+
+.kazkas {
+  background-color: var(--spalva-sviesus);
+  color: var(--spalva-tamsus);
+}</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h2>Lokalūs CSS kintamieji, t. y. su ribotu matomumu-scope'u</h2>
+      <p>Ruleset'e esantys CSS kintamieji matomi tik tame pačiame ruleset'e ir ruleset'uose, kurie priskirti vaikiniams tagams, pvz.:<br>
+      <a href="css.custom-properties-variables_pvz-1.htm#(h)">2. Paprasčiausias NEroot'inių CSS kintamųjų naudojimas ir demonstracija CSS kintamųjų matomumo-scope'o (arba CSS terminologija kalbant — cascade'o)</a></p>
+      <blockquote>
+        <p>Inheritance of CSS Variables </p>
+        <p>Custom properties do inherit. Which means that if no value is set for a custom property on a given element, the value of its parent is used</p>
+      </blockquote>
+      <p><a href="css.custom-properties-variables_pvz-1.htm#(h)">5. CSS kintamajam priskiriant kitą kitamąjį, priskiriama reikšmė, ne nuoroda į priskiriamą kintamąjį (inheritance'as)</a>      </p>
+      <h3>CSS kintamojo panaudojimas tame pačiame ruleset'e</h3>
+      <pre><code>.kazkas {
+  --spalva-tamsus: darkblue;
+  color: var(--spalva-tamsus);
+  border: 1px solid var(--spalva-tamsus);
+}</code></pre>
+      <h3>CSS kintamojo panaudojimas kitame ruleset'e, kuris priskirtas vaikiniam CSS kintamojo tagui</h3>
+      <pre><code>.c-kazkas {
+  --spalva-tamsus: darkblue;
+}
+
+.c-kazkas__tas {
+  color: var(--spalva-tamsus);
+}</code></pre>
+      <pre><code>&lt;div class="c-kazkas"&gt;
+  &lt;div class="c-kazkas__tas"&gt;kažkas tas&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      <p>&nbsp;</p>      <p>&nbsp;</p></td>
+    <td width="25%"><h2>JavaScript</h2>
+      <p><a href="css.custom-properties-variables_pvz-1.htm#(h)">4. CSS kintamųjų keitimas su JavaScript</a></p>
+      <p>&nbsp;</p>
+      <pre><code>// get variable from inline style
+element.style.getPropertyValue("--my-var");
+
+// get variable from wherever
+getComputedStyle(element).getPropertyValue("--my-var");
+
+// set variable on inline style
+element.style.setProperty("--my-var", jsVar + 4);</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Visokios ypatybės</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h3>null-undefinied CSS kintamojo reikšmė — <code>initial</code> arba <code>unset</code></h3>
+    <pre><code>p {
+  --clr: initial;
+  color: var(--clr, blue); // bus priskirta blue
+}</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>CSS kintamojo reikšmė gali būti whitespace'as</h3>
+    <blockquote>
+      <p><a href="https://www.w3.org/TR/css-variables-1/#syntax">That line</a> is:</p>
+      <blockquote>
+        <p>Note: While &lt;declaration-value&gt; must represent at least one token, that one token may be whitespace.</p>
+      </blockquote>
+      <p>In other words, <code>--foo: ;</code> is valid.</p>
+      <p> <a href="https://css-tricks.com/the-css-custom-property-toggle-trick/">The CSS Custom Property Toggle Trick | CSS-Tricks</a></p>
+    </blockquote>
+    <figure>
+      <figcaption>Whitespace'inio kintamojo priskyrimas su <code>var()</code> funkcija veikia skirtingai:</figcaption>
+      <dl>
+        <dt>CSS savybėms, kurios gali turėti tik vieną reikšmę</dt>
+        <dd>
+          <p>CSS savybėms:</p>
+          <ul>
+            <li> <b>su paveldimumu</b> (inherited properties) — priskiria <code>inherit</code>, </li>
+            <li><b>be paveldimumo</b> (non-inherited properties) — priskiria <code>initial</code>.</li>
+          </ul>
+          <div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border c-pvs--hover -c-pvs--child-bg">
+            <p>CSS savybės su paveldimumu / CSS properties with inheritance, inherited properties</p>
+            <p class="c-pvs__section"><code>color:</code></p>
+            <div data-diah-style-top style="--spalva: ; color: blue;" class="c-pvs__parent B361c -P2c M2c">
+              <div data-diah-style-bottom style="color: orangered">BE whitespace'inio kintamojo</div>
+              <div data-diah-style-bottom style="color: orangered; color: var(--spalva)">SU whitespace'iniu kintamuoju</div>
+            </div>
+            <p class="c-pvs__section"><code>line-height:</code></p>
+            <div data-diah-style-top style="--line: ; line-height: 2;" class="c-pvs__parent B361c -P2c M2c">
+              <div data-diah-style-bottom style="line-height: 4">BE whitespace'inio kintamojo</div>
+              <div data-diah-style-bottom style="line-height: 4; line-height: var(--line)">SU whitespace'iniu kintamuoju</div>
+            </div>
+          </div>
+          <div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border c-pvs--hover -c-pvs--child-bg">
+            <p>CSS savybės be paveldimumo / CSS properties without inheritance, non-inherited properties</p>
+            <p class="c-pvs__section"><code>padding-left:</code></p>
+            <pre><code></code></pre>
+            <div data-diah-style-top style="--tarpas: ;" class="c-pvs__parent B361c -P2c M2c">
+              <div data-diah-style-bottom style="padding: .5em;">
+                <div style="background: lightblue;">nekeistas</div>
+              </div>
+              <div data-diah-style-bottom style="padding: .5em; padding-left: var(--tarpas);">
+                <div style="background: lightblue;">pirmas</div>
+              </div>
+            </div>
+          </div>
+        </dd>
+        <dt>CSS savybėms, kurios gali turėti daugiau nei vieną reikšmę, tai ir shorthand'ai, ir sudėtinių reikšmių savybės, kaip <code>box-shadow:</code></dt>
+        <dd>
+          <p>Kaip dabar suprantu, <code>var()</code> su whitespace'iniu kintamuoju tiesiog <strong>ignoruojama, tarsi nebūtų</strong>. </p>
+          <div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border c-pvs--hover -c-pvs--child-bg">
+            <p>...</p>
+            <p class="c-pvs__section"><code>padding:</code></p>
+            <pre><code></code></pre>
+            <div data-diah-style-top style="--tarpas: ;" class="c-pvs__parent B361c -P2c M2c">
+              <div data-diah-style-bottom style="padding: .5em;">
+                <div style="background: lightblue;">nekeistas</div>
+              </div>
+              <div data-diah-style-bottom style="padding: .5em; padding: var(--tarpas);">
+                <div style="background: lightblue;">pirmas</div>
+              </div>
+              <div data-diah-style-bottom style="padding: .5em; padding: 1em var(--tarpas);">
+                <div style="background: lightblue;">pirmas</div>
+              </div>
+              <div data-diah-style-bottom style="padding: .5em; padding: 1em var(--tarpas) 2em;">
+                <div style="background: lightblue;">pirmas</div>
+              </div>
+            </div>
+          </div>
+        </dd>
+      </dl>
+    </figure>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border c-pvs--hover -c-pvs--child-bg">
+      <style>
+        .pvs-20210129191533 button {
+          --font-size: ;
+          --color: ;
+          font-size: var(--font-size);
+          color: var(--color);
+        }
+        .pvs-20210129191533 button:nth-child(2) {
+          --font-size: 1.5em;
+          --color: blue;
+        }
+
+        .pvs-20210129202830 button {
+          --font-size: 1.5em;
+          --color: blue;
+          font-size: var(--font-size);
+          color: var(--color);
+        }
+        .pvs-20210129202830 button:nth-child(2) {
+          --font-size: ;
+          --color: ;
+        }
+      </style>
+      <p>Paprastas whitespace'sinės reikšmės naudojimas — CSS kintamajame saugoma vienos ir daugiau CSS savybių reikšmė</p>
+      <p class="c-em-note c-em--narrow">Modifikacinio class'o CSS savybių reikšmės saugomos pačiame <strong>modifikaciniame class'e</strong>.</p>
+      <p class="c-pvs__section">Baziniame class'e CSS kintamiesiems priskiriami whitespace'ai, todėl deklaracijos su jais neveikia, o modifikaciniame class'e priskiriamos konkrečios reikšmės, todėl deklaracijos su tais kintamaisiais veikia</p>
+      <pre><code>&lt;button&gt;Bazinis&lt;/button&gt;
+&lt;button&gt;Modifikuotas&lt;/button&gt;
+
+button {
+  --font-size: ;
+  --color: ;
+  font-size: var(--font-size);
+  color: var(--color);
+}
+button:nth-child(2) {
+  --font-size: 1.5em;
+  --color: blue;
+}</code></pre>
+      <div class="pvs-20210129191533 c-pvs__parent">
+        <button>Bazinis</button>
+        <button>Modifikuotas</button>
+      </div>
+      <p class="c-pvs__section">Ir atvirkščiai</p>
+      <pre><code>button {
+  --font-size: 1.5em;
+  --color: blue;
+  font-size: var(--font-size);
+  color: var(--color);
+}
+button:nth-child(2) {
+  --font-size: ;
+  --color: ;
+}</code></pre>
+      <div class="pvs-20210129202830 c-pvs__parent">
+        <button>Bazinis</button>
+        <button>Modifikuotas</button>
+      </div>
+    </div>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--hover -c-pvs--child-bg">
+      <style>
+    .pvs-20210128193145 button {
+      --didelis: ;
+      font-size: var(--didelis, x-large);
+      padding: var(--didelis, .3em);
+    }
+    .pvs-20210128193145 button:nth-child(2) {
+      --didelis: initial;
+    }
+      </style>
+      <p>CSS kintamasis naudojamas kaip trigeris pritaikyti ar ne <code>var()</code> funkcijos antrą-atsarginę reikšmę</p>
+      <p class="c-em-note c-em--narrow">Modifikacinio class'o CSS savybių reikšmės saugomos <strong>baziniame class'e</strong>.</p>
+      <p> <a href="https://css-tricks.com/the-css-custom-property-toggle-trick/">The CSS Custom Property Toggle Trick | CSS-Tricks</a></p>
+      <pre><code>button {
+  --didelis: ;
+  font-size: var(--didelis, x-large);
+  padding: var(--didelis, .3em);
+}
+button:nth-child(2) {
+  --didelis: initial;
+}</code></pre>
+      <div class="pvs-20210128193145 c-pvs__parent">
+        <button>Paprastas</button>
+        <button>Didelis</button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3>Negalima to pačio kintamojo tiesiogiai ar per <code>calc()</code> priskirti jam pačiam</h3>
+    <div class="c-em-alert">
+      <p><a href="css.custom-properties-variables~globalių-css-kintamųjų-perrašymo-galimybės.htm">css.custom-properties-variables~globalių-css-kintamųjų-perrašymo-galimybės</a></p>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>CSS kintamiesiems SASS funkcijos neveikia</h3>
+    <div class="c-em-alert o-mcl o-mcl--N2 o-mcl--W2 o-mcl--continuous-pre">
+      <p>Neveikia:</p>
+      <pre><code>//------------------- SASS
+@function pagerinti() {
+  @return "geras";
+}
+:root {
+  --kažkas: pagerinti();  // &lt;&lt;&lt;
+  content: pagerinti();
+}
+
+//------------------- CSS
+:root {
+  --kažkas: pagerinti();  // &lt;&lt;&lt;
+  content: "geras";
+}</code></pre>
+      <p>Reikia interpoliuoti, tada veikia:</p>
+      <pre><code>//------------------- SASS
+:root {
+  --kažkas: #{pagerinti()};
+}
+
+//------------------- CSS
+:root {
+  --kažkas: "geras";
+}</code></pre>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Galima su CSS var'su nustatyti spalvos permatomumą</h3>
+    <p> <a href="https://css-tricks.com/custom-properties-as-state/">Custom Properties as State | CSS-Tricks</a></p>
+    <pre><code>body {
+  /* totally fine */
+  --rgba: rgba(255, 0, 0, 0.1);
+  background: var(--rgba);
+
+  /* totally fine */
+  --rgba: 255, 0, 0, 0.1;
+  background: rgba(var(--rgba));
+
+  /* totally fine */
+  --rgb: 255 0 0;
+  --a: 0.1;
+  background: rgb(var(--rgb) / var(--a));
+}</code>
+    </pre>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border c-pvs--hover -c-pvs--child-bg">
+      <p>...</p>
+      <p class="c-pvs__section"><code>rgb() rgba()</code></p>
+      <div data-diah-style-top style="--rgba: 255, 0, 0, 0.3; --rgb: 0 255 0; --a: 0.3" class="c-pvs__parent -B361c -P2c M2c">
+        <div data-diah-style-bottom style="background: rgba(var(--rgba))">&nbsp;</div>
+        <div data-diah-style-bottom style="background: rgb(var(--rgb) / var(--a))">&nbsp;</div>
+      </div>
+      <p class="c-pvs__section"><code>hsl() hsla()</code></p>
+      <div data-diah-style-top style="--hsla: 0, 100%, 50%, 0.3; --hsl: 90 100% 50%; --a: 0.3" class="c-pvs__parent -B361c -P2c M2c">
+        <div data-diah-style-bottom style="background: hsla(var(--hsla))">&nbsp;</div>
+        <div data-diah-style-bottom style="background: hsl(var(--hsl) / var(--a))">&nbsp;</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>State-flipping quality — pagal atskiro CSS var'so <code>true</code> ar <code>false</code> reikšmę, CSS savybėms su <code>calc()</code> priskirti vieną iš dviejų reikšmių</h3>
+    <p> <a href="https://css-tricks.com/custom-properties-as-state/">Custom Properties as State | CSS-Tricks</a>    </p>
+    <blockquote>
+      <p>Bram points out this "basic" state-flipping quality that a custom property can pull off:</p>
+      <pre><code>:root {
+  --is-big: 0;
+}
+
+.is-big {
+  --is-big: 1;
+}
+
+.block {
+  padding: calc(
+    25px * var(--is-big) +
+    10px * (1 - var(--is-big))
+  );
+  border-width: calc(
+    3px * var(--is-big) +
+    1px * (1 - var(--is-big))
+  );
+}</code></pre>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

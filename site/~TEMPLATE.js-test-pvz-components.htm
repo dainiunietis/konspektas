@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    body {
+      font:   1.2em "IBM Plex Sans", sans-serif;
+      margin: 1em;
+    }
+  </style>
+</head>
+<body>
+<!-- kad darytų TOC-turinį -->
+<script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>
+<script type="module" src="assets/js/master.js"></script>
+<div class="c-sidePanel c-sidePanel--left c-controlPanel--links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="Lay-ControlPanel-Toc" class="c-sidePanel c-sidePanel--left c-controlPanel--toc">
+  <ul id="Lay-ControlPanel-Toc2"></ul>
+</div>
+
+<h1>JS testinių pavyzdžių konstravimo būdai</h1>
+
+<!--<div class="o-mcl o-mcl&#45;&#45;W2 -o-mcl&#45;&#45;N4">
+  <div class="o-mcl__continuous">
+  </div>
+</div>-->
+
+<h2>Išvedimas DevTool'sų console'ėje</h2>
+
+<!--<p><strong>Paspaudus button'ą išvedimas daromas DevTool'sų console'ėje.</strong></p>-->
+
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h3>JS kodas dedamas į button'o onclick atributą</h3>
+    <button onclick="
+      console.group(event.currentTarget.innerHTML);
+      const n1 = 3, n2 = 8;
+      console.log('skaičiai =', n1, n2);
+      console.log('suma =', n1 + n2);
+      console.groupEnd();
+      ">suma iš onclick</button>
+  </div>
+  <div>
+    <h3>JS kodas dedamas į atskirą funkciją</h3>
+    <button onclick="pvz_20200913102434()">suma iš funkcijos</button>
+    <script>
+      function pvz_20200913102434() {
+        console.group(event.currentTarget.innerHTML);
+        const n1 = 3, n2 = 8;
+        console.log('skaičiai =', n1, n2);
+        console.log('suma =', n1 + n2);
+        console.groupEnd();
+      }
+    </script>
+  </div>
+</div>
+
+
+
+<!--<h3>Array.filter() — masyvo filtravimas su predicate funkcija</h3>-->
+
+<!--<p>Kiekvienas masyvo elemnetas patikrinamas metodui <code>.filter</code> perduota funkcija — jei įvykdžius su jai-->
+<!--  perduotu masyvo elementu grąžina <code>true</code> — tas elementas lieka grąžinamame masyve, pvz.:</p>-->
+<!--<pre><code>const input = [1, 2, 3]-->
+<!--const predicate = ArrElm => ArrElm > 1-->
+<!--const output = input.filter(predicate) // [2, 3]</code></pre>-->
+
+<!--<div class="o-mcl__continuous c-pvs c-pvs&#45;&#45;border">-->
+<!--  <button onclick="pvz_20200908004052(this)">masyve palikti tik lyginius skaičius</button>-->
+<!--  <script>-->
+<!--    function pvz_20200908004052(btnElm) {-->
+<!--      const pvzTitle = btnElm.innerHTML-->
+<!--      console.group(pvzTitle)-->
+
+<!--      const input = [1, 2, 3, 4, 5]-->
+<!--      console.log('input =', input)-->
+
+<!--      const isEven = number => number % 2 === 0-->
+<!--      const output = input.filter(isEven)-->
+<!--      console.log('output =', output)-->
+
+<!--      console.groupEnd()-->
+<!--    }-->
+<!--  </script>-->
+<!--</div>-->
+
+</body>
+</html>

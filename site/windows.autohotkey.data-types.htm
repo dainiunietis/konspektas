@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" --><h1>AutoHotkey kalbos duomenų tipai-struktūros</h1>
+<p>&nbsp;</p>
+<h2>Objektai (Objects)</h2>
+<p><a href="https://autohotkey.com/docs/Objects.htm">https://autohotkey.com/docs/Objects.htm</a></p>
+<p>Ką daro:</p>
+<blockquote>
+  <p>An <em>object</em> in AutoHotkey is an abstract datatype which provides three basic functions:</p>
+  <ul>
+    <li>GET a value.</li>
+    <li>SET a value.</li>
+    <li>CALL a method (that is, a function which does something with the target object).</li>
+  </ul>
+</blockquote>
+<p>AHK objektų esmė &#8212; laisva-abstrakti duomenų struktūra:</p>
+<blockquote>
+  <p>An object is basically a collection of variables. The variable names are known as "Keys", and the contents of the variables are "Values".   When you hear people calling an object an <em>array</em> or <em>indexed array</em>, it usually means that all the keys are sequential numbers 1 and up.
+    When you hear people calling an object an <em>associative array</em>, it means that the keys are either strings (text) or non-sequential numbers. Sometimes it's a mix of both, and sequential numbers too!</p>
+</blockquote>
+<p>&nbsp;</p>
+<h3>Objektų nuorodos</h3>
+<p>Objektai turi savo nuorodas (An object reference), t. y. į save:</p>
+<blockquote>
+  <p>An object <em>reference</em> is a pointer or "handle" to a particular object. Like strings and numbers, object references can be stored in variables, passed to or returned from functions and stored in objects. After copying a reference from one variable to another as in <code>x := y</code>, both variables refer to the same object.</p>
+</blockquote>
+<p>Funkcija <code>IsObject()</code> leidžia sužinoti ar kintamasis, ar tai ką grąžina funkcija, yra objektas:</p>
+<pre><code>Result := IsObject(expression)</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

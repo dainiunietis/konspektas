@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<style>
+  /*.p-pvz-initial {*/
+  /*  font-size: 1.5em;*/
+  /*  color: deepskyblue;*/
+  /*  margin: 1em;*/
+  /*  padding: 0.5em;*/
+  /*  border: 3px solid hsla(294,84%,35%,1.00);*/
+  /*}*/
+
+  :root {
+    --clr-greyBg: hsla(0, 0%, 85%, .85);
+    --clr-greyBrd: hsl(0, 0%, 40%);
+    --clr-redBg: hsla(0, 80%, 75%, .85);
+    --clr-redBrd: hsl(0, 80%, 40%);
+    --clr-blueBg: hsla(203, 80%, 75%, .85);
+    --clr-blueBrd: hsl(203, 80%, 40%);
+    --clr-greenBg: hsla(81, 75%, 75%, .85);
+    --clr-greenBrd: hsl(81, 75%, 30%);
+  }
+
+  .clr-grey {
+    background-color: var(--clr-greyBg);
+    border: 1px solid var(--clr-greyBrd);
+  }
+  .clr-red {
+    background-color: var(--clr-redBg);
+    border: 1px solid var(--clr-redBrd);
+  }
+  .clr-blue {
+    background-color: var(--clr-blueBg);
+    border: 1px solid var(--clr-blueBrd);
+  }
+  .clr-green {
+    background-color: var(--clr-greenBg);
+    border: 1px solid var(--clr-greenBrd);
+  }
+
+  .pvz-stack {
+    --offset:         .8em;
+    --offset-negative: calc(var(--offset) - var(--offset) * 2);
+    width:            4em;
+    padding:          var(--offset);
+    background-color: var(--clr-greyBg);
+    border: 1px solid var(--clr-greyBrd);
+    font-size:        1.1em;
+    font-weight:      600;
+  }
+  .pvz-stack > * {
+    padding: .2em .5em 1em;
+    width:   4em;
+  }
+  .pvz-stack__1 {
+    background-color: var(--clr-blueBg);
+    border: 1px solid var(--clr-blueBrd);
+  }
+  .pvz-stack__2 {
+    background-color: var(--clr-greenBg);
+    border: 1px solid var(--clr-greenBrd);
+    margin:           var(--offset-negative) 0 0 calc(var(--offset) * 1);
+  }
+  .pvz-stack__3 {
+    background-color: var(--clr-redBg);
+    border: 1px solid var(--clr-redBrd);
+    margin:           var(--offset-negative) 0 0 calc(var(--offset) * 2);
+  }
+
+  .pvz-zone {
+    font:    900 2em / 1.2 "Curlz MT";
+    border:  2px dashed;
+    display: flow-root;
+    padding: .2em;
+  }
+
+  .pvz-zone > * {
+    /*padding: .1em 2em 3em .3em;*/
+    padding: 0 .3em;
+    width:   5em;
+    height:  4em;
+    /*margin: .15em;*/
+  }
+
+</style>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Pozicionavimas (positioning)</h1>
+<h2>Bendra pozicionavimui</h2>
+<p> <a href="https://drafts.csswg.org/css-position-3/">CSS Positioned Layout Module Level 3</a>,  <a href="https://www.w3.org/TR/CSS2/visuren.html">Visual formatting model</a></p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning">CSS Positioned Layout - CSS: Cascading Style Sheets | MDN</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning">Positioning - Learn web development | MDN</a></p>
+<p><dfn>normal document layout flow</dfn> —</p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <p>Apskritai kiekvienas CSS box'as pozicionuojamas 3 kryptimis:</p>
+    <ul>
+      <li>horizontaliai (horizontal) — x-axis</li>
+      <li>vertikaliai (vertical) — y-axis</li>
+      <li>kas yra aukščiau  ar žemiau (stack level) — z-axis</li>
+    </ul>
+    <blockquote>
+      <p>In CSS 2.1, each box has a position in three dimensions. In addition to their horizontal and vertical positions, boxes lie along a "z-axis" and are formatted one on top of the other.</p>
+    </blockquote>
+  </div>
+  <div>
+    <p>Pozicionavimas skirtas pašalinti tagą-elementą iš <i>normal document layout flow</i></p>
+    <blockquote>
+      <p>Positioning allows you to take elements out of the normal document layout flow, and make them behave differently; for example sitting on top of one another, or always remaining in the same place inside the browser viewport.</p>
+    </blockquote>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Aukščiau–žemiau, virš–po / z-axis, stack level</h2>
+<p> <a href="http://konspektas-prev.local/client-side/css/css/properties/z-index.htm">z-index:</a> — senojo konspekto</p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index">Understanding CSS z-index - CSS: Cascading Style Sheets | MDN</a></p>
+<h3> Stacking rules'ai tarp elementų su <code>z-index: auto</code> / default stacking</h3>
+<p>CSS box'ų &quot;stacking rules&quot; pagal kurias nustatoma &quot;stacking order&quot; kai visiems nustatyta <em>initial</em> reikšmė <code>z-index: auto</code></p>
+<p>Tos &quot;stacking rules&quot; yra sudėtingos:</p>
+<blockquote>
+  <p>Using z-index appears extremely easy: a single property, assigned a single integer number, with an easy-to-understand behaviour. However, when z-index is applied to complex hierarchies of HTML elements, its behaviour can be hard to understand or predict. This is due to complex stacking rules. In fact a dedicated section has been reserved in the CSS specification <a href="http://www.w3.org/TR/CSS21/zindex.html" rel="noopener">CSS-2.1 Appendix E</a> to explain these rules better.</p>
+</blockquote>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <h4>Stacking rules'ai be sufloatintų tagų</h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/Stacking_without_z-index">Stacking without the z-index property - CSS: Cascading Style Sheets | MDN</a>    </p>
+    <blockquote>
+      <p>The stacking rules that apply when z-index is not used.</p>
+      <p>When the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index" title="The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. Overlapping elements with a larger z-index cover those with a smaller one.">z-index</a> property is not specified on any element, elements are stacked in the following order (from bottom to top):</p>
+      <ol>
+        <li>The background and borders of the root element</li>
+        <li>Descendant <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#static">non-positioned</a> blocks, in order of appearance in the HTML</li>
+        <li>Descendant <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Types_of_positioning">positioned</a> elements, in order of appearance in the HTML</li>
+      </ol>
+    </blockquote>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">...</p>
+      <p class="c-pvz__title">#1 ir #2 — pagal kodą yra pirmesni, todėl turėtų būti žemiau, bet kadangi yra positioned — yra virš #3 ir #4:</p>
+      <div class="pvz-zone" style="width: 12em;">
+        <div data-DIAH-style-top class="clr-blue" style="position: relative;">#1</div>
+        <div data-DIAH-style-top class="clr-green" style="position: relative; margin: -1em 0 0 1em;">#2</div>
+        <div data-DIAH-style-top class="clr-grey TAR" style="margin: -6em 0 0 3em;">#3</div>
+        <div data-DIAH-style-top class="clr-red TAR" style="margin: -2.7em 0 0 4em">#4</div>
+      </div>
+    </div>
+    <div class="c-em-note c-em--narrow">
+      <p>Flexbox'o <code>order:</code> keičia ir &quot;stacking order&quot;:</p>
+      <blockquote>
+        <p>Keep in mind, when the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" title="The order CSS property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending order value and then by their source code order.">order</a> property alters rendering from the "order of appearance in the HTML" within <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex" title="The flex CSS property sets how a flex item will grow or shrink to fit the space available in its flex container.">flex</a> containers, it similarly affects the order for stacking context.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div>
+    <h4>Sufloatintų tagų stacking'as</h4>
+    <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/Stacking_and_float">Stacking with floated blocks - CSS: Cascading Style Sheets | MDN</a></p>
+    <p>Kaip veikia stacking'as tagams su <code>float: left | right</code></p>
+    <blockquote>
+      <p><a href="https://developer.mozilla.org/en/CSS/Understanding_z-index/Stacking_and_float">Stacking with floated blocks</a>: How floating elements are handled with stacking.</p>
+      <p>Floating blocks are placed between non-positioned blocks and positioned blocks (from bottom to top):</p>
+      <ol>
+        <li>The background and borders of the root element</li>
+        <li>Descendant <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#static">non-positioned</a> blocks, in order of appearance in the HTML</li>
+        <li>Floating blocks</li>
+        <li>Descendant <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#static">non-positioned</a> inline elements</li>
+        <li>Descendant <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Types_of_positioning">positioned</a> elements, in order of appearance in the HTML</li>
+      </ol>
+    </blockquote>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">...</p>
+      <p class="c-pvz__title">Kode tagus dėstome atvirkščiai jų "stacking order"</p>
+      <div class="pvz-zone" style="width: 12em;">
+        <div data-DIAH-style-top class="clr-blue" style="position: relative; margin: 0 0 -2em 2em;">#1</div>
+        <span class="clr-green TAR -PL3" style="padding-bottom: 2em; padding-left: 4em; margin: 0 0 0 -2em;">#2</span>
+        <div data-DIAH-style-top class="clr-red" style="float: left; margin: 0 0 0 .5em;">#3</div>
+        <div data-DIAH-style-top class="clr-grey" style="width: auto; padding-left: 7.9em;"><b class="FS2.5em">#4</b></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Default stacking'o keitimas su <code>z-index:</code></h3>
+<p><a href="https://coder-coder.com/z-index-isnt-working/">4 reasons your z-index isn't working (and how to fix it) - Coder Coder</a></p>
+<pre><code>z-index: auto | &lt;integer&gt;
+         auto | -N | 0 | N</code></pre>
+<p>&nbsp;</p>
+<p class="c-em-note">Skaitinės <code>z-index:</code> reikšmės neturi būti nuoseklios, t. y. gali būti bet kokių dydžių iki <code>999999</code></p>
+<p>&nbsp;</p>
+<hr>
+<p>the normal rendering layer (layer 0)</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>(stacking context) </h3>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">The stacking context - CSS: Cascading Style Sheets | MDN</a></p></td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2><code>position:</code></h2>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw4 WNNCc">
+  <div>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position - CSS: Cascading Style Sheets | MDN</a></p>
+    <p>Terminai: </p>
+    <dl>
+      <dt><dfn>non-positioned element</dfn></dt>
+      <dd>
+        <p>(box, block, tag) </p>
+        <p><code>position: static</code></p>
+      </dd>
+      <dt><dfn>positioned element</dfn></dt>
+      <dd>
+        <p><code>position: relative | absolute | fixed | sticky</code></p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    <figure class="c-figure c-figure--shadow">
+      <div class="c-figure__content">
+        <ul>
+          <li><code>position: static | relative</code> — dalyvauja <i>normal document layout flow</i></li>
+          <li><code>position: absolute | fixed</code> — pašalintas iš <i>normal document layout flow</i></li>
+        </ul>
+        <blockquote>
+          <p>The main difference between <code>static</code> or <code>relative</code> and <code>absolute</code> or <code>fixed</code> was the space they take up in the flow of the DOM. Positions <code>static</code> &amp; <code>relative</code> keep their natural space in the flow of the document, while the <code>absolute</code> &amp; <code>fixed</code> don't — their space is removed and they have a floating behavior.</p>
+        </blockquote>
+      </div>
+      <figcaption><code>position:</code> nustato ar tagas-elementas yra ar  pašalintas iš <i>normal document layout flow</i></figcaption>
+    </figure>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p id="Types_of_positioning">Types of positioning</p>
+      <ul>
+        <li>A <strong>positioned element</strong> is an element whose <a href="https://developer.mozilla.org/en-US/docs/CSS/computed_value" title="CSS/computed_value">computed</a> <code>position</code> value is either <code>relative</code>, <code>absolute</code>, <code>fixed</code>, or <code>sticky</code>. (In other words, it's anything except <code>static</code>.)</li>
+        <li>A <strong>relatively positioned element</strong> is an element whose <a href="https://developer.mozilla.org/en-US/docs/CSS/computed_value" title="CSS/computed_value">computed</a> <code>position</code> value is <code>relative</code>. The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top" title="The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements.">top</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/bottom" title="The bottom CSS property participates in setting the vertical position of a positioned element. It has no effect on non-positioned elements.">bottom</a> properties specify the vertical offset from its normal position; the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/left" title="The left CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.">left</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/right" title="The right CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.">right</a> properties specify the horizontal offset.</li>
+        <li>An <strong>absolutely positioned element</strong> is an element whose <a href="https://developer.mozilla.org/en-US/docs/CSS/computed_value" title="CSS/computed_value">computed</a> <code>position</code> value is <code>absolute</code> or <code>fixed</code>. The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top" title="The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements.">top</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/right" title="The right CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.">right</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/bottom" title="The bottom CSS property participates in setting the vertical position of a positioned element. It has no effect on non-positioned elements.">bottom</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/left" title="The left CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.">left</a> properties specify offsets from the edges of the element's <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_Block">containing block</a>. (The containing block is the ancestor relative to which the element is positioned.) If the element has margins, they are added to the offset. The element establishes a new <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context">block formatting context</a> (BFC) for its contents.</li>
+        <li>A <strong>stickily positioned element</strong> is an element whose <a href="https://developer.mozilla.org/en-US/docs/CSS/computed_value" title="CSS/computed_value">computed</a> <code>position</code> value is <code>sticky</code>. It's treated as relatively positioned until its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_Block">containing block</a> crosses a specified threshold (such as setting <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top" title="The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements.">top</a> to value other than <code>auto</code>) within its flow root (or the container it scrolls within), at which point it is treated as "stuck" until meeting the opposite edge of its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_Block">containing block</a>. </li>
+      </ul>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Types_of_positioning">position - CSS: Cascading Style Sheets | MDN</a></p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>position: relative</code></h3>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>position: absolute</code></h3>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>position: fixed</code></h3>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>position: sticky</code></h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Stacking'o taisyklės tarp elementų su <code>z-index: auto</code> — default stacking</p>
+<p>Stacking'o veikimo taisyklės (stacking rules)</p>
+<p>&nbsp;</p>
+<div data-DIAH-style-bottom class="pvz-stack" style="">
+  <div data-DIAH-style-top class="pvz-stack__1" style="">1</div>
+  <div data-DIAH-style-top class="pvz-stack__2" style="">2</div>
+  <div data-DIAH-style-top class="pvz-stack__3" style="">3</div>
+</div>
+<p>&nbsp;</p>
+<div class="c-pvz">
+  <p class="c-pvz__caption">va kas čia yra <code>kodo gabalėlis</code></p>
+  <p class="c-pvz__title">pavyzdys apie tai <code>kodo gabalėlis</code></p>
+  <p class="c-pvz__comment">O taip ir anaip, yra kaip ir taip. </p>
+  <div class="c-pvz__container" style="">
+    <div class="c-pvz__target" style="">PVZ 1</div>
+    <div class="c-pvz__target" style="">PVZ 2</div>
+    <div class="c-pvz__target" style="">PVZ 3</div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="c-pvz">
+  <p class="c-pvz__caption">kad su shorthand'u <code>border:</code> uždėti border'į</p>
+  <p class="c-pvz__title"> reikia mažiausiai<br>
+    <code>border: &lt;line-style&gt;</code></p>
+  <p class="c-pvz__title"> nes nesamoms reikšmėms nustatomi default'ai: <br>
+    <code>border-style: none; <br>
+      border-width: medium; <br>
+      border-color: currentcolor</code></p>
+  <div class="c-pvz__container">
+    <div class="c-pvz__target" style="border: dashed">&nbsp;</div>
+  </div>
+  <p class="c-pvz__title">lygiai tą patį daro <code>border-style:</code></p>
+  <div class="c-pvz__container">
+    <div class="c-pvz__target" style="border-style: dashed">&nbsp;</div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="c-pvz">
+  <style>
+          .id20190415210233 > * {
+            border: 5px red dotted;
+          }
+        </style>
+  <p class="c-pvz__caption">su shorthand'u negalima nustatyti tik vieną ar dvi reikšmes — nesamoms nustatomi default'ai</p>
+  <p class="c-pvz__title">čia nesėkmingas bandymas su shorthand'u pakeisti spalvą</p>
+  <div class="c-pvz__container id20190415210233">
+    <div class="c-pvz__target">&nbsp;</div>
+    <div class="c-pvz__target" style="border: blue">&nbsp;</div>
+    <div class="c-pvz__target">&nbsp;</div>
+  </div>
+  <p class="c-pvz__title">o čia sėkmingas naudojant "realią" CSS savybę</p>
+  <div class="c-pvz__container id20190415210233">
+    <div class="c-pvz__target">&nbsp;</div>
+    <div class="c-pvz__target" style="border-color: blue">&nbsp;</div>
+    <div class="c-pvz__target">&nbsp;</div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

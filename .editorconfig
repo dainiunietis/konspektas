@@ -1,0 +1,73 @@
+# editorconfig.org
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+tab_width = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+[*.md]
+trim_trailing_whitespace = false
+
+
+
+# D:\webdev\sites.test.preconfigured\web-starter-kit-0.6.5\.editorconfig
+# # editorconfig.org
+# root = true
+#
+# [*]
+# indent_style = space
+# indent_size = 2
+# end_of_line = lf
+# charset = utf-8
+# trim_trailing_whitespace = true
+# insert_final_newline = true
+#
+# [*.md]
+# trim_trailing_whitespace = false
+
+
+
+# [*]
+# max_line_length = 100|off
+# end_of_line = lf|crlf|cr
+# indent_style = space|tab
+# charset = utf-8|latin1|utf-16be|utf-16le
+# trim_trailing_whitespace = true|false
+# insert_final_newline = true|false
+#
+# [*.html]
+# indent_size = 2
+#
+# [*.{js,json}]
+# indent_size = 2
+#
+# [*.{css,styl,scss,less,sass}]
+# indent_size = 2
+
+
+
+# https://css-tricks.com/changing-spaces-tabs-sublime-text/
+# # editorconfig.org
+# root = true
+#
+# [*]
+# indent_style = space
+# indent_size = 2
+# end_of_line = lf
+# charset = utf-8
+# trim_trailing_whitespace = true
+# insert_final_newline = true
+#
+# [*.md]
+# trim_trailing_whitespace = false
+
+
+
+

@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//  # .u-fullBleed — full bleed CSS Utility
+//
+/////////////////////////////////////////////////////////////
+
+// https://hankchizljaw.com/wrote/creating-a-full-bleed-css-utility/
+
+// @USAGE:
+// <div class="u-fullBleed">
+//   <p>...</p>
+// </div>
+
+.u-fullBleed {
+  --u-fullBleed-scrollbarWidth: 17px;
+  width: calc(100vw - var(--u-fullBleed-scrollbarWidth));
+  margin-left: 50%;
+  transform: translateX(-50%);
+  //margin-left: calc(50% - 50vw); !!! NEVEIKIA
+}
+
+
+
+

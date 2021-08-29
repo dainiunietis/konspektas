@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>-</title>
+<style type="text/css">
+body { margin:1.3em; }
+body { font:12px Tahoma, Verdana, Arial, Helvetica, sans-serif; }
+input[type="text"], textarea, select { width:270px; margin:0px 7px 10px 0px; padding:.3em; color:#1154D0; font:bold 0.9em Verdana, Arial, Helvetica, sans-serif; }
+</style>
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_zm/zm.js"></script>-->
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_zm/zm.debug.js"></script>-->
+<script type="text/javascript" src="../assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_libs/yui/3/yui-min.js"></script>-->
+</head>
+<body class="yui-skin-sam">
+
+<form>
+<h3>Kabių porų išmetimas</h3>
+<pre>
+   Tekstas: <input type="text" value='geras &quot;kaimynas&quot; ėjo &quot;žvejoti&quot;'>
+     Rasti: <input type="text" value="/&quot;([^&quot;]*)&quot;/g">
+  Pakeisti: <input type="text" value="$1">
+Rezultatas: <input type="text" value="">
+<button type="button" onclick="test_kabiuPoruIsmetimas(this)">Darom</button>
+</pre>
+</form>
+<script type="text/javascript">
+function test_kabiuPoruIsmetimas(clicked) {
+	var $inputs = $("input[type='text']", clicked.form);
+	var text = $($inputs[0]).val();
+	var find = $($inputs[1]).val();
+	var findRe;
+	var replacement = $($inputs[2]).val();
+	var resultInput = $inputs[3];
+
+	var findPrepare = /^\/(.+)\/(.*)$/.exec(find);
+	if (findPrepare) findRe = new RegExp(findPrepare[1], findPrepare[2]);
+
+	var result = text.replace(findRe,replacement);
+	$(resultInput).val(result);
+
+	//new_text = text.replace(/"([^"]*)"/g,"$1");
+}
+</script>
+
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

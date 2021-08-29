@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Sublime text'o šūtkatų suvestinė -- pagalbinė informacija</h1>
+<p>Čia naudojame <a href="editor.sublime.sutrumpinimai-konspektui.htm">sutrumpinimus</a>.</p>
+<p>Reikalingi, kad greitai paimti:</p>
+<p> <code>sublime.log_commands(True)</code></p>
+<p>Klavišų žymėjimas:</p>
+<p><kbd>super</kbd> == <kbd>Win</kbd></p>
+<h2>Shortcut'ų-hotkey'sų operatoriai</h2>
+<dl>
+  <dt>/ &#8212; jungia atskirus shortcut'us, įvykdančius to pačio tipo (panašaus pobūdžio) komandas, jos gali būti priešingos ar papildančios</dt>
+  <dd>
+    <p><kbd>ctrl+up</kbd> <strong>/</strong> <kbd>ctrl+down</kbd></p>
+    <p> Perkelia eilutes su pažymėjimu ir kursoriu <strong>aukštyn / žemyn</strong></p>
+  </dd>
+  <dt>|| &#8212;  jungia atskirus shortcut'us, įvykdančius tą pačią komandą</dt>
+  <dd>
+    <p><kbd>ctrl+shift+up</kbd> <strong>||</strong> <kbd>shift+backspace</kbd></p>
+    <p>Antrasis shortcut'as gali būti pakartotas ir kitoje vietoje.</p>
+  </dd>
+</dl>
+<h2>Windows'ų naudojamų hotkeys'ų arba neveikiančių klavišų kombinacijų remap'inimas Autohotkey'se</h2>
+<p>esant aktyviam ST fiziškai paspaudus realų hotkey'są, ST gauna čia nurodytą</p>
+<div class="Note">
+  <p>Kaip-kur saugome informaciją apie hotkeys'ų remap'us:</p>
+  <ul>
+    <li><a href="editor.sublime.hotkeys.htm">Šūtkatų suvestinėje</a> nurodome tik kokį fiziškai reikia spausti hotkeys'ą.</li>
+    <li><code>D:\mano uzrasai\win keyboard shortkey all.xlsx</code> išsaugome abu: ir kokį fiziškai reikia spausti, ir kokį realiai programa (t. y. Sublime Text'as) gaus iš Autohotkey'so.</li>
+  </ul>
+</div>
+<p><kbd>super+f</kbd></p>
+<p>[Find &gt; Incremental Find]</p>
+<p>nors realiai Sublime Text'e yra:</p>
+<p> <code>{ &quot;keys&quot;: [&quot;super+ctrl+alt+shift+f&quot;], &quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;incremental_find&quot;, &quot;reverse&quot;:false} }</code> </p>
+<p>bet su Autohotkey'su (čia C:\progdata\AutoHotkey\~darbinis-naudojamas.ahk) turime priskyrę kad nuspaustas Win+F generuoja super+ctrl+alt+shift+f</p>
+<h2>Šūtkatų kūrimo strategijos</h2>
+<h3>Visiems bendras pirmas aukštas</h3>
+<p>Turime &quot;visų pirmajam aukštui&quot; skirtus klavišus,  pvz.: <kbd>f1</kbd> ir <kbd>f2</kbd>, turime šūtkatą <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to&quot; }</code>, norime: </p>
+<ul>
+  <li>su šiuo susieto kito &#8212; <code>{ &quot;keys&quot;: [&quot;f1&quot;, &quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to_kitur&quot; }</code>, </li>
+  <li>dar kito &#8212; <code>{ &quot;keys&quot;: [&quot;f2&quot;, &quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to_dar_kitur&quot; }</code>.</li>
+</ul>
+<div class="Important">
+  <p>Šį būdą naudojame taip:</p>
+  <dl>
+    <dt><kbd>ctrl+k</kbd> </dt>
+    <dd>
+      <p>Naudojame default'iniams ST hotkeys'ams, kurie man nelabai reikalinki, pakeisti, pvz. default'iškai yra:</p>
+      <pre>{ "keys": ["f6"], "command": "toggle_setting", "args": {"setting": "spell_check"} },
+{ "keys": ["ctrl+f6"], "command": "next_misspelling" },
+{ "keys": ["ctrl+shift+f6"], "command": "prev_misspelling" },</pre>
+      <p>Keičiame</p>
+      <pre>{ "keys": ["ctrl+k", "f6"], "command": "toggle_setting", "args": {"setting": "spell_check"} },
+{ "keys": ["ctrl+k", "ctrl+f6"], "command": "next_misspelling" },
+{ "keys": ["ctrl+k", "ctrl+shift+f6"], "command": "prev_misspelling" },</pre>
+    </dd>
+  </dl>
+</div>
+<h3>Unikalus pirmas aukštas</h3>
+<p>Turime šūtkatą <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to&quot; }</code> ir norime daugiau su šiuo susietų: </p>
+<ul>
+  <li>perdarome <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;,&quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to&quot; }</code></li>
+  <li> kitas &#8212; <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;,&quot;ctrl+[&quot;], &quot;command&quot;: &quot;move_to_kitur&quot; }</code>,</li>
+  <li>dar kitas &#8212; <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;,&quot;]&quot;], &quot;command&quot;: &quot;move_to_dar_kitur&quot; }</code>.</li>
+</ul>
+<p>Antram aukštui galima naudoti klavišus pagal:</p>
+<ul>
+  <li>prasmę: raidžių, skaičių klavišai, kitų simbolių,</li>
+  <li>arčiau prie pirmojo aukšto klavišų esantys klavišai.</li>
+</ul>
+<h3>Konkrečios gairės</h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

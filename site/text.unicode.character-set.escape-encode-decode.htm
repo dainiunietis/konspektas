@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" --><h1>Character Set, character escape, character encoding, encode-decode, unicode</h1>
+<ul>
+  <li> <a href="https://mihai-nita.net/2006/08/06/basic-lingo/">Basic lingo — Internationalization Cookbook</a></li>
+  <li><a href="https://www.w3.org/TR/charmod-norm/">Character Model for the World Wide Web: String Matching</a></li>
+  <li> <a href="https://lt.wikipedia.org/wiki/UTF-8">UTF-8 – Vikipedija</a></li>
+  <li><a href="http://www.amp-what.com">&what: Discover Unicode & HTML Character Entities</a></li>
+</ul>
+<h2>Ne lotyniškos abecėlės lietuviškos raidės</h2>
+<p class="c-em-important">Lietuviškos raidės yra — Unicode Block-Page &quot;Latin Extended-A&quot; — kurio range'as yra nuo <code>0x0000100</code> iki <code>0x000017f</code>.</p>
+<p>Pačius simbolius perkėliau <a href="https://drive.google.com/open?id=1vzfd78mvKsEqg8Kxdy_nNYscM9YaqaCk">unicode simboliai.xlsx</a> (G:\gdrive Laptop autosync\konspektas\unicode simboliai.xlsx)</p>
+<del tabindex="0"><table width="477" class="c-table-linesGrid">
+  <tbody>
+    <tr>
+      <th width="147">Character Name</th>
+      <th width="83">Unicode</th>
+      <th width="77">Upper</th>
+      <th width="84">Unicode</th>
+      <th width="62">Lower</th>
+    </tr>
+    <tr>
+      <td>A ogonek</td>
+      <td>0104</td>
+      <td>Ą</td>
+      <td>0105</td>
+      <td>ą</td>
+    </tr>
+    <tr>
+      <td>E dot above</td>
+      <td>0116</td>
+      <td>Ė</td>
+      <td>0117</td>
+      <td>ė</td>
+    </tr>
+    <tr>
+      <td>E ogonek</td>
+      <td>0118</td>
+      <td>Ę</td>
+      <td>0119</td>
+      <td>ę</td>
+    </tr>
+    <tr>
+      <td>I ogonek</td>
+      <td>012E</td>
+      <td>Į</td>
+      <td>012F</td>
+      <td>į</td>
+    </tr>
+    <tr>
+      <td>U ogonek</td>
+      <td>0172</td>
+      <td>Ų</td>
+      <td>0173</td>
+      <td>ų</td>
+    </tr>
+    <tr>
+      <td>U macron</td>
+      <td>016A</td>
+      <td>Ū</td>
+      <td>016B</td>
+      <td>ū</td>
+    </tr>
+    <tr>
+      <td>C caron</td>
+      <td>010C</td>
+      <td>Č</td>
+      <td>010D</td>
+      <td>č</td>
+    </tr>
+    <tr>
+      <td>S caron</td>
+      <td>0160</td>
+      <td>Š</td>
+      <td>0161</td>
+      <td>š</td>
+    </tr>
+    <tr>
+      <td>Z caron</td>
+      <td>017D</td>
+      <td>Ž</td>
+      <td>017E</td>
+      <td>ž</td>
+    </tr>
+  </tbody>
+</table></del>
+<h2>Simbolių kodavimas (encoded characters, character escapes, escaped characters)</h2>
+<p> <a href="https://www.w3.org/International/questions/qa-escapes#invisible">Using character escapes in markup and CSS</a></p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <blockquote>
+        <p>A <strong>character escape</strong> is a way of representing a character in source code using only ASCII characters. </p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <div class="c-em-important">
+        <p>Nėra reikalo užkoduoti simbolius, geriau patį simbolį įvesti į dokumentą, išskyrus kelis atvejus:</p>
+        <blockquote>
+          <p id="Entity_References">3.1.6 Entity References</p>
+          <p>Do not use entity references.</p>
+          <p>There is no need to use entity references like &amp;mdash;, &amp;rdquo;, or &amp;#x263a;, assuming the same encoding (UTF-8) is used for files and editors as well as among teams.</p>
+          <p>The only exceptions apply to characters with special meaning in HTML (like &lt; and &amp;) as well as control or "invisible" characters (like no-break spaces).</p>
+          <p><a href="https://google.github.io/styleguide/htmlcssguide.html#Entity_References">https://google.github.io/styleguide/htmlcssguide.html#Entity_References</a></p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>HTML      </h3>
+      <table width="100%" class="c-table-linesGrid">
+        <thead>
+          <tr>
+            <th width="35%">Format</th>
+            <th width="65%">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&amp;#x<mark>&lt;kodas&gt;</mark>;<br>
+            &amp;#x20AC;</code></td>
+            <td>hexadecimal numeric character reference</td>
+          </tr>
+          <tr>
+            <td><code>&amp;#<mark>&lt;kodas&gt;</mark>;<br>
+            &amp;#8364;</code></td>
+            <td>decimal numeric character reference</td>
+          </tr>
+          <tr>
+            <td><code>&amp;<mark>&lt;kodas&gt;</mark>;<br>
+            &amp;euro;</code></td>
+            <td>named character reference</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>CSS </h3>
+      <p> <a href="https://www.w3.org/International/questions/qa-escapes#cssescapes">CSS ESCAPES &#8212; Using character escapes in markup and CSS</a></p>
+      <p> <a href="https://mathiasbynens.be/notes/css-escapes">CSS character escape sequences · Mathias Bynens</a></p>
+      <p><dfn>backslash escapes</dfn> — CSS simbolių kodavimo-escape'inimo formatas.</p>
+      <blockquote>
+        <p>Escapes start with a backslash followed by the hexadecimal number that represents the character's <em>hexadecimal</em> Unicode code point value.</p>
+      </blockquote>
+      <div class="c-em-note c-em--narrow c-em--small">
+        <blockquote>
+          <p>A trailing space is treated as part of the escape, so use 2 spaces if you actually want to follow the escaped character with a space.</p>
+        </blockquote>
+      </div>
+      <table width="100%" class="c-table-linesGrid">
+        <thead>
+          <tr>
+            <th width="20%">Format</th>
+            <th width="80%">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>\20AC</code></td>
+            <td>must be followed by a space if the next character is one of a-f, A-F, 0-9</td>
+          </tr>
+          <tr>
+            <td><code>\0020AC</code></td>
+            <td>must be 6 digits long, no space needed (but can be included)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>The backslash (<code>\</code>) can be used to embed characters in a context where they normally cannot occur.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>JavaScript</h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Emoji</h2>
+<p> <a href="https://en.wikipedia.org/wiki/Emoji">Emoji - Wikipedia</a></p>
+<p><a href="https://www.unicode.org/Public/emoji/">https://www.unicode.org/Public/emoji/</a> — oficialios versijos</p>
+<blockquote>
+  <p>The <a href="https://en.wikipedia.org/wiki/ISO_15924" title="ISO 15924">ISO 15924</a> script code for emoji is <code>Zsye</code>.</p>
+</blockquote>
+<div class="c-em-note">
+  <p>HTML dokumente tagams su Emoji simboliais (tiek pačiais simboliais, tiek encoded-escaped) geriau priskirti Emoji šriftą, pvz.: <code>font-family: 'Segoe UI Emoji'</code>  </p>
+  <p>Bet ir kituose šriftuose dalį Emoji simbolių rodo korektiškai, pvz. bendras šriftas:</p>
+  <p>🎯 🗝 💡 💎 ♥ 🔨 ✂ ✏ ✒ 📚 🔍 🕯 🌷 🌼 🌻 🌺 🌸 ❓ ❗ ‼ ⁉ 👍🏻 👈🏻 👉🏻 ☝🏻 👇🏻 👌🏻 🏝 🌠 ☄ 🌟</p>
+  <p>Segoe UI Emoji:</p>
+  <p style="font-family: 'Segoe UI Emoji'">🎯 🗝 💡 💎 ♥ 🔨 ✂ ✏ ✒ 📚 🔍 🕯 🌷 🌼 🌻 🌺 🌸 ❓ ❗ ‼ ⁉ 👍🏻 👈🏻 👉🏻 ☝🏻 👇🏻 👌🏻 🏝 🌠 ☄ 🌟</p>
+</div>
+<p class="c-em-important">Naudingesni, labiau bendrinės reikšmės simboliai — <strong>Evernote::</strong> emoji | font symbol character | webdev-code</p>
+<h3>Iš kur paimti Emoji simbolius</h3>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <p>Iš oficialaus <a href="https://www.unicode.org/Public/emoji/">https://www.unicode.org/Public/emoji/</a> norimą redakciją, pvz. šiuo metu 2020-05-04 naujausia <a href="https://www.unicode.org/Public/emoji/13.0/emoji-test.txt">https://www.unicode.org/Public/emoji/13.0/emoji-test.txt</a> </p>
+    <p>Galima paimti 2 būdais:</p>
+<ul>
+  <li>Pažymėti pele norimą Emoji simbolį ir nukopijuoti, tada redaktoriuje ar kur kitur paste'uoti.</li>
+  <li>
+    <p>Nukopijuoti norimo Emoji simbolio šešioliktainį kodą, ir redaktoriuje paste'uoti pridedant atitinkamą character escape apiforminimą, pvz. nukopijavome <code>1F603</code>:
+    </p>
+    <ul>
+      <li>HTML — <code>&amp;#x1F603;</code></li>
+      <li>CSS — <code>\1F603</code></li>
+    </ul>
+    <p><img src="images/20200503_174324_Window.png" alt="" width="426" height="79"/></p>
+  </li>
+</ul>
+  </div>
+  <div>
+    <p>Windows'uose Emoji simbolius (pačius simbolius, ne character escape) ir į teksto redaktorius, ir dizaino view'sus, galima įterpiame per <kbd>win+.</kbd>  </p>
+  </div>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+</div>
+<h2>Sąvokos, terminai</h2>
+<p>Character Entities</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Character set</h3>
+      <p><a href="https://www.w3.org/International/getting-started/characters">Introducing Character Sets and Encodings</a></p>
+      <p><i>character set</i> &#8212; </p>
+      <p>Du tą patį reiškiantys apibrėžimai:</p>
+      <blockquote>
+        <ul>
+          <li>A <strong>character set</strong> is a collection of letters and symbols used in a writing system. </li>
+          <li>Characters that are needed for a specific purpose are grouped into a <strong>character set</strong> (also called a <strong>repertoire</strong>).      </li>
+        </ul>
+      </blockquote>
+      <p><i>character set</i>'ų pavyzdžiai:</p>
+      <blockquote>
+        <ul>
+          <li>the <strong>ASCII</strong> character set covers letters and symbols for English text, </li>
+          <li><strong>ISO-8859-6</strong> covers letters and symbols needed for many languages based on the Arabic script, </li>
+          <li>and the <strong>Unicode</strong> character set contains characters for most of the living languages and scripts in the world.</li>
+        </ul>
+      </blockquote>
+      <p><i>Universal Character Set</i> (UCS) &#8212; tikrasis teksto simbolių standartas:</p>
+      <blockquote>
+        <p>At the core of the character model is the Universal Character Set (UCS), defined jointly by the Unicode Standard [<a href="https://www.w3.org/TR/charmod-norm/#bib-unicode">Unicode</a>] and ISO/IEC 10646 [<a href="https://www.w3.org/TR/charmod-norm/#bib-iso10646">ISO10646</a>]. In this document, Unicode is used as a synonym for the Universal Character Set.      </p>
+        <p> <a href="https://www.w3.org/TR/charmod-norm/#background">Character Model for the World Wide Web: String Matching</a></p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Character encoding</h3>
+      <p> <a href="https://www.w3.org/International/questions/qa-what-is-encoding">Character encodings for beginners</a></p>
+      <p>&nbsp;</p>
+      <div class="c-em-important c-em--small">
+        <p>Vietoj charset naudoti character encoding:</p>
+        <blockquote>
+          <p>The misleading term <strong>charset</strong> is often used to refer to what are in reality <strong>character encodings</strong>. You should be aware of this usage, but stick to using the term character encodings whenever you can.      </p>
+        </blockquote>
+      </div>
+      <p>Naudoti character encoding &#8212; UTF-8:</p>
+      <blockquote>
+        <p>As a content author or developer, you should nowadays always <a href="https://www.w3.org/International/questions/qa-choosing-encodings" title="1">choose the UTF-8 character encoding</a> for your content or data. This <a href="https://www.w3.org/International/articles/definitions-characters/#unicode" title="2">Unicode</a> encoding is a good choice because you can use a single character encoding to handle any character you are likely to need. This greatly simplifies things. Using Unicode throughout your system also removes the need to track and convert between various character encodings.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Characters in a character set are stored as one or more bytes in a computer. Each byte or sequence of bytes represents a given character. A character encoding is the key that maps a particular byte or sequence of bytes to particular characters that the font renders as text.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>legacy character encoding</strong> is a character encoding form that does not encode the full repertoire of characters in the Unicode character set.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>transcoder</strong> is a process that converts text between two character encodings. Most commonly in this document it refers to a process that converts from a <a href="https://www.w3.org/TR/charmod-norm/#dfn-legacy-character-encoding" data-link-type="dfn">legacy character encoding</a> to a <a href="http://www.w3.org/TR/2005/REC-charmod-20050215/#Unicode_Encoding_Form">Unicode encoding form</a>, such as UTF-8.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p><i>Unicode code point</i> &#8212; Unicode simbolio identifikacinis skaitinis kodas:</p>
+      <blockquote>
+        <p>A <strong>Unicode code point</strong> (or "code point") refers to the numeric value assigned to each Unicode character. Unicode code points range from <code>0</code> to <code>0x10FFFF<sub>16</sub></code>.</p>
+      </blockquote>
+      <p><code>U+hhhh</code> &#8212; konkretaus Unicode simbolio žymėjimas:</p>
+      <p>Unicode code points are denoted as <code>U+hhhh</code>, where <code>hhhh</code> is a sequence of at least four, and at most six hexadecimal digits. For example, the character <span lang="en">€</span> [<code>U+20AC</code> EURO SIGN] has the code point <span translate="no"><code>U+20AC</code></span>.</p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>grapheme</strong> is a sequence of one or more characters in a visual representation of some text that a typical user would perceive as being a single unit (character). Graphemes are important for a number of text operations such as sorting or text selection, so it is necessary to be able to compute the boundaries between each user-perceived character. Unicode defines the default mechanism for computing graphemes in Unicode Standard Annex #29: Text Segmentation [<a href="https://www.w3.org/TR/charmod-norm/#bib-uax29">UAX29</a>] and calls this approximation a <strong>grapheme cluster</strong>. There are two types of default grapheme cluster defined. Unless otherwise noted, grapheme cluster in this document refers to an extended default grapheme cluster. (A discussion of grapheme clusters is also given in Section 2 of the Unicode Standard, [<a href="https://www.w3.org/TR/charmod-norm/#bib-unicode">Unicode</a>]. Cf. near the end of <a href="http://www.unicode.org/versions/latest/ch02.pdf">Section 2.11</a> in version 8.0 of The Unicode Standard)</p>
+        <p>Because different natural languages have different needs, grapheme clusters can also sometimes require tailoring. For example, a Slovak user might wish to treat the default pair of grapheme clusters "ch" as a single grapheme cluster. Note that the interaction between the language of string content and the end-user's preferences might be complex.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Šriftai</h3>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>font</strong> is a collection of glyph definitions, ie. definitions of the shapes used to display characters.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A given font will usually cover a single character set, or in the case of a large character set like Unicode, just a subset of all the characters in the set. If your font doesn't have a glyph for a particular character, some browsers or software applications will look for the missing glyphs in other fonts on your system (which will mean that the glyph will look different from the surrounding text, like a ransom note). Otherwise you will typically see a square box, a question mark or some other character instead. </p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <p>&nbsp;</p>
+      <p>Demonstracinis pvz.: <br>
+        <a href="https://www.w3.org/TR/charmod-norm/#terminology-examples">https://www.w3.org/TR/charmod-norm/#terminology-examples</a></p>
+      <p><code>&lt;p&gt;tekstas&lt;/p&gt;</code> &#8212; <code>&lt;p&gt;</code> ir <code>&lt;/p&gt;</code> yra <i>syntactic content</i></p>
+      <blockquote>
+        <p><strong>Syntactic content</strong> is any text in a document format or protocol that belongs to the structure of the format or protocol. This definition includes values that are typically thought of as "markup" but can also include other values, such as the name of a field in an HTTP header. Syntactic content consists of all of the characters that form the <em>structure</em> of a format or protocol. For example, <code>&lt;</code> and <code>&gt;</code> (as well as the element name and various attributes they surround) are part of the syntactic content in an HTML document.</p>
+        <p>Syntactic content usually is defined by a specification or specifications and includes both the defined, reserved keywords for the given protocol or format as well as string tokens and identifiers that are defined by document authors to form the structure of the document (rather than the "content" of the document).</p>
+      </blockquote>
+      <p><code>&lt;p&gt;tekstas&lt;/p&gt;</code> &#8212; <code>tekstas</code> yra <i>natural language content</i></p>
+      <blockquote>
+        <p><strong>Natural language content</strong> refers to the language-bearing content in a document and <strong>not</strong> to any of the surrounding or embedded syntactic content that form part of the document structure. You can think of it as the actual "content" of the document or the "message" in a given protocol. Note that syntactic content can contain natural language content, such as when an [<a href="https://www.w3.org/TR/charmod-norm/#bib-html">HTML</a>] <code>img</code> element has an <code>alt</code> attribute containing a description of the image.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>resource</strong>, in the context of this document, is a given document, file, or protocol "message" which includes both the <a href="https://www.w3.org/TR/charmod-norm/#dfn-natural-language-content" data-link-type="dfn">natural language content</a> as well as the <a href="https://www.w3.org/TR/charmod-norm/#def_syntactic_content">syntactic content</a> such as identifiers surrounding or containing it. For example, in an HTML document that also has some CSS and a few <code>script</code> tags with embedded JavaScript, the entire HTML document, considered as a file, is a resource. This term is intentionally similar to the term 'resource' as used in [<a href="https://www.w3.org/TR/charmod-norm/#bib-rfc3986">RFC3986</a>], although here the term is applied loosely.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>user-supplied value</strong> is unreserved syntactic content in a <a href="https://www.w3.org/TR/charmod-norm/#def_vocabulary" data-link-type="dfn">vocabulary</a> that is assigned by users, as distinct from reserved keywords in a given format or protocol. For example, CSS class names are part of the syntax of a CSS style sheet. They are not reserved keywords, predefined by any CSS specification, but they are still are subject to the syntactic rules of CSS. Users generally expect that keywords they define can be representative of words or concepts in their given natural language, subject to the limitations of those rules.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>A <strong>vocabulary</strong> provides the list of reserved names as well as the set of rules and specifications controlling how <a href="https://www.w3.org/TR/charmod-norm/#dfn-user-supplied-value" data-link-type="dfn">user-supplied values</a> (such as identifiers) can be assigned in a format or protocol. This can include restrictions on range, order, or type of characters that can appear in different places. For example, HTML defines the names of its elements and attributes, as well as enumerated attribute values, which defines the "vocabulary" of HTML <a href="https://www.w3.org/TR/charmod-norm/#def_syntactic_content">syntactic content</a>. Another example would be ECMAScript, which restricts the range of characters that can appear at the start or in the body of an identifier or variable name. It applies different rules for other cases, such as to the values of string literals.</p>
+      </blockquote>
+    </td>
+  </tr>
+</table>
+<h2>Programų naudojimas &#8212; Extended CharMap</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>Bendros savybės:</p>
+      <p><img src="images/text.unicode.character-set.escape-encode-decode_Extended-CharMap-1.svg" alt="" width="150" /></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>Navigavimas tarp vidinių Unicode Character set'ų:      </p>
+      <p><img src="images/20190401_192751_Window.png" alt="" width="119" height="40"/></p>
+      <p><img src="images/text.unicode.character-set.escape-encode-decode_Extended-CharMap-2.svg" alt="" width="150" /></p>
+    </td>
+    <td width="25%">
+      <p>Pasirenkamas šriftas ir simbolių dydis, kurie rodomi:</p>
+      <p><img src="images/20190402_132712_Window.png" alt="" width="206" height="103" /></p>
+      <p><img src="images/20190402_134722_Window.png" alt="" width="208" height="166"/></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>Keikvienas Unicode simbolis indikuojamas: jis yra šrifte, ar ne:      </p>
+      <p><img src="images/text.unicode.character-set.escape-encode-decode_Extended-CharMap-3.svg" alt="" width="150"/></p>
+      <p>Atidaro langą, kuriame išveda sistemoje suinstaliuotus šriftus, kurie turi simbolį, ant kurio buvo iškviestas kontekstinis meniu. Šiame lange pasirinktas šriftas pakraunamas:</p>
+      <p><img src="images/20190402_133918_Window.png" alt="" width="268" height="160" /></p>
+      <p><img src="images/20190402_134313_Window.png" alt="" width="368" height="268"/></p>
+    </td>
+  </tr>
+</table>
+<h2>Programų naudojimas &#8212; Babel Map</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Simbolių paieška, t. y. radimas pagrindinėje simbolių lentelėje</h3>
+      <p>Radimas įvedis patį simbolį</p>
+      <p><img src="images/20190418_220155_BabelMap.png" alt="" width="90"/> <img src="images/20190418_221017_BabelMap.png" alt="" width="90"/> <img src="images/20190418_221324_BabelMap.png" alt="" width="90"/></p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Programų naudojimas &#8212; Windows 10 [Settings &gt; Personalization &gt; Fonts]</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>Vaizdas atidarius:</p>
+      <p><img src="images/20190419_142932_Settings.png" alt="" width="97" height="70"/></p>
+      <p><img src="images/20190419_143715_Settings.png" alt="" width="95" height="68"/> <img src="images/20190419_151804_Settings.png" alt="" width="94" height="98"/></p>
+      <blockquote>
+        <p>For Web developers and advanced typographers that want to make use of OpenType Variable fonts, there is a separate variable-font details page that allows you to explore the continuous, variable-design capabilities of the font.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>Simbolių paieška, t. y. radimas pagrindinėje simbolių lentelėje    </p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

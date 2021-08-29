@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<title>component.collapse — Design Style Guide</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<link rel="preload" href="assets/sass/master.css" as="style">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<!--<script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>-->
+<script>
+//--- kad naršyklėje neveiktų CSS failai –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+//   // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+//   elem.parentNode.removeChild(elem);
+// });
+</script>
+
+
+  <!--
+  ===========================================================================
+  variantas: export-import be tarpinio importinio failo
+  ===========================================================================
+  -->
+  <script type="module">
+      console.log("HTML — 1");
+
+      import ComponentCollapse_class from './assets/js/component.collapse.js';
+
+      // objekto kintamojo sukūrimas
+      const componentCollapse = new ComponentCollapse_class("o-collapse-locdep");
+      console.log(componentCollapse);
+
+      // DOM initas
+      $(function() {
+          componentCollapse.initDOM();
+      });
+
+      componentCollapse.hideAllSafe();
+
+      console.log("HTML — 2");
+  </script>
+
+<script type="module">
+    // timeoutWhenVarExists(componentCollapse, function() { componentCollapse.hideAllSafe() }, repeat = 10);
+
+    // setTimeout(componentCollapse.hideAllSafe(), 3000);
+    // setTimeout(function() { componentCollapse.hideAllSafe() }, 2000);
+    // setTimeout(function() {
+    //     console.log("++++++++++++++++++++++++++++++++++++++");
+    //     console.log(componentCollapse);
+    // }, 2000);
+
+    // $(window).on("load", function(){
+    //     console.log("HTML — 2");
+    //     // component_collapse_savas_locdep = new Component_collapse_savas_locdep("o-collapse-locdep");
+    //     component_collapse_savas_locdep.hideAllSafe();
+    // });
+
+    // $(function() {
+    //     console.log("HTML — 2");
+    //     component_collapse_savas_locdep = new Component_collapse_savas_locdep("o-collapse-locdep");
+    //     component_collapse_savas_locdep.hideAllSafe();
+    // });
+</script>
+
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left c-controlPanel--links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="Lay-ControlPanel-Toc" class="c-sidePanel c-sidePanel--left c-controlPanel--toc">
+	<ul id="Lay-ControlPanel-Toc2"></ul>
+</div>
+<h1>component  collapse &#8212; Design Style Guide</h1>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+  <tr>
+    <td width="25%">
+    	<p>&lt;div&gt;:</p>
+    	<div class="o-collapse-locdep">
+        <p>Collapse'inis title'as</p>
+        <p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+        <p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+      </div>
+      <p>&lt;section&gt;:</p>
+      <section class="o-collapse-locdep">
+        <p>Collapse'inis title'as</p>
+        <p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+        <p> tekstas tekstas tekstas tekstas tekstas tekstas tekstas</p>
+      </section>
+    </td>
+    <td width="25%">
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

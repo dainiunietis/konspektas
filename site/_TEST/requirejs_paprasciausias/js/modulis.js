@@ -1,0 +1,2 @@
+
+alert("veikia modulis")

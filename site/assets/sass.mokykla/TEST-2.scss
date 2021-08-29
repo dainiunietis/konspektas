@@ -1,0 +1,38 @@
+
+// I instantiated the $text-color variable to Blue
+$text-color: blue;
+
+// Here, the intent was to change the color for the .error style
+.error {
+  $text-color: red !global;
+  color: $text-color;
+}
+
+// Following the cascade, in .normal-text, I want Blue, but get Red.
+.normal-text {
+  color: $text-color;
+}
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+
+
+
+
+
+
+

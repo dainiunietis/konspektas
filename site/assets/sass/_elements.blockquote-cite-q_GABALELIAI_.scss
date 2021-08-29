@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+blockquote .Docdai-Blockquote-Container { /*sitas paciame HTML'e neraÅ¡omas, jÄ¯ sugeneruoja JS*/
+  margin:     .5em 2em 0 0;
+  text-align: right;
+}
+
+blockquote .tagBlockquote-citeLink a, blockquote .tagBlockquote-citeLink a:visited {
+  color:     #666666;
+  font-size: .8em;
+}
+
+blockquote .tagBlockquote-citeLink a:hover, blockquote .tagBlockquote-citeLink a:active {
+  color: #333333;
+}
+
+
+/*blockquote code {
+	font-family: "Courier New", Courier, mono;
+	font-size: 1em;
+	color: #9966FF;
+}*/
+
+/*blockquote code strong {
+	font-weight: bold;
+	color: #333333!important;
+}*/
+
+blockquote strong.fonas-1 {
+  background-color: #FFFF91;
+  font-weight:      normal;
+}
+
+/***/
+
+blockquote strong.tag-mine {
+  background-color: #C4FBFF;
+  font-weight:      inherit;
+}
+
+blockquote em.tag-mine {
+  background-color: #EAEAEA;
+  font-style:       inherit;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+//
+//   q
+//
+////////////////////////////////////////////////////////////////////
+
+q {
+  font-family: "Lora", serif;
+  font-size:   0.93em;
+
+  &::before, &::after {
+    font-family: "Lora", serif;
+    font-size: 1.5em;
+    content: "\201C";
+    line-height: 0;
+    vertical-align: baseline;
+  }
+
+  //„ABC“
+
+  &::before {
+    content: "„";
+    //content: "\201C";
+    //content: open-quote;
+    padding: 0 0.05em 0 0;
+    vertical-align: .03em;
+  }
+
+  &::after {
+    content: "“";
+    //content: "\201D";
+    //content: close-quote;
+    vertical-align: -0.1em;
+    //padding: 0 0 0 0em;
+  }
+
+  //   @include blockquote_foneKabes_BGgradient_spacing;
+  //   color: #666666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

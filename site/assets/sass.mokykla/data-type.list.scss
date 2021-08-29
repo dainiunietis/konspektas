@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+//@import "../sass.szm/tools.list-map";
+
+$listas: pirmas antras trecias ketvirtas penktas;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   list'o apibrėžimas
+//
+////////////////////////////////////////////////////////////////////////
+
+// pagal pilną sintaksę list'ai yra apskliausti su default'iniais (...)
+// bet kur nebūtina, galima praleisti
+$list-1: 7px;      // one value
+$list-2: 7px 3px;  // default space separated
+$list-3: 7px, 3px; // comma separated
+
+// apskliausti su (...)
+$list-5: (pirmas, antras, trecias); // čia apskliausti nebūtina
+// o čia būtina, jei reikia, kad funkcijos argumentas būtų "comma separated" listas
+$list-6: append((pirmas, antras, trecias), ketvirtas);
+
+// arba su [...]
+$list-7: [pirmas antras trecias];
+$list-8: [pirmas, antras, trecias]; // nors WebStorm rodo sintaksės klaidą — klaidos nėra
+
+// if the list items have spaces or other special characters they should be quoted
+$list-9: Consolas "Courier New" Dialoglnput "DejaVu Sans Code";
+
+//@debug unquote("$list-X ==") $list-7;
+//@debug unquote("$list-X ==") $list-8;
+//@debug unquote("$list-X ==") $list-9;
+//div { content: $listas-4; }
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   index() index-last()
+//
+////////////////////////////////////////////////////////////////////////
+
+$result: index($listas, antras);
+//@debug unquote("index() == ") $result;
+
+$listas-2: pirmas antras trecias ketvirtas penktas antras;
+$result: index-last($listas-2, antras);
+//@debug unquote("index() == ") $result;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   nth() set-nth()
+//
+////////////////////////////////////////////////////////////////////////
+
+//---------------------------------------------------------------------
+// nth($list, $n)
+// Returns a specific item in a list.
+//---------------------------------------------------------------------
+
+// teigiamas skaičius ieško nuo pradžios
+$result: nth($listas, 2); // == antras
+// neigiamas — nuo pabaigos
+$result: nth($listas, -2); // == ketvirtas
+//@debug unquote("nth() == ") $result;
+
+//---------------------------------------------------------------------
+// set-nth($list, $n, $value)
+// Replaces the nth item in a list.
+//---------------------------------------------------------------------
+
+$result: set_nth($listas, 2, NAUJAS);
+//$result: join($list-join-1, $list-join-2, comma);
+//$result: join($list-join-1, $list-join-2, $bracketed:true);
+//@debug unquote("set_nth() ==") $result;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   append($list, $val, $separator:auto)
+//   prepend()
+//
+////////////////////////////////////////////////////////////////////////
+
+$result: append($listas, dar-sitas);
+$result: append($listas, dar-sitas);
+//@debug unquote("append() ==") $result;
+
+$result: list-prepend($listas, dar-sitas);
+//@debug unquote("prepend() ==") $result;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   join($list1, $list2, $separator:auto, $bracketed:auto)
+//
+////////////////////////////////////////////////////////////////////////
+
+$listas-join-1: pirmas antras trecias;
+$listas-join-2: aaa bbb ccc;
+
+//$result: join($listas-join-1, $listas-join-2);
+$result: join($listas-join-1, $listas-join-2, comma);
+//$result: join($listas-join-1, $listas-join-2, $bracketed:true);
+//@debug unquote("join() ==") $result;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   list-separator($list)
+//
+////////////////////////////////////////////////////////////////////////
+
+// Returns the separator of a list.
+
+$result: list-separator($listas);
+//@debug unquote("list-separator() ==") $result;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   is-bracketed($list)
+//
+////////////////////////////////////////////////////////////////////////
+
+// Returns whether a list has square brackets.
+
+$listas-bracketed: [aaa bbb ccc];
+
+$result: is-bracketed($listas);
+$result-1: is-bracketed($listas-bracketed);
+//@debug unquote("is-bracketed() ==") $result;
+//@debug unquote("is-bracketed() ==") $result-1;
+
+
+
+
+
+

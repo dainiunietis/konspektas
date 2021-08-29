@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" --><h1>Automation programų-plugin'ų sąrašas</h1>
+<p>Geriausi-naudingiausi  plugin'ai</p>
+<dl>
+  <dt>Gulp'o plugin'ai</dt>
+  <dd>
+    <p><a href="programs-tools.tdl">Gulp'o plugin'ai</a></p>
+    <p><a href="http://gulpjs.com/plugins/">http://gulpjs.com/plugins/</a> &#8212; visi Gulp'o plugin'ai</p>
+    <p><a href="https://github.com/Pestov/essential-gulp-plugins">https://github.com/Pestov/essential-gulp-plugins</a></p>
+  </dd>
+  <dt>&nbsp;</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1892" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Browsersync</h3>
+      <p>&nbsp;</p>
+      <p>Automatinis redaguojamo puslapio atnaujinimas naršyklėje      </p>
+      <p>https://browsersync.io/</p>
+      <p>&nbsp;</p>
+      <p>https://browsersync.io/docs/api</p>
+      <p>https://browsersync.io/docs/options      </p>
+      <p>&nbsp;</p>
+      <p>Suinstaliuojame globaliai:</p>
+      <pre>&gt;&#32;npm&#32;install&#32;-g&#32;browser-sync
+</pre>
+      <p>&nbsp;</p>
+      <h4>Naudoti Gulp'e</h4>
+      <p>https://browsersync.io/docs/gulp</p>
+      <p>Suinstaliuojame lokaliai projekto kataloge:</p>
+      <pre>npm&#32;install&#32;browser-sync&#32;--save-dev</pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>&nbsp;</h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>CSS</h2>
+<table width="1892" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Gulp'o plugin'ai</h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h4>gulp-sourcemaps</h4>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>A list of the plugins that support gulp-sourcemaps can be found <a href="https://github.com/floridoo/gulp-sourcemaps/wiki/Plugins-with-gulp-sourcemaps-support">here.</a></p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>PostCSS  plugin'ai</h3>
+      <p><a href="https://github.com/postcss/postcss#plugins">https://github.com/postcss/postcss#plugins</a></p>
+      <p><a href="http://postcss.parts/">http://postcss.parts/</a></p>
+    <p><a href="https://github.com/postcss/postcss/blob/master/docs/plugins.md">https://github.com/postcss/postcss/blob/master/docs/plugins.md</a></p>
+    <p>PostCSS pajungimas per Gulp'ą: <a href="https://github.com/postcss/postcss#gulp">https://github.com/postcss/postcss#gulp</a> </p>
+    <p>&nbsp;</p>
+    <h4>autoprefixer</h4>
+    <p><a href="https://github.com/postcss/autoprefixer">https://github.com/postcss/autoprefixer</a> </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h5>Naršyklių palaikymo nustatymas</h5>
+    <p><a href="https://github.com/postcss/autoprefixer#browsers">https://github.com/postcss/autoprefixer#browsers</a></p>
+    <p><a href="https://github.com/ai/browserslist">https://github.com/ai/browserslist</a> </p>
+    <p><a href="http://browserl.ist/">http://browserl.ist/</a> </p>
+    <p>&nbsp;</p>
+    <p>Iš <a href="http://caniuse.com/">http://caniuse.com/</a> gaunami tokie</p>
+    <p>Su šiomis naršyklių versijomis</p>
+    <p>Šis</p>
+    <p>Geriau naudoti</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>JavaScript</h2>
+<table width="1892" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>kodo lint'inimas</h3>
+      <p>Lint'ingo atlikimo būdai:</p>
+      <ul>
+        <li>via your editor (live linting) </li>
+        <li>via your build process</li>
+        <li>      via pre-commit hook in version control</li></ul>
+      <p>&nbsp;</p>
+      <p>Ką lint'ingas taiso:</p>
+      <ul>
+        <li>Kodo stilių-formatavimą: atitraukimai-indent'avimas, kintamųjų-funkcijų pavadinimų stilius (Code style)</li>
+        <li>JS kalbos sintaksę (Syntax)</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>JS linter'iai:</p>
+      <ul>
+        <li>ESLint &#8212; atrodo geriausias</li>
+        <li>        JSHint</li>
+        <li>        JSCS</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h4>gulp-jshint ir jshint-stylish</h4>
+      <p>http://jshint.com/</p>
+      <pre>npm install --save-dev gulp-jshint jshint-stylish</pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>&nbsp;</h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><a href="https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js#javascript-concat-and-minify">Javascript concat and minify</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Rinkiniai</h2>
+<p>&nbsp;</p>
+<table width="1892" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>pre-configured setup / boilerplate for web development / starting point / стартовые заготовки</h3>
+      <p>Sukonfigūruota tinklalapio development'o automatizacija.</p>
+      <p>D:\webdev\sites.test.preconfigured</p>
+      <p><a href="https://developers.google.com/web/tools/starter-kit/">https://developers.google.com/web/tools/starter-kit/</a> &#8212; following the best practices outlined in Google's <a href="https://developers.google.com/web/fundamentals/">Web Fundamentals</a></p>
+      <p><a href="https://headstart.io/">https://headstart.io/</a></p>
+      <p><a href="http://yeoman.io/generators/">http://yeoman.io/generators/</a> :<br>
+        <a href="https://github.com/yeoman/generator-webapp">https://github.com/yeoman/generator-webapp</a> &#8212; šitas atrodo geras-universalus</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><a href="http://brunch.io/">http://brunch.io/</a></p>
+      <p><a href="http://linemanjs.com/">http://linemanjs.com/</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

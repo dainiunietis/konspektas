@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title>html generavimas su js ir template literals</title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+</head>
+<body class="-s-page-pvz">
+
+<h1>html generavimas su js ir template literals</h1>
+
+<h2><code>.W[5px 10px..200px]</code></h2>
+<div id="20200216211811" class="B361c"></div>
+<script>
+    let markup = '';
+    for (let i = 5; i <= 200; i += 5) {
+        markup += `<div class="W${i}px"><code>.W${i}px</code></div>`;
+    }
+    // console.log(markup);
+
+    //---------------------------------------------------------------------------------------
+    // veikiantis — ciklas pačiame template literals
+    //---------------------------------------------------------------------------------------
+    // let iReal = 5;
+    // const markup = `
+    //   ${Array(41).fill().map((item, i) => `
+    //     ${i > 0 ? `<div class="W${i * iReal}px"><code>.W${i * iReal}px</code></div>` : ``}
+    //   `).join('')}
+    // `;
+    //---------------------------------------------------------------------------------------
+
+    document.getElementById("20200216211811").innerHTML = markup;
+    // arba
+    document.write(markup);
+</script>
+
+
+
+</body>
+</html>

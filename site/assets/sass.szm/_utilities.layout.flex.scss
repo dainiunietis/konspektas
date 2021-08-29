@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  # Flex container'iui skirtos CSS savybės
+//
+/////////////////////////////////////////////////////////////////////////
+
+//--- align-items -------------------------------------------------------
+
+.FXAIS {
+  align-items: flex-start !important;
+}
+
+.FXAIE {
+  align-items: flex-end !important;
+}
+
+.FXAIC {
+  align-items: center !important;
+}
+
+.FXAIB {
+  align-items: baseline !important;
+}
+
+//--- justify-content ----------------------------------------------------
+
+.FXJS {
+  justify-content: flex-start !important;
+}
+
+.FXJC {
+  justify-content: center !important;
+}
+
+.FXJE {
+  justify-content: flex-end !important;
+}
+
+.FXJB {
+  justify-content: space-between !important;
+}
+
+.FXJV {
+  justify-content: space-evenly !important;
+}
+
+.FXJA {
+  justify-content: space-around !important;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  # Flex item'ui skirtos CSS savybės
+//
+/////////////////////////////////////////////////////////////////////////
+
+//--- flex-basis -------------------------------------------------------
+
+@each $value in 0, content {
+  $valueStr: "" + $value;
+  $valueSel: unquote(to_upper_case(str_slice($valueStr, 1, 1)));
+  .FXB#{$valueSel}, .FXB#{$valueSel}c > * {
+    flex-basis: #{$value};
+  }
+}
+
+//--- flex-grow --------------------------------------------------------
+
+@for $size from 0 through 2 {
+  //.u-flexGrow-#{$size}, .u-flexGrow-#{$size}-c > *, .u-flexGrow-#{$size}-d *,
+  .FXG#{$size}, .FXG#{$size}c > * { // , .FXG#{$size}d *
+    flex-grow: #{$size};
+  }
+}
+
+//--- flex-shrink ------------------------------------------------------
+
+@for $size from 0 through 2 {
+  //.u-flexShrink-#{$size}, .u-flexShrink-#{$size}-c > *, .u-flexShrink-#{$size}-d *,
+  .FXS#{$size}, .FXS#{$size}c > * { // , .FXS#{$size}d *
+    flex-shrink: #{$size};
+  }
+}
+
+//--- align-self -------------------------------------------------------
+
+.FXASS {
+  align-self: flex-start !important;
+}
+
+.FXASE {
+  align-self: flex-end !important;
+}
+
+.FXASC {
+  align-self: center !important;
+}
+
+.FXASB {
+  align-self: baseline !important;
+}
+
+//--- flex -------------------------------------------------------------
+
+// flex: none    == 0 0 auto
+// flex: auto    == 1 1 auto
+// flex: initial == 0 1 auto
+
+@each $value in auto, initial, none {
+  $valueStr: "" + $value;
+  $valueSel: unquote(to_upper_case(str_slice($valueStr, 1, 1)));
+  .FXF#{$valueSel}, .FXF#{$valueSel}c > * {
+    flex: #{$value};
+  }
+}
+
+// just grow
+.FXFG, .FXFGc > * {
+  flex: 1 0 auto;
+}
+
+
+
+
+
+

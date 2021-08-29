@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Packages'ų architektūra</h1>
+<p><a href="http://konspektas-prev.local/redaktoriai/sublime-3/packages-architektura.htm">http://konspektas-prev.local/redaktoriai/sublime-3/packages-architektura.htm</a></p>
+<p><a href="http://docs.sublimetext.info/en/latest/extensibility/packages.html">http://docs.sublimetext.info/en/latest/extensibility/packages.html</a></p>
+<p>Kaip pamatyti kokie packages'ai yra suinstaliuoti ST'e:</p>
+<dl>
+  <dt>[CP][Package Control: List Packages]</dt>
+  <dd>
+    <p>Palette'ėje išveda visų suinstaliuotų packages'ų sąrašą, išveda ir su'disable'intus.</p>
+    <p>Greitesnis būdas: </p>
+    <ul>
+      <li> [Preferences &gt; Package Control]</li>
+      <li>ir  pasirinkti komandą &quot;Package Control: List Packages&quot;  </li>
+    </ul>
+  </dd>
+  <dt>[Preferences &gt; Browse Packages]</dt>
+  <dd>
+    <p>Windows'ų explorer'yje atidaro &quot;D:\progs\Sublime Text 3\Data\Packages&quot;</p>
+  </dd>
+  <dt>[Preferences &gt; Package Settings &gt; PackageName &gt; ...]</dt>
+  <dd>
+    Ne visi ten yra.
+</dd>
+</dl>
+<h2>Kur laikomi packages'ų failai (Package Locations)</h2>
+<p><a href="http://docs.sublimetext.info/en/latest/extensibility/packages.html#package-locations-and-abbreviations">http://docs.sublimetext.info/en/latest/extensibility/packages.html#package-locations-and-abbreviations</a></p>
+<p>Packages'ų Locations'ų hierarchija, t. y. iš kokio Location'o naudojama, jei yra dublikatai:</p>
+<blockquote>
+  <p>If two packages with the same name exist  in both <em>Installed Packages</em> and <em>Shipped Packages</em>,  the one in <em>Installed Packages</em> will be used  and the one in <em>Shipped Packages</em> will be ignored.</p>
+  <p>Any file in <em>Packages</em>/<em>PackageName</em> takes precedence  over an identically named file  in <em>Installed Packages</em>/<em>PackageName</em>.sublime-package  or <em>Shipped Packages</em>/<em>PackageName</em>.sublime-package.</p>
+</blockquote>
+<p>Packages'ų Locations'ai ir jų Abbreviations'ai (Package Abbreviation), pradedant nuo žemiausio prioriteto:</p>
+<dl>
+  <dt><em>Shipped Packages</em></dt>
+  <dd>
+    <p><code>D:\progs\Sublime Text 3\Packages</code> &#8212; čia packages'ai saugomi ZIP'iniuose archyvuose <code>package-pavadinimas.sublime-package</code>, t. y. vienam package'ui vienas toks failas. Tai yra sisteminiai (core packages ir default packages) ST'o packages'si, todėl &#8212; <q>This folder is not intended to be modified by the user</q>.</p>
+  </dd>
+  <dt><em>Installed Packages</em></dt>
+  <dd>
+    <p><code>D:\progs\Sublime Text 3\Data\Installed Packages</code> &#8212; čia taip pat <code>*.sublime-package</code></p>
+  </dd>
+  <dt><em>Packages, Override Packages</em></dt>
+  <dd>
+    <p><code>D:\progs\Sublime Text 3\Data\Packages</code> &#8212; o čia jau ne ZIP'ai, o katalogai skirti packages'ams, su failais juose</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<div class="em-important em--block">
+  <p>Konkretus pavyzdys kaip override'inau ST core-default-shipped Package'so vieną iš konfigūracinių failų, tiksliau kontekstinį menu'są redaktoriuje:</p>
+  <ol>
+    <li>Paėmiau <code>D:\progs\Sublime Text 3\Packages\Default.sublime-package</code>, ir išarchyvavau į <code>D:\progs_data\Sublime Text 3\Packages isarchyvuoti -- core-default-shipped\Default</code></li>
+    <li>Failą <code>D:\progs_data\Sublime Text 3\Packages isarchyvuoti -- core-default-shipped\Default\Context.sublime-menu</code> nukopijavau į <code>D:\progs\Sublime Text 3\Data\Packages\Default\Context.sublime-menu</code></li>
+    <li>Dabar <code>D:\progs\Sublime Text 3\Data\Packages\Default\Context.sublime-menu</code> pilnai override'ina core-default-shipped Package'se <code>D:\progs\Sublime Text 3\Packages\Default.sublime-package</code> esantį <code>Context.sublime-menu</code></li>
+  </ol>
+</div>
+<p><a href="http://docs.sublimetext.info/en/latest/extensibility/packages.html#interactions-between-packages-with-the-same-name"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

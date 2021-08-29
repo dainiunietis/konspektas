@@ -1,0 +1,200 @@
+@charset "utf-8";
+
+// design-measure
+
+//////////////////////////////////////////////////////////////////
+//
+//  # spacing data
+//
+/////////////////////////////////////////////////////////////
+
+//----------------------------------------------------------
+// @EXAMPLE:
+// toks map'as turi būti projekte
+//----------------------------------------------------------
+//$spacing-sizes-step: 2px;
+//$szm-spacing-sizes-px: (
+//  "none":   0,
+//  "tiny":   $spacing-sizes-step * 2,
+//  "small":  $spacing-sizes-step * 5,
+//  "medium": $spacing-sizes-step * 8,
+//  "large":  $spacing-sizes-step * 11,
+//  "huge":   $spacing-sizes-step * 14,
+//);
+//----------------------------------------------------------
+
+$szm-spacing-sizes-px: () !default;
+
+//----------------------------------------------------------
+// @EXAMPLE:
+// toks map'as turi būti projekte
+//----------------------------------------------------------
+//$spacing-sizes-start:    0.2em;
+//$spacing-sizes-step:     0.2em;
+//$szm-spacing-sizes-em: (
+//  "none":    0,
+//
+//  "tiny-":   $spacing-sizes-start,
+//  "tiny":    $spacing-sizes-start + ($spacing-sizes-step * 1),
+//  "tiny+":   $spacing-sizes-start + ($spacing-sizes-step * 2),
+//
+//  "small-":  $spacing-sizes-start + ($spacing-sizes-step * 3),
+//  "small":   $spacing-sizes-start + ($spacing-sizes-step * 4),
+//  "small+":  $spacing-sizes-start + ($spacing-sizes-step * 5),
+//
+//  "medium-": $spacing-sizes-start + ($spacing-sizes-step * 6),
+//  "medium":  $spacing-sizes-start + ($spacing-sizes-step * 7),
+//  "medium+": $spacing-sizes-start + ($spacing-sizes-step * 8),
+//
+//  "large-":  $spacing-sizes-start + ($spacing-sizes-step * 9),
+//  "large":   $spacing-sizes-start + ($spacing-sizes-step * 10),
+//  "large+":  $spacing-sizes-start + ($spacing-sizes-step * 11),
+//
+//  "huge-":   $spacing-sizes-start + ($spacing-sizes-step * 12),
+//  "huge":    $spacing-sizes-start + ($spacing-sizes-step * 13),
+//  "huge+":   $spacing-sizes-start + ($spacing-sizes-step * 14),
+//);
+//----------------------------------------------------------
+
+$szm-spacing-sizes-em: () !default;
+
+//////////////////////////////////////////////////////////////////
+//
+//  # Funkcija užvardintiens spacing'o dydžiams nustatyti
+//
+/////////////////////////////////////////////////////////////
+
+// @USAGE:
+// div {
+//   padding: szm-spacing-size(tiny);
+//   margin: szm-spacing-size(tiny, em);
+// }
+
+@function szm-spacing-size($sizeName, $unit: px) {
+  @if ($unit == px) {
+    @if map_has_key($szm-spacing-sizes-px, $sizeName) {
+      @return map-get($szm-spacing-sizes-px, $sizeName);
+    }
+    @else {
+      @error unquote("$szm-spacing-sizes-px:") $szm-spacing-sizes-px
+      unquote("\0A")
+      unquote("neturi key'so:") quote($sizeName);
+    }
+  }
+  @else if ($unit == em) {
+    @if map_has_key($szm-spacing-sizes-em, $sizeName) {
+      @return map-get($szm-spacing-sizes-em, $sizeName);
+    }
+    @else {
+      @error unquote("$szm-spacing-sizes-em:") $szm-spacing-sizes-em
+      unquote("\0A")
+      unquote("neturi key'so:") quote($sizeName);
+    }
+  }
+  @else {
+    @error šiam unit\'ui\: quote($unit) nėra spacing size\'ų;
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//  # mixin'as išvesti padding: ir margin: deklaracijas su užvardintais spacing'o dydžiais
+//
+/////////////////////////////////////////////////////////////
+
+// @USAGE:
+// SCSS:
+//   div {
+//     @include szm-spacing-size-boxSides(margin, medium, right);
+//     @include szm-spacing-size-boxSides(padding, small, horizontal);
+//   }
+// CSS:
+//   div {
+//     margin-right: 16px !important;
+//   }
+
+// @PARAMS:
+// $property: margin
+//            padding
+// $sizeName: none      <<< map'o $szm-spacing-sizes-px keys'ai
+//            tiny
+//            small
+//            medium
+//            large
+//            huge
+// $side: top           <<< map'o $szm-box-sides keys'ai
+//        right
+//        bottom
+//        left
+//        horizontal
+//        vertical
+// $important:
+
+@mixin szm-spacing-size-boxSides($property, $sizeName, $side: "", $important: "!") {
+  //$size: null;
+  $size: szm-spacing-size($sizeName, px);
+
+  $sideRules: map-get($szm-box-sides, $side);
+  // @TODO:
+  //$size: null;
+  //@if map_has_key($g-spacing-sizes, $sizeName) {
+  //  $size: map-get($g-spacing-sizes, $sizeName);
+  //}
+  //@else {
+  //  @error unquote("$g-spacing-sizes:") $g-spacing-sizes
+  //    unquote("\0A")
+  //    unquote("neturi key'so:") quote($sizeName);
+  //}
+
+  $important: if($important == "!", "!important", "");
+
+  @each $side in $sideRules {
+    #{$property}#{$side}: #{$size} #{$important};
+  }
+}
+
+/////////////////////////////////////////////////////////////////
+//
+//    margin: padding: — design measures
+//
+////////////////////////////////////////////////////////////
+
+// .u-<property-word>-<size-word>, .<property-letter><size-number> {...}
+//
+// <property-word>     margin margin-top margin-right margin-bottom margin-left margin-horizontal margin-vertical
+// <property-letter>   M      MT         MR           MB            ML          MH                MV
+//
+// <size-word>         none tiny small medium large huge
+// <size-number>       0    1    2     3      4     5
+
+// .u-padding-none,     .u-padding-none-d *,     .u-padding-none-c > *,
+// .P0,                 .P0d *,                  .P0c > * {...}
+// .u-padding-top-none, .u-padding-top-none-d *, .u-padding-top-none-c > *,
+// .PT0,                .PT0d *,                 .PT0c > * {...}
+
+@mixin szm-spacing-outputUtilities-sizes-px {
+  @each $property in "padding", "margin" {
+    $propertyShort: to_upper_case(str_slice($property, 1, 1));
+    @each $sideName, $sideRules in $szm-box-sides {
+      $sizeShort:     0;
+      @if $sideName != "" {
+        $sideName: "-" + $sideName;
+      }
+      $sideNameShort: to_upper_case(str_slice($sideName, 2, 2));
+      @each $sizeName, $size in $szm-spacing-sizes-px {
+        $selector:      "u-" + $property + $sideName + "-" + $sizeName;
+        $selectorShort: $propertyShort + $sideNameShort + $sizeShort;
+        //.#{$selector}, .#{$selector}-d *, .#{$selector}-c > *,  // << galima atjungti pilnus selektorius
+        .#{$selectorShort}, .#{$selectorShort}d *, .#{$selectorShort}c > * {
+          @each $side in $sideRules {
+            #{$property}#{$side}: $size !important;
+          }
+        }
+        $sizeShort:     $sizeShort + 1;
+      }
+    }
+  }
+}
+
+
+

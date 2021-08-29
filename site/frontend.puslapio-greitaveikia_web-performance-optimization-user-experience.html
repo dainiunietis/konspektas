@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Puslapio greitaveikia / Web Performance Optimization, optimizing for quality of user experience</h1>
+<p>Google'o tinklapių kokybiško veikimo užtikrinimo metodika Web Vitals:</p>
+<ul>
+  <li> <a href="https://web.dev/learn-web-vitals/">Web Vitals — Essential metrics for a healthy site</a> — turinys</li>
+  <li> <a href="https://web.dev/vitals/">Web Vitals</a> — apžvalga–įvadas</li>
+</ul>
+<p>Kiti:</p>
+<ul>
+  <li><a href="https://github.com/davidsonfellipe/awesome-wpo">https://github.com/davidsonfellipe/awesome-wpo</a></li>
+  <li> <a href="https://web.dev/content-visibility/">content-visibility: the new CSS property that boosts your rendering performance</a></li>
+  <li> <a href="https://css-tricks.com/optimizing-css-for-faster-page-loads/">Optimizing CSS for faster page loads | CSS-Tricks</a></li>
+</ul>
+<p>Web Vitals — vadovas-metodika, nustatantis svarbiausius <q>quality signals</q>, kurie parodo koks yra <q>user experience on the web</q>:</p>
+<blockquote>
+  <p>Web Vitals is an initiative by Google to provide unified guidance for quality signals that are essential to delivering a great user experience on the web.</p>
+</blockquote>
+<h2>Core Web Vitals</h2>
+<p>Tai yra pačios pagrindinės kokybiško tinklapių veikimo charakteristikos:</p>
+<blockquote>
+  <p>Site owners should not have to be performance gurus in order to understand the quality of experience they are delivering to their users. The Web Vitals initiative aims to simplify the landscape, and help sites focus on the metrics that matter most, the <strong>Core Web Vitals</strong>.</p>
+</blockquote>
+<p>75% ?????????????????????????????:</p>
+<blockquote>
+  <p>For each of the above metrics, to ensure you're hitting the recommended target for most of your users, a good threshold to measure is the <strong>75th percentile</strong> of page loads, segmented across mobile and desktop devices.</p>
+  <p>Tools that assess Core Web Vitals compliance should consider a page passing if it meets the recommended targets at the 75th percentile for all of the above three metrics.</p>
+<p>To learn more about the research and methodology behind these recommendations, see: <a href="https://web.dev/defining-core-web-vitals-thresholds/">Defining the Core Web Vitals metrics thresholds</a></p>
+</blockquote>
+<h3>Priemonės išmatuoti Core Web Vitals / Tools to measure and report Core Web Vitals</h3>
+<ul>
+  <li> <a href="https://web.dev/vitals-measurement-getting-started/">Getting started with measuring Web Vitals</a></li>
+</ul>
+<p><q>Field measurement</q> yra tikslesnis nei <q>Lab measurement</q>:</p>
+<blockquote>
+  <p>The performance of a site can vary dramatically based on a user's device capabilities, their network conditions, what other processes may be running on the device, and how they're interacting with the page. In fact, each of the Core Web Vitals metrics can have its score affected by user interaction. Only field measurement can accurately capture the complete picture.</p>
+</blockquote>
+<h4>Field measurement / Field Data — statistiniai puslapių lankymo duomenys</h4>
+<p><a href="https://web.dev/vitals-field-measurement-best-practices/">Best practices for measuring Web Vitals in the field</a></p>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h5>Chrome User Experience Report</h5>
+      <p><a href="https://developers.google.com/web/tools/chrome-user-experience-report">Chrome User Experience Report</a>  — Google'o renkama tinklalapių lankymo-naudojimo statistika:</p>
+      <blockquote>
+        <p id="field-tools-to-measure-core-web-vitals">Field tools to measure Core Web Vitals <a href="https://web.dev/vitals/#field-tools-to-measure-core-web-vitals" aria-hidden="true">#</a></p>
+        <p>The <a href="https://developers.google.com/web/tools/chrome-user-experience-report">Chrome User Experience Report</a> collects anonymized, real user measurement data for each Core Web Vital. This data enables site owners to quickly assess their performance without requiring them to manually instrument analytics on their pages, and powers tools like <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a>, and Search Console's <a href="https://support.google.com/webmasters/answer/9205520">Core Web Vitals report</a>.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h5>PageSpeed Insights</h5>
+      <p> <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h5>Search Console (Core Web Vitals report)</h5>
+      <p><a href="https://support.google.com/webmasters/answer/9205520">Search Console (Core Web Vitals report)</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h5>Web Vitals Chrome Extension      </h5>
+      <blockquote>
+        <p>You can also report on each of the Core Web Vitals without writing any code using the <a href="https://github.com/GoogleChrome/web-vitals-extension">Web Vitals Chrome Extension</a>. This extension uses the <a href="https://github.com/GoogleChrome/web-vitals">web-vitals</a> library to measure each of these metrics and display them to users as they browse the web.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h5>web-vitals JavaScript library </h5>
+      <blockquote>
+        <p>The easiest way to measure all the Core Web Vitals is to use the <a href="https://github.com/GoogleChrome/web-vitals">web-vitals</a> JavaScript library, a small, production-ready wrapper around the underlying web APIs that measures each metric in a way that accurately matches how they're reported by all the Google tools listed above.</p>
+        <p>With the <a href="https://github.com/GoogleChrome/web-vitals">web-vitals</a> library, measuring each metric is as simple as calling a single function (see the documentation for complete <a href="https://github.com/GoogleChrome/web-vitals#usage">usage</a> and <a href="https://github.com/GoogleChrome/web-vitals#api">API</a> details):</p>
+        <pre><code>import {getCLS, getFID, getLCP} from 'web-vitals';
+
+function sendToAnalytics(metric) {
+  const body = JSON.stringify(metric);
+  // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
+  (navigator.sendBeacon &amp;&amp; navigator.sendBeacon('/analytics', body)) ||
+      fetch('/analytics', {body, method: 'POST', keepalive: true});
+}
+
+getCLS(sendToAnalytics);
+getFID(sendToAnalytics);
+getLCP(sendToAnalytics);</code></pre>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h5>JavaScript standard web APIs </h5>
+      <blockquote>
+        <p>Alternatively, developers who prefer to measure these metrics directly via the underlying web APIs can refer to these metric guides for implementation details:</p>
+        <ul>
+          <li><a href="https://web.dev/lcp/#measure-lcp-in-javascript">Measure LCP in JavaScript</a></li>
+          <li><a href="https://web.dev/fid/#measure-fid-in-javascript">Measure FID in JavaScript</a></li>
+          <li><a href="https://web.dev/cls/#measure-cls-in-javascript">Measure CLS in JavaScript</a></li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h4>Lab measurement — vieno apsilankymo matavimų duomenys</h4>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Lab measurement is the best way to test the performance of features during development—before they've been released to users. It's also the best way to catch performance regressions before they happen.</p>
+        <p>The following tools can be used to measure the Core Web Vitals in a lab environment:</p>
+        <table>
+          <thead>
+            <tr>
+              <th> </th>
+              <th>LCP</th>
+              <th>FID</th>
+              <th>CLS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://developers.google.com/web/tools/chrome-devtools">Chrome DevTools</a></td>
+              <td>✔</td>
+              <td>✘ (use <a href="https://web.dev/tbt/">TBT</a> instead)</td>
+              <td>✔</td>
+            </tr>
+            <tr>
+              <td><a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a></td>
+              <td>✔</td>
+              <td>✘ (use <a href="https://web.dev/tbt/">TBT</a> instead)</td>
+              <td>✔</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Tools like Lighthouse that load pages in a simulated environment without a user cannot measure FID (there is no user input). However, the Total Blocking Time (TBT) metric is lab-measurable and is an excellent proxy for FID. Performance optimizations that improve TBT in the lab should improve FID in the field</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h3>Charakteristikos–metrics</h3>
+<p>2020 metams yra trys:</p>
+<blockquote>
+  <p>The metrics that make up Core Web Vitals will <a href="https://web.dev/vitals/#evolving-web-vitals">evolve</a> over time. The current set for 2020 focuses on three aspects of the user experience—<em>loading</em>, <em>interactivity</em>, and <em>visual stability</em>—and includes the following metrics (and their respective thresholds).</p>
+</blockquote>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h4>Loading performance — Largest Contentful Paint (LCP)</h4>
+      <p> <a href="https://web.dev/lcp/">Largest Contentful Paint (LCP)</a></p>
+      <p class="TAC"><img src="images/lcp_ux.svg" width="350px" alt=""/></p>
+      <p>Užduotis:</p>
+      <blockquote>
+        <p>Historically, it's been a challenge for web developers to measure how quickly the main content of a web page loads and is visible to users.</p>
+      </blockquote>
+      <p>Kas tai yra:</p>
+      <blockquote>
+        <p>The Largest Contentful Paint (LCP) metric reports the render time of the largest <a href="https://web.dev/lcp/#what-elements-are-considered">image or text block</a> visible within the viewport.</p>
+        <p>Largest Contentful Paint (LCP) is an important, user-centric metric for measuring <a href="https://web.dev/user-centric-performance-metrics/#types-of-metrics">perceived load speed</a> because it marks the point in the page load timeline when the page's main content has likely loaded—a fast LCP helps reassure the user that the page is <a href="https://web.dev/user-centric-performance-metrics/#questions">useful</a>.      </p>
+      </blockquote>
+      <p>Koks LCP dydis rekomenduotinas:</p>
+      <blockquote>
+        <p id="what-is-a-good-lcp-score">What is a good LCP score? <a href="https://web.dev/lcp/#what-is-a-good-lcp-score" aria-hidden="true">#</a></p>
+        <p>To provide a good user experience, sites should strive to have Largest Contentful Paint occur within the first <strong>2.5 seconds</strong> of the page starting to load. To ensure you're hitting this target for most of your users, a good threshold to measure is the <strong>75th percentile</strong> of page loads, segmented across mobile and desktop devices.      </p>
+      </blockquote>
+      <p>Kaip buvo <em>Loading performance</em> matuoti pasirinktas      LCP:</p>
+      <blockquote>
+        <p>Sometimes simpler is better. Based on discussions in the <a href="https://www.w3.org/webperf/">W3C Web Performance Working Group</a> and research done at Google, we've found that a more accurate way to measure when the main content of a page is loaded is to look at when the largest element was rendered.</p>
+      </blockquote>
+      <h5>Kaip matuojamas LCP      </h5>
+      <blockquote>
+        <p>LCP can be measured <a href="https://web.dev/user-centric-performance-metrics/#in-the-lab">in the lab</a> or <a href="https://web.dev/user-centric-performance-metrics/#in-the-field">in the field</a>, and it's available in the following tools:</p>
+        <p id="field-tools">Field tools <a href="https://web.dev/lcp/#field-tools" aria-hidden="true">#</a></p>
+        <ul>
+          <li><a href="https://developers.google.com/web/tools/chrome-user-experience-report">Chrome User Experience Report</a></li>
+          <li><a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></li>
+          <li><a href="https://support.google.com/webmasters/answer/9205520">Search Console (Core Web Vitals report)</a></li>
+          <li><a href="https://github.com/GoogleChrome/web-vitals">web-vitals JavaScript library</a></li>
+        </ul>
+        <p id="lab-tools">Lab tools <a href="https://web.dev/lcp/#lab-tools" aria-hidden="true">#</a></p>
+        <ul>
+          <li><a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a></li>
+          <li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a></li>
+          <li><a href="https://webpagetest.org/">WebPageTest</a></li>
+        </ul>
+      </blockquote>
+      <p>Išbandyti matavimo būdai:</p>
+      <dl>
+        <dt>Chrome'o extension'as Web Vitals</dt>
+        <dd>
+          <p>Field Data: <img src="images/20201220_132206_frontend.puslapio-greitaveikia_web-performance-optimization-user-experience.html.png" alt="" width="133" height="78"/></p>
+        </dd>
+        <dt> <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></dt>
+        <dd>
+          <ul>
+            <li>Field Data: <img src="images/20201220_141303_frontend.puslapio-greitaveikia_web-performance-optimization-user-experience.html.png" alt="" width="159" height="89"/></li>
+            <li>Lab Data: <img src="images/20201220_142039_frontend.puslapio-greitaveikia_web-performance-optimization-user-experience.html.png" alt="" width="152" height="85"/></li>
+          </ul>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h5>Kitos, ne tokios tikslios, Loading performance matuojančios charakteristikos</h5>
+      <blockquote>
+        <p>Older metrics like <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">load</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded">DOMContentLoaded</a> are not good because they don't necessarily correspond to what the user sees on their screen. And newer, user-centric performance metrics like <a href="https://web.dev/fcp/">First Contentful Paint (FCP)</a> only capture the very beginning of the loading experience. If a page shows a splash screen or displays a loading indicator, this moment is not very relevant to the user.</p>
+        <p>In the past we've recommended performance metrics like <a href="https://web.dev/first-meaningful-paint/">First Meaningful Paint (FMP)</a> and <a href="https://web.dev/speed-index/">Speed Index (SI)</a> (both available in Lighthouse) to help capture more of the loading experience after the initial paint, but these metrics are complex, hard to explain, and often wrong—meaning they still do not identify when the main content of the page has loaded.</p>
+        <p>For example, the metrics <a href="https://web.dev/time-to-first-byte/">Time to First Byte (TTFB)</a> and <a href="https://web.dev/fcp/">First Contentful Paint (FCP)</a> are both vital aspects of the <em>loading</em> experience, and are both useful in diagnosing issues with LCP (slow <a href="https://web.dev/overloaded-server/">server response times</a> or <a href="https://web.dev/render-blocking-resources/">render-blocking resources</a>, respectively).</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="c-em-note c-em--narrow">
+        <p>Kitos Web Vitals charakteristikos–metrics, susijusios su LCP.</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4>Interactivity — First Input Delay (FID)</h4>
+      <p> <a href="https://web.dev/fid/">First Input Delay (FID)</a></p>
+      <P class="TAC"><img src="images/fid_ux.svg" width="350px" alt=""/></p>
+      <P>&nbsp;</p>
+      <blockquote>
+<p><strong><a href="https://web.dev/fid/">First Input Delay (FID)</a></strong>: measures <em>interactivity</em>. To provide a good user experience, pages should have a FID of less than <strong>100 milliseconds</strong>.      </p>
+      </blockquote>
+      <div class="c-em-note c-em--narrow">
+        <p>Kitos Web Vitals charakteristikos–metrics, susijusios su FID.</p>
+        <blockquote>
+          <p>Similarly, metrics like <a href="https://web.dev/tbt/">Total Blocking Time (TBT)</a> and <a href="https://web.dev/tti/">Time to Interactive (TTI)</a> are lab metrics that are vital in catching and diagnosing potential <em>interactivity</em> issues that will impact FID. However, they are not part of the Core Web Vitals set because they are not field-measurable, nor do they reflect a <a href="https://web.dev/user-centric-performance-metrics/#how-metrics-are-measured">user-centric</a> outcome.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4>Visual stability — Cumulative Layout Shift (CLS)</h4>
+      <p> <a href="https://web.dev/cls/">Cumulative Layout Shift (CLS)</a></p>
+      <p class="TAC"><img src="images/cls_ux.svg" width="350px" alt=""/></p>
+      <p>&nbsp;</p>
+      <blockquote>
+<p><strong><a href="https://web.dev/cls/">Cumulative Layout Shift (CLS)</a></strong>: measures <em>visual stability</em>. To provide a good user experience, pages should maintain a CLS of less than <strong>0.1.</strong>      </p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>&nbsp;</p>
+      <p><a href="https://web.dev/optimize-lcp/">Optimize LCP</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+      <p><a href="https://web.dev/optimize-fid/">Optimize FID</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+      <p><a href="https://web.dev/optimize-cls/">Optimize CLS</a></p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Kitos Web Vitals charakteristikos–metrics</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

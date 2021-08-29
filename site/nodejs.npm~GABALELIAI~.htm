@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" --><h1>npm (Node package manager)
+</h1>
+<h2>Kaip atnaujinti patį npm'ą</h2>
+<p><a href="http://stackoverflow.com/questions/6237295/how-can-i-update-node-js-and-npm-to-the-next-versions">http://stackoverflow.com/questions/6237295/how-can-i-update-node-js-and-npm-to-the-next-versions</a></p>
+<p>Skirtingi būdai:</p>
+<ol>
+  <li>
+    <p>Pagal oficialius npm'o doc'us:</p>
+    <p><code>npm install npm@latest -g</code> &#8212; <strong>paskutinis suveikęs</strong></p>
+    <div class="em-important">
+      <p>Iš pirmo karto šitas kuo puikiausiai suveikė:</p>
+      <blockquote>
+        <p><a href="https://docs.npmjs.com/getting-started/installing-node#updating-npm">https://docs.npmjs.com/getting-started/installing-node#updating-npm</a></p>
+        <p>Node comes with npm installed so you should have a version of npm. However, npm gets updated more frequently than Node does, so you'll want to make sure it's the latest version.</p>
+        <pre>npm install npm -g</pre>
+      </blockquote>
+    </div>
+    <p>O kiekvieno puslapio apačioje parašyta:</p>
+    <blockquote>
+      <p>The current stable version of npm is <a href="https://github.com/npm/npm/releases/tag/v3.10.6">3.10.6</a></p>
+      <p>To upgrade, run: <code>[sudo] npm install npm@latest -g</code></p>
+    </blockquote>
+  </li>
+  <li>
+    <div class="Alert">
+      <p>O šitas npm'o neatnaujino:</p>
+      <blockquote>
+        <p>Iš <a href="http://nodejs.org/">http://nodejs.org/</a> atsisiųsti install'erį ir suinstaliuoti, suinstaliuos ir naujausią npm'ą (Ar tikrai?).</p>
+      </blockquote>
+    </div>
+  </li>
+  <li>
+    <blockquote>
+      <p><code>npm install -g npm@latest</code> worked for me on Windows8 <a href="http://stackoverflow.com/a/29023180/588759">stackoverflow.com/a/29023180/588759</a></p>
+    </blockquote>
+  </li>
+  <li>
+    <blockquote>
+      <p><a href="http://stackoverflow.com/a/27235748">http://stackoverflow.com/a/27235748</a></p>
+      <p><strong>Upgrading for Windows Users</strong></p>
+      <p>Windows users should read <a href="https://github.com/npm/npm/wiki/Troubleshooting#upgrading-on-windows">Troubleshooting &gt; Upgrading on Windows</a> in the npm wiki.</p>
+      <p><strong>Upgrading on windows 10 using PowerShell (3rd party edit)</strong></p>
+      <p>The link above <a href="https://github.com/npm/npm/wiki/Troubleshooting#upgrading-on-windows">Troubleshooting#upgrading-on-windows</a> points to a github page <a href="https://github.com/felixrieseberg/npm-windows-upgrade">npm-windows-upgrade</a> the lines below are quotes from the readme. I successfully upgraded from npm 2.7.4 to npm 3.9.3 using node v5.7.0 and powershell (presumably powershell version 5.0.10586.122)</p>
+      <blockquote>
+        <p>First, ensure that you can execute scripts on your system by running the following command from an elevated PowerShell. To run PowerShell as Administrator, click Start, search for PowerShell, right-click PowerShell and select Run as Administrator.</p>
+      </blockquote>
+      <pre>Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force    </pre>
+      <blockquote>
+        <p>Then, to install and use this upgrader tool, run (also from an elevated PowerShell or cmd.exe):</p>
+      </blockquote>
+      <pre>npm install --global --production npm-windows-upgrade
+npm-windows-upgrade</pre>
+    </blockquote>
+  </li>
+  <li>
+    <blockquote>
+      <p>To <strong>update npm</strong>, the npm update npm -g command didn't work for me (on windows). What did work was reinstalling npm according to <a href="https://github.com/isaacs/npm">the documentation</a>: "<em>You can download a zip file from<a href="https://npmjs.org/dist/">https://npmjs.org/dist/</a>, and unpack it in the same folder where node.exe lives.</em>" Make sure if you do this that you get rid of your previous installation first (though overwriting it will probably work ok...).</p>
+    </blockquote>
+  </li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

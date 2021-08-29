@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    .task {
+      display:    flex;
+      flex-flow:  wrap;
+      -outline:   1px dotted black;
+    }
+    .task > * {
+      font-size:   1.2rem;
+      font-weight: bold;
+      text-align:  center;
+      color:       white;
+    }
+    .a {background-color: #FCB10F;} .b {background-color: #801340;} .c {background-color: #4D2975;} .d {background-color: #244479;} .e {background-color: #55B4AF;} .f {background-color: rgba(128, 19, 64, 0.7);} .g {background-color: rgba(77, 41, 117, 0.5);} .h {background-color: hsl(130, 65%, 40%);}
+
+    .task--1 {
+      --clmSpan-1: calc(100% / 3 * 1);
+      --clmSpan-2: calc(100% / 3 * 2);
+      --clmSpan-3: 100%;
+      gap: 0px
+    }
+    .task--1 > * { flex: 0 0; }
+    .task--1 .a { flex-basis: var(--clmSpan-2); }
+    .task--1 .b { flex-basis: var(--clmSpan-1); }
+    .task--1 .c { flex-basis: var(--clmSpan-3); }
+    .task--1 .d { flex-basis: var(--clmSpan-1); }
+    .task--1 .e { flex-basis: var(--clmSpan-1); }
+    .task--1 .f { flex-basis: var(--clmSpan-1); }
+    .task--1 .g { flex-basis: var(--clmSpan-1); }
+    .task--1 .h { flex-basis: var(--clmSpan-2); }
+
+    /*---------------------------------------------------------------*/
+
+    /*
+    // https://www.rawkblog.com/2019/01/flexbox-gutters-negative-margins-solved/
+    .flex {
+    // ...
+    margin-left: -1rem;
+    }
+    .item {
+      margin: 0 0 1rem 1rem;
+    }
+    */
+
+    .task--20200903123558 {
+      --clmSpan-1: calc(100% / 3 * 1 - var(--grdGapWdh));
+      --clmSpan-2: calc(100% / 3 * 2 - var(--grdGapWdh));
+      --clmSpan-3: calc(100% - var(--grdGapWdh));
+      --grdGapWdh: 10px;
+      margin-left: calc(var(--grdGapWdh) * -1);
+    }
+    .task--20200903123558 > * { flex: 0 0; margin: 0 0 var(--grdGapWdh) var(--grdGapWdh); }
+    .task--20200903123558 .a { flex-basis: var(--clmSpan-2); }
+    .task--20200903123558 .b { flex-basis: var(--clmSpan-1); }
+    .task--20200903123558 .c { flex-basis: var(--clmSpan-3); }
+    .task--20200903123558 .d { flex-basis: var(--clmSpan-1); }
+    .task--20200903123558 .e { flex-basis: var(--clmSpan-1); }
+    .task--20200903123558 .f { flex-basis: var(--clmSpan-1); }
+    .task--20200903123558 .g { flex-basis: var(--clmSpan-1); }
+    .task--20200903123558 .h { flex-basis: var(--clmSpan-2); }
+
+    /*---------------------------------------------------------------*/
+
+    .task--2 {
+      --grdClmNmb:     3;
+      --grdClmWdh:     calc(100% / var(--grdClmNmb));
+      --grdGapWdh:     10px;
+      justify-content: space-between;
+      gap:             10px 0;
+      /*width:           320px;*/
+    }
+    .task--2 > * {
+      --clmWdhMinusGap: calc(var(--grdGapWdh) * (var(--rowClmNum) - 1) / var(--rowClmNum));
+      --clmWdh:         calc(var(--grdClmWdh) * var(--clmSpan) - var(--clmWdhMinusGap));
+      flex:             0 0
+    }
+    /*** row 1 ***/
+    .task--2 .a { --rowClmNum: 2; --clmSpan: 2; flex-basis: var(--clmWdh); }
+    .task--2 .b { --rowClmNum: 2; --clmSpan: 1; flex-basis: var(--clmWdh); }
+    /*** row 2 ***/
+    .task--2 .c { flex-basis: 100%; }
+    /*** row 3 ***/
+    .task--2 .d { --rowClmNum: 3; --clmSpan: 1; flex-basis: var(--clmWdh); }
+    .task--2 .e { --rowClmNum: 3; --clmSpan: 1; flex-basis: var(--clmWdh); }
+    .task--2 .f { --rowClmNum: 3; --clmSpan: 1; flex-basis: var(--clmWdh); }
+    /*** row 4 ***/
+    .task--2 .g { --rowClmNum: 2; --clmSpan: 1; flex-basis: var(--clmWdh); }
+    .task--2 .h { --rowClmNum: 2; --clmSpan: 2; flex-basis: var(--clmWdh); }
+    /*.task--2 .h { --rowClmNum: 2; --clmSpan: 2; flex-basis: calc(var(--grdClmWdh) * var(--clmSpan) - calc(var(--grdGapWdh) * (var(--rowClmNum) - 1) / var(--rowClmNum))); }*/
+
+    /*---------------------------------------------------------------*/
+
+    /*.task--3 { align-items: start; }*/
+    .task--3 {
+      --grdClmNmb:   3;
+      --grdGapWdh:   10px;
+      --grdClmWdh-1: 30%;
+      --grdClmWdh-2: calc(var(--grdClmWdh-1) * 2 + var(--grdGapWdh));
+      gap:           var(--grdGapWdh) 0px;
+    }
+    .task--3 > * {
+      flex: 1 0;
+    }
+    /*** row 1 ***/
+    .task--3 .a { flex-basis: var(--grdClmWdh-2); margin-right: var(--grdGapWdh); }
+    .task--3 .b { flex-basis: var(--grdClmWdh-1); }
+    /*** row 2 ***/
+    .task--3 .c { flex-basis: 100%; }
+    /*** row 3 ***/
+    .task--3 .d { flex-basis: var(--grdClmWdh-1); margin-right: var(--grdGapWdh); }
+    .task--3 .e { flex-basis: var(--grdClmWdh-1); margin-right: var(--grdGapWdh); }
+    .task--3 .f { flex-basis: var(--grdClmWdh-1); }
+    /*** row 4 ***/
+    .task--3 .g { flex-basis: var(--grdClmWdh-1); margin-right: var(--grdGapWdh); }
+    .task--3 .h { flex-basis: var(--grdClmWdh-2); }
+
+    /*---------------------------------------------------------------*/
+
+    .task--4 {
+      --grdClmNmb:   3;
+      --grdGapWdh:   10px;
+      --grdClmWdh-1: 30%;
+      --grdClmWdh-2: calc(var(--grdClmWdh-1) * 2 + var(--grdGapWdh));
+      gap:           var(--grdGapWdh);
+    }
+    .task--4 > * {
+      flex: 1 0;
+    }
+    /*** row 1 ***/
+    .task--4 .a { flex-basis: var(--grdClmWdh-2); }
+    .task--4 .b { flex-basis: var(--grdClmWdh-1); }
+    /*** row 2 ***/
+    .task--4 .c { flex-basis: 100%; }
+    /*** row 3 ***/
+    .task--4 .d { flex-basis: var(--grdClmWdh-1); }
+    .task--4 .e { flex-basis: var(--grdClmWdh-1); }
+    .task--4 .f { flex-basis: var(--grdClmWdh-1); }
+    /*** row 4 ***/
+    .task--4 .g { flex-basis: var(--grdClmWdh-1); }
+    .task--4 .h { flex-basis: var(--grdClmWdh-2); }
+
+    /*---------------------------------------------------------------*/
+
+    .task--20200914221259 {
+      --grdClmNmb:   3;
+      --grdGapWdh:   2%;
+      --grdClmWdh-1: 32%;
+      --grdClmWdh-2: calc(var(--grdClmWdh-1) * 2 + var(--grdGapWdh));
+      /*gap:           var(--grdGapWdh);*/
+      justify-content: space-between;
+    }
+    .task--20200914221259 > * {
+      flex: 0 0;
+    }
+    /*** row 1 ***/
+    .task--20200914221259 .a { flex-basis: var(--grdClmWdh-2); }
+    .task--20200914221259 .b { flex-basis: var(--grdClmWdh-1); }
+    /*** row 2 ***/
+    .task--20200914221259 .c { flex-basis: 100%; }
+    /*** row 3 ***/
+    .task--20200914221259 .d { flex-basis: var(--grdClmWdh-1); }
+    .task--20200914221259 .e { flex-basis: var(--grdClmWdh-1); }
+    .task--20200914221259 .f { flex-basis: var(--grdClmWdh-1); }
+    /*** row 4 ***/
+    .task--20200914221259 .g { flex-basis: var(--grdClmWdh-1); }
+    .task--20200914221259 .h { flex-basis: var(--grdClmWdh-2); }
+
+  </style>
+</head>
+<body>
+<!--kad darytų turinį-->
+<script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>
+<script type="module" src="assets/js/master.js"></script>
+<div class="c-sidePanel c-sidePanel--left c-controlPanel--links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="Lay-ControlPanel-Toc" class="c-sidePanel c-sidePanel--left c-controlPanel--toc">
+  <ul id="Lay-ControlPanel-Toc2"></ul>
+</div>
+
+<h1>...</h1>
+
+<dl>
+  <dt>Kursas:</dt>
+  <dd>G:\bib wd video\Advanced CSS Layouts\1. Grid & Flexbox Review</dd>
+  <dt>Kurso kodai:</dt>
+  <dd>G:\bib wd video\Advanced CSS Layouts\fem-adv-css-layout-master\01-review\instructions.txt</dd>
+</dl>
+
+<h2>Flexbox'o sprendimai be grow naudojimo, t. y. tiksliai nustatomi pločiai</h2>
+
+<h3>1. be tarpelių-gap'ų — VEIKIA TIKSLIAI</h3>
+<div class="task task--1">
+  <div class="a">A</div>
+  <div class="b">B</div>
+  <div class="c">C</div>
+  <div class="d">D</div>
+  <div class="e">E</div>
+  <div class="f">F</div>
+  <div class="g">G</div>
+  <div class="h">H</div>
+</div>
+
+<h3>2. gap'ai daromi su child'ų kairiuoju margin'u ir parent'o minusiniu kairiuoju margin'u — VEIKIA TIKSLIAI</h3>
+<p>Pagal — <a href="https://www.rawkblog.com/2019/01/flexbox-gutters-negative-margins-solved/">https://www.rawkblog.com/2019/01/flexbox-gutters-negative-margins-solved/</a></p>
+<div class="task task--20200903123558">
+  <div class="a">A</div>
+  <div class="b">B</div>
+  <div class="c">C</div>
+  <div class="d">D</div>
+  <div class="e">E</div>
+  <div class="f">F</div>
+  <div class="g">G</div>
+  <div class="h">H</div>
+</div>
+
+<h3>3. gap'ai daromi nustatant stulpelių plotį procentais ir paliekant nustatytą skaičių procentų gap'ams — VEIKIA TIKSLIAI</h3>
+<p>Bet gap'ų plotis keičiasi su viewport'o pločiu.</p>
+<div class="task task--20200914221259">
+  <div class="a">A</div>
+  <div class="b">B</div>
+  <div class="c">C</div>
+  <div class="d">D</div>
+  <div class="e">E</div>
+  <div class="f">F</div>
+  <div class="g">G</div>
+  <div class="h">H</div>
+</div>
+
+<h3>4. nustatomas stulpelių plotis atėmus gap'ų plotį, gap'ai reguliuojami su <code>justify-content: space-between</code> — VEIKIA NETIKSLIAI, </h3>
+<p>Nors kaip ir turėtų būti tiksliai, bet pats sprendimas įdomus</p>
+<div class="task task--2">
+  <div class="a">A</div>
+  <div class="b">B</div>
+  <div class="c">C</div>
+  <div class="d">D</div>
+  <div class="e">E</div>
+  <div class="f">F</div>
+  <div class="g">G</div>
+  <div class="h">H</div>
+</div>
+
+<h2>Flexbox'o sprendimai su grow naudojimu — pločiai nustatomi mažesni</h2>
+
+<h3>1. gap'ai daromi su <code>margin:</code> — be grow'so veikia tiksliai, o grow'sina ne taip kaip norėtusi</h3>
+<div class="task task--3">
+  <div class="a">A</div>
+  <div class="b">B</div>
+  <div class="c">C</div>
+  <div class="d">D</div>
+  <div class="e">E</div>
+  <div class="f">F</div>
+  <div class="g">G</div>
+  <div class="h">H</div>
+</div>
+
+<h3>2. gap'ai daromi su <code>gap: </code> — </h3>
+<div class="task task--4">
+  <div class="a">A</div>
+  <div class="b">B</div>
+  <div class="c">C</div>
+  <div class="d">D</div>
+  <div class="e">E</div>
+  <div class="f">F</div>
+  <div class="g">G</div>
+  <div class="h">H</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+</html>

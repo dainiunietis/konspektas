@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <!--<link rel="stylesheet" href="assets/sass/master.css">-->
+  <!--<link rel="stylesheet" href="assets/sass/master.utilities.css">-->
+  <!--<link rel="stylesheet" href="assets/sass/master.dev.css">-->
+  <link rel="stylesheet" href="assets/sass.pvz/20200917033918.css">
+  <style>
+
+    /***************************************************************/
+
+    .page {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .page__1, .page__2, .page__3, .page__4, .page__5 {
+      width: 100%;
+      flex-grow: 1;
+    }
+
+    @media (min-width: 600px) {
+      .page__2, .page__3, .page__4, .page__5 {
+        width: 50%;
+      }
+    }
+
+    @media (min-width: 800px) {
+      .page {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .page__1 {
+        width: 60%;
+      }
+      .page__2 {
+        width: 40%;
+      }
+      .page__3, .page__4, .page__5 {
+        width: 33%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page" role="main">
+  <div class="page__1"><b>#1</b></div>
+  <div class="page__2"><b>#2</b></div>
+  <div class="page__3"><b>#3</b></div>
+  <div class="page__4"><b>#4</b></div>
+  <div class="page__5"><b>#5</b></div>
+</div>
+
+<div style="margin: 1em 2em">
+  <h1>Responsive web design page layout pattern — Mostly Fluid</h1>
+  <p>Pagal <a href="https://developers.google.com/web/fundamentals/design-and-ux/responsive/patterns#mostly_fluid">Mostly Fluid  |  Responsive Web Design Patterns  |  Web Fundamentals  |  Google Developers</a></p>
+  <blockquote>
+    <p>The mostly fluid pattern consists primarily of a fluid grid. On large or medium screens, it usually remains the same size, simply adjusting the margins on wider screens.</p>
+    <p>On smaller screens, the fluid grid causes the main content to reflow, while columns are stacked vertically. One major advantage of this pattern is that it usually only requires one breakpoint between small screens and large screens.</p>
+  </blockquote>
+</div>
+
+</body>
+</html>

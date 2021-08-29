@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Harry Roberts'o ITCSS (  Inverted Triangle CSS) ir BEMIT</h1>
+<dl>
+  <dt>ITCSS</dt>
+  <dd>
+    <p>Harry Roberts'o straipsnis &#8212; Manage large CSS projects with ITCSS:</p>
+    <ul>
+      <li>G:\bib wd zurnalai\net magazine\net 2015 267 June.pdf &gt;&gt;&gt; 84 p.</li>
+      <li><a href="http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528">http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528</a></li>
+    </ul>
+    <p>&nbsp;</p>
+    <p><a href="https://github.com/ahmadajmi/awesome-itcss">GitHub - ahmadajmi/awesome-itcss: 🤗 🎉 A curated list of awesome ITCSS articles, videos, and code examples</a></p>
+    <p> <a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/">ITCSS: Scalable and Maintainable CSS Architecture - Xfive</a></p>
+    <p> <a href="https://medium.com/openmindonline/state-of-the-art-in-css-a-closer-look-at-css-architecture-systems-544339a6c625">State of the art in CSS: a closer look at CSS architecture systems</a></p>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>BEMIT</dt>
+  <dd>
+    <p><a href="http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/">http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/</a></p>
+  </dd>
+</dl>
+<h2>Suvestinė</h2>
+<pre><code>.u-kazkas,
+.u-kazkas-d *,    &lt;&lt;&lt; all descendant tags — visi vaikai
+.u-kazkas-c &gt; *   &lt;&lt;&lt; all child tags — tiesioginiai vaikai
+{...}
+
+.u-fontsize-2em, .FS2em {  &lt;&lt;&lt; Utility class'ų sutrumpinimas
+  font-size: 2em
+}</code></pre>
+<p>&nbsp;</p>
+<p>Sluoksnis Page &#8212; tai:</p>
+<dl>
+  <dt> pačiame HTML puslapyje apibrėžti class'ai:</dt>
+  <dd>
+    <pre><code>&lt;style&gt;
+.o<mark>p</mark>-kazkas {...}
+.c<mark>p</mark>-kazkas {...}
+&lt;style&gt;</code></pre>
+  </dd>
+  <dt>arba prijungtas CSS failas su tokiais class'ais:</dt>
+  <dd>
+    <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;page.kazkas.css&quot; /&gt;</code></pre>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid -u-table-equelCols" width="1388">
+  <tr>
+    <th width="24%">Sluoksniai</th>
+    <th width="44%">Kodas</th>
+    <th width="32%">master-import SASS failas</th>
+  </tr>
+  <tr>
+    <td>1. settings</td>
+    <td><pre><code>$global-font-size: 16px !default;</code></pre></td>
+    <td><pre><code>@import &quot;settings.core&quot;</code></pre></td>
+  </tr>
+  <tr>
+    <td>2. tools</td>
+    <td>
+      <pre><code>@mixin hidden-visually() {...}
+
+@function map-deep-get($map, $keys...) {...}</code></pre></td>
+    <td><pre><code>@import &quot;tools.hidden&quot;</code></pre></td>
+  </tr>
+  <tr>
+    <td>3. generic</td>
+    <td><pre><code>html { box-sizing: border-box; }</code></pre></td>
+    <td><pre><code>@import &quot;generic.box-sizing&quot;</code></pre></td>
+  </tr>
+  <tr>
+    <td>4. Elements</td>
+    <td><pre><code>img {...}</code></pre></td>
+    <td><pre><code>@import &quot;elements.images&quot;</code></pre></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>5. Objects</td>
+    <td>
+      <pre><code>.o-mcl {
+  &amp;--N2 {...}
+  &amp;__unbroken {...}
+}</code></pre></td>
+    <td><pre><code>@import &quot;objects.cols&quot;;</code></pre></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <pre>&nbsp;</pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>6. Components</td>
+    <td>
+      <dl>
+        <dt>Prie tago pririšti komponentai, kurie turi tik modifier'ius:</dt>
+        <dd>
+          <pre><code>.figure--kažkoks {...}</code></pre>
+          <pre><code>&lt;figure class=&quot;figure--kažkoks&quot;&gt;</code></pre>
+          <p>Arba su namespace'u</p>
+          <pre><code>.e-figure--kažkoks {...}</code></pre>
+          <pre><code>&lt;figure class=&quot;e-figure--kažkoks&quot;&gt;</code></pre>
+        </dd>
+        <dt>Tikri komponentai:</dt>
+        <dd>
+          <pre><code>.c-msg {...}
+.c-msg__title {...}
+.c-msg--old {...}</code></pre>
+          <pre><code>&lt;div class=&quot;c-msg c-msg--old&quot;&gt;
+  &lt;div class=&quot;c-msg__title&quot;&gt;</code></pre>
+        </dd>
+      </dl>
+    </td>
+    <td><pre><code>@import &quot;components.figure&quot;;</code></pre></td>
+  </tr>
+  <tr>
+    <td>7. Trumps</td>
+    <td>
+      <pre><code>.u-clearfix {...}
+
+.u-text-center {
+  text-align: center !important;
+}</code></pre>
+    </td>
+    <td><pre><code>@import &quot;utilities.text&quot;;</code></pre></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+    <p>Stateful Namespaces: </p>
+    <ul>
+      <li><code>.is-* </code></li>
+      <li><code>.has-*</code></li>
+    </ul>
+    <p>Naudojami sluoksniuose: </p>
+    <ul>
+      <li>Objects</li>
+      <li>Components</li>
+    </ul>
+    <p>Pavyzdžiai:</p>
+    <p><code>.is-expanded .is-updating</code></p></td>
+    <td>
+      <pre><code>&lt;div class="c-modal is-open"&gt;
+  &lt;div class="c-modal__content is-loading"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <pre><code>.c-modal {
+  &amp;.is-open {...}
+  &amp;__content {
+    &amp;.is-loading {...}
+  }
+}</code></pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>Theme Namespaces: t-</p>
+    <p>Naudojami sluoksniuose: </p>
+    <ul>
+      <li>Objects</li>
+      <li>Components</li>
+    </ul></td>
+    <td>
+      <pre><code>&lt;body class="t-light"&gt;
+  ...
+  &lt;a class="c-btn"&gt;
+    ...
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+      <pre><code>.c-btn {
+  .t-light &amp; {...}
+}</code></pre></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>Scope Namespaces: s-</p>
+    <p>Naudojami sluoksniuose: ???</p></td>
+    <td><pre>&lt;section class=&quot;s-cms-content&quot;&gt;
+  &lt;h1&gt;...&lt;/h1&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;ul&gt;
+    ...
+  &lt;/ul&gt;
+  &lt;p&gt;...&lt;/p&gt;
+&lt;/section&gt;</pre>
+      <p>&nbsp;</p>
+      <pre>/**
+ * Create a new styling context for any free-text CMS content (blog posts,
+ * news pages, etc.).
+ *
+ * 1. Use a larger and more readable typeface for continuous prose.
+ * 2. Force all headings to have the same appearance, regardless of their
+ *    hierarchy.
+ * 3. Make links inside long text more apparent.
+ */
+.s-cms-content {
+  font: 16px/1.5 serif; /* [1] */
+  h1, h2, h3, h4, h5, h6 {
+    font: bold 100%/1.5 sans-serif; /* [2] */
+  }
+  a {
+    text-decoration: underline; /* [3] */
+  }
+}</pre>
+      <hr>
+      <pre>&lt;div class=&quot;o-mcl s-text&quot;&gt;
+  ...
+&lt;/div&gt;
+&lt;div class=&quot;o-mcl&quot;&gt;
+  ...
+&lt;/div&gt;</pre>
+<p>&nbsp;</p>
+<pre>.s-text {
+  p  {...}
+  h1 {...}
+  h2 {...}
+  ul {...}
+  ol {...}
+}</pre>
+</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>Hack Namespaces: _</p>
+    <p>Kiti variantai:</p>
+    <pre>.c-figure_mobiloms_ {...}
+.c-figure--h-mobiloms {...}</pre></td>
+    <td><pre>@media screen and (max-width: 30em) {
+  ._c-figure-mobiloms {...}
+}</pre></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>JavaScript Namespaces: js-</p>
+    <p><strong>Ar teisingai suprantu? &#8212; tai yra class'ai, kurie yra CSS'o failuose, bet HTML'e juos prisega JS'as</strong></p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>ITCSS savybės ir privalumai</h2>
+<figure class="figure--image-bigCaption" style="wwidth:750px"><img src="images/2016.10.23_21-09-15-Manage large CSS projects with ITCSS _ Creative Bloq.png" alt=""/>
+  <figcaption>
+    <p><q>Messy styles. Unusual or ill-considered source order can lead to an erratic and jumpy application of styles.</q></p>
+  </figcaption>
+</figure>
+<blockquote>
+  <p> a CSS architecture: a way of
+    planning and structuring your CSS for large and
+    long-running projects.</p>
+  <p> large projects to better organise, scale and
+    manage their CSS</p>
+  <p> where most architectures
+    and approaches try to avoid CSS’s pesky aspects,
+    ITCSS embraces and tames them, and makes them
+    work to our advantage.</p>
+  <p> ITCSS defines the shared
+    aspects of a project in a logical and sane manner, whilst also providing a solid level of encapsulation
+    and decoupling that safeguards the non-shared
+    aspects from interfering with one another.</p>
+  <p>ITCSS is also incredibly flexible. It is compatible
+    with aspects of other methodologies like SMACSS,
+    OOCSS and even BEM.</p>
+</blockquote>
+<h2>Bendro pobūdžio ITCSS reikalavimai</h2>
+<blockquote>
+  <p> a few
+    prerequisites when working with ITCSS:</p>
+  <ul>
+    <li> no IDs in CSS.
+      IDs are specificity heavyweights, and their use
+      will throw our specificity completely out of joint. </li>
+    <li> you need to work to a componentised
+      UI architecture. You no longer build to the ‘pages’
+      model, but to the widgets/modules/components pattern (ITCSS refers to these as ‘components’). You build discrete, self-contained pieces of UI as
+      reusable components. </li>
+    <li>ITCSS requires that you are in favour of a class-based architecture. You are not afraid of adding classes to your HTML; you don’t believe that ‘less markup’ and ‘clean markup’ are the same thing; and you understand that binding onto classes, rather than bare HTML elements, provides a more robust and scalable architecture.</li>
+  </ul>
+</blockquote>
+<h2>KEY METRICS</h2>
+<figure class="figure--image-shadow" style="width:262px"><img src="images/2016.10.17_15-28-29-net 2015 267 June - PDF-XChange Viewer.png" alt=""/>
+  <figcaption><q>The Inverted Triangle’s three key metrics</q></figcaption>
+</figure>
+<p>Trys KEY METRICS'ai <q>ITCSS works by ordering your entire CSS project
+by three key metrics</q>:</p>
+<blockquote>
+  <dl>
+    <dt>1. Generic to explicit</dt>
+    <dd>
+      <p>We start out with the most generic, low-level, catch-all, unremarkable styles, and eventually progress to more explicit and specific rules as we move through the project. We might start with our reset, then progress to slightly more scoped rules like  h1–6 {} , right through to extremely explicit rules such as  .text-center {} .</p>
+    </dd>
+    <dt>2. Low specificity to high specificity</dt>
+    <dd>
+      <p> The lowest-specificity selectors appear towards the beginning, with specificity steadily increasing as we progress through the project. We want to ensure that we avoid as much of the Specificity Wars as we can, so we try and refrain from writing higher-specificity selectors before lower-specificity ones. We’re always adding specificity in the same direction, thus avoiding conflicts. </p>
+    </dd>
+    <dt>3. Far-reaching to localised</dt>
+    <dd>
+      <p> Selectors towards the beginning of the project affect a lot of the DOM, with that reach being progressively lessened as we go through the codebase. We want to make ‘passes’ over the DOM by writing rules that affect progressively less and less of it. We might start by wiping the margins and paddings off everything, then we might style every type of element, then narrow that down to every type of element with a certain class applied to it, and so on. It is this gradual narrowing of reach that gives us the triangle shape.</p>
+    </dd>
+  </dl>
+</blockquote>
+<p>KEY METRICS'ų privalumai:</p>
+<blockquote>
+  <p>Ordering our projects according to these key metrics has several benefits. We can begin to share global and far-reaching styles much more effectively and efficiently, we vastly reduce the likelihood of specificity issues, and we write CSS in a logical and progressive order. This means greater extensibility and less redundancy, which in turn means less waste and much smaller file sizes.</p>
+</blockquote>
+<h2>Sluoksniai (LAYERS)</h2>
+<div class="o-mcl o-mcl--N3 o-mcl--continuous-fig">
+  <figure class="figure--image-bigCaption" style="wwidth:750px"> <img src="images/2016.10.17_14-48-27-net 2015 267 June - PDF-XChange Viewer.png" class="" width="300" alt=""/>
+    <figcaption>
+      <p><q>ITCSS involves visualising your CSS project as a layered, upside-down triangle.</q></p>
+      <p><q>This hierarchical shape represents a model that will help you order your CSS in the most effective, least wasteful way.</q></p>
+    </figcaption>
+  </figure>
+  <figure class="figure--image-shadow" style="width:262px"><img src="images/2016.10.23_21-21-56-Manage large CSS projects with ITCSS _ Creative Bloq.png" alt=""/>
+    <figcaption><q>Keeping it neat. Following this layered, key metrics-based, ITCSS source order approach gives us a sane application of styles across our project</q>.</figcaption>
+  </figure>
+  <figure class="figure--image-shadow" style="width:262px"><img src="images/2016.10.23_21-24-28-Manage large CSS projects with ITCSS _ Creative Bloq.png" alt=""/>
+    <figcaption><q>Cone. If we reimagine the Triangle as a cone, we can look down into it to see each layer’s reach</q></figcaption>
+  </figure>
+</div>
+<p>Sluoksnių prigimtis:</p>
+<blockquote>
+  <p>We can stick to these metrics by breaking our CSS up into several sections, or ‘layers’. Each layer must be introduced in a location that honours each of the criteria. Most people (and architectures) attempt to split CSS projects up into thematic groups: here are our typographical styles, here are our form styles, here are our image gallery styles. The downside to this is that it isn’t very sympathetic to how CSS actually works, and doesn’t order CSS in a way that best utilises, tames or takes advantage of the cascade, inheritance or specificity.</p>
+</blockquote>
+<p>Kiekvienas sluoksnis &quot;naudoja&quot; žemiau esančius sluoksnius, t. y. prideda, kad gauti kažką naujo, bet neperrašinėja tuos žemesnius sluoksnius:</p>
+<blockquote>
+  <p>In ITCSS, each layer is a logical progression from the last. It increases in specificity, it gets more explicit and intentioned, and it narrows the reach of the selectors used. This means our CSS is inherently easier to scale, as we’re writing it in an order that only ever adds to what was written previously. We don’t waste time undoing or overriding overly opinionated CSS that was written earlier on.</p>
+</blockquote>
+<p>Struktūravimas viskam nustato savo vietą CSS failuose:</p>
+<blockquote>
+  <p>It also means that every thing, and every type of thing, has its own consistent, predictable place to live. This makes both finding and adding styles much simpler, which is particularly useful when you have a number of developers contributing to the codebase.</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>So instead of grouping things into 'typographic styles' , or 'form styles' , we are breaking them into groups based around specificity, reach and explicitness. This format allows us to write our CSS in an order that only ever adds to and inherits from what came previously.</p>
+  <p>We spend very little time undoing things, because our cascade and specificity are all pointing in the same direction. We drastically reduce the amount of collisions, leaks and redefinitions.</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>We ensure each layer contains CSS of:</p>
+  <ul>
+    <li><strong>A similar specificity:</strong> All element-based selectors, or all class-based selectors, or utility classes carrying !important</li>
+    <li><strong>A similar explicitness:</strong> Styling all your bare HTML elements, or styling UI components, or styling specific helper classes</li>
+    <li><strong>A similar reach:</strong> Ability to affect all of the DOM (e.g. * {}), a subset of the DOM (e.g. a {}), a section of the DOM (e.g. .carousel {}) or a specific DOM node (e.g. .clearfix {})</li>
+  </ul>
+  <p>This drill-down approach gives us a much more manageable CSS architecture. Now we know that everything we add should be an addition to whatever has gone before it. We know where each type of rule will live and where to put any new styles, and we have the confidence that all our different selectors will play nicely alongside each other.</p>
+</blockquote>
+<div class="o-mcl o-mcl--N7 o-mcl--start-h3">
+  <h3>01. Settings</h3>
+  <blockquote>
+    <p>If you are using a preprocessor, start here. This holds any global settings for your project. I'd like to stress the word global – this layer should only house settings that need to be accessed from anywhere. Settings like $heading-size-1 should be defined in the Headings partial. This ensures this layer stays nice and slim, and means that most settings can be found alongside the code that uses them, making finding things far simpler.</p>
+    <p>Examples of global settings might be things like the base font size, colour palettes, config (for example, $environment: dev;) and so on.</p>
+  </blockquote>
+  <h3>02. Tools</h3>
+  <blockquote>
+    <p>The next layer houses your globally available tooling – namely mixins and functions. Any mixin or function that does not need accessing globally should belong in the partial to which it relates. The Tools layer comes after the Settings layer because a mixin may require one of the global settings as a default parameter. Examples of global tools might be gradient mixins, font-sizing mixins and so on.</p>
+  </blockquote>
+  <h3>03. Generic</h3>
+  <blockquote>
+    <p>The Generic layer is the first one that actually produces any CSS. It houses very high-level, far reaching styles. This layer is seldom modified, and is usually the same across any projects you work on. It contains things like Normalize.css, global box-sizing rules, CSS resets and so on. The Generic layer affects a lot of the DOM, hence it being nice and wide in the Triangle model, and occurring very early on.</p>
+  </blockquote>
+  <h3>04. Elements</h3>
+  <blockquote>
+    <p>These are bare, unclassed HTML elements. What does an h1 look like without a class on it? What does an a look like without a class on it? The Elements layer binds onto bare HTML element (or 'type') selectors only. It is slightly more explicit than the previous layer in that we are now saying 'make every h1 this big', or 'make every a be a certain colour'. It is still a very low-specificity layer, but affects slightly less of the DOM, and is slightly more opinionated, hence its location in the Triangle.</p>
+    <p>The Elements layer is typically the last one in which we'd find bare, element-based selectors, and is very rarely added to or changed after initial setup. Once we have defined element-level styles, all additions and deviations should be implemented using classes.</p>
+  </blockquote>
+  <p>_elements.images.scss</p>
+  <pre><code>img {...}</code></pre>
+  <p>&nbsp;</p>
+  <h3>05. Objects</h3>
+  <blockquote>
+    <p>Users of OOCSS will be familiar with the concept of objects. This is the first layer in which we find class-based selectors. These are concerned with styling non-cosmetic design patterns, or 'objects'. Objects can range from something as simple as a .wrapper element, to layout systems, through to things like the OOCSS poster child – the Media Object. This layer affects less of the DOM than the last layer, has a higher specificity, and is slightly more explicit in that we are now targeting sections of the DOM with classes.</p>
+  </blockquote>
+  <p>class name pattern'as: <code>.o-object-name {}</code></p>
+  <p>_objects.cols.scss</p>
+  <pre><code>.o-mcl {...}
+  .o-mcl__continuous {...}
+.o-mcl--N2 {...}</code></pre>
+  <h3>06. Components</h3>
+  <blockquote>
+    <p>The Components layer is where we begin to style recognisable pieces of UI. We're still binding onto classes here, so our specificity hasn't yet increased. However, this layer is more explicit than the last one in that we are now styling explicit, designed pieces of the DOM.</p>
+    <p>We shouldn't find any selectors with a lower specificity than one class in this layer. This is where the majority of your work will happen after initial project set-up. Adding new components and features usually makes up the vast majority of development.</p>
+  </blockquote>
+  <p>class name pattern'as: <code>.c-component-name {}</code>  </p>
+  <p>_components.figure.scss</p>
+  <pre><code>.c-figure {...}
+  .c-figure__caption {...}
+.c-figure--dashed {...}</code></pre>
+  <h3>07. Trumps</h3>
+  <blockquote>
+    <p>This layer beats – or 'trumps' – all other layers, and has the power to override anything at all that has gone before it. It is inelegant and heavy-handed, and contains utility and helper classes, hacks and overrides.</p>
+    <p>A lot of the declarations in this layer will carry !important (e.g. .text-center { text-align: centre !important; }). This is the highest specificity layer – it includes the most explicit types of rule, with the most narrow focus. This layer forms the point of the Triangle.</p>
+  </blockquote>
+  <p>class name pattern'as: <code>.u-util-name {}</code></p>
+  <p>_utilities.text.scss</p>
+  <pre><code>.u-text-center {
+  text-align: center !important;
+}</code></pre>
+  <p>&nbsp;</p>
+</div>
+<h2>SASS'o failai</h2>
+<p>SASS'o failų pavadinimų struktūra:</p>
+<blockquote>
+  <p>Each layer contains a series of partials. I recommend the naming convention _&lt;layer&gt;.&lt;partial&gt;.scss (for example: _settings.colors.scss, _elements.headings.scss, _components.tabs.scss).</p>
+</blockquote>
+<p>Kaip skirstyti kodą failuose:</p>
+<blockquote>
+  <p>These partials should be kept as small and granular as possible, with each one containing only as much CSS as it needs to fulfil its role. So _elements.headings.scss would contain only the rules h1 to h6 and nothing more. If you have, for example, a Page Title component that makes a main heading (e.g. h1) and a subheading (e.g. h2) look a certain way, you would create a _components.page-title.scss partial in the Components layer and bind onto classes (e.g. .page-title, .page-title-sub), not onto HTML elements.</p>
+  <p>This is how ITCSS works: we do not place all of our heading-related styles together. Instead, we place all of our element-based rules together, and all of our class-based rules together. We're now ordering the project based on useful CSS metrics, and not creating awkward specificity and cascade groupings by ordering the project in thematic chunks.</p>
+</blockquote>
+<p>Gauname tokį master'inį-import'inį SASS'o failą:</p>
+<pre><code>@import "settings.global";
+@import "settings.colors";
+
+@import "tools.functions";
+@import "tools.mixins";
+
+@import "generic.box-sizing";
+@import "generic.normalize";
+
+@import "elements.headings";
+@import "elements.links";
+
+@import "objects.wrappers";
+@import "objects.grid";
+
+@import "components.site-nav";
+@import "components.buttons";
+@import "components.carousel";
+
+@import "trumps.clearfix";
+@import "trumps.utilities";
+@import "trumps.ie8";</code></pre>
+<h2>Likę BEMIT'o namespaces'ai (ne patys ITCSS'o sluoksniai)</h2>
+<figure class="c-figure--ridgeBox" style="width:95%">
+  <div class="c-figure__content">
+    <p><a href="http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/">http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/</a></p>
+    <blockquote>
+      <ul>
+        <li><code>o-</code>: Signify that something is an Object, and that it may be used in any  number of unrelated contexts to the one you can currently see it in. Making  modifications to these types of class could potentially have knock-on effects  in a lot of other unrelated places. Tread carefully.</li>
+        <li><code>c-</code>: Signify that something is a Component. This is a concrete,  implementation-specific piece of UI. All of the changes you make to its styles  should be detectable in the context you&rsquo;re currently looking at. Modifying  these styles should be safe and have no side effects.</li>
+        <li><code>u-</code>: Signify that this class is a Utility class. It has a very specific role  (often providing only one declaration) and should not be bound onto or  changed. It can be reused and is not tied to any specific piece of UI. You  will probably recognise this namespace from libraries and methodologies like <a href="https://suitcss.github.io/">SUIT</a>.</li>
+        <li><code>t-</code>: Signify that a class is responsible for adding a Theme to a view. It  lets us know that UI Components&rsquo; current cosmetic appearance may be due to the  presence of a theme.</li>
+        <li><code>s-</code>: Signify that a class creates a new styling context or <em>Scope</em>.  Similar to a Theme, but not necessarily cosmetic, these should be used  sparingly—they can be open to abuse and lead to poor CSS if not used wisely.</li>
+        <li><code>is-</code>, <code>has-</code>: Signify that the piece of UI in question is currently styled a  certain way because of a state or condition. This stateful namespace is  gorgeous, and comes from <a href="https://smacss.com/">SMACSS</a>. It tells us that the  DOM currently has a temporary, optional, or short-lived style applied to it  due to a certain state being invoked.</li>
+        <li><code>_</code>: Signify that this class is the worst of the worst—a hack! Sometimes,  although incredibly rarely, we need to add a class in our markup in order to  force something to work. If we do this, we need to let others know that this  class is less than ideal, and hopefully temporary (i.e. <q>do not bind onto  this</q>).</li>
+        <li><code>js-</code>: Signify that this piece of the DOM has some behaviour acting upon it,  and that JavaScript binds onto it to provide that behaviour. If you&rsquo;re not  a developer working with JavaScript, leave these well alone.</li>
+        <li><code>qa-</code>: Signify that a QA or Test Engineering team is running an automated UI  test which needs to find or bind onto these parts of the DOM. Like the  JavaScript namespace, this basically just reserves hooks in the DOM for  non-CSS purposes.</li>
+      </ul>
+    </blockquote>
+  </div>
+  <figcaption>Visi BEMIT'o namespaces'ai</figcaption>
+</figure>
+<h3>Theme <code>t-theme-name {}</code></h3>
+<p>Apskritai skirta kažkam papildomam, ką galima naudoti-įjungti arba nenaudoti-išjungti.</p>
+<p>Naudojimo pavyzdžiai-atvejai:</p>
+<blockquote>
+  <p> Examples of this approach to theming include  style-switchers (a user can toggle between different themes) and sub-sections of  a site (all blog posts have one theme colour, all news pages have another theme  colour, etc.).</p>
+</blockquote>
+<p>Naudojami sluoksniuose: </p>
+<ul>
+  <li>Objects &#8212; o gal čia ir nenaudoti</li>
+  <li>Components &#8212; čia tikrai naudojamas</li>
+</ul>
+<p>class name pattern'as: <code>.t-theme-name {}</code></p>
+<figure class="c-figure--shadow" style="max-width:95%">
+	<div class="c-figure__content">
+    <p>D:\webdev\docs\4.5_Methods_for_Theming_in__S_CSS.pdf    </p>
+    <p>Theming Is Common:</p>
+    <ul>
+      <li> SaaS clients want to offer a varied product range. </li>
+      <li> White-label clients want to offer bespoke themes. </li>
+      <li> Hub clients want each part of a product to have its own colours. </li>
+      <li> Social network clients want to allow users to personalise things.    </li>
+    </ul>
+    <p>Theming vs. Customisation</p>
+    <p>Theming: </p>
+    <ul>
+      <li> Requires developer input (deﬁned by developers). </li>
+      <li> Finite amount of variants. </li>
+      <li> Known rules and constraints.</li>
+    </ul>
+    <p>Customisation:</p>
+    <ul>
+      <li>deﬁned by users.</li>
+      <li> Requires no developer input. </li>
+      <li> Inﬁnite possibilities. </li>
+      <li> Whatever the user says goes.</li>
+    </ul>
+    <p>Advice on Theming</p>
+    <ul>
+      <li><strong>Avoid it if possible</strong> — make sure there’s a real business case.</li>
+      <li> <strong>KISS</strong> — always reduce the complexity involved.</li>
+      <li> <strong>Only make changes to cosmetic aspects</strong> — avoid altering box-model. </li>
+      <li> <strong>Enforce rules</strong> — deviation is expensive. </li>
+      <li> <strong>Use it as an up-sell</strong> — ‘Any deviation is going to cost you.’    </li>
+    </ul>
+    <p>When to Use Which?</p>
+    <ul>
+      <li> Who’s doing the styling: you or the user? – User Customisation. </li>
+      <li> Do the themes need to change once they’re on the client? – Stateful or  User Customisation. </li>
+      <li> Do you have themes that you want people to be able to toggle? –  Stateful. </li>
+      <li> Do you have sections of the site that need to look different? – Stateful. </li>
+      <li> Do you have preset themes that a client can choose from? – Conﬁg. </li>
+      <li> Do you offer bespoke theming for white-label clients? – Theme Layer or  Theme Palette.</li></ul></div>
+  <figcaption>Harry Roberts'o paskaita apie Theming'ą</figcaption>
+</figure>
+<p>&nbsp;</p>
+<h4>Theming'o technikos</h4>
+<dl>
+  <dt>Theme Layer</dt>
+  <dd>
+    <p>Overriding default style with additional CSS.</p>
+    <ul>
+      <li> Possibly the most common approach (currently). </li>
+      <li> Start off with the base/default styling. </li>
+      <li> Use additional, subsequent CSS to override and redeﬁne.</li>
+    </ul>
+    <p>Suited To:
+      Bespoke theming for clients.</p>
+    <p>The Good:</p>
+    <ul>
+      <li> You can swap layers out. </li>
+      <li> You can theme anything.</li>
+    </ul>
+    <p>The Bad:</p>
+    <ul>
+      <li> Lots of redundancy. </li>
+      <li> Wasted CSS over the wire. </li>
+      <li> Shards styles across multiple ﬁles.</li>
+    </ul>
+    <pre><code>// master.scss
+@import &quot;components.tabs&quot;;
+@import &quot;theme.tabs&quot;;
+
+// _components.tabs.scss
+.tabs {
+  margin:  0;
+  padding: 0;
+  background-color: gray;
+}
+
+// _theme.tabs.scss
+.tabs {
+  background-color: red;
+}</code></pre>
+  </dd>
+  <dt>Stateful Theming</dt>
+  <dd>
+    <ul>
+    	<p>Styling a UI based on a state or condition.</p>
+      <li>Different skins based on conditions. </li>
+      <li> Allow themes to be switched on the client.</li>
+    </ul>
+    <p>Suited To:</p>
+    <ul>
+      <li> Style switchers. </li>
+      <li> Individually styled sections or areas of a site.
+        <pre><code>&lt;body class=&quot;t-light&quot;&gt;
+  ...
+  &lt;a class=&quot;c-btn&quot;&gt;
+    ...
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+        <pre><code>.c-btn {
+  ...
+  .t-light &amp; {
+    background-color: #e4e4e4;
+    color: #333;
+  }
+}</code></pre>
+        <pre><code>.tabs {
+  background-color: gray;
+  .t-red &amp; {
+    background-color: red;
+  }
+  .t-blue &amp; {
+    background-color: blue;
+  }
+}
+
+&lt;body class=&quot;t-red&quot;&gt;
+  &lt;ul class=&quot;tabs&quot;&gt;...&lt;/ul&gt;
+&lt;/body&gt;</code></pre>
+      </li>
+    </ul>
+  </dd>
+  <dt>Stateful Utility Classes</dt>
+  <dd>
+    <p>A utility class that tracks the current theme.</p>
+    <p>The Good:</p>
+    <ul>
+      <li> Bundle a number of themes into one codebase. </li>
+      <li> Great for style-switchers. </li>
+      <li> Perfect for ‘areas’ of a site. </li>
+      <li> You can theme anything.</li>
+    </ul>
+    <p>The Bad</p>
+    <ul>
+      <li> Bundle a number of themes into one codebase. </li>
+      <li> Potential redundancy.</li>
+    </ul>
+    <pre><code>.u-color-current {
+  .t-red &amp; {
+    color: red;
+  }
+  .t-blue &amp; {
+    color: blue;
+  }
+}
+
+&lt;body class=&quot;t-red&quot;&gt;
+  &lt;h1 class=&quot;page-title  u-color-current&quot;&gt;...&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+  </dd>
+  <dt>Conﬁg Theming</dt>
+  <dd>
+    <p>Invoking a theme based on settings.</p>
+    <ul>
+      <li>Switching between themes dev-side. </li>
+      <li> Compiling the same CSS with a different skin based on a setting.</li>
+    </ul>
+    <p>Suited To:</p>
+    <ul>
+      <li> Spitting out differently themed variants of a UI. </li>
+      <li> Offering off-the-shelf themes to clients.</li>
+    </ul>
+    <p>The Good:</p>
+    <ul>
+      <li> Only send as little CSS over the wire as necessary. </li>
+      <li> Alter the entire theme from one location. </li>
+      <li> You can theme anything.</li>
+    </ul>
+    <p>The Bad</p>
+    <ul>
+      <li> Lots of logic in your Sass. </li>
+      <li> Only supports a ﬁnite number of themes. </li>
+      <li> Theme information is spread out through the codebase. </li>
+      <li> Adding themes could be laborious.</li>
+    </ul>
+    <pre><code>// master.scss
+@import &quot;settings.config&quot;;
+@import &quot;components.tabs&quot;;
+
+// _settings.config.scss
+$theme: red;
+
+// _components.tabs.scss
+.tabs {
+  margin:  0;
+  padding: 0;
+  @if ($theme == red) {
+    background-color: red;
+  } @else {
+    background-color: gray;
+  }
+}</code></pre>
+  </dd>
+  <dt>Theme Palettes</dt>
+  <dd>
+    <p>Holding entire themes in a palette ﬁle.</p>
+    <ul>
+      <li>Preload all of your theme settings into a palette. </li>
+      <li> Inject these settings into the project later.</li>
+    </ul>
+    <p>Suited To:</p>
+    <ul>
+      <li> Fully bespoke theming for clients. </li>
+      <li> Adding speciﬁc branding to a project.</li>
+    </ul>
+    <p>The Good:</p>
+    <ul>
+      <li> Zero redundancy. </li>
+      <li> Perfect for bespoke theming—just plug in the client’s brand colours. </li>
+      <li> Completely restyle the project from one ﬁle.</li>
+    </ul>
+    <p>The Bad:</p>
+    <ul>
+      <li> Limited mainly just to theming colours.</li>
+    </ul>
+    <pre><code>// master.scss
+@import "settings.palette";
+@import "components.tabs";
+
+// _settings.palette.scss
+$color-red: red;
+$color-tabs-background: $color-red;
+
+// _components.tabs.scss
+.tabs {
+  margin:  0;
+  padding: 0;
+  background-color: $color-tabs-background;
+}
+
+-------------------------------
+
+// _settings.palette.scss
+$color-brand:           #BADA55;
+$color-brand-highlight: lighten($color-brand, 10%);
+$color-red:             red;
+$color-green:           green;
+$color-blue:            blue;
+...
+$color-links:           $color-brand;
+$color-links-hover:     $color-brand-highilght;
+$color-tabs-background: $color-red;
+$color-btn-background:  $color-blue;</code></pre>
+  </dd>
+  <dt>User Customisation</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>Letting users style their own UIs.</p>
+<ul>
+  <li>Letting users decide their own colours. </li>
+  <li> Done through a CMS/admin interface.</li>
+</ul>
+<p>Suited To:</p>
+<ul>
+  <li> Social networks. </li>
+  <li> SaaS platforms. </li>
+  <li> Brandable software products.</li>
+</ul>
+<p>How:</p>
+<ul>
+  <li>Drop the hex value(s) into a style block. </li>
+  <li> Bind onto utility classes rather than existing hooks. </li>
+  <li> Now just a case of decorating in the UI with the classes.</li>
+</ul>
+<p>The Good:</p>
+<ul>
+  <li> Requires zero developer input. </li>
+  <li> Allows users to ‘own’ their proﬁle/platform. </li>
+  <li> Incredibly pragmatic—always a good thing!</li>
+</ul>
+<p>The Bad:</p>
+<ul>
+  <li> Requires zero developer input. </li>
+  <li> Lots of redundancy. </li>
+  <li> Wasted CSS over the wire. </li>
+  <li> Lose the ability to cache styles.</li>
+</ul>
+<p>&nbsp;</p>
+<p>Just dump it all in the view:</p>
+<pre><code>&lt;style&gt;
+  .u-user-color            {            color: red; }
+  .u-user-color-background { background-color: red; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+...
+&lt;ul class=&quot;tabs  u-user-color-background&quot;&gt;...&lt;/ul&gt;</code></pre>
+<p><img src="images/2016.11.07_19-04-03-4.5_Methods_for_Theming_in__S_CSS - PDF-XChange Viewer.png" alt=""/></p>
+<p>&nbsp;</p>
+<h3>Scope <code>s-scope-name {}</code></h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>State <code>is/has-state-name {}</code></h3>
+<p>Kilmė <a href="https://smacss.com/book/type-state">https://smacss.com/book/type-state</a></p>
+<p>Skirta interaktyvioms sąsajos būsenoms style'inti, t. y. į HTML-DOM'ą šiuos class'us dažniausiai prisega JS'as:</p>
+<blockquote>
+  <p>They tell us about short-lived  or temporary states of the UI that need styling accordingly.</p>
+  <p>States (can) change from one moment to the next, perhaps based on  user action (e.g. <code class="highlighter-rouge">.is-expanded</code>) or from changes that are being pushed from a  server (e.g. <code class="highlighter-rouge">.is-updating</code>).</p>
+</blockquote>
+<p>State'ų class'us visada surišame su motininiu-tėviniu class'u:</p>
+<blockquote>
+  <p>These classes work by chaining other classes, for example <code>.c-modal.is-open</code>.  This heightened specificity ensures that the State always takes prominence over  the default styling. It also means that we would never see a bare Stateful class  on its own in a stylesheet: it must always be chained to something.</p>
+</blockquote>
+<p>&nbsp;</p>
+<pre><code>&lt;div class=&quot;c-modal is-open&quot;&gt;
+  ...
+  &lt;div class=&quot;c-modal__content is-loading&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<pre><code>.c-modal {
+  ...
+  &amp;.is-open { ... }
+}
+  .c-modal__content {
+    ...
+    &amp;.is-loading { ... }
+  }</code></pre>
+<h3>Hack <code>._nameSpace-hack-name {}</code></h3>
+<p>&nbsp;</p>
+<h3>JavaScript <code>.js-theme-name {}</code></h3>
+<p>&nbsp;</p>
+<h3>QA <code>.qa-automated-ui-tests-name  {}</code></h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>but  it does add usage and state information</p>
+<p>Object <code>.o-object-name {}</code></p>
+<p>Component <code>c-component-name {}</code></p>
+<p>Utility <code>u-util-name {}</code></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

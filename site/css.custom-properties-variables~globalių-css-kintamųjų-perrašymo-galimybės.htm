@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    html {
+      font: 900 1em "Open Sans", sans-serif;
+      --storis: 10px;
+    }
+    p {
+      border: solid red 1px;
+    }
+    p:nth-of-type(1) {
+      border: solid red var(--storis);
+    }
+    p:nth-of-type(2) {
+      border-width: calc(var(--storis) * 2);
+    }
+    p:nth-of-type(3) {
+      --storis-2: calc(var(--storis) + 20px);
+      border-width: var(--storis-2);
+    }
+    p:nth-of-type(4) {
+      /*--storis: calc(var(--storis) + 10px);*/
+      --storis: var(--storis);
+      border-width: var(--storis);
+      background: lightgreen;
+    }
+    p:nth-of-type(5) {
+      --storis: 5px;
+      border-width: calc(var(--storis) * 5);
+    }
+
+    p:nth-of-type(6) {
+      --storis-2: 20px;
+      /*--storis-2: calc(30px + var(--storis-2));*/
+      --storis-2: calc(var(--storis-2) + 30px);
+      /*--storis-2: 30px;*/
+      border-width: var(--storis-2);
+      background: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <h1>Globalių CSS kintamųjų perrašymo galimybės</h1>
+  <p>1. paprasčiausias naudojimas</p>
+  <p>2. kintamojo panaudojimas calc() funkcijoje matematinėje operacijoje</p>
+  <p>3. naujo kintamojo tage sukūrimas, panaudojant globalų kintamąjį</p>
+  <p>4. globalaus kintamojo negalima perrašyti tage priskiriant globalaus reikšmę</p>
+  <p>5. bet galima globalų kintamąjį perrašyti priskiriant naują reikšmę</p>
+  <p>6. apskritai negalima to pačio kintamojo tiesiogiai ar per calc() priskirti jam pačiam</p>
+  <p>7. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor.</p>
+</body>
+</html>
+

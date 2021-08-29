@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//   width: height: X%
+//
+/////////////////////////////////////////////////////////////
+
+//// pavyzdys ką sugeneruoja, be % escape'inimo
+//// X% = 1 2..100
+//// .u-width-X%, .u-width-X%-d *, .u-width-X%-c > *,
+//// .WX%,        .WX%d *,         .WX%c > * {
+////   width: X% !important;
+//// }
+//
+////$size-start: 0.5%;
+////$step: 0.5%;
+//$size-start: 1%;
+//$step: 1%;
+//@each $property, $propertyShort in ("width": W, "height": H) {
+//  $size: $size-start;
+//  @while $size <= 100% {
+//    $sizeStr: quote($size + "");
+//    $sizeStr: str-replace($sizeStr, ".", "\\.");
+//    $sizeStr: str-replace($sizeStr, "%", "\\%");
+//
+//    $selector: "u-" + $property + "-" + $sizeStr;
+//    $selectorShort: $propertyShort + $sizeStr;
+//    //.#{$selector}, .#{$selector}-d *, .#{$selector}-c > *,
+//    .#{$selectorShort}, .#{$selectorShort}d *, .#{$selectorShort}c > * {
+//      #{$property}: $size !important;
+//    }
+//
+//    $size: $size + $step;
+//  }
+//}
+
+
+
+//@for $size from 1px through 100px {
+//  //.u-#{$property}-#{$size}, .u-#{$property}-#{$size}-c > *, //, .u-#{$property}-#{$size}-d *
+//  .#{$propertyShort}#{$size}, .#{$propertyShort}#{$size}c > * { //, .#{$propertyShort}#{$size}d *
+//    #{$property}: #{$size} !important;
+//  }
+//}
+
+
+
+
+
+
+
+
+

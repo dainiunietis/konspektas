@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Gulp API cheat-sheet &#8212; ver. 3</h1>
+<p>&nbsp;</p>
+<dl>
+  <dt>Cheatsheets:</dt>
+  <dd>
+    <p><a href="http://webdev.local/docs cheatsheets/gulp-cheatsheet JavaScript EN p1.pdf">gulp-cheatsheet JavaScript EN p1.pdf</a>, <a href="http://webdev.local/docs cheatsheets/gulp-cheatsheet JavaScript EN p2.pdf">gulp-cheatsheet JavaScript EN p2.pdf</a></p>
+  </dd>
+</dl>
+<p>https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><code>gulp.task()</code></h3>
+      <p> <a href="https://gulpjs.org/API.html#gulp-task-name-fn">gulp.task | Gulp Documentation</a></p>
+      <p><code>gulp.task(name [, deps] [, fn])</code></p>
+      <p>Parametrai:</p>
+      <blockquote>
+        <p>Where <code>name</code> is a string, <code>deps</code> is an array of task names, and <code>fn</code> is the function that performs your task.</p>
+      </blockquote>
+      <p>Parametras <code>name</code>:</p>
+      <blockquote>
+        <p>Tasks that you want to run from the command line should not have spaces in them.</p>
+      </blockquote>
+      <p>Parametrų variantai:      </p>
+      <dl>
+        <dt>Paprasčiausiais task'as be dependencies</dt>
+        <dd>
+          <pre><code>gulp.task('t1', function() {
+  // daro ką nors
+});</code></pre>
+        </dd>
+        <dt>Task'as su dependencies </dt>
+        <dd>
+          <p>Pirma įvykdo <code>'t1'</code> ir <code>'t2'</code>, kai abu dependencies task'ai pabaigti &#8212; vykdo savąjį:</p>
+          <pre><code>gulp.task('t_dep', ['t1', 't1'], function() {
+  // daro ką nors
+});</code></pre>
+        </dd>
+        <dt>Task'as, kuris tik vykdo kitus task'us, savojo neturi</dt>
+        <dd>
+          <pre><code>gulp.task('t_kitus', ['t1', 't1']);</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3><code>gulp.src()</code></h3>
+      <p><a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options">gulp.js docs gulp.src()</a></p>
+      <p><code>gulp.src(globs[, options])</code></p>
+      <p><a href="https://gulp.readme.io/docs/gulpsrcglobs-options">https://gulp.readme.io/docs/gulpsrcglobs-options</a></p>
+      <p><a href="nodejs.globs.htm">Apie Node'o globs'us</a></p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p><code>gulp.src</code> points to the files we want to use. It's parameters are globs and an optional options object. It uses <code>.pipe</code> for chaining it's output into other plugins.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3><code>gulp.dest()</code></h3>
+    <p><a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options">gulp.js docs gulp.dest()</a></p>
+    <p><code>gulp.dest(path[, options])</code></p>
+    <blockquote>
+      <p><code>gulp.dest</code> points to the output folder we want to write files to.</p>
+</blockquote>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3><code>gulp.watch()</code></h3>
+      <p><a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob--opts-tasks-or-gulpwatchglob--opts-cb">gulp.js docs gulp.watch()</a></p>
+      <h4><code>gulp.watch(glob [, opts], tasks)</code></h4>
+      <p>&nbsp;</p>
+      <dl>
+        <dt>Task'ų įvykdymas kai nors vienas glob'ą atitinkantis failas atnaujinamas (t. y. įvyksta failo save'as)</dt>
+        <dd>
+          <blockquote>
+            <p>when any files in the <code>src/js</code> that have an extension of <code>.js</code> change, then the task <code>jshint</code> will be run against those files.</p>
+          </blockquote>
+          <pre><code>gulp.watch('src/js/*.js', ['jshint']);</code></pre>
+          <p>Pirmas parametras gali būti glob'ų masyvas:</p>
+          <pre><code>gulp.watch(
+  ['src/js/*.js', 'src/scss/*.scss'],
+  ['jshint', 'dar-kas-nors']
+);</code></pre>
+          <p>&nbsp;</p>
+        </dd>
+        <dt>&nbsp;</dt>
+        <dd>
+          <p>&nbsp;</p>
+          <pre><code>*</code></pre>
+        </dd>
+        <dt>&nbsp;</dt>
+        <dd>
+          <p>&nbsp;</p>
+          <pre><code>*</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <h4><code>gulp.watch(glob [, opts, callbackFunc])</code></h4>
+      <p>&nbsp;</p>
+      <dl>
+        <dt>Funkcijos iškvietimas, kai glob'ą atitinkantys failai užsave'inami</dt>
+        <dd>
+          <p>&nbsp;</p>
+          <pre><code>gulp.watch('js/**/*.js', function(event) {
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+});</code></pre>
+        </dd>
+        <dt>&nbsp;</dt>
+        <dd>
+          <p>&nbsp;</p>
+          <pre><code>*</code></pre>
+        </dd>
+        <dt>&nbsp;</dt>
+        <dd>
+          <p>&nbsp;</p>
+          <pre><code>*</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<dl>
+  <dt>&nbsp;</dt>
+  <dd>
+    <p>&nbsp;</p>
+    <pre><code>*</code></pre>
+  </dd>
+  <dt>&nbsp;</dt>
+  <dd>
+    <p>&nbsp;</p>
+    <pre><code>*</code></pre>
+  </dd>
+  <dt>&nbsp;</dt>
+  <dd>
+   <p>&nbsp;</p>
+    <pre><code>*</code></pre>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ul>
+  <li>gulp.task</li>
+  <li>gulp.src</li>
+  <li>gulp.dest</li>
+  <li>gulp.watch</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre>gulp.task(name, fn) – registers a function with a name
+gulp.watch(glob, fn) – runs a function when a file that matches the glob changes
+gulp.src(glob) – returns a readable stream
+gulp.dest(folder) – returns a writable stream</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

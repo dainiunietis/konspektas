@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title></title>
+<script>
+
+// https://www.youtube.com/watch?v=EumXak7TyQ0
+// https://blog.webdevsimplified.com/2020-01/guard-clauses/
+
+//============================================================================
+
+// runs a timer and does not use any guard clauses
+
+function startTimer(timer) {
+  if (timer.enabled) {
+    timer.time = 0
+    timer.start()
+  }
+}
+
+//----------------------------------------------------------------------------
+
+// with guard clauses
+
+function startTimer(timer) {
+  if (!timer.enabled) return
+
+  timer.time = 0
+  timer.start()
+}
+
+//============================================================================
+
+function getInsuranceDeductible(insurance) {
+  if (insurance.covered) {
+    if (insurance.majorRepair) {
+      return 500
+    } else if (insurance.mediumRepair) {
+      return 300
+    } else {
+      return 100
+    }
+  } else {
+    return 0
+  }
+}
+
+//----------------------------------------------------------------------------
+
+function getInsuranceDeductible(insurance) {
+  if (!insurance.covered) return 0
+  if (insurance.majorRepair) return 500
+  if (insurance.mediumRepair) return 300
+
+  return 100
+}
+
+//============================================================================
+
+
+
+
+
+
+</script>

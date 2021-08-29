@@ -1,0 +1,267 @@
+@charset "utf-8";
+
+////////////////////////// o-gfx — Grid FleXbox //////////////////////////
+
+$o-gfx-gutterSmallHrz:  szm-spacing-size(tiny) !default;
+$o-gfx-gutterSmallVrt:  szm-spacing-size(tiny) !default;
+$o-gfx-gutterMediumHrz: szm-spacing-size(small) !default;
+$o-gfx-gutterMediumVrt: szm-spacing-size(small) !default;
+$o-gfx-gutterLargeHrz:  szm-spacing-size(medium) !default;
+$o-gfx-gutterLargeVrt:  szm-spacing-size(medium) !default;
+
+.o-gfx {
+  --gutterHrz: #{$o-gfx-gutterMediumHrz};
+  --gutterVrt: #{$o-gfx-gutterMediumVrt};
+
+  display: flex;
+  flex-flow: wrap;
+  //align-items: stretch;
+  //justify-content: flex-start;
+  gap: var(--gutterHrz) var(--gutterVrt);
+
+  > * {
+    //flex:      1 1 1%;
+    flex:      1 1 0px;
+    min-width: min-content;
+    //width:     auto;
+    //flex:      0 1 auto;
+    //margin: 5px 7px;
+    //padding: 0.6em 0.3em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # Flex item'ai su width: max-content — default'inė flex item'ų reikšmė
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-gfx--mxcntShrink {
+  > * {
+    //flex: 0 1 max-content; NEVEIKIA the max-content keyword for flex-basis is still experimental and not compatible with Chrome
+    width: max-content;
+    flex: 0 1 auto;
+  }
+}
+
+.o-gfx--mxcntGrow {
+  > * {
+    width: max-content;
+    flex: 1 0 auto;
+  }
+}
+
+.o-gfx--mxcntScale {
+  > * {
+    width: max-content;
+    flex: 1 1 auto;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # Flex item'ai su width: min-content
+//
+/////////////////////////////////////////////////////////////////////
+
+//.o-gfx--minContentFix {
+//  > * {
+//    width: min-content;
+//    flex: 0 0 auto;
+//  }
+//}
+
+.o-gfx--mncntGrow {
+  > * {
+    flex: 1 0 min-content;
+    //width: min-content;
+    //flex: 1 0 auto;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # Stulpelių skaičiaus reguliavimas — nustatant minimalų stulpelių plotį
+//
+/////////////////////////////////////////////////////////////////////
+
+$o-gfx-W-data: 15em 20em 25em 30em 35em !default;
+
+.o-gfx[class*="o-gfx--W"] > * {
+  flex: 1 0 auto;
+}
+
+//@each $i, $width in (1: 15em, 2: 20em, 3: 25em, 4: 30em, 5: 35em) {
+$i: 1;
+@each $width in $o-gfx-W-data {
+  .o-gfx--W#{$i} > * {
+    width: $width;
+  }
+  $i: $i + 1;
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # o-gfx--N{n} Stulpelių skaičiaus reguliavimas — nustatant fiksuotą stulpelių skaičių
+//
+/////////////////////////////////////////////////////////////////////
+
+$o-gfx-N-data: 34% 26% 21% 17% 15% 13% !default;
+
+.o-gfx[class*="o-gfx--N"] > * {
+  flex: 1 0 auto;
+}
+
+$i: 2;
+@each $width in $o-gfx-N-data {
+  .o-gfx--N#{$i} > * {
+    width: $width;
+  }
+  $i: $i + 1;
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # gutter
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-gfx--gutterSmall {
+  --gutterHrz: #{$o-gfx-gutterSmallHrz};
+  --gutterVrt: #{$o-gfx-gutterSmallVrt};
+}
+
+.o-gfx--gutterLarge {
+  --gutterHrz: #{$o-gfx-gutterLargeHrz};
+  --gutterVrt: #{$o-gfx-gutterLargeVrt};
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # vertical alignment
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-gfx--top {
+  align-items: flex-start;
+}
+
+//.o-gfx--centerY {
+.o-gfx--centerVrt {
+  align-items: center;
+}
+
+.o-gfx--bottom {
+  align-items: flex-end;
+}
+
+.o-gfx--baseline {
+  align-items: baseline;
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # horizontal alignment
+//
+/////////////////////////////////////////////////////////////////////
+
+//.o-gfx--left {
+//  justify-content: flex-start;
+//}
+
+.o-gfx--centerHrz {
+  justify-content: center;
+}
+
+.o-gfx--right {
+  justify-content: flex-end;
+}
+
+.o-gfx--between {
+  justify-content: space-between;
+}
+
+.o-gfx--evenly {
+  justify-content: space-evenly;
+}
+
+.o-gfx--around {
+  justify-content: space-around;
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # Apiforminimas
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-gfx--boxed > * {
+  outline: 1px dotted colorScheme-site("1HL2");
+  outline-offset: 3px;
+  &:hover {
+    //outline-color: colorScheme-site("1");
+    //outline-width: 2px;
+    outline-style: solid;
+    //$color: scale_color(colorScheme-site("1HL2"), $alpha: -90%);
+    ////$color: scale_color(invert(colorScheme-site("1HL2"), 100%), $alpha: -93%);
+    //background: $color;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-gfx--lastSpace {
+  &::after {
+    content: "\2003 ";
+    flex-grow: 1;
+    background: lightskyblue;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # miscs
+//
+/////////////////////////////////////////////////////////////////////
+
+// geriau naudoti .u-spvm
+.o-gfx--spv {
+  margin-bottom: $szm-spacing-vertical-paragraph;
+}
+
+.o-gfx--nwrp {
+  flex-wrap: nowrap;
+}
+
+.o-gfx--exact > * {
+  min-width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

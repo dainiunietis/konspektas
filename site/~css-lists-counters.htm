@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    body {
+      font: 1.2em "IBM Plex Sans", sans-serif;
+      margin: 1em;
+    }
+
+  </style>
+</head>
+<body>
+<!-- kad darytų TOC-turinį -->
+<script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>
+<script type="module" src="assets/js/master.js"></script>
+
+<div class="c-sidePanel c-sidePanel--left">
+  <div class="c-sidePanel__list c-sidePanel__list--clean">
+    <ul>
+      <li><a href="index_.html">pradžia</a></li>
+    </ul>
+  </div>
+  <hr>
+  <nav class="c-sidePanel__list c-sidePanel__list--clean">
+<!--  <nav class="c-sidePanel__list c-sidePanel__list&#45;&#45;number">-->
+    <ul id="page-toc"></ul>
+  </nav>
+</div>
+
+<h1>CSS Lists and Counters: Using CSS counters</h1>
+
+<h2>...</h2>
+
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <div class="c-pvs c-pvs--border c-pvs--title">
+      <style>
+        #a20210114231214 {
+          counter-reset: dalys;
+        }
+        #a20210114231214 > div {
+          font-weight: bold;
+        }
+        #a20210114231214 > div::before {
+          counter-increment: dalys;
+          content: "Dalis " counter(dalys) ": ";
+        }
+      </style>
+      <p>Paprasčiausias <code>counter-reset:</code> ir <code>counter-increment:</code> kartu su <code>content: counter()</code> naudojimas bet kokiems tagams</p>
+      <div id="a20210114231214" class="c-pvs__parent" style="">
+        <div>Įvadas</div>
+        <p>aaa</p>
+        <p>bbb</p>
+        <div>Dėstymas</div>
+        <p>aaa</p>
+        <p>bbb</p>
+        <div>Išvados</div>
+        <p>aaa</p>
+        <p>bbb</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--border c-pvs--title">
+      <style>
+        #a20210114234530 ol {
+          counter-reset: listas;
+          list-style-type: none;
+        }
+        #a20210114234530 li::before {
+          counter-increment: listas;
+          content: counters(listas, ".") " ";
+        }
+      </style>
+      <p>Sąrašas su <q>Nesting counters</q> naudojant <code>content: counters()</code></p>
+      <div id="a20210114234530" class="c-pvs__parent" style="">
+        <ol>
+          <li>border
+            <ol>
+              <li>border-color</li>
+              <li>border-style</li>
+              <li>border-width</li>
+              <li>border-top
+                <ol>
+                  <li>border-top-color</li>
+                  <li>border-top-style</li>
+                  <li>border-top-width</li>
+                  <li>border-right
+                    <ol>
+                      <li>border-right-color</li>
+                      <li>border-right-style</li>
+                      <li>border-right-width</li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li>border-bottom
+            <ol>
+              <li>border-bottom-color</li>
+              <li>border-bottom-style</li>
+              <li>border-bottom-width</li>
+            </ol>
+          </li>
+          <li>border-left
+            <ol>
+              <li>border-left-color</li>
+              <li>border-left-style</li>
+              <li>border-left-width</li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+
+
+
+
+<!--<div class="o-gfx o-gfx&#45;&#45;W3 o-gfx&#45;&#45;boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>-->
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

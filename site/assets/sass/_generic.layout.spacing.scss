@@ -1,0 +1,50 @@
+
+//////////////////////////////////////////////////////////////////
+//
+//   # vertikalus spacing'as
+//
+/////////////////////////////////////////////////////////////
+
+// Always declare margins in the same direction:
+// csswizardry.com/2012/06/single-direction-margin-declarations
+
+// stylelint-disable selector-list-comma-newline-after
+
+address,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, ol, ul,
+figure,
+hr,
+table,
+fieldset {
+  //@include inuit-rem(margin-bottom, ($inuit-global-spacing-unit - 10px));
+  //@include inuit-rem(margin-bottom, $inuit-global-spacing-unit-small);
+  //margin-bottom: $inuit-global-spacing-unit;
+  //margin-bottom: g-spacing(small, em);
+  margin-bottom: $szm-spacing-vertical-paragraph;
+}
+
+blockquote,
+figure,
+li, dd,
+th, td,
+//div, !!! gadina .o-grd
+section, article {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//   # Consistent indentation for lists
+//
+/////////////////////////////////////////////////////////////
+
+//dd, ol, ul {
+//  //@include inuit-rem(margin-left, $inuit-global-spacing-unit);
+//  margin-left: g-spacing(small, em);
+//}
+
+// stylelint-enable selector-list-comma-newline-after

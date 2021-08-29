@@ -1,0 +1,278 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////
+//
+// b
+//
+////////////////////////////////////////////////////////////////////
+
+b {
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # dfn (definition)
+//    i
+//
+////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// <dfn> — terminams apibrėžti
+//   Pvz.:
+//   <p><dfn>Kažkas tokio</dfn> yra tas anas.</p>
+//
+// <i> — terminams, naudojamiems-kartojamiems tekste, pažymėti
+//   Pvz.:
+//   <p>Tą <i>kažkas tokio</i> reikia ...</p>
+
+$elm-textFormat-term-colorBase:  scale-color(colorScheme-site('2HD1'), $lightness: -10%, $alpha: -60%);
+$elm-textFormat-term-colorHover: scale-color(colorScheme-site('2HD1'), $lightness: -20%);
+$elm-textFormat-term-colorBg:    scale-color(colorScheme-site('2HD1'), $lightness: -10%, $alpha: -95%);
+
+//$elm-textFormat-term-font:       "Recursive Sans Linear Static", sans-serif;
+
+dfn, i {
+  background:    $elm-textFormat-term-colorBg;
+  //border:        4px dotted $elm-textFormat-term-colorBase;
+  border:        1px solid $elm-textFormat-term-colorBase;
+  border-radius: .7em;
+  padding:       0 0.3em 0.02em;
+  //padding:       0.02em 0.2em 0.07em 0.5em;
+
+  //font-family: "IBM Plex Sans", sans-serif;
+
+  font-family: "Recursive Sans Casual Static", sans-serif;
+  //font-family: "Recursive Sans Linear Static", sans-serif;
+  //font-size:     0.95em;
+
+  font-style: italic;
+
+  &:hover {
+    border-color: $elm-textFormat-term-colorHover;
+
+    &:after {
+      color: $elm-textFormat-term-colorHover;
+    }
+  }
+}
+
+dfn {
+  &::after {
+    color:          $elm-textFormat-term-colorBase;
+    content:        '®'; // §¦ ¤ ®
+    //font-family:   $elm-textFormat-term-font;
+    font-family:   "IBM Plex Sans";
+    font-size:      3.3em;
+    font-style: normal;
+    font-weight: normal;
+    line-height:    0;
+    padding:        0 0 0 0.2em;
+    vertical-align: -0.4em;
+  }
+}
+
+i {
+  //background:    $elm-textFormat-term-colorBg;
+  //border-width:  2px;
+  //padding-left: 0.4em;
+  //padding-right: 0.4em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  > dfn, > i {
+    background: scale-color(colorScheme-site('1HD1'), $lightness: -10%, $alpha: -95%);
+    border-color: scale-color(colorScheme-site('1HD1'), $lightness: -10%, $alpha: -60%);
+
+    //$elm-textFormat-term-colorBase:  scale-color(colorScheme-site('2HD1'), $lightness: -10%, $alpha: -60%);
+    //
+    //$elm-textFormat-term-colorBg:    scale-color(colorScheme-site('2HD1'), $lightness: -10%, $alpha: -95%);
+  }
+  > dfn {
+    &::after {
+      color: scale-color(colorScheme-site('1HD1'), $lightness: -10%, $alpha: -60%);
+    }
+  }
+}
+
+blockquote {
+  dfn, i {
+    background:   #{'hsla(0,0%,0%,.05)'};
+    border-color: #{'hsla(0,0%,0%,.3)'};
+  }
+
+  dfn {
+    &::after {
+      color: #{'hsla(0,0%,0%,.3)'};
+    }
+  }
+}
+
+//&:before {
+//  content: "《";
+//}
+//&:after {
+//  content: "》";
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   acronym abbr
+//
+////////////////////////////////////////////////////////////////////
+
+// loginiai, content-based tagai
+
+acronym, abbr {
+  color: #910057;
+}
+
+h1 acronym, h1 abbr {
+  color: #666666;
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   kbd
+//
+////////////////////////////////////////////////////////////////////
+
+kbd {
+  //font-size: 0.75rem;
+  //font-weight: normal;
+  //font-weight: 600;
+  // font-style: italic;
+
+  // font-family: Consolas, monospace;
+  // font-family: "Envy Code R", monospace;
+
+  // font-family: "DejaVu Sans Code", monospace;
+  // font-family: "DejaVu Sans Code Bold", monospace;
+  // font-family: "DejaVu Sans Code Bold Oblique", monospace;
+  // font-family: "DejaVu Sans Code Oblique", monospace;
+
+  // font-family: Hasklig, monospace;
+  // font-family: "Hasklig Medium", monospace;
+  // font-family: "Hasklig Bold", monospace;
+  // font-family: "Hasklig Semibold", monospace;
+  // font-family: "Hasklig Black", monospace;
+
+  //font-family: "Iosevka Medium", monospace;
+  //font-family: Iosevka, monospace;
+  //font-family: "Iosevka Term", monospace;
+  //font-family: "Iosevka Term Medium", monospace;
+  //font-family: "Iosevka Term Bold", monospace;
+  //font-family: "Iosevka Term Heavy", monospace;
+  //Iosevka
+  //Iosevka Bold
+  //Iosevka Bold Italic
+  //Iosevka Bold Oblique
+  //Iosevka Extralight
+  //Iosevka Extralight Italic
+  //Iosevka Extralight Oblique
+  //Iosevka Heavy
+  //Iosevka Heavy Italic
+  //Iosevka Heavy Oblique
+  //Iosevka Italic
+  //Iosevka Light
+  //Iosevka Light Italic
+  //Iosevka Light Oblique
+  //Iosevka Medium
+  //Iosevka Medium Italic
+  //Iosevka Medium Oblique
+  //Iosevka Oblique
+  //Iosevka Term
+  //Iosevka Term Bold
+  //Iosevka Term Bold Italic
+  //Iosevka Term Bold Oblique
+  //Iosevka Term Extralight
+  //Iosevka Term Extralight Italic
+  //Iosevka Term Extralight Oblique
+  //Iosevka Term Heavy
+  //Iosevka Term Heavy Italic
+  //Iosevka Term Heavy Oblique
+  //Iosevka Term Italic
+  //Iosevka Term Light
+  //Iosevka Term Light Italic
+  //Iosevka Term Light Oblique
+  //Iosevka Term Medium
+  //Iosevka Term Medium Italic
+  //Iosevka Term Medium Oblique
+  //Iosevka Term Oblique
+  //Iosevka Term Thin
+  //Iosevka Term Thin Italic
+  //Iosevka Term Thin Oblique
+  //Iosevka Thin
+  //Iosevka Thin Italic
+  //Iosevka Thin Oblique
+
+  // font-family: "Hack Regular", monospace;
+
+  // font-family: "Source Code Pro", monospace;
+  // font-family: "Source Code Pro Medium", monospace;
+  // font-family: "Source Code Pro Semibold", monospace;
+
+  //Fira Code Bold
+  //Fira Code Light
+  //Fira Code Medium
+  //Fira Code Regular
+  //Fira Code Retina
+  background-color: hsl(0, 0%, 83%);
+  //font-family: "Fira Code Medium", monospace;
+  //font-family: "Fira Code Bold", monospace;
+  //font-family: "Fira Code Retina", monospace;
+  border-color:     hsl(0, 0%, 95%) hsl(0, 0%, 40%) hsl(0, 0%, 40%) hsl(0, 0%, 95%);
+  border-radius:    .4em;
+  //font-style: italic;
+
+  // font-family: "Input Mono Thin", monospace;
+  // font-family: "Input Mono", monospace;
+  // font-family: "Input Mono Medium", monospace;
+  // font-family: "InputMono Bold", monospace;
+  // font-family: "Input Mono Black", monospace;
+
+  // font-family: "Input Mono Compressed", monospace;
+  // font-family: "InputMonoCompressed Light", monospace;
+  // font-family: "InputMonoCompressed Medium", monospace;
+  // InputMonoCompressed
+  // InputMonoCompressed Black
+  // InputMonoCompressed BlackIta
+  // InputMonoCompressed Bold
+  // InputMonoCompressed BoldIta
+  // InputMonoCompressed ExLight
+  // InputMonoCompressed ExLightIta
+  // InputMonoCompressed Italic
+  // InputMonoCompressed Light
+  // InputMonoCompressed LightIta
+  // InputMonoCompressed Medium
+  // InputMonoCompressed MediumIta
+  // InputMonoCompressed Thin
+  // InputMonoCompressed ThinIta
+
+  // font-family: "IBM Plex Sans", Tahoma, Arial, Verdana, sans-serif;
+  // font-family: "IBM Plex Mono Text", monospace;
+  // font-family: "IBM Plex Mono Medium", monospace;
+  // font-family: "IBM Plex Mono SemiBold", monospace;
+  // font-family: "IBM Plex Mono Bold", monospace;
+
+  //font-family: "IBM Plex Mono", monospace;
+  //font-size: 0.95rem;
+  //font-weight: 600;
+  //font-style: italic;
+
+  // font-family: "Roboto", Tahoma, Arial, Verdana, sans-serif;
+  // font-family: "Open Sans", Tahoma, Arial, Verdana, sans-serif;
+
+  border-style:     solid;
+  border-width:     2px 3px 3px 2px;
+  color:            hsl(0, 0%, 10%);
+  font-family:      "Fira Code Regular", monospace;
+  font-size:        0.85rem;
+  font-weight:      600;
+  padding:          .07em .5em .07em;
+}
+
+
+
+
+
+

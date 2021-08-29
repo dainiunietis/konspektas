@@ -1,0 +1,1163 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>K&deg; Sublime Text shortcuts'ai-keybinding'ai</title>
+<!--  K &Dagger; -->
+<!-- ☼ &nearhk; &race; &simdot; &Kopf; &Kscr;	&#x1D4A6;	&#119974; &middot; &brvbar;    -->
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<script src="_js/sutkatu-suvestine.js"></script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Sublime Text 3 šūtkatų suvestinė (cheat-sheet)</h1>
+<p><a href="editor.sublime.hotkeys_old.htm">senasis naujame konspekte</a>, <a href="http://konspektas-prev.local/redaktoriai/sublime-3/sutkatai.htm">senajame Sublime 3</a>, <a href="http://konspektas-prev.local/redaktoriai/sublime-2/sutkatai.htm">senajame Sublime 2</a></p>
+<p><a href="editor.sublime.shortcut.cheat-sheet--is-cia-cutinti.htm">nepasidėtos senojo dalys</a> &#8212; iš ten cut'iname ir ką atkeliame į čia</p>
+<p><a href="!components.editor-command.htm">hotkey'sų HTML komponentas .c-editor-command</a></p>
+<p><code>D:\mano uzrasai\win10 hotkey management -- keyboard-shortcut shortcut-key.docx</code> &lt;&lt;&lt; kaip atjungti windows'ų globalius hotkeys'us</p>
+<h3>Pasidėti</h3>
+<ul>
+  <li>Ctrl+F3 to find the next occurrence of the current word or selected text</li>
+  <li>Alt+F3 to find all occurrences of the current word or selected text</li>
+</ul>
+<p>&nbsp;</p>
+<p> { &quot;keys&quot;: [&quot;ctrl+shift+k&quot;], &quot;command&quot;: &quot;run_macro_file&quot;, &quot;args&quot;: {&quot;file&quot;: &quot;res://Packages/Default/Delete Line.sublime-macro&quot;} },</p>
+<p>&nbsp;</p>
+<p>[Edit &gt; Permute Lines &gt; Reverse]</p>
+<p>[Edit &gt; Permute Lines &gt; Unique]</p>
+<p>[Edit &gt; Permute Lines &gt; Shuffle]</p>
+<p>[Edit &gt; Permute Selections &gt; Reverse]</p>
+<pre>TODO: -----------------------------------------------------------------------------------------------------------
+	// Find panel key bindings
+	{ "keys": ["enter"], "command": "find_next", "context":
+		[{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"}]
+	},
+	{ "keys": ["shift+enter"], "command": "find_prev", "context":
+		[{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"}]
+	},
+	{ "keys": ["alt+enter"], "command": "find_all", "args": {"close_panel": true},
+		 "context": [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"}]
+	},
+
+	// Replace panel key bindings
+	{ "keys": ["enter"], "command": "find_next", "context":
+		[{"key": "panel", "operand": "replace"}, {"key": "panel_has_focus"}]
+	},
+	{ "keys": ["shift+enter"], "command": "find_prev", "context":
+		[{"key": "panel", "operand": "replace"}, {"key": "panel_has_focus"}]
+	},
+	{ "keys": ["alt+enter"], "command": "find_all", "args": {"close_panel": true},
+		"context": [{"key": "panel", "operand": "replace"}, {"key": "panel_has_focus"}]
+	},
+	{ "keys": ["ctrl+alt+enter"], "command": "replace_all", "args": {"close_panel": true},
+		 "context": [{"key": "panel", "operand": "replace"}, {"key": "panel_has_focus"}]
+	},
+
+	// Incremental find panel key bindings
+	{ "keys": ["enter"], "command": "hide_panel", "context":
+		[{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+	},
+	{ "keys": ["shift+enter"], "command": "find_prev", "context":
+		[{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+	},
+	{ "keys": ["alt+enter"], "command": "find_all", "args": {"close_panel": true},
+		"context": [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+	},
+----------------------------------------------------------------------------------------------------------------</pre>
+<h2>Bendri-įvairūs</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%"><h3>Kodo formatavimas white space'su eilučių pradžioje, t. y. atitraukimais-indent'ais</h3>
+      <h4>Indent'avimas </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+end</kbd> / <kbd>ctrl+home</kbd></p>
+        <p>[Edit &gt; Line &gt; Indent] / [Edit &gt; Line &gt; Unindent] </p>
+        <p>Rankinis indent'avimas, t. y. indent'uoja pažymėtą kodą.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+super+home</kbd> / <kbd>---</kbd></p>
+        <p>Performatuoja su atitraukimais pažymėtą kodą. Išsaugo esamas eilutes.</p>
+        <p>1.</p>
+        <p>[Edit &gt; Line &gt; Reindent]</p>
+        <p><code>{  &quot;command&quot;: &quot;reindent&quot;, &quot;args&quot;: {&quot;single_line&quot;: <strong>true</strong>} }</code></p>
+        <p>2.</p>
+        <p><strong>ką daro kitaip?</strong></p>
+        <p><code>{  &quot;command&quot;: &quot;reindent&quot;, &quot;args&quot;: {&quot;single_line&quot;: <strong>false</strong>} }</code></p>
+      </div>
+      <h4>Žymėjimas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+home</kbd></p>
+        <p>[Selection &gt; Expand Selection to Indentation] </p>
+        <p>Pažymi pagal atitraukimą, pirmą kartą pažymi tą lygį kuriame yra kursorius, pakartotinai spaudžiant &#8212; aukštesniuosius.</p>
+      </div>
+      <h4>Indent'avimo simbolių keitimas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[View &gt; Indentation &gt; Convert Indentation to <strong>Spaces</strong>/<strong>Tabs</strong>]</p>
+        <p>Arba klaktelėti kairįjį pelės klavišą status bar'e ant &quot;Tab Size:X&quot; &#8212; parodo tą patį meniu kaip ir [View &gt; Indentation &gt; ...]</p>
+        <p>Visame faile keičia indentation'ų simbolius, nepriklausomai  yra kodo pažymėjimas ar ne.</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h3>Kodo žymėjimas-atžymos (Bookmarks)</h3>
+      <p>&nbsp;</p>
+      <h4>Eilučių</h4>
+      <p>[Goto &gt; Bookmarks &gt; ...]</p>
+      <pre><code>{ "keys": ["f7"], "command": "next_bookmark" },
+{ "keys": ["shift+f7"], "command": "prev_bookmark" },
+{ "keys": ["ctrl+f7"], "command": "toggle_bookmark" },
+{ "keys": ["ctrl+shift+f7"], "command": "clear_bookmarks" },
+{ "keys": ["alt+f7"], "command": "select_all_bookmarks" },</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h3>Teksto-kodo paieška
+      </h3>
+      <p><kbd>ctrl+f</kbd></p>
+      <p>[Find &gt; Find...] </p>
+      <p>Atidaro ir aktyvuoja (reiškia kursorius yra ieškomo teksto laukelyje) &quot;search panel&quot; redaktoriaus lango apačioje. Jeigu prieš atidarant yra pažymėjimas &#8212; jis įkeliamas į ieškomo teksto laukelį, beje taip pat veikia jei panelė jau yra atidaryta.</p>
+      <p><kbd>ctrl+f3</kbd> <strong>/</strong> <kbd>ctrl+f4</kbd></p>
+      <p>[Find &gt; Find Previous<strong> /</strong> Next]</p>
+      <p>Atgal <strong>/</strong> pirmyn ieško teksto kuris yra paieškos panelės laukelyje. Veikia ir kai paieškos panelė atidaryta, ir uždaryta. Pažymėtas tekstas veikimo neįtakoja.</p>
+      <p><kbd>f3</kbd> <strong>/</strong> <kbd>f4</kbd></p>
+      <p>[C][find_under_prev] <strong>/</strong> [C][find_under] [Find &gt; Quick Find]</p>
+      <p>Ieško <strong>atgal</strong> / <strong>pirmyn</strong> pažymėto teksto, o jeigu nėra pažymėjimo &#8212; žodžio, kuriame yra kursorius (tame tarpe ir kai kursorius yra prie vieno iš žodžio šonų). </p>
+      <p>Ieškotas žodis įvedamas į Find ir Replace panel'ės  ieškomo teksto laukelį, tai padaro nepriklausomai atidaryta panelė ar ne. </p>
+      <p class="em-note em--small- em--narrow">Iš esmės tai [Find &gt; Find...] naudojimas, vienu paspaudimu įvedamas paieškos string'as ir įvykdoma paieška.      </p>
+      <hr>
+      <p><kbd>ctrl+shift+f</kbd></p>
+      <p>[Find &gt; Replace...]</p>
+      <p>Atidaro &quot;replace panel&quot; redaktoriaus lango apačioje. Ieškomo teksto laukelį veikia kaip [Find &gt; Find...] </p>
+      <p><kbd>ctrl+shift+f4</kbd></p>
+      <p>[Find &gt; Replace Next] </p>
+      <hr>
+      <p><kbd>ctrl+super+f</kbd></p>
+      <p>[Find &gt; Find in Files...] </p>
+      <p>Paieškos veikimo nustatymai-opcijos:</p>
+      <dl>
+        <dt>&quot;Use Buffer&quot;</dt>
+        <dd>
+          <p><img src="images/sutkatai_use-buffer.png" alt="" width="175" height="63"></p>
+          <p>Nustato kur bus išvedami paieškos rezultatai:</p>
+          <ul>
+            <li>Įjungta &#8212;   naujame redaktoriaus lange-buferyje, tokiu būdu <strong>galima turėti ne vienos paieškos rezultatus</strong> atskiruose languose.</li>
+            <li>Išjungta &#8212; panelėje redaktoriaus apačioje, ją su Esc paslėpus, galima su [Find &gt; Find Results &gt; Show Results Panel] vėl atidaryti. Čia rodomi paskutinės paieškos rezultatai.</li>
+          </ul>
+        </dd>
+      </dl>
+      <p>Laukelis &quot;Where:&quot;</p>
+      <p>*.php,&lt;open files&gt;,&lt;open folders&gt;,D:\apache_sites\sites\1974films\gallery </p>
+      <hr>
+      <p><kbd>super+f</kbd></p>
+      <p>[Find &gt; Use Selection for Find]</p>
+      <p>Pakeičia Find arba Replace panel'ės  ieškomo teksto laukelį  (tai padaro nepriklausomai atidaryta panelė ar ne):</p>
+      <ul>
+        <li>jeigu nėra pažymėjimo &#8212; jei kursorius yra žodyje arba prie vieno iš jo šonų &#8212; tuo žodžiu,</li>
+        <li>jeigu yra pažymėjimas &#8212; pažymėtu tekstu. </li>
+      </ul>
+      <p><kbd>super+shift+f</kbd></p>
+      <p>[Find &gt; Use Selection for Replace]</p>
+      <p>Pakeičia &quot;replace panel&quot;ės laukelį &quot;Replace With:&quot;, veikia kaip [Find &gt; Use Selection for Find]      </p>
+      <hr>
+      <p><kbd>alt+f3</kbd> / <kbd>alt+f4</kbd></p>
+      <p><code>&quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;incremental_find&quot;, &quot;reverse&quot;:true}</code></p>
+      <p>/</p>
+      <p>[Find &gt; Incremental Find]      </p>
+      <hr>
+      <p><kbd>super+f3</kbd> / <kbd>super+f4</kbd></p>
+      <p>[Find &gt; Find Results &gt; Previous<strong> /</strong> Next Result] </p>
+      <p><kbd>super+shift+f4</kbd></p>
+    <p>[Find &gt; Find Results &gt; Show Results Panel]</p></td>
+    <td width="20%"><h3>Spalvų kodai
+
+      </h3>
+      <h4>Spalvos kodo įvedimas ir esamo redagavimas      </h4>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-6">
+        <p><kbd>ctrl+q</kbd> [MR][Choose Color]</p>
+        <p>Data\Installed Packages\Color Highlighter.sublime-package</p>
+        <p>[C][color_picker]</p>
+        <p class="em-important em--narrow">Redaguoja esamą spalvos kodą, negali įvesti spalvos kodo  &quot;tuščioje vietoje&quot;.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-7">
+        <p><kbd>ctrl+shift+q</kbd></p>
+        <p>Data\Packages\ColorPicker</p>
+        <p>[C][color_pick]</p>
+        <p>Ir įveda tuščioje vietoje, ir redaguoja esamą spalvos kodą.</p>
+        <p class="em-alert em--narrow">Supranta tik <code>#RRGGBB</code> formatą.</p>
+        <p>Iškviečia windose'inį Color Picker'į ir jame išsirinkus spalvą, įterpia į redaktorių formatu <code>#RRGGBB</code>.</p>
+        <p>Jeigu kursorius/pažymėjimas yra spalvos kode, atidarytame Color Picker'yje iš karto rodo tą spalvą.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-8">
+        <p><kbd>ctrl+super+q</kbd> [MR][Color Helper &gt;
+        Color Picker]</p>
+        <p>Data\Installed Packages\ColorHelper.sublime-package</p>
+        <p>[C][color_helper::color_picker]</p>
+        <p>Ir įveda tuščioje vietoje, ir redaguoja esamą spalvos kodą.</p>
+        <p class="em-note em--narrow">Supranta redaguojamus ir gali įvesti &quot;tuščioje vietoje&quot; visus spalvos kodų formatus, t.y. <code>#RRGGBB</code>, <code>rgb()</code>, ...</p>
+        <p class="em-important em--narrow">Galima ir konvertuoti į kitą spalvos kodo formatą.</p>
+        <p class="em-alert em--narrow">Patį spalvos kodo įvedimą galima padaryti tik su pele, su klaviatūra negalima.</p>
+      </div>
+      <h4>Spalvos kodų formatų konvertavimas      </h4>
+      <p><strong>Konvertuojame su</strong> [MR][Color Helper &gt;
+      Color Picker]      </p>
+      <h4>SASS'o kintamieji</h4>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-5">
+        <p>[MR][Go to variable definition]</p>
+        <p>Data\Installed Packages\Color Highlighter.sublime-package</p>
+        <p>[C][go_to_var_definition] </p>
+      </div>
+      <h4>Kita</h4>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-9">
+        <p><kbd>-</kbd> [MR][Color Helper &gt;
+          Color Info]</p>
+        <p>Data\Installed Packages\ColorHelper.sublime-package        </p>
+        <p>Svarbiausia, kad galima gerai-tikroviškai pamatyti spalvą. Jeigu  yra permatomumas, t. y. alfa kanalas, tada parodo ir spalvą be permatomumo, ir su.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-10">
+        <p><kbd>ctrl+super+q</kbd> [MR][Color Helper &gt;
+          Color Palettes]</p>
+        <p>Data\Installed Packages\ColorHelper.sublime-package      </p>
+      </div>
+      <h4>Nenaudojame-atjungiame, t. y. sudisable'intas plūgas</h4>
+<div class="c-editor-command o-collapse-locdep" id="cmd-4">
+        <p><kbd>alt+insert</kbd></p>
+        <p>Data\Installed Packages\CSS Color Converter.sublime-package</p>
+        <p>[C][colorconvert] </p>
+        <p>Pažymėtą spalvos kodą (<strong>turi būti pažymėtas visas spalvos kodas</strong>) konvertuoja ratu: hex &#x279c; rgba &#x279c; hsla &#x279c; hex </p>
+        <p class="em-alert">Šio plūgo sukonvertuotų spalvų kodų nesupranta &quot;Color Highlighter&quot; plūgas.</p>
+      </div>
+
+    <p>&nbsp;</p></td>
+    <td width="20%"><h3>Eilutės
+      </h3>
+      <h4>Dublikavimas-dauginimas</h4>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-packages-duplicate-lines">
+        <p><kbd>insert</kbd></p>
+        <p>Installed Packages\Duplicate Lines.sublime-package</p>
+        <p>jei nėra pažymėjimo — dublikuoja eilutę kurioje yra kursorius, jei yra — visas eilutes, kuriose yra pažymėjimas </p>
+      </div>
+      <h4>Trynimas </h4>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-edit-line-delete-line">
+        <p><kbd>shift+backspace</kbd></p>
+        <p>Installed Packages\Delete Lines.sublime-package</p>
+        <p>[C][delete_lines] </p>
+        <p>Trina visas eilutes, kuriose yra kursorius ir pažymėjimas.</p>
+        <hr>
+        <p>[Edit &gt; Line &gt; Delete Line]  &#8212; veikia ??? </p>
+      </div>
+      <h4>Tuščių eilučių trynimas</h4>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-delete_blank_lines">
+        <p><kbd>alt+backspace</kbd></p>
+        <p>Packages\DeleteBlankLines</p>
+        <p>[C][delete_blank_lines&gt;surplus:false] </p>
+        <p>Pažymėtame kode trina visas visiškai tuščias eilutes, t. y. be nė vieno white space'o simbolio.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-delete_blank_lines-surplus">
+        <p><kbd>alt+shift+backspace</kbd></p>
+        <p>Packages\DeleteBlankLines</p>
+        <p>[C][delete_blank_lines&gt;surplus:true]</p>
+        <p>Veikia kaip esanti virš, tik trina tas tuščias eilutes kurių yra kartu daugiau negu viena, ir visada vieną palieka. </p>
+      </div>
+      <p>&nbsp;</p>
+      <h4>Navigacija</h4>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep" id="cmd-edit-line-delete-line2">
+      <p><kbd>end</kbd> / <kbd>shift+end</kbd></p>
+      <p>Installed Packages\GotoEndOfLineOrScope.sublime-package</p>
+      <p><a href="https://github.com/SublimeText/GoToEndOfLineOrScope#binding">Kaip konfigūruojama</a>.</p>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h3>Pagalba-help'as, dokumentacija</h3>
+    <p>&nbsp;</p>
+    <p>package::Zeal</p>
+    <p>Data\Packages\User\Zeal.sublime-settings</p>
+    <p>{&quot;keys&quot;: [&quot;f1&quot;], &quot;command&quot;: &quot;zeal_search_selection&quot;}, {&quot;keys&quot;: [&quot;shift+f1&quot;], &quot;command&quot;: &quot;zeal_search&quot;}, </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Sąsaja/interface</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%"><h3>Redaktoriaus zona</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>f11</kbd></p>
+        <p>[View &gt; Enter Full Screen]</p>
+        <p>[C][toggle_full_screen]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+f11</kbd></p>
+        <p>[View &gt; Enter Distraction Free Mode]</p>
+        <p>[C][toggle_distraction_free]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+f11</kbd></p>
+        <p>[View &gt; Show Minimap]</p>
+        <p>[C][toggle_minimap] </p>
+        <p><code>Packages\Default\Minimap.sublime-settings</code> &#8212; minimap'o nustatymai, savo nustatymus laikyti <code>Packages\User\Minimap.sublime-settings</code></p>
+      </div></td>
+    <td width="20%"><h3>ST programos langais </h3>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-file-new-window2">
+        <p><kbd>ctrl+shift+n</kbd></p>
+        <p>[File &gt; New Window]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep" id="cmd-file-close-window" name="cmd-file-close-window">
+        <p><kbd>ctrl+shift+w</kbd></p>
+        <p>[File &gt; Close Window]</p>
+      </div>
+    <p>&nbsp;</p>
+    <p><a href="#cmd-file-close-window">[File &gt; Close Window]</a></p>
+    <p>&nbsp;</p></td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Failai</h2>
+<p>Pilni:<br>
+<a href="https://packagecontrol.io/packages/FileBrowser">https://packagecontrol.io/packages/FileBrowser</a><br>
+<a href="https://packagecontrol.io/packages/FileManager">https://packagecontrol.io/packages/FileManager</a></p>
+<p>esminės komandos: <br>
+<a href="https://packagecontrol.io/packages/SideBarTools">https://packagecontrol.io/packages/SideBarTools</a><br>
+<a href="https://packagecontrol.io/packages/Open%20in%20Default%20Application">https://packagecontrol.io/packages/Open%20in%20Default%20Application</a> </p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%"><h3>Operacijos su failais</h3>
+      <p><kbd>ctrl+n</kbd></p>
+      <p>[File &gt; New File]      </p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+s</kbd></p>
+        <p>[File &gt; Save] </p>
+        <p>Py: <code>&quot;command&quot;: &quot;save&quot;</code></p>
+        <p>Naujai sukurtas ir dar neišsaugotas failas išsaugomas priklausomai koks išsaugojimo metu aktyvus projekto katalogas Side bar'e, tad norint kažkur konkrečiai išsaugoti, Side bar'e nueiname į tą katalogą ir save'iname, nors tą patį tiesa galima padaryti ir save'inimo lange. </p>
+      </div>
+      <p><kbd>ctrl+shift+s</kbd></p>
+      <p>[File &gt; Save As...] </p>
+      <p><kbd>ctrl+alt+s</kbd></p>
+      <p>[File &gt; Save All] </p>
+      <p><kbd>ctrl+w</kbd></p>
+      <p>[File &gt; Close File] </p>
+      <p><kbd>ctrl+alt+w</kbd></p>
+      <p>[File &gt; Open Recent &gt;
+        Reopen Closed File]    </p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>super+shift+e</kbd></p>
+      <p><a href="editor.sublime.packages.index-use.htm#(h)">SideBarEnhancements</a></p>
+      <p>[CP][File: Reveal]</p>
+      <p>[C][side_bar_reveal]</p>
+      <p>Atidaro naują window'sų explorer'io langą, kuriame pažymi redaguojamą-aktyvų failą.</p>
+      <p>[MSB][Reveal]</p>
+      <p>Atidaro naujus window'sų explorer'io langus visiems Side bar'e pažymėtiems failams.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+r</kbd></p>
+      <p>[C][side_bar_open]</p>
+      <p>[MSB][Open / Run]</p>
+      <p><a href="https://packagecontrol.io/packages/Open%20in%20Default%20Application">Open in Default Application</a> &#8212; jeigu reikėtų pakeisti</p>
+      <p>Atidaro-paleidžia failą window'suose.</p>
+</div>
+      <h4>Failų atidarymas      </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+o</kbd>      </p>
+      </div>
+      <p><a href="#">[Goto > Goto Anything…]</a></p>
+      <p><a href="#editCmd-FuzzyFileNav-FuzzyNavHere">package::FuzzyFileNav "command": "fuzzy_start_from_file"</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+o</kbd></p>
+        <p>&quot;command&quot;: &quot;ffp_goto_file&quot;</p>
+        <p>package::FuzzyFilePath</p>
+        <p>Atidaro redaktoriuje failą, kurio kelias yra redaktoriuje ir kursorius yra jame.</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h3>Side bar'as</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+e</kbd></p>
+        <p>[View &gt; Side Bar &gt; Show/Hide Side Bar]</p>
+        <p>Atidaro-uždaro side bar'ą, kuriame atidaryto projekto failai. </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+e</kbd></p>
+        <p>[MR][Reveal In Side Bar] </p>
+        <p>[C][reveal_in_side_bar] </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+e</kbd></p>
+        <p>[C][focus_side_bar] </p>
+        <p>Sufokusuoja Side Bar'ą (Give the focus to the side bar).</p>
+        <p>Kai Side Bar'as sufokusuotas:</p>
+        <ul>
+          <li><kbd>up</kbd> <kbd>down</kbd> <kbd>left</kbd> <kbd>right</kbd> vaikšto po atidarytus-failus/open-files ir projekto failų medį,
+            <p>vaikštant pasirinkti failai parodomi naujai atidarytame tab'e su italic'iniu failo pavadinimu jame, tai yra &quot;semi-transient view&quot;, šiame-tokiame view'se atidarytas failas neatidaromas atidarytų-failų/open-files srityje:</p>
+            <blockquote>
+              <p>Files opened from the sidebar create <em>semi-transient</em> views. Unlike transient views, semi-transient views show up as a new tab. The tab title of semi-transient views appears in italics. Before a new semi-transient view is opened, any other pre-existing semi-transient view in the same pane gets automatically closed.</p>
+            </blockquote>
+          </li>
+          <li><kbd>enter</kbd> atidaro pasirinktą failą,</li>
+          <li><kbd>Esc</kbd> gražina fokusą į dokumentą, kuris tuo metu aktyvus-pasirinktas Side Bar'e (Return the focus to the view). </li>
+        </ul>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="20%"><h3>Navigacija tarp failų
+    </h3>
+      <h4>Perjunginėjimas atidarytų failų </h4>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+tab</kbd> / <kbd>ctrl+shift+tab</kbd></p>
+      <p>Atidaro prieš tai aktyvuotus failus.</p>
+    </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>super+pagedown</kbd> / <kbd>super+pageup</kbd></p>
+      <p>dabar yra: ctrl+pagedown</p>
+      <p>Aktyvuoja atidarytus failus iš eilės kaip yra side bar'o &quot;OPEN FILES&quot; sąraše. </p>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h3>Failų keliai</h3>
+      <h4>Failų kelių įvedimas redaktoriuje</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+space</kbd></p>
+        <p>&quot;command&quot;: &quot;insert_path&quot;, &quot;args&quot;: {&quot;type&quot;: &quot;absolute&quot;} </p>
+        <p>package::FuzzyFilePath </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+space</kbd></p>
+        <p>&quot;command&quot;: &quot;insert_path&quot;, &quot;args&quot;: {&quot;type&quot;: &quot;relative&quot;} </p>
+        <p>package::FuzzyFilePath </p>
+      </div>
+      <h4>Failų kelių kopijavimas</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+p</kbd></p>
+        <p>[MSB][Copy as Text &gt; Path]</p>
+        <p>[C][side_bar_copy_path]</p>
+        <p>Gauname: <code>D:\apache_sites\sites\1974films\index --- GABALELIAI.php</code></p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+p</kbd></p>
+        <p>[MSB][Copy Name]</p>
+        <p>[C][side_bar_copy_name] </p>
+        <p>Gauname: <code>index --- GABALELIAI.php</code></p>
+      </div>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h3>package::OpenedFiles</h3>
+      <p><a href="https://packagecontrol.io/packages/OpenedFiles">https://packagecontrol.io/packages/OpenedFiles</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+e</kbd></p>
+        <p>&quot;command&quot;: &quot;opened_files&quot;, 		&quot;args&quot;: { 			&quot;focus&quot;: true 		}        </p>
+        <p>Jeigu yra [View &gt; Layout &gt; Single], padaro [View &gt; Layout &gt; Columns: 2], ir kairiajame stulpelyje sukuria naują failo buferį, kuriame parodo visus atidarytus failus.        </p>
+        <p class="em-note">O uždaryti reikia kaip atidarytą failą, plius dar palieka group'as.</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td><h3>package::FuzzyFileNav</h3>
+      <p><a href="https://github.com/facelessuser/FuzzyFileNav">https://github.com/facelessuser/FuzzyFileNav</a></p>
+      <p class="em-important">Esminis skirtumas tarp FuzzyFileNav'o ir [Goto &gt; Goto Anything…] panel'ių &#8212; FuzzyFileNav'o panel'ėje filtruojama vieno katalogo turinys, o [Goto &gt; Goto Anything…] &#8212; viso projekto. </p>
+      <h4>FuzzyFileNav'o quick panel'ės filtravimo input'o veikimas</h4>
+      <p>Pačioje pradžioje įvedus:</p>
+      <ul>
+        <li><code>\</code> arba <code>/</code> &#8212; FuzzyFileNav'o panel'eje atidaro-nukeliauja į šakninį katalogą disko, kuriame šiuo metu yra panel'eje browse'inama</li>
+        <li><code>~/</code> &#8212; FuzzyFileNav'o panel'eje atidaro-nukeliauja į Windows'ų user'io katalogą (the home folder), pas mane šiuo metu &#8212; C:\Users\zm</li>
+      </ul>
+      <h4>Globaliai ST'e veikiančios komandos ir hotkey'sai</h4>
+      <div id="editCmd-FuzzyFileNav-FuzzyNavHere" class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+o</kbd></p>
+        <p>[MR][Fuzzy Nav Here...] <br>
+        <code>&quot;command&quot;: &quot;fuzzy_start_from_file&quot; </code></p>
+        <p>Atidaro FuzzyFileNav'o palette'ę aktyvaus redaktoriaus failo kataloge.      </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[MSB][Fuzzy Nav Here...]</p>
+        <p>Atidaro FuzzyFileNav'o palette'ę kataloge nuo kurio (ar failo jame) buvo iškviestas kontekstinis meniu.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[MR][Fuzzy File Nav &gt; Fuzzy Nav] </p>
+        <p>[MSB][Fuzzy File Nav &gt; Fuzzy Nav] </p>
+        <p><code>&quot;command&quot;: &quot;fuzzy_file_nav&quot; </code></p>
+        <p>Atidaro FuzzyFileNav'o panel'ę šakniniame disko, kuriame yra aktyvus redaktoriaus failas, kataloge.      </p>
+      </div>
+      <h4>FuzzyFileNav'o palette'ėje veikiantys hotkey'sai      </h4>
+      <p>Atidaro Key Bindings'ų failą su visais FuzzyFileNav'o palette'ės hotkey'sais, kurių dauguma deja neveikia, nes juo overwrite'ina kiti hotkey'sai:</p>
+      <p>[Preferences &gt; Package Settings &gt; FuzzyFileNav &gt; Key Bindings - Default]</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+e</kbd></p>
+        <p><code>&quot;command&quot;: &quot;fuzzy_reveal&quot;, &quot;context&quot;: [{&quot;key&quot;: &quot;fuzzy_reveal&quot;}]</code></p>
+        <p>Windows'ų File Explorer'yje atidaro FuzzyFileNav'o palette'ėje aktyvų katalogą, ar File Explorer'yje bus kas pažymėta:</p>
+        <ul>
+          <li>Jei FuzzyFileNav'o panel'ės filtravimo input'e nėra suvesto <strong>viso</strong> failo ar katalogo pavadinimo (panel'ėje aktyvus-pažymėtas katalogas-failas įtakos neturi), tada atidarys aktyvų-browse'inamą katalogą be pažymėto katalogo ar failo.</li>
+          <li>Jei FuzzyFileNav'o panel'ės filtravimo input'e yra suvestas <strong>visas</strong> failo ar katalogo pavadinimas &#8212; atidarys aktyvų-browse'inamą katalogą su pažymėtu tuo katalogu ar failu.</li>
+        </ul>
+        <blockquote>
+          <p id="fuzzy-reveal-filefolder-in-file-manager"> Fuzzy Reveal File/Folder in File Manager</p>
+          <p>ctrl + r will reveal the location of the file/folder name typed into the FuzzyFileNav panel in your file manager. Will use the current folder if a valid one is not typed into the panel. </p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Enter</kbd> / <kbd>Right</kbd></p>
+        <blockquote>
+          <p>When a file is selected in the drop down list of the quick panel, you can either press enter or Right to open the file.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+.</kbd></p>
+        <blockquote>
+          <p>Fuzzy Current Working View</p>
+          <p>ctrl + . gets the file name of the current working view and copies it to the Fuzzy File Nav Panel. </p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+s</kbd></p>
+        <p>Save As'ina redaktoriuje aktyvų failą į FuzzyFileNav'o panel'ės nunaviguotą  katalogą, jei FuzzyFileNav'o panel'ės filtravimo input'e yra kas nors įvesta, tik paspaudus tokio pavadinimo failas bus sukurtas ir atidarytas redaktoriuje.</p>
+        <blockquote>
+          <p id="fuzzy-save-as-file">Fuzzy Save As File</p>
+          <p>ctrl + s saves view to the the currently opened folder in the FuzzyFileNav Panel. The name that is typed into the panel is the name of the file the view will be saved to. You will be prompted for file overwrite. </p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+f</kbd></p>
+        <blockquote>
+          <p id="fuzzy-search-folder"> Fuzzy Search Folder</p>
+          <p>ctrl + f will open a folder search panel with the current folder&rsquo;s path, or a the path of a subfolder if one is typed into the FuzzyFileNav panel, pre-loaded into the where box. Any content in clipboard will be pre-loaded into the Find box. </p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <h5>Operacijos su failas</h5>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+d</kbd></p>
+        <blockquote>
+          <p>ctrl + d deletes the folder/file object currently typed in the FuzzyFileNav panel.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+c</kbd> -- <kbd>ctrl+x</kbd> -- <kbd>ctrl+v</kbd></p>
+        <p>Failų kilojimas tarp katalogų su Copy, Cut, Paste</p>
+        <blockquote>
+          <p id="fuzzy-file-copy"> Fuzzy File Copy</p>
+          <p>ctrl + c Copies the folder/file object currently typed file in the FuzzyFileNav panel. The copy will remain in the clipboard until a paste is performed or a new copy is initiated.</p>
+          <p id="fuzzy-file-cut">Fuzzy File Cut</p>
+          <p>ctrl + x cuts (moves) the folder/file object currently typed into the FuzzyFileNav panel. A Fuzzy File Paste must be performed to complete the cut (move).</p>
+          <p id="fuzzy-file-paste">Fuzzy File Paste</p>
+          <p>ctrl + v Completes the copying and pasting of the folder/file object that is in the clipboard. The file/folder will be pasted into the currently opened folder in the FuzzyFileNav panel. To rename the folder/file object on paste, type the full name in the panel that should be used before pressing ctrl + v. </p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <h5>Naujų failų-katalogų sukūrimas</h5>
+      <blockquote>
+        <p id="fuzzy-make-file">Fuzzy Make File</p>
+        <p>ctrl + n Creates a new file in the currently opened folder in the FuzzyFileNav panel. The name that is typed into the panel is the name that will be used.</p>
+        <p id="fuzzy-make-folder">Fuzzy Make Folder</p>
+        <p>ctrl + shift + n Creates a new folder in the currently opened folder in the Fuzzy File Nav Panel. The name that is typed into the panel is the name that will be used. </p>
+      </blockquote>
+    <p>&nbsp;</p></td>
+    <td><h3>package::FuzzyFilePath</h3>
+    <p><a href="https://github.com/sagold/FuzzyFilePath/wiki/Tutorial:-Add-support-for-python-packages">https://github.com/sagold/FuzzyFilePath/wiki/Tutorial:-Add-support-for-python-packages</a> &#8212; pavyzdys kaip pasidaryti sau tinkamą </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Operacijos ne redaktoriuje </p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%"><p>&nbsp;</p></td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Neredaguojantys veiksmai redaktoriuje</h2>
+<div class="c-editor-command o-collapse-locdep">
+  <p><kbd>f9</kbd></p>
+  <p>[Tools &gt; Command Palette…]</p>
+  <p><a href="http://docs.sublimetext.info/en/latest/reference/command_palette.html">sublimetext.info/en/latest/reference/command_palette.html</a></p>
+</div>
+<p>&nbsp;</p>
+<div class="c-editor-command o-collapse-locdep">
+  <p><kbd>alt+f2</kbd></p>
+  <p>[Tools &gt; Snippets…]</p>
+  <p>Tai ta pati &quot;Command Palette…&quot; panelė su įvestu <code>Snippet:</code></p>
+</div>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+		<tr>
+				<td width="20%"><h3>Navigacija overlay'ėjuje fuzzy finder'iu</h3>
+				  <p>Navigacija failų kode per sąsają || Navigacija pagal kodo struktūras || Navigacija overlay'ėjuje projekte || Navigacija
+          &#8212; projekte (projekto failuose)</p>
+				  <div id="editCmd-gotoAnything" class="c-editor-command o-collapse-locdep">
+				    <p><kbd>f8</kbd></p>
+            <p>[Goto &gt; Goto Anything…]</p>
+            <p>Overlay'ėjuje filtruoja projekto failus pagal jų pavadinimą.</p>
+            <p>Jeigu pirma neįvedamas spec. simbolis &#8212; overlay'ėjuje rodo failus, įvedant tekstą jie filtruojami su <em>fuzzy finder</em> &#8212; t. y. ..., filtruojami ir failų vardai, ir keliai, kokie failai rodomi:</p>
+            <ul>
+              <li>jeigu redaktoriaus lange nėra atidaryto projekto &#8212; visi tame lange atidaryti failai,</li>
+              <li>jeigu yra atidarytas projektas &#8212; visi projekto failai.</li>
+            </ul>
+            <p>Pasirinkus failas atidaromas.</p>
+            <p class="Note mazas siauras">Įvedus ar nieko neįvedus jokio filtro, su <kbd>&uarr;</kbd> ir <kbd>&darr;</kbd> pasirinkus failą, galima į filtrą įvesti spec. simboliį: <code>@</code>, <code>#</code> ar <code>:</code>, tada overlay'ėjuje išves atitinkamai: &quot;simbolius&quot;, žodžius ar čia nieko neišves (toliau įvedant skaičius nuskrūlins į įvestą eilutę),  ir toliau vedant tekstą jau filtruos naujajį sąrašą.</p>
+			    </div>
+				  <p>&nbsp;</p>
+				  <hr>
+					<div class="c-editor-command o-collapse-locdep">
+					  <p><kbd>ctrl+f8</kbd></p>
+            <p>[Goto &gt; Goto Symbol…]</p>
+            <p>Overlay'ėjuje filtruoja <strong>aktyvaus failo</strong> &quot;simbolius&quot;: funkcijas, kintamuosius, ...</p>
+            <p>Tai ta pati &quot;Goto Anything…&quot; panelė su pirmu simboliu <code>@</code>. </p>
+				  </div>
+					<div class="c-editor-command o-collapse-locdep">
+					  <p><kbd>ctrl+shift+f8</kbd></p>
+            <p>[Goto &gt; Goto Symbol in Project...]</p>
+            <p>Overlay'ėjuje filtruoja<strong> projekto failų</strong> &quot;simbolius&quot;: funkcijas, kintamuosius, ... </p>
+				  </div>
+					<p>&nbsp;</p>
+					<div class="c-editor-command o-collapse-locdep">
+            <p><kbd>alt+f8</kbd></p>
+            <p>[Goto &gt; Goto Word…]</p>
+            <p>Panelėje filtruojami faile esantys žodžiai.</p>
+            <p>Tai ta pati &quot;Goto Anything…&quot; panelė su pirmu simboliu <code>#</code>.</p>
+          </div>
+          <p>&nbsp;</p>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>shift+f8</kbd></p>
+            <p>[Goto &gt; Goto Line…]</p>
+            <p>Nuskrūlina į įvestą eilutę.</p>
+            <p>Tai ta pati &quot;Goto Anything…&quot; panelė su pirmu simboliu <code>:</code>. </p>
+          </div>
+          <p>&nbsp;</p></td>
+				<td width="20%"><h3>Žymėjimas/selection
+					</h3>
+				  <h4>Blokinis pažymėjimas (Column Selection)						</h4>
+					<div class="c-editor-command o-collapse-locdep">
+								<p><kbd>tempti-ratuku</kbd> |  <kbd>tempti-dešniu + shift </kbd></p>
+								<p>žymėti bloku						</p>
+					</div>
+					<p><kbd>ctrl+alt+up</kbd> / <kbd>ctrl+alt+down</kbd></p>
+					<p><strong>Aukštyn</strong> / <strong>Žemyn</strong> plečia blokinį pažymėjimą.					</p>
+					<h4>Daugybinis pažymėjimas (Multiple Selection)          </h4>
+					<div class="c-editor-command o-collapse-locdep">
+            <p><kbd>ctrl</kbd> + žymėjimas mouse-left-button</p>
+            <p>prie esamo pažymėjimo, ar tik padėto kursoriaus, prideda naują pažymėjimo zoną (add to selection), t. y. sukuria daugybinį pažymėjimą</p>
+          </div>
+          <p><kbd>alt</kbd> + žymėjimas mouse-left-button</p>
+          <p>iš esamo pažymėjimo/ų atima, atžymi (subtract from selection)</p>
+          <hr>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>ctrl+d</kbd></p>
+            <p>[Find &gt; Quick Add Next] </p>
+            <p>[Selection &gt; Expand Selection to Word] &#8212; iškviečia tą pačią komandą</p>
+          </div>
+          <p>&nbsp;</p>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>ctrl+shift+d</kbd></p>
+            <p>[Find &gt; Quick Skip Next] </p>
+          </div>
+          <div class="c-editor-command o-collapse-locdep">
+           <p><kbd>ctrl+super+d</kbd></p>
+           <p>            [Find &gt; Quick Find All] </p>
+          </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p></td>
+				<td width="20%"><h3>Navigacija be sąsajos </h3>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>f12</kbd></p>
+            <p>[MR][Goto Definition]</p>
+            <p>Jei kursorius yra funkcijos (ar kažko kito, kas turi savo apibrėžimą) iškvietime, nuskrūlina (atidaro kitą failą jei reikia) tą funkciją.</p>
+          </div>
+          <p>&nbsp;</p>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>alt+home</kbd> / <kbd>alt+end</kbd></p>
+            <p>[Goto  &gt; Jump <strong>Back/Forward</strong>] </p>
+            <p>Vaikšto per redaguotas projekto failų vietas. </p>
+          </div>
+          <p>&nbsp;</p>
+						<p>&nbsp;</p></td>
+				<td width="20%"><h3>Navigacija-žymėjimas pagal kodo struktūras </h3>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>alt+[</kbd></p>
+            <p>[Selection &gt; Expand Selection to Scope] </p>
+          </div>
+          <p>&nbsp;</p>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>super+shift+,</kbd></p>
+            <p>[Selection &gt; Expand Selection to Tag] </p>
+            <p>Pažymėdamas lipa XML-HTML medžiu aukštyn.</p>
+          </div>
+          <p>&nbsp;</p>
+          <h3>Navigacija-žymėjimas pagal spec. simbolius </h3>
+          <div class="c-editor-command o-collapse-locdep">
+            <p><kbd>super+[</kbd> / <kbd>super+shift+[</kbd></p>
+            <p>[Goto &gt; Jump to Matching Bracket] / [Selection &gt; Expand Selection to Brackets]</p>
+            <p><strong>Šokinėja</strong>/<strong>pažymi-selektina</strong> tarp <code>[] {} ()</code></p>
+          </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <h3>Navigacija  aktyviame					dokumente</h3>
+          <sec>
+            <p>&nbsp;</p>
+          </sec>
+          <p>&nbsp;</p>
+        <h3>Kursoriaus stumdymas </h3>          <p>&nbsp;</p>        <p>&nbsp;</p></td>
+				<td width="20%">&nbsp;</td>
+	</tr>
+</table>
+<h2>Redagavimas — kodą–tekstą keičiančios operacijos</h2>
+<p>{ &quot;keys&quot;: [&quot;alt+insert&quot;], &quot;command&quot;: &quot;toggle_overwrite&quot; }</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+		<tr>
+				<td width="20%"><h3>Redagavimo istorija</h3>
+						<div class="c-editor-command o-collapse-locdep">
+								<p><kbd>ctrl+z</kbd> / <kbd>ctrl+shift+z</kbd></p>
+								<p>[C][undo/redo]								</p>
+								<p>[Edit &gt; Undo &lt;kažkas&gt; / Redo &lt;kažkas&gt;]								</p>
+								<p>Daro undo'są/redo'ą.</p>
+						</div>
+						<div class="c-editor-command o-collapse-locdep">
+								<p><kbd>ctrl+super+z</kbd></p>
+						<p>[C][redo_or_repeat]</p>
+						<p>Daro ir redo'są, ir pakartojimą-repeat'ą paskutinio veiksmo.</p>
+					</div>
+						<div class="c-editor-command o-collapse-locdep">
+								<p><kbd>alt+z</kbd> / <kbd>alt+shift+z</kbd></p>
+						<p>[Edit &gt; Undo Selection &gt; Undo/Redo ...]				</p>
+		</div>
+						<div class="c-editor-command o-collapse-locdep">
+								<p>[MR][Show Unsaved Changes...]</p>
+						<p> [C][diff_changes]</p>
+						<p>Redaktoriaus lango apačioje parodo pakeistas kodo eilutes su artimiausiomis 2 prieš ir po nepakeistomis.</p>
+		</div>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Kopijavimas-pastavimas
+						</h3>
+				  <div class="c-editor-command o-collapse-locdep">
+							<p><kbd>ctrl+c</kbd> / <kbd>ctrl+x</kbd></p>
+								<p><strong>kopijuoja</strong>/<strong>iškerpa</strong>:</p>
+								<ul>
+										<li>jei nėra pažymėjimo &#8212; eilutę kurioje yra kursorius,</li>
+										<li>jei yra &#8212; pažymėjimą.</li>
+								</ul>
+					</div>
+				  <div class="c-editor-command o-collapse-locdep">
+							<p><kbd>ctrl+v</kbd></p>
+								<p>[Edit &gt; Paste]</p>
+					</div>
+						<div class="c-editor-command o-collapse-locdep">
+								<p><kbd>ctrl+shift+v</kbd></p>
+								<p>[Edit &gt; Paste and Indent]</p>
+						</div>
+						<div class="c-editor-command o-collapse-locdep">
+						  <p><kbd>ctrl+alt+v</kbd></p>
+						  <p>[MR][Paste in column]</p>
+						  <p>Installed Packages\Paste as Column.sublime-package				  </p>
+				  </div>
+						<p>&nbsp;</p>
+						<h4>Eilučių</h4>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Trynimas</h3>
+						<h4>Simboliai</h4>
+						<div class="c-editor-command o-collapse-locdep" id="cmd-backspaceDelete">
+								<p><kbd>backspace</kbd> / <kbd>delete</kbd></p>
+								<p>nuo kursoriaus pozicijos trina vieną simbolį <strong>prieš</strong>/<strong>už</strong> kursoriaus </p>
+						</div>
+						<div class="c-editor-command o-collapse-locdep" id="cmd-ctrlBackspaceDelete">
+								<p><kbd>ctrl+backspace</kbd> / <kbd>ctrl+delete</kbd></p>
+								<p> nuo kursoriaus pozicijos trina iki žodžio pabaigos ar skyrybos ženklo <strong>prieš</strong>/<strong>už </strong>kursoriaus </p>
+						</div>
+						<div class="c-editor-command o-collapse-locdep" id="cmd-ctrlShiftBackspaceDelete">
+								<p><kbd>ctrl+shift+backspace</kbd> / <kbd>ctrl+shift+delete</kbd></p>
+								<p> nuo kursoriaus pozicijos trina iki eilutės <strong>pradžios/pabaigos</strong></p>
+						</div>
+						<p>&nbsp;</p></td>
+				<td width="20%"><h3>Esant daugybiniam pažymėjimui (Multiple Selection)</h3>
+						<p>&nbsp;</p>
+						<h4>...</h4>
+						<p>&nbsp;</p></td>
+				<td width="20%"><h3>Simbolius keičiančios operacijos</h3>
+						<p>&nbsp;</p>
+						<h4>Operacijos su didžiosiomis-mažosiomis			</h4>
+					<div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+u</kbd> / <kbd>ctrl+shift+u</kbd></p>
+        <p>[Edit &gt; Convert Case &gt; Lower Case] / [... Upper Case]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+u</kbd></p>
+        <p>[Edit &gt; Convert Case &gt; Title Case]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+u</kbd></p>
+        <p>[Edit &gt; Convert Case &gt; Swap Case] </p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td width="20%"><h3>Simbolių užkodavimai-atkodavimai (encode-decode)
+			    </h3>
+				  <p>https://packagecontrol.io/packages/StringUtilities</p>
+				  <div class="c-editor-command o-collapse-locdep" id="cmd-11">
+			      <p>[CP][HTML: Encode special characters]</p>
+			      <p>[C][encode_html_entities] </p>
+			      <p>ST'o builtin'inė komanda.</p>
+			      <p>Užkoduoja spec. HTML'o simbolius: </p>
+			      <ul>
+			        <li><code>&amp;amp;</code> &gt;&gt;&gt; <code>&amp;amp;</code></li>
+			        <li><code>&amp;quot;</code> &gt;&gt;&gt; <code>&amp;quot;</code></li>
+	          </ul>
+			      <p>Bet nieko nedaro su tagų simboliais <code>&lt;</code> ir <code>&gt;</code></p>
+			    </div>
+			    <div class="c-editor-command o-collapse-locdep" id="cmd-12">
+			      <p><kbd>ctrl+h</kbd> / <kbd>ctrl+shift+h</kbd></p>
+			      <p>[Edit &gt; StringEncode &gt; HTML <strong>Entitize/Deentitize</strong>]</p>
+			      <p>[CP][StringEncode: HTML <strong>Entitize/Deentitize</strong>]</p>
+			      <p>Data\Installed Packages\StringEncode.sublime-package</p>
+			      <p><strong>Užkoduoja/atkoduoja</strong> visus HTML'o spec.  simbolius:</p>
+			      <ul>
+			        <li>ir tagų: <code>&lt;</code> || <code>&gt;</code></li>
+			        <li>ir likusius: &amp; || &quot; || </li>
+		        </ul>
+			      <blockquote>
+			        <p>HTML Entitize &#8212; converts characters to their HTML entity.</p>
+			        <p>HTML Deentitize &#8212; converts HTML entities to a character.</p>
+		        </blockquote>
+			    </div>
+			    <div class="c-editor-command o-collapse-locdep" id="cmd-13">
+			      <p><kbd>ctrl+alt+h</kbd></p>
+			      <p>Atidaro [CP] su įvestu &quot;StringEncode: &quot; &#8212; paletėje bus visos package'o StringEncode komandos.			    </p>
+			    </div>
+			    <hr>
+			    <p><strong>Ką daro?</strong></p>
+			    <p>[CP][StringEncode: Safe HTML Entitize][safe_html_entitize]</p>
+          <p>Converts characters to their HTML entity, but preserves HTML reserved characters</p>
+          <p>/</p>
+          <p>[CP][StringEncode: Safe HTML Deentitize][safe_html_deentitize]</p>
+          <p>Converts HTML entities to a character, but preserves HTML reserved characters</p>
+			    <hr>
+			    <p>[CP][StringEncode: CSS <strong>Escape/Unescape</strong>] &lt;&lt;&lt; ?????</p>
+			    <p>&nbsp;</p>
+			    <p><kbd>ctrl+h</kbd> &lt;&lt;&lt; ??? ar reikia</p>
+          <p>[CP][zm: HTML: Encode just MAIN special characters][zm_html_encode_main] </p>
+          <p>Packages\User\convertCharactersEntities.py</p></td>
+				<td><h3>Komentavimas</h3>
+						<div class="c-editor-command o-collapse-locdep" id="cmd-">
+								<p><kbd>ctrl+/</kbd></p>
+								<p>[Edit &gt; Comment &gt; Toggle Comment] </p>
+								<p>JS: eilutėms su kursoriu-pažymėjimu uždeda-nuima tų eilučių pradžioje <code>//</code></p>
+								<p>HTML: jei nėra pažymėjimo užkomentuoja visą eilutę, kurioje yra kursorius, jei yra &#8212; pažymėtą kodą.</p>
+						</div>
+						<div class="c-editor-command o-collapse-locdep" id="cmd-">
+								<p><kbd>ctrl+shift+/</kbd></p>
+								<p>[Edit &gt; Comment &gt; Toggle Block Comment]</p>
+								<p>JS: kursorių-pažymėjimą apskliaudžia <code>/*</code>...<code>*/</code></p>
+								<p>HTML: kursorių-pažymėjimą apskliaudžia <code>&lt;!--</code> ... <code>--&gt;</code></p>
+						</div>
+						<p>&nbsp;</p></td>
+				<td><p>&nbsp;</p></td>
+				<td><h3>Simbolių dublikavimas-padauginimas
+          </h3>
+				  <div class="c-editor-command o-collapse-locdep" id="cmd-duplicate_line">
+            <p><kbd>ctrl+insert</kbd></p>
+            <p>[Edit &gt; Line &gt; Duplicate line] [C][duplicate_line]</p>
+            <p>Operacijos su simboliais: jei nėra   pažymėto teksto — dublikuoja eilutę, kurioje yra kursorius, jei yra — pažymėjimą </p>
+          </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>Simbolių kilojimas-perstumdymas</h3>
+						<div class="c-editor-command o-collapse-locdep" id="cmd-2">
+								<p><kbd>ctrl+t</kbd></p>
+								<p>[Edit &gt; Text &gt; Transpose]</p>
+							<dl>
+								  <dt>Kai nėra pažymėjimo, yra vienas, ar multiple kursoriai</dt>
+								  <dd>
+								    <p>Sukeičia vietomis šalia kursoriaus esančius simbolius.								  </p>
+								  </dd>
+								  <dt>Kai yra vienas pažymėjimas</dt>
+								  <dd>
+								    <p>
+								   Nieko nedaro.
+								  </p>
+								  </dd>
+								  <dt>Kai yra du ar daugiau pažymėjimų</dt>
+								  <dd>
+								    <p>Sukeisdamas vietomis suka ratu pažymėjimus, t. y. pirmasis pažymėjimas atsiranda antrojo vietoje, antrasis trečiojo, ir taip toliau, o paskutinis stoja į pirmojo vietą.</p>
+								    <p class="em-note em--narrow">Pažymėjimo pozicija nustatoma pagal poziciją kode, pačių pažymėjimų darymo seka įtakos neturi.</p>
+								  </dd>
+								  <dt>Kai yra ir pažymėjimų, ir kursorių, nesvarbu ko daugiau ar mažiau, svarbu, kad vienu metu yra bent vienas  pažymėjimas ir bent vienas  kursorius</dt>
+								  <dd>
+								    <p>Kursoriai expand'inasi ir pažymi žodį kuriame yra (jeigu yra tarp dviejų ar daugiau tarpelių, pažymi juos), ir veikia taip pat kai yra du ar daugiau pažymėjimų.</p>
+							    </dd>
+	            </dl>
+								<p>&nbsp;</p>
+						</div></td>
+		</tr>
+</table>
+<h2>ST konfiginimas-customize'inimas</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%"><p>&nbsp;</p>
+      <p> { &quot;keys&quot;: [&quot;ctrl+alt+shift+p&quot;], &quot;command&quot;: &quot;show_scope_name&quot; },      </p>
+      <p>Parodo kodo scope'ą kursoriaus pozicijoje</p>
+      <p>&nbsp;</p></td>
+    <td width="20%"><h3>Kodo themes'ai
+      </h3>
+      <hr>
+      <p>Data\Installed Packages\Colorsublime.sublime-package</p>
+      <p>&nbsp;</p>
+      <p>[CP][Colorsublime: Install Theme]</p>
+      <p>Patogus themes'ų iš <a href="http://colorsublime.com/">http://colorsublime.com/</a> instaliavimas.</p>
+      <p>&nbsp;</p>
+    <p>[CP][Colorsublime: Browse Themes]</p>
+    <p>Atidaro <a href="http://colorsublime.com/">http://colorsublime.com/</a> default'inėje windows'ų naršyklėje.</p>
+    <hr>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="20%"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="20%"><p>&nbsp;</p></td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Pagal temą</h2>
+<pre>*
+
+*</pre>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+		<tr>
+				<td width="20%"><h3>Build'ai</h3>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>&nbsp;</h3>
+						<p>&nbsp;</p></td>
+				<td width="20%"><h3>Overlay'ai ir paletės </h3>
+						<p>&nbsp;</p></td>
+				<td width="20%"><h3>&nbsp;</h3></td>
+				<td width="20%"><h3>Kodo struktūros</h3>
+						<p>&nbsp;</p>
+						<h4>Operacijos su visų tipų bracket'ais: <code>{} [] () &quot;&quot; ''</code></h4>
+						<p>&nbsp;</p>
+						<h5>Navigacija ir žymėjimas </h5>
+						<p>&nbsp;</p>
+						<h5>Kodą redaguojančios operacijos </h5>
+						<p>&nbsp;</p>
+						<h4>C ar JS stiliaus programavimo kalbos</h4>
+						<p>&nbsp;						</p>
+						<h4>XML-HTML </h4>
+					<p>&nbsp;</p>
+				<h4>CSS</h4>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td><h3>Kodo žymėjimas-atžymos</h3>
+				<p>&nbsp;</p>
+				<h4>Eilučių</h4>
+				<p>&nbsp;</p></td>
+				<td><p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+				<td><h3> Completions'ai ir auto-completions'ai</h3>
+					<p>&nbsp;</p>
+					<h4>Failų kelių auto-completion'as</h4>
+				<p>&nbsp;</p></td>
+				<td><h3>Sass'o palaikymas</h3>
+				<p>&nbsp;</p>
+				<h4>Kompiliavimas</h4>
+				<p>&nbsp;</p></td>
+				<td><h3>kodo-teksto folding'as</h3>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+			<td><h3>CSS</h3>
+				<p>&nbsp;</p>
+				<h4>CSS vendor preﬁxes</h4>
+				<p>&nbsp;</p>
+				<h5>Su Emmet</h5>
+			<p>&nbsp;</p>
+			<dl>
+			<dd>&nbsp;			  </dd>
+			</dl>
+			<del tabindex="0">
+			<h5>Su Prefixr</h5>
+			<p>&nbsp;</p>
+			</del>
+			<h5>Su Autoprefixer</h5>
+			<p>&nbsp;</p></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+</table>
+<h2>Klavišų grupės</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+		<tr>
+				<td width="20%"><h3>Pagrindiniai rodyklių klavišai </h3>
+						<h4>[ctrl+...] line operations						</h4>
+						<p>&nbsp;</p>
+						<h4>super+...</h4>
+						<p>&nbsp;</p>
+						<h4>alt+...</h4>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Backspace ir Delete </h3>
+						<h4>Simbolių trynimas</h4>
+						<p>&nbsp;</p>
+				<h4>Eilučių trynimas</h4>
+				<p>&nbsp;</p>
+				<h4>Tuščių eilučių trynimas</h4>
+				<p>&nbsp;</p></td>
+				<td width="20%">&nbsp;</td>
+				<td width="20%">&nbsp;</td>
+				<td width="20%">&nbsp;</td>
+		</tr>
+</table>
+<h2>Package'ai</h2>
+<p>Packages'ų pavadinimai yra jų katalogų vardai.</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+		<tr>
+				<td width="20%"><h3>package: FuzzyFilePath </h3>
+				  <p>&nbsp;</p>
+				  <p>&nbsp;</p>
+				  <p>&nbsp;</p>
+						<p>&nbsp;</p></td>
+				<td width="20%"><p>BracketHighlighter</p>
+				  <p>&nbsp;</p></td>
+				<td width="20%">&nbsp;</td>
+				<td width="20%"><p>FileSystem Autocompletion
+				</p>
+				<p>&nbsp;</p></td>
+				<td width="20%"><p>Filter Lines</p>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td><h3>JsFormat</h3>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><p>AAAPackageDev</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><p>SublimeCodeIntel
+				</p>
+				<p>&nbsp;</p></td>
+				<td><p>AutoHotkey</p>
+				<p>&nbsp;</p></td>
+				<td><p>ScopeHunter</p>
+						<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td><p>Tag</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><p>HTML-CSS-JS Prettify</p>
+				<p>&nbsp;</p></td>
+				<td><p>SFTP</p>
+			    <p>&nbsp;</p></td>
+		  <td><p>WinMerge</p>
+	  	<p>&nbsp;</p></td>
+				<td><p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+			<td><p>Autoprefixer</p>
+			<p>&nbsp;</p></td>
+			<td><p>StringEncode</p>
+			<p>&nbsp;</p></td>
+			<td><p>Emmet</p>
+			<p>&nbsp;</p></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

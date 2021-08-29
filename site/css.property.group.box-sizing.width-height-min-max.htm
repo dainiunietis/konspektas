@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>
+<!-- #BeginEditable "body" -->
+<h1>Box sizing</h1>
+<dl>
+  <dt>Oficiali dokumentacija</dt>
+  <dd>
+    <p><a href="https://www.w3.org/TR/css-sizing-3/">CSS Intrinsic &amp; Extrinsic Sizing Module Level 3</a></p>
+    <ul>
+      <li><a href="https://www.w3.org/TR/css-sizing-3/#index-defined-here">Terms defined by this specification</a> &#8212; svarbiausių šios specifikacijos keyword'ų sąrašas</li>
+      <li><a href="https://www.w3.org/TR/css-sizing-3/#property-index">Property Index</a> &#8212; visų CSS savybių, kurias reguliuoja ši specifikacija, sąrašas</li>
+    </ul>
+  </dd>
+  <dt>mokytuvai-vadovai</dt>
+  <dd>
+    <p><a href="https://www.smashingmagazine.com/2018/09/flexbox-sizing-flexible-box/">Flexbox: How Big Is That Flexible Box? — Smashing Magazine</a></p>
+  </dd>
+</dl>
+<h2>Suvestinė</h2>
+<table width="731" class="-c-tableCols -c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p><code>box-sizing: </code></p>
+    </td>
+    <td width="25%">
+      <p><code>width: <br>
+        min-width: <br>
+      max-width:</code></p>
+      <p><code>height: <br>
+        min-height: <br>
+        max-height:</code></p>
+    </td>
+    <td width="25%">
+      <p><code> inline-size:<br>
+        min-inline-size:<br>
+      max-inline-size:</code></p>
+      <p><code> block-size:<br>
+        min-block-size:<br>
+        max-block-size:</code></p>
+    </td>
+  </tr>
+</table>
+<h2>Sizing'o reguliavimas</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><code>box-sizing:</code></h3>
+      <pre><code>box-sizing: content-box | border-box</code></pre>
+      <p><img src="images/box-sizing-comparison.png" alt="" width="246" height="64"/></p>
+      <blockquote>
+        <p>Firefox currently also supports the <code>padding-box</code> in addition to <code>content-box</code> and <code>border-box</code>, though this value has been removed from the specification.</p>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Preferred Size Properties</h2>
+<blockquote>
+  <p>The <em><a href="https://www.w3.org/TR/css-sizing-3/#preferred-size-properties">preferred size</a></em> of a box is the size defined by a <code>width</code> or a <code>height</code>, or the logical aliases for these properties of <code>inline-size</code> and <code>block-size</code>. By using:</p>
+  <pre>.box { width: 500px; }</pre>
+  <p>Or the logical alias inline-size:</p>
+  <pre>.box { inline-size: 500px; }</pre>
+  <p>You are stating that you want your box to be 500 pixels wide, or 500 pixels in the inline direction.</p>
+</blockquote>
+<table width="mar" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">
+      <p><a href="https://www.w3.org/TR/css-logical-1/#dimension-properties">Logical Height and Logical Width</a>    </p>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%"><h3><code>width:</code></h3>
+      <p><code>[&lt;length&gt; | &lt;percentage&gt;] &amp;&amp; <br>
+      [border-box | content-box]? | <br>
+      available | min-content | max-content | fit-content | auto</code>      </p>
+      <p>&nbsp;</p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width">https://developer.mozilla.org/en-US/docs/Web/CSS/width</a></p>
+      <p><a href="https://css-tricks.com/almanac/properties/w/width/">https://css-tricks.com/almanac/properties/w/width</a>      </p>
+      <p>Kaip pavadinti mažiausią galimą konteinerio-tago plotį:</p>
+      <blockquote>
+        <p>Roughly, the inline size that would fit around its contents if all soft wrap opportunities within the box were taken. This is called the &quot;preferred minimum width&quot; in CSS2.1§10.3.5 and the &quot;minimum content width&quot; in CSS2.1§17.5.2.2.</p>
+      </blockquote>
+      <p><code>&lt;length&gt; | &lt;percentage&gt;</code></p>
+      <p>&nbsp;</p>
+      <p><code>[&lt;length&gt; | &lt;percentage&gt;] &amp;&amp; [border-box | content-box]</code></p>
+      <p>nėra palaikymo</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">pačioje <code>width:</code> reikšmėje nurodymas koks <code>box-sizing:</code> modelis naudojamas</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: 200px">width: 200px</div>
+          <div style="width: 200px; padding: 0 30px; border: hsla(0,0%,0%,0.50) solid; border-width: 0 30px">width: 200px; <br>
+            padding: 0 30px; <br>
+            border-width: 0 30px</div>
+          <div style="width: 200px content-box; padding: 0 30px; border: hsla(0,0%,0%,0.50) solid; border-width: 0 30px">width: 200px content-box; <br>
+            padding: 0 30px; <br>
+            border-width: 0 30px</div>
+        </div>
+      </div>
+      <h4><code>width: auto</code></h4>
+    <p>&nbsp;</p>
+    <h4><code>width: min-content</code></h4>
+    <blockquote>
+      <p>The <em><a href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content</a></em> size is the smallest size that a box can be without causing overflow. If your box contains text then all possible soft-wrapping opportunities will be taken.</p>
+    </blockquote>
+    <h4><code>width: max-content</code></h4>
+    <blockquote>
+      <p>The <em><a href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content</a></em> size is the largest size the box can be to contain the contents. If the box contains text with no formatting to break it up, then it will display as one long unbroken string.</p>
+    </blockquote>
+    <h4><code>width: fit-content</code></h4>
+    <blockquote>
+      <p>the formula to define the size of a fit-content length is:</p>
+      <p><code>fit-content = min(max-content, max(min-content, fill-available))</code></p>
+      <p><strong>fit-content uses max-content</strong>, <em>unless</em> available &lt; max-content, then it uses <strong>available</strong>. <em>Unless</em> available &lt; min-content, then it uses <strong>min-content</strong>.</p>
+    </blockquote>
+    </td>
+    <td width="25%"><h3><code>height:</code></h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3><code>inline-size:</code></h3>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>block-size:</code></h3>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h3>Kaip veikia <code>width:</code> keyword'ai</h3>
+<table width="1883" class="-c-tableCols -c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="16%">&nbsp; </td>
+    <th width="28%"> &quot;content width&quot; mažesnis už tėvinį konteinerį</th>
+    <th width="28%">&quot;content width&quot; didesnis už tėvinį konteinerį</th>
+    <th width="28%">&quot;minimum content width&quot; didesnis už tėvinį konteinerį</th>
+  </tr>
+  <tr>
+    <th><code>width: auto</code></th>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: auto">Didelis lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: auto">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų labai labai.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: auto">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><code>width: min-content</code></th>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: min-content">Didelis lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: min-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų labai labai.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: min-content">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><code>width: max-content</code></th>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: max-content">Didelis lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: max-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų labai labai.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: max-content">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><code>width: fit-content</code></th>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: fit-content">Didelis lokys žemuogiavo.</div>
+        </div>
+      </div>
+      <p>veikia kaip <code>width: max-content</code> — konteinerio plotis lygus turinio pločiui</p>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: fit-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų labai labai.</div>
+        </div>
+      </div>
+      <p>veikia kaip <code>width: auto</code> — neviršija tėvinio pločio</p>
+    </td>
+    <td>
+      <div class="c-pvz" style="width: 70%">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: fit-content">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+      <p>veikia kaip <code>width: min-content</code></p>
+    </td>
+  </tr>
+</table>
+<h2>???</h2>
+<h3><code>min-width: </code></h3>
+<p>&nbsp;</p>
+<h3><code>max-width:</code></h3>
+<p>&nbsp;</p>
+<h2>Išmatavimų nustatymo strategijos-taktikos-modeliai</h2>
+<table width="1883" class="-c-tableCols -c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="16%">&nbsp; </td>
+    <th width="28%"> &quot;content width&quot; mažesnis už tėvinį konteinerį</th>
+    <th width="28%">&quot;content width&quot; didesnis už tėvinį konteinerį</th>
+    <th width="28%">&quot;minimum content width&quot; didesnis už tėvinį konteinerį</th>
+  </tr>
+  <tr>
+    <th>Preferred Size — santykinė reikšmė (<code>%</code>, <code>em</code>), min-max — absoliučios reikšmės (<code>px</code>, <code>mm</code>)</th>
+    <td>
+      <div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border -c-pvs--child-bg c-pvs--resizeHor c-pvs--addBtnViewportFixFit">
+        <p>aaa </p>
+        <p class="c-pvs__section"><code>%</code></p>
+        <div class="c-pvs__parent" style="">
+          <div data-diah-style-bottom style="min-width: 150px; width: 50%; max-width: 300px">vienas</div>
+        </div>
+      </div>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div class="c-pvs c-pvs--border c-pvs--title c-pvs--parent-border c-pvs--child-bg">
+  <p>aaa</p>
+  <p class="c-pvs__section"><code>%</code></p>
+  <div class="c-pvs__parent" style="">
+    <div style="min-width: 150px; width: 50%; max-width: 300px">vienas</div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p><code>width: auto</code></p>
+      <div class="c-pvz" style="width: 70%">
+        <p class="c-pvz__caption">...</p>
+        <p class="c-pvz__title">&quot;content width&quot; mažesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: auto">Didelis lokys žemuogiavo.</div>
+        </div>
+        <p class="c-pvz__title">&quot;content width&quot; didesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: auto">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+        <p class="c-pvz__title">&quot;minimum content width&quot; didesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: auto">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <p><code>width: min-content</code></p>
+      <div class="c-pvz" style="width: 70%">
+        <p class="c-pvz__caption">...</p>
+        <p class="c-pvz__title">&quot;content width&quot; mažesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: min-content">Didelis lokys žemuogiavo.</div>
+        </div>
+        <p class="c-pvz__title">&quot;content width&quot; didesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: min-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+        <p class="c-pvz__title">&quot;minimum content width&quot; didesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: min-content">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <p><code>width: max-content</code></p>
+      <div class="c-pvz" style="width: 70%">
+        <p class="c-pvz__caption">...<code></code></p>
+        <p class="c-pvz__title">&quot;content width&quot; mažesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: max-content">Didelis lokys žemuogiavo.</div>
+        </div>
+        <p class="c-pvz__title">&quot;content width&quot; didesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: max-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+        <p class="c-pvz__title">&quot;minimum content width&quot; didesnis už tėvinį konteinerį</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: max-content">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%">
+      <p><code>width: fit-content</code></p>
+      <blockquote>
+        <p>the formula to define the size of a fit-content length is:</p>
+        <p><code>fit-content = min(max-content, max(min-content, fill-available))</code></p>
+        <p><strong>fit-content uses max-content</strong>, <em>unless</em> available &lt; max-content, then it uses <strong>available</strong>. <em>Unless</em> available &lt; min-content, then it uses <strong>min-content</strong>.</p>
+      </blockquote>
+      <div class="c-pvz" style="width: 70%">
+        <p class="c-pvz__caption">...</p>
+        <p class="c-pvz__title">&quot;content width&quot; mažesnis už tėvinį konteinerį &#8212; veikia kaip <code>width: max-content</code> — konteinerio plotis lygus turinio pločiui</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: fit-content">Didelis lokys žemuogiavo.</div>
+        </div>
+        <p class="c-pvz__title">&quot;content width&quot; didesnis už tėvinį konteinerį &#8212; veikia kaip <code>width: auto</code> — neviršija tėvinio pločio</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: fit-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+        <p class="c-pvz__title">&quot;minimum content width&quot; didesnis už tėvinį konteinerį &#8212; veikia kaip <code>width: min-content</code></p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="width: fit-content">Didelis lokys žemuoooooooooooooooooooooooooooooooooooooogiavo, o kiškis norėjo kitokių uogų.</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="c-pvz">
+  <p class="c-pvz__caption">jeigu turinys mažesnis už tėvinį, veikia kaip <code>width: max-content</code>&#8212; konteinerio plotis lygus turinio pločiui</p>
+  <p class="c-pvz__title"><code>width: fit-content</code></p>
+  <div class="c-pvz__container c-pvz__container--childTarget" style="padding: 3px 0; background-color: lightsalmon">
+    <div style="width: fit-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų.</div>
+  </div>
+  <p class="c-pvz__title"><code>width: max-content</code></p>
+  <div class="c-pvz__container c-pvz__container--childTarget" style="padding: 3px 0; background-color: lightsalmon">
+    <div style="width: max-content"><span style="width: fit-content">Didelis lokys žemuogiavo, o kiškis norėjo kitokių uogų.</span></div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="c-pvz">
+  <p class="c-pvz__caption">jeigu turinys didesnis už tėvinį, veikia kaip <code>width: auto</code>&#8212; neviršija tėvinio pločio</p>
+  <p class="c-pvz__title"><code>width: fit-content</code></p>
+  <div class="c-pvz__container c-pvz__container--childTarget" style="padding: 3px 0; background-color: lightsalmon">
+    <div style="width: fit-content">Didelis lokys žemuogiavo ir nenorėjo sustoooooooooti, o kiškis norėjo kitokių uogų.</div>
+  </div>
+  <p class="c-pvz__title"><code>width: max-content</code></p>
+  <div class="c-pvz__container c-pvz__container--childTarget" style="padding: 3px 0; background-color: lightsalmon">
+    <div style="width: max-content">Didelis lokys žemuogiavo ir nenorėjo sustoooooooooti, o kiškis norėjo kitokių uogų.</div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="c-pvz">
+  <p class="c-pvz__caption">... </p>
+  <p class="c-pvz__title"><code>width: fit-content</code> nesumažina daugiau nei leidžia &quot;soft wrap&quot;</p>
+  <div class="c-pvz__container c-pvz__container--childTarget" style="width: 100px; padding: 3px 0; background-color: lightsalmon">
+    <div style="width: fit-content">Didelis lokys žemuogiavo ir nenorėjo sustoooooooooti, o kiškis norėjo kitokių uogų.</div>
+  </div>
+  <p class="c-pvz__title">taip pat daro <code>width: min-content</code></p>
+  <div class="c-pvz__container c-pvz__container--childTarget" style="width: 100px; padding: 3px 0; background-color: lightsalmon">
+    <div style="width: min-content">Didelis lokys žemuogiavo ir nenorėjo sustoooooooooti, o kiškis norėjo kitokių uogų.</div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

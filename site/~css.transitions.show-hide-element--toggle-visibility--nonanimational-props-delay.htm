@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <!--<link rel="stylesheet" href="assets/sass/master.css">-->
+  <!--<link rel="stylesheet" href="assets/sass/master.utilities.css">-->
+  <!--<link rel="stylesheet" href="assets/sass/master.dev.css">-->
+  <style>
+    body {
+      font: 1.2em "IBM Plex Sans", sans-serif;
+      margin: 1em;
+    }
+    div {
+      background: #bfded2;
+    }
+    button {
+      font-size: 1.5em;
+    }
+    /*
+    example 1: you can't use transitions
+    .component {
+      display: block;
+    }
+    .component——is—hidden {
+      display: none;
+    }
+    */
+
+    .a20210706142334 {
+      --transition-duration: 1s;
+      opacity: 1;
+      visibility: visible;
+      /* no visibility transition */
+      transition: opacity var(--transition-duration);
+      border: solid;
+      padding: .4em .8em;
+      font-size: 1.3em;
+    }
+    .a20210706142334--is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      /* set only a delay for the visibility property */
+      transition:
+        opacity var(--transition-duration),
+        visibility Os var(--transition-duration);
+    }
+  </style>
+</head>
+<body>
+<!-- kad darytų TOC-turinį -->
+<!--<script src="assets/js/~pvz-example-test-template.js"></script>-->
+
+<h1></h1>
+
+<aside>
+  <p>pagal: https://mail.google.com/mail/u/0/#inbox/FMfcgzGkZGjrwxdwSNgBTpxFnJpTnZTq</p>
+</aside>
+
+
+<p>The solution is to combine opacity and visibility. Unlike the display property, you can apply a transition to the visibility, but you shouldn't transition from 'visibile' to 'hidden' because, once again, we don't have values in between and some browsers will get confused. However, you can set a transition-delay: after the opacity transition is over, set visibility hidden. Done!</p>
+
+<div>— — — 1 — — —</div>
+<div class="a20210706142334">pastoviai matomas</div>
+<div>— — — 2 — — —</div>
+<div class="a20210706142334">galima paslėpti-parodyti</div>
+<button onclick="this.previousElementSibling.classList.toggle('a20210706142334--is-hidden')">toggle'inti</button>
+<div>— — — 3 — — —</div>
+
+<!--<div class="o-gfx o-gfx&#45;&#45;W3 o-gfx&#45;&#45;boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>-->
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

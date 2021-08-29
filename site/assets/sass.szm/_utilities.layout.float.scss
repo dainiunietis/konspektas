@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//   float:
+//
+/////////////////////////////////////////////////////////////
+
+//.u-float-left,
+.FLL, .FLLc > * { float: left }
+
+//.u-float-right,
+.FLR, .FLRc > * { float: right }
+
+//////////////////////////////////////////////////////////////////
+//
+//   clear:
+//
+/////////////////////////////////////////////////////////////
+
+//.u-float-clearBoth,
+.FLCB, .FLCBc > * { clear: both }
+
+//.u-float-clearLeft,
+.FLCL, .FLCLc > * { clear: left }
+
+//.u-float-clearRight,
+.FLCR, .FLCRc > * { clear: right }
+
+// @USAGE:
+// <div class="FCF">
+//   <div style="float: left;">...</div>
+// </div>
+
+//.u-float-clearfix,
+.FLCF, .FLCFc > * {
+  @include szm-float-clearfix;
+}
+
+
+
+
+

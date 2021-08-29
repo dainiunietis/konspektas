@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    /*.pvzWrp {*/
+    /*  outline: 1px solid #cf3080;*/
+    /*  outline-offset: 5px;*/
+    /*  !*height: 70vh*!*/
+    /*}*/
+
+    .c-pvs__parent > * {
+      padding: .4em .5em;
+    }
+  </style>
+</head>
+<body class="s-c-pvs-hover">
+<!-- kad darytų TOC-turinį -->
+<script src="assets/js/~pvz-example-test-template.js"></script>
+
+
+<h1>W3C CSS grid examples</h1>
+
+<!--<div class="pvzWrp" style="">
+</div>-->
+
+<h2>Ale žaidimo sąsaja</h2>
+
+<div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg">
+  <p>........</p>
+  <p> <a href="https://www.w3.org/TR/css-grid-1/#adapting-to-available-space">1.1.1. Adapting Layouts to Available Space — CSS Grid Layout Module Level 1</a></p>
+  <div data-diah-style-top class="c-pvs__parent H25vh" style="display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto 1fr auto;">
+    <div data-diah-style-bottom style="grid-column: 1; grid-row: 1;">Game Title</div>
+    <div data-diah-style-bottom style="grid-column: 1; grid-row: 3;">Score</div>
+    <div data-diah-style-bottom style="grid-column: 1; grid-row: 2; align-self: start;">Stats</div>
+    <div data-diah-style-bottom style="grid-column: 2; grid-row: 1 / span 2;">Board</div>
+    <div data-diah-style-bottom style="grid-column: 2; grid-row: 3; justify-self: center;">Controls</div>
+  </div>
+</div>
+
+<div class="pvs-20201221000053 c-pvs c-pvs--border c-pvs--title c-pvs--child-bg">
+  <style>
+    @media (orientation: portrait) {
+      .pvs-20201221000053 > .c-pvs__parent {
+        display: grid;
+        /* The rows, columns and areas of the grid are defined visually
+         * using the grid-template-areas property.  Each string is a row,
+         * and each word an area.  The number of words in a string
+         * determines the number of columns. Note the number of words
+         * in each string must be identical. */
+        grid-template-areas: "title stats"
+                             "score stats"
+                             "board board"
+                             "ctrls ctrls";
+        /* The way to size columns and rows can be assigned with the
+         * grid-template-columns and grid-template-rows properties. */
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto 1fr auto;
+      }
+    }
+    @media (orientation: landscape) {
+      .pvs-20201221000053 > .c-pvs__parent {
+        display: grid;
+        /* Again the template property defines areas of the same name,
+         * but this time positioned differently to better suit a
+         * landscape orientation. */
+        grid-template-areas: "title board"
+                             "stats board"
+                             "score ctrls";
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+      }
+    }
+  </style>
+  <p>........</p>
+  <p> <a href="https://www.w3.org/TR/css-grid-1/#source-independence">1.1.2. Source-Order Independence — CSS Grid Layout Module Level 1</a></p>
+  <div data-diah-style-top class="c-pvs__parent H25vh" style="">
+    <div data-diah-style-bottom style="grid-area: title">Game Title</div>
+    <div data-diah-style-bottom style="grid-area: score">Score</div>
+    <div data-diah-style-bottom style="grid-area: stats">Stats</div>
+    <div data-diah-style-bottom style="grid-area: board">Board</div>
+    <div data-diah-style-bottom style="grid-area: ctrls">Controls</div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!--<div class="o-gfx o-gfx&#45;&#45;W3 o-gfx&#45;&#45;boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>-->
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

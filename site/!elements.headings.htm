@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+  <title>-</title>
+  <!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  <style>
+    article {
+      padding-bottom: 1em;
+    }
+
+    article > p:first-child {
+      background: powderblue;
+    }
+
+    /*article > div {*/
+    /*  outline: 2px solid hsla(240, 100%, 50%, 0.2);*/
+    /*  outline-offset: 3px;*/
+    /*  margin-bottom: 1em;*/
+    /*}*/
+
+    /*h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover,*/
+    /*article > div:hover {*/
+    /*  !*outline: 1px dashed darkturquoise;*!*/
+    /*  outline:  2px dotted hsla(120, 100%, 30%, 0.7);*/
+    /*  position: relative;*/
+    /*}*/
+
+    /*h1:hover::after, h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::after,*/
+    /*article > div:hover::after {*/
+    /*  position:      absolute;*/
+    /*  transform:     translate(-50%, -112%);*/
+    /*  padding:       0.15em 0.6em 0.25em;*/
+    /*  left:          50%;*/
+    /*  !*width:       calc(100% - 16px);*!*/
+    /*  width:         fit-content;*/
+    /*  font:          1.3rem "IBM Plex Mono";*/
+    /*  color:         hsla(120, 100%, 90%, 1);*/
+    /*  background:    hsla(120, 30%, 10%, 1);*/
+    /*  !*border:        1px solid hsla(120, 100%, 70%, 0.9);*!*/
+    /*  border-radius: 0.35em;*/
+    /*  !*box-shadow:    0px 0px 17px 0px hsla(120, 50%, 50%, 0.7);*!*/
+    /*  box-shadow:    .3em .2em .1em hsla(120, 50%, 30%, 0.4);*/
+    /*  content:       "class=\"" attr(class) "\"";*/
+    /*  z-index:       10000;*/
+    /*}*/
+
+    /*article > div:hover {*/
+    /*  outline-offset: 3px;*/
+    /*  outline-color:  hsla(240, 100%, 50%, 0.7);*/
+    /*}*/
+
+    /*article > div:hover::after {*/
+    /*  bottom:     -5px;*/
+    /*  transform:  translate(-50%, 112%);*/
+    /*  color:      hsla(240, 100%, 90%, 1);*/
+    /*  background: hsla(240, 30%, 10%, 1);*/
+    /*  box-shadow: .3em .2em .1em hsla(240, 50%, 30%, 0.4);*/
+    /*  !*border-color: hsla(240, 100%, 70%, 0.9);*!*/
+    /*}*/
+  </style>
+  <!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Heading'ai</h1>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed">
+  <div>
+    <p><strong>Sumažinti prisegant prie pačio heading'o</strong></p>
+    <pre><code>h1⇔6.hx--small
+h1⇔6.hx--tiny</code></pre>
+    <hr>
+    <h2 data-DIAH-class-top>An expression evaluated</h2>
+    <h2 data-DIAH-class-top class="hx--small">An expression evaluated</h2>
+    <h2 data-DIAH-class-top class="hx--tiny">An expression evaluated</h2>
+    <hr>
+    <h3 data-DIAH-class-top>Percentages for the horizontal axis</h3>
+    <h3 data-DIAH-class-top class="hx--small">Percentages for the horizontal axis</h3>
+    <h3 data-DIAH-class-top class="hx--tiny">Percentages for the horizontal axis  </h3>
+    <hr>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p><strong>Sumažinti scope'e visi heading'ai</strong></p>
+    <pre><code>.hx--small-c > h1⇔6
+.hx--tiny-c  > h1⇔6
+.hx--small-d   h1⇔6
+.hx--tiny-d    h1⇔6</code></pre>
+    <hr>
+    <div data-DIAH-class-bottom-offset class="hx--small-d">
+      <h1 data-DIAH-class-top>An expression evaluated</h1>
+      <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+      <h3 data-DIAH-class-top>The box is not a square</h3>
+      <h4 data-DIAH-class-top>The background color is clipped</h4>
+      <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+      <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+    </div>
+    <hr>
+    <div data-DIAH-class-bottom-offset class="hx--tiny-d">
+      <h1 data-DIAH-class-top>An expression evaluated</h1>
+      <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+      <h3 data-DIAH-class-top>The box is not a square</h3>
+      <h4 data-DIAH-class-top>The background color is clipped</h4>
+      <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+      <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+    </div>
+    <hr>
+  </div>
+  <div>
+    <p><strong>Sumažinti scope'e nurodytas heading'as</strong></p>
+    <pre><code>.h1⇔6--small-c > h1⇔6
+.h1⇔6--tiny-c  > h1⇔6
+.h1⇔6--small-d   h1⇔6
+.h1⇔6--tiny-d    h1⇔6</code></pre>
+    <hr>
+    <div data-DIAH-class-bottom-offset class="h2--small-d">
+      <h1 data-DIAH-class-top>An expression evaluated</h1>
+      <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+      <h3 data-DIAH-class-top>The box is not a square</h3>
+      <h4 data-DIAH-class-top>The background color is clipped</h4>
+      <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+      <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+    </div>
+    <hr>
+    <div data-DIAH-class-bottom-offset class="h2--tiny-d">
+      <h1 data-DIAH-class-top>An expression evaluated</h1>
+      <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+      <h3 data-DIAH-class-top>The box is not a square</h3>
+      <h4 data-DIAH-class-top>The background color is clipped</h4>
+      <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+      <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+    </div>
+    <hr>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<del tabindex="0">
+<section>
+  <p class="section__title">Normalūs</p>
+<!--  <p class="FS1.5em FW800 PH3 PV1 MB2">Normalūs</p>-->
+  <h1 data-DIAH-class-top>An expression evaluated</h1>
+  <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+  <h3 data-DIAH-class-top>The box is not a square</h3>
+  <h4 data-DIAH-class-top>The background color is clipped</h4>
+  <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+  <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+</section>
+
+<section>
+  <p class="section__title">Sumažinti prisegant prie pačio heading'o</p>
+  <p><code>hx--small hx--tiny</code></p>
+  <h1 data-DIAH-class-top>An expression evaluated</h1>
+  <h1 data-DIAH-class-top class="hx--small">An expression evaluated</h1>
+  <h1 data-DIAH-class-top class="hx--tiny">An expression evaluated</h1>
+  <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+  <h2 data-DIAH-class-top class="hx--small">Percentages for the horizontal axis</h2>
+  <h2 data-DIAH-class-top class="hx--tiny">Percentages for the horizontal axis</h2>
+</section>
+
+<section>
+  <p class="section__title">Sumažinti scope'e visi heading'ai</p>
+  <p><code>hx--small-d</code></p>
+  <div data-DIAH-class-bottom-offset class="hx--small-d">
+    <h1 data-DIAH-class-top>An expression evaluated</h1>
+    <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+    <h3 data-DIAH-class-top>The box is not a square</h3>
+    <h4 data-DIAH-class-top>The background color is clipped</h4>
+    <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+    <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+  </div>
+  <hr class="MV2 -hr--dotted">
+  <p><code>hx--tiny-d</code></p>
+  <div data-DIAH-class-bottom-offset class="hx--tiny-d">
+    <h1 data-DIAH-class-top>An expression evaluated</h1>
+    <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+    <h3 data-DIAH-class-top>The box is not a square</h3>
+    <h4 data-DIAH-class-top>The background color is clipped</h4>
+    <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+    <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+  </div>
+</section>
+
+<section>
+  <p class="section__title">Sumažinti scope'e nurodytas heading'as</p>
+  <p><code>h2--small-d</code></p>
+  <div data-DIAH-class-bottom-offset class="h2--small-d">
+    <h1 data-DIAH-class-top>An expression evaluated</h1>
+    <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+    <h3 data-DIAH-class-top>The box is not a square</h3>
+    <h4 data-DIAH-class-top>The background color is clipped</h4>
+    <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+    <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+  </div>
+  <p><code>h2--tiny-d</code></p>
+  <div data-DIAH-class-bottom-offset class="h2--tiny-d">
+    <h1 data-DIAH-class-top>An expression evaluated</h1>
+    <h2 data-DIAH-class-top>Percentages for the horizontal axis</h2>
+    <h3 data-DIAH-class-top>The box is not a square</h3>
+    <h4 data-DIAH-class-top>The background color is clipped</h4>
+    <h5 data-DIAH-class-top>An arc of ellipse is used as the border</h5>
+    <h6 data-DIAH-class-top>Denotes the size of the circle radius</h6>
+  </div>
+</section>
+</del>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

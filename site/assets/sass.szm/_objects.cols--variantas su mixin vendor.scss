@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////////
+/////                                                                   ///
+////                          CSS 3 columns                            ///
+///                                                                   ///
+////////////////////////////////////////////////////////////////////////
+
+.o-cols {
+	margin: 7px 0px; padding: 1px 0px;
+	/*border-style: dashed;
+	border-color: rgba(142, 71, 140, 0.30);
+	border-width: 1px 0;*/
+	column-gap: 1em;
+	column-count: 2;
+	column-rule: 1px dotted hsla(0, 0%, 0%, 0.2);
+	column-fill: balance;
+	// @include vendor(column-gap, 1em);
+	// @include vendor(column-count, 2);
+	// @include vendor(column-rule, 1px dotted hsla(0, 0%, 0%, 0.2));
+	// @include vendor(column-fill, balance);
+	> *:first-child {
+		@media screen and (-webkit-min-device-pixel-ratio:0) {
+			margin-top: 0;
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   stulpeliai nurodant jų skaičių
+//
+////////////////////////////////////////////////////////////////////////
+
+// .o-cols--NX { column-count: X }
+@for $i from 1 through 9 {
+	.o-cols--N#{$i} {
+		column-count: #{$i};
+		// @include vendor(column-count, #{$i});
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   stulpeliai nurodant jų plotį
+//
+////////////////////////////////////////////////////////////////////////
+
+// .o-cols--W1 {
+//    column-width: 200px;
+//    column-count: auto;
+// }
+$cols-width: 200px;
+$cols-width-step: 50px;
+@for $i from 1 through 9 {
+	.o-cols--W#{$i} {
+		column-width: $cols-width;
+		column-count: auto;
+		// @include vendor(column-width, $cols-width);
+		// @include vendor(column-count, auto);
+	}
+	$cols-width: $cols-width + $cols-width-step !global;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   Kad būtų neperkeliamas tarp stulpelių tagų turinys
+//
+////////////////////////////////////////////////////////////////////////
+
+.o-cols__continuous,
+.o-cols--continuous-p p,                   //Kad būtų nekeliami paragrafai
+.o-cols--continuous-bq blockquote,
+.o-cols--continuous-fig figure,
+.o-cols--continuous-pre pre {
+	@include vendor(column-break-inside, avoid);
+	@include vendor(break-inside, avoid);
+	// -webkit-column-break-inside:avoid-column;
+	//    -moz-column-break-inside:avoid-column;
+	//      -o-column-break-inside:avoid-column;
+	//     -ms-column-break-inside:avoid-column;
+	//         column-break-inside:avoid-column;
+	// -webkit-column-break-inside: avoid;
+	//    -moz-column-break-inside: avoid;
+	//      -o-column-break-inside: avoid;
+	//     -ms-column-break-inside: avoid;
+	//         column-break-inside: avoid;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   Stulpelių tagų pradėjimas nuo stulpelio pradžios-viršaus
+//
+////////////////////////////////////////////////////////////////////////
+
+.o-cols__start,
+.o-cols--start-h1 > h1,               // Kad head'ingus keltų į sekančio stulpelio pradžią
+.o-cols--start-h2 > h2,               // Kad head'ingus keltų į sekančio stulpelio pradžią
+.o-cols--start-h3 > h3,
+.o-cols--start-h4 > h4,
+.o-cols--start-h5 > h5,
+.o-cols--start-h6 > h6 {
+	@include vendor(break-before, column);
+	@include vendor(column-break-before, always);
+	margin-top: 0;
+	// -webkit-column-break-before: column;
+	//    -moz-column-break-before: column;
+	//      -o-column-break-before: column;
+	//     -ms-column-break-before: column;
+	//         column-break-before: column;
+	// -webkit-column-break-before: always;
+	// break-before: column;
+}
+
+/*‘break-before’, ‘break-after’, ‘break-inside’*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

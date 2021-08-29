@@ -1,0 +1,351 @@
+@charset "utf-8";
+
+// .c-pvs == PVz Simple
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  # .c-pvs
+//
+/////////////////////////////////////////////////////////////////////////
+
+$c-pvs-borderColor-root: hsla(0, 0%, 0%, .5);
+
+.c-pvs {
+  --borderColor-root: #{$c-pvs-borderColor-root};
+  --borderColorHover-root: hsla(0, 0%, 0%, .65);
+  --borderColor-parent: hsla(0, 0%, 0%, .8);
+  --borderRadius: 14px;
+  /*background: #ccee66;*/
+  /*background: hsl(0, 0%, 90%);*/
+  margin: 0 0 $szm-spacing-vertical-paragraph 0;
+  transition: .5s;
+
+  > *:not(:last-child) {
+    margin-bottom: $szm-spacing-vertical-paragraph / 2;
+  }
+
+  //> *:last-child {
+  //  margin-bottom: 0;
+  //}
+
+  //> p:nth-of-type(1) {
+  //  text-align: center;
+  //  font-weight: 700;
+  //  font-size: 1.05em;
+  //}
+}
+
+//-----------------------------------------------------------------------------------------------
+
+.c-pvs--title {
+  //> p:nth-of-type(1) {
+  //> p:nth-child(1):nth-of-type(1),
+  > p:nth-child(1),
+  > style:nth-child(1) + p {
+    text-align:  center;
+    font-weight: 700;
+    font-size:   1.1em;
+  }
+
+  //&.c-pvs--border {
+  //  > p:nth-child(1),
+  //  > style:nth-child(1) + p {
+  //    background:  hsl(0, 0%, 40%);
+  //    border-radius: calc(var(--borderRadius) * 2);
+  //    margin: -2.3em .7em 0;
+  //    padding: .2em .2em .9em;
+  //    color: whitesmoke;
+  //    position: relative;
+  //    z-index: -10;
+  //  }
+  //}
+}
+
+//-----------------------------------------------------------------------------------------------
+
+.c-pvs--border {
+  --pvs-border-rootPaddingVer: .3em;
+  --pvs-border-rootPaddingHor: .3em;
+
+  border: 4px dashed var(--borderColor-root);
+  border-radius: var(--borderRadius);
+  //border-radius: calc(var(--borderRadius) / 2);
+  padding: var(--pvs-border-rootPaddingVer) var(--pvs-border-rootPaddingHor);
+
+  //> p:nth-of-type(1) {
+  //  margin-top: $szm-spacing-vertical-paragraph / 6;
+  //}
+
+  //// fonas title'ui ////////////////////////////////////////////
+  //padding: 0 $mrg $mrg;
+  //> p:nth-of-type(1) {
+  //  background: hsl(0, 0%, 90%);
+  //  border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+  //  //margin-top: $mrg;
+  //  margin-right: -#{$mrg};
+  //  margin-left: -#{$mrg};
+  //  padding: #{$mrg * 2} 0 #{$mrg * 2};
+  //}
+}
+
+.c-pvs--outline {
+  outline:     2px dashed var(--borderColor-root);
+  outline-offset: 5px;
+}
+
+//---------------------------------------------------------------------------
+
+// s — scope name space
+
+.c-pvs--hover:hover, .s-c-pvs-hover .c-pvs:hover {
+  //background:     hsla(0, 0%, 0%, .1);
+
+  // offset-x | offset-y | blur-radius | spread-radius | color
+  //box-shadow:
+  //  0 0 20px 15px hsla(0, 0%, 0%, .1),
+  //  inset 0 0 40px 0 hsla(0, 0%, 0%, .1);
+
+  box-shadow:
+    0 0 9px 1px hsla(0, 0%, 0%, .35);
+    //inset 0 0 5px 0 hsla(0, 0%, 0%, .13);
+
+  border-color: var(--borderColorHover-root);
+  outline-color: var(--borderColorHover-root);
+  //border-radius: 10px;
+}
+
+//---------------------------------------------------------------------------
+
+@mixin c-pvs--resize-base {
+  overflow: auto;
+}
+
+.c-pvs--resize {
+  resize: both;
+  @include c-pvs--resize-base;
+}
+
+.c-pvs--resizeHor {
+  resize: horizontal;
+  @include c-pvs--resize-base;
+}
+
+.c-pvs--resizeVer {
+  resize: vertical;
+  @include c-pvs--resize-base;
+}
+
+//@mixin c-pvs--resize-base {
+//  overflow: auto;
+//  position: relative;
+//
+//  &::after {
+//    @content;
+//
+//    padding: .15em .6em;
+//    font: 10px "JetBrains Mono", monospace;
+//    color: whitesmoke;
+//    background: scale_color($c-pvs-borderColor-root, $lightness: 50%, $alpha: 100%);
+//    border-radius: .7em;
+//    //transform: rotate(50grad);
+//    transform: translateY(0px);
+//    position: absolute;
+//    right: 4ch;
+//    z-index: 100;
+//  }
+//}
+//
+//.c-pvs--resize {
+//  resize: both;
+//  @include c-pvs--resize-base {
+//    content: "resize both";
+//  };
+//}
+//
+//.c-pvs--resizeHor {
+//  resize: horizontal;
+//  @include c-pvs--resize-base {
+//    content: "resize horizontal";
+//  };
+//}
+//
+//.c-pvs--resizeVer {
+//  resize: vertical;
+//  @include c-pvs--resize-base {
+//    content: "resize vertical";
+//  };
+//}
+
+//---------------------------------------------------------------------------
+
+.c-pvs--clearFix .c-pvs__parent {
+  @include szm-float-clearfix-old;
+}
+
+.c-pvs--clearFix-new .c-pvs__parent {
+  @include szm-float-clearfix;
+}
+
+//---------------------------------------------------------------------------
+
+.c-pvs--btnHvrOnc button {
+  position: relative;
+  &:hover::before {
+  //&::before {
+    display:       block;
+    position:      absolute;
+    z-index:       1000;
+    content:       attr(onclick);
+    white-space:   pre;
+    text-align: left;
+    font-family: "Recursive Mono Linear Static", monospace;
+    background:    hsl(222, 100%, 95%);
+    color:         hsl(222, 100%, 30%);
+    border: 1px solid hsl(222, 100%, 30%);
+    border-radius: 5px;
+    padding: .5em .8em;
+    //margin: 0 0 -100% 0;
+
+    //transform:     translate(0, 100%);
+    top: calc(100% + 5px);
+    left: -3px;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+/////////////////////////////////////////////////////////////////////////
+
+.c-pvs--addBtnViewportFixFit {
+  //margin-bottom: 20px;
+
+  & > button:last-child {
+
+    //background: darkslategrey;
+    //background:    var(--borderColor-root);
+    background:    hsl(0, 0%, 85%, .9);
+    border:  solid var(--borderColor-root);
+    border-width:  1px 1px 0;
+    //border-radius: 0 0 calc(var(--borderRadius) / 2) calc(var(--borderRadius) / 2);
+    border-radius: calc(var(--borderRadius) / 2) calc(var(--borderRadius) / 2) 0 0;
+    color:         hsl(0, 0%, 30%, 1);
+    //display:       inline-block;
+    font-size:     .8em;
+    font-weight: 800;
+    //margin-bottom: -10px;
+    padding:       2px 9px 2px;
+    //position: absolute;
+    //float: right;
+    text-shadow:      1px 1px 2px hsl(0, 0%, 0%, .4);
+    transform: translate(15px, 6px);
+
+    //background:       linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+    //background-color: #007dc1;
+    //border:           1px solid #124d77;
+    //border-radius:    3px;
+    //box-shadow:       inset 0px 1px 0px 0px #54a3f7;
+    //color:            #ffffff;
+    ////cursor:           pointer;
+    ////display:          inline-block;
+    ////font-family:      Arial;
+    //font-size:        13px;
+    //padding:          6px 24px;
+    //text-decoration:  none;
+    //text-shadow:      0px 1px 0px #154682;
+
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  # .c-pvs__parent
+//
+/////////////////////////////////////////////////////////////////////////
+
+.c-pvs__parent {
+  //margin-top: -.5em;
+  //margin: 0 0 $szm-spacing-vertical-paragraph 0;
+}
+
+.c-pvs__parent--child-bg, .c-pvs--child-bg .c-pvs__parent {
+  // #d8e2dc #ffe5d9 #ffcad4 #fdffb6 #e6b8a2 #e0fbfc #ecbcfd #b7e4c7 #aed9e0 #f2b5d4 #ccee66 #fed9b7 #979dac #efc3e6 #cae9ff #a7c957 #b8b8ff #ece2d0 #9ceaef #fbc3bc #bdd5ea #f49cbb #fff3b0 #efefd0 #f7c59f #ffe45e
+  $colors: #d8e2dc #ffcad4 #fdffb6 #e6b8a2 #ffe5d9 #e0fbfc #ecbcfd #b7e4c7 #aed9e0;
+  //$colors: #ffb5a7 #a8dadc #f4d35e;
+  //$colors: #9381ff #ffe45e #ff6392 #7fc8f8 #a7c957;
+
+  $number: length($colors);
+  $i: 1;
+  @each $color in $colors {
+    > *:nth-child(#{$number}n+#{$i}) {
+      background: $color;
+    }
+    $i: $i + 1;
+  }
+}
+
+.c-pvs__parent--border, .c-pvs--parent-border .c-pvs__parent {
+  border:     1px dotted var(--borderColor-parent);
+  //padding:    5px;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  # .c-pvs__section
+//
+/////////////////////////////////////////////////////////////////////////
+
+.c-pvs__section {
+  background: hsl(0, 0%, 90%);
+  //color: hsl(0, 0%, 30%);
+  text-align: center;
+  font-weight: bold;
+  padding: .2em 0;
+
+  .c-pvs--border > & {
+    margin-left:   calc(var(--pvs-border-rootPaddingHor) * -1);
+    margin-right:  calc(var(--pvs-border-rootPaddingHor) * -1);
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border:        dashed scale_color($c-pvs-borderColor-root, $alpha: -50%);
+    border-width:  2px 0;
+    //background: hsla(0, 0%, 95%, 1);
+    background: none;
+    padding: .12em 0 .1em;
+    //border-radius: var(--borderRadius);
+  }
+
+  code {
+    color: hsl(0, 0%, 37%);
+  }
+}
+
+
+//-----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//  # Custom Easing Function
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// https://varun.ca/custom-easing-with-sass/
+// https://codepen.io/winkerVSbecks/pen/Cihkr?editors=0100
+
+// @TODO:
+
+/* ---------------------------------
+  Mixins
+--------------------------------- */
+@mixin animation($name, $time) {
+  -webkit-animation: $name $time infinite 2s;
+  -moz-animation: $name $time infinite 2s;
+  -o-animation: $name $time infinite 2s;
+  animation: $name $time infinite 2s;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+/* ---------------------------------
+  Math Power Function for SASS
+  From:
+  https://github.com/adambom/Sass-Math/blob/master/math.scss
+--------------------------------- */
+@function pow ($x, $n) {
+  $ret: 1;
+  @if $n >= 0 {
+    @for $i from 1 through $n {
+      $ret: $ret * $x;
+    }
+  } @else {
+    @for $i from $n to 0 {
+      $ret: $ret / $x;
+    }
+  }
+  @return $ret;
+}
+
+/* ---------------------------------
+  The Custom Easing Function
+  from:
+  https://patakk.tumblr.com/post/88602945835/heres-a-simple-function-you-can-use-for-easing
+--------------------------------- */
+@function ease($time, $g) {
+  @if $time < 50 {
+    @return 0.5 * pow(2 * $time/100, $g);
+  } @else {
+    @return 1 - (0.5 * pow(2 * (1 - $time/100), $g));
+  }
+}
+
+/* ---------------------------------
+  Generate keyframes based
+  on easing function
+--------------------------------- */
+@mixin easingGenerator($g) {
+  @for $i from 0 through 100 {
+    // calculate
+    $percent: 0% + $i;
+    $left: 0% + 100 * ease($i, $g);
+    // set position
+    #{$percent} { left: $left; }
+  }
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+

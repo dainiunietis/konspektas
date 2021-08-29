@@ -1,0 +1,432 @@
+@charset "utf-8";
+
+//-------------------------------------------------------------------------------------
+// https://www.rawkblog.com/2019/01/flexbox-gutters-negative-margins-solved/
+//-------------------------------------------------------------------------------------
+//  If we have a single Flexbox row, no wrapping, we can set horizontal gutters easily:
+//
+//  .flex-parent > *:not(:last-child) {
+//    margin-right: 1rem;
+//  }
+//-------------------------------------------------------------------------------------
+//  o čia jeigu yra flex-wrap: wrap
+//
+//  .flex {
+//    // ...
+//    margin-left: -1rem;
+//  }
+//  .item {
+//    margin: 0 0 1rem 1rem;
+//  }
+//-------------------------------------------------------------------------------------
+
+$o-grd-gutterVer: szm-spacing-size(small);
+$o-grd-gutterHor: szm-spacing-size(small);
+
+$o-grd-minWidth:  9em;
+//$o-gfx-minWidth: min-content;
+
+///////////////////////////////////////////////////////////////////////////
+//
+//  # ...
+//
+/////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+
+.o-grd {
+  margin: 0 0 -#{$o-grd-gutterVer} -#{$o-grd-gutterHor};
+  //clip-path: inset(0 $o-gfx-gutterVer $o-gfx-gutterHor 0);
+  > * {
+    margin: 0 0 $o-grd-gutterVer $o-grd-gutterHor;
+    list-style-type: none;
+    //min-width: $o-gfx-minWidth;
+  }
+
+  > *:first-child {
+    //padding-left: 0;
+  }
+
+  > *:last-child {
+    //padding-right: 0;
+  }
+
+  > *:hover {
+    //outline: 2px dotted rgba(255, 32, 143, 1);
+    //outline-offset: 5px;
+  }
+
+  &--spcVer {
+    padding-bottom: $szm-spacing-vertical-paragraph;
+  }
+
+  &--outline {
+    //outline: 1px solid hsla(240, 100%, 50%, 0.5);
+    //outline-offset: 1px;
+    > * {
+      outline: 1px solid hsla(216, 100%, 50%, 0.8);
+      outline-offset: 3px;
+    }
+  }
+
+  &--boxed > * {
+    outline: 1px dotted colorScheme-site("1HL2");
+    outline-offset: 3px;
+    &:hover {
+      //outline-color: colorScheme-site("1");
+      //outline-width: 2px;
+      outline-style: solid;
+      //$color: scale_color(colorScheme-site("1HL2"), $alpha: -90%);
+      ////$color: scale_color(invert(colorScheme-site("1HL2"), 100%), $alpha: -93%);
+      //background: $color;
+    }
+  }
+
+  //-------------------------------------------------------------------
+
+  &--border {
+    $color: colorScheme-site("1HL2");
+    border: $color solid;
+    border-width: 1px 0;
+
+    > * {
+      border: $color solid;
+      border-width: 0 1px;
+    }
+  }
+
+  //-------------------------------------------------------------------
+
+  //&--mnWdhMnCnt > * {
+  //  min-width: min-content;
+  //}
+  //
+  //&--mnWdhMxCnt > * {
+  //  min-width: max-content;
+  //}
+
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # inline block
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-ibk {
+  text-align: left;
+  > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  //&--left    { text-align: left; }
+  &--hCenter { text-align: center; }
+  &--right   { text-align: right; }
+
+  //&--top > *     { vertical-align: top; }
+  &--vCenter > * { vertical-align: middle; }
+  &--bottom > *  { vertical-align: bottom; }
+
+  &--center {
+    text-align: center;
+    > * {
+      vertical-align: middle;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # float
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-flt {
+  @include szm-float-clearfix;
+  > * { float: left; }
+  &--right > * { float: right; }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # flexbox gutters with margins
+//
+/////////////////////////////////////////////////////////////////////
+
+.o-flx {
+  display: flex;
+  flex-flow: wrap;
+  //align-items: stretch;
+  //justify-content: flex-start;
+
+  > * {
+    //min-width: $minWidth;
+    //min-width: 20em;
+    width:     auto;
+    flex:      0 1 auto;
+    //margin: 5px 7px;
+    //padding: 0.6em 0.3em;
+    //width: 100px;
+    //color: hsl(0, 0%, 0%);
+  }
+
+  //-------------------------------------------------------------------
+
+  &--maxContentGrow {
+    > * {
+      width: max-content;
+      flex: 1 0 auto;
+    }
+  }
+
+  &--maxContentScale {
+    > * {
+      width: max-content;
+      flex: 1 1 auto;
+    }
+  }
+
+  //-------------------------------------------------------------------
+
+  //&--minContentFix {
+  //  > * {
+  //    width: min-content;
+  //    flex: 0 0 auto;
+  //  }
+  //}
+
+  &--minContentGrow {
+    > * {
+      width: min-content;
+      flex: 1 0 auto;
+    }
+  }
+
+  //-------------------------------------------------------------------
+
+  //&--cls5max {
+  //  > * {
+  //    width: 15em;
+  //    flex: 1 0 auto;
+  //  }
+  //}
+
+  &--clsw1 > * {
+    width: 15em;
+    flex: 1 0 auto;
+  }
+
+  &--clsw2 > * {
+    width: 20em;
+    flex: 1 0 auto;
+  }
+
+  &--clsw3 > * {
+    width: 25em;
+    flex: 1 0 auto;
+  }
+
+  &--clsw4 > * {
+    width: 30em;
+    flex: 1 0 auto;
+  }
+
+  &--clsw5 > * {
+    width: 35em;
+    flex: 1 0 auto;
+  }
+
+  //-------------------------------------------------------------------
+
+  &--equal {
+    > * {
+      //width: 34%;
+      flex: 1 1 1%;
+    }
+  }
+
+  &--clsn2 {
+    > * {
+      width: 34%;
+      flex: 1 0 auto;
+    }
+  }
+
+  &--clsn3 {
+    > * {
+      width: 26%;
+      flex: 1 0 auto;
+    }
+  }
+
+  &--clsn4 {
+    > * {
+      width: 21%;
+      flex: 1 0 auto;
+    }
+  }
+
+  &--clsn5 {
+    > * {
+      width: 17%;
+      flex: 1 0 auto;
+    }
+  }
+
+  &--clsn6 {
+    > * {
+      width: 15%;
+      flex: 1 0 auto;
+    }
+  }
+
+  &--clsn7 {
+    > * {
+      //width: 10em;
+      width: 13%;
+      flex: 1 0 auto;
+    }
+  }
+
+  //-------------------------------------------------------------------
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  &--vCenter {
+    align-items: center;
+  }
+
+  &--bottom {
+    align-items: flex-end;
+  }
+
+  &--baseline {
+    align-items: baseline;
+  }
+
+  //-------------------------------------------------------------------
+
+  //&--left {
+  //  justify-content: flex-start;
+  //}
+
+  &--hCenter {
+    justify-content: center;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--between {
+    justify-content: space-between;
+  }
+
+  &--evenly {
+    justify-content: space-evenly;
+  }
+
+  &--around {
+    justify-content: space-around;
+  }
+
+  //-------------------------------------------------------------------
+
+  &--lastSpace {
+    &::after {
+      content: "\2003 ";
+      flex-grow: 1;
+      background: lightskyblue;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+//
+//		grid widths
+//
+//////////////////////////////////////////////////////////
+
+//.o-grd--w200 > * { width: 200px; }
+//.o-grd--w300 > * { width: 300px; }
+//.o-grd--w400 > * { width: 400px; }
+//
+//.o-grd--w10p > * { width: 10%; }
+//.o-grd--w20p > * { width: 20%; }
+//.o-grd--w25p > * { width: 25%; }
+//.o-grd--w50p > * { width: 50%; }
+//.o-grd--w75p > * { width: 75%; }
+
+////////////////////////////////////////////////////////////
+//
+//		grid features
+//
+//////////////////////////////////////////////////////////
+
+//.o-grd--paint-diff > * {
+//	padding: 0.3em 0.5em;
+//	margin-right: 0.5em;
+//	margin-bottom: 0.75em;
+//	&:last-child { margin-right: 0; }
+//	> h2, > h3 {
+//		background-color: rgba(247,238,247,.5);
+//		background: none;
+//		}
+//}
+//
+//$grid-colors: #FDDB6D #EFDBC5 #CD9575 #78DBE2 #87A96B #FFA474 #FAE7B5 #9F8170 #FD7C6E #ADADD6 #B0B7C6 #1CD3A2 #9ACEEB #FDDB6D #EFCDB8 #B5C8FA #B5FAE7 #E7B5FA;
+//$i: 1;
+//@each $color in $grid-colors {
+//	.o-grd--paint-diff > :nth-child(#{$i}) { background-color: lighten($color, 10%); }
+//	$i: $i + 1 !global;
+//}
+
+////////////////////////////////////////////////////////////
+//
+//		grid features
+//
+//////////////////////////////////////////////////////////
+
+//.o-grd--noMrg { margin: 0; padding: 0; }
+//
+//.o-grd--headings > * {
+//	> h2:first-child { margin-top: 0; }
+//	> h3:first-child { margin-top: 0; }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

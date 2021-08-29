@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+//---------------------------------------------------------------------------
+// čia laikome nustatymus kurie:
+//   - yra būtini ir vienodi visuose projektuose
+//   - normalize - suvienodina skirtingų naršyklių veikimą
+//---------------------------------------------------------------------------
+
+// 1. Force scrollbars to always be visible to prevent awkward ‘jumps’ when
+//    navigating between pages that do/do not have enough content to produce
+//    scrollbars naturally.
+
+html {
+  overflow-y: scroll;       // [1]
+}
+
+// 1. Ensure the page always fills at least the entire height of the viewport.
+
+body {
+  min-height: 100vh;  // [1]
+}
+
+// spacing
+
+body,
+address,
+h1, h2, h3, h4, h5, h6,
+p, pre, blockquote, hr,
+dl, dd,
+ol, ul, li,
+figure, figcaption,
+table,
+fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+//img {
+iframe, img, video {
+  max-width: 100%;
+  //display: block;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  # box-sizing
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// More sensible default box-sizing:
+// css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+//---------------------------------------------------------------------------
+// variantas be inherit'o
+//---------------------------------------------------------------------------
+//*, *::before, *::after {
+//  box-sizing: border-box;
+//}
+//---------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  # typography
+//
+/////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  # forms
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// Inherit fonts for inputs and buttons
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  #
+//
+/////////////////////////////////////////////////////////////////////////////
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: initial;
+  }
+}
+
+
+
+
+

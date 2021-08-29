@@ -1,0 +1,99 @@
+
+//////////////////////////////////////////////////////////////////
+//
+//   .u-border
+//
+/////////////////////////////////////////////////////////////
+
+////.u-border-<line-style-value>-<line-color-name>-<line-width-name>, .-c > *, .-d *,
+////.B<line-style-nr><line-color-nr><line-width-nr>, .c > *, .d *
+//
+//$u-border-styles: dotted dashed solid double;
+//
+//// du galimi list'o reikšmių variantai:
+////   magenta          <<< color name and value
+////   (red: crimson)   <<< red — color name
+////                        crimson — color value
+//$u-border-colors: red magenta gold coral aqua blue deeppink;
+//
+//$iStyle: 1;
+//@each $style in $u-border-styles {
+//  $iColor: 1;
+//  @each $color in $u-border-colors {
+//    $colorName: null;
+//    @if type-of($color) == map {
+//      $colorName: map-get-nthKey($color, 1);
+//      //@debug unquote("$colorName:") $colorName;
+//      $color:     map-get-nth($color, 1);
+//      //@debug unquote("$color:") $color;
+//    }
+//    //@if type-of($color) == map {
+//    //  $colorName: map_nth_key($color, 1);
+//    //  $colorValue:     nth($color, 1);
+//    //} @else {
+//    //  $colorName:  $color;
+//    //  $colorValue: $color;
+//    //}
+//    $iWidth: 1;
+//    @each $widthName, $width in $g-line-thickness {
+//      $selector: u-border-#{$style}-#{if($colorName, $colorName, $color)}-#{$widthName};
+//      $selectorShort: B#{$iStyle}#{$iColor}#{$iWidth};
+//      .#{$selector}, .#{$selector}-c > *, .#{$selector}-d *,
+//      .#{$selectorShort}, .#{$selectorShort}c > *, .#{$selectorShort}d * {
+//        border: $style $color $width;
+//      }
+//      $iWidth: $iWidth + 1;
+//    }
+//    $iColor: $iColor + 1;
+//  }
+//  $iStyle: $iStyle + 1;
+//}
+//
+///*20190417214241*/
+//
+//// .u-border-none,                         .B0
+//// .u-border-[top|right|bottom|left]-none, .B[T|R|B|L]0
+//// .u-border-[horizontal|vertical]-none,   .B[H|V]0
+//
+//@each $sideName, $sideProps in $g-box-sides {
+//  $selectorShort: "B" + to_upper_case(str_slice($sideName, 1, 1)) + "0";
+//
+//  //@if $sideName != "" {             <<< VEIKIA, bet daugiau kodo
+//  //  $sideName: "-" + $sideName;
+//  //}
+//  //$selector: u-border#{$sideName}-none;
+//  $selector: u-border#{if($sideName=="","","-")}#{$sideName}-none;
+//
+//  .#{$selector}, .#{$selector}-c > *, .#{$selector}-d *,
+//  .#{$selectorShort}, .#{$selectorShort}c > *, .#{$selectorShort}d * {
+//    @each $prop in $sideProps {
+//      border#{$prop}-style: none !important;
+//    }
+//  }
+//}
+
+
+
+
+//$style: nth(map_get($g-border-variations, styles), $styleNr);
+
+//$styles: map_get($g-border-variations, styles);
+//@if $styleNr > length($styles) {
+//  @error unquote("$g-border-variations.styles yra") length($styles) elementai, o perduota $styleNr
+//}
+//$style: nth($styles, $styleNr);
+//$width: nth(map_get($g-border-variations, widths), $widthNr);
+//$color: nth(map_get($g-border-variations, colors), $colorNr);
+
+//$width: nth(map_get($g-border-variations, widths), $widthNr);
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  min-height: 100vh;
+}
+
+body,
+address,
+h1, h2, h3, h4, h5, h6,
+p, pre, blockquote, hr,
+dl, dd,
+ol, ul, li,
+figure, figcaption,
+table,
+fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*# sourceMappingURL=defaults.szm.css.map */

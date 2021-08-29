@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      /*font-size: 1.2em;*/
+      margin: 1em;
+    }
+
+    p[class|="cp"] {
+      padding: 0.3em 0.5em;
+      margin: 0.5em 0;
+    }
+
+    .cp-20200419181227 {
+      --whiteFade: hsla(0,0%,100%,0.8);
+      background:
+        linear-gradient(0grad, var(--whiteFade), var(--whiteFade)),
+        linear-gradient(0grad, currentColor, currentColor)
+      ;
+    }
+
+    .cp-20200420103626 {
+      --colorFade: hsla(0,100%,90%,1);
+      background:
+        linear-gradient(0grad, var(--colorFade), var(--colorFade)),
+        linear-gradient(0grad, currentColor, currentColor)
+      ;
+      background-blend-mode: luminosity;
+    }
+
+    .cp-20200420133652 {
+      --colorFade: hsla(0,100%,100%,0.85);
+      background:
+        linear-gradient(0grad, var(--colorFade), var(--colorFade)),
+        linear-gradient(0grad, currentColor, currentColor)
+      ;
+      background-blend-mode: luminosity;
+    }
+
+      /*mix-blend-mode: multiply;*/
+    /*background:*/
+    /*!*linear-gradient(0grad, hsla(0,100%,50%,1), hsla(0,100%,50%,1)),*!*/
+
+    /*!*linear-gradient(0grad, var(--whiteFade), var(--whiteFade)),*!*/
+    /*linear-gradient(0grad, currentColor 2px, transparent 2px, transparent),*/
+
+    /*linear-gradient(0grad, var(--whiteFade), var(--whiteFade)),*/
+    /*linear-gradient(0grad, currentColor, transparent 150%)*/
+    /*;*/
+
+  </style>
+</head>
+<body>
+
+<h1>Kaip background'e gauti skirtingo intensyvumo <code>currentColor</code>, kad būtų geras fonas tekstui</h1>
+
+<h2><code>currentColor</code> šviesinimas ant viršaus uždėjus visiškai baltą ar su atspalviu spalvą su permatomumu</h2>
+<p class="cp-20200419181227">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed ac lorem facilisis, convallis ipsum eu, commodo dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+<p class="cp-20200419181227" style="color: #005C5F;">Donec id massa euismod, posuere orci volutpat, ornare ligula. Integer scelerisque dignissim velit, interdum vestibulum turpis interdum non. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+<h2>Su <code>background-blend-mode: luminosity</code> viršutinio BG sluoksnio Lightness reikšmė suteikiama žemiau esančiam</h2>
+<h3>Šviesinimas tik su Lightness</h3>
+<p class="cp-20200420103626" style="color: hsl(0,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420103626" style="color: hsl(45,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420103626" style="color: hsl(90,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420103626" style="color: hsl(135,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420103626" style="color: hsl(180,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420103626" style="color: hsl(225,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420103626" style="color: hsl(270,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420103626" style="color: hsl(315,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<h3>Kad sumažinti spalvos Saturation, padidiname Lightness ir pridedame permatomumo</h3>
+<p class="cp-20200420133652" style="color: hsl(0,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420133652" style="color: hsl(45,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420133652" style="color: hsl(90,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420133652" style="color: hsl(135,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420133652" style="color: hsl(180,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420133652" style="color: hsl(225,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420133652" style="color: hsl(270,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+<p class="cp-20200420133652" style="color: hsl(315,50%,30%);">Lorem ipsum dolor sit amet, consectetur elit. Aenean auctor sodales amet condimentum. Sed lorem facilisis, convallis ipsum.</p>
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--<p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis, sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>-->
+<!--<p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum tempor, lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae iaculis.</p>-->
+
+<h2><code>currentColor</code>'ui pridėti kitos spalvos su <code>background-blend-mode: hue</code></h2>
+
+</body>
+</html>

@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Background'ai</h1>
+<p>Senojo konspekto:</p>
+<ul>
+  <li><a href="http://konspektas-prev.local/client-side/css/css/properties/background_bugu-apejimas.htm">būgų apėjimas</a>, pvz. multiple backgrounds</li>
+  <li><a href="http://konspektas-prev.local/client-side/css/css/properties/pvz/background.htm">pavyzdžiai</a></li>
+</ul>
+<h2><code>background-blend-mode:</code></h2>
+<p><a href="css.blend-modes.htm">css.blend-modes</a></p>
+<p><a href="~bg-gauti-skirtingo-intensyvumo-currentColor-geras-fonas-tekstui.html">~bg-gauti-skirtingo-intensyvumo-currentColor</a></p>
+<pre><code>background-blend-mode: normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity</code></pre>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw3 WNNCc">
+  <div>
+    <p>Kiekvienam background'o sluoksniui galima priskirti savą <i>blending mode</i>:</p>
+    <blockquote>
+      <p>Blending modes should be defined in the same order as the <a href="https://devdocs.io/css/background-image">background-image</a> property.</p>
+    </blockquote>
+    <pre><code>background-image: url(obuolys.png), url(kriaušė.png), url(slyva.png);
+background-blend-mode: multiply, overlay, screen;</code></pre>
+  </div>
+  <div>
+    <p>Jei <code>background-image:</code> ir <code>background-blend-mode:</code> masyvų ilgiai nesutampa:</p>
+    <blockquote>
+      <p>If the blending modes' and background images' list lengths are not equal, it will be repeated and/or truncated until lengths match.</p>
+    </blockquote>
+    <pre><code>background-blend-mode: multiply;
+background-image: url(obuolys.png), url(kriaušė.png), url(slyva.png);
+/*                multiply          multiply          multiply */
+
+background-blend-mode: multiply, overlay;
+background-image: url(obuolys.png), url(kriaušė.png), url(slyva.png);
+/*                multiply          overlay           multiply */</code></pre>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2><code>background:</code></h2>
+<p><a href="http://konspektas-prev.local/client-side/css/css/properties/background.htm">background:</a> </p>
+<p>&nbsp;</p>
+<pre><code>[ &lt;bg-layer&gt; , ]* &lt;final-bg-layer&gt;
+&lt;bg-layer&gt; =       &lt;bg-image&gt; || &lt;bg-position&gt; [ / &lt;bg-size&gt; ]? || &lt;repeat-style&gt; || &lt;attachment&gt; || &lt;box&gt; || &lt;box&gt;
+&lt;final-bg-layer&gt; = &lt;bg-image&gt; || &lt;bg-position&gt; [ / &lt;bg-size&gt; ]? || &lt;repeat-style&gt; || &lt;attachment&gt; || &lt;box&gt; || &lt;box&gt; || &lt;'background-color'&gt;</code></pre>
+<p>&nbsp;</p>
+<p><code>&lt;box&gt; || &lt;box&gt;</code></p>
+<blockquote>
+  <p>The <code>&lt;box&gt;</code> value may be included zero, one, or two times. If included once, it sets both <code>background-origin</code> and <code>background-clip</code>. If it is included twice, the first occurrence sets <code>background-origin</code>, and the second sets <code>background-clip</code>.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p><code>&lt;bg-position&gt; [ / &lt;bg-size&gt; ]?</code></p>
+<blockquote>
+  <p>The <code>&lt;bg-size&gt;</code> value may only be included immediately after <code>&lt;position&gt;</code>, separated with the '<code>/</code>' character, like this: <code>center/80%</code></p>
+</blockquote>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">shorthand'o <code>background:</code> savybės        </p>
+        <p class="c-pvz__title">nenurodytoms <code>background-*:</code> savybėms priskiriamos default'inės reikšmės (t. y. <i>Initial value</i>), šiame pvz. <code>background-color:</code> default'inė reikšmė yra <code>transparent</code></p>
+        <div class="c-pvz__container" style="">
+          <div class="W32%c H64pxc MR2c B362c" style="display: flex;">
+            <div class="c-pvz__target" style="background-color: lightsalmon;">&nbsp;</div>
+            <div class="c-pvz__target" style="background-color: lightsalmon; background: center">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">jeigu spalva priskiriama ne paskutiniam sluoksniui — visa deklaracija nebeveikia        </p>
+        <div class="c-pvz__container" style="">
+          <div class="W32%c H64pxc MR2c -B362c" style="display: flex;">
+            <div class="c-pvz__target" style="background: url('images/graphics/drugelis-64.png'), forestgreen, linear-gradient(0, indigo, transparent)">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">...        </p>
+        <p class="c-pvz__title">...<code></code></p>
+        <div class="c-pvz__container" style="">
+          <div class="W32%c H64pxc MR2c -B362c" style="display: flex;">
+            <div class="c-pvz__target" style="background: url('images/graphics/drugelis-64.png'), linear-gradient(0, indigo, transparent), forestgreen">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Kodinimo technikos</h3>
+      <dl>
+        <dt><code>background-color:</code> nustatymas su <code>background:</code> arba naudojant kartu</dt>
+        <dd>
+          <p>su paskutiniu sluoksniu</p>
+          <pre><code>.kazkas {
+  background: url(drugelis.png), url(banginis.png), <mark>skyblue</mark>;
+}</code></pre>
+          <p>...</p>
+          <pre><code>.kazkas {
+  background: <mark>skyblue</mark>;
+  background-image: url(drugelis.png), url(banginis.png);
+}</code></pre>
+          <p>...</p>
+          <pre><code>.kazkas {
+  background: url(drugelis.png), url(banginis.png);
+  background-color: <mark>skyblue</mark>;
+}</code></pre>
+        </dd>
+        <dt>bendros technikos</dt>
+        <dd>
+          <p>su bendrais nustatymais  visiems background'ų sluoksniams</p>
+          <pre><code>
+/*
+1. bendri nustatymai visiems background'ų sluoksniams
+2. skirtingi background'ų sluoksnių nustatymai
+*/
+.kazkas {
+  background: center / contain no-repeat skyblue;          /* 1 */
+  background-image: url(drugelis.png), url(banginis.png);  /* 2 */
+}</code></pre>
+          <p>viską nustatant su viena <code>background:</code></p>
+          <pre><code>.kazkas {
+  background: url(drugelis.png) center / contain no-repeat, url(banginis.png) center;
+}</code></pre>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2><code>background-image:</code></h2>
+<p><a href="http://konspektas-prev.local/client-side/css/css/properties/background-image.htm">background-image</a></p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <style>
+         /* #c20190714232338 {
+            background: center / contain no-repeat;
+            background-image: linear-gradient(transparent, tan);
+            background-image: url('images/graphics/1f40b-twemoji-whale-banginis.svg');
+          }*/
+        </style>
+        <p class="c-pvz__caption">kaip <code>background-image:</code> santykiauja su <code>background-color:</code></p>
+        <p class="c-pvz__title"><code>background-color:</code> būna apačioje ir kai <code>background-image:</code> vienasluoksnis, ir daugiasluoksnis</p>
+        <div class="c-pvz__container" style="">
+          <div class="W32%c H64pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="c-pvz__target" style="background-color: teal">&nbsp;</div>
+            <div class="c-pvz__target" style="background-color: teal; background-image: linear-gradient(0, hsla(270,100%,50%,0.7), transparent)">&nbsp;</div>
+            <div class="c-pvz__target" style="background-color: teal; background-image: linear-gradient(0, hsla(270,100%,50%,0.7), transparent), url('images/graphics/drugelis-64.png')">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">ar galima su <code>background-image:</code> nustatyti vientisą spalvą, kaip su <code>background-color:</code></p>
+        <p class="c-pvz__title">pačiam <code>background-image:</code> priskirti spalvą negalima</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 c-pvz__container--childTargetL2-noBg">
+          <div class="W32%c H64pxc MR2c B362c" style="display: flex">
+            <div style="background-color: darkorange">&nbsp;</div>
+            <div style="background-image: darkorange">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">bet galima gradient'inti tą pačią spalvą</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 c-pvz__container--childTargetL2-noBg">
+          <div class="W32%c H64pxc MR2c B362c" style="display: flex">
+            <div style="background-image: linear-gradient(darkorange, darkorange)">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>?????????????????????????????????</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">...</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container" style="">
+          <div class="W33%c H100pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="-c-pvz__target" style="background: center / contain no-repeat; background-image: url('images/graphics/1f40b-twemoji-whale-banginis.svg'), linear-gradient(hsla(0,0%,0%,0), hsla(0,100%,50%,0.7))">&nbsp;</div>
+            <div class="c-pvz__target" style="">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">...</p>
+      </div>
+    </td>
+    <td width="25%">
+      <h3>image'us gaminančios funkcijos</h3>
+      <h4>linear-gradient() </h4>
+      <p>Naujesnis:</p>
+      <pre><code>linear-gradient(
+  [ &lt;angle&gt; | to &lt;side-or-corner&gt; ,]? &lt;color-stop-list&gt; )
+  \---------------------------------/ \----------------------------/
+    Definition of the gradient line        List of color stops
+
+where &lt;side-or-corner&gt; = [ left | right ] || [ top | bottom ]
+  and &lt;color-stop-list&gt; = [ &lt;linear-color-stop&gt; [, &lt;color-hint&gt;? ]? ]#, &lt;linear-color-stop&gt;
+  and &lt;linear-color-stop&gt; = &lt;color&gt; [ &lt;color-stop-length&gt; ]?
+  and &lt;color-stop-length&gt; = [ &lt;percentage&gt; | &lt;length&gt; ]{1,2}
+  and &lt;color-hint&gt; = [ &lt;percentage&gt; | &lt;length&gt; ]</code></pre>
+      <p>Senesnis:</p>
+      <pre><code>linear-gradient(
+  [ &lt;angle&gt; | to &lt;side-or-corner&gt; ,]? &lt;color-stop&gt; [, &lt;color-stop&gt;]+ )
+  \---------------------------------/ \----------------------------/
+    Definition of the gradient line        List of color stops
+
+where &lt;side-or-corner&gt; = [left | right] || [top | bottom]
+  and &lt;color-stop&gt;     = &lt;color&gt; [ &lt;percentage&gt; | &lt;length&gt; ]?</code></pre>
+      <div class="c-em-note c-em--small c-em--narrow">
+        <p>gradient'o pasukimo kampo veikimas:</p>
+        <ul>
+          <li>Gradient'o pasukimas daromas su <a href="css.measurement-unit.htm#(h)">Duomenų tipas &lt;angle&gt;</a></li>
+          <li>
+            <p>O gradient'o spalvų dėstymas iš kairės į dešnę  map'inasi iš centro į išorę:</p>
+            <p><img src="images/css.background-image.linear-gradient.spalvu-destymas.png" alt="" width="175" height="140"/></p>
+          </li>
+        </ul>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">gradient'o pasukimo kampas ir spalvų dėstymas</p>
+        <p class="c-pvz__title">nenurodant gradient'o pasukimo kampo, naudojama <code>180deg 0.5turn 200grad</code></p>
+        <div class="c-pvz__container" style="">
+          <div class="W102pxc H97pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="c-pvz__target" style="background: linear-gradient(dodgerblue, gold)">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">pasukimas kas 45deg</p>
+        <div class="c-pvz__container" style="">
+          <div class="W102pxc H97pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="c-pvz__target" style="background: linear-gradient(0deg, dodgerblue, gold)">0deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(45deg, dodgerblue, gold)">45deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(90deg, dodgerblue, gold)">90deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(135deg, dodgerblue, gold)">135deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(180deg, dodgerblue, gold)">180deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(225deg, dodgerblue, gold)">225deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(270deg, dodgerblue, gold)">270deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(315deg, dodgerblue, gold)">315deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(360deg, dodgerblue, gold)">360deg</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">su keyword'ais statmenai</p>
+        <div class="c-pvz__container" style="">
+          <div class="W102pxc H97pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="c-pvz__target" style="background: linear-gradient(to top, dodgerblue, gold)">to top</div>
+            <div class="c-pvz__target" style="background: linear-gradient(to right, dodgerblue, gold)">to right</div>
+            <div class="c-pvz__target" style="background: linear-gradient(to bottom, dodgerblue, gold)">to bottom</div>
+            <div class="c-pvz__target" style="background: linear-gradient(to left, dodgerblue, gold)">to left</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">su keyword'ais įstrižai</p>
+        <div class="c-pvz__container" style="">
+          <div class="W102pxc H97pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="c-pvz__target" style="background: linear-gradient(to top left, dodgerblue, gold)">to top left</div>
+            <div class="c-pvz__target" style="background: linear-gradient(to top right, dodgerblue, gold)">to top right</div>
+            <div class="c-pvz__target" style="background: linear-gradient(to bottom left, dodgerblue, gold)">to bottom left</div>
+            <div class="c-pvz__target" style="background: linear-gradient(to bottom right, dodgerblue, gold)">to bottom right</div>
+          </div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">perėjimų išvengimas</p>
+        <p class="c-pvz__title">perėjimas</p>
+        <div class="c-pvz__container" style="">
+          <div class="W150pxc H50pxc MR2c" style="display: flex; justify-content: center">
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, dodgerblue, gold)">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">dvi spalvos viena šalia kitos be perėjimo</p>
+        <div class="c-pvz__container" style="">
+          <div class="W150pxc H50pxc MR2c" style="display: flex; justify-content: center">
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, dodgerblue 75px, gold 75px)">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">nustatyto storio linijos</p>
+        <p class="c-pvz__title">1px linija 20px nuo kairės: <br>1. aplinkui permatoma <br>2. nepermatoma</p>
+        <div class="c-pvz__container" style="">
+          <div class="W150pxc H50pxc -MB2c" style="display: flex; flex-wrap: wrap; justify-content: center">
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, transparent 20px, dodgerblue 20px, dodgerblue 21px, transparent 21px); margin: 0 20%">&nbsp;</div>
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, gold 20px, dodgerblue 20px, dodgerblue 21px, gold 21px); margin: 0 20%">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">1px linija per vidurį: <br>2. nurodant sveikus pikselius, <br>3. nurodant NEsveikus pikselius, <br>4. nurodant procentus</p>
+        <div class="c-pvz__container" style="">
+          <div class="W150pxc H50pxc -MB2c" style="display: flex; flex-wrap: wrap; justify-content: center">
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, gold 75px, dodgerblue 75px, dodgerblue 76px, gold 76px); margin: 0 20%">&nbsp;</div>
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, gold 74.5px, dodgerblue 74.5px, dodgerblue 75.5px, gold 75.5px); margin: 0 20%">&nbsp;</div>
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, gold calc(50% - 0.5px), dodgerblue calc(50% - 0.5px), dodgerblue calc(50% + 0.5px), gold calc(50% + 0.5px)); margin: 0 20%;">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">1em storio linija: <br>1. 20px nuo kairės <br>2. per vidurį</p>
+        <div class="c-pvz__container" style="">
+          <div class="W150pxc H50pxc -MR2c" style="display: flex; flex-wrap: wrap; justify-content: center">
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, gold 20px, dodgerblue 20px, dodgerblue calc(20px + 1em), gold calc(20px + 1em)); margin: 0 20%">&nbsp;</div>
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, gold calc(50% - 0.5em), dodgerblue calc(50% - 0.5em), dodgerblue calc(50% + 0.5em), gold calc(50% + 0.5em)); margin: 0 20%">&nbsp;</div>
+          </div>
+        </div>
+<!--        <p class="c-pvz__title">1em storio linija — per vidurį</p>-->
+<!--        <div class="c-pvz__container" style="">-->
+<!--          <div class="W150pxc H50pxc MR2c" style="display: flex; justify-content: center">-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+
+      <div class="c-pvz">
+        <p class="c-pvz__caption">procentinių <code>&lt;color-stop-length&gt;</code> veikimas</p>
+        <p class="c-pvz__title"><code>linear-gradient</code>'o color-stop'ų procentinės reikšmės apskaičiuojamos pagal to <code>background-image</code> sluoksnio <code>background-size</code> dydį</p>
+        <div class="c-pvz__container" style="">
+          <div class="-W150pxc H100pxc -MR2c" style="display: flex; justify-content: center">
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, dodgerblue 50%, gold 50%) no-repeat 0 0/50% 50%, hsl(330,62%,90%); width: 200px;">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">kai konteinerio ir background-image'o sluoksnio dydis sutampa, tada linear-gradient'o color-stop'ų procentinės reikšmės reiškia tą patį kaip ir konteinerio dydžio procentinės reikšmės</p>
+        <div class="c-pvz__container" style="">
+          <div class="-W150pxc H100pxc -MR2c" style="display: flex; justify-content: center">
+            <div class="c-pvz__target" style="background: linear-gradient(100grad, dodgerblue 50%, gold 50%) no-repeat 0 0/100% 100%, hsl(330,62%,90%); width: 200px;">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2><code>background-position-x:</code></h2>
+<pre><code>[ center | [ left | right | x-start | x-end ]? &lt;length-percentage&gt;? ]#
+where
+&lt;length-percentage&gt; = &lt;length&gt; | &lt;percentage&gt;</code></pre>
+<h2><code>background-position-y:</code></h2>
+<pre><code>[ center | [ left | right | x-start | x-end ]? &lt;length-percentage&gt;? ]#
+where
+&lt;length-percentage&gt; = &lt;length&gt; | &lt;percentage&gt;</code></pre>
+<h2><code>background-position:</code></h2>
+<pre><code>&lt;bg-position&gt; = [
+  [ left | center | right | top | bottom | &lt;length-percentage&gt; ] |
+  [ left | center | right | &lt;length-percentage&gt; ]
+
+  [ top | center | bottom | &lt;length-percentage&gt; ] |
+  [ center | [ left | right ] &lt;length-percentage&gt;? ]
+  &amp;&amp;
+  [ center | [ top | bottom ] &lt;length-percentage&gt;? ]
+]</code></pre>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">default'inė reikšmė — <code>background-position: 0% 0%</code>        </p>
+        <div class="c-pvz__container">
+          <div class="W24%c H100pxc B261c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">...</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: border-box; background-clip: border-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+          </div>
+        </div>
+        <p>&nbsp;</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="W125pxc H70pxc" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="background: linear-gradient(dodgerblue, gold) no-repeat; margin: 0.8em; padding: 0.8em; border: 7px dashed black">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">1-value syntax</p>
+        <blockquote>
+          <p>If only one value is specified, the second value is assumed to be center.</p>
+        </blockquote>
+        <p class="c-pvz__section"><code>background-position: center</code></p>
+        <blockquote>
+          <p>The keyword value <code>center</code>, which centers the image.</p>
+        </blockquote>
+        <div class="c-pvz__container">
+          <div class="W24%c H100pxc B261c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: center">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__section"><code>background-position: left | right | top | bottom</code></p>
+        <blockquote>
+          <p>One of the keyword values <code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code>. This specifies an edge against which to place the item. The other dimension is then set to <code>50%</code>, so the item is placed in the middle of the edge specified.</p>
+        </blockquote>
+        <div class="c-pvz__container">
+          <div class="W24%c H100pxc B261c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: left">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: right">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: top">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: bottom">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__section"><code>background-position: &lt;length&gt; | &lt;percentage&gt;</code></p>
+        <blockquote>
+          <p>A <a href="https://devdocs.io/css/length"><code>&lt;length&gt;</code></a> or <a href="https://devdocs.io/css/percentage"><code>&lt;percentage&gt;</code></a>. This specifies the X coordinate relative to the left edge, with the Y coordinate set to <code>50%</code>.</p>
+        </blockquote>
+        <div class="c-pvz__container">
+          <div class="W24%c H100pxc B261c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: 25%">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: 75%">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">2-value syntax</p>
+        <blockquote>
+          <p>...</p>
+        </blockquote>
+        <p class="c-pvz__section">keyword'ams, kai nėra konflikto, pozicija yra nesvarbi</p>
+        <p class="c-pvz__title">kai pirmoji reikšmė keyword'as, jis lemia ar ...</p>
+        <blockquote>
+          <p>One of the keyword values <code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code>. If <code>left</code> or <code>right</code> are given here, then this defines X and the other given value defines Y. If <code>top</code> or <code>bottom</code> are given, then this defines Y and the other value defines X.</p>
+        </blockquote>
+        <p class="c-pvz__title">tie patys keyword'ai sukeisti vietomis — daro tą patį</p>
+        <div class="c-pvz__container">
+          <div class="W24%c H100pxc B261c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: right bottom">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: bottom right">&nbsp;</div>
+          </div>
+        </div>
+
+        <p class="c-pvz__title">abu tos pačios dimensijos keyword'ai — invalid property value</p>
+        <div class="c-pvz__container">
+          <div class="W24%c H100pxc B261c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: left right">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: top bottom">&nbsp;</div>
+          </div>
+        </div>
+
+        <p class="c-pvz__title">&nbsp;</p>
+        <p class="c-pvz__title">&nbsp;</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container">
+          <div class="W24%c H100pxc B261c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: right bottom">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: bottom right">&nbsp;</div>
+
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: center bottom">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: center right">&nbsp;</div>
+
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: left right">&nbsp;</div>
+            <div class="c-pvz__target" style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat; background-position: top bottom">&nbsp;</div>
+          </div>
+        </div>
+
+
+        <p class="c-pvz__title">...</p>
+        <p class="c-pvz__title">&nbsp; </p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2><code>background-origin:</code></h2>
+<p>Leidžia kiekvienam background'o sluoksniui nustatyti savo pozicionavimo atskaitos sritį.</p>
+<blockquote>
+  <p>The <code>background-origin</code> CSS property sets the <em>background positioning area</em>. In other words, it sets the origin position of an image set with the <code>background-image</code> property.</p>
+</blockquote>
+<p>&nbsp;</p>
+<pre><code>&lt;box&gt;#
+&lt;box&gt; = border-box | padding-box | content-box
+</code></pre>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">su vienu background'o sluoksniu</p>
+        <p class="c-pvz__title">default'inė reikšmė — <code>padding-box</code></p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="W125pxc H70pxc" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="background: linear-gradient(dodgerblue, gold) no-repeat; margin: 0.8em; padding: 0.8em; border: 7px dashed black">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">background-repeat: no-repeat</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="W125pxc H70pxc" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="background: linear-gradient(dodgerblue, gold) no-repeat; background-origin: border-box; margin: 0.8em; padding: 0.8em; border: 7px dashed black">border-box</div>
+            <div style="background: linear-gradient(dodgerblue, gold) no-repeat; background-origin: padding-box; margin: 0.8em; padding: 0.8em; border: 7px dashed black">padding-box</div>
+            <div style="background: linear-gradient(dodgerblue, gold) no-repeat; background-origin: content-box; margin: 0.8em; padding: 0.8em; border: 7px dashed black">content-box</div>
+          </div>
+        </div>
+
+        <p class="c-pvz__title">background-repeat: repeat</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="W125pxc H70pxc" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="background: linear-gradient(dodgerblue, gold) repeat; background-origin: border-box; margin: 0.8em; padding: 0.8em; border: 7px dashed black">border-box</div>
+            <div style="background: linear-gradient(dodgerblue, gold) repeat; background-origin: padding-box; margin: 0.8em; padding: 0.8em; border: 7px dashed black">padding-box</div>
+            <div style="background: linear-gradient(dodgerblue, gold) repeat; background-origin: content-box; margin: 0.8em; padding: 0.8em; border: 7px dashed black">content-box</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">keli background'o sluoksniai su skirtingais <code>background-origin:</code></p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="W70%c H150pxc" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="background: linear-gradient(-100grad, forestgreen, hsla(120,61%,34%,0.1)) content-box, linear-gradient(100grad, gold, hsla(51,100%,50%,0.1)) padding-box, linear-gradient(-100grad, dodgerblue, hsla(210,100%,56%,0.1)) border-box; background-repeat: no-repeat; margin: 1em; padding: 1em; border: 20px dashed black">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2><code>background-clip:</code></h2>
+<p>&nbsp;</p>
+<pre><code>&lt;box&gt;#
+&lt;box&gt; = border-box | padding-box | content-box</code></pre>
+<p>&nbsp;</p>
+<table width="991" class="c-table-linesGrid -u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <th width="25%">
+      <p><code>background-clip: border-box</code></p>
+    </th>
+    <th width="25%">
+      <p><code>background-clip: padding-box</code></p>
+    </th>
+    <th width="25%">
+      <p><code>background-clip: content-box</code></p>
+    </th>
+  </tr>
+  <tr>
+    <th><code>background-origin: border-box</code></th>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: border-box; background-clip: border-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: border-box; background-clip: padding-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: border-box; background-clip: content-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><code>background-origin: padding-box</code></th>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: padding-box; background-clip: border-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: padding-box; background-clip: padding-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: padding-box; background-clip: content-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><code>background-origin: content-box</code></th>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: content-box; background-clip: border-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: content-box; background-clip: padding-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+        <div class="W100%c H72pxc M2c P2c -FXG1c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+          <div style="background: url('images/graphics/1f427-twemoji-penguin-pingvinas-72.png') no-repeat, lightblue; background-origin: content-box; background-clip: content-box; border: 10px dashed mediumvioletred; box-sizing: content-box">&nbsp;</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">...</p>
+        <p class="c-pvz__title">...<code></code></p>
+        <div class="c-pvz__container" style="">
+          <div class="W102pxc H97pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="c-pvz__target" style="background: linear-gradient(dodgerblue, gold)">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container" style="">
+          <div class="W102pxc H97pxc MB2c" style="display: flex; flex-flow: wrap; justify-content: space-between">
+            <div class="c-pvz__target" style="background: linear-gradient(0deg, dodgerblue, gold)">0deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(45deg, dodgerblue, gold)">45deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(90deg, dodgerblue, gold)">90deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(135deg, dodgerblue, gold)">135deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(180deg, dodgerblue, gold)">180deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(225deg, dodgerblue, gold)">225deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(270deg, dodgerblue, gold)">270deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(315deg, dodgerblue, gold)">315deg</div>
+            <div class="c-pvz__target" style="background: linear-gradient(360deg, dodgerblue, gold)">360deg</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<style>
+  /*.kazkas {*/
+  /*background: url(drugelis.png), url(banginis.png), blue;*/
+  /*}*/
+  .cp-20190729141541 {
+    /*background: blue;*/
+    /*background: url(drugelis.png), url(banginis.png);*/
+
+    /*background: center / contain no-repeat skyblue;*/
+    /*background-color: skyblue;*/
+    /*background-image: url('images/graphics/1f40b-twemoji-whale-banginis.svg'), url(images/graphics/drugelis-64.png), none;*/
+    /*background: url('images/graphics/1f40b-twemoji-whale-banginis.svg'), url(images/graphics/drugelis-64.png), none;*/
+    /*background: skyblue;*/
+
+    /*background: center / contain no-repeat skyblue;*/
+
+    background-color: skyblue;
+    background: url('images/graphics/1f40b-twemoji-whale-banginis.svg'), url(images/graphics/drugelis-64.png);
+
+    /* background: skyblue; */
+    /* background: center / contain no-repeat; */
+    /*background-image: url('images/graphics/1f40b-twemoji-whale-banginis.svg'), url(images/graphics/drugelis-64.png);*/
+  }
+  /*background: url(drugelis.png) 0 / 100% 100%, url(images/graphics/drugelis.png) 0 / auto, hsl(0, 100%, 50%);*/
+</style>
+<div class="cp-20190729141541" style="height: 200px;">&nbsp;888888888888888888</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

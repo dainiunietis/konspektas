@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>WebStorm'o projektai</h1>
+<p> <a href="http://127.0.0.1:63342/help/webstorm/creating-and-managing-projects.html">Working with WebStorm projects - Help | WebStorm</a></p>
+<p> <a href="http://127.0.0.1:63342/help/webstorm/project.html">Project - Help | WebStorm</a></p>
+<p>Kas apskritai yra WS projektas:</p>
+<blockquote>
+  <p>Whatever you do in WebStorm, you do that in the context of a project. A project is an organizational unit that represents a complete software solution. It serves as a basis for coding assistance, bulk refactoring, coding style consistency, etc.</p>
+</blockquote>
+<p>Kas konkrečiai:</p>
+<blockquote>
+  <p>A project in WebStorm is a folder with the source code your edit, the libraries and tools you use (for example, in the node_modules subfolder), and various app configuration files (for example, package.json or .eslintrc).</p>
+</blockquote>
+<h2>WS projekto katalogų ir failų konfigūravimas</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><i>project directory</i></h3>
+      <p><a href="">Project / Project files - Help | WebStorm</a></p>
+      <p><i>project directory</i>  &#8212; projekto šakninis-pagrindinis katalogas, apibrėžiamas vieninteliu dalyku &#8212; subkatalogu <code>.idea/</code>, kuriame saugomi projekto nustatymai. WS projekte gali būti tik vienas <i>project directory</i>.</p>
+      <p><i>project directory</i> automatiškai yra ir <i>content root</i>:   </p>
+      <blockquote>
+        <p>A project has at least one content root folder which by default is the project folder itself.</p>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <h3><i>content root</i></h3>
+      <p> <a href="http://127.0.0.1:63342/help/webstorm/content-root.html">Content Root - Help | WebStorm</a></p>
+      <p>Tai  projekto turinio, t. y. programinių failų, šakninis katalogas.</p>
+      <figure class="figure--image-bigCaption" style="wwidth:300px">
+        <img src="images/20190324_194526_Settings.png" alt="" width="57" height="42"/>
+        <figcaption>
+          <ol>
+            <li>WS projekto <i>content root</i>'as, kuris yra vienintelis, todėl tuo pačiu metu yra <i>project directory</i>.</li>
+          </ol>
+        </figcaption>
+      </figure>
+
+      <h4><i>content root</i>'o subkatalogų tipai</h4>
+      <p> <a href="http://127.0.0.1:63342/help/webstorm/configuring-project-structure.html#878fe59f">Configuring Project Structure / Configuring folders in a content root - Help | WebStorm</a></p>
+      <p class="c-em-note c-em--small">Svarbu suprasti, kad tipai nustatomi konkretiems katalogams, t. y. katalogų medyje konkrečioje šakoje, ir konkretaus pavadinimo.</p><p></p>
+      <p>Kad pakeisti projekto failų &quot;dalyvavimą&quot; IDE veikloje, katalogams galima priskirti kitus tipus:</p>
+      <blockquote>
+        <p id="d29536e3">By default, all the files in a content root folder are involved in indexing, searching, parsing, code completion, etc. To change this status, folders within a content root can be assigned to the following categories:</p>
+        <ul>
+          <li>Test source roots</li>
+          <li>Resource roots</li>
+          <li>Excluded roots</li></ul></blockquote>
+      <p>Projekto struktūrą, t. y. subkatalogų tipus, galima nustatyti:</p>
+      <ul>
+        <li> [S][Directories]</li>
+        <li><img src="images/20190324_120829_editor.webstorm.project.htm_.png" alt="" width="54" height="56"/></li>
+      </ul>
+      <dl>
+        <dt>Source</dt>
+        <dd>
+          <p>Pagal nutylėjimą visi <i>content root</i>'o subkatalogai, įskaitant ir patį <i>content root</i>'ą &#8212; yra Source tipo, tai reiškia, kai nenustatytas joks kitas tipas:</p>
+          <blockquote>
+            <p>By default, any folder is treated as Source.</p>
+          </blockquote>
+          <p>Tai reiškia:</p>
+          <blockquote>
+            <p>all the files in a content root folder are involved in indexing, searching, parsing, code completion, etc</p>
+          </blockquote>
+        </dd>
+        <dt>Test Source Root</dt>
+        <dd>
+          <blockquote>
+            <p>Tests folders let you keep code related to testing separately from production code.</p>
+          </blockquote>
+        </dd>
+        <dt>Resource Root</dt>
+        <dd>
+          <blockquote>
+            <p>Files in Resource Root folders can be referenced relative to these folders instead of specifying full paths.</p>
+          </blockquote>
+          <p>Jei teisingai suprantu, vienintelis savybė, kurią suteikia <i>Resource Root</i>'as, yra tas pats kaip sąlyginis failų adresavimas tinklapyje, t. y. <i>Resource Root</i>'as yra tinklapio šakninis katalogas, pvz.:</p>
+          <table width="100%" class="-c-tableCols -c-tableCols--h3h4 u-table-equelCols">
+            <tr>
+              <th width="25%">kreipiasi</th>
+              <th width="25%">pasiekia</th>
+            </tr>
+            <tr>
+              <td>
+                <p>failas:<br>
+                  <code>/tas.htm</code></p>
+                <p>jame adresuoja: <code>css/pagrindinis.css</code></p>
+              </td>
+              <td><code>/css/pagrindinis.css</code></td>
+            </tr>
+            <tr>
+              <td>
+                <p>failas: <br>
+                  <code>/shopas/tas.htm</code></p>
+                <p>jame adresuoja: <code>../css/pagrindinis.css</code></p>
+              </td>
+              <td><code>/css/pagrindinis.css</code></td>
+            </tr>
+          </table>
+        </dd>
+        <dt>Excluded Root</dt>
+        <dd>
+          <blockquote>
+            <p>Excluded roots (shown as <img alt="root Excluded" title="root Excluded" src="http://127.0.0.1:63342/help/img/idea/2018.1/root_Excluded.png" id="d29536e4">) are ones that WebStorm "almost ignores". These roots contain files and folders ignored by WebStorm when indexing, searching, parsing, watching etc.</p>
+            <p>Excluded roots are not visible to WebStorm. Usually, one would like to exclude temporary build folders, generated output, logs, and other project output. Excluding the unnecessary paths is a good way to significantly improve performance.</p>
+          </blockquote>
+          <p><a href="editor.webstorm.hotkeys.htm#project-tool-window-rodyti-arba-paslepti-excluded-root">Project Tool Window'se galima rodyti arba paslėpti Excluded Root katalogus</a></p>
+          <p class="c-em-important c-em--small">Galima exclude'inti konkretų failą Project Tool Window'se &#8212;  <a href="http://127.0.0.1:63342/help/webstorm/configuring-project-structure.html#exclude-files">Configuring Project Structure / Excluding files - Help | WebStorm</a></p>
+        </dd>
+      </dl>
+      <h4>Daugiau nei vienas <i>content root</i>'as      </h4>
+      <p><i>content root</i>'ų gali būti ne vienas &#8212;  <a href="http://127.0.0.1:63342/help/webstorm/configuring-project-structure.html#adding_content_root">Configuring Project Structure / Working with multiple content roots - Help | WebStorm</a></p>
+    </td>
+    <td width="25%">
+      <h3>Failų ir katalogų exclude'inimas pagal pattern'ą</h3>
+      <p> <a href="http://127.0.0.1:63342/help/webstorm/configuring-project-structure.html#exclude-by-pattern">Configuring Project Structure / Excluding files and folders by name patterns - Help | WebStorm</a></p>
+      <p>Taip exclude'inami visi projekto failai ir katalogai  pagal pattern'ą:</p>
+      <p><img src="images/20190311_175432_Settings.png" alt="" width="67" height="39"/></p>
+      <div id="pagal-pattern-failai-ar-katalogai-būtų-projekte-visai-nematomi" class="c-em-important c-em--small">
+        <p>Galima failus-katalogus pagal pattern'ą exclude'inti programos lygyje, t. y. visiems projektams:</p>
+        <p><img src="images/20190311_180901_Settings.png" alt="" width="71" height="43"/></p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h2h3 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h2>Scope</h2>
+      <p> <a href="http://127.0.0.1:63342/help/scope.html">Scope - Help | WebStorm</a></p>
+      <p>Kas tai yra ir ką daro:</p>
+      <blockquote>
+        <p>A scope(<img alt="scope icon" title="scope icon" src="http://127.0.0.1:63342/help/img/idea/2018.1/scope_icon.png" id="d164895e15" width="19" height="19">) is a subset of files, and/or directories in your project, to which you can limit the application of specific operations, e.g. <a href="http://127.0.0.1:63342/help/finding-and-replacing-text-in-project.html">search</a>, <a href="http://127.0.0.1:63342/help/running-inspections.html">code inspection</a>, etc. Besides, you can configure <a href="http://127.0.0.1:63342/help/scope.html#color">coloring</a> for each scope to see at once what sort of file you are dealing with.</p>
+      </blockquote>
+      <p>Kokie yra scope'ai:</p>
+      <blockquote>
+        <ul>
+          <li>a number of <a href="http://127.0.0.1:63342/help/scope.html#predefined">predefined scopes</a> that cover basic cases</li>
+          <li>it is possible to <a href="http://127.0.0.1:63342/help/configuring-scopes-and-file-colors.html#new">add custom scopes</a> to your project</li>
+        </ul>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <h2>Serveryje esančio projekto redagavimas arba, kitaip sakant, lokalaus projekto sinchronizavimas su serveryje esančiu</h2>
+      <blockquote>
+        <p>WebStorm does not support direct editing of files on remote hosts. Therefore to work with remote sources in WebStorm, you need to download them, open the folder where they are stored, and arrange them in a WebStorm project, as described in <a href="http://127.0.0.1:63342/help/webstorm/creating-projects-in-product.html#ws_create_projects_from_existing_local_sources">Creating a project from existing local sources</a>. To keep your local and remote sources synchronized, configure automatic upload using the Upload changed files automatically to the default server drop-down list in the <a href="http://127.0.0.1:63342/help/webstorm/settings-deployment-options.html">Options</a> dialog box.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

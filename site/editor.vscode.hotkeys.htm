@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>VS Code &#8212; cheat sheet</h1>
+<p>E:\download\VS Code keyboard-shortcuts-windows.pdf</p>
+<p> <a href="https://vscodecandothat.com/">VS Code Can Do That?</a></p>
+<h2>Pasidėti</h2>
+<h3 id="history-navigation">History navigation</h3>
+<p>Navigating input history is now more natural and consistent across VS Code. You can use the UpArrow (history.showPrevious) and DownArrow (history.showNext) keys to navigate the input boxes in the Search and Problems views and the Find widgets in the Editor, Terminal, and Web views.</p>
+<p>For simplicity and consistency, we changed the default keybindings for navigating among input boxes from UpArrow and DownArrow to Ctrl+UpArrow (or Cmd+UpArrow on macOS) and Ctrl+DownArrow (or Cmd+DownArrow on macOS) keys respectively. You can always go back to previous behavior by updating Ctrl+UpArrow, Ctrl+DownArrow and Ctrl+UpArrow keybindings.</p>
+<p><strong>Note</strong>: We also removed all existing <a href="https://code.visualstudio.com/raw/#history-navigation-commands" title="https://code.visualstudio.com/raw/#history-navigation-commands">18 History Navigation Commands</a> and unified them into two commands history.showPrevious and history.showNext.</p>
+<hr>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets">JavaScript (ES6) code snippets - Visual Studio Marketplace</a> &#8212; geriausias JS'o</p>
+<hr>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<hr>
+<h2>Sutartinis žymėjimas</h2>
+<dl>
+  <dt>[Kažkas &gt; Anas]</dt>
+  <dd>
+    <p>VS Code programos lango meniu.</p>
+  </dd>
+  <dt>[R][Kažkas &gt; Anas]</dt>
+  <dd>
+    <p>Kontekstinis meniu <strong>R</strong>edaktoriuje.</p></dd>
+  <dt>[E][Kažkas &gt; Anas]</dt>
+  <dd>
+    <p>Side bar'o <strong>E</strong>xplorer'io kontekstinis meniu.</p>
+  </dd>
+  <dt>[CP][Kažkokia komanda]</dt>
+  <dd>
+    <p>[View &gt; <strong>C</strong>ommand <strong>P</strong>alette...]  </p>
+  </dd>
+  <dt>[C][editor.action.joinLines]<br>
+  &quot;command&quot;: &quot;workbench.action.closeActiveEditor&quot;  </dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<h2>Autohotkey remap'inimas</h2>
+<p>Windows'ų naudojamų hotkeys'ų arba neveikiančių klavišų kombinacijų remap'inimą darome su Autohotkey.</p>
+<p>VS Code'o AHK remap'ų failas: <code>D:\progs_data\AutoHotkey\manozm\main\prog.editor vscode hotkeys.ahk</code></p>
+<p>Kaip veikia ir žymėjimas:</p>
+<pre><code>// @AHKremap: win+/.........................esant aktyviam VS Code'ui, paspaudus šį hotkey'są, AHK sugeneruos
+{ &quot;key&quot;: &quot;shift+ctrl+win+alt+q&quot; }............šį hotkey'są</code></pre>
+<h2>Aiškinimosi būdai–priemonės</h2>
+<h3>Kaip matyti visas VS Code'o įvykdytas komandas</h3>
+<p><a href="https://stackoverflow.com/questions/40948758/sublime-log-commandstrue-for-vscode">https://stackoverflow.com/questions/40948758/sublime-log-commandstrue-for-vscode</a> </p>
+<dl>
+  <dt>Nustatome, kad log'intų visas komandas</dt>
+  <dd>
+    <p>Per [View &gt; Command Palette...] pasirenkame:</p>
+    <p><img src="images/20180410124650.png" width="104" height="22"></p>
+    <p>Tada pasirenkame:</p>
+    <p><img src="images/Code_2018-04-10_13-00-13.png" alt="" width="105" height="34"/></p>
+  </dd>
+  <dt>Atidarome Panel'ę Output </dt>
+  <dd>
+    <p>[View &gt; Open View...]</p>
+    <p><img src="images/Code_2018-04-10_13-11-42.png" alt="" width="100" height="50"/></p>
+  </dd>
+  <dt>Panel'ėje Output pasirenkame &quot;Log (Window)&quot;</dt>
+  <dd>
+    <p><img src="images/20180410124059.png" width="142" height="41"></p>
+  </dd>
+</dl>
+<h3>Kaip pamatyti visus priskirtus hotkeysus ir fltruojant rasti konkretų hotkey'są (How to find out what command is bound to a specific key?)</h3>
+<p>Įvykdome [File &gt; Preferences &gt; Keyboard Shortcuts]:</p>
+<ul>
+  <li>kairėje yra  &quot;Default Keybindings&quot;,</li>
+  <li>o dešnėje C:\Users\zm\AppData\Roaming\Code\User\keybindings.json</li>
+</ul>
+<p>Su [Go &gt; Go to Symbol in File...] gauname filtruojamą hotkey'sų sąrašą.</p>
+<h2>Bendri / General</h2>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens">Version Lens - Visual Studio Marketplace</a> - geras bower, npmjs package'ų atnaujinimas per VS Code'ą</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Ctrl+Shift+P</kbd> || <kbd>F1</kbd></p>
+      <p>[View &gt; Command Palette…]    </p>
+      <blockquote>
+        <p>Show Command Palette.</p>
+      </blockquote>
+      </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><h3>CMD programų naudojimas (Tasks)</h3>
+      <p><a href="https://code.visualstudio.com/docs/editor/tasks">https://code.visualstudio.com/docs/editor/tasks</a></p>
+      <p>&nbsp;</p>
+      <p>Projekto task'ai saugomi:<br>
+        <code>{project-root}/.vscode/tasks.json</code></p>
+      <p>&nbsp;</p>
+      <p>[View &gt; Command Palette...] įvedame:
+        <co><code>&gt;tasks </code></co>
+      </p>
+      <p>various task related commands</p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Tasks &gt; Run Task...]</p>
+        <p><kbd>Ctrl+Shift+</kbd></p>
+        <p>Atidaro paletę su: </p>
+        <dl>
+          <dt>auto-detected tasks</dt>
+          <dd>
+            <p>Nes:</p>
+            <blockquote>
+              <p>VS Code currently auto-detects tasks for the following systems: Gulp, Grunt, Jake and npm. </p>
+            </blockquote>
+            <p>&nbsp;</p>
+          </dd>
+          <dt>configured tasks</dt>
+          <dd>
+            <p>Tai yra projekto task'ai. </p>
+          </dd>
+        </dl>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[Tasks &gt; Run Build Task...]</p>
+        <p><kbd>Ctrl+Shift+</kbd></p>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Ctrl+Shift+B</kbd></p>
+        <p>Įvykdo default'inį VS Code'o task'ą.</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h3>CMD / Terminal</h3>
+      <p><a href="#editCmd-view-integratedTerminal">[View &gt; Integrated Terminal]</a></p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+` N</kbd></p>
+        <p> &quot;command&quot;: &quot;workbench.action.terminal.new&quot;</p>
+        <p><img src="images/2018.04.25_14-20-20-keybindings.json - Visual Studio Code.png" alt="" width="343" height="94"/></p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td><h3>JavaScript</h3>
+    <p> <a href="https://code.visualstudio.com/docs/languages/javascript#_type-checking-and-quick-fixes-for-javascript-files?WT.mc_id=vscodecandothat-dotcom-team">JavaScript Programming with Visual Studio Code</a></p>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p><a aria-hidden="true" href="https://vscodecandothat.com/#javascript-type-checking">JavaScript Type Checking</a></p>
+<p>Use TypeScript to check your plain JavaScript code by adding a //@ts-check to the top of the file.</p>
+        <p>To enable the setting globally across your entire project, add the following line to your <strong>User Preferences</strong> (⌘ + ,)...</p>
+        <pre>"javascript.implicitProjectConfig.checkJs": true  </pre>
+        <p>Drop a .tsconfig file in your project to control specific TypeScript checking features.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td><h3>JavaScript &#8212; NPM</h3>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p><a aria-hidden="true" href="https://vscodecandothat.com/#version-lense">Version Lense</a></p>
+<p>This tip is brought to you by <a href="https://twitter.com/elijahmanor">Elijah Manor</a>.</p>
+        <p>Easily see what npm packages are out of date with the <a href="https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens&WT.mc_id=vscodecandothat-dotcom-team">Version Lense</a> plugin. Toggle errors and warnings on and off as well as updating to the latest available version of a package.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td><h3>Automatizacija</h3>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>You might know that the Sidebar can be toggled with Cmd/Ctrl B. The ActivityBar can also be toggled to make even more room. The <a href="https://marketplace.visualstudio.com/items?itemName=ryuta46.multi-command&WT.mc_id=vscodecandothat-dotcom-team">Multi-Key Extension</a> allows for multiple commands to be bound to a single keystroke. This keystroke can then hide both the sidebar and the activity bar at the same time.</p>
+      <p>Add the following to your User Setings file...</p>
+      <pre>"multiCommand.commands": [
+{
+"command": "multiCommand.makeRoom",
+"sequence": [
+  "workbench.action.toggleSidebarVisibility",
+  "workbench.action.toggleActivityBarVisibility"
+]
+}
+]</pre>
+      <p>Then add a key binding to the keybindings.json file</p>
+      <pre>{
+"key": "alt+b",
+"command": "multiCommand.makeRoom"
+}</pre>
+    </blockquote>
+    <p>&nbsp;</p>
+    <h3>extension: macros</h3>
+    <p> <a href="https://marketplace.visualstudio.com/items?itemName=geddski.macros">macros - Visual Studio Marketplace</a>    </p>
+    <h3>extension: Settings Cycler</h3>
+    <p> <a href="https://marketplace.visualstudio.com/items?itemName=hoovercj.vscode-settings-cycler">Settings Cycler - Visual Studio Marketplace</a></p></td>
+  </tr>
+</table>
+<h2>Konfigūravimas</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Apskritai apie VS Code'o konfigūravimą</h3>
+      <p>Konfigūravimas yra dviejų lygių:</p>
+      <dl>
+        <dt>Globalūs / User</dt>
+        <dd>
+          <p>Bendri nustatymai visiems VS Code'o langams.</p>
+          <p>saugojimo vieta:<br>
+            <code>C:\Users\{prisijungęs}\AppData\Roaming\Code\User\</code><br>
+          arba<br>
+          <code>%APPDATA%\Code\User\</code>          <br>
+          žymime:
+          <br>
+          <code>{code-user}</code>          </p>
+        </dd>
+        <dt>Projekto / Workspace</dt>
+        <dd>
+          <p>Projekto nustatymai, t. y. VS Code'o langui su atidarytu projektu, kurie override'ina User'io.</p>
+          <p>saugojimo vieta:<br>
+            <code>{projekto-šakninis-katalogas}\.vscode\</code></p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Settings</h3>
+      <p> <a href="https://code.visualstudio.com/docs/getstarted/settings">Visual Studio Code User and Workspace Settings</a></p>
+      Globalūs-user'io setting'ai saugomi:<br>
+      <code> {code-user}\settings.json</code>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Ctrl+,</kbd></p>
+        <p>[File &gt; Preferences &gt; Settings]</p>
+        <p>[CP][Preferences: Open User Settings]</p>
+        <p>[CP][Preferences: Open Workspace Settings]        </p>
+        <p>Atidaro redagavimui ir User, ir Workspace setting'us.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[CP][Preferences: Configure language specific settings...]</p>
+        <p><a href="https://code.visualstudio.com/docs/getstarted/settings#_language-specific-editor-settings">https://code.visualstudio.com/docs/getstarted/settings#_language-specific-editor-settings</a></p>
+        <p>Atidaro setting'ų redagavimą su aktyviu globaliu-user'io setting'ų failu ir jame pridėtu pasirinktos kalbos skyriumi. </p>
+        <p>Tą patį galima padaryti atidaryto failo kalbai per status bar'ą:</p>
+        <blockquote>
+          <p>If you have a file open and you want to customize the editor for this file type, click on the Language Mode in the Status Bar to the bottom-right of the VS Code window. This opens the Language Mode picker with an option <strong>Configure 'language_name' language based settings...</strong>. Selecting this opens the Settings editor with the language entry where you can add applicable settings.</p>
+        </blockquote>
+        <p>Kalbos setting'us galima nustatyti ir projektui:</p>
+        <blockquote>
+          <p>You can scope them to the workspace by placing them in the workspace settings just like other settings. If you have settings defined for a language in both user and workspace scopes, then they are merged by giving precedence to the ones defined in the workspace.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <hr>
+      <p><a href="https://www.smashingmagazine.com/2018/01/visual-studio-code/#settings-sync">https://www.smashingmagazine.com/2018/01/visual-studio-code/#settings-sync</a></p>
+      <blockquote>
+        <p> <a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync&WT.mc_id=vscodecandothat-dotcom-team">Settings Sync - Visual Studio Marketplace</a></p>
+        <p><a aria-hidden="true" href="https://vscodecandothat.com/#settings-sync">Settings Sync</a></p>
+        <p>Use the <a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync&WT.mc_id=vscodecandothat-dotcom-team">Settings Sync</a> extension to synchronize your theme, user preferences and installed plugins across installations of VS Code. Note that these instances do not have to be on the same machine. In fact, you can share your exact setup of VS Code with a friend or collegue simply by publishing your settings publically and sending them the ID.</p>
+        <p>Note that this is particularly useful for keeping VS Code stable and the Insiders Build in sync.</p>
+      </blockquote>
+      <hr></td>
+    <td width="25%"><h3>Hotkeys'ų priskyrimas (keyboard shortcuts)</h3>
+      <p> <a href="https://code.visualstudio.com/docs/getstarted/keybindings">Visual Studio Code Key Bindings</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Ctrl+K Ctrl+S</kbd></p>
+        <p>[File &gt; Preferences &gt; Keyboard Shortcuts] </p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Sąsajos ir kodo redaktoriuje spalvinimas (color themes)      </h3>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+K ctrl+T</kbd></p>
+        <p>[File &gt; Preferences &gt; Color Theme]</p>
+        <p>[C][Preferences: Color Theme]</p>
+        <p>Per <i>command palette</i> leidžia nustatyti globalią (saugomą <code>{code-user}\settings.json</code>) <i>color theme</i>'ą.</p>
+        <p>Setting'ų faile saugoma: <br>
+        <code>&quot;workbench.colorTheme&quot;: &quot;Nord&quot;</code></p>
+        <div class="c-em-note c-em--small c-em--narrow -o-collapse-locdep">
+          <p>Galima projektui nustatyti savą <i>color theme</i>, įrašyti į <code>{projekto-šakninis-katalogas}\.vscode\settings.json</code></p>
+          <blockquote>
+            <p>By default, the theme is stored in your user settings and applies globally to all workspaces. You can also configure a workspace specific theme.</p>
+          </blockquote>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div id="editCmd-color-themes-inspect-tm-scopes" class="c-editor-command o-collapse-locdep">
+        <p>[C][Developer: Inspect TM Scopes]</p>
+        <p>Pagal kursoriaus poziciją kode parodo <i>TextMate theme scopes name</i>.</p>
+        <blockquote>
+          <p>You can use the <strong>Developer: Inspect TM Scopes</strong> command from the <strong>Command Palette</strong> (<span data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P" title="OSX: ⇧⌘P, Linux: Ctrl+Shift+P">Ctrl+Shift+P</span>) to inspect the scopes of a token at the cursor and to see which theming rule has been applied.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+      <p>&nbsp;</p>
+      <p></p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>&nbsp;</p></td>
+    <td>
+      <h3>Plugin'ai (VS Code extensions)</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>V</u>iew &gt; E<u>x</u>tensions] </p>
+        <p>Aktyvuoja VS Code'o extensions'ų view'są.</p>
+      </div>
+      <p>&nbsp;</p>
+    <p></p>      <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    </td>
+    <td><h3>extension: Custom CSS and JS Loader</h3>
+      <p><a href="https://marketplace.visualstudio.com/items?itemName=be5invis.vscode-custom-css">https://marketplace.visualstudio.com/items?itemName=be5invis.vscode-custom-css</a></p>
+      <p>Pajungiamas per setting'us <code>C:\Users\zm\AppData\Roaming\Code\User\settings.json</code>:</p>
+      <pre><code>"vscode_custom_css.imports": [
+  "file:///C:/Users/zm/AppData/Roaming/Code/User/ext_vscode_custom_css.css"
+],</code></pre>
+      <p class="em-important em--small em--narrow">Deja negali veikti projekte-workspace'e, t. y. nors pajungiame per &lt;projektas&gt;\.vscode\settings.json, bet veikia visuose VS Code'o languose.</p>
+      <p>Kad su [CP][Enable Custom CSS and JS] įjungti, ar su [CP][Disable Custom CSS and JS] išjungti šio extension'o veikimą:</p>
+      <blockquote>
+        <p>In Windows, make sure you run your VS Code in Administrator mode before enabling or disabling your custom style!</p>
+      </blockquote>
+      <p>Reikia įvykdyti [CP][Reload Custom CSS and JS] kai:</p>
+      <blockquote>
+        <p>NOTE: Every time after Code is updated, please re-enable Custom CSS. </p>
+        <p>NOTE: Every time you change the configuration, please re-enable Custom CSS.</p>
+      </blockquote></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Sąsaja / interface</h2>
+<p><a href="https://code.visualstudio.com/docs/getstarted/userinterface">https://code.visualstudio.com/docs/getstarted/userinterface</a> </p>
+<p>&nbsp;</p>
+<hr>
+<p>To support flexible layouts, you can create empty editor groups. By default, closing the last editor of an editor group will also close the group itself, but you can change this behavior with the new setting workbench.editor.closeEmptyGroups: false.</p>
+<p>There are a predefined set of editor layouts in the new <strong>View</strong> &gt; <strong>Editor Layout</strong> menu:</p>
+<hr>
+<p>&nbsp;</p>
+<hr>
+<p>Leidžia atidaryti failą fuzzy search'inant filtruojant visus projekto–tinklapio failus.</p>
+<p>quick pick palettes</p>
+<p>&nbsp;</p>
+<blockquote>
+  <p>The UI is divided into five areas:</p>
+  <ul>
+    <li><strong>Editor</strong> - The main area to edit your files. You can open as many editors as you like side by side vertically and horizontally.</li>
+    <li><strong>Side Bar</strong> - Contains different views like the Explorer to assist you while working on your project.</li>
+    <li><strong>Status Bar</strong> - Information about the opened project and the files you edit.</li>
+    <li><strong>Activity Bar</strong> - Located on the far left-hand side, this lets you switch between views and gives you additional context-specific indicators, like the number of outgoing changes when Git is enabled.</li>
+    <li><strong>Panels</strong> - You can display different panels below the editor region for output or debug information, errors and warnings, or an integrated terminal. Panel can also be moved to the right for more vertical space.</li>
+  </ul>
+</blockquote>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Operacijos su programos langu</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+N</kbd></p>
+        <p>[File &gt; New window]      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+W</kbd></p>
+        <p>[File &gt; Close Window] </p>
+        <p>&quot;command&quot;: &quot;workbench.action.closeWindow&quot;</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Sąsajos režimai</h3>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>F11</kbd></p>
+      <p>[View &gt; <span style="">T</span>oggle Full Screen]</p>
+      <p>&quot;command&quot;: &quot;workbench.action.toggleFullScreen&quot;</p>
+    </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+F11</kbd></p>
+      <p>&quot;command&quot;: &quot;macros.zenMode&quot;</p>
+      <p><del tabindex="0">[View &gt; <span style="">T</span>oggle Zen Mode]</del></p>
+      <p><del tabindex="0">&quot;command&quot;: &quot;workbench.action.toggleZenMode&quot;</del></p>
+    </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>shift+F11</kbd></p>
+      <p>[View &gt; <span style="">T</span>oggle Centered Layout]</p>
+      <p>&quot;command&quot;: &quot;workbench.action.toggleCenteredLayout&quot;</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>win+F11</kbd></p>
+      <p>&quot;command&quot;: &quot;workbench.action.toggleMenuBar&quot; </p>
+      <p>[<u>V</u>iew &gt; <span style="">T</span>oggle Menu <u>B</u>ar] </p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>alt+F11</kbd></p>
+      <p>&quot;command&quot;: &quot;editor.action.toggleMinimap&quot;</p>
+      <p>[View &gt; <span style="">T</span>oggle Minimap] </p>
+    </div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Navigacija tarp sąsajos elementų</h3>
+      <p>&nbsp;</p>
+      <p> <a href="https://code.visualstudio.com/updates/v1_29#_show-view-group-parent">Visual Studio Code October 2018 &#8212; Show view group parent</a></p>
+      <p>&nbsp;</p>
+      <p> <a href="https://code.visualstudio.com/updates/v1_29#_workbench-navigation-commands">Visual Studio Code October 2018 &#8212; Workbench navigation commands</a></p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>V</u>iew &gt; <u>O</u>pen View...]</p>
+        <p>[CP][View: Open View]</p>
+        <p>[C][workbench.action.openView]</p>
+        <p><i>Command Palette</i>'ėje išveda visus VS Code'o sąsajos elementus.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Q</kbd></p>
+        <p>[CP][View: Quick Open View]</p>
+        <p>[C][workbench.action.quickOpenView]</p>
+        <p>Atidaro tą patį kaip ir [View &gt; Open View...], tik be filtravimo. Ir veikia kaip windows'inis Alt+Tab, t. y. pakartotinai paspaudus <kbd>ctrl+Q</kbd> pažymi kitą sąrašo elementą, o atleidus <kbd>ctrl</kbd> &#8212; įvykdo pažymėtą komandą.</p>
+    </div>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3><i>Side bar</i>'as</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>V</u>iew &gt; <span style=""><u>T</u></span>oggle Side Bar...] </p>
+        <p><kbd>win+E</kbd> @AHKremap:</p>
+        <p>&quot;key&quot;: &quot;shift+ctrl+win+alt+e&quot;,<br>
+          &quot;command&quot;: &quot;workbench.action.toggleSidebarVisibility&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h3><i>Panel</i>'ės</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+`</kbd></p>
+        <p>[<u>V</u>iew &gt; Toggle <u>P</u>anel]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.togglePanel&quot;</p>
+        <p>Parodo-paslepia pačią <i>panel</i>'ę, nekeičiant aktyvaus <i>panel</i>'ės tab'o.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div id="editCmd-view-integratedTerminal" class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+` `</kbd></p>
+        <p>[View &gt; Integrated Terminal]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.terminal.toggleTerminal&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+` O</kbd></p>
+        <p>[<u>V</u>iew &gt; <u>O</u>utput]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.output.toggleOutput&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+` P</kbd></p>
+        <p>[<u>V</u>iew &gt; <span style=""><u>P</u>roblems</span>]</p>
+        <p>&quot;command&quot;: &quot;workbench.actions.view.problems&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+` D</kbd></p>
+        <p>[<u>V</u>iew<b> </b>&gt; <span style="">De<u>b</u>ug Console</span>] </p>
+        <p>&quot;command&quot;: &quot;workbench.debug.action.toggleRepl&quot;</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td><h3><i>Activity Bar</i>'as</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>V</u>iew &gt;]</p>
+        <p>&nbsp;</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td><h3>Redaktoriaus zona
+      </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Esc</kbd> @AHKremap:</p>
+        <p> "command": "workbench.action.focusActiveEditorGroup"</p>
+        <blockquote>
+          <p>Bring focus back to the editor If I'm in a sidebar or terminal, It's a small annoyance to have to click the editor to get back into editing mode. This shortcut provides an easy way to focus the editor from anywhere in VS Code.</p>
+        </blockquote>
+      </div>
+      <h4>Atidarytų failų grupės (redaktoriaus zonos skaidymas) (editor layout, editor groups)      </h4>
+      <blockquote>
+        <p>By default, closing the last editor of an editor group will also close the group itself, but you can change this behavior with the new setting <code>workbench.editor.closeEmptyGroups: false</code>.</p>
+      </blockquote>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[View &gt; Editor Layout &gt; ...] </p>
+      <p>redaktoriaus zonos skaidymo komandos</p>
+  </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+Numpad4</kbd> / <kbd>ctrl+Numpad6</kbd>      </p>
+      <p>[Go &gt; Switch Group &gt;
+        <mark>Previous / Next</mark>
+Group]</p>
+      <p>[C][workbench.action.
+        <mark>focusPreviousGroup / focusNextGroup</mark>
+        ]</p>
+      <p>Aktyvuoja
+        <mark>atgal / pirmyn</mark>
+      redaktoriaus zoną, atidarytų failų grupę (editor group).</p>
+    </div>
+    <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Projektas-workspace, failai</h2>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=jakelucas.code-file-nav">File Navigator - Visual Studio Marketplace</a></p>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=sleistner.vscode-fileutils">File Utils - Visual Studio Marketplace</a></p>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate">Duplicate action - Visual Studio Marketplace</a> &#8212; matyt nereikalingas</p>
+<p>Failų aktyvavimas</p>
+<h3>Failų naudojimą projekte reguliuojantys setting'ai</h3>
+<p>&nbsp;</p>
+<p><code>&quot;files.exclude&quot;</code></p>
+<p>Glogalus nustatymas, kuris padaro failus nematomus visam VS Code'o funkcionalui.</p>
+<blockquote>
+  <p>Configure glob patterns for excluding files and folders. For example, the files explorer decides which files and folders to show or hide based on this setting.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>yra failas C:\temp\kazkas.txt</p>
+<p>kai — files to include: d:/temp </p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><i>Side bar</i>'as Explorer &#8212; projekto failų explorer'is</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+E</kbd></p>
+        <p>[View &gt; Explorer]</p>
+        <p>[C][workbench.view.explorer]</p>
+        <p>Ratu aktyvuoja projekto failų explorer'į ir aktyvų redaktoriaus failą. </p>
+        <p class="em-note em--small">Jei projekto failų explorer'is uždarytas &#8212; jį atidaro ir aktyvuoja, bet įvykdžius šią komandą, kai explorer'is yra aktyvus &#8212; jo neuždaro, o tik grąžina fokusą redaktoriui.</p>
+        <hr>
+        <p>workbench.files.action.focusFilesExplorer      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+E</kbd></p>
+        <p>&quot;command&quot;: &quot;revealInExplorer&quot;</p>
+        <blockquote>
+          <p>Reveal active file in Side Bar.</p>
+        </blockquote>
+        <p>Susijęs setting'as:</p>
+        <blockquote>
+          <p>Controls if the explorer should automatically reveal and select files when opening them:   <br>
+            <code>&quot;explorer.autoReveal&quot;: false</code></p>
+        </blockquote>
+        <hr>
+        <p>workbench.files.action.focusFilesExplorer</p>
+      </div>
+      <p><a href="#editCmd-filesExplorer-findInFolder">[C][filesExplorer.findInFolder]</a></p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Enter</kbd> / <kbd>ctrl+Enter</kbd></p>
+        <p>Atidaro Explorer'yje (kai jis aktyvus-sufokusuotas) pažymėtą failą <mark>paskutinėje aktyvioje radagtoriaus grupėje</mark> / <mark>naujai sukurtoje    radagtoriaus grupėje dešnėje aktyviąjai</mark>.        </p>
+        <p>[C][<mark>list.select</mark> / <mark>explorer.openToSide</mark>]      </p>
+      </div>
+      <h4>"OPEN EDITORS" sąrašas</h4>
+      <p class="em-note em--small">Čia rodomi visi programos lange atidaryti failai, gali būti ir  atidarytam projektui nepriklausantys.</p>
+      <div id="editCmd-go-switchEditor-previousNextEditor" class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Numpad9-PgUp</kbd> / <kbd>ctrl+Numpad3-PgDn</kbd></p>
+        <p>[<u>G</u>o &gt; Switch <u>E</u>ditor &gt;
+          <mark>Previous / Next</mark>
+Editor]</p>
+        <p>[C][workbench.action.
+          <mark>previousEditor / nextEditor</mark>
+        ]</p>
+        <p>Aktyvuoja
+          <mark>aukštyn / žemyn</mark>
+        <strong>visus</strong> Side bar'o Explorer'io "OPEN EDITORS" sąrašo failus.      </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+win+Numpad9-PgUp</kbd> / <kbd>ctrl+win+Numpad3-PgDn</kbd></p>
+        <p>[C][workbench.action.
+          <mark>moveEditorLeftInGroup / moveEditorRightInGroup</mark>
+        ]        </p>
+        <p>Keičia <i>Side bar</i>'o Explorer'io "OPEN EDITORS" sąrašo  failų eiliškumą <strong>redagtoriaus grupėje</strong>
+          <mark>aukštyn / žemyn</mark>.      </p>
+      </div>
+      <h4>Projekto explorer'io failų-katalogų  teksto ir ikonų dydžio reguliavimas</h4>
+      <p>Pirma su setting'u <code>window.zoomLevel</code> nustatome norimą explorer'io elementų dydį, tada su <code>editor.fontSize</code> pareguliuojame šrifto dydį redaktoriuje.</p>
+      <p>Dabar pas mane yra:</p>
+      <pre><code>&quot;editor.fontSize&quot;: 14,
+&quot;window.zoomLevel&quot;: 0.5,</code></pre>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Projekto failų atidarymas</h3>
+      <p><a href="https://marketplace.visualstudio.com/items?itemName=jack89ita.open-file-from-path">Open file From Path</a> &#8212; gal reikės</p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=Fr43nk.seito-openfile">Open file - Visual Studio Marketplace</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+O</kbd></p>
+        <p>[<u>G</u>o &gt; Go to <u>F</u>ile...] </p>
+        <p>&quot;command&quot;: &quot;workbench.action.quickOpen&quot;</p>
+        <p>Leidžia atidaryti failą fuzzy search'inant filtruojant visus projekto–tinklapio failus.      </p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Failų atidarymas, uždarymas</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[<u>F</u>ile &gt; <u>O</u>pen File...]</p>
+        <p>[CP][File: Open File...]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.files.openFile&quot;</p>
+        <p>Standartinis Windows'ų failų atidarymo langas, tik atidarius jame būna atidarytas aktyvaus redaktoriaus failo katalogas.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+O</kbd></p>
+        <p>[<u>F</u>ile &gt; Open <u>R</u>ecent &gt; <u>M</u>ore...]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.openRecent&quot;</p>
+        <p>Command Palette'ėje išveda paskutinius atidarytus:</p>
+        <ul>
+          <li> projektus-workspace'us</li>
+          <li>failus</li>
+        </ul>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+W</kbd></p>
+        <p>[<u>F</u>ile &gt; Close Editor]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.closeActiveEditor&quot;</p>
+        <p>Uždaro aktyvų redaktoriaus failą.</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Navigacija tarp atidarytų failų</h3>
+      <p><a href="#editCmd-go-switchEditor-previousNextEditor">[<u>G</u>o &gt; Switch <u>E</u>ditor &gt; <strong>Previous / Next</strong> Editor]</a></p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+Tab</kbd> / <kbd>ctrl+Tab</kbd></p>
+        <p>[<u>G</u>o &gt; Switch <u>E</u>ditor &gt; <mark>Previous / Next</mark> Used Editor in Group]</p>
+        <p>[C][workbench.action.<mark>openPreviousRecentlyUsedEditorInGroup / openNextRecentlyUsedEditorInGroup</mark>]</p>
+        <p>Atidaro sąrašą su visais <strong>redaktoriaus grupėje</strong> atidarytais failais.</p>
+        <blockquote>
+          <p>Open <mark>Previous / Next</mark> Recently Used Editor in Group.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>+</kbd></p>
+        <p>[CP][View: Show All Editors]</p>
+        <p>[C][workbench.action.showAllEditors]</p>
+        <p>Atidaro <u>Command Palette</u>'ę (joje būna jau įvesta &quot;edt&quot;) su visose redagtoriaus grupėse, jeigu jų yra, atidarytais failais. </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>+</kbd></p>
+        <p>[CP][View: Show Editors in Active Group]</p>
+        <p>[C][workbench.action.showEditorsInActiveGroup]</p>
+        <p>Atidaro <u>Command Palette</u>'ę (joje būna jau įvesta &quot;edt active &quot;) su aktyvaus failo redagtoriaus grupės failais. </p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Paieška projekto failuose </h3>
+      <blockquote>
+        <p id="_multiline-search" data-needslink="_multiline-search">Multiline search</p>
+        <p>VS Code now supports multiline search! Same as in the editor, a regex search executes in multiline mode only if it contains a \n literal. The Search view shows a hint next to each multiline match, with the number of additional match lines.</p>
+        <p> <a href="https://code.visualstudio.com/updates/v1_29#_search">Visual Studio Code October 2018</a></p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p> <a href="https://code.visualstudio.com/updates/v1_29#_backreferences-and-lookahead-in-search">Visual Studio Code October 2018 &#8212; Backreferences and lookahead in search</a></p>
+      <p> <a href="https://code.visualstudio.com/updates/v1_29#_show-line-numbers-in-search">Visual Studio Code October 2018</a></p>
+      <p> <a href="https://code.visualstudio.com/updates/v1_29#_use-global-gitignore-file-in-search">Visual Studio Code October 2018 &#8212; Use global .gitignore file in search</a></p>
+      <p>&nbsp;</p>
+      <p><a href="https://code.visualstudio.com/docs/editor/codebasics#_search-across-files">Search Across Files</a></p>
+      <p> <a href="https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options">Advanced Search options</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Lalt+F</kbd> @AHKremap: </p>
+        <p>[C][workbench.action.findInFiles]</p>
+        <p>Atidaro paieškos failuose view'są ir į find'o input'ą įveda redaktoriuje pažymėtą tekstą</p>
+        <hr>
+        <p>Šitas nedaro redagtoriuje pažymėto teksto įvedimo į find'o input'ą, kai paieškos failuose view'sas jau atidarytas:</p>
+        <p>[<u>V</u>iew &gt; <u>S</u>earch]</p>
+        <p>[C][workbench.view.search]</p>
+      </div>
+      <div id="editCmd-filesExplorer-findInFolder" class="c-editor-command o-collapse-locdep">
+        <p><kbd>win+alt+F</kbd> @AHKremap:</p>
+        <p>[C][filesExplorer.findInFolder]</p>
+        <p>Kai aktyvus-sufokusuotas redagtorius, atidaro paieškos failuose view'są su įvestu į &quot;files to include&quot; atidaryto-redaguojamo katalogu.</p>
+        <p>Kai aktyvus Explorer'is, atidaro paieškos failuose view'są su pažymėjimu įvestu į &quot;files to include&quot;. </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+F</kbd></p>
+        <p>[CP][Search: Replace in Files]</p>
+        <p>[C][workbench.action.replaceInFiles]</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[CP][Search: Toggle Search View Position]</p>
+        <p>Paieškos failuose sąsają perkelinėja tarp <i>Side Bar</i>'o ir <i>Panel</i>'ės. </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[CP][Search: Collapse All]</p>
+        <p> Collapse'ina paieškos rezultatus kai:</p>
+        <ul>
+          <li>yra aktyvus-sufokusuotas paieškos failuose view'sas</li>
+          <li>paieškos failuose view'sas NEaktyvus-NEsufokusuotas, bet yra matomas&#8211;nepaslėptas &#8212; tada jį aktyvuoja </li>
+        </ul>
+      </div>
+      <h4>Paieškos nustatymai  &quot;files to include&quot; ir  &quot;files to exclude&quot;</h4>
+      <p>Kokia yra abiejų sintaksė:</p>
+      <dl>
+        <dt><code>./</code></dt>
+        <dd>
+          <p>Žymi projekto šakninį katalogą.</p>
+          <blockquote>
+            <p>If you enter <code>./example</code>, that will match the folder <code>example/</code> at the top level of your workspace. </p>
+          </blockquote>
+        </dd>
+        <dt><code>&lt;žodis&gt; </code></dt>
+        <dd>
+          <p>Ieškos failuose, kurių kelio  dalis-segmentas (a path segment) yra <code>&lt;žodis&gt;</code>: </p>
+          <ul>
+            <li>arba pilnas failo pavadinimas su išplėtimu, </li>
+            <li>arba katalogo pavadinimas kelyje (t. y. a path segment), pvz.:<br>
+              files to include: <code>sass</code><br>
+              ieško failuose: <code></code> <code>.\**\sass\**\*</code></li>
+          </ul>
+        </dd>
+        <dt><code>!&lt;žodis&gt; </code></dt>
+        <dd>
+          <blockquote>
+            <p>Use <code>!</code> to exclude those patterns from the search. <code>!example</code> will skip searching any folder or file named <code>example</code>. </p>
+          </blockquote>
+        </dd>
+        <dt>glob syntax</dt>
+        <dd>
+          <blockquote>
+            <ul>
+              <li><code>*</code> to match one or more characters in a path segment</li>
+              <li><code>?</code> to match on one character in a path segment</li>
+              <li><code>**</code> to match any number of path segments, including none</li>
+              <li><code>{}</code> to group conditions (e.g. <code>{**/*.html,**/*.txt}</code> matches all HTML and text files)</li>
+              <li><code>[]</code> to declare a range of characters to match (e.g., <code>example.[0-9]</code> to match on <code>example.0</code>, <code>example.1</code>, …)</li>
+            </ul>
+          </blockquote>
+        </dd>
+      </dl>
+      <h4>Kaip veikia &quot;files to include&quot;</h4>
+      <p>Kokiuose failuose ieško, kai nieko neįvesta:</p>
+      <ul>
+        <li> visuose projekto failuose, kurių </li>
+        <li>atidarytuose ne projekto failuose </li>
+      </ul>
+      <p>Tipiniai pavyzdžiai:</p>
+      <dl>
+        <dt>files to include: <code>sass</code></dt>
+        <dd>
+          <p>Ieško failuose:</p>
+          <ul>
+            <li>glob syntax:<br>
+              <code>**/<mark>sass</mark>/**/*</code></li>
+            <li>konkretūs:<br>
+              <code>site/assets/<mark>sass</mark>/kazkas.scss</code><br>
+              <code>site/assets/<mark>sass</mark>/kitas/kazkas.scss</code><br>
+              <code><mark>sass</mark>/kazkas.scss</code></li>
+          </ul>
+        </dd>
+        <dt>-</dt>
+        <dd>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <div class="em-important em--small em--narrow o-collapse-locdep">
+        <p>nurodžius absoliutų kelią, tiek pačiame projekte, tiek bet kur kitur diske &#8212; &quot;glob syntax&quot; neveikia, veikiantis pvz.:</p>
+        <p>files to include: <code>C:\temp</code><br>
+          ieško visuose failuose: <code>C:\temp\*.*</code> ir subkataloguose, t. y. pilnai: <br>
+          <code>C:\temp\**\*.*</code></p>
+        <p>ir neveikiantis &quot;glob syntax&quot;:</p>
+        <p>files to include: <code>C:\te*</code><br>
+          neieško </p>
+      </div>
+      <p>&nbsp;</p>
+      <h4>Kaip veikia &quot;files to exclude&quot; </h4>
+      <p>Input'o nustatymas &quot;Use Exclude Settings and Ignore Files&quot;:</p>
+      <dl>
+        <dt>Kai yra išjungtas</dt>
+        <dd>
+          <p><img src="images/2018.07.17_14-29-47-konspektas — site__TEST page.html.png" alt="" width="97" height="74"/></p>
+          <p>Tada ieško visuose projekto failuose, ignoruojant setting'us:</p>
+          <p> <code>&quot;files.exclude&quot;</code><br>
+            <code>&quot;search.exclude&quot;</code></p>
+        </dd>
+        <dt>Kai yra įjungtas</dt>
+        <dd>
+          <p><img src="images/2018.07.17_14-32-06-konspektas — site_assets_sass__components.control-panel.scss.png" alt="" width="99" height="75"/></p>
+          <p>Tada tie setting'ai veikia.</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3> Bookmarks </h3>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.numbered-bookmarks">Numbered Bookmarks - Visual Studio Marketplace</a></p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p> <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks&WT.mc_id=vscodecandothat-dotcom-team">Bookmarks - Visual Studio Marketplace</a></p>
+        <p><a aria-hidden="true" href="https://vscodecandothat.com/#bookmarks">Bookmarks</a></p>
+        <p>Bookmarks is an extension you can use to easily mark your place in your file. A blue bookmark icon will appear in the sidebar and you can traverse the file with some quickkeys</p>
+        <p>Command + option + K creates a bookmark, and command + option + J jumps between existing marks.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Failų pavadinimai-keliai</h3>
+      <h4>Įvedimas redaktoriuje (paths autocomplete, intellisense)</h4>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense">Path Intellisense</a></p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete">Path Autocomplete</a> &#8212; atrodo visapusiškesnis</p>
+      <h4>Kopijavimas (copy file name-path)</h4>
+      <p><a href="https://marketplace.visualstudio.com/items?itemName=nemesv.copy-file-name">Copy file name - Visual Studio Marketplace</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+C</kbd> / <kbd>alt+win+C</kbd></p>
+        <p>[CP][<mark>Copy File Name</mark> / <mark>Copy File Name: with extensions</mark>]</p>
+        <p>[C][copy-file-name.<mark>copyFileName</mark> / <mark>copyFileNameWithExtension</mark>] </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+C</kbd></p>
+        <p>[CP][Copy Relative Path]</p>
+        <p>[c][copy-relative-path-and-line-numbers.path-only] </p>
+        <p>Kopijuoja redagtoriaus aktyvaus  failo kelią &#8212; <strong>nuo projekto šakninio katalogo</strong>.</p>
+        <p class="c-editor-command__title"><a href="https://marketplace.visualstudio.com/items?itemName=ezforo.copy-relative-path-and-line-numbers#overview">Copy Relative Path and Line Numbers</a></p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+win+C</kbd></p>
+        <p>[CP][File: Copy Path of Active File]</p>
+        <p>[C][copyFilePath]</p>
+        <p>Kopijuoja redagtoriaus aktyvaus  failo kelią &#8212; <strong>pilną failų sistemos</strong>.</p>
+        <p class="em-alert em--small">&quot;command&quot;: &quot;workbench.action.files.copyPathOfActiveFile&quot; &#8212; šitas nekopijuoja VS Code'o konfigūracinių failų kelių.</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+win+ctrl+C</kbd></p>
+        <p>[CP][Copy Relative Path and Line Numbers]</p>
+        <p>[c][copy-relative-path-and-line-numbers.both] </p>
+        <p>Kopijuoja redagtoriaus aktyvaus  failo kelią &#8212; <strong>nuo projekto šakninio katalogo</strong>, plius <strong>nukopijuotų eilučių numeriai</strong>.</p>
+        <p class="c-editor-command__title"><a href="https://marketplace.visualstudio.com/items?itemName=ezforo.copy-relative-path-and-line-numbers#overview">Copy Relative Path and Line Numbers</a></p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <h3>Navigacija projekte (ir dokumente) pagal kodo struktūras-simbolius</h3>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=DaGhostman.vs-treeview">File Tree View - Visual Studio Marketplace</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+G</kbd></p>
+        <p>[Go &gt; Go to Symbol in File...]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.gotoSymbol&quot;</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+G</kbd></p>
+        <p>[Go &gt; Go to Symbol in Workspace...]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.showAllSymbols&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>Dabar naudoju:</p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek">CSS Peek</a></p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-scss">SCSS IntelliSense </a></p>
+      <p>&nbsp;</p>
+      <p>Nebandžiau:</p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=aaronphy.scss-scan">scss-scan - Visual Studio Marketplace</a></p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=P-de-Jong.vscode-html-scss">HTML SCSS Support - Visual Studio Marketplace</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Todo'sai</h3>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">Todo Tree - Visual Studio Marketplace</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Operacijos su failais </h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+    </td>
+  </tr>
+</table>
+<h2>Redaktorius: navigacija, paieška, selektinimas, redagavimas</h2>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=p26frqxxfmwrzekd6c6fcty5kipjkr3gaeejzpkyy42p5udjkjyq.copyplaintext">CopyPlainText - Visual Studio Marketplace</a></p>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=salbert.copy-text#overview">Copy Text - Visual Studio Marketplace</a></p>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=shepelevstas.dumb-copy-paste">Dumb copy-paste - Visual Studio Marketplace</a></p>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.copy-word">Copy Word in Cursor - Visual Studio Marketplace</a></p>
+<p> <a href="https://marketplace.visualstudio.com/items?itemName=Zarel.sublime-commands">Sublime Commands - Visual Studio Marketplace</a></p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td><h3>Navigacija </h3>
+      <h4>kursoriaus pozicijos keitimas</h4>
+      <p><a href="https://marketplace.visualstudio.com/items?itemName=tomma5o.sassyah">Sass Yah - Visual Studio Marketplace</a></p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+G</kbd></p>
+        <p>[Go &gt; Go to Line...]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.gotoLine&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <h4>scroll'as</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><del tabindex="0"><kbd>alt+pageup</kbd> / <kbd>alt+/pagedown</kbd></del></p>
+        <p>&quot;command&quot;: &quot;<strong>scrollLineUp / scrollLineDown</strong>&quot;</p>
+        <blockquote>
+          <p>Scroll line <strong>up / down</strong>.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td>
+      <h3>Breadcrumbs</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+G</kbd></p>
+        <p>[Go &gt; Go to Line...]</p>
+        <p>&quot;command&quot;: &quot;workbench.action.gotoLine&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td><p>&nbsp;</p>
+      <blockquote>
+        <p id="_references-view" data-needslink="_references-view"> <a href="https://code.visualstudio.com/updates/v1_29#_preview-features">Visual Studio Code October 2018</a></p>
+        <p data-needslink="_references-view">References View</p>
+        <p>There is a new command <strong>List All References</strong>, which displays a dedicated Side Bar view showing reference search results. This complements the existing Peek view presentation and provides a more stable list of references. In the context menu, select <strong>List All References</strong> (<span data-osx="⇧⌥F12" data-win="Shift+Alt+F12" data-linux="Shift+Alt+F12" title="OSX: ⇧⌥F12, Linux: Shift+Alt+F12">Shift+Alt+F12</span>) and references are shown in a separate view, just like search results.        </p>
+        <p>Results are stable and individual results can be cleared, which is great if you use the view as a To Do list. You can use <span data-osx="F4" data-win="F4" data-linux="F4" title="OSX: F4, Linux: F4">F4</span> and <span data-osx="⇧F4" data-win="Shift+F4" data-linux="Shift+F4" title="OSX: ⇧F4, Linux: Shift+F4">Shift+F4</span> to navigate through results without taking your hands off the keyboard.</p>
+        <p>Let us know what you think and we'll be refining the experience in our next update.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td><h3>Kodo-string'ų transformacijos </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>win+U</kbd> @AHKremap:</p>
+        <p>[C][extension.changeCase.commands]</p>
+        <p>Command Palette'ėje išveda visas extension'o <a href="https://marketplace.visualstudio.com/items?itemName=wmaurer.change-case">change-case</a> komandas.</p>
+      </div>
+      <h4>Tik didžiųjų-mažųjų transformacijos (change case)</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+U</kbd> / <kbd>ctrl+shift+U</kbd></p>
+        <p>[CP][Transform to <mark>Lowercase / Uppercase</mark>]</p>
+        <p>[C][editor.action.<mark>transformToLowercase / transformToUppercase</mark>]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+U</kbd></p>
+        <p>[C][extension.changeCase.title] </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+U</kbd></p>
+        <p>[C][extension.changeCase.swap] </p>
+      </div>
+      <h4>Kintamųjų pavadinimų transformacijos su tarpinių skyrybos simbolių įterpimu ar pašalinimu </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+y</kbd></p>
+        <p>[C][extension.changeCase.no] </p>
+        <blockquote>
+          <p>Convert the string without any casing (lower case, space separated).</p>
+        </blockquote>
+      </div>
+      <p>Be skyrybos simbolių ir su pirmosiomis didžiosiomis-mažosiomis:</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+Y</kbd></p>
+        <p>[C][extension.changeCase.camel] </p>
+        <blockquote>
+          <p>Convert to a string with the separators denoted by having the next letter capitalised.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+Y</kbd></p>
+        <p>[C][extension.changeCase.pascal] </p>
+        <blockquote>
+          <p>Convert to a string denoted in the same fashion as camelCase, but with the first letter also capitalised.</p>
+        </blockquote>
+      </div>
+      <p>Su skyrybos simboliu pabraukimas (underscore):</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>win+Y</kbd></p>
+        <p>[C][extension.changeCase.snake] </p>
+        <blockquote>
+          <p>Convert to a lower case, underscore separated string.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>win+shift+Y</kbd></p>
+        <p>[C][extension.changeCase.constant] </p>
+        <blockquote>
+          <p>Convert to an upper case, underscore separated string .</p>
+        </blockquote>
+      </div>
+      <p>Mažosios ir atskirta skirybos simboliu:</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+Y</kbd></p>
+        <p>[C][extension.changeCase.param] </p>
+        <blockquote>
+          <p>Convert to a lower case, dash separated string.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+shift+Y</kbd></p>
+        <p>[C][extension.changeCase.dot] </p>
+        <blockquote>
+          <p>Convert to a lower case, period separated string.</p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+win+Y</kbd> @AHKremap:</p>
+        <p>[C][extension.changeCase.path] </p>
+        <blockquote>
+          <p>Convert to a lower case, slash separated string</p>
+        </blockquote>
+    </div></td>
+  </tr>
+  <tr>
+    <td width="25%"><h3>Teksto-kodo paieška (search, find)</h3>
+      <p>&nbsp;</p>
+      <div id="editCmd-go-switchEditor-previousNextEditor2" class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+F</kbd></p>
+        <p>[Edit &gt; Find]</p>
+        <p>[C][actions.find]</p>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div id="editCmd-go-switchEditor-previousNextEditor3" class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+F</kbd></p>
+        <p>[Edit &gt; Replace]</p>
+        <p>[C][editor.action.startFindReplaceAction]</p>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Kodo eilutės
+    (code rows)</h3>
+      <h4>Eilučių redagavimas    </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+up</kbd> /     <kbd>ctrl+down</kbd></p>
+      <p>[Selection &gt; Move Line <strong>Up / Down</strong>]</p>
+      <p>[CP][Move Line <strong>Up / Down</strong>]</p>
+      <p>[C][editor.action.<strong>moveLinesUpAction / moveLinesDownAction</strong>]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+up</kbd> / <kbd>ctrl+shift+down</kbd>      </p>
+      <p>[Selection &gt; Copy Line <strong>Up / Down</strong>]</p>
+      <p>[CP][Copy Line <strong>Up / Down</strong>]</p>
+      <p>[C][editor.action.<strong>copyLinesUpAction / copyLinesDownAction</strong>]    </p>
+  </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>shift+Delete</kbd></p>
+      <del tabindex="0"><p><kbd>shift+Backspace</kbd></p></del>
+      <p>[C][editor.action.deleteLines]</p>
+      <p>[CP][Delete Line]</p>
+      <p>Trina eilutes, kuriose yra pažymėjimas ir kursorius.</p>
+      <p class="em-note em--small">Kai pažymėjimas yra  padarytas iš kairės į dešnę, ir kursorius yra eilutės pradžioje, tos eilutės netrina.</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>alt+L</kbd></p>
+      <p>[CP][Join Lines]</p>
+      <p>[C][editor.action.joinLines]</p>
+  </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>+</kbd></p>
+      <p>[CP][Emmet: Merge Lines]</p>
+      <p>Kaip veikia:      </p>
+      <ul>
+        <li>veikia tik HTML'e</li>
+        <li>kai <strong>nėra pažymėjimo</strong>, jeigu kursorius yra tage, kurio turinys yra per kelias eilutes &#8212; jas sujungia, t. y. tagą, kuriame yra kursorius, padaro vienoje eilutėje</li>
+        <li>kai <strong>yra pažymėjimas</strong>, eilučių sujungimą daro tagų pagrindu, t. y. tagus, kuriuose yra pažymėjimas, sujungia į vieną eilutę</li>
+        <li>nepalieka tarpelių tarp sujungtų eilučių</li>
+    </ul>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+Enter</kbd> / <kbd>ctrl+shift+Enter</kbd></p>
+      <p>[CP][Insert Line <strong>Below / Above</strong>]</p>
+</div>
+    <p>&nbsp;</p>
+    <h4>Eilučių žymėjimas    </h4>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+L</kbd></p>
+      <p>[C][expandLineSelection]</p>
+  </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+shift+L</kbd></p>
+      <p>[CP][Add Cursors to Line Ends]</p>
+      <p>[C][insertCursorAtEndOfEachLineSelected]</p>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Folding'as</h3>
+    <p>&nbsp;</p>
+    <p>Ctrl+Shift+[   Fold (collapse) region  </p>
+    <p>Ctrl+Shift+]  Unfold (uncollapse) region </p>
+    <p>&nbsp;</p>
+    <p>Ctrl+K Ctrl+[  Fold (collapse) all subregions  </p>
+    <p>Ctrl+K Ctrl+]  Unfold (uncollapse) all subregions</p>
+    <p>&nbsp;</p>
+    <p>Ctrl+K Ctrl+0  Fold (collapse) all regions  </p>
+    <p>Ctrl+K Ctrl+J  Unfold (uncollapse) all regions </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Navigacija-žymėjimas pagal kodo struktūras
+    </h3>
+      <h4>Universali navigacija-žymėjimas</h4>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>shift+alt+[</kbd> / <kbd>shift+alt+]</kbd></p>
+      <p>[<u>S</u>election &gt; <u>S</u>hrink Selection / <u>E</u>xpand Selection]      </p>
+      <p>[C][editor.action.smartSelect.shrink / editor.action.smartSelect.expand]</p>
+      <p>Gimtas VS Code'o, veikimas pagrįstas pažymėjimo plėtimu:</p>
+      <ul>
+        <li> iki artimiausių spec-atskyrimo simbolių porų: &quot; ' &lt;&gt; </li>
+        <li>žodžio kraštų (ne visada)</li>
+      </ul>
+    </div>
+    <h4>Universali navigacija-žymėjimas &#8212; extension: <a href="https://marketplace.visualstudio.com/items?itemName=letrieu.expand-region ">expand-region</a></h4>
+    <p>Kaip veikia:</p>
+    <blockquote>
+      <p>JavaScript</p>
+      <ol>
+        <li>Expand selection to word</li>
+        <li>Expand selection to quotes      (content only)</li>
+        <li>Expand selection to quotes      (with quotes)</li>
+        <li>Expand selection to square      braces</li>
+        <li>Expand selection to expression</li>
+        <li>Expand selection to content of      braces (all arguments in this case)</li>
+        <li>Expand selection to line</li>
+        <li>Expand selection to function      body (w/o curly brace)</li>
+        <li>Expand selection to function      body (with curly brace)</li>
+      </ol>
+      <p>HTML/PHP</p>
+      <ol>
+        <li>Expand selection to word</li>
+        <li>Expand selection to quotes      (content only)</li>
+        <li>Expand selection to quotes      (with quotes)</li>
+        <li>Expand selection to complete      self closing tag</li>
+        <li>Expand selection to parent node      content</li>
+        <li>Expand selection to complete      node</li>
+        <li>Expand selection to parent node      content</li>
+      </ol>
+    </blockquote>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>Alt+]</kbd> /     <kbd>Alt+[</kbd></p>
+      <p>[C][<strong>expand_region /undo_expand_region</strong>]</p>
+</div>
+    <h4>Bracket'ų navigacija-žymėjimas</h4>
+    <p>Šokinėja/pažymi-selektina tarp [...] {...} (...)    </p>
+    <p>Ctrl+Shift+\ &#8212;&#8212; Jump to matching bracket    </p>
+    <h4>Bracket'ų navigacija-žymėjimas &#8212; extension <a href="Bracket Jumper">Bracket Jumper</a></h4>
+    <p>Turi dvi grupes komandų:</p>
+    <blockquote>
+      <p>The following included commands jump simply to the nearest left or right bracket:</p>
+      <pre>bracket-jumper.jumpLeft
+bracket-jumper.jumpRight
+bracket-jumper.selectLeft
+bracket-jumper.selectRight</pre>
+      <p>The following commands "ascend", by jumping to the nearest or matching scope-delimiting bracket:</p>
+      <pre>
+bracket-jumper.ascendLeft
+bracket-jumper.ascendRight
+bracket-jumper.selectAscendLeft
+bracket-jumper.selectAscendRight</pre>
+    </blockquote>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+[</kbd> / <kbd>]</kbd></p>
+      <p>[C][bracket-jumper.ascendLeft / ascendRight]</p></div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+shift+[</kbd> / <kbd>]</kbd></p>
+      <p>[C][bracket-jumper.selectAscendLeft / selectAscendRight]</p>
+  </div>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><p>&nbsp;</p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=wwm.better-align">Better Align - Visual Studio Marketplace</a></p>
+      <p>&nbsp;</p>
+      <h3>Kodo formatavimas &#8212; tik atitraukimais-indent'ais </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+home</kbd> / <kbd>ctrl+end</kbd></p>
+        <blockquote>
+          <p><mark>outdent / indent</mark> line(s) </p>
+        </blockquote>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>..</kbd></p>
+        <p>[CP][Reindent Lines]</p>
+        <p>&quot;command&quot;: &quot;editor.action.reindentlines&quot;</p>
+        <p>Indent'uoja visą failą ir kai nėra pažymėjimo, ir kai yra. </p>
+      </div>
+      <h3>Kodo formatavimas</h3>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=Glavin001.unibeautify-vscode">Unibeautify - Universal Formatter</a></p>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+i</kbd> / <kbd>ctrl+shift+i</kbd></p>
+        <p>[CP][Format <mark>Selection / Document</mark>]</p>
+        <p>[C][editor.action.<mark>formatSelection / formatDocument</mark>]</p>
+        <p>Formatuoja <mark>pažymėjimą / visą failą</mark>.</p>
+        <p class="em-note em--small">HTML'e prideda tuščias eilutes tarp šakninių tagų: <code><br>
+          &lt;head&gt; &lt;body&gt;</code></p>
+      </div>
+      <p>&nbsp;</p>
+      <h4>Prettier</h4>
+    <p><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter</a></p>
+    <p>Naudojama per VS Code'o [CP][Format Selection / Document]</p>
+    <p>&nbsp;</p>
+    <div class="em-alert em--small em--narrow -o-collapse-locdep">
+      <p>Kadangi naudojama su built-in komandomis:</p>
+      <blockquote>
+        <p>⚠ A word of warning-if you have any other code formatting extensions installed such as for example hugely popular HookyQR.beautify or taichi.react-beautify they might take precedence and format your code instead of Prettier leading to unexpected results.</p>
+      </blockquote>
+</div>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Format On Save </p>
+  <p>Respects editor.formatOnSave setting.</p>
+  <p>You can turn on format-on-save on a per-language basis by scoping the setting:</p>
+  <pre><code>// Set the default
+"editor.formatOnSave": false,
+// Enable per-language
+"[javascript]": {
+    "editor.formatOnSave": true
+}</code></pre>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p id="user-content-prettier's-settings">Prettier's Settings</p>
+  <p>Settings will be read from (listed by priority):</p>
+  <ol>
+    <li><a href="https://prettier.io/docs/en/configuration.html" rel="noreferrer noopener" target="_blank">Prettier configuration file</a></li>
+    <li>.editorconfig</li>
+  </ol>
+  <p>Or if no prettier configuration file exist</p>
+  <ol>
+    <li>.editorconfig</li>
+    <li>VSCode prettier's settings (described below with their default)</li>
+  </ol>
+</blockquote>
+<p>&nbsp;</p>
+    </td>
+    <td><h3>Completion'ai</h3>
+      <h4>completion'as HTML failuose</h4>
+      <p>to pačio katalogo, kuriame yra redaguojamas failas, katalogus ir failus į completion'ą išveda tik pradžioje įvedus &#8212; <code>./</code></p>
+      <pre><code>&lt;img src=&quot;<mark>./</mark>&quot; alt=&quot;&quot;&gt;
+&lt;a href=&quot;<mark>./</mark>&quot;&gt;&lt;/a&gt;</code></pre>
+      <pre>&nbsp;</pre>
+      <blockquote>
+        <p>HTML path completion</p>
+        <p>Path completion has been added to make it easier to import various files in HTML.</p>
+        <p><a href="https://code.visualstudio.com/updates/v1_21#_html-path-completion">https://code.visualstudio.com/updates/v1_21#_html-path-completion</a></p>
+      </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td><h3>Žymėjimas / Selection</h3>
+      <h4>Blokinis pažymėjimas / Column-Box Selection</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>shift+alt+Up</kbd> / <kbd>shift+alt+Right</kbd> / </p>
+        <p><kbd>shift+alt+Down</kbd> / <kbd>shift+alt+Left</kbd> </p>
+        <p>[C][<strong>cursorColumnSelectUp / cursorColumnSelectRight / cursorColumnSelectDown / cursorColumnSelectLeft</strong>]</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>shift+alt+MouseLeft</kbd></p>
+        <p>Daro blokinį pažymėjimą nuo kursoriaus pozicijos iki suklaksėtos vietos.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+alt+Up</kbd> / <kbd>ctrl+alt+Down</kbd></p>
+        <p>[C][editor.action.<strong>insertCursorAbove / insertCursorBelow</strong>]</p>
+        <p><strong>Aukštyn / žemyn</strong> plečia pažymėjimą.</p>
+      </div>
+      <h4>Daugybinis žymėjimas / Multiple Selection    &#8212; su pele</h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+MouseLeft</kbd></p>
+      <p>Prie esamo pažymėjimo, ar tik padėto kursoriaus, prideda naują pažymėjimo zoną (add to selection), t. y. sukuria daugybinį pažymėjimą.</p>
+  </div>
+      <h4>Daugybinis žymėjimas / Multiple Selection &#8212; to pačio string'o</h4>
+      <p>Faktiškai šios komandos veikia per VS Code'o paiešką, todėl veikia tie patys paieškos nustatymai. Panaudojus bet kurią iš šių komandų, VS Code'o paieškos laukelyje lieka paskutinis ieškotas string'as.      </p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+D</kbd></p>
+      <p>[<u>S</u>election &gt; Add <u>N</u>ext Occurrence]</p>
+      <p>&quot;command&quot;: &quot;editor.action.addSelectionToNextFindMatch&quot;</p>
+  </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+shift+D</kbd></p>
+      <p>&quot;command&quot;: &quot;editor.action.moveSelectionToNextFindMatch&quot;</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>alt+D</kbd></p>
+      <p>[<u>S</u>election &gt; Add P<u>r</u>evious Occurrence]</p>
+      <p>&quot;command&quot;: &quot;editor.action.addSelectionToPreviousFindMatch&quot;</p>
+  </div>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>alt+shift+D</kbd></p>
+      <p>&quot;command&quot;: &quot;editor.action.moveSelectionToPreviousFindMatch&quot;</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>win+D</kbd> @AHKremap:</p>
+      <p>[<u>S</u>election &gt; Select All <u>O</u>ccurrences]</p>
+      <p>[CP][Select All Occurrences of Find Match]</p>
+      <p>&quot;command&quot;: &quot;editor.action.selectHighlights&quot;</p>
+      <p><strong>Atrodo daro tą patį:</strong></p>
+      <p>[CP][Change All Occurrences]<br>
+        &quot;key&quot;: &quot;ctrl+f2&quot;<br>
+        &quot;command&quot;: &quot;editor.action.changeAll&quot;</p>
+  </div>
+    <p>&nbsp;</p></td>
+    <td><h3>Spalvų kodai </h3>
+      <h4>VS Code'o built-in Color picker'is</h4>
+      <p>Setting'uose atjungiame, kad ant mouse-over'io nerodytų:</p>
+      <ul>
+        <li>&quot;editor.colorDecorators&quot;: false,</li>
+        <li>"scss.colorDecorators.enable": false </li>
+      </ul>
+      <h4>Extension &quot;Color picker&quot; (anseki.vscode-color) </h4>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+insert</kbd></p>
+        <p>[CP][Pick Color]</p>
+        <p>Ir įveda tuščioje vietoje, ir redaguoja esamą spalvos kodą. </p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+insert</kbd></p>
+        <p>[CP][Convert Color]</p>
+        <p>Jau esamą spalvos kodą konvertuoja į kitą formatą. </p>
+      </div>
+      <p>&nbsp;</p>
+      <h4>Extension &quot;Color Highlight&quot;</h4>
+    <p>Spalvina spalvų kodus.</p></td>
+  </tr>
+  <tr>
+    <td><h3>Komentavimas</h3>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=kevinkyang.auto-comment-blocks">Auto Comment Blocks - Visual Studio Marketplace</a></p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=joelday.docthis">Document This - Visual Studio Marketplace</a></p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+/</kbd></p>
+        <p>[<u>E</u>dit &gt; <u>T</u>oggle Line Comment]</p>
+        <p>&quot;command&quot;: &quot;editor.action.commentLine&quot;</p>
+      </div>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+shift+/</kbd></p>
+        <p>[<u>E</u>dit &gt; Toggle <u>B</u>lock Comment]</p>
+        <p>&quot;command&quot;: &quot;editor.action.blockComment&quot;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>alt+/</kbd> / <kbd>alt+shift+/</kbd></p>
+        <p>[C][editor.action.<strong>addCommentLine / removeCommentLine</strong>]</p>
+        <blockquote>
+          <p><strong>Add / Remove</strong> line comment.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>Win+/</kbd> @AHKremap:</p>
+        <p>&quot;command&quot;: &quot;editor.emmet.action.toggleComment&quot;</p>
+        <p>Vienodai veikia ir *.scss, ir *.css failuose &#8212; visada naudoja <code>/*...*/</code></p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>&quot;key&quot;: &quot;ctrl+k ctrl+/&quot;,  <br>&quot;command&quot;: &quot;editor.foldAllBlockComments&quot;</p>
+        <p>&nbsp;</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td><h3>codeLens</h3>
+      <p><a href="https://code.visualstudio.com/blogs/2017/02/12/code-lens-roundup">https://code.visualstudio.com/blogs/2017/02/12/code-lens-roundup</a> </p>
+    <p>Setting'uose įjungia-išjungia: <code>&quot;editor.codeLens&quot;: true</code></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td><h3>RegExp
+    </h3>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=chrmarti.regex">Regex Previewer - Visual Studio Marketplace</a></p>
+    <p>&nbsp;</p></td>
+    <td><h3>intelligent code analysis</h3>
+    <p><a href="https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-codemetrics">CodeMetrics - Visual Studio Marketplace</a></p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h3>Outline View</h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+numpad_multiply(*)</kbd></p>
+        <p>[CP][File: Focus on Outline]</p>
+        <p>[C][outline.focus]      </p>
+      </div>
+      <p>Outline View'so parodymas-paslėpimas per Sidebar'o Explorer'io title'o kontekstinį meniu: </p>
+      <p><img src="images/2018.07.15_15-03-24-konspektas — site_assets_sass__elements.text-format.scss.png" alt="" width="137" height="199"/></p>
+      <blockquote>
+        <p> It is a separate section in the bottom of the File Explorer. When expanded, it will show the symbol tree of the currently active editor.</p>
+        <p>There are several Outline view settings which allow you to enable/disable icons and control the errors and warnings display (all enabled by default):</p>
+        <ul>
+          <li><code>outline.icons</code> - Toggle rendering outline elements with icons.</li>
+          <li><code>outline.problems.enabled</code> - Show errors and warnings on outline elements.</li>
+          <li><code>outline.problems.badges</code> - Toggle using badges for errors and warnings.</li>
+          <li><code>outline.problems.colors</code> - Toggle using colors for errors and warnings.</li>
+        </ul>
+      </blockquote>
+    <p>&nbsp;</p></td>
+    <td><h3>Grafiniai failai (graphics, images)
+    </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p>[CP][Emmet: Update Image Size]</p>
+      <p>Naudojimas:</p>
+      <dl>
+        <dt>HTML</dt>
+        <dd>
+          <p><code>&lt;img src="images/kazkas.png"&gt;</code></p>
+          <p>prideda:</p>
+          <p><code>&lt;img src="images/kazkas.png" width="753" height="234"&gt; </code></p>
+        </dd>
+        <dt>CSS</dt>
+        <dd>
+          <pre><code>div {
+    background: url("../images/kazkas.png");
+}</code></pre>
+          <p>prideda:</p>
+          <pre><code>div {
+    background: url("../images/kazkas.png");
+    width: 753px;
+    height: 234px;
+}</code></pre>
+        </dd>
+      </dl>
+      <blockquote>
+        <p>Update Image Size </p>
+        <p>VS Code can automatically update HTML img tags with the correct size of images. This works for images that are local to the project as well as images included by URL. It also works in CSS properties like `background-image`.</p>
+    </blockquote>
+  </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td><h3>Pagalba-help'as, dokumentacija</h3>
+    <p> <a href="https://marketplace.visualstudio.com/items?itemName=deerawan.vscode-dash">Dash - Visual Studio Marketplace</a>    </p>
+    <p>&nbsp;</p>
+    <div class="c-editor-command o-collapse-locdep">
+      <p><kbd>ctrl+F1</kbd>      </p>
+      <p>[CP][Search in Dash for current selection]</p>
+      <p>[C][extension.dash.specific]      </p>
+      <blockquote>
+        <p>Get the text under your cursor or selected first. It will search for current specific documentation depends on language.</p>
+      </blockquote>
+  </div>
+    <p>&nbsp;</p>
+    <p>[CP][Open Dash for current language documentation] <br>
+      [C][extension.dash.emptySyntax]    </p>
+    <div>
+      <div> { "key": "your_shortcut", "command": "extension.dash.specific" }, // search selection in corresponding docset</div>
+      <div> { "key": "your_shortcut", "command": "extension.dash.all" } // search in all docset</div>
+      <div> { "key": "your_shortcut", "command": "extension.dash.searchSyntax" } // open dash with custom string and current file's docset</div>
+  </div>
+    <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Redaktorius: kodo struktūros</h2>
+<p>navigacija, paieška, selektinimas, redagavimas</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Kodo struktūrų žymėjimas-spalvinimas</h3><p> <a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer&WT.mc_id=vscodecandothat-dotcom-team">Bracket Pair Colorizer - Visual Studio Marketplace</a></p>
+      <p> <a href="https://marketplace.visualstudio.com/items?itemName=rafamel.subtle-brackets">Subtle Match Brackets - Visual Studio Marketplace</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Operacijos su skliausteliais ir kabutėmis</h3>
+    <p> <a href="https://marketplace.visualstudio.com/items?itemName=pustelto.bracketeer">Bracketeer - Visual Studio Marketplace</a></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Extension'ai</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>extension: SCSS IntelliSense</h3>
+    <p>Jo setting'ai prasideda <code>scss.*</code></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

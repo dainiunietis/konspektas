@@ -1,0 +1,2945 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>
+<!-- #BeginEditable "body" -->
+<h1>CSS Grid Layout</h1>
+<p> <a href="https://www.euismod.dev/#/">Euismod</a>,  <a href="https://shadeed.github.io/grid-to-flex/">• Grid to Flexbox</a></p>
+<figure>
+  <figcaption>Dokumentacija, vadovai</figcaption>
+  <div class="o-mcl o-mcl--W5 o-mcl--continuous-dtdd">
+    <dl>
+      <dt>Oficiali specifikacija</dt>
+      <dd>
+        <ul>
+          <li><a href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a></li>
+          <li> <a href="https://www.w3.org/TR/css-grid-2/">CSS Grid Layout Module Level 2</a></li>
+        </ul>
+      </dd>
+      <dt>CSS savybių suvestinės-santraukos (CSS Grid Layout properties cheat sheets)</dt>
+      <dd>
+        <ul>
+          <li><a href="http://grid.malven.co/">http://grid.malven.co/</a> (<a href="file:///D|/webdev/docs.cheat-sheets/GRID_ A simple visual cheatsheet for CSS Grid Layout.mhtml">lokaliai</a>, <a href="http://webdev.local/docs.cheat-sheets/GRID_ A simple visual cheatsheet for CSS Grid Layout.mhtml">webdev.local</a>)</li>
+          <li><a href="https://www.gapintelligence.com/blog/2018/get-on-the-grid-the-one-page-css-grid-cheat-sheet">https://www.gapintelligence.com/blog/2018/get-on-the-grid-the-one-page-css-grid-cheat-sheet</a></li>
+        </ul>
+      </dd>
+      <dt>mokytuvai-vadovai — pagrindai</dt>
+      <dd>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">Basic concepts of grid layout</a></li>
+        </ul>
+      </dd>
+      <dt>mokytuvai-vadovai — viskas</dt>
+      <dd>
+        <ul>
+          <li><a href="https://tympanus.net/codrops/css_reference/grid/">https://tympanus.net/codrops/css_reference/grid/</a></li>
+          <li> <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid | CSS-Tricks</a></li>
+          <li> <a href="https://learncssgrid.com/">Learn CSS Grid - A Guide to Learning CSS Grid | Jonathan Suh</a></li>
+          <li> <a href="https://web.dev/learn/css/grid/">Grid</a></li>
+        </ul>
+        <p>Atrodo išsamiai ir aiškiai:</p>
+        <ul>
+          <li> <a href="https://varun.ca/css-grid/">Learning CSS Grid | Varun Vachhar</a></li>
+          <li> <a href="https://varun.ca/css-grid-2/">Learning CSS Grid – Part 2 | Varun Vachhar</a></li>
+        </ul>
+        <p>Video:</p>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=DCZdCKjnBCs&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA" rel="nofollow"><strong>Learn CSS Grid</strong></a>: Wes Bos, Laracon 44:59</li>
+          <li><a href="https://www.youtube.com/watch?v=N5Lt1SLqBmQ&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA" rel="nofollow"><strong>CSS Grid Layout</strong></a>: Rachel Andrew, Frontend NE 59:14</li>
+          <li><a href="https://www.youtube.com/watch?v=_BCiiE31D5M&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA" rel="nofollow"><strong>CSS Grid in Production</strong></a>: Benjamin De Cock, dotCSS 16:05</li>
+        </ul>
+      </dd>
+      <dt>naršyklių suderinamumas-palaikymas</dt>
+      <dd>
+        <p> <a href="https://www.smashingmagazine.com/2017/07/enhancing-css-layout-floats-flexbox-grid/">Progressively Enhancing CSS Layout: From Floats To Flexbox To Grid — Smashing Magazine</a></p>
+      </dd>
+    </dl>
+  </div>
+</figure>
+<figure>
+  <figcaption>Pavyzdžiai</figcaption>
+  <div class="o-mcl o-mcl--W5 o-mcl--continuous-dtdd">
+    <dl>
+      <dt>Kitų</dt>
+      <dd>
+        <ul>
+          <li><a href="http://labs.jensimmons.com/">http://labs.jensimmons.com/</a></li>
+          <li><a href="https://gridbyexample.com/patterns/">https://gridbyexample.com/patterns/</a></li>
+        </ul>
+      </dd>
+      <dt>Savo</dt>
+      <dd>
+        <ul>
+          <li><a href="css.property.group.grid_pvz.kurso-namų-darbai.1.htm">Udemy kurso &quot;Advanced CSS and Sass Flexbox, Grid, Animations and More!&quot; namų darbas — CSS grid</a></li>
+        </ul>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+</figure>
+<h2>Visų <i>Grid layout</i> savybių suvestinė</h2>
+<p><img src="images/2018.06.22_11-40-45-slides-students-C04 - PDF-XChange Editor.png" alt="" width="212" height="105"/></p>
+<table width="100%" class="c-table-linesGrid c-table-linesGrid--sameInsideCollapse -u-table-equelCols">
+  <tr>
+    <th width="14%">&nbsp;</th>
+    <th width="43%"><i>Grid container</i>'io deklaracijos</th>
+    <th width="43%"><i>Grid item</i>'o deklaracijos</th>
+  </tr>
+  <tr>
+    <th>Establishing Grid Containers</th>
+    <td>
+      <pre><code>display: grid | inline-grid</code></pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Defining the Grid — The Explicit Grid</th>
+    <td>
+      <pre><code>grid-template-rows: GTR
+grid-template-columns: GTC
+  GTR GTC: [line-name]? track-size [line-name]? ...
+
+grid-template-areas: GTA
+  GTA: area-string+
+
+grid-template: GTR / GTC<br>grid-template: GTS
+  GTS: [line-name]? area-string track-size? [line-name]? ...
+grid-template: GTS / GTC</code></pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>Defining the Grid — The Implicit Grid</th>
+    <td>
+      <pre>grid-auto-rows:
+
+grid-auto-columns:
+
+grid-auto-flow:
+
+grid:
+
+</pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>
+      <p><i>grid items</i> positioning against <i>grid lines</i></p>
+      <p>the grid-placement properties</p>
+    </th>
+    <td>&nbsp;</td>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>grid-row-start: RS<br>
+            grid-row-end: RE</code></td>
+          <td width="30%" style="vertical-align: middle"><code>grid-row: RS / RE</code></td>
+          <td width="39%" rowspan="2" style="vertical-align: middle">
+            <p><code>grid-area: RS / CS / RE / CE</code></p>
+            <p><code>grid-area: RS / CS</code></p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>grid-column-start: CS<br>
+            grid-column-end: CE</code></td>
+          <td style="vertical-align: middle"><code>grid-column: CS / CE</code></td>
+        </tr>
+      </table>
+      <pre><code>RS | RE | CS | CE = &lt;grid-line&gt;
+grid-*: auto
+grid-*: &lt;custom-ident&gt;
+grid-*: &lt;integer&gt;
+grid-*: &lt;custom-ident&gt; &lt;integer&gt;
+grid-*: span &lt;integer&gt;
+grid-*: span &lt;custom-ident&gt;
+grid-*: span &lt;custom-ident&gt; &lt;integer&gt;</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <th>Self-Alignment: Aligning the Box Within Its Parent</th>
+    <td>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+      <ul>
+        <li>justify-self: — <em>inline-main axis</em></li>
+        <li>align-self: — <em>block-cross axis</em></li>
+        <li>Ir jų abiejų shorthand'as — place-self:</li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td>
+      <pre>&nbsp;</pre>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th><i>gutters</i>, <i>alleys</i> </th>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>row-gap: RG</code></td>
+          <td width="30%" rowspan="2" style="vertical-align: middle"><code>gap: RG CG</code></td>
+        </tr>
+        <tr>
+          <td><code>column-gap: CG</code></td>
+        </tr>
+      </table>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Shorthand'ai</h2>
+<h3><code>grid-template:</code></h3>
+<p>Trijų <i>grid container</i>'io savybių shorthand'as:</p>
+<blockquote>
+  <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template" id="ref-for-propdef-grid-template③">grid-template</a> property is a <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#shorthand-property" id="ref-for-shorthand-property①">shorthand</a> for setting <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-columns" id="ref-for-propdef-grid-template-columns①⑤">grid-template-columns</a>, <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-rows" id="ref-for-propdef-grid-template-rows①⑤">grid-template-rows</a>, and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas①④">grid-template-areas</a> in a single declaration.</p>
+</blockquote>
+<div class="c-em-alert c-em--small c-em--narrow">
+  <p>Negalima naudoti <code>repeat()</code>, </p>
+  <blockquote>
+    <p>Note that the <a data-link-type="maybe" href="https://www.w3.org/TR/css-grid-1/#funcdef-repeat" id="ref-for-funcdef-repeat①⓪">repeat()</a> function isn't allowed in these track listings, as the tracks are intended to visually line up one-to-one with the rows/columns in the "ASCII art".</p>
+  </blockquote>
+  <figure class="c-figure c-figure--code" style="">
+    <div class="c-figure__content">
+    <pre><code>grid-template: "a a a" repeat(2, 100px)
+               "b b b"
+               "c c c" 100px
+
+grid-template: "a a a"
+               "b b b"
+               "c c c" /
+               300px repeat(2, 100px);</code></pre>
+    </div>
+    <figcaption>visos deklaracijos yra — invalid property value</figcaption>
+  </figure>
+</div>
+<table width="100%" class="c-table-linesGrid c-table-linesGrid--emTh">
+  <tbody>
+    <tr>
+      <th colspan="2"><code>none</code></th>
+    </tr>
+    <tr>
+      <td>
+        <pre><code>grid-template: none;</code></pre>
+      </td>
+      <td>
+        <pre><code>grid-template-rows: none;
+grid-template-columns: none;
+grid-template-areas: none;</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2"><code>&lt;'grid-template-rows'&gt; / &lt;'grid-template-columns'&gt;</code></th>
+    </tr>
+    <tr>
+      <td>
+        <pre><code>grid-template: 100px 1fr 100px / 1fr 200px;</code></pre>
+      </td>
+      <td>
+        <pre><code>grid-template-rows: 100px 1fr 100px;
+grid-template-columns: 1fr 200px;
+grid-template-areas: none;</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <pre><code>grid-template: [viršus] 100px 1fr 100px [apačia] /
+               [kairė] 1fr 200px [dešnė];</code></pre>
+      </td>
+      <td>
+        <pre><code>grid-template-rows: [viršus] 100px 1fr 100px [apačia];
+grid-template-columns: [kairė] 1fr 200px [dešnė];
+grid-template-areas: none;</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <pre><code>grid-template: [ra-start] 100px [ra-end rb-start] 1fr [rb-end rc-start] 100px [rc-end] /
+               [ca-start] 1fr [ca-end cb-start] 200px [cb-end];</code></pre>
+      </td>
+      <td>
+        <pre><code>grid-template-rows: [ra-start] 100px [ra-end rb-start] 1fr [rb-end rc-start] 100px [rc-end];
+grid-template-columns: [ca-start] 1fr [ca-end cb-start] 200px [cb-end];
+grid-template-areas: none;</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2"><code> [ &lt;line-names&gt;? &lt;string&gt; &lt;track-size&gt;? &lt;line-names&gt;? ]+ [ / &lt;explicit-track-list&gt; ]?</code> — būtinai turi būti <code>grid-template-areas:</code></th>
+    </tr>
+    <tr>
+      <td width="50%">
+        <pre><code>grid-template: "a a a"
+               "b b b";</code></pre>
+      </td>
+      <td width="50%">
+        <pre><code>grid-template-rows: auto auto;
+grid-template-columns: none;
+grid-template-areas: "a a a"
+                     "b b b";</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <pre><code>grid-template: "a a a" 200px
+               "b b b"
+               "c c c" 100px;</code></pre>
+      </td>
+      <td>
+        <pre><code>grid-template-rows: 200px auto 100px;
+grid-template-columns: none;
+grid-template-areas: "a a a"
+                     "b b b"
+                     "c c c";</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <pre><code>grid-template: [header-start]  "a a a" 200px [header-end]
+               [content-start] "b b b" auto  [content-end]
+               [footer-start]  "c c c" 100px [footer-end];</code></pre>
+      </td>
+      <td>
+        <pre><code>grid-template-rows: [header-start]             200px
+                    [header-end content-start] auto
+                    [content-end footer-start] 100px
+                    [footer-end];
+grid-template-columns: none;
+grid-template-areas: "a a a"
+                     "b b b"
+                     "c c c";</code></pre>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <pre><code>grid-template: "a a a"
+               "b b b"
+               "c c c" / 300px 1fr 300px;</code></pre>
+      </td>
+      <td>
+        <pre><code>grid-template-rows: auto auto auto;
+grid-template-columns: 300px 1fr 300px;
+grid-template-areas: "a a a"
+                     "b b b"
+                     "c c c";</code></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3><code>grid:</code></h3>
+<p> <a href="https://www.w3.org/TR/css-grid-1/#grid-shorthand">CSS Grid Layout Module Level 1 § 7.8. Grid Definition Shorthand: the grid property</a></p>
+<p>Nustato arba reset'ina visas <i>grid container</i>'io savybes, išskyrus <code>row-gap:</code> ir <code>column-gap:</code></p>
+<blockquote>
+  <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid" id="ref-for-propdef-grid⑦">grid</a> property is a <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#shorthand-property" id="ref-for-shorthand-property③">shorthand</a> that sets all of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#explicit-grid-properties" id="ref-for-explicit-grid-properties①">explicit grid properties</a> (<a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-rows" id="ref-for-propdef-grid-template-rows②④">grid-template-rows</a>, <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-columns" id="ref-for-propdef-grid-template-columns②④">grid-template-columns</a>, and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas②⓪">grid-template-areas</a>), and all the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#implicit-grid-properties" id="ref-for-implicit-grid-properties">implicit grid properties</a> (<a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-rows" id="ref-for-propdef-grid-auto-rows⑨">grid-auto-rows</a>, <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-columns" id="ref-for-propdef-grid-auto-columns⑨">grid-auto-columns</a>, and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-flow" id="ref-for-propdef-grid-auto-flow⑤">grid-auto-flow</a>), in a single declaration. (It does not reset the <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#gutter" id="ref-for-gutter③">gutter</a> properties.)</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Susitarimai</h2>
+<p>Susitarimai pagal Flexbox'o <a href="css.property.group.flexbox.htm#(h)">Susitarimai</a>.</p>
+<h2>Apibendrinimai</h2>
+<div class="-FXBCc MH3c MV5c" style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center">
+  <img src="images/2018.05.30_13-20-10-A Complete Guide to CSS Grid _ Codrops CSS Reference.png" alt="" width="350" height="202"/>
+  <img src="images/2018.05.30_13-22-01-Eric Meyer - CSS Pocket Reference. 5th Edition - 2018.pdf - Adobe Acrobat Reader.png" alt="" width="250" height="150"/>
+  <img src="images/2018.06.22_11-37-43-slides-students-C04 - PDF-XChange Editor.png" alt="" width="315" height="170"/>
+</div>
+<p>Santrauka, kaip Grid Layout veikia ir kokios pagrindinės savybės:</p>
+<blockquote>
+  <p>Grid Layout controls the layout of its content through the use of a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid" id="ref-for-grid">grid</a>: an intersecting set of horizontal and vertical lines which create a sizing and positioning coordinate system for the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container①">grid container</a>'s contents. Grid Layout features</p>
+  <ul>
+    <li>fixed, flexible, and content-based <a href="https://www.w3.org/TR/css-grid-1/#track-sizing">track sizing functions</a></li>
+    <li><a href="https://www.w3.org/TR/css-grid-1/#placement">explicit item placement</a> via forwards (positive) and backwards (negative) numerical grid coordinates, named grid lines, and named grid areas; automatic item placement into empty areas, including <a href="https://www.w3.org/TR/css-grid-1/#order-property">reordering with order</a></li>
+    <li>space-sensitive track repetition and automatic addition of rows or columns to accommodate additional content</li>
+    <li>control over alignment and spacing with <a href="https://www.w3.org/TR/css-grid-1/#auto-margins">margins</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#gutter" id="ref-for-gutter">gutters</a>, and the <a href="https://www.w3.org/TR/css-align/">alignment properties</a></li>
+    <li>the ability to overlap content and <a href="https://www.w3.org/TR/css-grid-1/#z-order">control layering with z-index</a></li>
+  </ul>
+  <p><a href="https://www.w3.org/TR/css-grid-1/#overview">2. Overview § CSS Grid Layout Module Level 1</a></p>
+</blockquote>
+<h2>Grid Layout Concepts and Terminology</h2>
+<p>Yra dviejų tipų tagai-elementai: <i>alignment container</i> ir <i>alignment subject</i>.</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p><dfn>grid layout</dfn> —    <i>grid item'ų</i> pozicionavimas ir lygiavimas pagal <i>grid container'io</i> <i>grid'ą</i>.</p>
+    <blockquote>
+      <p>In <a href="https://www.w3.org/TR/css-grid-1/#grid-layout">grid layout</a> , the content of a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container⑦">grid container</a> is laid out by positioning and aligning it into a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid" id="ref-for-grid③">grid</a>.     </p>
+      <p><a href="https://www.w3.org/TR/css-grid-1/#grid-layout">grid layout — CSS Grid Layout Module Level 1</a></p>
+    </blockquote>
+  </div>
+  <div>
+    <p><dfn>grid</dfn> — </p>
+    <blockquote>
+      <p>The <a href="https://www.w3.org/TR/css-grid-1/#grid">grid</a> is an intersecting set of horizontal and vertical <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-line" id="ref-for-grid-line">grid lines</a> that divides the <span id="ref-for-grid-container⑧">grid container</span>'s space into <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-area" id="ref-for-grid-area③">grid areas</a>, into which <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item⑨">grid items</a> (representing the <span id="ref-for-grid-container⑨">grid container</span>'s content) can be placed. </p>
+      <p> <a href="https://www.w3.org/TR/css-grid-1/#grid">grid — CSS Grid Layout Module Level 1</a></p>
+    </blockquote>
+  </div>
+  <div>
+    <p><dfn>grid column</dfn> , <dfn>grid row</dfn> —    </p>
+    <blockquote class="blockquote--citeSource">
+      <p>There are two sets of <span id="ref-for-grid-line①">grid lines</span>: one set defining <a href="https://www.w3.org/TR/css-grid-1/#grid-column">columns</a> that run along the <a href="https://www.w3.org/TR/css3-writing-modes/#block-axis">block axis</a>, and an orthogonal set defining <a href="https://www.w3.org/TR/css-grid-1/#grid-row">rows</a> along the <a href="https://www.w3.org/TR/css3-writing-modes/#inline-axis">inline axis</a>.</p>
+      <p> <a href="https://www.w3.org/TR/css-grid-1/#grid-column">grid column — CSS Grid Layout Module Level 1</a>,
+ <a href="https://www.w3.org/TR/css-grid-1/#grid-row">grid row — CSS Grid Layout Module Level 1</a></p>
+    </blockquote>
+    <div class="c-em-important c-em--narrow">
+      <p>Vakarietiškoms kalboms, kurių tekstas rašomas horizontaliai, o
+      teksto eilutės dėliojamos iš viršaus į apačią — horizontal <i>writing modes</i> — CSS nustatoma su <code>writing-mode: horizontal-tb</code> — <strong>stulpelius nustato vertikalios linijos</strong> (y-axis), nes tokia yra <i>block axis</i> in horizontal <i>writing modes</i>.</p>
+      <blockquote>
+        <p>block axis</p>
+        <p>The axis in the block dimension, i.e. the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-3/#y-axis" id="ref-for-y-axis">vertical axis</a> in horizontal writing modes and the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-3/#x-axis" id="ref-for-x-axis">horizontal axis</a> in vertical writing modes.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div>
+    <p><dfn>Grid lines</dfn> — suformuoja <i>grid container'io</i> deklaracijos: <code>grid-template-columns: grid-template-rows:</code> , o jos panaudojamos Grid item'ų deklaracijų: <code>grid-column-start: grid-column-end: grid-row-start: grid-row-end:</code></p>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#grid-line-concept">CSS Grid Layout Module Level 1 § 3.1. Grid Lines</a></p>
+    <blockquote>
+      <p>Grid lines are the horizontal and vertical dividing lines of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid" id="ref-for-grid④">grid</a>. A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-line" id="ref-for-grid-line②">grid line</a> exists on either side of a column or row. They can be referred to by numerical index, or by an author-specified name. A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item①⓪">grid item</a> references the <span id="ref-for-grid-line③">grid lines</span> to determine its position within the <span id="ref-for-grid⑤">grid</span> using the <a href="https://www.w3.org/TR/css-grid-1/#placement">grid-placement properties</a>.</p>
+      <p> <a href="https://www.w3.org/TR/css-grid-1/#grid-line">Grid lines — CSS Grid Layout Module Level 1</a></p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <del tabindex="0"><blockquote>
+        <p>A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement.</p>
+    </blockquote></del></div>
+  <div>
+    <p><dfn>grid track</dfn> — </p>
+    <blockquote>
+      <p>Grid track is a generic term for a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-column" id="ref-for-grid-column①">grid column</a> or <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-row" id="ref-for-grid-row①">grid row</a>—in other words, it is the space between two adjacent <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-line" id="ref-for-grid-line⑧">grid lines</a>. Each <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-track" id="ref-for-grid-track②">grid track</a> is assigned a sizing function, which controls how wide or tall the column or row may grow, and thus how far apart its bounding <span id="ref-for-grid-line⑨">grid lines</span> are. Adjacent <span id="ref-for-grid-track③">grid tracks</span> can be separated by <a href="https://www.w3.org/TR/css-grid-1/#gutters">gutters</a> but are otherwise packed tightly.</p>
+      <p> <a href="https://www.w3.org/TR/css-grid-1/#grid-track">Grid track — CSS Grid Layout Module Level 1</a>    </p>
+    </blockquote>
+    <p>Trumpiau:</p>
+    <blockquote>
+      <p>Grid Track</p>
+      <p>This is what we call the space between two grid lines. In essence, the grid track is what makes up a column or row of the grid.    </p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>A <i>grid track</i> is a continuous run between two adjacent <i>grid lines</i> — in other words, a <i>grid column</i><em> </em>or a <i>grid row</i>. It goes from one edge of the <i>grid container</i> to the other. The size of a <i>grid track</i> is dependent on the placement of the <i>grid lines</i> that define it. <i>Grid columns</i> and <i>rows</i> are broadly analogous to table columns and rows. More generically, they can be referred to as <em>block axis </em>and <em>inline axis </em>tracks, where (in Western languages) column tracks are on the block axis and row tracks are on the inline axis. </p>
+    </blockquote>
+  </div>
+  <div>
+    <p><dfn>grid cell</dfn> — </p>
+    <blockquote>
+      <p>A grid cell is the intersection of a grid row and a grid column. It is the smallest unit of the grid that can be referenced when positioning <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item①②">grid items</a>.</p>
+      <p> <A HREF="HTTPS://WWW.W3.ORG/TR/CSS-GRID-1/#GRID-CELL">Grid cell — CSS Grid Layout Module Level 1</a></p>
+    </blockquote>
+    <p>2</p>
+    <blockquote>
+      <p>A <i>grid cell</i>is any space bounded by four <i>grid lines</i>, with no other <i>grid lines</i> running through it, analogous to a table cell. This is the smallest unit of area in grid layout. <i>Grid cells</i> cannot be directly addressed with <i>CSS grid properties</i>; that is, no property allows you to say a <i>grid item</i> should be associated with a given <i>cell</i>. (But see the next point for more details.)</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p><dfn>grid area</dfn> — </p>
+    <blockquote>
+      <p>A grid area is the logical space used to lay out one or more <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item①③">grid items</a>. A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-area" id="ref-for-grid-area④">grid area</a> consists of one or more adjacent <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-cell" id="ref-for-grid-cell">grid cells</a>. It is bound by four <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-line" id="ref-for-grid-line①⓪">grid lines</a>, one on each side of the <span id="ref-for-grid-area⑤">grid area</span>, and participates in the sizing of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-track" id="ref-for-grid-track④">grid tracks</a> it intersects. A <span id="ref-for-grid-area⑥">grid area</span> can be named explicitly using the <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas">grid-template-areas</a> property of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container①④">grid container</a>, or referenced implicitly by its bounding <span id="ref-for-grid-line①①">grid lines</span>. A <span id="ref-for-grid-item①④">grid item</span> is assigned to a <span id="ref-for-grid-area⑦">grid area</span> using the <a href="https://www.w3.org/TR/css-grid-1/#placement">grid-placement properties</a>.</p>
+      <p><a href="https://www.w3.org/TR/css-grid-1/#grid-area">https://www.w3.org/TR/css-grid-1/#grid-area</a></p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item①⑤">grid item</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-area" id="ref-for-grid-area⑧">grid area</a> forms the containing block into which it is laid out. <span id="ref-for-grid-item①⑥">Grid items</span> placed into the same <span id="ref-for-grid-area⑨">grid area</span> do not directly affect each other's layout. Indirectly, however, a <span id="ref-for-grid-item①⑦">grid item</span> occupying a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-track" id="ref-for-grid-track⑤">grid track</a> with an <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#intrinsic-sizing-function" id="ref-for-intrinsic-sizing-function">intrinsic sizing function</a> can affect the size of that track (and thus the positions of its bounding <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-line" id="ref-for-grid-line①②">grid lines</a>), which in turn can affect the position or size of another <span id="ref-for-grid-item①⑧">grid item</span>.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>A <i>grid area</i> is any rectangular area bounded by four <i>grid lines</i> and made up of one or more <i>grid cells</i>. An <i>area</i> can be as small as a single <i>cell</i> or as large as all the <i>cells</i> in the grid. <i>Grid areas</i> are directly addressable by <i>CSS grid properties</i>, which allow you to define the <i>areas</i> and then associate <i>grid items</i> with them.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p><dfn>grid components</dfn> — </p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Naršyklių palaikymas-suderinamumas</h2>
+<p>...</p>
+<h2>Naudojimas, galimos klaidos</h2>
+<p> <a href="https://www.youtube.com/watch?v=0Gr1XSyxZy0">9 Biggest Mistakes with CSS Grid - YouTube</a></p>
+<h2 id="***20210310114835"><i>Grid item'ų</i> eiliškumo atvaizdavime keitimas ir <i>accessibility</i> / Reordering and Accessibility</h2>
+<p><a href="https://www.w3.org/TR/css-grid-1/#order-accessibility">4. Reordering and Accessibility § CSS Grid Layout Module Level 1</a></p>
+<p><i>Grid item'ų</i> eiliškumas yra:</p>
+<dl>
+  <dt> kode (correct ordering of the document source)</dt>
+  <dd>
+    <blockquote>
+      <p>This is so that non-visual media and non-CSS UAs, which typically present content linearly, can rely on a logical source order, while grid layout's placement and ordering features are used to tailor the visual arrangement.</p>
+    </blockquote>
+    <p>Eiliškumas kode yra pirmaeilis ir lemiamas:</p>
+    <dl>
+      <dt> in non-visual media</dt>
+      <dd>
+        <p>...</p>
+        <blockquote>
+          <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-flexbox-1/#propdef-order" id="ref-for-propdef-order2">order</a> property and <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-placement" id="ref-for-grid-placement2">grid placement</a> <em>do not</em> affect ordering in non-visual media (such as <a href="https://www.w3.org/TR/css3-speech/">speech</a>)</p>
+        </blockquote>
+      </dd>
+      <dt>aktyvavimas nuorodų su <kbd>Tab</kbd></dt>
+      <dd>
+        <blockquote>
+          <p>Likewise, rearranging grid items visually does not affect the default traversal order of sequential navigation modes (such as cycling through links, see e.g. <a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-tabindex">tabindex</a> <a data-link-type="biblio" href="https://www.w3.org/TR/css-grid-1/#biblio-html">[HTML]</a>).</p>
+        </blockquote>
+      </dd>
+      <dt>non-CSS UAs</dt>
+      <dd>
+        <p>...</p>
+      </dd>
+    </dl>
+  </dd>
+  <dt>atvaizdavime</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>Pirmiau reikia keisti tagų kode eiliškumą, kad išvengti — <q>document source order is out-of-sync with the visual order</q>:</p>
+<blockquote>
+  <p>In order to preserve the author's intended ordering in all presentation modes, authoring tools—including WYSIWYG editors as well as Web-based authoring aids—must reorder the underlying document source and not use <a data-link-type="propdesc" href="https://www.w3.org/TR/css-flexbox-1/#propdef-order" id="ref-for-propdef-order②2">order</a> or <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-placement-property" id="ref-for-grid-placement-property②2">grid-placement properties</a> to perform reordering unless the author has explicitly indicated that the underlying document order (which determines speech and navigation order) should be <em>out-of-sync</em> with the visual order.</p>
+</blockquote>
+<del>
+  <p>Savo prasmę ir paskirtį turi, ir <i>grid item'ų</i> eiliškumas kode (correct ordering of the document source), ir eiliškumas atvaizdavime.</p>
+</del>
+<h2>Grid'o HTML tagai-elementai / <i>grid elements</i></h2>
+<dl>
+  <dt><dfn>grid elements</dfn>	</dt>
+  <dd>
+    <blockquote>
+      <p>There are two kinds of <i>grid elements</i>: the <i>grid container</i> and the <i>grid items</i> that are placed within the container. All the direct children of the <i>grid container</i> element are <i>grid items</i>.</p>
+    </blockquote>
+  </dd>
+</dl>
+<h3><code>display: grid | inline-grid</code> — sukuria <i>grid container</i></h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#grid-containers">CSS Grid Layout Module Level 1 § 5.1. Establishing Grid Containers: the grid and inline-grid display values</a>    </p>
+    <p>Ką daro:</p>
+    <blockquote>
+      <dl>
+        <dt>grid</dt>
+        <dd>This value causes an element to generate a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container①⑤">grid container</a> box that is <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#block-level" id="ref-for-block-level3">block-level</a> when placed in <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#flow-layout" id="ref-for-flow-layout3">flow layout</a>.</dd>
+        <dt>inline-grid</dt>
+        <dd>This value causes an element to generate an <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container①⑥">grid container</a> box that is <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#inline-level" id="ref-for-inline-level2">inline-level</a> when placed in <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#flow-layout" id="ref-for-flow-layout①2">flow layout</a>.    </dd>
+      </dl>
+    </blockquote>
+    <div class="c-pvz">
+      <p class="c-pvz__title"><code>display: grid</code> &#8212; a block-level grid container</p>
+      kažkas prieš
+  <div class="c-pvz__container" style="display: grid">
+    <div class="c-pvz__target" style="">item 1</div>
+    <div class="c-pvz__target" style="">item 2</div>
+    <div class="c-pvz__target" style="">item 3</div>
+  </div>
+    kažkas po </div>
+    <div class="c-pvz">
+      <p class="c-pvz__title"><code>display: inline-grid</code> &#8212; an inline-level grid container</p>
+      kažkas prieš
+  <div class="c-pvz__container" style="display: inline-grid">
+    <div class="c-pvz__target" style="">item 1</div>
+    <div class="c-pvz__target" style="">item 2</div>
+    <div class="c-pvz__target" style="">item 3</div>
+  </div>
+      kažkas po </div>
+    <del>
+    <blockquote>
+      <p>We create a <i>grid container</i> by declaring <code>display: grid</code> or <code>display: inline-grid</code> on an element. As soon as we do this all <i>direct children</i> of that element will become <i>grid items</i>.</p>
+    </blockquote>
+    <dl>
+      <dt><dfn>grid container</dfn>, <dfn>grid formatting context</dfn></dt>
+      <dd>
+        <p><a href="https://www.w3.org/TR/css-grid-1/#grid-container">grid container</a>, <a href="https://www.w3.org/TR/css-grid-1/#grid-formatting-context">grid formatting context</a></p>
+        <blockquote>
+          <p>A <i>grid container</i> establishes an <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#independent-formatting-context" id="ref-for-independent-formatting-context">independent</a> <i>grid formatting context</i> for its contents. </p>
+        </blockquote>
+      </dd>
+    </dl>
+    </del>
+  </div>
+  <div style="flex-grow: 2">
+    <figure>
+      <figcaption>Yra du aspektai</figcaption>
+      <div class="-o-mcl -o-mcl--W5 -o-mcl--continuous-dtdd">
+        <dl>
+          <dt>kaip veikia išorėje</dt>
+          <dd>
+            <p>Šiame aspekte veikia skirtingai:</p>
+            <ul>
+              <li>
+                <p><code>grid</code> — <q>is <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#block-level" id="ref-for-block-level2">block-level</a> when placed in <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#flow-layout" id="ref-for-flow-layout2">flow layout</a></q></p>
+                <p>Bet yra <i>grid container</i> skiriasi nuo <i>block container</i>:</p>
+                <blockquote>
+                  <p>Grid containers are not block containers, and so some properties that were designed with the assumption of block layout don't apply in the context of grid layout. In particular:</p>
+                  <ul>
+                    <li><a data-link-type="propdesc" href="https://www.w3.org/TR/CSS2/visuren.html#propdef-float" id="ref-for-propdef-float">float</a> and <a data-link-type="propdesc" href="https://www.w3.org/TR/CSS2/visuren.html#propdef-clear" id="ref-for-propdef-clear">clear</a> have no effect on a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item②⓪">grid item</a>. However, the <span id="ref-for-propdef-float①">float</span> property still affects the computed value of <a data-link-type="propdesc" href="https://www.w3.org/TR/css-display-3/#propdef-display" id="ref-for-propdef-display②">display</a> on children of a grid container, as this occurs <em>before</em> <span id="ref-for-grid-item②①">grid items</span> are determined.</li>
+                    <li><a data-link-type="propdesc" href="https://www.w3.org/TR/css-inline-3/#propdef-vertical-align" id="ref-for-propdef-vertical-align">vertical-align</a> has no effect on a grid item.</li>
+                    <li>the <a data-link-type="maybe" href="https://www.w3.org/TR/css-pseudo-4/#selectordef-first-line" id="ref-for-selectordef-first-line">::first-line</a> and <a data-link-type="maybe" href="https://www.w3.org/TR/css-pseudo-4/#selectordef-first-letter" id="ref-for-selectordef-first-letter">::first-letter</a> pseudo-elements do not apply to <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container①⑧">grid containers</a>, and <span id="ref-for-grid-container①⑨">grid containers</span> do not contribute a first formatted line or first letter to their ancestors.</li>
+                  </ul>
+                </blockquote>
+              </li>
+              <li>
+                <p><code>inline-grid</code> — <q>is <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#inline-level" id="ref-for-inline-level">inline-level</a> when placed in <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#flow-layout" id="ref-for-flow-layout①">flow layout</a></q></p>
+                <p>Yra įpatybė:</p>
+                <blockquote>
+                  <p>If an element's specified <a data-link-type="propdesc" href="https://www.w3.org/TR/css-display-3/#propdef-display" id="ref-for-propdef-display③">display</a> is <a data-link-type="maybe" href="https://www.w3.org/TR/css-grid-1/#valdef-display-inline-grid" id="ref-for-valdef-display-inline-grid①">inline-grid</a> and the element is floated or absolutely positioned, the computed value of <span id="ref-for-propdef-display④">display</span> is <a data-link-type="value" href="https://www.w3.org/TR/css-grid-1/#valdef-display-grid" id="ref-for-valdef-display-grid①">grid</a>. </p>
+                </blockquote>
+              </li>
+            </ul>
+          </dd>
+          <dt>kaip veikia viduje</dt>
+          <dd>
+            <p>Vienodai — <q>This value causes an element to generate a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container①⑤2">grid container</a> box</q></p>
+            <p>Ir <i>grid container</i> savyje sukuria <i>grid formatting context</i>: </p>
+            <blockquote>
+              <p>A <i>grid container</i> establishes an <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#independent-formatting-context" id="ref-for-independent-formatting-context2">independent</a> <i>grid formatting context</i> for its contents.</p>
+              <p>The contents of a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container①⑦">grid container</a> are laid out into a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid" id="ref-for-grid⑥">grid</a>, with <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-line" id="ref-for-grid-line①③">grid lines</a> forming the boundaries of each <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item①⑨">grid items</a>' containing block.</p>
+              <p><a href="https://www.w3.org/TR/css-grid-1/#grid-container">grid container</a>, <a href="https://www.w3.org/TR/css-grid-1/#grid-formatting-context">grid formatting context</a></p>
+            </blockquote>
+          </dd>
+        </dl>
+      </div>
+    </figure>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Tiesioginiai <i>grid container'io</i> palikuonys-tagai (ir tekstas) tampa <i>grid item'ais</i></h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <blockquote>
+      <p>Each in-flow child of a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container②⑧">grid container</a> becomes a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item②②">grid item</a> ...</p>
+    </blockquote>
+    <p>Ir nesvarbu kokia yra <i>grid item'o</i> <code>display:</code> reikšmė:</p>
+    <blockquote>
+      <p>If the <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#computed-value" id="ref-for-computed-value">computed</a> <a data-link-type="propdesc" href="https://www.w3.org/TR/css-display-3/#propdef-display" id="ref-for-propdef-display⑤">display</a> value of an element's nearest ancestor element (skipping display:contents ancestors) is <a data-link-type="maybe" href="https://www.w3.org/TR/css-grid-1/#valdef-display-grid" id="ref-for-valdef-display-grid③">grid</a> or <a data-link-type="maybe" href="https://www.w3.org/TR/css-grid-1/#valdef-display-inline-grid" id="ref-for-valdef-display-inline-grid③">inline-grid</a>, the element's own <span id="ref-for-propdef-display⑥">display</span> value is <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#blockify" id="ref-for-blockify">blockified</a>. (See <a href="https://www.w3.org/TR/CSS2/visuren.html#dis-pos-flo">CSS2.1§9.7</a> <a data-link-type="biblio" href="https://www.w3.org/TR/css-grid-1/#biblio-css2">[CSS2]</a> and <a href="https://www.w3.org/TR/css-display-3/#transformations">CSS Display 3 §2.7 Automatic Box Type Transformations</a> for details on this type of <span id="ref-for-propdef-display⑦">display</span> value conversion.)</p>
+      <p>Note: Blockification still occurs even when the <a data-link-type="maybe" href="https://www.w3.org/TR/css-grid-1/#valdef-display-grid" id="ref-for-valdef-display-grid④">grid</a> or <a data-link-type="maybe" href="https://www.w3.org/TR/css-grid-1/#valdef-display-inline-grid" id="ref-for-valdef-display-inline-grid④">inline-grid</a> element does not end up generating a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container②⑨">grid container</a> box, e.g. when it is <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#replaced-element" id="ref-for-replaced-element">replaced</a> or in a <a data-link-type="propdesc" href="https://www.w3.org/TR/css-display-3/#propdef-display" id="ref-for-propdef-display⑧">display: none</a> subtree.</p>
+      <p> <a href="https://www.w3.org/TR/css-grid-1/#grid-item-display">CSS Grid Layout Module Level 1§ 6.1. Grid Item Display</a>    </p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <div class="c-em-important c-em--small">
+      <p>Jei reikia pridėti HTML tagą dėl semantikos, kad gaubtų <i>grid item'us</i> ir pats nebūtų <i>grid item'u</i> — naudoti <a href="css.property.display.htm#(hx)">display: contents</a>.      </p>
+      <div class="c-pvs c-pvs--border c-pvs--title -c-pvs--child-bg">
+        <p class="c-pvs__section">Pats gaubiantis tagas su <code>display: contents</code> vizualiai nerodomas</p>
+        <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+          <div data-diah-style-bottom class="BGCM1-1" style="">#1</div>
+          <div style="display: contents; border: solid 2px red">
+            <div data-diah-style-bottom class="BGCM1-2" style="grid-column: 2 / -1">#2</div>
+            <div data-diah-style-bottom class="BGCM1-3" style="">#3</div>
+          </div>
+          <div data-diah-style-bottom class="BGCM1-4" style="">#4</div>
+          <div data-diah-style-bottom class="BGCM1-5" style="">#5</div>
+          <div data-diah-style-bottom class="BGCM1-6" style="">#6</div>
+        </div>
+        <p class="c-pvs__section">Bet jam priskirtos CSS savybės gali būti paveldėtos apgaubtųjų tagų.</p>
+        <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+          <div data-diah-style-bottom class="BGCM1-1" style="">#1</div>
+          <div style="display: contents; color: red">
+            <div data-diah-style-bottom class="BGCM1-2" style="grid-column: 2 / -1">#2</div>
+            <div data-diah-style-bottom class="BGCM1-3" style="">#3</div>
+          </div>
+          <div data-diah-style-bottom class="BGCM1-4" style="">#4</div>
+          <div data-diah-style-bottom class="BGCM1-5" style="">#5</div>
+          <div data-diah-style-bottom class="BGCM1-6" style="">#6</div>
+        </div>
+      </div>
+    </div>
+<p>&nbsp;</p>
+  </div>
+  <div>
+    <figure>
+      <figcaption><i>grid item'ų</i> savybės-veikimas</figcaption>
+      <div class="-o-mcl -o-mcl--W5 -o-mcl--continuous-dtdd">
+        <dl>
+          <dt>išorėje</dt>
+          <dd>
+            <p>&nbsp;</p>
+            <blockquote>
+              <p>Grid items are grid-level boxes, not block-level boxes: they participate in their container's <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-formatting-context" id="ref-for-grid-formatting-context">grid formatting context</a>, not in a block formatting context.</p>
+            </blockquote>
+            <p>&nbsp; </p>
+          </dd>
+          <dt>viduje</dt>
+          <dd>
+            <p>&nbsp;</p>
+            <blockquote>
+              <p>A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item②④">grid item</a> <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#establish-an-independent-formatting-context" id="ref-for-establish-an-independent-formatting-context">establishes an independent formatting context</a> for its contents. </p>
+            </blockquote>
+            <p>&nbsp;</p>
+          </dd>
+        </dl>
+      </div>
+    </figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h4>Kas vyksta su tiesiogiai <i>grid container'yje</i> esančiu tekstu</h4>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <blockquote>
+      <p>... each contiguous sequence of child <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#text-run" id="ref-for-text-run">text runs</a> is wrapped in an <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#anonymous" id="ref-for-anonymous">anonymous</a> <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#block-container" id="ref-for-block-container">block container</a> <span id="ref-for-grid-item②③">grid item</span>.</p>
+    </blockquote>
+    <div class="c-pvs c-pvs--border -c-pvs--outline c-pvs--child-bg -c-pvs--resizeHor">
+      <p>...</p>
+      <div class="c-pvs__parent PV1c PH2c" style="display:grid; gap:.5em; grid-template-columns:1fr 1fr 1fr; place-content:center;">
+        <div style="">vienas DIV</div>
+        du TXT
+        <div style="">trys</div>
+        keturi TXT </div>
+    </div>
+    <p></p>
+  </div>
+  <div>
+    <p>Bet iš teksto sukurti <i>anonymous block container'iai</i> tik paveldi paveldėjimo įpatybę turinčias CSS savybes iš <i>grid container'io</i>:</p>
+    <blockquote>
+      <p>The box of a anonymous item is unstyleable, since there is no element to assign style rules to. Its contents will however inherit styles (such as font settings) from the grid container.</p>
+    </blockquote>
+  </div>
+  <div>
+    <p>Bet vien white space'o simbolių eilutės yra ignoruojamos:</p>
+    <blockquote>
+      <p>However, if the entire sequence of child <span id="ref-for-text-run①">text runs</span> contains only <a href="https://www.w3.org/TR/CSS2/text.html#white-space-prop">white space</a> (i.e. characters that can be affected by the <a data-link-type="propdesc" href="https://www.w3.org/TR/css-text-3/#propdef-white-space" id="ref-for-propdef-white-space">white-space</a> property) it is instead not rendered (just as if its <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#text-nodes" id="ref-for-text-nodes">text nodes</a> were display:none).</p>
+    </blockquote>
+  </div>
+</div>
+<h4><i>Grid item'ų</i> išmatavimų valdymas / Grid Item Sizing</h4>
+<p> <a href="https://www.w3.org/TR/css-grid-1/#grid-item-sizing">CSS Grid Layout Module Level 1 § 6.2. Grid Item Sizing </a></p>
+<p>Yra du pagrindiniai faktoriai, lemiantys <i>grid item'ų</i> išmatavimus:</p>
+<dl>
+  <dt><i>grid area</i></dt>
+  <dd>
+    <p>...</p>
+    <blockquote>
+      <p>A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item②⑧">grid item</a> is sized within the containing block defined by its <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-area" id="ref-for-grid-area①②">grid area</a>.</p>
+    </blockquote>
+  </dd>
+  <dt><i>self-alignment</i></dt>
+  <dd>
+    <p><i>Self-alignment</i> yra nustatymai, priskiriami <i>grid item'ui</i>, kurie kontroliuoja <i>grid item'o</i> pozicionavimą <i>grid container'yje</i>. Tai yra dvi CSS savybės:</p>
+    <ul>
+      <li><code>justify-self:</code> — <i>inline-main axis</i></li>
+      <li><code>align-self:</code> — <i>block-cross axis</i></li>
+      <li>Ir jų abiejų shorthand'as — <code>place-self:</code></li>
+    </ul>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p><a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item②⑨">Grid item</a> calculations for <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#automatic-size" id="ref-for-automatic-size">automatic sizes</a> in a given dimensions vary by their <a href="https://www.w3.org/TR/css-align-3/#self-alignment">self-alignment values</a>. </p>
+      <table>
+        <caption>
+          Summary of automatic sizing behavior of grid items
+        </caption>
+        <thead>
+          <tr>
+            <th>Alignment</th>
+            <th>Non-replaced Element Size</th>
+            <th>Replaced Element Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a data-link-type="maybe" href="https://www.w3.org/TR/css-align-3/#valdef-align-self-normal" id="ref-for-valdef-align-self-normal①">normal</a></th>
+            <td>Fill grid area</td>
+            <td>Use <a data-link-type="dfn" href="https://www.w3.org/TR/css-images-3/#natural-size" id="ref-for-natural-size①">natural size</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><a data-link-type="maybe" href="https://www.w3.org/TR/css-align-3/#valdef-align-self-stretch" id="ref-for-valdef-align-self-stretch③">stretch</a></th>
+            <td>Fill grid area</td>
+            <td>Fill grid area</td>
+          </tr>
+          <tr>
+            <th scope="row"><a data-link-type="maybe" href="https://drafts.csswg.org/css-align-3/#valdef-self-position-start" id="ref-for-valdef-self-position-start">start</a>/<a data-link-type="maybe" href="https://drafts.csswg.org/css-align-3/#valdef-self-position-center" id="ref-for-valdef-self-position-center">center</a>/etc.</th>
+            <td>fit-content sizing (like floats)</td>
+            <td>Use <a data-link-type="dfn" href="https://www.w3.org/TR/css-images-3/#natural-size" id="ref-for-natural-size②">natural size</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </dd>
+</dl>
+<h4><code>order:</code> — keičia <i>grid item'ų</i> eiliškumą atvaizdavime / Reordered Grid Items</h4>
+<p> <a href="https://www.w3.org/TR/css-grid-1/#order-property">6.3. Reordered Grid Items: the order property § CSS Grid Layout Module Level 1</a></p>
+<p>...</p>
+<blockquote>
+  <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-flexbox-1/#propdef-order" id="ref-for-propdef-order④">order</a> property also applies to <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item③⓪">grid items</a>. It affects their <a href="https://www.w3.org/TR/css-grid-1/#grid-auto-flow-property">auto-placement</a> and <a href="https://www.w3.org/TR/css-grid-1/#z-order">painting order</a>.</p>
+</blockquote>
+<p class="c-em-note">Dėl tinkamo accessibility reikia suprasti, kada naudoti <code>order:</code> , o kada keisti tagų eiliškumą kode — <a href="#***20210310114835"><i>Grid item'ų</i> eiliškumo atvaizdavime keitimas ir <i>accessibility</i></a>.</p>
+<h4>... / Grid Item Margins and Paddings</h4>
+<div class="o-mcl o-mcl--W5 o-mcl--N4">
+  <p><a href="https://www.w3.org/TR/css-grid-1/#item-margins">CSS Grid Layout Module Level 1 § 6.4. Grid Item Margins and Paddings</a></p>
+  <div class="c-pvs c-pvs--border c-pvs--parent-border c-pvs--title c-pvs--child-bg o-mcl__continuous">
+    <p>........ </p>
+    <blockquote>
+      <p>Percentage margins and paddings on <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item③②">grid items</a>, like those on <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#block-box" id="ref-for-block-box①">block boxes</a>, are resolved against the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size" id="ref-for-inline-size②">inline size</a> of their <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#containing-block" id="ref-for-containing-block">containing block</a>, e.g. left/right/top/bottom percentages all resolve against their <span id="ref-for-containing-block①">containing block</span>'s <em>width</em> in horizontal <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#writing-mode" id="ref-for-writing-mode">writing modes</a>.</p>
+    </blockquote>
+    <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid; grid-template-columns: 1fr 1fr; width: 400px; height: 200px">
+      <div data-diah-style-bottom style="grid-column: 1 / -1; margin: 0 0 0 50%">#1</div>
+      <div data-diah-style-bottom style="">#2</div>
+      <div data-diah-style-bottom style="margin: 0 0 0 50%">#3</div>
+    </div>
+    <p>&nbsp;</p>
+    <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid; grid-template-columns: 1fr 1fr; width: 400px; height: 200px">
+      <div data-diah-style-bottom style="grid-column: 1 / -1; margin: 25% 0 0 0">#1</div>
+      <div data-diah-style-bottom style="">#2</div>
+      <div data-diah-style-bottom style="margin: 25% 0 0 0">#3</div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <p>...</p>
+  <blockquote>
+    <p>As adjacent grid items are independently contained within the containing block formed by their <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-area" id="ref-for-grid-area①③">grid areas</a>, the margins of adjacent <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item③①">grid items</a> do not <a href="https://www.w3.org/TR/CSS2/box.html#collapsing-margins">collapse</a>.</p>
+  </blockquote>
+  <p>...</p>
+  <blockquote>
+    <p>Auto margins expand to absorb extra space in the corresponding dimension, and can therefore be used for alignment. See <a href="https://www.w3.org/TR/css-grid-1/#auto-margins">§ 10.2 Aligning with auto margins</a></p>
+  </blockquote>
+  <div class="c-em-note c-em--narrow c-em--small">
+    <p>Kuo <i>grid formatting context</i> skiriasi nuo <i>block formatting context</i></p>
+    <blockquote>
+      <p>This is the same as establishing an independent <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#block-formatting-context" id="ref-for-block-formatting-context2">block formatting context</a>, except that grid layout is used instead of block layout: floats do not intrude into the grid container, and the grid container's margins do not collapse with the margins of its contents. </p>
+    </blockquote>
+  </div>
+  <p>&nbsp;</p>
+</div>
+<h4>... / Automatic Minimum Size of Grid Items</h4>
+<p> <a href="https://www.w3.org/TR/css-grid-1/#min-size-auto">CSS Grid Layout Module Level 1 § 6.6. Automatic Minimum Size of Grid Items</a></p>
+<p>...</p>
+<h2>Grid'o sukūrimas-nustatymas / Defining the Grid</h2>
+<h3>Nustatytas grid'as / <i>explicit grid</i> (defined grid)</h3>
+<div class="o-mcl o-mcl--W2 o-mcl--N3 o-mcl--continuous-dl">
+  <p><a href="https://www.w3.org/TR/css-grid-1/#explicit-grids">CSS Grid Layout Module Level 1 § 7.1. The Explicit Grid</a></p>
+  <dl>
+    <dt><dfn><a href="https://www.w3.org/TR/css-grid-1/#explicit-grid">explicit grid</a></dfn>, <dfn>explicit grid tracks</dfn></dt>
+    <dd>
+      <p><a href="https://www.w3.org/TR/css-grid-1/#explicit-grid">explicit grid</a>, <a href="https://www.w3.org/TR/css-grid-1/#explicit-grid-track">explicit grid tracks</a></p>
+      <blockquote>
+        <p>The three properties <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-rows" id="ref-for-propdef-grid-template-rows">grid-template-rows</a>, <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-columns" id="ref-for-propdef-grid-template-columns">grid-template-columns</a>, and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas①">grid-template-areas</a> together define the <i>explicit grid</i> of a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container③⓪">grid container</a> by specifying its <i>explicit grid tracks</i>.</p>
+      </blockquote>
+    </dd>
+  </dl>
+  <div class="c-pvz">
+    <p class="c-pvz__title">Jei neužtenka grid'o item'ų, vis tiek užimama vieta tarsi jie būtų.</p>
+    <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr">
+      <div class="c-pvz__target">item 1</div>
+      <div class="c-pvz__target">item 2</div>
+      <div class="c-pvz__target">item 3</div>
+      <div class="c-pvz__target">item 4</div>
+      <div class="c-pvz__target">item 5</div>
+    </div>
+  </div>
+</div>
+<h3><code>grid-template-rows:</code> ir <code>grid-template-columns:</code> — sukuria <i>explicit grid'o</i>  <i>grid track'us</i> / Explicit Track Sizing</h3>
+<div class="o-mcl o-mcl--W2 o-mcl--N2 o-mcl--continuous-dl">
+  <p><a href="https://www.w3.org/TR/css-grid-1/#track-sizing">CSS Grid Layout Module Level 1 § 7.2. Explicit Track Sizing: the grid-template-rows and grid-template-columns properties</a></p>
+  <p><code>none | &lt;track-list&gt; | &lt;auto-track-list&gt;</code></p>
+  <dl>
+    <dt>Bendrai abejos: <code>grid-template-rows:</code> ir <code>grid-template-columns:</code></dt>
+    <dd>
+      <blockquote>
+        <p>These properties specify, as a space-separated track list, the line names and <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-template-rows-track-sizing-function" id="ref-for-grid-template-rows-track-sizing-function">track sizing functions</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid" id="ref-for-grid⑨">grid</a>.</p>
+      </blockquote>
+      <div class="c-em-note c-em--narrow">
+        <p>Abi CSS savybės veikia identiškai.</p>
+      </div>
+    </dd>
+    <dt><code>grid-template-rows:</code></dt>
+    <dd>
+      <p>Nustato <i>grid track'us</i> <i>inline axis</i> kryptimi (vakarietiškoms kalboms, kurių <code>writing-mode: horizontal-tb</code>, t. y. fizinė kryptis <i>horizontal axis</i>) </p>
+    </dd>
+    <dt><code>grid-template-columns:</code></dt>
+    <dd>
+      <p>Nustato <i>grid track'us</i> <i>block axis</i> kryptimi (vakarietiškoms kalboms — <i>vertical axis</i>) </p>
+    </dd>
+  </dl>
+</div>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h4><i>grid track'ų</i> pločio nustatymas / Track Sizes</h4>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#track-sizes">CSS Grid Layout Module Level 1 § 7.2.1. Track Sizes</a></p>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg c-pvs--parent-border">
+      <p>Vienodas stulpelių plotis</p>
+      <p> <a href="https://css-tricks.com/equal-width-columns-in-css-grid-are-kinda-weird/">Equal Width Columns in CSS Grid are Kinda Weird | CSS-Tricks</a></p>
+      <p class="c-pvs__section">aaa</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;	grid-template-columns: repeat(3, 1fr)">
+        <div data-diah-style-bottom style="">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...
+        </div>
+        <div data-diah-style-bottom style="">
+          Loremmmmmmmmmmmmmmmmmmmmmmmmm ipsum dolor sit amet, consectetur adipiscing elit, ...
+        </div>
+        <div data-diah-style-bottom style="">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...
+        </div>
+      </div>
+      <p class="c-pvs__section">aaa</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;	grid-template-columns: repeat(3, minmax(0, 1fr))">
+        <div data-diah-style-bottom style="">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...
+        </div>
+        <div data-diah-style-bottom style="">
+          Loremmmmmmmmmmmmmmmmmmmmmmmmm ipsum dolor sit amet, consectetur adipiscing elit, ...
+        </div>
+        <div data-diah-style-bottom style="">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...
+        </div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg c-pvs--parent-border">
+      <p><code>grid-template-rows: {N}px</code></p>
+      <p class="c-pvs__section">NEnustatytas <i>grid container</i>'io aukštis</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;	grid-template-rows: 40px 40px 40px;">
+        <div data-diah-style-bottom style="">#1</div>
+        <div data-diah-style-bottom style="">#2</div>
+        <div data-diah-style-bottom style="">#3</div>
+      </div>
+      <p class="c-pvs__section">nustatytas</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;	grid-template-rows: 40px 40px 40px; height: 160px">
+        <div data-diah-style-bottom style="">#1</div>
+        <div data-diah-style-bottom style="">#2</div>
+        <div data-diah-style-bottom style="">#3</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>grid-template-rows: {N}%</code></p>
+
+      <p class="c-pvz__section">kai NEnustatytas grid container'io aukštis, procentai skaičiuojami nuo aukščio, kurį sudaro visi <i>grid item</i>'ai</p>
+
+      <p class="c-pvz__title">pavyzdžių dėstymą darome su Flexbox</p>
+      <div class="FXG1c" style="display: flex; gap: 5px; padding-bottom: 3em">
+        <div class="c-pvz__container" style="">
+          <div class="c-pvz__target" style="">item 1</div>
+          <div class="c-pvz__target" style="">item 2</div>
+          <div class="c-pvz__target" style="">item 3</div>
+        </div>
+        <div class="c-pvz__container" style="display: grid; grid-template-rows: auto auto auto">
+          <div class="c-pvz__target" style="">item 1</div>
+          <div class="c-pvz__target" style="">item 2</div>
+          <div class="c-pvz__target" style="">item 3</div>
+        </div>
+        <div class="c-pvz__container" style="display: grid; grid-template-rows: 50% 50% 50%">
+          <div class="c-pvz__target" style="">item 1</div>
+          <div class="c-pvz__target" style="">item 2</div>
+          <div class="c-pvz__target" style="">item 3</div>
+        </div>
+      </div>
+
+      <p class="c-pvz__title">pavyzdžių dėstymą darome su <code>inline-*</code></p>
+      <div class="" style="">
+        <div class="c-pvz__container" style="display: inline-block; width: 32.5%; vertical-align: top">
+          <div class="c-pvz__target" style="">item 1</div>
+          <div class="c-pvz__target" style="">item 2</div>
+          <div class="c-pvz__target" style="">item 3</div>
+        </div>
+        <div class="c-pvz__container" style="display: inline-grid; grid-template-rows: auto auto auto; width: 32.5%; vertical-align: *top">
+          <div class="c-pvz__target" style="">item 1</div>
+          <div class="c-pvz__target" style="">item 2</div>
+          <div class="c-pvz__target" style="">item 3</div>
+        </div>
+        <div class="c-pvz__container" style="display: inline-grid; grid-template-rows: 50% 50% 50%; width: 32.5%">
+          <div class="c-pvz__target" style="">item 1</div>
+          <div class="c-pvz__target" style="">item 2</div>
+          <div class="c-pvz__target" style="">item 3</div>
+        </div>
+        <p>&nbsp;</p>
+      </div>
+
+      <p class="c-pvz__section">nustatytas grid container'io aukštis</p>
+
+      <p class="c-pvz__title">eilučių aukščių suma &lt; 100%</p>
+      <div class="c-pvz__container W90%c" style="display: grid; grid-template-rows: 25% 25% 25%; height: 100px">
+        <div class="c-pvz__target" style="">item 1</div>
+        <div class="c-pvz__target" style="">item 2</div>
+        <div class="c-pvz__target" style="">item 3</div>
+      </div>
+
+      <p class="c-pvz__title">&gt; 100%</p>
+      <div class="c-pvz__container W90%c" style="display: grid; grid-template-rows: 50% 50% 50%; height: 100px">
+        <div class="c-pvz__target" style="">item 1</div>
+        <div class="c-pvz__target" style="">item 2</div>
+        <div class="c-pvz__target" style="">item 3</div>
+      </div>
+
+      <p>&nbsp;</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">su skirtingais matavimo vienetais sukuriamas nustatytas grid'as / <i>explicit grid</i></p>
+      <p class="c-pvz__title"><code>grid-template-columns: {N}px</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 100px 100px 100px">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+      </div>
+      <p class="c-pvz__title"><code>grid-template-columns: {N}%</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 30% 30% 30%">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+      </div>
+      <p class="c-pvz__title"><code>grid-template-columns: {N}fr</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <div data-cpnt-collapse="hide">
+      <p>skirstyti      </p>
+      <p>Kaip veikia skirtingi matavimo vienetai</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>px</code> — pikseliai </p>
+        <p class="c-pvz__title">nustatytas <i>grid container</i>'io aukštis</p>
+        <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-rows: 30px 30px; height: 120px">
+          <div class="c-pvz__target" style="">item 1 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 2 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 3 &#8212; implicit grid'as</div>
+        </div>
+        <p class="c-pvz__title">NEnustatytas <i>grid container</i>'io aukštis</p>
+        <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-rows: 30px 30px">
+          <div class="c-pvz__target" style="">item 1 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 2 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 3 &#8212; implicit grid'as</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>%</code> — procentais</p>
+        <p class="c-pvz__title">nustatytas grid container'io aukštis</p>
+        <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-rows: 25% 25%; height: 100px">
+          <div class="c-pvz__target" style="">item 1 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 2 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 3 &#8212; implicit grid'as</div>
+        </div>
+        <p class="c-pvz__title">kai NEnustatytas grid container'io aukštis, procentai skaičiuojami nuo aukščio, kurį sudaro visi <i>grid item</i>'ai</p>
+        <div style="padding-bottom: 4em">
+          <div class="c-pvz__container c-pvz--" style="display: inline-grid; width: 49.4%">
+            <div class="c-pvz__target" style="">item 1 &#8212; explicit grid'as</div>
+            <div class="c-pvz__target" style="">item 2 &#8212; explicit grid'as</div>
+            <div class="c-pvz__target" style="">item 3 &#8212; implicit grid'as</div>
+            <div class="c-pvz__target" style="">item 4 &#8212; implicit grid'as</div>
+            <div class="c-pvz__target" style="">item 5 &#8212; implicit grid'as</div>
+          </div>
+          <div class="c-pvz__container c-pvz--" style="display: inline-grid; grid-template-rows: 50% 50%; width: 49.4%">
+            <div class="c-pvz__target" style="">item 1 &#8212; explicit grid'as</div>
+            <div class="c-pvz__target" style="">item 2 &#8212; explicit grid'as</div>
+            <div class="c-pvz__target" style="">item 3 &#8212; implicit grid'as</div>
+            <div class="c-pvz__target" style="">item 4 &#8212; implicit grid'as</div>
+            <div class="c-pvz__target" style="">item 5 &#8212; implicit grid'as</div>
+          </div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>fr</code> — flex factor,
+          flexible length </p>
+        <p class="c-pvz__title">nustatytas <i>grid container</i>'io aukštis ir visi <i>grid item</i>'ai explicit</p>
+        <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-rows: 1fr 1fr 1fr; height: 100px">
+          <div class="c-pvz__target" style="">item 1 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 2 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 3 &#8212; explicit grid'as</div>
+        </div>
+        <p class="c-pvz__title">nustatytas <i>grid container</i>'io aukštis ir NE visi <i>grid item</i>'ai explicit</p>
+        <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-rows: 1fr 1fr; height: 100px">
+          <div class="c-pvz__target" style="">item 1 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 2 &#8212; explicit grid'as</div>
+          <div class="c-pvz__target" style="">item 3 &#8212; implicit grid'as</div>
+        </div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Grid line'ų užvardinimas / Naming Grid Lines    </h4>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#named-lines">CSS Grid Layout Module Level 1 § 7.2.2. Naming Grid Lines: the [&lt;custom-ident&gt;*] syntax</a>    </p>
+    <dl>
+      <dt><dfn>line names</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>While <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-line" id="ref-for-grid-line①⑦">grid lines</a> can always be referred to by their numerical index, <a href="https://www.w3.org/TR/css-grid-1/#line-name">line names</a> can make the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-placement-property" id="ref-for-grid-placement-property⑦">grid-placement properties</a> easier to understand and maintain.</p>
+          <p><a href="https://www.w3.org/TR/css-grid-1/#line-name">line names — CSS Grid Layout Module Level 1</a></p>
+        </blockquote>
+      </dd>
+    </dl>
+    <dl>
+      <dt><dfn>explicitly assigned line name</dfn></dt>
+      <dd>
+        <blockquote>
+          <p> <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#line-name" id="ref-for-line-name">Line names</a> can be <a href="https://www.w3.org/TR/css-grid-1/#explicitly-assigned-line-name">explicitly assigned</a> with the <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-rows" id="ref-for-propdef-grid-template-rows⑥">grid-template-rows</a> and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-columns" id="ref-for-propdef-grid-template-columns⑦">grid-template-columns</a> properties, or <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#implicitly-assigned-line-name" id="ref-for-implicitly-assigned-line-name">implicitly assigned</a> by <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#named-grid-area" id="ref-for-named-grid-area">named grid areas</a> with the <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas⑥">grid-template-areas</a> property.</p>
+          <p> <a href="https://www.w3.org/TR/css-grid-1/#explicitly-assigned-line-name">Explicitly assigned line name — CSS Grid Layout Module Level 1</a></p>
+        </blockquote>
+      </dd>
+    </dl>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">Visuose pvz. tokie patys grid tracks'ai</p>
+      <p class="c-pvz__title">Be Named Grid Lines, default'inis grid item'ų eiliškumas</p>
+      <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-columns: 1fr 3fr 1fr;">
+        <div class="c-pvz__target" style="">item 1</div>
+        <div class="c-pvz__target" style="">item 2</div>
+        <div class="c-pvz__target" style="">item 3</div>
+      </div>
+      <p class="c-pvz__title">Su Named Grid Lines, bet nekeičiant default'inio grid item'ų eiliškumo</p>
+      <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-columns: [pirmas-start] 1fr [pirmas-end antras-start] 3fr [antras-end trečias-start] 1fr [trečias-end];">
+        <div class="c-pvz__target" style="grid-column: pirmas-start / pirmas-end">item 1</div>
+        <div class="c-pvz__target" style="grid-column: antras-start / antras-end">item 2</div>
+        <div class="c-pvz__target" style="grid-column: trečias-start / trečias-end">item 3</div>
+      </div>
+      <p class="c-pvz__title">Sukeičiame pirmąjį su trečiuoju vietomis, nenustačius <code>grid-row:</code> — nušoka į naujus track'us</p>
+      <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-columns: [pirmas-start] 1fr [pirmas-end antras-start] 3fr [antras-end trečias-start] 1fr [trečias-end];">
+        <div class="c-pvz__target" style="grid-column: trečias-start / trečias-end">item 1</div>
+        <div class="c-pvz__target" style="grid-column: antras-start / antras-end">item 2</div>
+        <div class="c-pvz__target" style="grid-column: pirmas-start / pirmas-end">item 3</div>
+      </div>
+      <p class="c-pvz__title">Nustatome <code>grid-row:</code></p>
+      <div class="c-pvz__container c-pvz--" style="display: grid; grid-template-columns: [pirmas-start] 1fr [pirmas-end antras-start] 3fr [antras-end trečias-start] 1fr [trečias-end];">
+        <div class="c-pvz__target" style="grid-column: trečias-start / trečias-end">item 1</div>
+        <div class="c-pvz__target" style="grid-column: antras-start / antras-end; grid-row: 1">item 2</div>
+        <div class="c-pvz__target" style="grid-column: pirmas-start / pirmas-end; grid-row: 1">item 3</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>... / Repeating Rows and Columns</h4>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#repeat-notation">CSS Grid Layout Module Level 1 § 7.2.3. Repeating Rows and Columns: the repeat() notation</a></p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>... / Flexible Lengths: the fr unit</h4>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#fr-unit">CSS Grid Layout Module Level 1 § 7.2.4. Flexible Lengths: the fr unit</a></p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>... </h4>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#computed-tracks">CSS Grid Layout Module Level 1 § 7.2.5. Computed Value of a Track Listing</a></p>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#resolved-track-list">CSS Grid Layout Module Level 1 § 7.2.6. Resolved Value of a Track Listing</a>  </p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3><code>grid-template-areas:</code> — sukuria užvardintas <i>grid</i>'o sritis, į kurias galima pozicionuoti <i>grid item</i>'us</h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#grid-template-areas-property">CSS Grid Layout Module Level 1 § 7.3. Named Areas: the grid-template-areas property</a></p>
+    <p><code>none | &lt;string&gt;+</code>    </p>
+    <dl>
+      <dt><dfn>named grid areas</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>This property specifies named grid areas, which are not associated with any particular <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item④⑤">grid item</a>, but can be referenced from the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-placement-property" id="ref-for-grid-placement-property⑨">grid-placement properties</a>. The syntax of the <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas⑧">grid-template-areas</a> property also provides a visualization of the structure of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid" id="ref-for-grid①②">grid</a>, making the overall layout of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container⑤③">grid container</a> easier to understand.</p>
+          <p> <a href="https://www.w3.org/TR/css-grid-1/#named-grid-area">named grid areas — CSS Grid Layout Module Level 1</a></p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    <dl>
+      <dt><dfn>named cell token</dfn> — tai sintaksiškai teisingas <i>grid cell</i>'o pavadinimas, kurių grupės sukuria <i>named grid areas</i></dt>
+      <dd>
+        <blockquote>
+          <p>A sequence of <a data-link-type="dfn" href="https://www.w3.org/TR/css-syntax-3/#name-code-point" id="ref-for-name-code-point">name code points</a>, representing a <a href="https://www.w3.org/TR/css-grid-1/#grid-template-areas-named-cell-token">named cell token</a> with a name consisting of its code points.</p>
+          <p>A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-template-areas-named-cell-token" id="ref-for-grid-template-areas-named-cell-token">named cell token</a> creates a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#named-grid-area" id="ref-for-named-grid-area②">named grid area</a> with the same name. Multiple <span id="ref-for-grid-template-areas-named-cell-token①">named cell tokens</span> within and between rows create a single <span id="ref-for-named-grid-area③">named grid area</span> that spans the corresponding <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-cell" id="ref-for-grid-cell①">grid cells</a>.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg c-pvs--parent-border">
+      <p>Puslapio layout'as, kai <i>explicit grid'as</i> atitinka <i>named grid areas</i>, t. y. vienodas eilučių ir stulpelių skaičius</p>
+      <!--      <p class="c-pvs__section">NEnustatytas <i>grid container</i>'io aukštis</p>-->
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-template-columns: 10ch 1fr 10ch;
+        grid-template-rows: 5ch 1fr 5ch;
+        grid-template-areas: 'header header  header'
+                             'nav    content aside'
+                             'footer footer  footer';
+        height: 30ch;">
+        <div data-diah-style-bottom style="grid-area: header;">header</div>
+        <div data-diah-style-bottom style="grid-area: nav;">nav</div>
+        <div data-diah-style-bottom style="grid-area: content;">content</div>
+        <div data-diah-style-bottom style="grid-area: aside;">aside</div>
+        <div data-diah-style-bottom style="grid-area: footer;">footer</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">kai <i>explicit grid'as</i> NEatitinka <i>named grid areas</i></p>
+      <p class="c-pvz__title">paprasta viena <i>named grid area</i> su jos priskyrimu</p>
+      <div class="c-pvz__container" style="display: grid; grid-template: 30px 30px 30px 30px / 1fr 1fr 1fr 1fr; grid-template-areas: 'pirmas pirmas' 'pirmas pirmas'">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target" style="grid-area: pirmas"><strong style="letter-spacing: 3px">item 2</strong></div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+        <div class="c-pvz__target">item 6</div>
+        <div class="c-pvz__target">item 7</div>
+        <div class="c-pvz__target">item 8</div>
+        <div class="c-pvz__target">item 9</div>
+        <div class="c-pvz__target">item 10</div>
+        <div class="c-pvz__target">item 11</div>
+      </div>
+      <p class="c-pvz__title">ta pati su paslinkimu</p>
+      <div class="c-pvz__container" style="display: grid; grid-template: 30px 30px 30px 30px / 1fr 1fr 1fr 1fr; grid-template-areas: '. . .' '. pirmas pirmas' '. pirmas pirmas'">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target" style="grid-area: pirmas"><strong style="letter-spacing: 3px">item 2</strong></div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+        <div class="c-pvz__target">item 6</div>
+        <div class="c-pvz__target">item 7</div>
+        <div class="c-pvz__target">item 8</div>
+        <div class="c-pvz__target">item 9</div>
+        <div class="c-pvz__target">item 10</div>
+        <div class="c-pvz__target">item 11</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>Rekalavimai <code>grid-template-areas:</code> reikšmei,	kad deklaracija būtų valid    </h4>
+    <dl>
+      <dt>Kiekviena eilutė turi turėti tą patį <i>cell token</i>'ų skaičių</dt>
+      <dd>
+        <blockquote>
+          <p>All strings must define the same number of cell tokens (<a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-template-areas-named-cell-token" id="ref-for-grid-template-areas-named-cell-token②">named cell tokens</a> and/or <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-template-areas-null-cell-token" id="ref-for-grid-template-areas-null-cell-token①">null cell tokens</a>), and at least one cell token, or else the declaration is invalid.</p>
+        </blockquote>
+        <pre><code>/*** valid ***/
+grid-template-areas: 'a a'
+                     'b b';
+grid-template-areas: 'a a .'
+                     'a a .'
+                     '. b b';
+
+/*** invalid ***/
+grid-template-areas: 'a a'
+                     'b b b';
+grid-template-areas: 'a .'
+                     'a .'
+                     '. b b';</code></pre>
+      </dd>
+      <dt>...</dt>
+      <dd>
+        <blockquote>
+          <p>If a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#named-grid-area" id="ref-for-named-grid-area④">named grid area</a> spans multiple <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-cell" id="ref-for-grid-cell②">grid cells</a>, but those cells do not form a single filled-in rectangle, the declaration is invalid.</p>
+        </blockquote>
+        <pre><code>grid-template-areas: 'a b b'   /* valid */
+                     'a b b';
+grid-template-areas: 'a b b'   /* invalid */
+                     'a . b';</code></pre>
+        <p>Bet:</p>
+        <blockquote>
+          <p>Note: Non-rectangular or disconnected regions may be permitted in a future version of this module.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Kaip veikia <code>grid-template-areas:</code> kai nėra nustatyto <i> explicit grid'o</i></h4>
+    <blockquote>
+      <p>In the absence of an <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#explicit-grid" id="ref-for-explicit-grid①④">explicit grid</a> any rows/columns will be <a href="https://www.w3.org/TR/css-grid-1/#implicit-grids">implicitly generated</a>, and their size will be determined by the <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-rows" id="ref-for-propdef-grid-auto-rows③">grid-auto-rows</a> and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-columns" id="ref-for-propdef-grid-auto-columns③">grid-auto-columns</a> properties.</p>
+    </blockquote>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg c-pvs--parent-border">
+      <p>nenustatytas <i>grid container'io</i> aukštis</p>
+      <p class="c-pvs__section">nustatytas tik <code>grid-template-areas:</code></p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-template-areas: 'a a a'
+                             'b c c'
+                             'b d e';
+        height: auto;">
+        <div data-diah-style-bottom style="grid-area: a;">a</div>
+        <div data-diah-style-bottom style="grid-area: b;">b</div>
+        <div data-diah-style-bottom style="grid-area: c;">c</div>
+        <div data-diah-style-bottom style="grid-area: d;">d</div>
+        <div data-diah-style-bottom style="grid-area: e;">e</div>
+      </div>
+      <p class="c-pvs__section"><code>grid-auto-rows:</code> ir
+      <code>grid-auto-columns:</code>  nustatyta viena reikšmė</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-auto-rows: 4ch;
+        grid-auto-columns: 100px;
+        grid-template-areas: 'a a a'
+                             'b c c'
+                             'b d e';
+        height: auto;">
+        <div data-diah-style-bottom style="grid-area: a;">a</div>
+        <div data-diah-style-bottom style="grid-area: b;">b</div>
+        <div data-diah-style-bottom style="grid-area: c;">c</div>
+        <div data-diah-style-bottom style="grid-area: d;">d</div>
+        <div data-diah-style-bottom style="grid-area: e;">e</div>
+      </div>
+      <p class="c-pvs__section">... daugiau reikšmių
+      </p><div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-auto-rows: 4ch;
+        grid-auto-columns: 100px 1fr 100px;
+        grid-template-areas: 'a a a'
+                             'b c c'
+                             'b d e';
+        height: auto;">
+        <div data-diah-style-bottom style="grid-area: a;">a</div>
+        <div data-diah-style-bottom style="grid-area: b;">b</div>
+        <div data-diah-style-bottom style="grid-area: c;">c</div>
+        <div data-diah-style-bottom style="grid-area: d;">d</div>
+        <div data-diah-style-bottom style="grid-area: e;">e</div>
+      </div>
+      <p class="c-pvs__section">... dar daugiau</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-auto-rows: auto 10ch auto;
+        grid-auto-columns: 100px 1fr 100px;
+        grid-template-areas: 'a a a'
+                             'b c c'
+                             'b d e';
+        height: auto;">
+        <div data-diah-style-bottom style="grid-area: a;">a</div>
+        <div data-diah-style-bottom style="grid-area: b;">b</div>
+        <div data-diah-style-bottom style="grid-area: c;">c</div>
+        <div data-diah-style-bottom style="grid-area: d;">d</div>
+        <div data-diah-style-bottom style="grid-area: e;">e</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>Taškas leidžia praleisti <i>grid cell</i></h4>
+    <dl>
+      <dt><dfn>null cell token</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>A sequence of one or more "." (U+002E FULL STOP), representing a <i>null cell token</i>.</p>
+          <p><a href="https://www.w3.org/TR/css-grid-1/#grid-template-areas-null-cell-token">null cell token — CSS Grid Layout Module Level 1</a></p>
+        </blockquote>
+        <blockquote>
+          <p>A <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-template-areas-null-cell-token" id="ref-for-grid-template-areas-null-cell-token">null cell token</a> represents an unnamed area in the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container⑤④">grid container</a></p>
+        </blockquote>
+        <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg c-pvs--parent-border">
+          <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-template: 30px 30px 30px 30px / 1fr 1fr 1fr 1fr;
+        grid-template-areas: '. . . .'
+                             '. a a a'
+                             'b b . c'
+                             'b b . c';
+        height: auto;">
+            <div data-diah-style-bottom style="grid-area: a;">a</div>
+            <div data-diah-style-bottom style="grid-area: b;">b</div>
+            <div data-diah-style-bottom style="grid-area: c;">c</div>
+          </div>
+        </div>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Kai <code>grid-template-areas:</code> token'ai prasideda skaičiumi</h4>
+    <p>Tada naudojant reikia escape'inti:</p>
+      <blockquote>
+      <p>These rules can produce cell names that do not match the <a data-link-type="type" href="https://www.w3.org/TR/css-values-4/#typedef-ident" id="ref-for-typedef-ident">&lt;ident&gt;</a> syntax, such as "1st 2nd 3rd", which requires escaping when referencing those areas by name in other properties, like <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-row" id="ref-for-propdef-grid-row①">grid-row: \31st;</a> to reference the area named 1st.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Kiekviena <i>named grid area</i> automatiškai sugeneruoja <i>implicitly-assigned line names</i></h4>
+    <p> <a href="https://www.w3.org/TR/css-grid-1/#implicit-named-lines">CSS Grid Layout Module Level 1 § 7.3.2. Implicitly-Assigned Line Names</a>    </p>
+    <dl>
+      <dt><dfn>implicitly-assigned line names</dfn> — </dt>
+      <dd>
+        <blockquote>
+          <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas①②">grid-template-areas</a> property generates <a href="https://www.w3.org/TR/css-grid-1/#implicitly-assigned-line-name">implicitly-assigned line names</a> from the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#named-grid-area" id="ref-for-named-grid-area⑥">named grid areas</a> in the template. For each <span id="ref-for-named-grid-area⑦">named grid area</span> foo, four <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#implicitly-assigned-line-name" id="ref-for-implicitly-assigned-line-name①">implicitly-assigned line names</a> are created: two named foo-start, naming the row-start and column-start lines of the <span id="ref-for-named-grid-area⑧">named grid area</span>, and two named foo-end, naming the row-end and column-end lines of the <span id="ref-for-named-grid-area⑨">named grid area</span>.</p>
+          <p> <a href="https://www.w3.org/TR/css-grid-1/#implicitly-assigned-line-name">implicitly-assigned line names — CSS Grid Layout Module Level 1</a></p>
+        </blockquote>
+      </dd>
+    </dl>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg c-pvs--parent-border">
+      <p>Paprasta demonstracija</p>
+      <p>Viena <i>named grid area</i> pavadinimu <code>a</code> generuoja dvi <i>implicitly-assigned line names</i>: <code>a-start</code> ir <code>a-end</code></p>
+      <dl>
+        <dt><code>a-start</code> reikia priskirti <code>grid-*-start:</code></dt>
+        <dd>
+          <ul>
+            <li><code>grid-row-start: a-start</code> — priskiria zonos <code>a</code> pirmos eilutės numerį</li>
+            <li>ir <code>grid-column-start: a-start</code> — pirmo stulpelio numerį </li>
+          </ul>
+        </dd>
+        <dt><code>a-end</code> reikia priskirti <code>grid-*-end:</code></dt>
+        <dd>
+          <ul>
+            <li><code>grid-row-end: a-end</code> — paskutinės eilutės numerį</li>
+            <li><code>grid-column-end: a-end</code> — paskutinio stulpelio numerį </li>
+          </ul>
+        </dd>
+      </dl>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-template: 30px 30px / 1fr 1fr 1fr 1fr;
+        grid-template-areas: '. a a .'
+                             '. a a .'">
+        <div data-diah-style-bottom style="grid-row: a-start / a-end; grid-column: a-start / a-end">a</div>
+      </div>
+    </div>
+    <div class="c-em-note c-em--narrow">
+      <p>Kaip sprendžiamas konfliktas, kai su <code>grid-template-rows:</code> ar <code>grid-template-columns:</code> sukuriami <i>line names</i>, kurie identiški sugeneruotiems <i>implicitly-assigned line names</i></p>
+      <blockquote>
+        <p>Even if an <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#explicitly-assigned-line-name" id="ref-for-explicitly-assigned-line-name">explicitly-assigned line name</a> with the same name is defined, the <span id="ref-for-implicitly-assigned-line-name③">implicitly-assigned line names</span> are just more lines with the same name.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div>
+    <h4>Su <code>grid-template-rows:</code> ir <code>grid-template-columns:</code> sukurtos <i>explicitly assigned line names</i> gali sukurti <i>implicitly-named areas</i></h4>
+    <p><a href="https://www.w3.org/TR/css-grid-1/#implicit-named-areas">CSS Grid Layout Module Level 1 § 7.3.3. Implicitly-Named Areas</a>    </p>
+    <dl>
+      <dt><dfn>implicitly-named areas</dfn></dt>
+      <dd>
+        <p>Jei su <code>grid-template-rows:</code> ir <code>grid-template-columns:</code> sukuriami <i>explicitly assigned line names</i>, kurių pavadinimai tokie patys, kaip kad <code>grid-template-areas:</code> sukurtos <i>named grid area</i> automatiškai sugeneruotų <i>implicitly-assigned line names</i>, tada sukuriama <i>implicitly-named area</i>. </p>
+        <blockquote>
+          <p>Since a <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#named-grid-area" id="ref-for-named-grid-area①⓪">named grid area</a> is referenced by the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#implicitly-assigned-line-name" id="ref-for-implicitly-assigned-line-name④">implicitly-assigned line names</a> it produces, explicitly adding named lines of the same form (foo-start/foo-end) effectively creates a <span id="ref-for-named-grid-area①①">named grid area</span>. Such implicitly-named areas do not appear in the value of <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas①③">grid-template-areas</a>, but can still be referenced by the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-placement-property" id="ref-for-grid-placement-property①⓪">grid-placement properties</a>.</p>
+          <p> <a href="https://www.w3.org/TR/css-grid-1/#implicitly-named-area">implicitly-named areas — CSS Grid Layout Module Level 1</a></p>
+        </blockquote>
+      </dd>
+    </dl>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg c-pvs--parent-border">
+      <p>Paprasta demonstracija      </p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid;
+        grid-template-rows: [a-start] 30px 30px [a-end];
+        grid-template-columns: 1fr [a-start] 1fr 1fr [a-end] 1fr">
+        <div data-diah-style-bottom style="grid-area: a">a</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3>Numanomas grid'as / The Implicit Grid</h3>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm">
+  <div>
+    <p><a href="https://www.w3.org/TR/css-grid-1/#implicitly-named-area">CSS Grid Layout Module Level 1 § 7.5. The Implicit Grid</a>    </p>
+    <p><i>implicit grid'as</i> sukuriamas pridedant <i>implicit grid lines</i>, kai bent vienas <i>grid item'as</i> išeina už <i>explicit grid'o</i> ribų, t. y. arba auto-flow būdu <i>grid item'ai</i>nebetelpa į explicit grid'ą, arba pozicionuojami už <i>explicit grid'o</i> ribų.</p>
+    <blockquote>
+      <p>If a grid item is positioned into a row or column that is not explicitly declared by <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-rows" id="ref-for-propdef-grid-template-rows②②">grid-template-rows</a>/<a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-columns" id="ref-for-propdef-grid-template-columns②②">grid-template-columns</a> and/or <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas①⑨">grid-template-areas</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#implicit-grid-track" id="ref-for-implicit-grid-track③">implicit grid tracks</a> are created to hold it. This can happen either by explicitly positioning into a row or column that is out of range, or by the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item-placement-algorithm" id="ref-for-grid-item-placement-algorithm">auto-placement algorithm</a> creating additional rows or columns.</p>
+    </blockquote>
+    <dl>
+      <dt><dfn>implicit grid</dfn>, <dfn>implicit grid tracks</dfn>, <dfn>implicit grid lines</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-rows" id="ref-for-propdef-grid-template-rows①⑨">grid-template-rows</a>, <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-columns" id="ref-for-propdef-grid-template-columns①⑨">grid-template-columns</a>, and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-areas" id="ref-for-propdef-grid-template-areas①⑦">grid-template-areas</a> properties define a fixed number of tracks that form the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#explicit-grid" id="ref-for-explicit-grid①⑤">explicit grid</a>. When <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item④⑥">grid items</a> are positioned outside of these bounds, the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container⑤⑥">grid container</a> generates <i><a href="https://www.w3.org/TR/css-grid-1/#implicit-grid-track">implicit grid tracks</a></i> by adding <i><a href="https://www.w3.org/TR/css-grid-1/#implicit-grid-lines">implicit grid lines</a></i> to the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid" id="ref-for-grid①③">grid</a>. These lines together with the <span id="ref-for-explicit-grid①⑥">explicit grid</span> form the <i><a href="https://www.w3.org/TR/css-grid-1/#implicit-grid">implicit grid</a></i>.</p>
+          <p> <a href="https://www.w3.org/TR/css-grid-1/#implicit-grid-track">implicit grid tracks — CSS Grid Layout Module Level 1</a>, <a href="https://www.w3.org/TR/css-grid-1/#implicit-grid-lines">implicit grid lines — CSS Grid Layout Module Level 1</a></p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    <del>
+    <blockquote>
+      <p>If you place something outside of the <i>defined grid</i> — or due to the amount of content, more grid tracks are needed — then the grid creates rows and columns in the <i>implicit grid</i>. These tracks will be auto-sized by default, resulting in their size being based on the content that is inside them.</p>
+    </blockquote>
+    </del>
+  </div>
+  <div class="W65%">
+    <figure class="c-figure -c-figure--shadow c-figure--ridgeBox" style="-max-width:400px">
+      <div class="c-figure__content">
+        <div class="o-mcl o-mcl--W2 o-mcl--N2 TAC">
+          <p><img src="images/20210501_115308_Window.png" alt=""/></p>
+          <p><img src="images/20210501_115406_Window.png" alt=""/></p>
+        </div>
+      </div>
+      <figcaption>Dideliauskas tekstas</figcaption>
+    </figure>
+  </div>
+</div>
+
+<p>
+  <a data--incHtmFleFrg href="css.module.grid-layout~big-test-demos-to-include.htm#explicit-implicit-grid-variations">įterpiama pakrovimo metu</a>
+</p>
+
+<h3><code>grid-auto-rows:</code> ir <code>grid-auto-columns:</code> — nustato <i>implicit grid tracks'ų</i> plotį</h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p><a href="https://www.w3.org/TR/css-grid-1/#auto-tracks">CSS Grid Layout Module Level 1 § 7.6. Implicit Track Sizing: the grid-auto-rows and grid-auto-columns properties</a></p>
+    <p><code>&lt;track-size&gt;+</code></p>
+    <blockquote>
+      <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-columns" id="ref-for-propdef-grid-auto-columns⑦">grid-auto-columns</a> and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-rows" id="ref-for-propdef-grid-auto-rows⑦">grid-auto-rows</a> properties specify the size of tracks not assigned a size by <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-rows" id="ref-for-propdef-grid-template-rows②①">grid-template-rows</a> or <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-template-columns" id="ref-for-propdef-grid-template-columns②①">grid-template-columns</a>.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <div class="c-em-note c-em--narrow">
+      <p>Jei su <code>grid-template-areas:</code> nustatoma daugiau eilučių ar stulpelių, nei nustato <code>grid-template-rows:</code> ir <code>grid-template-columns:</code>, tai nekeičia bendro veikimo — už <i>explicit grid'o</i>, kurį nustato <code>grid-template-rows:</code> ir <code>grid-template-columns:</code> prasideda <i>implicit grid'as</i>, kurio track'ų sizing'ą reguliuoja <code>grid-auto-rows:</code> ir <code>grid-auto-columns:</code></p>
+      <blockquote>
+        <p>The <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-rows" id="ref-for-propdef-grid-auto-rows④">grid-auto-rows</a> and <a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-columns" id="ref-for-propdef-grid-auto-columns④">grid-auto-columns</a> properties size these <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#implicit-grid-track" id="ref-for-implicit-grid-track">implicit grid tracks</a>, as well as any <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#explicit-grid-track" id="ref-for-explicit-grid-track">explicit grid tracks</a> created by <code>grid-template-areas</code> but not explicitly sized by <span id="ref-for-propdef-grid-template-rows②⓪"><code>grid-template-rows</code></span> or <span id="ref-for-propdef-grid-template-columns②⓪"><code>grid-template-columns</code></span></p>
+      </blockquote>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg">
+      <p>Su <code>grid-auto-rows:</code> ir <code>grid-auto-columns:</code> nustatyti <i>implicit grid tracks'ų</i> pločiai kartojami. </p>
+      <blockquote>
+        <p>If multiple track sizes are given, the pattern is repeated as necessary to find the size of the affected tracks. The first track after the last explicitly-sized track receives the first specified size, and so on forwards; and the last <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#implicit-grid-track" id="ref-for-implicit-grid-track②">implicit grid track</a> before the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#explicit-grid" id="ref-for-explicit-grid①⑨">explicit grid</a> receives the last specified size, and so on backwards.</p>
+      </blockquote>
+      <p class="c-pvs__section">viena reikšmė</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh -P1c" style="display: grid; 
+grid-template: auto auto / 150px 150px; 
+grid-auto-rows: 40px">
+        <div data-diah-style-bottom style="">#1</div>
+        <div data-diah-style-bottom style="">#2</div>
+        <div data-diah-style-bottom style="">#3</div>
+        <div data-diah-style-bottom style="">#4</div>
+        <div data-diah-style-bottom style="">#5</div>
+        <div data-diah-style-bottom style="">#6</div>
+        <div data-diah-style-bottom style="">#7</div>
+        <div data-diah-style-bottom style="">#8</div>
+        <div data-diah-style-bottom style="">#9</div>
+      </div>
+      <p class="c-pvs__section">kelios reikšmės / multiple track sizes</p>
+      <div data-diah-style-top class="c-pvs__parent -H25vh -P1c" style="display: grid; 
+grid-template: auto auto / 150px 150px; 
+grid-auto-rows: 40px 60px">
+        <div data-diah-style-bottom style="">#1</div>
+        <div data-diah-style-bottom style="">#2</div>
+        <div data-diah-style-bottom style="">#3</div>
+        <div data-diah-style-bottom style="">#4</div>
+        <div data-diah-style-bottom style="">#5</div>
+        <div data-diah-style-bottom style="">#6</div>
+        <div data-diah-style-bottom style="">#7</div>
+        <div data-diah-style-bottom style="">#8</div>
+        <div data-diah-style-bottom style="">#9</div>
+        <div data-diah-style-bottom style="">#10</div>
+        <div data-diah-style-bottom style="">#11</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <del>
+    <blockquote>
+      <p>You can also define a set size for tracks created in the <i>implicit grid</i> with the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows" title="The grid-auto-rows CSS property specifies the size of an implicitly-created grid row track.">grid-auto-rows</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns" title="The grid-auto-columns CSS property specifies the size of an implicitly-created grid column track.">grid-auto-columns</a> properties.</p>
+    </blockquote>
+    <p>Veikia tik numanomam grid'ui (<i>implicit grid</i>).</p>
+    <pre><code>&lt;track-size&gt; = &lt;track-breadth&gt; |
+               minmax( &lt;inflexible-breadth&gt; , &lt;track-breadth&gt; ) |
+               fit-content([&lt;length&gt; | &lt;percentage&gt;])</code></pre>
+    <p><code>&lt;track-breadth&gt; = &lt;length-percentage&gt; | &lt;flex&gt; | min-content | max-content | <em>auto</em></code><br>
+      <code>&lt;inflexible-breadth&gt; = &lt;length&gt; | &lt;percentage&gt; | min-content | max-content | auto</code></p>
+    <p><code>&lt;length-percentage&gt; = &lt;length&gt; | &lt;percentage&gt;</code></p>
+    </del>
+  </div>
+  <div>
+    <h4><code>grid-auto-rows:</code></h4>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>grid-auto-flow: column</code></p>
+      <p class="c-pvz__title">visos horizontalios <i>grid lines</i> yra <i>implicit grid lines</i>      </p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-flow: column; grid-template-columns: 1fr 1fr; grid-auto-rows: 30px;">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__title">implicit'inių eilučių nesukuria &#8212; <code>grid-auto-rows:</code> jokio poveikio neturi </p>
+      <p class="c-pvz__comment">kai nustatyta <code>grid-auto-flow: column</code> ir <code>grid-template-columns:</code> &#8212; esant daugiau grid item'ų nei nustato <code>grid-template-columns:</code> &#8212; implicit grid'as sukuria naujus stulpelius</p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-flow: column; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; grid-auto-rows: 30px">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+        <div class="c-pvz__target">#6</div>
+        <div class="c-pvz__target">#7</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>grid-auto-columns:</code>    </h4>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">Kaip supozicionuotas <i>grid item'as</i> praplečia kitų <i>grid item'ų</i> auto-flow zoną      </p>
+      <p class="c-pvz__title">be supozicionuoto <i>grid item'o</i></p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-columns: 60px .3fr .7fr">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__title">supozicionuotas antrame stulpelyje      </p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-columns: 60px .3fr .7fr">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target" style="grid-column: 2; grid-row: 3">#5 🎈</div>
+        <div class="c-pvz__target">#6</div>
+        <div class="c-pvz__target">#7</div>
+        <div class="c-pvz__target">#8</div>
+        <div class="c-pvz__target">#9</div>
+        <div class="c-pvz__target">#10</div>
+      </div>
+      <p class="c-pvz__title">supozicionuotas trečiame stulpelyje </p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-columns: 60px .3fr .7fr">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target" style="grid-column: 3; grid-row: 3">#5 🎈</div>
+        <div class="c-pvz__target">#6</div>
+        <div class="c-pvz__target">#7</div>
+        <div class="c-pvz__target">#8</div>
+        <div class="c-pvz__target">#9</div>
+        <div class="c-pvz__target">#10</div>
+      </div>
+      <p class="c-pvz__title">supozicionuotas ketvirtame stulpelyje  &#8212; naudoja pirmąją <code>grid-auto-columns:</code> reikšmę, nes nustatytas multiple track-size kartojamas</p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-columns: 60px .3fr .7fr">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target" style="grid-column: 4; grid-row: 3">#5 🎈</div>
+        <div class="c-pvz__target">#6</div>
+        <div class="c-pvz__target">#7</div>
+        <div class="c-pvz__target">#8</div>
+        <div class="c-pvz__target">#9</div>
+        <div class="c-pvz__target">#10</div>
+      </div>
+      <p class="c-pvz__title">jeigu nenustatyti <code>grid-row:</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-columns: 60px .3fr .7fr">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target" style="grid-column: 4">#5 🎈</div>
+        <div class="c-pvz__target">#6</div>
+        <div class="c-pvz__target">#7</div>
+        <div class="c-pvz__target">#8</div>
+        <div class="c-pvz__target">#9</div>
+        <div class="c-pvz__target">#10</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h3><code>grid-auto-flow:</code> — / Automatic Placement:</h3>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p><code>[ <em>row</em> | column ] || dense</code></p>
+    <p>Reguliuoja kaip nesupozicionuoti <i>grid item'ai</i> priskiriami <i>grid cell'ėms</i>.</p>
+    <blockquote>
+      <p><a data-link-type="propdesc" href="https://www.w3.org/TR/css-grid-1/#propdef-grid-auto-flow" id="ref-for-propdef-grid-auto-flow③">grid-auto-flow</a> controls how the <span id="ref-for-grid-item-placement-algorithm②">auto-placement algorithm</span> works, specifying exactly how auto-placed items get flowed into the grid.</p>
+    </blockquote>
+    <dl>
+      <dt><dfn>auto-placement algorithm</dfn></dt>
+      <dd>
+        <p>Nesupozicionuotų <i>grid item'ų</i> priskyrimo-padėjimo <i>grid'e</i> tvarka.</p>
+        <blockquote>
+          <p><a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item" id="ref-for-grid-item④⑧">Grid items</a> that aren't explicitly placed are automatically placed into an unoccupied space in the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-container" id="ref-for-grid-container⑤⑨">grid container</a> by the <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item-placement-algorithm" id="ref-for-grid-item-placement-algorithm①">auto-placement algorithm</a>.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>grid-auto-flow: row</code> — default'inė reikšmė</h4>
+    <p>Nustato, kad nesupozicionuoti <i>grid item'ai</i> pirma pildo <i>explicit grid'o</i> eilutes, kai nebetelpa, pridedama horizontali <i>implicit grid line</i>, kuri sukuria eilutę <i>implicit grid track</i>, į kurią toliau dedami nesupozicionuoti <i>grid item'ai</i>.</p>
+    <blockquote>
+      <p>The <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item-placement-algorithm" id="ref-for-grid-item-placement-algorithm③">auto-placement algorithm</a> places items by filling each row in turn, adding new rows as necessary.</p>
+    </blockquote>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">demonstracija kaip veikia automatinis <i>grid item'ų</i> pozicionavimas pagal <i>auto-placement algorithm</i> kai yra <code>grid-auto-flow: row</code>      </p>
+      <p class="c-pvz__section">visai nėra <i>explicit grid</i>'o</p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-rows: 40px; grid-auto-columns: 80px">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+      </div>
+      <p class="c-pvz__section">yra tik su <code>grid-template-rows:</code> sukurtos horizontalios <i>explicit grid lines</i></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-rows: 20px 20px; grid-auto-rows: 40px; grid-auto-columns: 80px">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__section">yra tik su <code>grid-template-columns:</code> sukurtos vertikalios <i>explicit grid lines</i></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 40px 40px; grid-auto-rows: 40px; grid-auto-columns: 80px">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__section">yra ir horizontalios, ir vertikalios <i>explicit grid lines</i></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-rows: 20px 20px; grid-template-columns: 40px 40px; grid-auto-rows: 40px; grid-auto-columns: 80px">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+        <div class="c-pvz__target">#6</div>
+        <div class="c-pvz__target">#7</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>grid-auto-flow: column</code></h4>
+    <p>...</p>
+    <blockquote>
+      <p>The <a data-link-type="dfn" href="https://www.w3.org/TR/css-grid-1/#grid-item-placement-algorithm" id="ref-for-grid-item-placement-algorithm④">auto-placement algorithm</a> places items by filling each column in turn, adding new columns as necessary.</p>
+    </blockquote>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>grid-auto-flow: column</code> — <i>implicit grid</i>'as sukuria naujus stulpelius </p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-flow: column; grid-auto-rows: 40px; grid-auto-columns: 80px">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target">#2</div>
+        <div class="c-pvz__target">#3</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4><code>grid-auto-flow: * dense</code></h4>
+    <p>Tankus <i>grid item'ų</i> dėliojimo algoritmas:</p>
+    <blockquote>
+      <p>Is a keyword specifying that the auto-placement algorithm uses a "dense" packing algorithm, which attempts to fill in holes earlier in the grid, if smaller items come up later. </p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>grid-auto-flow: row dense</code></p>
+      <p class="c-pvz__title"><code>grid-auto-flow: row</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+        <div class="c-pvz__target" style="grid-column-start: span 2">item 1</div>
+        <div class="c-pvz__target" style="grid-column-start: span 2">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+      </div>
+      <p class="c-pvz__title"><code>grid-auto-flow: row dense</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-flow: row dense">
+        <div class="c-pvz__target" style="grid-column-start: span 2">item 1</div>
+        <div class="c-pvz__target" style="grid-column-start: span 2">item 2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__section">pavyzdys su visu implicit grid'u </p>
+      <p class="c-pvz__title"><code>grid-auto-flow: row</code></p>
+      <div class="c-pvz__container" style="display: grid">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target" style="grid-column-start: span 3">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__title"><code>grid-auto-flow: row dense</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-flow: row dense">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target" style="grid-column-start: span 3">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><code>grid-auto-flow: column dense</code></p>
+      <p class="c-pvz__title"><code>grid-auto-flow: column</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-rows: 1fr 1fr 1fr; grid-auto-flow: column;">
+        <div class="c-pvz__target" style="grid-row-start: span 2">#1</div>
+        <div class="c-pvz__target" style="grid-row-start: span 2">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__title"><code>grid-auto-flow: column dense</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-template-rows: 1fr 1fr 1fr; grid-auto-flow: column dense;">
+        <div class="c-pvz__target" style="grid-row-start: span 2">#1</div>
+        <div class="c-pvz__target" style="grid-row-start: span 2">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__section">pavyzdys su visu implicit grid'u</p>
+      <p class="c-pvz__title"><code>grid-auto-flow: column</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-flow: column;">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target" style="grid-row-start: span 3">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+      <p class="c-pvz__title"><code>grid-auto-flow: column dense</code></p>
+      <div class="c-pvz__container" style="display: grid; grid-auto-flow: column dense;">
+        <div class="c-pvz__target">#1</div>
+        <div class="c-pvz__target" style="grid-row-start: span 3">#2</div>
+        <div class="c-pvz__target">#3</div>
+        <div class="c-pvz__target">#4</div>
+        <div class="c-pvz__target">#5</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><i>Grid item</i>'ams skirtos CSS savybės &#8212; <i>grid items</i> positioning against <i>grid lines</i></h2>
+<pre><code>&lt;grid-line&gt; =  <em>auto</em> |
+              &lt;custom-ident&gt; |
+              [ &lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;? ] |
+              [ span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ] ]</code></pre>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td><h3><code>grid-row-start: grid-row-end:</code></h3>
+      <p><code>grid-row-start: &lt;grid-line&gt;<br>
+        grid-row-end: &lt;grid-line&gt;</code>      </p>
+      <dl>
+        <dt><code>grid-row-start:</code></dt>
+        <dd>
+          <blockquote>
+            <p>The <strong>grid-row-start</strong> CSS property specifies a grid item's start position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start edge of its <a href="https://developer.mozilla.org/en-US/docs/Glossary/grid_areas" title="grid area: A grid area is one or more grid cells that make up a rectangular area on the grid. Grid areas are created when you place an item using line-based placement or when defining areas using named grid areas.">grid area</a>.</p>
+          </blockquote>
+        </dd>
+        <dt><code>grid-row-end:</code></dt>
+        <dd>
+          <blockquote>
+            <p>The <strong>grid-row-end</strong> CSS property specifies a grid item's end position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-end edge of its <a href="https://developer.mozilla.org/en-US/docs/Glossary/grid_areas" title="grid area: A grid area is one or more grid cells that make up a rectangular area on the grid. Grid areas are created when you place an item using line-based placement or when defining areas using named grid areas.">grid area</a>.</p>
+          </blockquote>
+        </dd>
+      </dl>
+      <h4>Dalinis <i>grid item</i>'ų pozicionavimas &#8212; nurodant tik vieną ...</h4>
+      <p>Nurodant tik <code>grid-row-start: X</code> arba <code>grid-row-end: X</code> &#8212; grid item'ą nukelia į <code>X</code> eilutės (nurodant viršutinį arba apatinį grid line'ą) 1 stulpelį.</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">eilutės į priekį nurodymas </p>
+        <p class="c-pvz__title">nurodymas kitos eilutės  (nei ta, kurioje grid item'as yra dėl grid flow'so) su <code>grid-row-start:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row-start: 3"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+        </div>
+        <p class="c-pvz__title">toks pat rezultatas su <code>grid-row-end:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row-end: 4"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+        </div>
+        <p class="c-pvz__title">nurodžius daugiau nei yra iš grid item'ų sudarytų eilučių &#8212; pridedamas viena papildoma eilutė, bet tuščios eilutės nesukuriamos</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row-start: 6"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">eilutės atgal nurodymas — veikia kaip ir į priekį</p>
+        <p class="c-pvz__title"> su <code>grid-row-start:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target" style="grid-row-start: 2"><strong style="letter-spacing: 3px">item 8</strong></div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">nurodant tą pačią eilutę — grid item'as persikelia į pirmą stulpelį </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row-start: 2"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+        </div>
+      </div>
+      <h4><code>&lt;grid-line&gt;</code> variantas su <code>span</code></h4>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><i>grid item</i>'as su <code>grid-row-start: span X</code><br>
+          arba <code>grid-row-end: span X</code><br>
+          veikia vienodai </p>
+        <p>Tada faktiškai gauname:</p>
+        <ul>
+          <li><code>ROW-START</code> &#8212; tampa eilutės pozicija  kokia gaunasi dėl grid flow'so</li>
+          <li><code>ROW-END</code> &#8212; faktinė eilutės pozicija plius <code>span X</code></li>
+        </ul>
+        <p class="c-pvz__section"><code>grid-row-start:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-row-start: span 2"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row-start: span 2"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+        <p class="c-pvz__section"><code>grid-row-end:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-row-end: span 2"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row-end: span 2"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+      </div>
+      <p>Nustačius abu: <code>grid-row-start:</code> ir <code>grid-row-end:</code> &#8212; stulpelio pozicijai nenaudojamas grid flow'so pozicija, o nustatoma<br>
+        <code>grid-column-start: 1</code></p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><i>grid item</i>'as su <code>grid-row: X / span X</code></p>
+        <p class="c-pvz__title">pirma nustatomas <code>grid-row-start:</code>, tada span'inama į apačią </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row: 2 / span 2"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+        <p class="c-pvz__title">jeigu <code>grid-row-start:</code> per didelis ir neužtenka visam span'ui padaryti &#8212; span'as mažėja, bet mažiausiai vieną grid cell'ę visada užima </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row: 4 / span 2"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><i>grid item</i>'as su <code>grid-row: span X / X</code></p>
+        <p class="c-pvz__title">pirma nustatomas <code>grid-row-end:</code>, tada span'inama į viršų</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row: span 2 / 4"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+        <p class="c-pvz__title">jeigu <code>grid-row-end:</code> per mažas ir neužtenka span'ui padaryti &#8212; faktinis <code>grid-row-end:</code> padidinamas, tai reiškia <code>grid-row-start:</code> span'as nugali</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row: span 2 / 2"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+        <p class="c-pvz__title">bet, jeigu <code>grid-row-end:</code> per didelis ir neužtenka visam span'ui padaryti &#8212; faktinis <code>grid-row-end:</code> nesumažinamas, tai reiškia <code>grid-row-start:</code> span'as mažėja, bet mažiausiai vieną grid cell'ę visada užima</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-row: span 2 / 6"><strong style="letter-spacing: 3px">item 5</strong></div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+        </div>
+      </div></td>
+    <td><h3><code> grid-column-start: grid-column-end:</code></h3>
+      <p><code>grid-column-start: &lt;grid-line&gt;<br>
+        grid-column-end: &lt;grid-line&gt;</code>      </p>
+      <dl>
+        <dt><code>grid-column-start:</code></dt>
+        <dd>
+          <blockquote>
+            <p>The <strong>grid-column-start</strong> CSS property specifies a grid item's start position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement. This start position defines the block-start edge of the <a href="https://developer.mozilla.org/en-US/docs/Glossary/grid_areas" title="grid area: A grid area is one or more grid cells that make up a rectangular area on the grid. Grid areas are created when you place an item using line-based placement or when defining areas using named grid areas.">grid area</a>.</p>
+          </blockquote>
+        </dd>
+        <dt><code>grid-column-end:</code></dt>
+        <dd>
+          <blockquote>
+            <p>The <strong>grid-column-end</strong> CSS property specifies a grid item's end position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the block-end edge of its <a href="https://developer.mozilla.org/en-US/docs/Glossary/grid_areas" title="grid area: A grid area is one or more grid cells that make up a rectangular area on the grid. Grid areas are created when you place an item using line-based placement or when defining areas using named grid areas.">grid area</a>.</p>
+          </blockquote>
+        </dd>
+      </dl>
+      <p>Reikšmė <code>&lt;integer&gt;</code>:</p>
+      <dl>
+        <dt>teigiamas skaičius</dt>
+        <dd>
+          <p>Skaičiuoja-reiškia grid line'us nuo <strong>kairės</strong> pusės.</p>
+        </dd>
+        <dt>0</dt>
+        <dd>
+          <blockquote>
+            <p>An <code>&lt;integer&gt;</code> value of <code>0</code> is invalid.</p>
+          </blockquote>
+        </dd>
+        <dt>neigiamas skaičius</dt>
+        <dd>
+          <p>Skaičiuoja grid line'us nuo <strong>dešnės</strong> pusės.</p>
+          <blockquote>
+            <p>If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.</p>
+          </blockquote>
+        </dd>
+      </dl>
+      <h4>Dalinis <i>grid item</i>'ų pozicionavimas &#8212; pavyzdžiai naudojant <strong>tik vieną</strong> iš <code>grid-column:</code> reikšmių </h4>
+      <p>nurodant tik <code>grid-column-start: X</code> arba <code>grid-column-end: X</code> &#8212;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">stulpelio į priekį nurodymas </p>
+        <p class="c-pvz__title">nurodymas kito stulpelio su <code>grid-column-start:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column-start: 4"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+        <p class="c-pvz__title">o pridėjus <code>grid-row-start:</code> &#8212; tuščios cell'ės užsipildo</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column-start: 4; grid-row-start: 2"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+        <p class="c-pvz__title">toks pat rezultatas su <code>grid-column-end:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column-end: 5"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+        <p class="c-pvz__title"><code>grid-column-start: 6</code> &#8212; prideda stulpelį dešnėje, bet <code>7</code> ar <code>8</code> daugiau stulpelių neprideda</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column-start: 6"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">stulpelio atgal  nurodymas        &#8212; grid cell'ė persikelia į sekančią eilutę</p>
+        <p class="c-pvz__title">nurodymas kito stulpelio su <code>grid-column-start:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target" style="grid-column-start: 2"><strong style="letter-spacing: 3px">item 9</strong></div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+        <p class="c-pvz__title">o pridėjus <code>grid-row-start:</code> &#8212; tuščios cell'ės užsipildo</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target" style="grid-column-start: 2; grid-row-start: 3"><strong style="letter-spacing: 3px">item 9</strong></div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+        <p class="c-pvz__title">toks pat rezultatas su <code>grid-column-end:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target" style="grid-column-end: 3"><strong style="letter-spacing: 3px">item 9</strong></div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">neigiamos reikšmės       &#8212; skaičiuoja grid line'us nuo dešnės pusės</p>
+        <p class="c-pvz__title"><code>grid-column-start: -1</code> &#8212; prideda vieną stulpelį, nes grid item'as padedamas į dešnę nuo pirmojo iš dešnės grid line'o</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column-start: -1"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+          <div class="c-pvz__target">item 14</div>
+          <div class="c-pvz__target">item 15</div>
+          <div class="c-pvz__target">item 16</div>
+        </div>
+        <p class="c-pvz__title"><code>grid-column-end: -1</code> &#8212; grid item'ą padeda į paskutinį stulpelį</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column-end: -1"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+          <div class="c-pvz__target">item 14</div>
+          <div class="c-pvz__target">item 15</div>
+          <div class="c-pvz__target">item 16</div>
+        </div>
+        <p class="c-pvz__title">toks pat rezultatas su <code>grid-column-start: -2</code> &#8212; grid item'as  paskutiniame stulpelyje</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column-start: -2"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+          <div class="c-pvz__target">item 14</div>
+          <div class="c-pvz__target">item 15</div>
+          <div class="c-pvz__target">item 16</div>
+        </div>
+      </div>
+      <h4>Dalinis <i>grid item</i>'ų pozicionavimas &#8212; pavyzdžiai naudojant <strong>abi</strong> <code>grid-column:</code> reikšmes</h4>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">span'inimas iki eilutės galo</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column: 2 / -1"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column: 3 / -1"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-column: 1 / -1"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+        </div>
+      </div></td>
+    <td width="25%"><h3><code>grid-row: grid-column: grid-area:</code></h3>
+      <p><code>grid-row: &lt;grid-line&gt; [ / &lt;grid-line&gt; ]?</code></p>
+    <p><code>grid-row: &lt;'grid-row-start'&gt; [ / &lt;'grid-row-end'&gt; ]?</code></p>
+    <p>&nbsp;</p>
+    <p><code>grid-column: &lt;grid-line&gt; [ / &lt;grid-line&gt; ]?</code></p>
+    <p><code>grid-column: &lt;'grid-column-start'&gt; [ / &lt;'grid-column-end'&gt; ]?</code></p>
+    <p>&nbsp;</p>
+    <p><code>grid-area: &lt;grid-line&gt; [ / &lt;grid-line&gt; ]{0,3}</code></p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Kartu <code>grid-row:</code> ir <code>grid-column:</code> veikimas</h3>
+      <p>Pilnas <i>grid item</i>'ų pozicionavimas</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">nurodant tik po vieną iš abiejų ašių</p>
+        <p class="c-pvz__title"><code>grid-row-start:</code> ir <code>grid-column-start:</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-row: 3; grid-column: 4"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+          <div class="c-pvz__target">item 14</div>
+          <div class="c-pvz__target">item 15</div>
+          <div class="c-pvz__target">item 16</div>
+          <div class="c-pvz__target">item 17</div>
+        </div>
+        <p class="c-pvz__title">nurodžius daugiau nei yra iš grid item'ų sudarytų eilučių — pridedamas viena papildoma eilutė, bet tuščios eilutės nesukuriamos</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target" style="grid-row: 8; grid-column: 4"><strong style="letter-spacing: 3px">item 7</strong></div>
+          <div class="c-pvz__target">item 8</div>
+          <div class="c-pvz__target">item 9</div>
+          <div class="c-pvz__target">item 10</div>
+          <div class="c-pvz__target">item 11</div>
+          <div class="c-pvz__target">item 12</div>
+          <div class="c-pvz__target">item 13</div>
+          <div class="c-pvz__target">item 14</div>
+          <div class="c-pvz__target">item 15</div>
+          <div class="c-pvz__target">item 16</div>
+          <div class="c-pvz__target">item 17</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">pilnas <i>grid item</i>'ų pozicionavimas &#8212; <i>grid cell</i>'ėje</p>
+        <p class="c-pvz__title">pirmojo <i>grid item</i>'o pozicionavimas antrosios <i>grid cell</i>'ės vietoje</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-row: 1/2; grid-column: 2/3"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">šeštosios <i>grid cell</i>'ės vietoje</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-row: 2/3; grid-column: 3/4"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">pilnas <i>grid item</i>'ų pozicionavimas &#8212; <i>grid area'juje</i></p>
+        <p class="c-pvz__title">pirmojo <i>grid item</i>'o pozicionavimas</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-row: 1/2; grid-column: 1/3"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">toks pats ketvirtojo </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target" style="grid-row: 1/2; grid-column: 1/3"><strong style="letter-spacing: 3px">item 4</strong></div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">antrojo grid'o item'o pozicionavimas per 3 eilutes</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target" style="grid-row: 1/4; grid-column: 2/4"><strong style="letter-spacing: 3px">item 2</strong></div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+      </div>
+      <h4>Pozicionuotų <i>grid item</i>'ų sąveika</h4>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">&nbsp;</p>
+        <p class="c-pvz__section">kai yra tik <code>grid-column:</code> nustatymas </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-column: 2/3"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target" style="grid-column: 1/3"><strong style="letter-spacing: 3px">item 2</strong></div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+        <p class="c-pvz__title">sukeitus vietomis kode &quot;item 1&quot; ir &quot;item 2&quot; CSS savybes</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-column: 1/3"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target" style="grid-column: 2/3"><strong style="letter-spacing: 3px">item 2</strong></div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+        <p class="c-pvz__section">kai yra tik <code>grid-row:</code> nustatymas </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-row: 2"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target" style="grid-row: 1"><strong style="letter-spacing: 3px">item 2</strong></div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+        <p class="c-pvz__title">sukeitus vietomis kode &quot;item 1&quot; ir &quot;item 2&quot; CSS savybes &#8212; niekas nesikeičia</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-row: 1"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target" style="grid-row: 2"><strong style="letter-spacing: 3px">item 2</strong></div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+        <p class="c-pvz__section">kai yra visas grid item'o pozicionavimas </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target" style="grid-area: 1/2/2/3"><strong style="letter-spacing: 3px">item 1</strong></div>
+          <div class="c-pvz__target O.8" style="grid-area: 1/1/2/3"><strong style="letter-spacing: 3px">item 2</strong>---</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+      </div>
+      <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>&nbsp;</p>
+      <figure class="c-figure c-figure--shadow" style="">
+        <div class="c-figure__content">
+          <p>
+            <svg style="max-height:15em;" viewBox="0 0 586 418">
+              <defs>
+                <path id="a2" d="M0 5h460v305H0z"></path>
+                <mask id="b2" width="470" height="315" x="-5" y="-5">
+                  <path fill="#fff" d="M-5 0h470v315H-5z"></path>
+                  <use xlink:href="#a2"></use>
+                </mask>
+              </defs>
+              <g fill="none" fill-rule="evenodd">
+                <g transform="translate(21 6)">
+                  <use fill="#D8D8D8" xlink:href="#a2"></use>
+                  <use stroke="#595959" stroke-width="10" mask="url(#b2)" xlink:href="#a2"></use>
+                </g>
+                <path stroke="#595959" stroke-width="5" d="M328.5 11v305M21 163.5h460" stroke-linecap="square"></path>
+                <path stroke="#7ED321" stroke-width="5" d="M173.5 6v315"></path>
+                <text fill="#000" font-size="24" transform="translate(486 -7)">
+                  <tspan x="45.3" y="24">1</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(486 -7)">
+                  <tspan x="45.3" y="177">2</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(486 -7)">
+                  <tspan x="44.3" y="333">3</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(486 -7)">
+                  <tspan x="74.6" y="24">-3</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(486 -7)">
+                  <tspan x="74.6" y="177">-2</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(486 -7)">
+                  <tspan x="73.6" y="333">-1</tspan>
+                </text>
+                <path stroke="#979797" stroke-width="3" d="M486 8.5h35m-35 155h35m-35 155h35M18.5 321v35m155-35v35m155-35v35m155-35v35"></path>
+                <text fill="#000" font-size="24" transform="translate(-2 317)">
+                  <tspan x="13.3" y="64">1</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(-2 317)">
+                  <tspan x="170.3" y="64">2</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(-2 317)">
+                  <tspan x="323.3" y="64">3</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(-2 317)">
+                  <tspan x="477.3" y="64">4</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(2 317)">
+                  <tspan x=".6" y="96">-4</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(2 317)">
+                  <tspan x="158.6" y="96">-3 </tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(2 317)">
+                  <tspan x="312.6" y="96">-2</tspan>
+                </text>
+                <text fill="#000" font-size="24" transform="translate(2 317)">
+                  <tspan x="468.6" y="96">-1</tspan>
+                </text>
+                <path fill="#4A90E2" fill-opacity=".75" d="M176 166h305v150H176z"></path>
+                <text fill="#000" font-size="24" transform="translate(-2 -7)">
+                  <tspan x="299.204" y="254">.item</tspan>
+                </text>
+              </g>
+            </svg>
+          </p>
+          <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 150px 150px;
+}
+
+.item {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}</code></pre>
+        </div>
+        <figcaption>Teigiamų skaičių Grid item'ų pozicionavimui panaudojimas</figcaption>
+      </figure>
+      <p>&nbsp;</p>
+      <figure class="c-figure c-figure--shadow" style="">
+        <div class="c-figure__content">
+          <blockquote>
+            <p>Grid lines also have negative indices, which allow us to reference grid lines starting from the end of the grid. One of the use cases for negative indices is if you need an item in the last column, regardless of number of tracks, then giving that item a grid-column-end property of -1 will handle it.</p>
+          </blockquote>
+          <div class="c-pvs c-pvs--border c-pvs--title c-pvs--child-bg">
+            <p>........ </p>
+            <div data-diah-style-top class="c-pvs__parent -H25vh P1c" style="display: grid; grid-template: 1fr 1fr / 1fr 1fr 1fr">
+              <div data-diah-style-bottom style="grid-row: -2 / -1; grid-column: -3 / -1">#1</div>
+              <div data-diah-style-bottom style="">#2</div>
+              <div data-diah-style-bottom style="">#3</div>
+              <div data-diah-style-bottom style="">#4</div>
+              <div data-diah-style-bottom style="">#5</div>
+              <div data-diah-style-bottom style="">#6</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Minusinės reikšmės žymi <i>Grid lines</i>'us iš kito galo</figcaption>
+      </figure>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Grid'o matavimo vienetas <code>fr</code> (CSS data type &#8212; fractional unit)</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value">https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value</a></p>
+<p><a href="https://www.w3.org/TR/css3-grid-layout/#fr-unit">https://www.w3.org/TR/css3-grid-layout/#fr-unit</a></p>
+<blockquote>
+  <p>The <code>fr</code> unit represents a fraction of the leftover space in the <i>grid container</i>. </p>
+</blockquote>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">vien <code>fr</code> naudojimas</p>
+        <p class="c-pvz__title">naudojant vienodas <code>fr</code> reikšmes, visos dalys bus vienodos</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">tas pats <code>1fr</code> pakeitus <code>2fr</code></p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 2fr 2fr 2fr">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">skirtingos <code>fr</code> reikšmės pasidalina plotą proporcingai reikšmei</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 2fr 1fr 1fr">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">kitoks variantas</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 4fr">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption"><code>fr</code> naudojimas su kitais matavimo vienetais</p>
+        <p class="c-pvz__title">kai vienais stulpelis pikseliais</p>
+        <blockquote>
+          <p>The first track is 150 pixels, so the fixed width is taken away from the available space. The remaining space is divided into three and assigned in proportion to the two flexible tracks.</p>
+        </blockquote>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 150px 1fr 2fr">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">procentais</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 50% 1fr 2fr">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+      </div></td>
+    <td width="25%"><p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Grid'o funkcijos</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><code>repeat()</code></h3>
+      <p><code>repeat(3, 1fr)</code> == <code>1fr 1fr 1fr</code>      </p>
+      <div class="c-pvz">
+        <p class="c-pvz__title"> paprasčiausias         </p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <p class="c-pvz__title">kiek sudėtingiau</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 50px repeat(3, 1fr) 50px">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+        </div>
+        <p class="c-pvz__title">multi track'o pakartojimas</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr 2fr)">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+      </div>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">Grid line'ų užvardinimas </p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="display: grid; grid-template-columns: 50px repeat(3, [col-start] 1fr [col-end]) 50px;">
+          <div class="c-pvz__target" style="grid-area: 2 / col-start 1 / auto / col-end 1">item 1</div>
+          <div class="c-pvz__target" style="grid-area: 2 / col-start 2 / auto / col-end 2">item 2</div>
+          <div class="c-pvz__target" style="grid-area: 2 / col-start 3 / auto / col-end 3">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: 30px repeat(3, [col-start] 1fr 1fr [col-end]) 30px;">
+          <div class="c-pvz__target" style="grid-column: col-start 1 / col-end 1">item 1</div>
+          <div class="c-pvz__target" style="grid-column: col-start 2 / col-end 2">item 2</div>
+          <div class="c-pvz__target" style="grid-column: col-start 3 / col-end 3">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+          <div class="c-pvz__target">item 6</div>
+          <div class="c-pvz__target">item 7</div>
+          <div class="c-pvz__target">item 8</div>
+        </div>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+    <p></p></td>
+    <td width="25%"><h3><code>minmax()</code></h3>
+    <pre><code>[ &lt;length&gt; | &lt;percentage&gt; | &lt;flex&gt; | min-content | max-content | auto ] ,
+[ &lt;length&gt; | &lt;percentage&gt; | &lt;flex&gt; | min-content | max-content | auto ]</code></pre>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__title"><i>implicit grid</i>'ui nustatytas konkretus minimalus ir <code>auto</code> maksimalus eilutės aukštis<br>
+<code>grid-auto-rows: minmax(50px, auto)</code><br>
+grid'o item'ai kaip pradinį gauna MIN aukštį, ir didėja jei turi daugiau turinio
+      </p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: minmax(50px, auto);">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">
+          <p>Bėgo kiškis per pievutę ir įkrito į balutę. Kas tą kiškį lauk ištrauks, iš žaidimo laukan braukšt!</p>
+        </div>
+        <div class="c-pvz__target">item 6</div>
+        <div class="c-pvz__target">item 7</div>
+    </div>
+      <p class="c-pvz__title">ir minimalus, ir maksimalus konkretūs<br>
+        <code>grid-auto-rows: minmax(50px, 75px)</code> <br>
+        grid'o item'ai kaip pradinį gauna MAX aukštį, ir jų turinys jų dydžio nekeičia   </p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: minmax(50px, 75px);">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">
+          <p>Bėgo kiškis per pievutę ir įkrito į balutę. Kas tą kiškį lauk ištrauks, iš žaidimo laukan braukšt! </p>
+        </div>
+        <div class="c-pvz__target">item 6</div>
+        <div class="c-pvz__target">item 7</div>
+      </div>
+      <p class="c-pvz__title">&nbsp;</p>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption"><i>implicit grid</i>'ui nustatytas minimalus eilutės aukštis </p>
+
+<!--      grid-template-columns: minmax(max-content, 300px) minmax(200px, 1fr) 150px;-->
+
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, minmax(max-content, 300px))">
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">
+          <p>Bėgo kiškis per pievutę ir įkrito į balutę. Kas tą kiškį lauk ištrauks, iš žaidimo laukan braukšt!</p>
+        </div>
+        <div class="c-pvz__target">item 6</div>
+        <div class="c-pvz__target">item 7</div>
+      </div>
+      <p class="c-pvz__section">&nbsp;</p>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3><code>fit-content()</code></h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Grid'ai grid'uose (nesting grids)</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Nesusiję įterpti grid'ai</h3>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">... </p>
+      <p class="c-pvz__title">...</p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 50px">
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 25px">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+      </div>
+      <p class="c-pvz__title">...</p>
+      <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 50px">
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-column-start: 1; grid-column-end: 4; grid-row-start: 1; grid-row-end: 2;">
+          <div class="c-pvz__target">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target">item 5</div>
+        </div>
+        <div class="c-pvz__target">item 1</div>
+        <div class="c-pvz__target">item 2</div>
+        <div class="c-pvz__target">item 3</div>
+        <div class="c-pvz__target">item 4</div>
+        <div class="c-pvz__target">item 5</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Susiję įterpti grid'ai (subgrid)</h3>
+      <p><code>display: subgrid</code></p>
+      <blockquote>
+        <p>Subgrids are not yet implemented in any browsers, and the specification is subject to change.</p>
+      </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Grid'o item'ų sluoksniai (layering items)</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">... </p>
+        <p class="c-pvz__title">su <code>z-index: 1</code> galima &quot;item 1&quot; pakelti virš &quot;item 5&quot;, kuris natūraliai, dėl pozicijos kode, yra virš &quot;item 1&quot;</p>
+        <div class="c-pvz__container" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 50px">
+          <div class="c-pvz__target" style="grid-column-start: 1; grid-column-end: 4; grid-row-start: 1; grid-row-end: 3;z-index: 1; opacity: 0.9">item 1</div>
+          <div class="c-pvz__target">item 2</div>
+          <div class="c-pvz__target">item 3</div>
+          <div class="c-pvz__target">item 4</div>
+          <div class="c-pvz__target" style="grid-column-start: 1; grid-column-end: 2; grid-row-start: 2; grid-row-end: 4;">item 5</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

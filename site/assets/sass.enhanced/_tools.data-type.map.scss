@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+// Misc. Sass Functions to ease calculations
+// https://github.com/jquery/css-chassis/blob/master/scss/_utilities/_functions.scss
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// @TODO:
+
+@function map-get-deep($map, $keys...) {
+  $value: $map;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   map-get-nth() map-get-nthKey()
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// $mapas: (pirmas: aaa, antras: bbb, trecias: ccc);
+// @debug map-get-nth($mapas, 2); // <<< bbb
+
+@function map-get-nth($map, $index) {
+  $values: map_values($map);
+  @return nth($values, $index);
+}
+
+// @USAGE:
+// $mapas: (pirmas: aaa, antras: bbb, trecias: ccc);
+// @debug map-get-nthKey($mapas, 2); // <<< antras
+
+@function map-get-nthKey($map, $index) {
+  $keys: map_keys($map);
+  @return nth($keys, $index);
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   @TODO: kad nekartojant to pacio kintamojo jam prideti memberi
+//
+//////////////////////////////////////////////////////////////////////////////
+
+//$zm-colorSet: map_merge($zm-colorSet, (fullSat-lighter: scale-color-list(map_get($zm-colorSet, fullSat), $lightness: 30%)));
+//
+//@mixin map-append($map, $newElm) {
+//  $map: map_merge($map, $newElm) !global;
+//}
+//
+//$kazkoksMap: (a: 1, b: 2);
+//@include map-append($kazkoksMap, (c: 3));
+//
+//@debug unquote("$kazkoksMap ==") $kazkoksMap;
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//   .
+//
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+

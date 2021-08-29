@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//   .u-bgClrSet-{name}
+//   ??? .u-backgroundColor-colorSet-#{$colorSet}-c
+//
+/////////////////////////////////////////////////////////////////////////////
+
+//---------------------------------------------------------------------------
+// Light
+// .BGCL[colorSetIndex]c
+//---------------------------------------------------------------------------
+
+$iClrSet: 1;
+@each $colorSet in keywordsLightExtra fullSatLightExtra {
+
+  $iClr: 1;
+  @each $color in szm-colorSet-getSet($colorSet) {
+    //.u-bgClr-#{$colorSet}-#{$iClr},
+    .BGCL#{$iClrSet}-#{$iClr} {
+      background-color: szm-colorSet-getColor($colorSet, $iClr);
+    }
+    $iClr: $iClr + 1.0;
+  }
+
+  //.u-bgClr-#{$colorSet}-c > *,
+  .BGCL#{$iClrSet}c > * {
+    @include szm-colorSet-bgNthChild($colorSet, 17);
+  }
+
+  $iClrSet: $iClrSet + 1;
+}
+
+//---------------------------------------------------------------------------
+// Middle
+// .BGCM[colorSetIndex]c
+//---------------------------------------------------------------------------
+
+$iClrSet: 1;
+@each $colorSet in keywordsMiddle {
+
+  $iClr: 1;
+  @each $color in szm-colorSet-getSet($colorSet) {
+    //.u-bgClr-#{$colorSet}-#{$iClr},
+    .BGCM#{$iClrSet}-#{$iClr} {
+      background-color: szm-colorSet-getColor($colorSet, $iClr);
+    }
+    $iClr: $iClr + 1.0;
+  }
+
+  //.u-bgClr-#{$colorSet}-c > *,
+  .BGCM#{$iClrSet}c > * {
+    @include szm-colorSet-bgNthChild($colorSet, 20);
+  }
+  $iClrSet: $iClrSet + 1;
+}
+
+//---------------------------------------------------------------------------
+// .BGCD[colorSetIndex]c
+//     Dark
+//---------------------------------------------------------------------------
+
+$i: 1;
+@each $colorSet in keywordsDarker {
+  //.u-backgroundColor-colorSet-#{$colorSet}-c > *,
+  .BGCD#{$i}c > * {
+    @include szm-colorSet-bgNthChild($colorSet, 17);
+  }
+  $i: $i + 1;
+}
+
+

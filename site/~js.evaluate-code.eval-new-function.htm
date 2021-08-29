@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+<!--  <link rel="stylesheet" href="assets/sass/master.css">-->
+<!--  <link rel="stylesheet" href="assets/sass/master.utilities.css">-->
+<!--  <link rel="stylesheet" href="assets/sass/master.dev.css">-->
+  <style>
+    body {
+      font: 1.2em "IBM Plex Sans", sans-serif;
+      margin: 1em;
+    }
+  </style>
+</head>
+<body>
+<!-- kad darytų TOC-turinį -->
+<!--<script src="assets/js/~pvz-example-test-template.js"></script>-->
+
+<h1></h1>
+
+<p>https://2ality.com/2014/01/eval.html</p>
+
+<script>
+  'use strict';
+
+  let a, b;
+
+  //------------------------------------------------------
+  //
+  //------------------------------------------------------
+
+  // console.group(`eval() kairėje priskyrimo sakinio pusėje`);
+  // console.log(`%cb = eval('a + 3')`,'background:hsl(200,100%,70%,.17); padding:1px 7px 2px; margin-left:-7px');
+  // // console.log(`%cb = eval('a + 3')`,'color:hsl(17,100%,74%)');
+  // a = 5;
+  // b = eval('a + 3');
+  // console.log("b ==", b);
+  // console.groupEnd();
+  //
+  // console.group(`eval('b = a + 3')`);
+  // a = 5;
+  // eval('b = a + 3');
+  // console.log("b ==", b);
+  // console.groupEnd();
+
+  //------------------------------------------------------
+  //
+  //------------------------------------------------------
+
+  console.group(`new Function()`);
+
+  const dauginti = new Function("x", "y", "return x*y;");
+  console.log("dauginti(2, 3) ==", dauginti(2, 3));
+
+  //------------------------------------------------------
+
+  a = "OPA !!!";
+
+  const fa = new Function("return a;"); // VEIKIA !!!
+  console.log("fa() ==", fa());
+
+  b = new Function("return a;")();      // VEIKIA !!!
+  console.log("b ==", b);
+
+  // a = 5;
+  // // b = new Function('a + 3')();
+  // b = new Function('a + 3').call();
+  // console.log("b ==", b);
+
+  //------------------------------------------------------------------------
+  // the functions it creates do not use lexical scoping; instead, they are
+  // always compiled as if they were top-level functions
+  //------------------------------------------------------------------------
+
+  // let scope = "global";
+  // function constructFunction() {
+  //   let scope = "local";
+  //   return new Function("return scope");  // Doesn't capture local scope!
+  // }
+  // // This line returns "global" because the function returned by the
+  // // Function() constructor does not use the local scope.
+  // constructFunction()()  // => "global"
+
+
+
+
+  console.groupEnd();
+
+
+
+
+
+  // scrollTrgElm = eval(hashJq); // VEIKIA !!!
+
+  // scrollTrgElm = jQuery.globalEval( hashJq ); // NEVEIKIA !!!
+
+  // scrollTrgElm = new Function(`$("dt").filter(":contains('specifikacija')")`)(); // NEVEIKIA !!!
+  // scrollTrgElm = new Function(hashJq)();
+  // scrollTrgElm = Function(hashJq)();
+  // scrollTrgElm = new Function(hashJq);
+
+  // new Function(`scrollTrgElm = ${hashJq};`)();
+  // Function(`scrollTrgElm = ${hashJq};`)();
+
+  // const f = new Function(`scrollTrgElm = ${hashJq}`);
+  // f();
+
+  // let aaa;
+  // // aaa = new Function('5 + 7')();
+  // // aaa = Function('5 + 7')();
+  //
+  // new Function('aaa = 5 + 7')();
+  //
+  // // const aaa = 5 + 7;
+  // console.log(`%caaa == ${aaa}`, "color:hsl(200,100%,80%); background:hsl(200,100%,70%,.2); padding:1px 7px 2px; font-size:1.3em;");
+  // // console.log(`%caaa == ${aaa}`, "color:hsl(200,100%,80%); background:hsl(200,100%,70%,.2); padding:2px 5px; font: normal 1.3em 'IBM Plex Sans'");
+  // // console.log(`%caaa == ${aaa}`, "color:hsl(200,100%,80%); background:hsl(200,100%,70%,.2); padding:2px 5px; font: normal 1.3em 'Recursive Mono Casual Static'");
+  // // console.log(`%caaa == ${aaa}`, "color:hsl(200,100%,80%); background:hsl(200,100%,70%,.2); padding:2px 5px; font: normal 1.3em 'Recursive Mono Linear Static'");
+
+
+
+</script>
+
+
+
+<!--<div class="o-gfx o-gfx&#45;&#45;W3 o-gfx&#45;&#45;boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>-->
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

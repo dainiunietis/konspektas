@@ -1,0 +1,132 @@
+//@charset "utf-8";
+//
+///////////////////////////////////////////////////////////////////////////////
+////
+////  # tinklelio-mesh'o generavimas su background'o sluoksniais, kuriuose linear-gradient()
+////
+///////////////////////////////////////////////////////////////////////////
+//
+////----------------------------------------------------------------------
+//// - fiksuotas tinklelio-mesh'o zingsnis
+//// - visi matavimo vienetai
+////----------------------------------------------------------------------
+//
+//// @USAGE:
+////   .d-mesh {
+////     background: szm-dev-mesh-uniform-background-gradient(<...>);
+////   }
+//
+//@function szm-dev-mesh-uniform-background-gradient($lineMainColor, $lineSubColor, $gridSize, $gridSubNumber) {
+//  $gridSizeSub: if(unit($gridSize) == "%", 100% / $gridSubNumber, $gridSize / $gridSubNumber);
+//  $gradientStops: ();
+//  @for $i from 1 to $gridSubNumber {
+//    $gridSizeSubStep: $gridSizeSub * $i;
+//    $gradientStops: append($gradientStops, transparent $gridSizeSubStep, comma);
+//    $gradientStops: append($gradientStops, $lineSubColor $gridSizeSubStep, comma);
+//    $stopForUnit: if(unit($gridSize) == px, $gridSizeSubStep + 1, calc(#{$gridSizeSubStep} + 1px));
+//    $gradientStops: append($gradientStops, $lineSubColor $stopForUnit, comma);
+//    $gradientStops: append($gradientStops, transparent $stopForUnit, comma);
+//  }
+//  //@debug $gradientStops;
+//  @return
+//    // pagrindinės linijos — horizontali pirmoji viršutinė
+//    linear-gradient(0grad, $lineMainColor, $lineMainColor) no-repeat 0 0 / 100% 1px,
+//    // pagrindinės linijos — vertikali pirmoji kairėje
+//    linear-gradient(-100grad, $lineMainColor, $lineMainColor) no-repeat 0 1px / 1px calc(100% - 2px),
+//    // pagrindinės linijos — tinklelis
+//    linear-gradient(0grad, $lineMainColor 1px, transparent 1px) repeat-y 1px 0 / calc(100% - 2px) #{$gridSize},
+//    linear-gradient(-100grad, $lineMainColor 1px, transparent 1px) repeat-x 0 1px / #{$gridSize} calc(100% - 2px),
+//    // pagalbinės linijos — tinklelis
+//    linear-gradient(0grad, $gradientStops) repeat-y 1px 0 / calc(100% - 2px) #{$gridSize},
+//    linear-gradient(-100grad, $gradientStops) repeat-x 0 1px / #{$gridSize} calc(100% - 2px);
+//}
+//
+////----------------------------------------------------------------------
+//// - tinklelis dalina visą tagą-konteinerį į lygias dalis
+//// - horizontalus ir vertikalus dalinimų skaičius gali būti skirtingas
+////----------------------------------------------------------------------
+//
+//// @PARAMS:
+////   $containerDivideHor == (gridMainHor gridSubHor)
+////   $containerDivideVer == (gridMainVer gridSubVer)
+//
+//@function szm-dev-mesh-divide-background-gradient($lineMainColor, $lineSubColor, $containerDivideHor, $containerDivideVer: sameAsHor) {
+//  // mesh horizontal
+//  $gridMainHor-count: nth($containerDivideHor, 1);
+//  $gridSubHor-count:  nth($containerDivideHor, 2);
+//  $gridMainHor-length: 100% / $gridMainHor-count;
+//  $gridSubHor-length:  100% / $gridSubHor-count;
+//  // mesh vertical
+//  $gridMainVer-count: if($containerDivideVer == sameAsHor, $gridMainHor-count, nth($containerDivideVer, 1));
+//  $gridSubVer-count:  if($containerDivideVer == sameAsHor, $gridSubHor-count,  nth($containerDivideVer, 2));
+//  $gridMainVer-length: 100% / $gridMainVer-count;
+//  $gridSubVer-length:  100% / $gridSubVer-count;
+//  //@debug gridSubHor-stepLength = #{$gridSubHor-length};
+//
+//  $gridSubHor-gradientStops: ();
+//  @for $i from 1 to $gridSubHor-count {
+//    $stop: $gridSubHor-length * $i;
+//    $gridSubHor-gradientStops: append($gridSubHor-gradientStops, transparent $stop, comma);
+//    $gridSubHor-gradientStops: append($gridSubHor-gradientStops, $lineSubColor $stop, comma);
+//    $gridSubHor-gradientStops: append($gridSubHor-gradientStops, $lineSubColor calc(#{$stop} + 1px), comma);
+//    $gridSubHor-gradientStops: append($gridSubHor-gradientStops, transparent calc(#{$stop} + 1px), comma);
+//  }
+//  //@debug $gridSubHor-gradientStops;
+//
+//  $gridSubVer-gradientStops: ();
+//  @for $i from 1 to $gridSubVer-count {
+//    $stop: $gridSubVer-length * $i;
+//    $gridSubVer-gradientStops: append($gridSubVer-gradientStops, transparent $stop, comma);
+//    $gridSubVer-gradientStops: append($gridSubVer-gradientStops, $lineSubColor $stop, comma);
+//    $gridSubVer-gradientStops: append($gridSubVer-gradientStops, $lineSubColor calc(#{$stop} + 1px), comma);
+//    $gridSubVer-gradientStops: append($gridSubVer-gradientStops, transparent calc(#{$stop} + 1px), comma);
+//  }
+//  //@debug $gridSubVer-gradientStops;
+//
+//  @return
+//    // pagrindinės linijos — horizontali pirmoji viršutinė
+//    linear-gradient(0grad, $lineMainColor, $lineMainColor) no-repeat 0 0 / 100% 1px,
+//      // pagrindinės linijos — vertikali pirmoji kairėje
+//    linear-gradient(-100grad, $lineMainColor, $lineMainColor) no-repeat 0 1px / 1px calc(100% - 2px),
+//      // pagrindinės linijos — tinklelis
+//    linear-gradient(0grad, $lineMainColor 1px, transparent 1px) repeat-y 1px 0 / calc(100% - 2px) #{$gridMainVer-length},
+//    linear-gradient(-100grad, $lineMainColor 1px, transparent 1px) repeat-x 0 1px / #{$gridMainHor-length} calc(100% - 2px),
+//      // pagalbinės linijos — tinklelis
+//    linear-gradient(-100grad, $gridSubHor-gradientStops) repeat-x 0 1px / #{$gridMainHor-length} calc(100% - 2px),
+//    linear-gradient(0grad, $gridSubVer-gradientStops) repeat-y 1px 0 / calc(100% - 2px) #{$gridMainVer-length};
+//}
+//
+///////////////////////////////////////////////////////////////////////////////
+////
+////  # su background-image: linear-gradient() prisegtame tage ir prisegto tago pseudo elemente ::after
+////
+///////////////////////////////////////////////////////////////////////////
+//
+//// @USAGE:
+////   padaro du klasus: .d-mesh ir .d-mesh-pseudoAfter
+////     .d-mesh {
+////       $bgGrad: szm-dev-mesh-uniform-background-gradient(<...>);
+////       background: $bgGrad;
+////       @include szm-dev-mesh-pseudoAfter {
+////         background: $bgGrad;
+////       }
+////     }
+//
+//@mixin szm-dev-mesh-pseudoAfter {
+//  &-pseudoAfter {
+//    position: relative;
+//    &::after {
+//      content: "";
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//      width: 100%;
+//      height: 100%;
+//      @content;
+//    }
+//  }
+//}
+//
+
+
+

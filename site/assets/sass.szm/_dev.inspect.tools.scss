@@ -1,0 +1,193 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////////////////
+
+%dev-inspect-attr-hover-base {
+  //background: deepskyblue;
+  //outline: var(--outline);
+  //outline: 2px dotted;
+  position: relative;
+}
+
+$dev-inspect-attr-hover-translateY-afterPseudoElmSide: 7px;
+$dev-inspect-attr-hover-translateY-afterOpposite: -100%;
+
+%dev-inspect-attr-hover-pseudoElm {
+  --translateY:  #{$dev-inspect-attr-hover-translateY-afterPseudoElmSide};
+  border-radius: 0.3em;
+  display:       block;
+  //transform:     translate(-50%, 0);
+  transform:     translate(-50%, var(--translateY));
+  //transform:     translateX(-50%);
+  //margin-top:    7px;
+  font:          .9rem "IBM Plex Mono";
+  white-space: pre;
+  left:          50%;
+  /*width:       calc(100% - 16px);*/
+  padding:       0.15em 0.6em 0.25em;
+  //position:      absolute;
+  /*border:        1px solid hsla(120, 100%, 70%, 0.9);*/
+  width:         fit-content;
+  /*box-shadow:    0px 0px 17px 0px hsla(120, 50%, 50%, 0.7);*/
+  //content:       var(--dev-inspect-attr-hover-pseudoElm);
+  z-index:       10000;
+  opacity: 1;
+  transition: opacity, transform;
+  transition-duration: .2s;
+  //transition: 2s;
+}
+
+// @PARAMS:
+//   $style  offset red blue green
+//   $placement: pseudoElmSide opposite
+//   $outlineOffset: 0 1 2 ...
+
+@mixin dev-inspect-attr-hover($selector, $attribute: "class", $color: "blue", $outlineOffset: 0, $placement: "pseudoElmSide", $pseudoElm: "after") {
+  $outlineOffset-step: 3px;
+
+  #{$selector} {
+    //--outline: 2px dotted;
+    //outline: var(--outline) hsla(0, 0%, 100%, 0);
+    //outline-color: hsla(0, 0%, 100%, 0);
+    outline: 2px dotted hsla(0, 0%, 100%, 0);
+    outline-offset: -1em;
+    transition: outline, outline-offset;
+    transition-duration: .5s;
+  }
+
+  //background: hsl(255, 100%, 50%);
+  //outline-offset: -1px;
+
+  #{$selector}:hover {
+    //outline: 1px dashed darkturquoise;
+    //position: relative;
+
+    @extend %dev-inspect-attr-hover-base !optional;
+
+    @if ($placement == "opposite") {
+      position: relative;
+    }
+
+    //@if ($outlineOffset > 0) {
+    //}
+    outline-offset: $outlineOffset * $outlineOffset-step;
+
+    @if ($color == "blue") {
+      outline-color: hsla(240, 100%, 50%, 0.7);
+      //@extend %dev-inspect-attr-hover-base-blue;
+    }
+    @else if ($color == "green") {
+      outline-color: hsla(120, 100%, 30%, 0.7);
+      //@extend %dev-inspect-attr-hover-base-green;
+    }
+    @else if ($color == "red") {
+      outline-color: hsla(0, 100%, 30%, 0.7);
+      //@extend %dev-inspect-attr-hover-base-red;
+    }
+  }
+
+  #{$selector}::#{$pseudoElm} {
+    content:   "";
+    opacity:   0;
+    position: absolute;
+
+    @if ($placement == "pseudoElmSide") {
+      transform: translate(-50%, -50%);
+    }
+    @else {
+      transform: translate(-50%, -40%);
+    }
+  }
+
+  #{$selector}:hover::#{$pseudoElm} {
+    @extend %dev-inspect-attr-hover-pseudoElm;
+
+    content: "#{$attribute}=\"" attr(#{$attribute}) "\"";
+
+    @if ($placement == "pseudoElmSide") {
+      @if ($pseudoElm == "after") {
+        @if ($outlineOffset > 0) {
+          --translateY: #{$dev-inspect-attr-hover-translateY-afterPseudoElmSide + ($outlineOffset * $outlineOffset-step)};
+          //transform: translate(-50%, $outlineOffset * $outlineOffset-step);
+          //transform: translateY($outlineOffset * $outlineOffset-step);
+        }
+      }
+      @else if ($pseudoElm == "before") {
+      }
+    }
+    @else if ($placement == "opposite") {
+      @if ($pseudoElm == "after") {
+        top: 0;
+        @if ($outlineOffset == 0) {
+          --translateY: calc(#{$dev-inspect-attr-hover-translateY-afterOpposite} - 7px);
+        }
+        @else {
+          --translateY: calc(#{$dev-inspect-attr-hover-translateY-afterOpposite} - 7px - #{$outlineOffset * $outlineOffset-step});
+        }
+      }
+      @else if ($pseudoElm == "before") {
+      }
+    }
+
+    $shadow: .1em .08em .3em;
+    @if ($color == "blue") {
+      color:      hsla(220, 100%, 100%, 1);
+      background: hsla(220, 90%, 50%, 1);
+      //box-shadow: #{$shadow} hsla(220, 50%, 0%, 0.6);
+      //color:      hsla(220, 100%, 85%, 1);
+      //background: hsla(220, 30%, 10%, 1);
+      //box-shadow: #{$shadow} hsla(220, 50%, 30%, 0.4);
+    }
+    @else if($color == "green") {
+      color:         hsla(120, 100%, 90%, 1);
+      background:    hsla(120, 30%, 10%, 1);
+      box-shadow:    #{$shadow} hsla(120, 50%, 30%, 0.4);
+    }
+    @else if($color == "red") {
+      color:         hsla(0, 100%, 90%, 1);
+      background:    hsla(0, 30%, 10%, 1);
+      box-shadow:    #{$shadow} hsla(0, 50%, 30%, 0.4);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+//@if ($style == 1) {
+//  position:      absolute;
+//  transform:     translate(-50%, -112%);
+//  padding:       0.15em 0.6em 0.25em;
+//  left:          50%;
+//  /*width:       calc(100% - 16px);*/
+//  width:         fit-content;
+//  font:          1.3rem "IBM Plex Mono";
+//  color:         hsla(120, 100%, 90%, 1);
+//  background:    hsla(120, 30%, 10%, 1);
+//  /*border:        1px solid hsla(120, 100%, 70%, 0.9);*/
+//  border-radius: 0.35em;
+//  /*box-shadow:    0px 0px 17px 0px hsla(120, 50%, 50%, 0.7);*/
+//  box-shadow:    .3em .2em .1em hsla(120, 50%, 30%, 0.4);
+//  content:       "#{$attribute}=\"" attr(#{$attribute}) "\"";
+//  z-index:       10000;
+//}
+//@else if($style == 2) {
+//  bottom:     -5px;
+//  transform:  translate(-50%, 112%);
+//  color:      hsla(240, 100%, 90%, 1);
+//  background: hsla(240, 30%, 10%, 1);
+//  box-shadow: .3em .2em .1em hsla(240, 50%, 30%, 0.4);
+//  /*border-color: hsla(240, 100%, 70%, 0.9);*/
+//}
+
+

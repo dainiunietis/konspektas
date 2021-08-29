@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS Savybių pritaikymo mechanizmas</h1>
+<p><del tabindex="0">CSS Savybių su atstumais-ilgiais pritaikymo mechanizmas (<i>initial value</i>, <i>specified value</i>, <i>computed value</i>, <i>actual value</i>,  <i>used value</i>, <i>resolved value</i>)</del></p>
+<p>HTML dokumento tago-elemento kiekviena CSS savybė praeina jos reikšmės apskaičiavimo etapus, ir kiekvienas etapas turi savo reikšmę.</p>
+<p>Visas CSS savybių reikšmių apskaičiavimo algoritmas:</p>
+<blockquote>
+  <p id="Calculating_a_property's_actual_value">Calculating a property's actual value</p>
+  <p>The <a href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent">user agent</a> performs four steps to calculate a property's actual (final) value:</p>
+  <ol>
+    <li>First, the <a href="https://devdocs.io/css/specified_value">specified value</a> is determined based on the result of <a href="https://devdocs.io/css/cascade">cascading</a>, <a href="https://devdocs.io/css/inheritance">inheritance</a>, or using the <a href="https://devdocs.io/css/initial_value">initial value</a>.</li>
+    <li>Next, the <a href="https://devdocs.io/css/computed_value">computed value</a> is calculated according to the specification (for example, a <code>span</code> with <code>position: absolute</code> will have its computed <code>display</code> changed to <code>block</code>).</li>
+    <li>Then, layout is calculated, resulting in the <a href="https://devdocs.io/css/used_value">used value</a>.</li>
+    <li>Finally, the used value is transformed according to the limitations of the local environment, resulting in the actual value.</li>
+  </ol>
+</blockquote>
+<figure class="figure--image-bigCaption"><img src="images/20181109_215749_slides-students-C04 - PDF-XChange Viewer.png" alt="" width="118" height="53"/>
+  <figcaption><code>udemy-advanced-css-sass\advanced-css-course-master\slides-students-C04.pdf</code><i></i></figcaption>
+</figure>
+<table width="1876" class="c-tableCols c-tableCols--h2h3 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h2>Pradinė-default'inė reikšmė (<i>initial value</i>)</h2>
+      <p class="c-em-note">Ar <i>initial value</i> naršyklėse yra pritaikomos su <i>user agent stylesheet</i> ????????????</p>
+      <p class="c-em-important c-em--small">Su <a href="http://konspektas.local/css.data-types.htm#(h)">Keyword'as — initial</a> galima bet kuriai CSS savybei priskirti default'inę reikšmę.      </p>
+      <p>Kiekviena CSS savybė turi default'inę reikšmę, kuri nustatyta CSS standarte:</p>
+      <blockquote>
+        <p>Each property has an <i>initial value</i>, defined in the property's definition table. </p>
+        <p><a href="https://www.w3.org/TR/css-cascade-4/#initial-values">Initial Values</a></p>
+      </blockquote>
+      <blockquote>
+        <p>The <i>initial value</i> of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> property is its default value, as listed in its definition table. </p>
+        <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value">Initial value - CSS: Cascading Style Sheets | MDN</a></p>
+      </blockquote>
+      <figure style="width:200px"> <img src="images/20181005_121459_padding-top - CSS_ Cascading Style Sheets _ MDN.png" alt=""/>
+        <figcaption>Pas MDN default'inė reikšmė rodoma tokiame definition table'e</figcaption>
+      </figure>
+      <p>Konkrečiam dokumento tagui, paveldimoms ir nepaveldimoms CSS savybėms default'inės reikšmės priskiriamos skirtingai: </p>
+      <dl>
+        <dt>Paveldimoms CSS savybėms (<i>inherited properties</i>)</dt>
+        <dd>
+          <p>Priskiriama tik <i>root element</i>'ui (t. y. <code>&lt;html&gt;</code>), ir vyksta paveldėjimo procesas &#8212; root'o tiesioginiai vaikai paveldi ir taip toliau:</p>
+          <blockquote>
+            <p>For <a href="https://developer.mozilla.org/en-US/docs/CSS/inheritance#Inherited_properties" title="en/CSS/inheritance#Inherited_properties">inherited properties</a>, the initial value is used on the <em>root element only</em>, as long as no <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/specified_value">specified value</a> is supplied.</p>
+          </blockquote>
+        </dd>
+        <dt>Nepaveldimoms CSS savybėms (<i>non-inherited properties</i>)</dt>
+        <dd>
+          <p>Priskiriama visiems tagams, jeigu nėra priskirta su CSS:</p>
+          <blockquote>
+            <p>For <a href="https://developer.mozilla.org/en-US/docs/CSS/inheritance#Non-inherited_properties" title="en/CSS/inheritance#Non-inherited_properties">non-inherited properties</a>, the initial value is used on <em>all elements</em>, as long as no <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/specified_value">specified value</a> is supplied.</p>
+          </blockquote>
+          <blockquote>
+            <p>If the property is not an <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#inherited-property" id="ref-for-inherited-property①">inherited property</a>, <mark>and the <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#cascade" id="ref-for-cascade④">cascade</a> does not result in a value ????????</mark>, then the <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#specified-value" id="ref-for-specified-value①①">specified value</a> of the property is its <a data-link-type="dfn" href="https://www.w3.org/TR/css-cascade-4/#initial-value" id="ref-for-initial-value③">initial value</a>.</p>
+            <p><a href="https://www.w3.org/TR/css-cascade-4/#initial-values">Initial Values</a></p>
+          </blockquote>
+        </dd>
+      </dl>
+    </td>
+    <td width="25%">
+      <h2>Nustatyta reikšmė (<i>specified value</i>)</h2>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/specified_value">Specified value - CSS: Cascading Style Sheets | MDN</a></p>
+      <p><i>specified value</i> gaunama iš:</p>
+      <ul>
+        <li> CSS rule'su nustatytos CSS savybės reikšmės, bet kuriuo būdu priskirtu dokumentui:
+          <ul>
+            <li><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;*.css&quot; /&gt;</code></li>
+            <li><code>&lt;style&gt;...&lt;/style&gt;</code> &#8212; embedded stylesheets</li>
+            <li><code>&lt;p style=&quot;...&quot;&gt;</code> &#8212; inline styles</li>
+          </ul>
+        </li>
+        <li>jeigu CSS savybė nepriskirta &#8212;  default'inės reikšmės (<i>initial value</i>)</li>
+      </ul>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>The specified value of a CSS property is the value it receives from the document's style sheet.</p>
+      </blockquote>
+      <p>Nustatytos reikšmės nustatymo algoritmas:      </p>
+      <blockquote>
+        <p>The specified value for a given property is determined according to the following rules:</p>
+        <ol>
+          <li>If the document's style sheet explicitly specifies a value for the property, the given value will be used.</li>
+          <li>If the document's style sheet doesn't specify a value but it is an inherited property, the value will be taken from the parent element.</li>
+          <li>If none of the above pertain, the element's <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value">initial value</a> will be used.</li>
+        </ol>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h2>Apskaičiuota reikšmė (<i>computed value</i>)</h2>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value">Computed value - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>&nbsp;</p>
+      <div class="c-em-note c-em--narrow">
+        <p>Būtent ši reikšmė dalyvauja <i>cascade</i>'e:</p>
+        <blockquote>
+          <p>The <strong>computed value</strong> of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> property is the value that is transferred from parent to child during inheritance. </p>
+        </blockquote>
+      </div>
+      <p>Padaroma iš <i>specified value</i>:</p>
+      <blockquote>
+        <p>It is calculated from the <a href="https://devdocs.io/css/specified_value">specified value</a> by:</p>
+        <ol>
+          <li>Handling the special values <a href="https://devdocs.io/css/inherit">inherit</a>, <a href="https://devdocs.io/css/initial">initial</a>, <a href="https://devdocs.io/css/unset">unset</a>, and <a href="https://devdocs.io/css/revert">revert</a>.</li>
+          <li>Doing the computation needed to reach the value described in the "Computed value" line in the property's definition table.      </li>
+        </ol>
+      </blockquote>
+      <p>Kas daroma su <i>specified value</i>, kurios reikšmė yra <i>relative value</i>:</p>
+      <dl>
+        <dt>daugumoje atvejų <i>relative values</i> konvertuojamos į <i>absolute values</i>:</dt>
+        <dd>
+          <blockquote>
+            <p>The computation needed to reach a property's computed value typically involves converting relative values (such as those in <code>em</code> units or percentages) to absolute values. For example, if an element has specified values <code>font-size: 16px</code> and <code>padding-top: 2em</code>, then the computed value of <code>padding-top</code> is <code>32px</code> (double the font size).</p>
+          </blockquote>
+        </dd>
+        <dt>bet daliai savybių <code>%</code> lieka kaip yra, ir <code>line-height</code> su <i>unitless number</i> lieka nepakeistas, o į absoliučią reikšmę konvertuojama apskaičiuojant <i>used value</i></dt>
+        <dd>
+          <blockquote>
+            <p>However, for some properties (those where percentages are relative to something that may require layout to determine, such as width, margin-right, text-indent, and top), percentage-specified values turn into percentage-computed values. Additionally, unitless numbers specified on the line-height property become the computed value, as specified. The relative values that remain in the computed value become absolute when the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/used_value">used value</a> is determined.</p>
+          </blockquote>
+        </dd>
+      </dl>
+    </td>
+    <td width="25%">
+      <h2>(<i>used value</i>) </h2>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/used_value">Used value - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>Šis CSS savybės reikšmės apskaičiavimo etapas skirtas savybėms, kurios susijusios su layout'u, t. y. kurių galutinei reikšmei apskaičiuoti turi įtakos kitų elementų (dažniausiai parent'as) išmatavimai.</p>
+      <p>Su layout'u nesusijusių savybių <i>computed value</i> ir <i>used value</i> yra identiškos:</p>
+      <blockquote>
+        <p>For CSS properties that don't depend on layout (e.g., <code>display</code>, font-size, or line-height), the computed values and used values are the same.</p>
+      </blockquote>
+      <p>Su layout'u susijusios savybės:      </p>
+      <blockquote>
+        <p>The following are the CSS 2.1 properties that do depend on layout, so they have a different computed value and used value: (taken from <a rel="noopener" href="http://www.w3.org/TR/CSS2/changes.html#q36" title="http://www.w3.org/TR/CSS2/changes.html#q36">CSS 2.1 Changes: Specified, computed, and actual values</a>):</p>
+        <ul>
+          <li>background-position</li>
+          <li>bottom, left, right, top</li>
+          <li>height, width</li>
+          <li>margin-bottom, margin-left, margin-right, margin-top</li>
+          <li>min-height, min-width</li>
+          <li>padding-bottom, padding-left, padding-right, padding-top</li>
+          <li>text-indent        </li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h2>(<i>resolved value</i>)
+      </h2>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolved_value">Resolved value - CSS: Cascading Style Sheets | MDN</a>      </p>
+      <p>Šis CSS savybės reikšmės apskaičiavimo etapas pridėtas <code>window.getComputedStyle()</code> palaikymui:</p>
+      <blockquote>
+        <p><a data-link-type="idl" href="https://drafts.csswg.org/cssom/#dom-window-getcomputedstyle" id="ref-for-dom-window-getcomputedstyle②">getComputedStyle()</a> was historically defined to return the "computed value" of an element or pseudo-element. However, the concept of "computed value" changed between revisions of CSS while the implementation of <a data-link-type="idl" href="https://drafts.csswg.org/cssom/#dom-window-getcomputedstyle" id="ref-for-dom-window-getcomputedstyle③">getComputedStyle()</a> had to remain the same for compatibility with deployed scripts. To address this issue this specification introduces the concept of a resolved value.</p>
+      </blockquote>
+      <p>Ką grąžina <code>window.getComputedStyle()</code>:</p>
+      <blockquote>
+        <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle" title="The window.getComputedStyle() method returns an object that reports the values of all CSS properties of an element after applying active stylesheets and resolving any basic computation those values may contain.">getComputedStyle()</a> DOM API returns the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolved_value">resolved value</a>, which may either be the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/computed_value">computed value</a> or the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/used_value">used value</a>, depending on the property.</p>
+      </blockquote>
+      <p class="c-em-alert c-em--narrow">Dabar man atrodo neaišku, kuo netinka <i>used value</i>? Juk tos savybės, kurios nesusijusios layout'u, jų <i>used value</i> gauna  <i>computed value</i> be pakeitimų, o susijusios pakeistą, ir atrodo būtų galima sakyti, kad <code>window.getComputedStyle()</code> grąžina <i>used value</i>.      </p>
+      <figure class="figure--image-bigCaption"><img width="100" src="images/20181102_192901_Window.png" alt="" />
+        <figcaption>Naršyklės dev tools'uose greičiausiai rodo pažymėto tago <i>resolved value</i></figcaption>
+      </figure>
+    </td>
+    <td>
+      <h2>(<i>actual value</i>)</h2>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/actual_value">https://developer.mozilla.org/en-US/docs/Web/CSS/actual_value</a> </p>
+      <p>Tai galutinė absoliuti (jeigu tai skaičius) savybės reikšmė, pritaikoma dokumento elementui, apskaičiuojama iš <i>used value</i>pagal <q>browser and device restrictions</q>:</p>
+      <blockquote>
+        <p>The <strong>actual value</strong> of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> property is the <a href="https://devdocs.io/css/used_value">used value</a> of that property after any necessary approximations have been applied. For example, a <a href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent">user agent</a> that can only render borders with a whole-number pixel width may round the thickness of the border to the nearest integer.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>A single HTML document can import and link to multiple external stylesheets, contain one or more embedded stylesheets, and make use of inline styles. In the process, it is quite possible that some rules will conflict with one another. Cascading Style Sheets uses a mechanism called the cascade to resolve any such conflicts and arrive at a final set of styles to be applied to the document.</p>
+<p>Two key components of the cascade are specificity and inheritance.</p>
+<p>&nbsp;</p>
+<p>actual value</p>
+<p>used value</p>
+<p>resolved value</p>
+<table width="1883" class="-c-tableCols -c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="39%">&nbsp; </td>
+    <td width="14%">&nbsp;</td>
+    <th width="7%">initial value</th>
+    <th width="8%">specified value</th>
+    <th width="8%">computed value</th>
+    <th width="8%">used value</th>
+    <th width="8%">resolved value</th>
+    <th width="8%">actual value</th>
+  </tr>
+  <tr>
+    <td rowspan="2">
+      <p><code>color:</code> &#8212; paveldima CSS savybė (<i>inherited property</i>)</p>
+      <p><em>Computed value:</em> If the value is translucent, the computed value will be the rgba() corresponding one. If it isn't, it will be the rgb() corresponding one. The transparent keyword maps to rgba(0,0,0,0).</p>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="">Lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td align="center">
+      <p><code>rgb(0, 0, 0)</code></p>
+    </td>
+    <td align="center"><code>rgb(0, 0, 0)</code></td>
+    <td align="center"><code>rgb(0, 0, 0)</code></td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center" valign="middle">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="color: deepskyblue">Lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td align="center"><code>rgb(0, 0, 0)</code></td>
+    <td align="center"><code>deepskyblue</code></td>
+    <td align="center"><code>rgb(0, 191, 255)</code></td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center" valign="middle">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>padding-top:</code> &#8212; nepaveldima CSS savybė (<i>non-inherited property</i>)</p>
+      <p><em>Computed value:</em> the percentage as specified or the absolute length</p>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="">Lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td align="center">
+      <p><code>0</code></p>
+    </td>
+    <td align="center"><code>0</code></td>
+    <td align="center"><code>0px</code></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="padding-top: 1em">Lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td align="center"><code>0</code></td>
+    <td align="center"><code>1em</code></td>
+    <td align="center"><code>14.4px</code></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="padding-top: 10%">Lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td align="center"><code>0</code></td>
+    <td align="center"><code>10%</code></td>
+    <td align="center">
+      <p><code>24.8906px</code></p>
+      <p>priklauso nuo konteinerio pločio</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="padding-top: 10px">Lokys žemuogiavo.</div>
+        </div>
+      </div>
+    </td>
+    <td align="center"><code>0</code></td>
+    <td align="center"><code>10px</code></td>
+    <td align="center"> <code>10px</code>    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1883" class="-c-tableCols -c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td width="16%">&nbsp; </td>
+    <th width="28%">Paveldima CSS savybė (<i>inherited property</i>)</th>
+    <th width="28%">&nbsp;</th>
+    <th width="28%">&nbsp;</th>
+  </tr>
+  <tr>
+    <th>initial value</th>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="color: deepskyblue">Didelis lokys žemuogiavo.</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>specified value</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>computed value</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

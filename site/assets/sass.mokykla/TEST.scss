@@ -1,0 +1,166 @@
+
+// %red-text {
+//   color: red; }
+
+// .tas {
+//   @extend %red-text;
+//   font-size: 1em; }
+
+// .anas {
+//   @extend %red-text;
+//   font-size: 2em; }
+
+// -------------------------------------------------------------------------------------
+
+// @mixin boxas($top, $inset:"") {
+//  box-shadow: $top $inset;
+//  box-shadow: $top #{$inset};
+//  box-shadow: $top unquote($inset);
+// }
+
+// p {
+//  @include boxas(5px);
+// }
+
+// .pp {
+//  @include boxas(5px, aaa);
+// }
+
+// .pp {
+//  @include boxas(5px, "aaa");
+// }
+
+// -------------------------------------------------------------------------------------
+
+// .a1 { background: red }
+// p.a1~ { background: blue }
+
+// -------------------------------------------------------------------------------------
+
+//@mixin borderis($style: solid, $color: red, $width: 1px) {
+//  border: $style $color $width;
+//}
+//
+//.boxas {
+//  @include borderis;
+//}
+//
+//.boxas-2 {
+//  @include borderis(dashed);
+//}
+//
+//
+//.boxas-3 {
+//  @include borderis(dashed, null, 5px);
+//}
+
+// -------------------------------------------------------------------------------------
+
+$content: "First content — 1";
+
+$content: "Second content" !default;
+//$content: "Second content";
+
+//$content: "First content — 2";
+
+.kazkas {
+  content: $content;
+}
+
+// -------------------------------------------------------------------------------------
+
+// .b {
+//  @include borderis(5px, aaa);
+// }
+
+
+
+
+// $cols-count: null;
+// $cols-gutter: null;
+
+// @mixin cols-columns($gutter: null, $count: null) {
+//   @if $count  == null { $count: $cols-count; }
+//   @if $gutter == null { $gutter: $cols-gutter; }
+//   ...
+//   padding: $gutter;
+// }
+
+// // using case with no parameters
+
+// $cols-count: 3;
+// $cols-gutter: 1em;
+
+// .something {
+//   @include cols-columns();
+// }
+
+
+
+// @mixin display (
+//   $disp,
+//   $padding: null,
+//   $r-margin: null,
+//   $l-margin: null) {
+//     display: $disp;
+//     padding: $padding;
+//     margin-left: $l-margin;
+//     margin-right: $r-margin;
+// }
+
+// .nav__item {
+//   @include display(inline-block, $l-margin: 20px);
+// }
+
+// .nav__link {
+//   @include display(block, 10px 5px);
+// }
+
+// --------------------------------------------
+
+// .nav__item {
+//   display: inline-block;
+//   margin-left: 20px;
+// }
+
+.nav__link {
+    display: block;
+ padding: 10px 5px;
+}
+
+/*
+
+aaa
+ddd
+eee
+
+
+111
+  222
+    333
+444
+555
+
+
+
+
+bbb
+ccc
+ddd
+444
+bbb
+ccc
+ddd
+eee
+
+111
+bbb
+
+555
+
+*/
+
+
+
+
+

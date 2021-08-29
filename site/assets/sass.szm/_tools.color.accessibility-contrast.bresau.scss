@@ -1,0 +1,235 @@
+@charset "utf-8";
+
+// https://codepen.io/bluesaunders/details/FCLaz
+
+//@import "compass/css3";
+
+// Calculeate brightness of a given color.
+@function bresau-brightness($color) {
+  @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
+}
+
+$bresau-dark-text-default: #000 !default;
+$bresau-light-text-default: #fff !default;
+
+// Compares contrast of a given color to the light/dark arguments and returns whichever is most "contrasty"
+@function bresau-color-contrast($color, $dark: $bresau-dark-text-default, $light: $bresau-light-text-default) {
+  @if $color == null {
+    @return null;
+  }
+  @else {
+    $color-brightness: bresau-brightness($color);
+    $light-text-brightness: bresau-brightness($light);
+    $dark-text-brightness: bresau-brightness($dark);
+    
+    @return if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness), $light, $dark);
+  }
+}
+
+// @USAGE:
+// Main styles
+//
+///**=== Variables ===**/
+//$color1: AliceBlue;
+//$color2: AntiqueWhite;
+//$color3: Aqua;
+//$color4: Aquamarine;
+//$color5: Azure;
+//$color6: Beige;
+//$color7: Bisque;
+//$color8: Black;
+//$color9: BlanchedAlmond;
+//$color10: Blue;
+//
+//$color11: BlueViolet;
+//$color12: Brown;
+//$color13: BurlyWood;
+//$color14: CadetBlue;
+//$color15: Chartreuse;
+//$color16: Chocolate;
+//$color17: Coral;
+//$color18: CornflowerBlue;
+//$color19: Cornsilk;
+//$color20: Crimson;
+//
+//$color21: Cyan;
+//$color22: DarkBlue;
+//$color23: DarkCyan;
+//$color24: DarkGoldenrod;
+//$color25: DarkGray;
+//$color26: DarkGreen;
+//$color27: DarkKhaki;
+//$color28: DarkGray;
+//$color29: DarkMagenta;
+//$color30: DarkOliveGreen;
+//
+//$color31: DarkOrange;
+//$color32: DarkOrchid;
+//$color33: DarkRed;
+//$color34: DarkSalmon;
+//$color35: DarkSeaGreen;
+//$color36: DarkSlateBlue;
+//$color37: DarkSlateGray;
+//$color38: DarkTurquoise;
+//$color39: DarkViolet;
+//$color40: DeepPink;
+//
+//$color41: DeepSkyBlue;
+//$color42: DimGray;
+//$color43: DodgerBlue;
+//$color44: Firebrick;
+//$color45: FloralWhite;
+//$color46: ForestGreen;
+//$color47: Fuchsia;
+//$color48: Gainsboro;
+//$color49: GhostWhite;
+//$color50: Gold;
+//
+//$color51: Goldenrod;
+//$color52: Gray;
+//$color53: Green;
+//$color54: GreenYellow;
+//$color55: Honeydew;
+//$color56: HotPink;
+//$color57: IndianRed;
+//$color58: Indigo;
+//$color59: Ivory;
+//$color60: Khaki;
+//
+//$color51: Lavender;
+//$color52: LavenderBlush;
+//$color53: LawnGreen;
+//$color54: LemonChiffon;
+//$color55: LightBlue;
+//$color56: LightCoral;
+//$color57: LightCyan;
+//$color58: LightGoldenrodYellow;
+//$color59: LightGray;
+//$color60: LightGreen;
+//
+//$color61: lightpink;
+//$color62: lightsalmon;
+//$color63: lightseagreen;
+//$color64: lightskyblue;
+//$color65: lightslategray;
+//$color66: lightsteelblue;
+//$color67: lightyellow;
+//$color68: lime;
+//$color69: magenta;
+//$color70: maroon;
+//
+//$color71: mediumaquamarine;
+//$color72: mediumblue;
+//$color73: mediumorchid;
+//$color74: mediumpurple;
+//$color75: mediumseagreen;
+//$color76: mediumslateblue;
+//$color77: mediumspringgreen;
+//$color78: mediumturquoise;
+//$color79: mediumvioletred;
+//$color80: midnightblue;
+//
+//$color81: mintcream;
+//$color82: mistyrose;
+//$color83: moccasin;
+//$color84: navajowhite;
+//$color85: navy;
+//$color86: oldlace;
+//$color87: olive;
+//$color88: olivedrab;
+//$color89: Orange;
+//$color90: Orangered;
+//
+//$color91: orchid;
+//$color92: palegoldenrod;
+//$color93: palegreen;
+//$color94: paleturquoise;
+//$color95: palevioletred;
+//$color96: papayawhip;
+//$color97: peachpuff;
+//$color98: peru;
+//$color99: pink;
+//$color100: plum;
+//
+//$color101: powderblue;
+//$color102: purple;
+//$color103: red;
+//$color104: rosybrown;
+//$color105: royalblue;
+//$color106: saddlebrown;
+//$color107: salmon;
+//$color108: sandybrown;
+//$color109: seagreen;
+//$color110: seashell;
+//
+//$color111: sienna;
+//$color112: silver;
+//$color113: skyblue;
+//$color114: slateblue;
+//$color115: slategray;
+//$color116: snow;
+//$color117: springgreen;
+//$color118: steelblue;
+//$color119: tan;
+//$color120: teal;
+//
+//$color121: thistle;
+//$color122: tomato;
+//$color123: turquoise;
+//$color124: violet;
+//$color125: wheat;
+//$color126: white;
+//$color127: whitesmoke;
+//$color128: yellow;
+//$color129: yellowgreen;
+//$color130: #BadA55;
+//
+//// For loop inumerator
+//$num: 0;
+//
+//body * {
+//  box-sizing: border-box;
+//}
+//
+//.grid {
+//  .number {
+//    float: left;
+//    width: 10%;
+//    padding: 25px 0 50px;
+//    position: relative;
+//    text-align: center;
+//    font-weight: bold;
+//    font-family: sans-serif;
+//  }
+//  // clearfix
+//  .row:after {
+//    content: "";
+//    display: table;
+//    clear: both;
+//  }
+//}
+//
+//.color-block {
+//  padding: 3px 6px;
+//  margin: 0;
+//}
+//
+//@each $color in $color1, $color2, $color3, $color4, $color5, $color6, $color7, $color8, $color9, $color10, $color11, $color12, $color13, $color14, $color15, $color16, $color17, $color18, $color19, $color20, $color21, $color22, $color23, $color24, $color25, $color26, $color27, $color28, $color29, $color30, $color31, $color32, $color33, $color34, $color35, $color36, $color37, $color38, $color39, $color40, $color41, $color42, $color43, $color44, $color45, $color46, $color47, $color48, $color49, $color50, $color51, $color52, $color53, $color54, $color55, $color56, $color57, $color58, $color59, $color60, $color61, $color62, $color63, $color64, $color65, $color66, $color67, $color68, $color69, $color70, $color71, $color72, $color73, $color74, $color75, $color76, $color77, $color78, $color79, $color80, $color81, $color82, $color83, $color84, $color85, $color86, $color87, $color88, $color89, $color90, $color91, $color92, $color93, $color94, $color95, $color96, $color97, $color98, $color99, $color100, $color101, $color102, $color103, $color104, $color105, $color106, $color107, $color108, $color109, $color110, $color111, $color112, $color113, $color114, $color115, $color116, $color117, $color118, $color119, $color120, $color121, $color122, $color123, $color124, $color125, $color126, $color127, $color128, $color129, $color130 {
+//  $num: $num + 1;
+//  .color#{$num} {
+//    background: $color;
+//    color: bresau-color-contrast($color);
+//    &:after {
+//      content: "#{$color}";
+//      position: absolute;
+//      bottom: 22px;
+//      font-weight: normal;
+//      font-size: 14px;
+//      left: 50%;
+//      width: 100%;
+//      margin-left: -50%;
+//      line-height: 11px;
+//      white-space: pre;
+//    }
+//  }
+//}

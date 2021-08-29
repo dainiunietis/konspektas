@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    html {
+      overflow-y: scroll;
+      min-height:  100vh;
+      /*width:       100vw;*/
+    }
+
+    body {
+      margin: 0;
+      /*font-family: "Roboto", sans-serif;*/
+      font-family: "Georgia Pro", serif;
+      padding:     1rem 1.5rem;
+      background:  hsl(39, 100%, 97%);
+      color:       hsl(222, 30%, 16%);
+      /*padding: 1rem 2rem 4rem 2rem;*/
+      line-height: 1.4;
+      /*font-size: 1.2em;*/
+      /*overflow-x:  hidden; !* <<< !!!!!!!!!!!!!!!  *!*/
+    }
+
+    h1 {
+      font-size: 2.5em
+    }
+
+    h2 {
+      font-size: 2em
+    }
+
+    h3 {
+      font-size: 1.5em
+    }
+
+    h1, h2, h3 {
+      /*font-family: "Georgia Pro Cond", serif;*/
+      /*font-family: "Georgia Pro Cond Black", serif;*/
+      font-stretch: condensed;
+      font-weight:  900;
+    }
+
+    .c-article {
+    }
+
+    .c-article, .c-article__wrapper {
+      max-width: 40rem;
+      margin:    0 auto;
+    }
+
+    /*.c-article__fullBleed:nth-of-type(odd) {*/
+    .c-article__fullBleed {
+      background-color: hsl(102, 40%, 40%);
+      color:            hsl(102, 81%, 95%);
+      width:            calc(100vw - 17px);  /*........................full bleed */
+
+      margin-left: 50%;
+      transform: translateX(-50%);
+
+      /*margin-left:      calc(50% - 50vw);*/
+    }
+  </style>
+</head>
+<body>
+
+<article class="c-article">
+  <h1>Full bleed CSS Utility</h1>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Donec ullamcorper nulla non metus
+    auctor fringilla. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor.</p>
+
+  <div class="c-article__fullBleed">
+    <div class="c-article__wrapper">
+      <h2>Cras mattis consectetur purus sit amet fermentum</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed
+        ac lorem facilisis, convallis ipsum eu, commodo dolor. Integer scelerisque dignissim velit, interdum vestibulum
+        turpis interdum non.</p>
+<!--      <p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis,-->
+<!--        sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>-->
+      <p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum
+        tempor, lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae
+        iaculis.</p>
+    </div>
+  </div>
+
+  <h2>Cras mattis consectetur purus sit amet fermentum</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed ac
+    lorem facilisis, convallis ipsum eu, commodo dolor. Integer scelerisque dignissim velit, interdum vestibulum turpis
+    interdum non.</p>
+<!--  <p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis,-->
+<!--    sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>-->
+<!--  <p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum tempor,-->
+<!--    lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae iaculis.</p>-->
+
+<!--  <div class="c-article__fullBleed">-->
+<!--    <div class="c-article__wrapper">-->
+<!--      <h2>Cras mattis consectetur purus sit amet fermentum</h2>-->
+<!--      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed-->
+<!--        ac lorem facilisis, convallis ipsum eu, commodo dolor. Integer scelerisque dignissim velit, interdum vestibulum-->
+<!--        turpis interdum non.</p>-->
+<!--      <p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis,-->
+<!--        sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>-->
+<!--      <p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum-->
+<!--        tempor, lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae-->
+<!--        iaculis.</p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <h2>Cras mattis consectetur purus sit amet fermentum</h2>-->
+<!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed ac-->
+<!--    lorem facilisis, convallis ipsum eu, commodo dolor. Integer scelerisque dignissim velit, interdum vestibulum turpis-->
+<!--    interdum non.</p>-->
+<!--  <p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis,-->
+<!--    sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>-->
+<!--  <p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum tempor,-->
+<!--    lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae iaculis.</p>-->
+</article>
+
+</body>
+</html>

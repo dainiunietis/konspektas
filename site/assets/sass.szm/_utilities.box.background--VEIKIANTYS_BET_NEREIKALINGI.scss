@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////
+
+//@mixin zm-colorSet-utilities-backgroundColor {
+//  @each $name, $colors in $g-colorSet-data {
+//
+//    .u-background-colorSet-#{$name}-c > *,
+//    .BG {
+//      $i: 1;
+//      @each $color in $colors {
+//        &:nth-child(#{$i}) {
+//          background-color: $color;
+//        }
+//        $i: $i + 1;
+//      }
+//    }
+//
+//    .u-background-colorSet-#{$name}-textContrast-c > *,
+//    .BG {
+//      $i: 1;
+//      @each $color in $colors {
+//        &:nth-child(#{$i}) {
+//          background-color: $color;
+//          //color: invert($color);
+//          color: sergom-choose-contrast-color($color);
+//          //color: bresau-color-contrast($color);
+//        }
+//        $i: $i + 1;
+//      }
+//    }
+//
+//  }
+//}
+
+//@include zm-colorSet-utilities-backgroundColor;
+
+
+

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS Shapes</h1>
+<p> <a href="https://www.w3.org/TR/css-shapes-1/">CSS Shapes Module Level 1</a></p>
+<p>&nbsp;</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Shapes">CSS Shapes - CSS: Cascading Style Sheets | MDN</a></p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Shapes/Overview_of_CSS_Shapes">Overview of CSS Shapes - CSS: Cascading Style Sheets | MDN</a></p>
+<p>&nbsp;</p>
+<p> <a href="https://www.smashingmagazine.com/2018/09/css-shapes/">Take A New Look At CSS Shapes — Smashing Magazine</a></p>
+<p> <a href="https://www.smashingmagazine.com/2019/04/art-direction-for-the-web-using-css-shapes/">Art Direction For The Web Using CSS Shapes — Smashing Magazine</a></p>
+<p>&nbsp;</p>
+<p>Paskirtis:</p>
+<blockquote>
+  <p>The purpose of this specification is to allow content to flow around a non-rectangular shape.</p>
+</blockquote>
+<p>CSS Shapes savybės veikia tik tagams su <code>float: left | right</code>: </p>
+<blockquote>
+  <p>In the current specification, shapes can only be applied to a float, so any shapes example needs to start with a floated element.</p>
+</blockquote>
+<p>&nbsp;</p>
+<ul>
+  <li><code>shape-outside:</code></li>
+  <li><code>shape-image-threshold:</code></li>
+  <li><code>shape-margin:</code></li>
+</ul>
+<p>&nbsp;</p>
+<p>There are a few different ways to create shapes</p>
+<p>the Shape Path Editor, available in Firefox, as it can help you to easily understand the shapes on your page and work with them</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+    <h3>Shape'ų sukūrimas su grafiniais objektais ir gradientais    </h3>
+    <div class="c-pvz">
+      <p class="c-pvz__caption">img'o su permatomumu wrap'inimas tekstu nurodant jo pačio alpha kanalą — <q>using the actual image file to create a path for the content to flow around</q></p>
+      <p class="c-pvz__title">sufloat'intas image'as be shape'o</p>
+      <div class="c-pvz__container" style="">
+        <img src="images/graphics/drugelis.png" alt="" width="292" height="290" style="float: left;">
+        <p>Bemiegės naktys Žvėryne. Pirmieji mano vaikystės prisiminimai. Žmonės, kurie mane mylėjo, miegodavo ir netrukdydavo man būti nelaimingam. Gulėdavau atmerktomis akimis ir klausydavausi garsų tamsoje. Ramiomis ir šaltomis pavasario naktimis girdėdavau garvežius geležinkelio stoty. Jie ūkdavo, išleisdavo garą, triukšmingai pradėdavo važiuoti. Vagonai pajudėdavo vienas po kito švelniai trinksėdami. Klausydavausi šių garsų ir svajones apie žydruosius tolius svajojau. Kitokius garsus girdėjau. Negerus. Riksmą girdėjau naktį ir man buvo baisu. Paskui riksmas nutilo ir man buvo dar baisiau. Tyla buvo baisesnė.</p>
+        <p>Skaičiau, kad suerzintas žmogus praranda dvasinę energiją. Ji niekur nedingsta. Energijos tvarumo dėsnis. Ji atitenka tam, kuris suerzino. Tai panašu į tiesą ir tai paaiškina, kodėl norisi suerzinti. Kankinti. Dvasinė energija – maistas sielai. Gyvuliai neturi sielos, todėl jiems reikia penėti tik kūną. O žmogui reikia dar ir sielą penėti. Kūnui maistas – kitas kūnas. Sielai maistas – kita siela. "Ne, – man sako, – grožis yra maistas sielai. Ir menas." Taip. Bet tai tik desertas. Tikrasis maistas sielai yra kito kentėjimas. Kankinti kitą – tai valgyti jo sielą.</p>
+      </div>
+      <p class="c-pvz__title">sufloat'intas image'as su shape'u <code>shape-outside: url(drugelis.png)</code></p>
+      <div class="c-pvz__container" style="">
+        <img style="float: left; shape-outside: url(images/graphics/drugelis.png)" src="images/graphics/drugelis.png" alt="" width="292" height="290">
+        <p>Bemiegės naktys Žvėryne. Pirmieji mano vaikystės prisiminimai. Žmonės, kurie mane mylėjo, miegodavo ir netrukdydavo man būti nelaimingam. Gulėdavau atmerktomis akimis ir klausydavausi garsų tamsoje. Ramiomis ir šaltomis pavasario naktimis girdėdavau garvežius geležinkelio stoty. Jie ūkdavo, išleisdavo garą, triukšmingai pradėdavo važiuoti. Vagonai pajudėdavo vienas po kito švelniai trinksėdami. Klausydavausi šių garsų ir svajones apie žydruosius tolius svajojau. Kitokius garsus girdėjau. Negerus. Riksmą girdėjau naktį ir man buvo baisu. Paskui riksmas nutilo ir man buvo dar baisiau. Tyla buvo baisesnė.</p>
+        <p>Skaičiau, kad suerzintas žmogus praranda dvasinę energiją. Ji niekur nedingsta. Energijos tvarumo dėsnis. Ji atitenka tam, kuris suerzino. Tai panašu į tiesą ir tai paaiškina, kodėl norisi suerzinti. Kankinti. Dvasinė energija – maistas sielai. Gyvuliai neturi sielos, todėl jiems reikia penėti tik kūną. O žmogui reikia dar ir sielą penėti. Kūnui maistas – kitas kūnas. Sielai maistas – kita siela. "Ne, – man sako, – grožis yra maistas sielai. Ir menas." Taip. Bet tai tik desertas. Tikrasis maistas sielai yra kito kentėjimas. Kankinti kitą – tai valgyti jo sielą.</p>
+      </div>
+      <p class="c-pvz__title">padidiname atitraukimą su <code>shape-margin: 10px</code></p>
+      <div class="c-pvz__container" style="">
+        <img style="float: left; shape-outside: url(images/graphics/drugelis.png); shape-margin: 10px" src="images/graphics/drugelis.png" alt="" width="292" height="290">
+        <p>Bemiegės naktys Žvėryne. Pirmieji mano vaikystės prisiminimai. Žmonės, kurie mane mylėjo, miegodavo ir netrukdydavo man būti nelaimingam. Gulėdavau atmerktomis akimis ir klausydavausi garsų tamsoje. Ramiomis ir šaltomis pavasario naktimis girdėdavau garvežius geležinkelio stoty. Jie ūkdavo, išleisdavo garą, triukšmingai pradėdavo važiuoti. Vagonai pajudėdavo vienas po kito švelniai trinksėdami. Klausydavausi šių garsų ir svajones apie žydruosius tolius svajojau. Kitokius garsus girdėjau. Negerus. Riksmą girdėjau naktį ir man buvo baisu. Paskui riksmas nutilo ir man buvo dar baisiau. Tyla buvo baisesnė.</p>
+        <p>Skaičiau, kad suerzintas žmogus praranda dvasinę energiją. Ji niekur nedingsta. Energijos tvarumo dėsnis. Ji atitenka tam, kuris suerzino. Tai panašu į tiesą ir tai paaiškina, kodėl norisi suerzinti. Kankinti. Dvasinė energija – maistas sielai. Gyvuliai neturi sielos, todėl jiems reikia penėti tik kūną. O žmogui reikia dar ir sielą penėti. Kūnui maistas – kitas kūnas. Sielai maistas – kita siela. "Ne, – man sako, – grožis yra maistas sielai. Ir menas." Taip. Bet tai tik desertas. Tikrasis maistas sielai yra kito kentėjimas. Kankinti kitą – tai valgyti jo sielą.</p>
+      </div>
+</div>
+    <p>&nbsp;</p>
+    <div class="c-pvz">
+      <style>
+        .cp-20190711130904::before {
+          width: 292px;
+          height: 390px;
+          content: "";
+          float: left;
+          border: dotted;
+          shape-outside: url(images/graphics/drugelis.png);
+          shape-margin: 0px;
+          background: url(images/graphics/drugelis.png) 0 / 100% 100%, url(images/graphics/drugelis.png) 0 / auto, hsla(197, 71%, 73%, 0.5);
+          background-blend-mode: normal, luminosity;
+          /*mix-blend-mode: multiply;*/
+          opacity: 0.7;
+        }
+      </style>
+      <p class="c-pvz__caption">Galima naudoti img'o alpha kanalą shape'ui, o patį shape'ą sukurti su <code>::before</code></p>
+      <blockquote>
+        <p>you could also use an image as the path for the shape in order to create  a curved text effect without also including the image on the page. You  still need something to float, however, and so for this, we can use  Generated Content.</p>
+      </blockquote>
+      <p class="c-pvz__title">...</p>
+      <div class="c-em-important">
+        <p>Chrome ir Firefox veikia skirtingai:</p>
+        <ul>
+          <li>Chrome pritaiko originalaus dydžio img'o alpha kanalą</li>
+          <li>o Firefox img'o alpha kanalą sutalpina į tago plotį-aukštį, t. y. veikia kaip background'ui <code>background-size: 100% 100%;</code></li>
+        </ul>
+      </div>
+      <div class="c-pvz__container cp-20190711130904" style="">
+        <p>Bemiegės naktys Žvėryne. Pirmieji mano vaikystės prisiminimai. Žmonės, kurie mane mylėjo, miegodavo ir netrukdydavo man būti nelaimingam. Gulėdavau atmerktomis akimis ir klausydavausi garsų tamsoje. Ramiomis ir šaltomis pavasario naktimis girdėdavau garvežius geležinkelio stoty. Jie ūkdavo, išleisdavo garą, triukšmingai pradėdavo važiuoti. Vagonai pajudėdavo vienas po kito švelniai trinksėdami. Klausydavausi šių garsų ir svajones apie žydruosius tolius svajojau. Kitokius garsus girdėjau. Negerus. Riksmą girdėjau naktį ir man buvo baisu. Paskui riksmas nutilo ir man buvo dar baisiau. Tyla buvo baisesnė.</p>
+        <p>Skaičiau, kad suerzintas žmogus praranda dvasinę energiją. Ji niekur nedingsta. Energijos tvarumo dėsnis. Ji atitenka tam, kuris suerzino. Tai panašu į tiesą ir tai paaiškina, kodėl norisi suerzinti. Kankinti. Dvasinė energija – maistas sielai. Gyvuliai neturi sielos, todėl jiems reikia penėti tik kūną. O žmogui reikia dar ir sielą penėti. Kūnui maistas – kitas kūnas. Sielai maistas – kita siela. "Ne, – man sako, – grožis yra maistas sielai. Ir menas." Taip. Bet tai tik desertas. Tikrasis maistas sielai yra kito kentėjimas. Kankinti kitą – tai valgyti jo sielą.</p>
+    </div>
+    </div>
+    <p>&nbsp;</p>
+      <div class="c-pvz">
+        <style>
+          .cp-20190725121604 {
+            width: 280px;
+            height: 280px;
+            float: left;
+            border: dotted;
+            /* --bgImg-color: linear-gradient(-50grad, hsla(58, 100%, 50%, 1), hsla(58, 100%, 50%, 0) 50%); */
+            /*background: var(--bgImg-shape), var(--bgImg-color);*/
+            --bgImg-shape: linear-gradient(150grad, hsl(190, 100%, 50%), hsla(0, 100%, 50%, 0) 50%);
+            background: var(--bgImg-shape);
+            shape-outside: var(--bgImg-shape);
+          }
+        </style>
+        <p class="c-pvz__caption">Gradient'ų naudojimas shape'ui sukurti</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTarget-noBg" style="">
+          <div class="c-pvz__target cp-20190725121604"></div>
+          <p>Bemiegės naktys Žvėryne. Pirmieji mano vaikystės prisiminimai. Žmonės, kurie mane mylėjo, miegodavo ir netrukdydavo man būti nelaimingam. Gulėdavau atmerktomis akimis ir klausydavausi garsų tamsoje. Ramiomis ir šaltomis pavasario naktimis girdėdavau garvežius geležinkelio stoty. Jie ūkdavo, išleisdavo garą, triukšmingai pradėdavo važiuoti. Vagonai pajudėdavo vienas po kito švelniai trinksėdami. Klausydavausi šių garsų ir svajones apie žydruosius tolius svajojau. Kitokius garsus girdėjau. Negerus. Riksmą girdėjau naktį ir man buvo baisu. Paskui riksmas nutilo ir man buvo dar baisiau. Tyla buvo baisesnė.</p>
+          <p>Skaičiau, kad suerzintas žmogus praranda dvasinę energiją. Ji niekur nedingsta. Energijos tvarumo dėsnis. Ji atitenka tam, kuris suerzino. Tai panašu į tiesą ir tai paaiškina, kodėl norisi suerzinti. Kankinti. Dvasinė energija – maistas sielai. Gyvuliai neturi sielos, todėl jiems reikia penėti tik kūną. O žmogui reikia dar ir sielą penėti. Kūnui maistas – kitas kūnas. Sielai maistas – kita siela. "Ne, – man sako, – grožis yra maistas sielai. Ir menas." Taip. Bet tai tik desertas. Tikrasis maistas sielai yra kito kentėjimas. Kankinti kitą – tai valgyti jo sielą.</p>
+        </div>
+        <p class="c-pvz__title">Naudojame <code>shape-image-threshold</code>, kad pastumti wrap'o liniją ant dalinai permatomų sričių</p>
+        <blockquote>
+          <p><code>shape-image-threshold</code> in the CSS Shapes specification means that we can  use images or gradients with semi-opaque areas by setting a threshold. A  value for shape-image-threshold of 1 means fully opaque while 0 means fully transparent.</p>
+        </blockquote>
+        <div class="c-pvz__container c-pvz__container--childTarget-noBg" style="">
+          <div class="c-pvz__target cp-20190725121604" style="shape-image-threshold: .5"></div>
+          <p>Bemiegės naktys Žvėryne. Pirmieji mano vaikystės prisiminimai. Žmonės, kurie mane mylėjo, miegodavo ir netrukdydavo man būti nelaimingam. Gulėdavau atmerktomis akimis ir klausydavausi garsų tamsoje. Ramiomis ir šaltomis pavasario naktimis girdėdavau garvežius geležinkelio stoty. Jie ūkdavo, išleisdavo garą, triukšmingai pradėdavo važiuoti. Vagonai pajudėdavo vienas po kito švelniai trinksėdami. Klausydavausi šių garsų ir svajones apie žydruosius tolius svajojau. Kitokius garsus girdėjau. Negerus. Riksmą girdėjau naktį ir man buvo baisu. Paskui riksmas nutilo ir man buvo dar baisiau. Tyla buvo baisesnė.</p>
+          <p>Skaičiau, kad suerzintas žmogus praranda dvasinę energiją. Ji niekur nedingsta. Energijos tvarumo dėsnis. Ji atitenka tam, kuris suerzino. Tai panašu į tiesą ir tai paaiškina, kodėl norisi suerzinti. Kankinti. Dvasinė energija – maistas sielai. Gyvuliai neturi sielos, todėl jiems reikia penėti tik kūną. O žmogui reikia dar ir sielą penėti. Kūnui maistas – kitas kūnas. Sielai maistas – kita siela. "Ne, – man sako, – grožis yra maistas sielai. Ir menas." Taip. Bet tai tik desertas. Tikrasis maistas sielai yra kito kentėjimas. Kankinti kitą – tai valgyti jo sielą.</p>
+        </div>
+      </div>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Shape'ų sukūrimas su duomenų tipu <i>basic shape</i></h3>
+      <p><a href="https://www.smashingmagazine.com/2018/09/css-shapes/#css-shapes-with-basic-shapes">Take A New Look At CSS Shapes — Smashing Magazine</a> </p>
+      <blockquote>
+        <p id="css-shapes-with-basic-shapes">CSS Shapes With Basic Shapes</p>
+        <p>The  Basic Shapes are a set of predefined shapes which cover a lot of  different types of shapes you might want to create. To use a basic  shape, you use the basic shape <em>type</em> as a value for shape-outside.  This type uses functional notation, so we have the name of the shape  followed by brackets (inside which are some values for our shape).</p>
+        <p>The options that you have are the following:</p>
+        <ul>
+          <li>inset()</li>
+          <li>circle()</li>
+          <li>ellipse()</li>
+          <li>polygon()</li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

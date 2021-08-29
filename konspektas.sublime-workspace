@@ -1,0 +1,803 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cont",
+				"column-width"
+			],
+			[
+				"content",
+				"align-content"
+			],
+			[
+				"b-c",
+				"bgo-cb\tbackground-origin: content-box;"
+			],
+			[
+				"gen",
+				"assets/sass/_generic.font-face.scss"
+			],
+			[
+				"too",
+				"assets/sass/_tools.font-face.scss"
+			],
+			[
+				"po",
+				"pos:r\tposition:relative"
+			],
+			[
+				"di",
+				"d:ib\tdisplay:inline-block"
+			],
+			[
+				"b",
+				"bd\tborder"
+			],
+			[
+				"edi",
+				"editor-frontend\teditor-frontend"
+			],
+			[
+				"br",
+				"bdrc\tborder-right-color"
+			],
+			[
+				"col",
+				"column-rule"
+			],
+			[
+				"ass",
+				"assets/css/pvz-LESS.less"
+			],
+			[
+				"gif",
+				"images/2016.11.12_12-11-52-GitHub - bower_bower_ A package manager for the web.png"
+			],
+			[
+				"im",
+				"images/vaizdelis.jpg"
+			],
+			[
+				"s",
+				"shift"
+			],
+			[
+				"su",
+				"super"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 222.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"enco",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"Package Control: up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"emm",
+				"Emmet: Decrement Number by 1"
+			],
+			[
+				"Package Control: u",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ui:",
+				"UI: Select Color Scheme"
+			],
+			[
+				"Package Control: di",
+				"Package Control: Disable Package"
+			],
+			[
+				"pathca",
+				"FuzzyFilePath: Rebuild cache"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"FuzzyFilePath",
+				"FuzzyFilePath: Rebuild cache"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: UP",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"html",
+				"StringEncode: HTML Entitize"
+			],
+			[
+				"colo",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"skin",
+				"Select Skin"
+			],
+			[
+				"color",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"*",
+				"*RR: Comments Line — Fold"
+			],
+			[
+				"`",
+				"`RR: Unfold All Comments"
+			],
+			[
+				"fuzz",
+				"FuzzyFilePath: Show current settings"
+			],
+			[
+				"str",
+				"StringEncode: CSS Escape"
+			],
+			[
+				"book",
+				"SublimeBookmarks: Goto Bookmark"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"merg",
+				"Emmet: Merge Lines"
+			]
+		],
+		"width": 430.0
+	},
+	"console":
+	{
+		"height": 211.0,
+		"history":
+		[
+			"sublime.log_commands(True)",
+			"view.settings().erase(\"color_scheme\")",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/webdev/konspektas",
+		"/D/webdev/konspektas/site",
+		"/D/webdev/konspektas/site/assets",
+		"/D/webdev/konspektas/site/assets/sass"
+	],
+	"file_history":
+	[
+		"/D/webdev/konspektas/site/assets/js/_TEST.js",
+		"/D/webdev/konspektas/site/_TEST page.html",
+		"/D/webdev/konspektas/site/assets/css/_aaa.css",
+		"/D/webdev/konspektas/site/_TEST_no-template.htm",
+		"/D/webdev/konspektas/site/assets/sass/master.css",
+		"/D/webdev/konspektas/site/assets/sass.mokykla/data-type.list.css",
+		"/D/webdev/libs/frontend/site/assets/sass/_test.scss",
+		"/D/webdev/konspektas/gulpfile.js",
+		"/G/install win/adobe/CS 6 Dreamweaver 12.1 build 5949/Keygen/читать.txt",
+		"/D/webdev/konspektas/site/assets/sass/_elements.blockquote.scss",
+		"/D/webdev/konspektas/site/assets/sass.css/master.css",
+		"/E/download tixati/failai/Udacity - Front-End Web Developer Nanodegree nd001 v7.0.0/index.html",
+		"/G/install win/webdev editor/jetbrains/gydymas - WebStorm 2018.3.3/patarimas.txt",
+		"/D/mano laiškai-ruošiniai email-draft/darbdaviams dėl įsidarbinimo po kursų.txt",
+		"/D/webdev/konspektas/site/!utils.misc.htm",
+		"/D/webdev/konspektas/site/assets/sass/_aaa.scss",
+		"/D/webdev/konspektas/site/css.property.group.flexbox.htm",
+		"/D/webdev/konspektas/site/images/flex_terms.png",
+		"/D/webdev/konspektas/site/images/image_7.png",
+		"/D/progs/PDFUnlockerEtude/readme_jp.txt",
+		"/D/progs/Sublime Text 3/Data/Packages/MarkdownPreview/MarkdownPreview.sublime-settings",
+		"/D/webdev/konspektas/site/assets/sass/master.scss",
+		"/D/webdev/konspektas/konspektas.sublime-project",
+		"/G/install win/security antivirus/ESET/Kaip instaliuoti.txt",
+		"/D/webdev/konspektas/gulpfile -- paskutinė versija gerai veikia watch, blogai sourcemaps.js",
+		"/D/webdev/konspektas/site/assets/sass.pvz/css.property.group.flexbox_pvz.scss",
+		"/D/webdev/konspektas/gulpfile - atsargai 1.js",
+		"/D/webdev/konspektas/site/_testinis-1.htm",
+		"/D/webdev/konspektas/site/windows.autohotkey.htm",
+		"/D/webdev/konspektas/site/editor.webstorm.hotkeys.htm",
+		"/D/webdev/konspektas/site/assets/css/_testinis-1.css",
+		"/D/webdev/konspektas/site/assets/sass/_--GABALELIAI.scss",
+		"/D/webdev/konspektas/site/assets/sass/_settings.config.scss",
+		"/D/webdev/konspektas/site/assets/sass/_settings.colors.scss",
+		"/D/webdev/konspektas/site/assets/sass/_tools.string.scss",
+		"/D/webdev/konspektas/site/assets/sass/_objects.collapse.scss",
+		"/D/webdev/konspektas/site/assets/sass/master -- bandymų.scss",
+		"/D/webdev/konspektas/site/eee.js",
+		"/D/webdev/konspektas/konspektas.sublime-workspace",
+		"/D/webdev/konspektas/gulpfile - visas darbinis paskutinis.js",
+		"/D/webdev/konspektas/site/_TEST.htm",
+		"/D/webdev/konspektas/gulpfile - variantai su postcss.js",
+		"/D/webdev/konspektas/gulpfile - plugin strip-css-comments.js",
+		"/D/webdev/konspektas/site/assets/sass/_tools.colors.scss",
+		"/D/webdev/konspektas/site/assets/sass/_component.editor-command.scss",
+		"/D/webdev/konspektas/site/assets/sass/_elements.headings.scss",
+		"/D/webdev/konspektas/site/assets/sass.css/assets/sass/master.css",
+		"/D/progs/Sublime Text 3/Data/Packages/Package Control/Package Control.sublime-settings",
+		"/D/progs/Sublime Text 3/Data/Packages/User/ColorHighlighter.sublime-settings",
+		"/D/progs/Sublime Text 3/Data/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
+		"/D/webdev/konspektas/site/assets/bower_components/inuitcss/objects/_objects.layout.scss",
+		"/D/webdev/konspektas/site/assets/sass/_mixin--VERTA-NAUDOTI.scss",
+		"/D/webdev/konspektas/site/assets/sass/_generic.font-face.scss",
+		"/D/webdev/konspektas/site/assets/sass.pvz.css/css.property.group.flexbox_pvz.css",
+		"/D/webdev/konspektas/site/assets/js/inkaru-indikacija.js",
+		"/D/webdev/konspektas/site/!tag.blockquote-cite-q.htm",
+		"/G/install mac hackintosh/kas buvo.txt",
+		"/D/muzika/aPink Floyd 1975 - Wish You Were Here/foo_dr.txt",
+		"/G/install win/media audio players/foobar2000/components/Foobar 2000 and Playing .dsf audio files/readme.txt",
+		"/D/webdev/konspektas/site/assets/sass.css/aaa.css",
+		"/D/webdev/konspektas/site/assets/sass.pvz/css.property.group.flexbox_pvz.css",
+		"/D/progs/Sublime Text 3/Data/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/G/install win/internet security firewall/GlassWire/GlassWire Elite v1.2.79 Final Ml_Rus/About the program.txt",
+		"/D/webdev/konspektas/site/css.preprocessor.sass.syntax.cheat-sheet.htm",
+		"/D/webdev/konspektas/site/assets/vendor/lib-frontend/sass/_tools.color.scss",
+		"/D/webdev/konspektas/site/aaa.htm",
+		"/D/webdev/konspektas/site/assets/bower_components/prism/examples.js",
+		"/D/webdev/konspektas -- nebenaudojami fragmentai/site/_js/load.yepnope.js",
+		"/D/webdev/konspektas/site/assets/css/__bandymams CSS.css",
+		"/D/webdev/konspektas/.editorconfig",
+		"/D/webdev/konspektas/site/_js/common.js",
+		"/C/Users/zm/Documents/Autohotkey/ahk-libs/ahkstdlib/lib/Functions.ahk",
+		"/D/webdev/konspektas/site/assets/sass/_settings.colors.natalya-shelburne.scss",
+		"/D/webdev/konspektas/.idea/workspace.xml",
+		"/D/webdev/konspektas/site/assets/bower_components/tether/examples/viewport/colors.css",
+		"/D/webdev/konspektas/site/assets/vendor/lib-frontend/sass/_settings.colors.scss",
+		"/D/webdev/konspektas/site/design.colors.html",
+		"/C/Program Files/ImageMagick-7.0.3-Q16/index.html",
+		"/D/webdev/konspektas/site/assets/bower_components/inuitcss/elements/_elements.headings.scss",
+		"/D/webdev/konspektas/site/assets/js/component.collapse.js",
+		"/D/webdev/konspektas/site/assets/sass/_elements.page.scss",
+		"/D/webdev/konspektas/site/assets/css/sass watch -- current folder.bat",
+		"/D/mano info/kontaktai adresai.txt",
+		"/D/webdev/konspektas/site/assets/bower_components/inuitcss/utilities/_utilities.spacing.scss",
+		"/D/webdev/konspektas/site/css.syntax.selectors.nth-child_pvz.htm",
+		"/D/webdev/konspektas/site/assets/sass/_generic.typography.scss",
+		"/D/progs_data/AutoHotkey/vendor/Lintalist/lintalist.ahk",
+		"/D/webdev/libs.vendor.components/salesforce-design-system/kaip atsisiusta.txt",
+		"/D/webdev/konspektas/site/assets/bower_components/bootstrap/scss/utilities/_sizing.scss",
+		"/D/webdev/konspektas/site/assets/bower_components/bootstrap/scss/_variables.scss",
+		"/D/webdev/konspektas/site/assets/sass/pvz-bem_outside_.scss",
+		"/D/webdev/konspektas/site/assets/sass/_senienos/_dev-marking.scss",
+		"/D/webdev/konspektas/site/assets/vendor/lib-frontend/sass/_dev.scss",
+		"/D/webdev/konspektas/site/css.typography.teksto-dydzio-valdymo-sistemos_pvz.htm",
+		"/D/webdev/konspektas/site/css.measurement-unit_pvz.htm",
+		"/D/webdev/libs/frontend/gulpfile.js",
+		"/D/webdev/konspektas/site/assets/sass/_component.emphasize.scss",
+		"/D/webdev/codes - paskirtis ir struktūra.md",
+		"/D/webdev/_skirstyti/styleguides-gh-pages/_resourcetool/living-style-guide.md",
+		"/D/webdev/_skirstyti/styleguides-gh-pages/articles.html",
+		"/D/webdev/_skirstyti/styleguides-gh-pages/index.html",
+		"/D/webdev/konspektas/site/assets/sass/pvz-bem_outside_.css",
+		"/D/progs/Sublime Text 3/Data/Packages/JavaScript Completions/evaluate_javascript/Default (Windows)_disabled.sublime-keymap",
+		"/D/progs/Sublime Text 3/Data/Packages/JavaScript Completions/helper/helper.sublime-settings",
+		"/D/progs/Sublime Text 3/Data/Packages/Origami/Origami.sublime-settings",
+		"/D/webdev/konspektas/site/assets/fonts/font-awesome-4.1.0/scss/_mixins.scss",
+		"/D/webdev/konspektas/gulpfile -- is kitur.js",
+		"/D/webdev/konspektas/site/assets/sass/_code2_css-tricks.com_styles.css",
+		"/G/bib wd skirstyti/Мержевич В.В. - Справочник HTML 2016/index.html",
+		"/D/webdev/konspektas/site/assets/sass.css/TEST.css",
+		"/D/webdev/konspektas/site/assets/sass.css/TEST-mixin.css",
+		"/D/webdev/konspektas/site/assets/sass/_object.layout.cols.scss",
+		"/D/webdev/konspektas/site/assets/sass/_layout-table.scss",
+		"/D/webdev/konspektas/site/_TEST/require.js.htm",
+		"/D/webdev/konspektas/site/_TEST/eee.htm",
+		"/D/webdev/konspektas/site/_js/aaa.js",
+		"/D/webdev/konspektas/site/aaa.txt",
+		"/D/webdev/konspektas/site/.editorconfig",
+		"/D/webdev/konspektas/site/assets/bower.json",
+		"/D/webdev/konspektas/site/_TEST_isotope.js.htm",
+		"/D/webdev/konspektas/site/assets/sass/_component-tag.dlist.scss",
+		"/D/webdev/konspektas/site/assets/sass/_function.scss",
+		"/D/webdev/konspektas/site/assets/css/content_base.css",
+		"/D/webdev/konspektas/site/assets/sass/TEST.scss",
+		"/D/webdev/konspektas/site/assets/sass/TEST-mixin.scss",
+		"/D/progs/VSCode/resources/app/package.json",
+		"/D/progs/Sublime Text 3/Data/Packages/User/Colorsublime.sublime-settings",
+		"/D/webdev/konspektas/site/assets/bower_components/isotope/bower.json"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 129.0,
+		"where_history":
+		[
+			"",
+			"D:\\webdev\\konspektas\\site\\assets, *.scss",
+			"D:\\webdev\\libs\\frontend\\site\\assets\\sass",
+			"D:\\webdev\\konspektas\\site\\assets\\sass",
+			"*.scss",
+			"<project>, *.scss",
+			"<project>",
+			"<project>/site/*.*",
+			"<project>/site",
+			"<project>",
+			"D:\\webdev\\konspektas\\site\\assets",
+			"D:\\webdev\\konspektas\\site\\assets\\bower_components\\inuitcss",
+			"D:\\webdev\\konspektas\\site",
+			"D:\\webdev\\konspektas\\site\\assets",
+			"<project>",
+			"D:\\webdev\\konspektas\\site\\assets\\bower_components\\bootstrap",
+			"D:\\webdev\\konspektas\\site\\assets\\bower_components\\inuitcss",
+			"D:\\webdev\\konspektas\\site\\assets\\sass",
+			"D:\\webdev\\konspektas\\site",
+			"D:\\webdev\\konspektas\\site\\assets",
+			"<project>",
+			"D:\\progs_data\\Sublime Text 3\\Packages isarchyvuoti -- core-default-shipped",
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"design-time.js",
+			"20190316232257",
+			"bbbbbbbbbbbbb",
+			"//   .u-border",
+			"call(",
+			".uuu-fontweight",
+			"u-padding",
+			"_c",
+			"u-padding",
+			"333aaa",
+			".ggg",
+			"color: #0066CC;",
+			"code {",
+			"code {\t//padding:",
+			"code {\n\t//padding:",
+			"padding-bottom: .1em;",
+			".aaa1",
+			"333",
+			"modifier'ai",
+			"hSL",
+			"hsl(",
+			"table-layout-grid--h3h4LikeTable",
+			"table-layout--h2h3",
+			"%",
+			"Consolas",
+			"em\">",
+			"\"FS5.",
+			"frontend/site",
+			"sassPvzPath_src",
+			"-main",
+			"sassMain",
+			"sassPath_",
+			"sass",
+			"c-editor-command__title",
+			"block",
+			";\n",
+			"--------------------------------------------",
+			".test-color-scheme-lumen",
+			"../vendor/lib-frontend/sass",
+			"proc",
+			"sass",
+			"highlight",
+			"for",
+			"highlight",
+			"nohighlight",
+			"highlight",
+			" nohighlight",
+			"style=\"font-family: 'Playfair Display'",
+			"url('",
+			"\\",
+			"../fonts/oswald/oswald-extralight-webfont",
+			"intro_head_rbase",
+			"dotted",
+			"outline:rgba(251,255,64,0.5)",
+			"outline: rgba(251, 255, 64, 0.5) solid 8px",
+			"inuit-rem(",
+			"flex",
+			"favicon.ico",
+			"introheadr",
+			"h2, h3, h4, h5, h6 {",
+			"<img",
+			"border-radius",
+			"0.9em",
+			"0.94",
+			"color-theme",
+			"color-theme(",
+			"class",
+			", ",
+			"color-theme-site",
+			"pastel-red",
+			",",
+			"flex-grow",
+			"4n",
+			"$sizes",
+			"rgb(",
+			"html",
+			"$colors",
+			"body",
+			"serve-sass",
+			"pvz-standalone.css",
+			"pvz-bem_outside_.css",
+			"scss",
+			"pvz-container",
+			"#{",
+			"$",
+			"boxas",
+			"vendor(",
+			"table-layout-grid-h3LikeTable",
+			"table-layout-grid-h2LikeTable",
+			"%",
+			"\\",
+			"column-fill",
+			"kažkastai",
+			">\n",
+			".cols",
+			"component-layout.cols",
+			"beje",
+			"encode",
+			"show_panel",
+			"command",
+			"f4",
+			"find_under",
+			"Find",
+			"find",
+			"Find",
+			"find",
+			"command",
+			"find_under",
+			"command",
+			"find_under",
+			"command",
+			"super",
+			"f",
+			"keys",
+			"how",
+			"command",
+			"ct",
+			"ctrl+f\"",
+			"ctrl+f",
+			"---------------------------------------------------------",
+			"ctrl",
+			"command",
+			"fiziškai",
+			"keys",
+			"ctrl",
+			"find_under_expand",
+			"{ \"keys\": [\"ctrl+d\"], \"command\": \"find_under_expand\" },       // [Find > Quick Add Next] ir [Selection > Expand Selection to Word] abi įvykdo tą pačią komandą\n{ \"keys\": [\"ctrl+shift+d\"], \"command\": \"find_under_expand_skip\" }, // [Find > Quick Skip Next]\n{ \"keys\": [\"ctrl+super+d\"], \"command\": \"find_all_under\" },    // [Find > Quick Find All]\n\n\n\n//----------------------------------- ST3 default ------------------------------------------------------\n",
+			"ctrl"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"url('../fonts/Playfair_Display/",
+			"site-color-scheme(",
+			".o-cols",
+			"args",
+			"pre",
+			"/D/progs/"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.find_results":
+	{
+		"height": 264.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.reg_replace_results":
+	{
+		"height": 31.0
+	},
+	"pinned_build_system": "",
+	"project": "konspektas.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"mokylistcss",
+				"konspektas\\site\\assets\\sass.mokykla\\data-type.list.css"
+			],
+			[
+				"blocsc",
+				"konspektas\\site\\assets\\sass\\_elements.blockquote.scss"
+			],
+			[
+				"mast",
+				"konspektas\\site\\assets\\sass\\master.css"
+			],
+			[
+				"testht",
+				"site\\_TEST page.html"
+			],
+			[
+				"misc",
+				"site\\!utils.misc.htm"
+			],
+			[
+				"flex",
+				"site\\css.property.group.flexbox.htm"
+			],
+			[
+				"maste",
+				"site\\assets\\sass.css\\master.css"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"",
+				"site\\windows.autohotkey.htm"
+			],
+			[
+				"mas",
+				"site\\assets\\sass.css\\master.css"
+			],
+			[
+				"_elements.headings.scss",
+				"site\\assets\\sass\\_elements.headings.scss"
+			],
+			[
+				"bloci",
+				"site\\!tag.blockquote-cite-q.htm"
+			],
+			[
+				"inkar",
+				"site\\assets\\js\\inkaru-indikacija.js"
+			],
+			[
+				"editorc",
+				"root\\.editorconfig"
+			],
+			[
+				"color",
+				"site\\assets\\sass\\_settings.colors.natalya-shelburne.scss"
+			],
+			[
+				"colo",
+				"site\\assets\\sass\\_settings.colors.scss"
+			],
+			[
+				"sett",
+				"site\\assets\\sass\\_settings.colors.scss"
+			],
+			[
+				"elem",
+				"site\\assets\\bower_components\\inuitcss\\elements\\_elements.headings.scss"
+			],
+			[
+				".bat",
+				"site\\assets\\css\\sass watch -- current folder.bat"
+			],
+			[
+				"page",
+				"site\\assets\\sass\\_elements.page.scss"
+			],
+			[
+				"gul",
+				"root\\gulpfile.js"
+			],
+			[
+				"head",
+				"site\\assets\\bower_components\\inuitcss\\elements\\_elements.headings.scss"
+			],
+			[
+				"flexb",
+				"site\\css.property.group.flexbox.htm"
+			],
+			[
+				"nth",
+				"site\\css.syntax.selectors.nth-child_pvz.htm"
+			],
+			[
+				"typog",
+				"site\\assets\\sass\\_generic.typography.scss"
+			],
+			[
+				"spacing",
+				"site\\assets\\bower_components\\inuitcss\\utilities\\_utilities.spacing.scss"
+			],
+			[
+				"dev",
+				"site\\assets\\sass\\_senienos\\_dev-marking.scss"
+			],
+			[
+				"compo",
+				"site\\assets\\sass\\_component.emphasize.scss"
+			],
+			[
+				"pvz",
+				"site\\assets\\sass\\pvz-bem_outside_.scss"
+			],
+			[
+				".scss",
+				"site\\assets\\fonts\\font-awesome-4.1.0\\scss\\_mixins.scss"
+			],
+			[
+				"content_base.css",
+				"site\\assets\\css\\content_base.css"
+			],
+			[
+				"lay",
+				"site\\assets\\sass\\_layout-table.scss"
+			],
+			[
+				"_layout-table.scss",
+				"site\\assets\\sass\\_layout-table.scss"
+			],
+			[
+				"cols",
+				"Konspektas\\assets\\sass\\_component-layout.cols.scss"
+			],
+			[
+				"nor",
+				"_assets/css/normalize.css"
+			],
+			[
+				"prop",
+				"client-side/css/css/properties/!properties.htm"
+			],
+			[
+				"prope",
+				"client-side/css/css/properties/!properties.htm"
+			],
+			[
+				"grid",
+				"_assets/css/_grid.scss"
+			],
+			[
+				"list",
+				"_css/_list_NEBENAUDOTI_.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 357.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"com",
+				"commentform"
+			],
+			[
+				"",
+				"ancestors"
+			]
+		],
+		"width": 554.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 356.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

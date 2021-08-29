@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="../assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="../assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="../assets/sass/master.utilities.css">
+<link rel="stylesheet" href="../assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="../assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="../assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="../assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="../assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Kodas</h1>
+<p>Kodą dedame į <code>&lt;pre&gt;&lt;code&gt; ... &lt;/code&gt;&lt;/pre&gt;</code> arba <code>&lt;p&gt;&lt;code&gt; ... &lt;/code&gt;&lt;/p&gt;</code></p>
+<h2>Žymėjimo simboliai</h2>
+<p><code>&lt;div&gt;<strong>&#8225;</strong>&lt;/div&gt;</code> &#8212; kursoriaus pozicija</p>
+<h2>Išskyrimas-žymėjimas</h2>
+<pre><code>* {
+  animation: <strong>move-left</strong> 3s 3;    &laquo;&laquo;&laquo; &lt;strong&gt;
+  transform: rotate(<em>17deg</em>);     &laquo;&laquo;&laquo; &lt;em&gt;
+  text-align: <mark>center</mark>;           &laquo;&laquo;&laquo; &lt;mark&gt;
+}</code></pre>
+<p>Komentavimas su <code>&lt;mark class="comment"&gt; </code>:</p>
+<pre><code><mark class="comment">&lt;!-- tai yra apie tai --&gt;</mark>
+&lt;div&gt;&lt;/div&gt;
+
+* {
+  <mark class="comment">/* background-color: rgb(142,71,140); */</mark>
+}</code></pre>
+<h2>Inline blokai</h2>
+<p><code>transition: 2s</code> == <code>transition: all 2s</code> == <code class="inlineBlock">transition-property: all<br>
+transition-duration: 2s</code></p>
+<h2>Indikavimas nebenaudojamų CSS klasų</h2>
+<pre><code>aaa <span>aaa</span> aaa &lt;&lt;&lt; SPAN'as CODE'e be jokio class'o
+aaa <span class="comm">aaa</span> aaa &lt;&lt;&lt; užkomentuota su span.comm</code></pre>
+<h2>Kodo formatavimas su JS</h2>
+<h3>highlightjs.org</h3>
+<p><a href="file:///D|/webdev/codes/js/--kodo formatavimas/highlight">highlight</a></p>
+<p>Kaip nurodome HTML'e:</p>
+<pre><code>&lt;pre&gt;&lt;code class=&quot;format-code PROGRAMAVIMO-KALBA&quot;&gt;
+  ...
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+<h4>HTML</h4>
+<p>pre'se <code>&lt;pre&gt;&lt;code&gt;</code>, eilučių pabaigos su elutės pabaigos simboliais:</p>
+<pre><code class="format-code">&lt;ol&gt;
+	&lt;li&gt;Go to &lt;code&gt;Preferences&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Copy the contents of the file into&lt;/li&gt;
+	&lt;li&gt;Press the Can I Switch? button&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p>paragrafe <code>&lt;p&gt;&lt;code&gt;</code>, eilučių pabaigos su <code>&lt;br&gt;</code>:</p>
+<p><code class="format-code">&lt;ol&gt; <br>
+ &lt;li&gt;Go to &lt;code&gt;Preferences&lt;/code&gt;&lt;/li&gt; <br>
+ &lt;li&gt;Copy the contents of the file into&lt;/li&gt; <br>
+ &lt;li&gt;Press the Can I Switch? button&lt;/li&gt; <br>
+&lt;/ol&gt;</code></p>
+<h4>CSS</h4>
+<pre><code class="format-code css">.frg-saltiniai {
+  margin: 2.4em 0 2.4em 0;
+  padding: .7em 1em 1em 2.4em;
+  border: #66CC33 0 dotted;
+  border-width: 0 0 1px 0;
+}
+
+#saltiniai > div {
+  margin: 0 0 .5em 0;
+  font: 1.4em Georgia, "Times New Roman", Times, serif;
+  color: #66CC33;
+}</code></pre>
+<h4>SASS SCSS</h4>
+<pre><code class="format-code scss">$kintamasis: kazkas;
+
+#navbar {
+  width: 80%;
+  height: 23px;
+
+  ul { list-style-type: none; }
+  li {
+    float: left;
+    a { font-weight: bold; }
+  }
+}</code></pre>
+<h4>JS</h4>
+<pre><code class="format-code js">function RemoveText(el){
+  var parent = el.parentNode;
+  for(var i=0; i &lt; parent.childNodes.length;i++) {
+    var para = parent.childNodes[i];
+    if(para.nodeName == "P" && para.getAttribute('class')=='added') {
+      parent.removeChild(para);
+      break;
+    }
+  }
+}</code></pre>
+<p>PHP:</p>
+<pre><code class="format-code php">function validate_form() {
+    $tmp = htmlspecialchars(strtoupper($_POST['name']));    //    clean POST data
+    if(stripos($_POST['great'], 'yes') !== false) return array('name' => $tmp, 'great' => 'YES!');
+    return 'Wrong answer!';
+} </code></pre>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,472 @@
+@charset "UTF-8";
+:root {
+  --bgimgurl-svgtxt-peilis: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">🔪</div></foreignObject></svg>');
+  --bgimgurl-svgtxt-hammerWrench: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">🛠</div></foreignObject></svg>');
+  --bgimgurl-svgtxt-zirkles: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">✂</div></foreignObject></svg>');
+  --bgimgurl-svgtxt-taikliai: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><foreignObject width="100px" height="100px"><div xmlns="http://www.w3.org/1999/xhtml" style="font:75px/93px %27Segoe UI Emoji%27,emoji; -background:lightsteelblue; -border:1px red solid">🎯</div></foreignObject></svg>');
+}
+
+.d-ruler {
+  display: none !important;
+  --guide-height: 10rem;
+  background-color: rgba(0, 0, 255, 0.2);
+  color: blue;
+  font: 1em "Source Code Pro";
+  margin-bottom: 3px;
+  padding: 0 0 0.07em;
+  position: relative;
+  text-align: center;
+}
+.d-ruler:focus, .d-ruler:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+  outline: none;
+}
+.d-ruler:focus::before, .d-ruler:focus::after, .d-ruler:hover::before, .d-ruler:hover::after {
+  border-color: red;
+}
+.d-ruler--right {
+  margin-left: auto;
+}
+.d-ruler--center {
+  margin: 0 auto;
+}
+.d-ruler::before, .d-ruler::after {
+  border: solid blue;
+  border-width: 0 0 0 1px;
+  height: var(--guide-height);
+  margin-bottom: calc(var(--guide-height) * -1);
+  position: absolute;
+  width: 0;
+}
+.d-ruler::before {
+  left: 0;
+}
+.d-ruler::after {
+  right: 0;
+}
+.d-ruler--guide-left::before {
+  content: "";
+}
+.d-ruler--guide-right::after {
+  content: "";
+}
+.d-ruler--guide-both::before, .d-ruler--guide-both::after {
+  content: "";
+}
+.d-ruler--guide-50px {
+  --guide-height: 50px;
+}
+.d-ruler--guide-100px {
+  --guide-height: 100px;
+}
+.d-ruler--guide-150px {
+  --guide-height: 150px;
+}
+.d-ruler--guide-200px {
+  --guide-height: 200px;
+}
+.d-ruler--guide-250px {
+  --guide-height: 250px;
+}
+.d-ruler--guide-300px {
+  --guide-height: 300px;
+}
+.d-ruler--guide-350px {
+  --guide-height: 350px;
+}
+.d-ruler--guide-400px {
+  --guide-height: 400px;
+}
+.d-ruler--guide-450px {
+  --guide-height: 450px;
+}
+.d-ruler--guide-500px {
+  --guide-height: 500px;
+}
+.d-ruler--guide-550px {
+  --guide-height: 550px;
+}
+.d-ruler--guide-600px {
+  --guide-height: 600px;
+}
+.d-ruler--guide-650px {
+  --guide-height: 650px;
+}
+.d-ruler--guide-700px {
+  --guide-height: 700px;
+}
+.d-ruler--guide-750px {
+  --guide-height: 750px;
+}
+.d-ruler--guide-800px {
+  --guide-height: 800px;
+}
+.d-ruler--guide-850px {
+  --guide-height: 850px;
+}
+.d-ruler--guide-900px {
+  --guide-height: 900px;
+}
+.d-ruler--guide-25vh {
+  --guide-height: 25vh;
+}
+.d-ruler--guide-50vh {
+  --guide-height: 50vh;
+}
+.d-ruler--guide-75vh {
+  --guide-height: 75vh;
+}
+.d-ruler--guide-100vh {
+  --guide-height: 100vh;
+}
+.d-ruler--guide-150vh {
+  --guide-height: 150vh;
+}
+.d-ruler--guide-200vh {
+  --guide-height: 200vh;
+}
+.d-ruler--guide-250vh {
+  --guide-height: 250vh;
+}
+.d-ruler--guide-300vh {
+  --guide-height: 300vh;
+}
+.d-ruler--guide-huge::before, .d-ruler--guide-huge::after {
+  height: 10000cm;
+  margin-bottom: -10000cm;
+}
+
+.d-guide-fixed-hor {
+  display: none !important;
+  z-index: 1000;
+  border: dashed rgba(255, 0, 0, 0.5);
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-width: 1px 0 0 0;
+  position: fixed;
+}
+.d-guide-fixed-hor:before {
+  font: 600 1em "IBM Plex Mono";
+  color: rgba(255, 0, 0, 0.8);
+  white-space: nowrap;
+  content: attr(style);
+  background: rgba(255, 0, 0, 0.07);
+  padding: 0.08em 0.8em 0.13em;
+}
+.d-guide-fixed-hor:before {
+  transform: translate(-50%, calc(-100% - 4px));
+  left: 50%;
+}
+.d-guide-fixed-hor:before {
+  position: fixed;
+}
+
+.d-guide-fixed-ver {
+  display: none !important;
+  z-index: 1000;
+  border: dashed rgba(255, 0, 0, 0.5);
+  top: 0;
+  width: 0;
+  height: 100%;
+  border-width: 0 0 0 1px;
+  position: fixed;
+}
+.d-guide-fixed-ver:before {
+  font: 600 1em "IBM Plex Mono";
+  color: rgba(255, 0, 0, 0.8);
+  white-space: nowrap;
+  content: attr(style);
+  background: rgba(255, 0, 0, 0.07);
+  padding: 0.08em 0.8em 0.13em;
+}
+.d-guide-fixed-ver:before {
+  top: 50%;
+  transform-origin: top left;
+  transform: rotate(-90deg) translate(-50%, calc(-100% - 5px));
+}
+.d-guide-fixed-ver:before {
+  position: fixed;
+}
+
+.\~MA {
+  position: relative;
+}
+.\~MA::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+[data-DIAH-style-top-offset]:hover, [data-DIAH-style-top]:hover, [data-DIAH-style-bottom-offset]:hover, [data-DIAH-style-bottom]:hover, [data-DIAH-class-top-offset]:hover, [data-DIAH-class-top]:hover, [data-DIAH-class-bottom-offset]:hover, [data-DIAH-class-bottom]:hover {
+  position: relative;
+}
+
+[data-DIAH-style-top-offset]:hover::after, [data-DIAH-style-top]:hover::after, [data-DIAH-style-bottom-offset]:hover::after, [data-DIAH-style-bottom]:hover::after, [data-DIAH-class-top-offset]:hover::after, [data-DIAH-class-top]:hover::after, [data-DIAH-class-bottom-offset]:hover::after, [data-DIAH-class-bottom]:hover::after {
+  --translateY: 7px;
+  border-radius: 0.3em;
+  display: block;
+  transform: translate(-50%, var(--translateY));
+  font: 0.9rem "IBM Plex Mono";
+  white-space: pre;
+  left: 50%;
+  /*width:       calc(100% - 16px);*/
+  padding: 0.15em 0.6em 0.25em;
+  /*border:        1px solid hsla(120, 100%, 70%, 0.9);*/
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  /*box-shadow:    0px 0px 17px 0px hsla(120, 50%, 50%, 0.7);*/
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity, transform;
+  transition-duration: 0.2s;
+}
+
+[data-DIAH-class-bottom] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-class-bottom]:hover {
+  outline-offset: 0px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-class-bottom]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+[data-DIAH-class-bottom]:hover::after {
+  content: 'class="' attr(class) '"';
+  color: white;
+  background: #0d59f2;
+}
+
+[data-DIAH-class-bottom-offset] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-class-bottom-offset]:hover {
+  outline-offset: 3px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-class-bottom-offset]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+[data-DIAH-class-bottom-offset]:hover::after {
+  content: 'class="' attr(class) '"';
+  --translateY: 10px;
+  color: white;
+  background: #0d59f2;
+}
+
+[data-DIAH-class-top] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-class-top]:hover {
+  position: relative;
+  outline-offset: 0px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-class-top]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -40%);
+}
+
+[data-DIAH-class-top]:hover::after {
+  content: 'class="' attr(class) '"';
+  top: 0;
+  --translateY: calc(-100% - 7px);
+  color: white;
+  background: #0d59f2;
+}
+
+[data-DIAH-class-top-offset] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-class-top-offset]:hover {
+  position: relative;
+  outline-offset: 3px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-class-top-offset]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -40%);
+}
+
+[data-DIAH-class-top-offset]:hover::after {
+  content: 'class="' attr(class) '"';
+  top: 0;
+  --translateY: calc(-100% - 7px - 3px);
+  color: white;
+  background: #0d59f2;
+}
+
+[data-DIAH-style-bottom] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-style-bottom]:hover {
+  outline-offset: 0px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-style-bottom]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+[data-DIAH-style-bottom]:hover::after {
+  content: 'style="' attr(style) '"';
+  color: white;
+  background: #0d59f2;
+}
+
+[data-DIAH-style-bottom-offset] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-style-bottom-offset]:hover {
+  outline-offset: 3px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-style-bottom-offset]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+[data-DIAH-style-bottom-offset]:hover::after {
+  content: 'style="' attr(style) '"';
+  --translateY: 10px;
+  color: white;
+  background: #0d59f2;
+}
+
+[data-DIAH-style-top] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-style-top]:hover {
+  position: relative;
+  outline-offset: 0px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-style-top]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -40%);
+}
+
+[data-DIAH-style-top]:hover::after {
+  content: 'style="' attr(style) '"';
+  top: 0;
+  --translateY: calc(-100% - 7px);
+  color: white;
+  background: #0d59f2;
+}
+
+[data-DIAH-style-top-offset] {
+  outline: 2px dotted rgba(255, 255, 255, 0);
+  outline-offset: -1em;
+  transition: outline, outline-offset;
+  transition-duration: 0.5s;
+}
+
+[data-DIAH-style-top-offset]:hover {
+  position: relative;
+  outline-offset: 3px;
+  outline-color: rgba(0, 0, 255, 0.7);
+}
+
+[data-DIAH-style-top-offset]::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -40%);
+}
+
+[data-DIAH-style-top-offset]:hover::after {
+  content: 'style="' attr(style) '"';
+  top: 0;
+  --translateY: calc(-100% - 7px - 3px);
+  color: white;
+  background: #0d59f2;
+}
+
+.\~M.\~M50px\:5, .\~MA.\~M50px\:5::after {
+  background: linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 0/100% 1px, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 1px/1px calc(100% - 2px), linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-y 1px 0/calc(100% - 2px) 50px, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-x 0 1px/50px calc(100% - 2px), linear-gradient(0grad, transparent 10px, var(--szm-dev-mesh-lineSubColor) 10px, var(--szm-dev-mesh-lineSubColor) 11px, transparent 11px, transparent 20px, var(--szm-dev-mesh-lineSubColor) 20px, var(--szm-dev-mesh-lineSubColor) 21px, transparent 21px, transparent 30px, var(--szm-dev-mesh-lineSubColor) 30px, var(--szm-dev-mesh-lineSubColor) 31px, transparent 31px, transparent 40px, var(--szm-dev-mesh-lineSubColor) 40px, var(--szm-dev-mesh-lineSubColor) 41px, transparent 41px) repeat-y 1px 0/calc(100% - 2px) 50px, linear-gradient(-100grad, transparent 10px, var(--szm-dev-mesh-lineSubColor) 10px, var(--szm-dev-mesh-lineSubColor) 11px, transparent 11px, transparent 20px, var(--szm-dev-mesh-lineSubColor) 20px, var(--szm-dev-mesh-lineSubColor) 21px, transparent 21px, transparent 30px, var(--szm-dev-mesh-lineSubColor) 30px, var(--szm-dev-mesh-lineSubColor) 31px, transparent 31px, transparent 40px, var(--szm-dev-mesh-lineSubColor) 40px, var(--szm-dev-mesh-lineSubColor) 41px, transparent 41px) repeat-x 0 1px/50px calc(100% - 2px) !important;
+}
+
+.\~M.\~M100px\:10, .\~MA.\~M100px\:10::after {
+  background: linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 0/100% 1px, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 1px/1px calc(100% - 2px), linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-y 1px 0/calc(100% - 2px) 100px, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-x 0 1px/100px calc(100% - 2px), linear-gradient(0grad, transparent 10px, var(--szm-dev-mesh-lineSubColor) 10px, var(--szm-dev-mesh-lineSubColor) 11px, transparent 11px, transparent 20px, var(--szm-dev-mesh-lineSubColor) 20px, var(--szm-dev-mesh-lineSubColor) 21px, transparent 21px, transparent 30px, var(--szm-dev-mesh-lineSubColor) 30px, var(--szm-dev-mesh-lineSubColor) 31px, transparent 31px, transparent 40px, var(--szm-dev-mesh-lineSubColor) 40px, var(--szm-dev-mesh-lineSubColor) 41px, transparent 41px, transparent 50px, var(--szm-dev-mesh-lineSubColor) 50px, var(--szm-dev-mesh-lineSubColor) 51px, transparent 51px, transparent 60px, var(--szm-dev-mesh-lineSubColor) 60px, var(--szm-dev-mesh-lineSubColor) 61px, transparent 61px, transparent 70px, var(--szm-dev-mesh-lineSubColor) 70px, var(--szm-dev-mesh-lineSubColor) 71px, transparent 71px, transparent 80px, var(--szm-dev-mesh-lineSubColor) 80px, var(--szm-dev-mesh-lineSubColor) 81px, transparent 81px, transparent 90px, var(--szm-dev-mesh-lineSubColor) 90px, var(--szm-dev-mesh-lineSubColor) 91px, transparent 91px) repeat-y 1px 0/calc(100% - 2px) 100px, linear-gradient(-100grad, transparent 10px, var(--szm-dev-mesh-lineSubColor) 10px, var(--szm-dev-mesh-lineSubColor) 11px, transparent 11px, transparent 20px, var(--szm-dev-mesh-lineSubColor) 20px, var(--szm-dev-mesh-lineSubColor) 21px, transparent 21px, transparent 30px, var(--szm-dev-mesh-lineSubColor) 30px, var(--szm-dev-mesh-lineSubColor) 31px, transparent 31px, transparent 40px, var(--szm-dev-mesh-lineSubColor) 40px, var(--szm-dev-mesh-lineSubColor) 41px, transparent 41px, transparent 50px, var(--szm-dev-mesh-lineSubColor) 50px, var(--szm-dev-mesh-lineSubColor) 51px, transparent 51px, transparent 60px, var(--szm-dev-mesh-lineSubColor) 60px, var(--szm-dev-mesh-lineSubColor) 61px, transparent 61px, transparent 70px, var(--szm-dev-mesh-lineSubColor) 70px, var(--szm-dev-mesh-lineSubColor) 71px, transparent 71px, transparent 80px, var(--szm-dev-mesh-lineSubColor) 80px, var(--szm-dev-mesh-lineSubColor) 81px, transparent 81px, transparent 90px, var(--szm-dev-mesh-lineSubColor) 90px, var(--szm-dev-mesh-lineSubColor) 91px, transparent 91px) repeat-x 0 1px/100px calc(100% - 2px) !important;
+}
+
+.\~M.\~M3\:3, .\~MA.\~M3\:3::after {
+  background: linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 0/100% 1px, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 1px/1px calc(100% - 2px), linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-y 1px 0/calc(100% - 2px) 33.3333333333%, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-x 0 1px/33.3333333333% calc(100% - 2px), linear-gradient(-100grad, transparent 33.3333333333%, var(--szm-dev-mesh-lineSubColor) 33.3333333333%, var(--szm-dev-mesh-lineSubColor) calc(33.3333333333% + 1px), transparent calc(33.3333333333% + 1px), transparent 66.6666666667%, var(--szm-dev-mesh-lineSubColor) 66.6666666667%, var(--szm-dev-mesh-lineSubColor) calc(66.6666666667% + 1px), transparent calc(66.6666666667% + 1px)) repeat-x 0 1px/33.3333333333% calc(100% - 2px), linear-gradient(0grad, transparent 33.3333333333%, var(--szm-dev-mesh-lineSubColor) 33.3333333333%, var(--szm-dev-mesh-lineSubColor) calc(33.3333333333% + 1px), transparent calc(33.3333333333% + 1px), transparent 66.6666666667%, var(--szm-dev-mesh-lineSubColor) 66.6666666667%, var(--szm-dev-mesh-lineSubColor) calc(66.6666666667% + 1px), transparent calc(66.6666666667% + 1px)) repeat-y 1px 0/calc(100% - 2px) 33.3333333333% !important;
+}
+
+.\~M.\~M5\:5, .\~MA.\~M5\:5::after {
+  background: linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 0/100% 1px, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 1px/1px calc(100% - 2px), linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-y 1px 0/calc(100% - 2px) 20%, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-x 0 1px/20% calc(100% - 2px), linear-gradient(-100grad, transparent 20%, var(--szm-dev-mesh-lineSubColor) 20%, var(--szm-dev-mesh-lineSubColor) calc(20% + 1px), transparent calc(20% + 1px), transparent 40%, var(--szm-dev-mesh-lineSubColor) 40%, var(--szm-dev-mesh-lineSubColor) calc(40% + 1px), transparent calc(40% + 1px), transparent 60%, var(--szm-dev-mesh-lineSubColor) 60%, var(--szm-dev-mesh-lineSubColor) calc(60% + 1px), transparent calc(60% + 1px), transparent 80%, var(--szm-dev-mesh-lineSubColor) 80%, var(--szm-dev-mesh-lineSubColor) calc(80% + 1px), transparent calc(80% + 1px)) repeat-x 0 1px/20% calc(100% - 2px), linear-gradient(0grad, transparent 20%, var(--szm-dev-mesh-lineSubColor) 20%, var(--szm-dev-mesh-lineSubColor) calc(20% + 1px), transparent calc(20% + 1px), transparent 40%, var(--szm-dev-mesh-lineSubColor) 40%, var(--szm-dev-mesh-lineSubColor) calc(40% + 1px), transparent calc(40% + 1px), transparent 60%, var(--szm-dev-mesh-lineSubColor) 60%, var(--szm-dev-mesh-lineSubColor) calc(60% + 1px), transparent calc(60% + 1px), transparent 80%, var(--szm-dev-mesh-lineSubColor) 80%, var(--szm-dev-mesh-lineSubColor) calc(80% + 1px), transparent calc(80% + 1px)) repeat-y 1px 0/calc(100% - 2px) 20% !important;
+}
+
+.\~M.\~M5\:3\|3\:3, .\~MA.\~M5\:3\|3\:3::after {
+  background: linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 0/100% 1px, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor), var(--szm-dev-mesh-lineMainColor)) no-repeat 0 1px/1px calc(100% - 2px), linear-gradient(0grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-y 1px 0/calc(100% - 2px) 33.3333333333%, linear-gradient(-100grad, var(--szm-dev-mesh-lineMainColor) 1px, transparent 1px) repeat-x 0 1px/20% calc(100% - 2px), linear-gradient(-100grad, transparent 33.3333333333%, var(--szm-dev-mesh-lineSubColor) 33.3333333333%, var(--szm-dev-mesh-lineSubColor) calc(33.3333333333% + 1px), transparent calc(33.3333333333% + 1px), transparent 66.6666666667%, var(--szm-dev-mesh-lineSubColor) 66.6666666667%, var(--szm-dev-mesh-lineSubColor) calc(66.6666666667% + 1px), transparent calc(66.6666666667% + 1px)) repeat-x 0 1px/20% calc(100% - 2px), linear-gradient(0grad, transparent 33.3333333333%, var(--szm-dev-mesh-lineSubColor) 33.3333333333%, var(--szm-dev-mesh-lineSubColor) calc(33.3333333333% + 1px), transparent calc(33.3333333333% + 1px), transparent 66.6666666667%, var(--szm-dev-mesh-lineSubColor) 66.6666666667%, var(--szm-dev-mesh-lineSubColor) calc(66.6666666667% + 1px), transparent calc(66.6666666667% + 1px)) repeat-y 1px 0/calc(100% - 2px) 33.3333333333% !important;
+}
+
+.\~M.\~Mred, .\~MA.\~Mred::after {
+  --szm-dev-mesh-lineMainColor: rgba(255, 0, 0, 0.7);
+  --szm-dev-mesh-lineSubColor: rgba(255, 0, 0, 0.2);
+}
+
+.\~M.\~Mblue, .\~MA.\~Mblue::after {
+  --szm-dev-mesh-lineMainColor: rgba(0, 0, 255, 0.8);
+  --szm-dev-mesh-lineSubColor: rgba(0, 0, 255, 0.2);
+}
+/*# sourceMappingURL=master.dev.css.map */

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<script src="assets/js/component.collapse--SENAS.js"></script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>AutoHotkey komandų-funkcijų (commands-functions) suvestinė (cheat sheet)</h1>
+<p><a href="https://autohotkey.com/docs/commands/index.htm">https://autohotkey.com/docs/commands/index.htm</a></p>
+<h2>AHK script'o vykdymas</h2>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="25%"><h3>Laiko kontrolė</h3>
+        <div class="collapse-savas-locdep">
+          <p><code>Pause [, On|Off|Toggle, OperateOnUnderlyingThread?]</code></p>
+          <p>Sustabdo arba nuima sustabdymą ir vėl pradeda vykdyti script'ą, iš kurio iškviesta ši komanda. Sustabdymas nėra apribotas laiku, script'as vėl pradedamas vykdyti kai iškviečiama <code>Pause Off</code> arba <code>Pause Toggle</code>.</p>
+          <p class="Note">Šis sustabdymas neįtakoja hotkeys'ų (t. y. F2::KasNors()), timer'ių </p>
+          <blockquote>
+            <p>Pauses the script's <a href="https://autohotkey.com/docs/misc/Threads.htm">current thread</a></p>
+          </blockquote>
+        </div>
+        <p>&nbsp;</p>
+        <div class="collapse-savas-locdep">
+          <p><code>Sleep, DelayInMilliseconds</code></p>
+        <p>Sustabdo script'p vykdymą nustatytam laikui.</p>
+  </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+      <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+      <td width="25%">&nbsp;</td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Klavišai-Hotkeys'ai</h2>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="25%"><h3>Klavišų būsena
+      </h3>
+        <div class="collapse-savas-locdep">
+          <pre><code>GetKeyState, OutputVar, KeyName [, Mode]
+KeyIsDown := GetKeyState(&quot;KeyName&quot; [, &quot;Mode&quot;])</code></pre>
+        <p><a href="https://autohotkey.com/docs/commands/GetKeyState.htm">https://autohotkey.com/docs/commands/GetKeyState.htm</a></p>
+    </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+      <p>&nbsp;</p></td>
+      <td width="25%"><h3>Hotkeys'ų sukūrimas ir valdymas
+      </h3>
+        <div class="collapse-savas-locdep">
+          <pre><code>Hotkey, KeyName [, Label, Options]
+Hotkey, IfWinActive/Exist [, WinTitle, WinText]
+Hotkey, If [, Expression]</code></pre>
+        <p><a href="https://autohotkey.com/docs/commands/Hotkey.htm">https://autohotkey.com/docs/commands/Hotkey.htm</a></p>
+        <p>&nbsp;</p>
+  </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p></td>
+      <td width="25%"><h3>&nbsp;</h3>
+        <p></p>
+        <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p></td>
+      <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="collapse-savas-locdep">
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<dl>
+  <dt>&nbsp;</dt>
+  <dd>
+    <p>&nbsp;</p>
+    <blockquote>&nbsp; </blockquote>
+  </dd>
+  <dt>&nbsp;</dt>
+  <dd>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>&nbsp;</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

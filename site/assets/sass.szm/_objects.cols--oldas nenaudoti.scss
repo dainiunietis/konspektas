@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   Kad būtų neperkeliamas tarp stulpelių tagų turinys
+//
+////////////////////////////////////////////////////////////////////////
+
+.cols > .cols__content--break-avoid,
+.cols--break-avoid-p p, //Kad būtų nekeliami paragrafai
+.cols--break-avoid-blockquote blockquote,
+.cols--break-avoid-pre pre {
+	@include vendor(column-break-inside, avoid);
+	@include vendor(break-inside, avoid);
+	// -webkit-column-break-inside:avoid-column;
+	//    -moz-column-break-inside:avoid-column;
+	//      -o-column-break-inside:avoid-column;
+	//     -ms-column-break-inside:avoid-column;
+	//         column-break-inside:avoid-column;
+	// -webkit-column-break-inside: avoid;
+	//    -moz-column-break-inside: avoid;
+	//      -o-column-break-inside: avoid;
+	//     -ms-column-break-inside: avoid;
+	//         column-break-inside: avoid;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   Stulpelių tagų pradėjimas nuo stulpelio pradžios-viršaus
+//
+////////////////////////////////////////////////////////////////////////
+
+.cols > .cols__content--break-before,
+.cols--break-before-h2 > h2,               // Kad head'ingus keltų į sekančio stulpelio pradžią
+.cols--break-before-h3 > h3,
+.cols--break-before-h4 > h4 {
+	@include vendor(break-before, column);
+	@include vendor(column-break-before, always);
+	// -webkit-column-break-before: column;
+	//    -moz-column-break-before: column;
+	//      -o-column-break-before: column;
+	//     -ms-column-break-before: column;
+	//         column-break-before: column;
+	// -webkit-column-break-before: always;
+	// break-before: column;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   Kad būtų neperkeliamas tarp stulpelių tagų turinys
+//
+////////////////////////////////////////////////////////////////////////
+
+.cols > .cols__child--unbroken,
+.cols--unbrokenP_c p,                   //Kad būtų nekeliami paragrafai
+.cols--unbrokenBQ_c blockquote,
+.cols--unbrokenPre_c pre {
+	@include vendor(column-break-inside, avoid);
+	@include vendor(break-inside, avoid);
+	// -webkit-column-break-inside:avoid-column;
+	//    -moz-column-break-inside:avoid-column;
+	//      -o-column-break-inside:avoid-column;
+	//     -ms-column-break-inside:avoid-column;
+	//         column-break-inside:avoid-column;
+	// -webkit-column-break-inside: avoid;
+	//    -moz-column-break-inside: avoid;
+	//      -o-column-break-inside: avoid;
+	//     -ms-column-break-inside: avoid;
+	//         column-break-inside: avoid;
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+//
+//   Stulpelių tagų pradėjimas nuo stulpelio pradžios-viršaus
+//
+////////////////////////////////////////////////////////////////////////
+
+.cols > .cols__child--start,
+.cols--startH1_c > h1,               // Kad head'ingus keltų į sekančio stulpelio pradžią
+.cols--startH2_c > h2,               // Kad head'ingus keltų į sekančio stulpelio pradžią
+.cols--startH3_c > h3,
+.cols--startH4_c > h4,
+.cols--startH5_c > h5,
+.cols--startH6_c > h6 {
+	@include vendor(break-before, column);
+	@include vendor(column-break-before, always);
+	margin-top: 0;
+	// -webkit-column-break-before: column;
+	//    -moz-column-break-before: column;
+	//      -o-column-break-before: column;
+	//     -ms-column-break-before: column;
+	//         column-break-before: column;
+	// -webkit-column-break-before: always;
+	// break-before: column;
+}
+
+
+
+
+
+
+
+
+
+

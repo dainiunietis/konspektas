@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<link rel="stylesheet" href="assets/sass/master.css">
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+<style>
+</style>
+
+<script src="assets/node_modules/html-contents/html-contents.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    htmlContents('#page-toc', {
+      top: 2,         // 1-6: biggest header to include in outline
+      bottom: 6,      // 1-6: smallest header to include in outline
+      addIds: true,   // true/false: add ids to H* that don't have them
+      addLinks: true, // true/false: add links to outline?
+      listType: 'u',  // 'u' or 'o': (u)nordered or (o)rdered list type
+      filter: false   // String or function: CSS style selector to exclude from outline
+                      //   or function to filter to pass to Array.filter
+    })
+  });
+</script>
+</head>
+<body>
+
+<div class="c-sidePanel c-sidePanel--left c-controlPanel--links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="page-toc" class="c-sidePanel c-sidePanel--left c-controlPanel--toc"></div>
+
+<p>https://github.com/psalmody/html-contents</p>
+
+<h1>WebDev konspektas</h1>
+<p><a href="http://konspektas-prev.local/index_.htm">http://konspektas-prev.local/index_.htm</a></p>
+<p>Kliento pusė / Client-side / Frontend &#8212;&#8212; Serverio pusė / Backend 111</p>
+<p><a href="_dev-design-style-guides/">Konspekto dizaino pavyzdziai &#8212; &quot;style guide&quot;</a> &#8212; senasis, nauji &#8212; <code>/!*.htm</code></p>
+<p><a href="konspekto-susitarimai.htm">Konspekto susitarimai</a></p>
+<p><a href="skirstyti-pasideti.htm">Skirstyti-pasidėti</a></p>
+<h2>Bendra webdev</h2>
+<p><a href="programing-concepts.html">Bendros programavimo koncepcijos, terminai</a></p>
+<p>svarbi interneto statistika: <a href="http://httparchive.org/">http://httparchive.org/</a></p>
+<dl>
+  <dt>Apie front-end'o gausybę framework'ų-bibliotekų</dt>
+  <dd>
+    <p><a href="http://wesbos.com/overwhelmed-with-web-development/">http://wesbos.com/overwhelmed-with-web-development/</a></p>
+    <p><a href="http://justbuildwebsites.com/">http://justbuildwebsites.com/</a>  </p>
+  </dd>
+  <dt>cloud hosting</dt>
+  <dd>
+    <p>https://github.com/  </p>
+  </dd>
+  <dt>code snippets</dt>
+  <dd>
+    <p>https://gist.github.com/, https://app.gistboxapp.com/, https://github.com/gotdibbs/gistintime#readme, https://gistlist.ksdev.pl/ </p>
+    <p>https://www.snip2code.com/</p>
+    <p>https://mycodestock.com/</p>
+    <p>http://snipplr.com/</p>
+  </dd>
+  <dt>cloud ide hosting</dt>
+  <dd>
+    <p>https://c9.io/ &#8212; rekomenduotas-pagirtas http://www.theodinproject.com/courses/web-development-101/lessons/installations, <strong>matyt tikrai geras</strong></p>
+    <p>http://codepen.io/</p>
+    <p>https://gomix.com/ &#8212; node.js, express.js</p>
+    <p>žiūrėti-aiškintis-galbūt: http://cloudcmd.io/</p>
+  </dd>
+  <dt>Apibendrinančios front-end'o mokymosi ir praktikavimo rekomendacijos</dt>
+  <dd>
+    <p>https://www.frontendhandbook.com/, G:\bib wd book\Front-End Developer Handbook 2017 -- Cody Lindley, Frontend Masters.pdf</p>
+  </dd>
+</dl>
+<p><a href="programs-tools.tdl">Programos ir priemonės tinklalapių programavimui</a> — atidaryti su TodoList (nebevystau)</p>
+<h3>Bendra webdev</h3>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Command Prompt (CMD), Command line interface (CLI), Terminal  utility-tool</h3>
+      <p><a href="win.cmd-command-prompt.html">Windows Command Prompt</a></p>
+      <p>automatizacijos </p>
+      <p>Windows terminal</p>
+      <p>Windows console</p>
+      <p>Terminal Emulator</p>
+      <p>shells </p>
+      <p>Platforms, package systems</p>
+      <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Web Tooling &amp; Automation</h3>
+      <p><a href="automation.programs-plugins.best-list.htm">Automation programų-plugin'ų sąrašas</a></p>
+      <h4>node.js </h4>
+      <p><a href="nodejs.htm">node.js</a></p>
+      <p><a href="nodejs.npm.htm">npm (Node package manager)</a>, <a href="nodejs.npm.cheat-sheet.htm">npm cheat sheet</a></p>
+      <p><a href="nodejs.globs.htm">Globs (Globbing in Node)</a></p>
+      <p>https://www.npmjs.com/package/watchify</p>
+      <blockquote>
+        <p>Check out tools like <a href="http://didact.us/beefy/">Beefy</a> or <a href="https://github.com/ForbesLindesay/run-browser">run-browser</a> which make automating browserify development easier. </p>
+      </blockquote>
+      <h4>Tinklalapio automatizavimas</h4>
+      <p><a href="nodejs.automation.gulp.htm">Gulp</a>      </p>
+      <p><a href="nodejs.automation.gulp.terminal.htm">Gulp'o command prompt / command line / terminal komandos</a></p>
+      <p><a href="nodejs.automation.gulp.api.cheat-sheet.htm">Gulp API cheat-sheet (nebenaudoju)</a> (<a href="nodejs.automation.gulp.api.cheat-sheet.ver-3.htm">iki gulp@4.0</a>)</p>
+      <p>grunt vs gulp</p>
+      <p>http://ryanchristiani.com/getting-started-with-gulp-and-sass/</p>
+      <p>https://www.codehive.io/boards/Wuk-sJ8</p>
+      <p>https://github.com/sass/libsass/issues/156#issuecomment-68748330</p>
+      <p> https://www.npmjs.com/package/gulp-include </p>
+      <h4>Failų, bibliotekų atsisiuntimo-atnaujinimo automatizavimas (front-end package manager)</h4>
+      <p><a href="nodejs.automation.bower.htm">Bower</a></p>
+      <p><strong>TODO:</strong></p>
+      <p>https://bower.io/docs/tools/</p>
+      <p>https://www.slant.co/topics/1488/~front-end-package-managers </p>
+      <h4>Scaffold &#8212; projekto katalogų-failų struktūros sukūrimas</h4>
+      <p><a href="http://yeoman.io/">http://yeoman.io/</a></p></td>
+    <td width="25%"><h3>Naršyklės / Browsers</h3>
+      <p>http://www.creativebloq.com/advice/20-essential-new-devtool-techniques</p>
+      <p>http://www.creativebloq.com/web-design/google-chrome-extensions-21410570 </p>
+      <p><a href="browser.chrome.htm">Google Chrome</a></p>
+      <p><a href="browser.automatic-page-reload.htm">Automatinis redaguojamo puslapio atnaujinimas naršyklėje</a></p>
+      <p><a href="browser.cache.htm">Naršyklės kešas</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><h3>Git</h3>
+      <p><a href="http://konspektas-prev.local/programos/git/index_.htm">Git</a>: <a href="http://konspektas-prev.local/programos/git/commands.htm">Komandos</a></p>
+      <p><a href="version-control-system.git.html">Bendrai apie GIT'ą</a></p>
+      <p>https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Using_GitHub_Pages</p>
+      <p>&nbsp;</p>
+      <h4>Gist'ai</h4>
+      <p>https://gist.github.com/ &#8212; oficialus Gist'ų valdyno tinklapis</p>
+      <p>https://app.gistboxapp.com &#8212; yra tagai-lable'ai</p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>http://stackoverflow.com/a/4092223</p>
+        <p>Gists are lightweight repositories, so why not take advantage of that?</p>
+        <p>clone your gists to a 'my_gists' directory, organized how you would want them organized.</p>
+        <p>Then they become searchable fully using whatever search tools you are familiar with on your operating system.</p>
+        <p>You also have the advantage of being able to edit, comment, commit and push.</p>
+        <p>This let's you do all that you have listed and more.</p>
+        <p>Add git instaweb to the mix and you even have a rudimentary web interface to your gists.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>https://www.snip2code.com/</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>htaccess</h3>
+      <p><a href="https://css-tricks.com/snippets/htaccess/">https://css-tricks.com/snippets/htaccess/</a></p>
+      <p></p>
+      <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Regular Expressions (RegExp)</h3>
+      <p><a href="https://github.com/aloisdg/awesome-regex">https://github.com/aloisdg/awesome-regex</a></p>
+      <p><a href="regexp.cheatsheet.jonny-fox.htm">regexp cheatsheet Jonny Fox</a></p>
+      <p><a href="regexp.įvairūs-sprendimai.htm">Įvairūs sprendimai</a></p>
+      <blockquote>
+        <p><a href="http://konspektas-prev.local/client-side/js/regexp/">http://konspektas-prev.local/client-side/js/regexp/</a></p>
+        <p><a href="http://konspektas-prev.local/client-side/js/regexp/pagrindai.htm">pagrindai</a></p>
+        <p><a href="http://konspektas-prev.local/client-side/js/regexp/sintakses-suvestine.htm">Sintaksės suvestinė</a></p>
+        <p><a href="http://konspektas-prev.local/client-side/js/regexp/regexp_static.htm">RegExp static members</a></p>
+        <p><a href="http://konspektas-prev.local/client-side/js/regexp/regexp_instance.htm">RegExp objektas</a></p>
+        <p><a href="http://konspektas-prev.local/client-side/js/regexp/string_methods.htm">String Regular expression metodai</a></p>
+        <p><a href="http://konspektas-prev.local/client-side/js/regexp/find-replace.htm">apie find-replace</a></p>
+      </blockquote>
+    </td>
+    <td><h3>Markdown (MD)</h3>
+      <p> <a href="https://commonmark.org/help/">Markdown Reference</a> &#8212; <a href="file:///D|/webdev/docs.cheat-sheets/Markdown Reference.mhtml">(local)</a></p>
+      <p> <a href="https://www.markdownguide.org/cheat-sheet/">Markdown Cheat Sheet | Markdown Guide</a></p>
+      <p>&nbsp;</p></td>
+    <td>
+      <h3>Tekstas, šriftai (typography, fonts)      </h3>
+      <p><a href="text.unicode.character-set.escape-encode-decode.htm">Character Set, character escape, character encoding, encode-decode, unicode</a></p>
+      <p> <a href="https://rwt.io/typography-tips/learning-typography-introduction-resources">Learning typography: introduction & resources | Responsive Web Typography</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Editors, IDE [editor]</h2>
+<p><a href="http://konspektas-prev.local/redaktoriai/index_.htm">http://konspektas-prev.local/redaktoriai/index_.htm</a></p>
+<p>https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Available_text_editors</p>
+<p><a href="editor.code-organize-rules-marking.htm">Kodo Style Guides, organizacijos taisyklės, sutartiniai žymėjimai</a></p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>Bendra</h3>
+      <p><a href="editor.shortcuts-hotkeys.common.htm">shortcuts-hotkeys bendri dalykai, sutartiniai žymėjimai</a></p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>Encoding</p>
+        <p>Use UTF-8 (no BOM).</p>
+        <p>Make sure your editor uses UTF-8 as character encoding, without a byte order mark.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>Sublime text</h3>
+      <p>ST'o temp failų ištrynimas:</p>
+      <pre>Sublime Text 3\Data\Packages\.logs\
+Sublime Text 3\Data\Backup\
+Sublime Text 3\Data\Cache\
+Sublime Text 3\Data\Index\
+Sublime Text 3\Data\Settings\</pre>
+      <p><a href="http://konspektas-prev.local/redaktoriai/sublime-3/index_.htm">http://konspektas-prev.local/redaktoriai/sublime-3/index_.htm</a></p>
+      <p><a href="editor.sublime.sutrumpinimai-konspektui.htm">Sutrumpinimai konspektui</a></p>
+      <p><a href="editor.sublime.terminai.htm">Terminai</a></p>
+      <p><a href="editor.sublime.configuration-customize.htm">Konfigūracija-pritaikymas (configuration-customize)</a></p>
+      <p><a href="editor.sublime.settings.htm">Settings'ai</a></p>
+      <p><a href="editor.sublime.project.htm">Projektai</a></p>
+      <p><a href="editor.sublime.command.htm">Sublime'o komandos (commands)</a></p>
+      <hr>
+      <p><a href="editor.sublime.package.htm">Packages'ų architektūra</a></p>
+      <p><a href="editor.sublime.plugin.htm">Plugins'ų kūrimas-developinimas</a></p>
+      <p><a href="https://www.sublimetext.com/docs/3/themes.html">https://www.sublimetext.com/docs/3/themes.html</a></p>
+      <p>Package'ų resources'ai:</p>
+      <p> <a href="editor.sublime.package-resource.completions.htm">*.sublime-completions</a></p>
+      <p><a href="editor.sublime.autocompletion.htm">auto-completion</a></p>
+      <hr>
+      <p><a href="editor.sublime.hotkeys.htm">Šūtkatų suvestinė (cheat-sheet)</a></p>
+      <p> <a href="editor.sublime.hotkeys.info.htm">Šūtkatų pagalbinė informacija</a></p>
+      <p><a href="editor.sublime.packages.index-use.htm">Mano naudojami packages'ai</a></p>
+      <hr>
+      <p><a href="editor.sublime.code-indent.htm">kodo indent'avimas / indent'o valdymas</a></p>
+    </td>
+    <td width="20%">
+      <h3>WebStorm</h3>
+      <p> <a href="http://konspektas-prev.local/redaktoriai/phpstorm/">Senąjame konspekte</a></p>
+      <p><a href="editor.webstorm.hotkeys.htm"> shortcuts, hotkeys, keymap &#8212; Cheat sheet</a></p>
+      <p><a href="editor.webstorm.hotkeys.htm#(h)">Visko fuzzy-search'ai</a></p>
+      <p><a href="editor.webstorm.project.htm">Projektai</a></p>
+      <p><a href="editor.webstorm.completion.htm">Completion'ai</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>VS Code</h3>
+      <p><a href="https://github.com/viatsko/awesome-vscode">https://github.com/viatsko/awesome-vscode</a></p>
+      <p><a href="editor.vscode.hotkeys.htm">Cheat sheet</a></p>
+      <p><a href="editor.vscode.color-theme.htm">Sąsajos ir kodo redaktoriuje spalvinimas (color themes)</a></p>
+      <p><a href="editor.vscode.extension.htm">VS Code Extensions</a></p>
+    </td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<h2>HTML, CSS, JS: bendri dalykai, strategijos–taktikos [frontend]</h2>
+<p>Taktikos-technikos</p>
+<p> <a href="https://bestofjs.org/">Best of JavaScript</a></p>
+<p> <a href="https://alistapart.com/article/from-url-to-interactive">From URL to Interactive · An A List Apart Article</a></p>
+<p>!!!!!!!!!!!!!!!!!  </p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook">CSS Layout cookbook - CSS: Cascading Style Sheets | MDN</a> </p>
+<p> <a href="">Demos of open web technologies | MDN</a></p>
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!! žiūrėti-aiškintis</p>
+<p> <a href="https://frontendmasters.com/books/front-end-handbook/2019/"><strong>Front-end Developer Handbook 2019 - Learn the entire JavaScript, CSS and HTML development practice!</strong></a></p>
+<p> <a href="https://frontendmasters.com/books/front-end-handbook/2018/">Introduction · Front-End Developer Handbook 2018</a></p>
+<p> <a href="https://github.com/grab/front-end-guide">GitHub - grab/front-end-guide: 📚 Study guide and introduction to the modern front end stack.</a></p>
+<p>specifications	/	documentation</p>
+<p>Pavyzdžiai:</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies">https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies</a></p>
+<p> <a href="http://shinydemos.com/">http://shinydemos.com/</a> &#8212; Efektingi</p>
+<dl>
+  <dt>CSS</dt>
+  <dd>
+    <p>http://bourbon.io/</p>
+    <p>http://refills.bourbon.io/</p>
+    <p>https://github.com/sotayamashita/awesome-css#css-development-at-large-scale-websites</p>
+    <p>https://github.com/sotayamashita/awesome-css#code-style-guideline</p>
+    <p>https://github.com/davidtheclark/scalable-css-reading-list</p>
+    <p>https://github.com/sotayamashita/awesome-css#css-structure</p>
+    <p>https://github.com/sotayamashita/awesome-css#reset-and-normalize</p>
+    <p>https://github.com/sotayamashita/awesome-css#css-polyfills</p>
+  </dd>
+  <dt>HTML5</dt>
+  <dd>
+    <p>https://github.com/diegocard/awesome-html5</p>
+    <p>http://blog.teamtreehouse.com/use-html5-sectioning-elements  </p>
+  </dd>
+  <dt>SVG</dt>
+  <dd>
+    <p>https://github.com/willianjusten/awesome-svg  </p>
+  </dd>
+</dl>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p><a href="frontend.code-style-guides.htm">Kodo standartai (style guides)</a></p>
+      <p><a href="frontend.bendri-terminai-pavadinimų-patternai.html">Bendri terminai, pavadinimų patternai</a></p>
+      <p><a href="frontend.page-request-parse-paint-process.htm">Internetinio puslapio naršyklėje parodymo mechanizmas</a></p>
+      <p><a href="frontend.hyperlinks-nuorodos.htm">Nuorodos / hyperlinks</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>CSS architektūra</h3>
+      <p> <a href="https://piccalil.li/blog/cube-css/">CUBE CSS - Piccalilli</a>,  <a href="https://piccalil.li/cube-css/">CUBE CSS - Piccalilli</a></p>
+      <p><a href="frontend.css.architecture--kitu-straipsniai.htm">Kitų straipsniai</a></p>
+      <p><a href="frontend.css-sass-taktikos-technikos.htm">CSS architektūrų suvestinė</a></p>
+      <p><a href="frontend.css.architecture.itcss-bemit.htm">Harry Roberts'o ITCSS (  Inverted Triangle CSS) ir BEMIT</a></p>
+      <p><a href="frontend.atomic-css.htm">Atomic CSS</a>    </p>
+      <p><a href="frontend.css-reset.html">CSS Reset</a></p>
+    </td>
+    <td width="20%">
+      <h3>Strategijos&#8211;architektūra</h3>
+      <p><a href="frontend.css-sass-strategijos-architektūros.htm">Frontend'o architektūrų suvestinė</a>      </p>
+      <p><a href="frontend.naršyklių-palaikymas-suderinamumas-browser-support.htm">Naršyklių palaikymas-suderinamumas, browser support, cross-browser compatibility</a></p>
+      <p>&nbsp;</p>
+      <p> <a href="https://css-tricks.com/front-end-developers-have-to-manage-the-loading-experience/">Front-End Developers Have to Manage the Loading Experience | CSS-Tricks</a></p>
+      <p> <a href="https://csswizardry.com/2018/11/css-and-network-performance/">CSS and Network Performance – CSS Wizardry – CSS Architecture, Web Performance Optimisation, and more, by Harry Roberts</a></p>
+    </td>
+    <td width="20%">
+      <h3>Tekstas, šriftai / typography, fonts</h3>
+      <p><a href="https://www.youtube.com/watch?v=9EU7urOl1LE" rel="nofollow">Creative Text Effects with CSS</a></p>
+      <p><a href="frontend.typography.font-size-system.htm">Teksto dydžio valdymo sistemos</a>      </p>
+      <p class="c-em-important c-em--small"> šriftų pavadinimus reikia žiūrėti ir imti iš Windows 10 [Settings &gt; Personalization &gt; Fonts]      </p>
+      <p>https://css-tricks.com/opt-in-typography/      </p>
+      <a href="frontend.teksto-kalba--internationalization-localization.htm">Teksto kalba / Internationalization, localization</a>    </td>
+    <td width="20%"><h3>Layout</h3>
+      <p> <a href="https://www.smashingmagazine.com/guides/css-layout/">CSS Layout — Smashing Magazine</a></p>
+      <p><a href="frontend.layout.technikos.htm">Layout'o taktikos-technikos</a></p>
+      <p><a href="frontend.layout~atomic-sprendimai-technikos.htm">Layout'o sprendimai</a></p>
+      <p>layout debugging, </p>
+      <p>http://pesticide.io/</p></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>HTML puslapis kaip programa / Apps</h3>
+      <p>&nbsp;</p>
+      <h4>Progressive Web App (PWA)</h4>
+      <p><a href="https://alistapart.com/article/yes-that-web-project-should-be-a-pwa">Yes, That Web Project Should Be a PWA · An A List Apart Article</a></p>
+      <p> <a href="https://pwa-book.awwwards.com/">PWA The Superpowers of the Web and Native Apps Combined - Awwwards</a> — atrodo labai gerai pradėti mokytis</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td><h3>Spalvos</h3>
+      <p><a href="https://seesparkbox.com/foundry/relative_color_palettes_with_sass">relative_color_palettes_with_sass</a> </p>
+      <p>&nbsp;</p></td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Accessibility</h3>
+      <p> <a href="https://a11yproject.com/">The A11Y Project</a></p>
+      <p> <a href="https://guide.freecodecamp.org/accessibility/accessibility-basics">Accessibility Basics | freeCodeCamp Guide</a></p>
+      <p><a href="accessibility.sprendimai-technikos.html">Accessibility sprendimai-technikos</a></p>
+      <p><a href="accessibility.aria.html">ARIA (Accessible Rich Internet Applications)</a></p>
+      <p> <a href="https://mcdlr.com/wai-aria-cheatsheet/">WAI ARIA Cheatsheet · mcdlr</a></p>
+      <p> <a href="https://www.w3.org/2009/cheatsheet/#wcag2">W3C cheatsheet</a></p>
+      <hr>
+      <p><a href="frontend.puslapio-greitaveikia_web-performance-optimization-user-experience.html">Puslapio greitaveikia / Web Performance Optimization, optimizing for quality of user experience</a></p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td><h3>hacks</h3>
+      <p><a href="http://browserhacks.com/">http://browserhacks.com/</a></p></td>
+    <td>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>CSS-in-JS</h3>
+      <p> <a href="https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/">Bridging the Gap Between CSS and JavaScript: CSS-in-JS | CSS-Tricks</a>    </p>
+    </td>
+    <td>
+      <h3>Critical-path (Above-the-fold) CSS</h3>
+      <p> <a href="https://github.com/addyosmani/critical-path-css-tools#readme">addyosmani/critical-path-css-tools: Tools to prioritize above-the-fold (critical-path) CSS</a></p>
+      <p><a href="https://www.youtube.com/watch?v=4pQ2byAoIX0&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA" rel="nofollow">CSS and the First Meaningful Paint</a>: Patrick Hamann, CSSConf.EU 37:56    </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Atomic Design Systems</h3>
+      <p><a href="frontend.atomic-design.pattern-lab.html">Pattern Lab</a>    </p>
+    </td>
+    <td>
+      <h3>web template systems</h3>
+      <p><a href="frontend.template-system.mustache.html">Mustache</a></p>
+    </td>
+    <td>
+      <h3>Responsive design</h3>
+      <p> <a href="http://konspektas-prev.local/client-side/index_css.htm">K° CSS namai</a></p>
+      <p><a href="frontend.responsive-design.htm">Responsive design</a>      </p>
+      <p> <a href="https://polypane.app/blog/the-complete-guide-to-css-media-queries/?ref=devawesome.io">The complete guide to CSS media queries | Polypane browser for developers</a></p>
+      <h4>Without Media Queries </h4>
+      <p> <a href="https://www.google.com/search?sxsrf=ALeKk01FktvDuZG4__dbBsoNZZwXAU57wA%3A1584691275795&ei=S3h0XuCJMJKyrgTgjYvIDA&q=Responsive+design+Without+Media+Queries&oq=Responsive+design+Without+Media+Queries&gs_l=psy-ab.3..0i203j0i22i30l4.2808.8302..9033...0.3..0.168.452.0j3......0....2j1..gws-wiz.......0i71.mC1O-bDZBaA&ved=0ahUKEwig28mEy6joAhUSmYsKHeDGAskQ4dUDCAs&uact=5">Responsive design Without Media Queries - "Google" paieška</a></p>
+      <p><a href="https://www.h3xed.com/web-development/how-to-create-a-responsive-website-without-media-queries">How To Create A Responsive Website Without Media Queries - H3XED</a></p>
+      <h4>Responsive images</h4>
+      <p> <a href="https://ishadeed.com/article/image-techniques/">Image Techniques On The Web</a></p>
+      <p><a href="https://alistapart.com/article/responsive-images">Responsive Images · An A List Apart Article</a></p>
+      <p> <a href="https://css-tricks.com/preventing-content-reflow-from-lazy-loaded-images/">Preventing Content Reflow From Lazy-Loaded Images | CSS-Tricks</a>    </p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>HTML semantika [html]</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p><a href="http://konspektas-prev.local/client-side/index_html.htm">konspektas-prev.local/client-side/index_html.htm</a></p>
+      <hr>
+      <p><a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a> — <q> is the single version of HTML being actively developed</q>.</p>
+      <p> <a href="https://www.w3.org/html/">W3C HTML</a></p>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML5 - Developer guides | MDN</a>      </p>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML: Hypertext Markup Language | MDN</a></p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML">Structuring the web with HTML - Learn web development | MDN</a>      </p>
+      <p><strong>HTML elements index-reference:</strong></p>
+      <p> <a href="https://html.spec.whatwg.org/dev/indices.html#elements-3">Elements — HTML Standard, Developer's Edition</a></p>
+      <ul>
+        <li> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML elements reference - HTML: Hypertext Markup Language | MDN</a> </li>
+        <li><a href="https://htmlreference.io/">HTML Reference - A free guide to all HTML elements and attributes.</a></li>
+        <li> <a href="http://html5doctor.com/element-index/">Element Index | HTML5 Doctor</a></li>
+        <li><a href="https://www.w3.org/2009/cheatsheet/#autocomplete">W3C cheatsheet — Lookup in HTML, JavaScript, CSS, SVG, XPath</a></li>
+        <li> <a href="https://www.wpkube.com/html5-cheat-sheet/">The Ultimate HTML 5 Cheat Sheet - 2019 - WPKube</a>      </li>
+      </ul>
+      <p><strong>HTML attributes index-reference:</strong></p>
+      <ul>
+        <li> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">HTML attribute reference - HTML: Hypertext Markup Language | MDN</a> </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes - HTML: Hypertext Markup Language | MDN</a></li>
+      </ul>
+      <p>&nbsp;</p>
+      <p><a href="https://css-tricks.com/snippets/html/">https://css-tricks.com/snippets/html/</a></p>
+      <p>&nbsp;</p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto">https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto</a>    </p>
+    </td>
+    <td width="20%">
+      <p>HTML5 sintaksė,  <a href="konspektas-prev.local/client-side/html/sintakse.htm">HTML5 sintaksė</a></p>
+      <p>DTD,  <a href="https://www.granneman.com/webdev/coding/dtds">Everything You Need to Know About DTDs | Scott Granneman</a></p>
+      <p><a href="html.elements.index.htm">HTML elementų suvestinė</a>      </p>
+      <p>HTML tagų atributai      </p>
+      <p>&nbsp;</p>
+      <p>Nuorodos-linkai</p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language | MDN</a></p>
+      <p>it is now OK to wrap a header &amp; several paragraphs, say, inside an anchor (for more on this particular case, see "<a href="http://html5doctor.com/block-level-links-in-html-5/">'Block-level' links in HTML5</a>" at HTML5 Doctor).</p>
+      <p>&nbsp;</p>
+      <p>HTML kodo formatavimas-indent'avimas,  <a href="https://www.granneman.com/webdev/coding/formatting-and-indenting-your-html">Formatting & Indenting Your HTML | Scott Granneman</a></p>
+    </td>
+    <td width="20%">
+      <P>Tekstas, šriftai (typography, fonts)      </p>
+      <p>Teksto simboliai-ženklai</p>
+      <p>Tarpų simboliai, <a href="http://konspektas-prev.local/client-side/html/whitespace.htm">Tuštieji tarpai (Whitespace)</a>, <a href="http://konspektas-prev.local/client-side/html/pvz/tarpu-simboliai-space-entities.htm">Tarpų simboliai, space entities</a>      </p>
+      <p>Teksto simbolių-ženklų užkodavimas (character escape, character encoding, encode-decode), <a href="https://www.granneman.com/webdev/coding/characterencoding">Everything You Need to Know About Character Encoding | Scott Granneman</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p><a href="html.content-model-categories.htm">HTML Content model (content categories)</a>      </p>
+      <p><a href="http://konspektas-prev.local/client-side/html/tagu-turiniai.htm">Tagų turiniai</a></p>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories">Content categories - Developer guides | MDN</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>HTML'o datos ir laiko formatai</p>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats">Date and time formats used in HTML - HTML: Hypertext Markup Language | MDN</a></p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <blockquote>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements">Inline elements</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements">block-level elements</a></p>
+        <p>HTML elements are usually "inline" or "block-level" elements. An inline element occupies only the space bounded by the tags that define it. A block-level element occupies the entire space of its parent element (container), thereby creating a "block."</p>
+      </blockquote>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Vidiniai CSS dalykai [css]</h2>
+<div class="o-collapse-locdep">
+  <p>Nuorodos</p>
+  <div class="o-mcl o-mcl--W4">
+    <ul>
+      <li> <a href="https://www.w3.org/Style/CSS/specs.en.html">All CSS specifications</a></li>
+      <li> <a href="https://www.w3.org/TR/?tag=css">All Standards and Drafts - W3C</a> — CSS modulių filtravimas</li>
+      <li> <a href="https://www.w3.org/TR/CSS/#indices">CSS Snapshot 2018</a> — visų CSS terminų alphabetinis sąrašas  </li>
+    </ul>
+    <p>Nuorodos </p>
+    <p><a href="https://frontendmasters.com/books/front-end-handbook/2019/#4.8"><strong>Front-end Developer Handbook 2019 - Learn HTML &amp; CSS</strong></a></p>
+    <p><a href="https://www.youtube.com/watch?v=IRI1H5tyEAo&list=PLUS3uVC08ZaqVEGFkl_dS_3FUzILkOIzA" rel="nofollow"><strong>The Power of CSS</strong></a>: Una Kravets, Front-Trends 30:57</p>
+    <p> <a href="https://github.com/AllThingsSmitty/css-protips#readme">AllThingsSmitty/css-protips: A collection of tips to help take your CSS skills pro</a></p>
+    <p>&nbsp;</p>
+    <p><a href="http://konspektas-prev.local/client-side/index_css.htm">http://konspektas-prev.local/client-side/index_css.htm</a></p>
+    <p><a href="css.reference.htm">CSS kalbos suvestinės&#8211;references'ai</a> -- nebenaudoju, laikau Evernote</p>
+    <p><a href="https://css-tricks.com/snippets/css/">https://css-tricks.com/snippets/css/</a></p>
+    <p><strong>Mokintis:</strong></p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Filter_Effects">https://developer.mozilla.org/en-US/docs/Web/CSS/Filter_Effects</a></p>
+    <p> <a href="https://www.sololearn.com/Play/CSS#_=_">CSS Fundamentals | SoloLearn: Learn to code for FREE!</a></p>
+    <p><strong>Pasidėti pavyzdžius:</strong></p>
+    <p> <a href="https://30-seconds.github.io/30-seconds-of-css/">30 Seconds of CSS</a></p>
+    <p>&nbsp;</p>
+    <p> <a href="https://www.sitepoint.com/learn/advanced-css/advanced-css-tutorials/">Advanced CSS Tutorials | Grid | Flexbox | Transforms | PWAs | SitePoint</a></p>
+    <p> <a href="https://www.sitepoint.com/learn/advanced-css/learn-advanced-css/">Advanced CSS Best Practices | CSS Grid | Flexbox | Media Queries | SitePoint</a></p>
+    <p>&nbsp;</p>
+    <p> <a href="https://learn.shayhowe.com/html-css/">Learn to Code HTML &amp; CSS</a></p>
+    <p> <a href="https://learn.shayhowe.com/advanced-html-css/">Learn to Code Advanced HTML & CSS</a></p>
+    <p><a href="https://hacks.mozilla.org/2017/06/css-shapes-clipping-and-masking/">Shapes in clipping and masking - and how to use them - Mozilla Hacks - the Web developer blog</a></p>
+    <p> <a href="https://codepen.io/thebabydino/pen/vEGZEM">clip-path: inset() tests</a></p>
+    <p>&nbsp;</p>
+    <p><a href="https://css-irl.info/into-the-matrix-with-svg-filters/">Into the Matrix with SVG Filters &#8212; CSS { In Real Life }</a></p>
+  </div>
+</div>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td>
+      <p><strong>Do not specify the encoding of style sheets as these assume UTF-8.</strong></p>
+      <p><a href="css.syntax.htm">Kalbos sintaksė (CSS syntax)</a></p>
+      <p><a href="css.concept.cascade-specificity-inheritance.htm">CSS veikimo mechanizmas: cascade, specificity, inheritance (paveldimumas)</a></p>
+      <p><a href="css.property.important.htm">!important</a></p>
+      <p><a href="css.selectors.htm">Selektorių suvestinė (CSS selectors)</a></p>
+      <p>Loginės ir fizinės savybės ir reikšmės / Logical and physical properties and values</p>
+      <p><a href="css.properties-calculations.initial-specified-computed-actual-used-resolved.htm">CSS Savybių pritaikymo mechanizmas (<i>initial value</i>, <i>specified value</i>, <i>computed value</i>, <i>actual value</i>, <i>used value</i>, <i>resolved value</i>)</a></p>
+      <p><strong>Perdaryti:</strong></p>
+      <ul>
+        <li><a href="css.data-types.htm">Savybių reikšmių duomenų tipai (CSS data types)</a></li>
+        <li><a href="css.measurement-unit.htm">Savybių reikšmių matavimo vienetai</a></li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p><a href="css.property.display.htm">display:</a></p>
+      <p><a href="css.property.all.htm">all:</a>      </p>
+      <p><a href="css.viewport.htm">Browser viewport</a>: :root &lt;html&gt;, &lt;body&gt; </p>
+      <p><a href="css.function.htm">CSS funkcijos</a>, <a href="https://css-tricks.com/complete-guide-to-css-functions/">A Complete Guide to CSS Functions | CSS-Tricks</a></p>
+      <p><a href="css.custom-properties-variables.htm">Kintamieji (CSS variables, custom properties)</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p> <a href="frontend.hyperlinks-nuorodos.htm"></a><a href="css.property-value-definition-syntax.htm">CSS savybių reikšmių aprašymo kalba (CSS value definition syntax, a formal grammar)</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <blockquote>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">https://developer.mozilla.org/en-US/docs/Web/CSS</a></p>
+        <p>CSS key concepts:</p>
+        <ul>
+          <li>The <a href="https://developer.mozilla.org/en-US/docs/CSS/Syntax">syntax and forms of the language</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/CSS/Specificity">Specificity</a> and <a href="https://developer.mozilla.org/en-US/docs/CSS/inheritance">inheritance</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/CSS/box_model">Box model</a> and <a href="https://developer.mozilla.org/en-US/docs/CSS/margin_collapsing">margin collapse</a></li>
+          <li>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/All_About_The_Containing_Block">containing block</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/CSS/Understanding_z-index/The_stacking_context" title="The stacking context">Stacking</a> and <a href="https://developer.mozilla.org/en-US/docs/CSS/block_formatting_context" title="block formatting context">block-formatting</a> contexts</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/CSS/initial_value">Initial</a>, <a href="https://developer.mozilla.org/en-US/docs/CSS/computed_value">computed</a>, <a href="https://developer.mozilla.org/en-US/docs/CSS/used_value">used</a>, and <a href="https://developer.mozilla.org/en-US/docs/CSS/actual_value">actual</a> values</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/CSS/Shorthand_properties">CSS shorthand properties</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout">CSS Flexible Box Layout</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">Media queries</a></li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p><a href="css.property.index.htm">Savybių suvestinė(nebenaudoju, perkėliau į čia, t. y. konspekto titulinį)</a>, <a href="http://konspektas-prev.local/client-side/css/css/properties/!properties.htm">http://konspektas-prev.local/client-side/css/css/properties/!properties.htm</a></p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>Basic box model</h3>
+      <p><a href="css.basic-box-model.htm">Basic box model</a></p>
+      <ul>
+        <li>box-sizing</li>
+        <li>overflow
+          <ul>
+            <li>overflow-x</li>
+            <li>overflow-y</li>
+          </ul>
+        </li>
+      </ul>
+      <p><a href="css.property.overflow~kaip-veikia-overflow-y.html">css.property.overflow~kaip-veikia-overflow-y</a></p>
+      <h4>Išmatavimai, Dimensions</h4>
+      <p><a href="css.property.group.box-sizing.width-height-min-max.htm">Box sizing</a> &#8212; <code>box-sizing: width: min-width: max-width: height: min-height: max-height:</code></p>
+
+      <ul>
+        <li>width</li>
+        <li>min-width</li>
+        <li>max-width</li>
+      </ul>
+      <ul>
+        <li>height</li>
+        <li>min-height</li>
+        <li>max-height</li>
+      </ul>
+      <h4>Atitraukimai-tarpai, spacing</h4>
+
+      <ul>
+        <li><a href="css.property.margin.htm">margin</a>
+          <ul>
+            <li>margin-bottom</li>
+            <li>margin-left</li>
+            <li>margin-right</li>
+            <li>margin-top</li>
+          </ul>
+        </li>
+        <li>padding
+          <ul>
+            <li>padding-bottom</li>
+            <li>padding-left</li>
+            <li>padding-right</li>
+            <li>padding-top</li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Border'iai</h4>
+      <p> <a href="https://tympanus.net/codrops/css_reference/border-image-slice/">border-image-slice | Codrops</a> — aiškiai aprašo</p>
+
+      <ul>
+        <li><a href="css.property.group.border.htm">border:</a>
+          <ul>
+            <li>border-width
+              <ul>
+                <li>border-bottom-width</li>
+                <li>border-left-width</li>
+                <li>border-right-width</li>
+                <li>border-top-width</li>
+              </ul>
+            </li>
+            <li>border-color
+              <ul>
+                <li>border-bottom-color</li>
+                <li>border-left-color</li>
+                <li>border-right-color</li>
+                <li>border-top-color</li>
+              </ul>
+            </li>
+            <li>border-style
+              <ul>
+                <li>border-bottom-style</li>
+                <li>border-left-style</li>
+                <li>border-right-style</li>
+                <li>border-top-styl</li></ul></li></ul></li>
+        <li>
+          <p>border-radius</p>
+          <pre><code>border-&lt;topBottom&gt;-&lt;leftRight&gt;-radius: horizontal vertical
+
+border-radius: horizontal-top-left horizontal-top-right horizontal-bottom-left horizontal-bottom-right /
+               vertical-top-left vertical-top-right vertical-bottom-left vertical-bottom-right
+border-radius: horizontal / vertical</code></pre>
+          <ul>
+            <li>border-bottom-left-radius</li>
+            <li>border-bottom-right-radius</li>
+            <li>border-top-left-radius</li>
+            <li>border-top-right-radius</li>
+          </ul>
+        </li>
+        <li>border-image
+          <ul>
+            <li>border-image-outset</li>
+            <li>border-image-repeat</li>
+            <li>border-image-slice</li>
+            <li>border-image-source</li>
+            <li>border-image-width</li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Background'ai</h4>
+      <ul>
+        <li><a href="css.properties-group.background.htm">background</a>
+          <ul>
+            <li>background-attachment</li>
+            <li>background-clip</li>
+            <li>background-color</li>
+            <li>background-image</li>
+            <li>background-origin</li>
+            <li>background-position</li>
+            <li>background-position-x</li>
+            <li>background-position-y</li>
+            <li>background-repeat</li>
+            <li>background-size</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td width="20%">
+      <h3>Box layout models</h3>
+      <p><strong>Mokintis</strong>: <a href="https://www.evernote.com/l/AVn38Wv5PtpKcbzuEczslIb_xlGoiBEVJAw/">Understanding CSS Layout And The Block Formatting Context — Smashing Magazine</a></p>
+      <p>Senosios CSS layout'o savybės:</p>
+      <blockquote>
+        <p>CSS traditionally had very limited alignment capabilities. We were able to align text using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" title="The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.">text-align</a>, center blocks using auto <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin" title="The margin CSS property sets the margin area on all four sides of an element. It is a shorthand for margin-top, margin-right, margin-bottom, and margin-left.">margin</a>s, and in table or inline-block layouts using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" title="The vertical-align CSS property sets vertical alignment of an inline or table-cell box.">vertical-align</a> property. Alignment of text is now covered by the <a rel="noopener" href="https://www.w3.org/TR/css-inline-3/">Inline Layout</a> and <a rel="noopener" href="https://www.w3.org/TR/css-text-3/">CSS Text</a> modules, and for the first time in Box Alignment we have full horizontal and vertical alignment capabilities.</p>
+      </blockquote>
+      <p><a href="css.property.group.box-alignment.htm">CSS Box Alignment</a> <strong>?????? KUR DĖTI ????????</strong></p>
+      <p>Yra tokie &quot;CSS box layout models&quot;:</p>
+      <dl>
+        <dt>Block layout</dt>
+        <dd>
+          <p><a href="css.property.group.block-layout.htm">Block layout</a>        </p>
+        </dd>
+        <dt>Table layout</dt>
+        <dd>
+          <p>&nbsp;</p>
+        </dd>
+        <dt>Flex layout (Flexbox, The Flexible Box Layout)</dt>
+        <dd>
+          <p><a href="css.property.group.flexbox.htm">Flexbox</a></p>
+          <p><a href="css.property.group.flexbox.sprendimai-technikos.htm">Flexbox'o sprendimai-technikos</a></p>
+          <p><a href="css.property.group.flexbox~visokie.htm">Flexbox pavyzdžiai</a></p>
+        </dd>
+        <dt>Grid layout</dt>
+        <dd>
+          <p><a href="css.module.grid-layout.htm">CSS Grid Layout</a></p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>CSS stulpeliai  / Multiple-column Layout / Multicol / CSS Columns</h3>
+      <p>CSS Multi-column Layout Module</p>
+      <p><a href="css.property-group.columns.htm">CSS stulpeliai</a></p>
+      <ul>
+        <li>columns</li>
+        <ul>
+          <li>column-width</li>
+          <li>column-count</li>
+        </ul>
+        <li>column-fill</li>
+        <li>column-gap</li>
+        <li>column-span</li>
+        <li>column-rule</li>
+        <ul>
+          <li>column-rule-color</li>
+          <li>column-rule-style</li>
+          <li>column-rule-width </li>
+        </ul>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h3>Pozicionavimas / Positioning</h3>
+      <p><a href="css.properties-related.positioning.bottom-clear-float-left-position-right-top-zindex.htm">Pozicionavimas</a></p>
+      <ul>
+        <li>position</li>
+        <li>z-index</li>
+      </ul>
+      <p>&nbsp;</p>
+      <ul>
+        <li>top</li>
+        <li>right</li>
+        <li>bottom</li>
+        <li>left</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p><strong>Float'ai:</strong></p>
+      <ul>
+        <li>float</li>
+        <li> clear</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p><a href="css.property.group.shape.htm">Shapes</a></p>
+      <ul>
+        <li><code>shape-outside:</code></li>
+        <li><code>shape-image-threshold:</code></li>
+        <li><code>shape-margin:</code></li>
+      </ul>
+      <p>&nbsp;</p>
+      <p><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning">CSS Positioning</a></strong></p>
+      <ol>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/bottom" title="The bottom CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements.">bottom</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clear" title="The clear CSS property sets whether an element must be moved below (cleared) floating elements that precede it. The clear property applies to floating and non-floating elements.">clear</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" title="The float CSS property places an element on the left or right side of its container, allowing text and inline elements to wrap around it.">float</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/left" title="The left CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.">left</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" title="The position CSS property sets how an element is positioned in a document. The top, right, bottom, and left properties determine the final location of positioned elements.">position</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/right" title="The right CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.">right</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top" title="The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements.">top</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index" title="The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. Overlapping elements with a larger z-index cover those with a smaller one.">z-index</a></li>
+      </ol>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Transformacijos</h3>
+      <h4>2D</h4>
+      <ul>
+        <li>transform (<a href="http://konspektas-prev.local/client-side/css/css/properties/transform.htm">transform</a>)</li>
+        <li>transform-box</li>
+        <li>transform-origin (<a href="http://konspektas-prev.local/client-side/css/css/properties/transform-origin.html" title="">transform-origin</a>)</li>
+        <li>transform-style</li>
+      </ul>
+      <p>Tą patį kaip <code>transform</code> darančios savybės:</p>
+      <ul>
+        <li>rotate</li>
+        <li>scale</li>
+        <li>translate</li>
+      </ul>
+      <h4>3D</h4>
+      <ul>
+        <li>perspective</li>
+        <li>perspective-origin</li>
+        <li>backface-visibility</li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Fragmentation Properties</h3>
+      <ul>
+        <li><a href="https://devdocs.io/css/break-after">break-after</a></li>
+        <li><a href="https://devdocs.io/css/break-before">break-before</a></li>
+        <li><a href="https://devdocs.io/css/break-inside">break-inside</a></li>
+        <li><a href="https://devdocs.io/css/orphans">orphans</a></li>
+        <li><a href="https://devdocs.io/css/widows">widows</a></li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Efektai</h3>
+      <ul>
+        <li>box-shadow </li>
+      </ul>
+      <p>&nbsp;</p>
+      <ul>
+        <li>outline:
+          <ul>
+            <li> outline-color: </li>
+            <li>outline-style:</li>
+            <li>outline-width: </li>
+          </ul>
+        </li>
+        <li>outline-offset:    </li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3> Paslėpimas-matomumas (clipping, masking, visibility)</h3>
+      <p> <a href="https://web.dev/css-masking/?utm_source=SitePoint&utm_medium=email&utm_campaign=SitePointWeekly">How to use CSS masking</a><br>
+        <a href="https://web.dev/css-clipping/">How to use CSS clipping</a> </p>
+      <p><a href="https://css-tricks.com/clipping-masking-css/">Clipping and Masking in CSS | CSS-Tricks</a></p>
+      <p> <a href="https://getflywheel.com/layout/css-svg-clipping-and-masking-techniques/">How to use CSS and SVG clipping and masking techniques | Layout</a></p>
+      <p> <a href="https://css-tricks.com/almanac/properties/c/clip-path/">clip-path | CSS-Tricks</a></p>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path">clip-path - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>&nbsp;</p>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Masking">CSS Masking - CSS: Cascading Style Sheets | MDN</a>    </p>
+      <p> <a href="https://css-tricks.com/mask-compositing-the-crash-course/">Mask Compositing: The Crash Course | CSS-Tricks</a></p>
+      <p>&nbsp;</p>
+      <p>clip (<a href="http://konspektas-prev.local/client-side/css/css/properties/clip.htm">clip:</a>) </p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Tekstas, šriftai (typography, fonts)</h3>
+      <p>teksto formatavimas, text style properties, typographical properties</p>
+      <p><a href="css.text.character.htm">Teksto simboliai-ženklai</a></p>
+      <p><a href="css.text.character.escape-encode-decode.htm">Teksto simbolių-ženklų užkodavimas (character escape, encode-decode)</a>      </p>
+      <p> <a href="https://www.w3.org/TR/css-rhythm-1/">CSS Rhythmic Sizing</a></p>
+      <blockquote>
+        <p>WebFonts is a technology that enables people to use fonts on demand over the Web without requiring installation in the operating system.</p>
+        <p>Open font format for the Web (called "WOFF")</p>
+      </blockquote>
+      <h4>Variable fonts</h4>
+      <p> <a href="https://rwt.io/typography-tips/introducing-variablefontsio">Introducing VariableFonts.io | Responsive Web Typography</a></p>
+      <p> <a href="https://rwt.io/typography-tips/variable-fonts-what-web-authors-need-know">Variable Fonts: What web authors need to know | Responsive Web Typography</a></p>
+      <p> <a href="https://rwt.io/typography-tips/what-web-wants">What the web wants | Responsive Web Typography</a>      </p>
+      <h4>Bazinis formatavimas-apiforminimas</h4>
+      <ul>
+        <li><a href="css.at-rule.font-face.htm">@font-face</a></li>
+        <li>color</li>
+        <li><a href="css.properties-group.font.htm">font</a></li>
+        <ul>
+          <li>font-weight</li>
+          <li> font-family</li>
+          <li> font-size</li>
+          <li> font-variant</li>
+          <li> font-style</li>
+          <li>font-size-adjust </li>
+          <li>font-stretch</li>
+        </ul>
+      </ul>
+      <h4>Layout, alignment</h4>
+      <ul>
+        <li> text-align </li>
+        <li>vertical-align</li>
+        <li> text-indent </li>
+        <li>line-height </li>
+        <li>text-wrap</li>
+        <li>text-overflow </li>
+      </ul>
+      <h4>Efektai</h4>
+      <ul>
+        <li>text-shadow</li>
+        <li>text-decoration</li>
+        <li>text-transform</li>
+        <li>text-outline</li>
+      </ul>
+      <h4>???</h4>
+      <ul>
+        <li>white-space</li>
+        <li></li>
+        <li>word-spacing</li>
+        <li>letter-spacing</li>
+        <li></li>
+        <li>word-break</li>
+        <li> word-wrap    </li>
+      </ul>
+    </td>
+    <td><h3>Spalvos</h3>
+      <p><a href="css.value.color.hsl.htm">HSL</a></p>
+      <p><a href="css.value.color.color-keywords.htm">CSS spalvų reikšmės pavadinimais (color keywords)</a></p>
+      <p>&nbsp;</p>
+      <p> <a href="https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/?ref=devawesome.io">LCH colors in CSS: what, why, and how? | Lea Verou</a></p>
+      <h4>CSS Blend Modes</h4>
+      <p><a href="css.blend-modes.htm">CSS Blend Modes</a></p>
+      <ul>
+        <li>DOM element
+          <ul>
+            <li><code>mix-blend-mode:</code></li>
+            <li><code>isolation:</code></li>
+          </ul>
+        </li>
+        <li>background
+          <ul>
+            <li><code>background-blend-mode:</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Animacija (animation)</h3>
+      <p><a href="css.concept.cascade-specificity-inheritance.htm#(h)">CSS animacijos dalyvavimas cascade</a></p>
+      <p> <a href="https://cssanimation.rocks/">Learn CSS Animation - Free CSS tutorials and guides - CSS Animation</a></p>
+      <p><a href="http://konspektas-prev.local/client-side/css/temos/animacija.html">Apskritai apie animaciją</a></p>
+      <ul>
+        <li>transition (<a href="http://konspektas-prev.local/client-side/css/css/properties/transition.html">transition</a>)</li>
+        <ul>
+          <li>transition-property</li>
+          <li>transition-duration</li>
+          <li>transition-timing-function</li>
+          <li>transition-delay      </li></ul></ul>
+      <p>&nbsp;</p>
+      <ul>
+        <li>@keyframes</li>
+        <li>animation (<a href="http://konspektas-prev.local/client-side/css/css/properties/animation.html">animation</a>)</li>
+        <ul>
+          <li>animation-name</li>
+          <li>animation-duration</li>
+          <li>animation-timing-function</li>
+          <li>animation-delay</li>
+          <li>animation-fill-mode</li>
+          <li>animation-iteration-count</li>
+          <li>animation-direction</li>
+          <li>animation-play-state</li>
+        </ul>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Specifiniai tagai</h3>
+      <h4>Sąrašai-lists</h4>
+      <ul>
+        <li>list-style
+          <ul>
+            <li>list-style-type</li>
+            <li> list-style-image</li>
+            <li> list-style-position</li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Lentelės-tables</h4>
+      <ul>
+        <li>border-collapse</li>
+        <li> border-spacing</li>
+        <li> caption-side</li>
+        <li> empty-cells</li>
+        <li> table-layout</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p></p>
+      <p>&nbsp;</p>
+      <p></p></td>
+    <td>
+      <h3>Spausdinimas</h3>
+      <ul>
+        <li>page-break-after</li>
+        <li> page-break-before</li>
+        <li> page-break-inside      </li>
+      </ul>
+      <p>Našlės ir našlaičiai:</p>
+      <ul>
+        <li> widows</li>
+        <li>orphans </li>
+      </ul>
+      <p>Page Media:</p>
+      <ul>
+        <li> page</li>
+        <li> size</li>
+        <li>marks</li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Generated Content</h3>
+      <ul>
+        <li> content</li>
+        <li>quotes      </li>
+      </ul>
+      <p>Skaitliukai:</p>
+      <ul>
+        <li> counter-increment</li>
+        <li> counter-reset </li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Vartotojo sąsaja (user interface)</h3>
+      <ul>
+        <li>appearance</li>
+        <li>icon</li>
+        <li>nav-down</li>
+        <li>nav-index</li>
+        <li>nav-left</li>
+        <li>nav-right</li>
+        <li>nav-up</li>
+        <li>resize</li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Vartotojo sąveika (user interaction)</h3>
+      <p><code>croll-behavior:</code>      </p>
+      <p>Šita savybė įtakoja puslapio scrolling'o pobūdį, tik kai:</p>
+      <ul>
+        <li>vartotojas aktyvuoja nuorodą <code>&lt;a href=&quot;#tas&quot;&gt;</code> į tame pačiame puslapyje esantį <code>&lt;div id=&quot;tas&quot;&gt;</code></li>
+        <li>Atidarius puslapį <code>http://upas.lt/ten.html#tas</code></li>
+        <li>        su JS per <q>CSSOM scrolling APIs</q>      </li>
+      </ul>
+      <p>Kai <code>scroll-behavior:</code> pritaikomas <code>&lt;html&gt;</code>:</p>
+      <blockquote>
+        <p>        When this property is specified on the root element, it applies to the viewport instead.</p>
+      </blockquote>
+      <p>O kai <code>&lt;body&gt;</code>:</p>
+      <blockquote>
+        <p>        This property specified on the body element will not propagate to the viewport.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Suvestinės</p>
+<p>CSS kalbos suvestinė (cheat-sheet)</p>
+<p>CSS deklaracijos: savybės ir jų reikšmės </p>
+<p>Selectors, specificity, and the cascade</p>
+<h2>CSS preprocesoriai ir postprocesoriai</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>SASS [sass]</h3>
+      <p class="c-em-alert c-em--narrow"><strong>išsiaiškinau, kad dėl unicode simbolių *.scss failuose gulp'o node-sass generuoja sourcemap'us, kurie naršyklės devtools'uose neturi kelio iki konkretaus *.scss failo</strong></p>
+      <p>https://css-tricks.com/snippets/sass/</p>
+      <p><a href="sass.realizacija-valdymas.htm">Realizacija ir valdymas</a></p>
+      <p><a href="sass.function.htm">Funkcijos</a></p>
+      <p><a href="sass.syntax.cheat-sheet.htm">Sintaksės-gramatikos suvestinė (cheat sheet)</a></p>
+      <p><a href="sass.data-types.htm">duomenų tipai–struktūros</a></p>
+      <p><a href="sass.sprendimai-technikos.htm">Sprendimai-technikos</a></p>
+      <p><a href="sass.organizacija.htm">SASS'o organizacija</a></p>
+      <p>SASS'o plūgas Compass    </p>
+    </td>
+    <td width="20%">
+      <h3>PostCSS</h3>
+      <p><a href="css.postcss.htm">PostCSS bendrai</a></p>
+      <h4>CSS apdorojimas</h4>
+      <p>https://github.com/giakki/uncss - remove unused styles from CSS</p>
+      <p>Parker: </p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Vidiniai JavaScript dalykai [js]</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p><a href="js.resursai.htm">JavaScript resursai</a></p>
+      <p><a href="js.language-versions.htm">JavaScript versijos</a></p>
+      <p><a href="js.syntax.cheat-sheet.html">JavaScript sintaksės-gramatikos suvestinė (syntax cheat sheet)</a></p>
+      <p>Sintaksės-gramatikos suvestinė (cheat sheet)</p>
+    </td>
+    <td width="25%">
+      <h3>Canvas</h3>
+      <p><a href="https://flaviocopes.com/canvas/">The HTML Canvas Guide</a></p></td>
+    <td width="25%"><p> <a href="https://devhints.io/js-array">JavaScript Arrays cheatsheet</a></p>
+    </td>
+    <td width="25%">
+      <p>jQuery:</p>
+      <ul>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/">Index of /client-side/js/libs/jquery/</a></li>
+      </ul>
+      <p>&nbsp;</p>
+      <ul>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/pagrindai.htm">Pagrindai</a></li>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/api-reference.htm">Funkcijų suvestinė (API reference)</a>: <a href="http://konspektas-prev.local/client-side/js/libs/jquery/api-events.htm">Events</a></li>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/css-selektoriai.htm">CSS selektorių palaikymas</a></li>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/sprendimai.htm">Sprendimai</a></li>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/selektinimas.htm">HTML tagų selektinimas</a></li>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/jquery-duomenu-tipai.htm">jQuery duomenų tipai</a></li>
+        <li><a href="http://konspektas-prev.local/client-side/js/libs/jquery/ajax.htm">Ajax</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Vue </h3>
+      <p> <a href="https://medium.freecodecamp.org/a-birds-eye-vue-how-to-get-started-with-vue-js-dd1b82795908">A bird's eye Vue: how to get started with Vue.js – freeCodeCamp.org</a></p>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>DOM [dom]</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p><a href="dom.html-dom-suvestine.html">HTML DOM suvestinė</a></p>
+      <p>Mokintis:</p>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">Introduction to the DOM - Web APIs | MDN</a></p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>SVG [svg]</h2>
+<p>mokintis pagal — <a href="file:///G|/bib wd book/Using SVG with CSS3 and HTML5 - Vector Graphics for Web Design">Using SVG with CSS3 and HTML5 - Vector Graphics for Web Design</a></p>
+<p> <a href="https://guide.freecodecamp.org/svg">SVG | freeCodeCamp Guide</a></p>
+<p> <a href="https://css-tricks.com/mega-list-svg-information/">A Compendium of SVG Information | CSS-Tricks</a></p>
+<p>&nbsp;</p>
+<h2>Dizainas [design]</h2>
+<p><a href="https://github.com/nicolesaidy/awesome-web-design">https://github.com/nicolesaidy/awesome-web-design</a> </p>
+<p><a href="design.color-scheme.html">Dizaino spalvų paletė-rinkinys (color scheme)</a></p>
+<p><a href="https://www.lifewire.com/contrasting-foreground-background-colors-4061363">https://www.lifewire.com/contrasting-foreground-background-colors-4061363</a> </p>
+<h2>Serverio pusė [backend]</h2>
+<p>http://www.denwer.ru/</p>
+<h2>Ne webdev</h2>
+<p><a href="http://ahkscript.github.io/ahkbook/en/Introduction.html">http://ahkscript.github.io/ahkbook/en/Introduction.html</a></p>
+<p><a href="windows.autohotkey.htm">AutoHotkey</a></p>
+<p><a href="windows.autohotkey.script-window.htm">AHK script'o informacinis langas</a></p>
+<p><a href="windows.autohotkey.syntax.cheat-sheet.htm">AutoHotkey kalbos sintaksės suvestinė (cheat sheet)</a></p>
+<p><a href="windows.autohotkey.built-in-variables.htm">AHK script'ų built-in kintamieji (Built-in Variables)</a></p>
+<p><a href="windows.autohotkey.data-types.htm">AutoHotkey kalbos duomenų tipai-struktūros</a></p>
+<p><a href="windows.autohotkey.commands-functions.htm">AutoHotkey komandos-funkcijos (commands-functions)</a></p>
+<p><a href="windows.autohotkey.commands-functions.cheat-sheet.htm">AutoHotkey komandų-funkcijų suvestinė (cheat sheet)</a></p>
+<p><strong>Skaityti-Mokintis:</strong></p>
+<p><strong>Geri rinkiniai:</strong></p>
+<p><strong>Pasidėti:</strong></p>
+<p>&nbsp;</p>
+
+
+</body>
+</html>

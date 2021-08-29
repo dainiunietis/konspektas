@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>K&deg; namai</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Konspektas</h1>
+<p><a href="_dev design style guides">Konspekto dizaino pavyzdziai &#8212; &quot;style guide&quot;</a></p>
+<h2>Bendra webdev</h2>
+<p>&nbsp;</p>
+<p><strong>Failų ir katalogų komentavimo-žymėjimo formatas:</strong></p>
+<p>Preferences~GABALELIAI~.sublime-settings</p>
+<p>&nbsp;</p>
+<p><a href="prev/!bendra/visu-programu-sutkatai.tdl">Visų programų šūtkatai (atidarome su ToDoList)</a> &lt;&lt;&lt; dabar nevystome, gal vėliau</p>
+<p><a href="prev/windows/globalus-windows-sutkatai.htm">Globalūs (ir pačios operacinės, ir sukurti programų) ir lokalūs programų šūtkatai</a></p>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+		<tr>
+				<td width="25%"><p><a href="prev/!bendra/trumpiniai.htm">Trumpiniai</a></p>
+				<p><a href="prev/!bendra/susitarimai.htm">Susitarimai</a>				</p>
+				<p><a href="prev/!bendra/atradimai.htm">Didieji atradimai</a></p>
+				<p>&nbsp;</p></td>
+				<td width="25%"><p><a href="prev/webdev/index_.htm">Tinklalapių programavimo priemonės, metodikos, būdai</a></p>
+						<p><a href="prev/webdev/programos-priemones.tdl">Programos ir priemonės tinklalapių programavimui</a> &#8212; atidaryti su TodoList						</p>
+						<h3>Kodai</h3>
+						<p><a href="prev/kodu-biblioteka/index_.htm">Sava kodų biblioteka</a></p>
+						<p><a href="prev/kodu-biblioteka/sprendimu-vertinimas-palyginimas_kliento-puses.htm">Kliento pusės sprendimų vertinimas-palyginimas: HTML, CSS, JS</a></p>
+						<p><a href="prev/kodu-biblioteka/sprendimu-vertinimas-palyginimas_apache-php-mysql.htm">Server-side sprendimų vertinimas-palyginimas, pagrinde: Apache, PHP, MySQL</a></p>
+				<p><a href="prev/kodu-biblioteka/reguliariu-ekspresiju-bankas.htm">Reguliarių ekspresijų bankas &#8212; regExp pavyzdžiai</a></p></td>
+				<td width="25%"><p><a href="prev/!bendra/teksto-korektura.htm"></a><a href="prev/redaktoriai/index_.htm">redaktoriai, ide</a>				</p>
+						<p><a href="prev/programos/subversion-tortoisesvn/subversion.htm">Subversion ir TortoiseSVN</a></p>
+						<p><a href="prev/programos/git/index_.htm">Git</a>: <a href="prev/programos/git/commands.htm">Komandos</a></p>
+				<p><a href="prev/programos/regexp/index_.htm">Programos reguliarioms ekspresijoms kurti</a></p></td>
+				<td width="25%"><h3>Greičiausiai nenaudosiu-nebevystysiu</h3>
+					<p><a href="prev/!bendra/ka_galima_padaryti.htm">Ką galima padaryti</a></p>
+					<p><a href="prev/!bendra/isivesti.htm">įsivesti</a></p>
+				<p><a href="prev/!bendra/receptai.htm">Technikos-receptai</a></p>
+				<h3>Senienos</h3>
+				<p><a href="prev/!bendra/manualai.htm">Manualai</a></p>
+				<p>&nbsp;</p></td>
+		</tr>
+</table>
+<h2>Kliento pusė</h2>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+		<tr>
+		<td width="25%"><p><a href="prev/client-side/index_.htm">Pagrindinis kliento pusės</a></p>
+			<p>Senieji:</p>
+			<p><a href="prev/client-side/index_html.htm">HTML5</a> &#8212; svarbiausia HTML'o semantika</p>
+			<p><a href="prev/client-side/index_css.htm">CSS</a> &#8212; svarbiausia CSS'as			</p>
+			<p><a href="prev/client-side/index_js.htm">JavaScript, DOM</a> &#8212; svarbiausia JS'as</p>
+			<p>&nbsp;</p>
+			<p>CSS  ir HTML'as bei JS'as </p>
+			<p>ir HTML-CSS kai JS'as pirmiausias-svarbiausias</p>
+			<p>viskas kas susiję su JavaScript</p>
+			<hr>
+			<p><a href="prev/xml/index_.html">XML</a></p>
+			<p><a href="prev/xml/xslt/index_.html">XSLT</a></p>
+			<p>&nbsp;</p>
+			<p><a href="prev/client-side/mobile/index_.html">Mobile ??? kur dėti ???</a></p></td>
+		<td width="25%"><p><a href="prev/grafika/index_.htm"></a><a href="prev/grafika/index_.htm">Grafika</a></p>
+				<p><a href="prev/flash/index_meniu.htm">Flash</a></p>
+				<p><a href="prev/video-audio/index.html">video audio</a></p>
+				<p><a href="prev/!bendra/prezentacijos.htm">Prezentacijos (presentations, slides show)</a></p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+		<td width="25%"><p><a href="prev/accessibility/index_.htm">Accessibility-prieinamumas-pasiekiamumas</a></p>
+				<p>&nbsp;</p></td>
+		<td width="25%"><p><a href="prev/brauzeriai/index_.htm">Naršyklės&#8211;brauzeriai</a></p>
+			<p>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td><p><a href="prev/informacinis-projektavimas/index_.htm">Informacinis projektavimas</a> (<a href="prev/informacinis-projektavimas/senasis/index_meniu.htm">senasis</a>)</p></td>
+		<td><p><a href="prev/seo/index_.htm">Tinklapio optimizavimas WEB paieškos sistemoms, atrandamumo gerinimas (SEO)</a></p></td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<h2>Serverio pusė</h2>
+<p># If you experience slow connections to localhost,<br>
+# copy this file to c:\windows\system32\drivers\etc <br>
+# then run in command prompt ipconfig /flushdns</p>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<td width="25%"><p><a href="prev/server/php/index_meniu.htm">PHP</a></p>
+		<p><a href="mysql/index_meniu.html">MySQL</a></p>
+		<p>&nbsp;</p></td>
+		<td width="25%"><p><a href="prev/server/nginx/index_.html">NGINX</a></p>
+		  <p><a href="prev/server/serveriai/apache/index_meniu.htm">Apache</a></p>
+			<p><a href="prev/server/serveriai/index_meniu.htm">Serveriai</a></p>
+		<p><a href="prev/server/serveriai/iis/index_iis.htm">Internet Information Server 5.0</a></p></td>
+		<td width="25%"><p><a href="prev/server/server-stacks.html">Server stacks</a></p>
+	  <p><a href="prev/server/stack-wpn-xm.html">WPN-XM (WPИ-XM)</a></p></td>
+		<td width="25%"><p><a href="prev/tinklalapiai/index_meniu.htm">tinklalapiai</a></p>
+	  <p>&nbsp;</p></td>
+	</tr>
+</table>
+<h2>Ne webdev</h2>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+	<tr>
+		<td width="25%"><p><a href="prev/programos/index_.htm">Programos</a></p>
+			<p><a href="prev/programos/evernote/evernote.html">Evernote</a>, <a href="prev/programos/evernote/nustatymai.html">Evernote nustatymai</a>,		<a href="prev/programos/evernote/organizavimas.html">Evernote organizavimas</a>, <a href="prev/programos/evernote/paieska.html">Paieška</a>, <a href="prev/programos/evernote/telefonai.html">Telefonai</a></p>
+			<p><a href="prev/programos/quarkexpress/index_meniu.htm">QuarkXPress</a> <a href="prev/programos/adobe/index_meniu.htm">Adobe's programos</a><br />
+				<a href="prev/programos/pagemaker/index_meniu.htm">PageMaker</a>		</p>
+		<p><a href="prev/hardware/index_meniu.htm">Kompų geležis</a></p></td>
+		<td width="25%"><p><a href="prev/brauzeriai/google-paieska.html">Google'o paieška</a></p>
+				<p>&nbsp;</p></td>
+		<td width="25%"><p><a href="prev/python/index_.htm">Python</a></p>
+		<p>&nbsp;</p></td>
+		<td width="25%"><p><a href="prev/!kita/mac.html">Mac</a></p>
+			<p><a href="android">Android</a></p>
+		<p>&nbsp;</p></td>
+	</tr>
+	<tr>
+			<td><p><a href="prev/!bendra/teksto-korektura.htm">Teksto-rašto korektūra</a></p></td>
+			<td><a href="prev/windows/index_.htm">Windausai</a></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

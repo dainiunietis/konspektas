@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS–SASS taktikos–technikos</h1>
+<h2>CSS komponentų modifikavimo kitame komponente, ar kokiame nors kitame kontekste, technikos</h2>
+<p><code>.c-pirmas</code> — komponentas, kurį reikia modifikuoti komponente <code>.c-antras</code></p>
+<pre><code>&lt;div class=&quot;c-pirmas&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;c-antras&quot;&gt;
+  &lt;div class=&quot;c-pirmas&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+    <pre><code>.c-pirmas {
+  color: blue;
+}
+
+.c-antras {
+  .c-pirmas {
+    color: red;
+  }
+}</code></pre>
+    <p>&nbsp;</p>
+    <pre><code>.c-pirmas {
+  color: blue;
+  .c-antras &amp; {
+    color: red;
+  }
+}
+
+.c-antras {
+}</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <pre><code>$c-pirmas-clr: blue;
+
+.c-pirmas {
+  --c-pirmas-clr: initial;
+  color: var(--c-pirmas-clr, $c-pirmas-clr);
+}
+
+$c-antras-clr: red;
+
+.c-antras {
+  .c-pirmas {
+    --c-pirmas-clr: #{$c-antras-clr};
+  }
+}</code></pre>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--border c-pvs--title -c-pvs--child-bg">
+      <style>
+        .pvs-20210201141416 {
+          color: darkviolet;
+        }
+        .pvs-20210201141416 b {
+          display: inline-block;
+          padding: .3em 1em;
+          border: 7px solid;
+        }
+
+        .pirmas-20210201141416 {
+          --didelis: ;
+        }
+        .pirmas-20210201141416 > *:not(:last-child) {
+          margin-bottom: .5em;
+        }
+        .pirmas-20210201141416 button {
+          color: var(--didelis, red);
+          padding-right: var(--didelis, 3em);
+          border: solid var(--didelis, 5px) var(--didelis, darkcyan);
+        }
+        .pirmas-20210201141416 b {
+          color: var(--didelis, red);
+          padding: 1em var(--didelis, 3em);
+          padding-right: var(--didelis, 3em);
+          /*border-width: var(--didelis, 1px);*/
+          /*border: solid var(--didelis, 5px) var(--didelis, darkcyan);*/
+        }
+
+        .antras-20210201141416 .pirmas-20210201141416 {
+          --didelis: initial;
+        }
+      </style>
+      <p><code>padding:</code> priskyrus whitespace'inį kintanajį — priskiria <code>0</code></p>
+      <p>o <code>color:</code> — ignoruoja tokią deklaraciją</p>
+      <div class="pvs-20210201141416 c-pvs__parent">
+        <div class="pirmas-20210201141416">
+          <button>button pirmas</button>
+          <b>b pirmas</b>
+        </div>
+        <div class="antras-20210201141416">
+          <div class="pirmas-20210201141416">
+            <button>button pirmas — antrame</button>
+            <b>b pirmas — antrame</b>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--border c-pvs--title -c-pvs--child-bg">
+    <style>
+      .pvs-20210128193145 button {
+        --is-active: ; /* off by default */
+        padding:     0.4em 1.3em;
+        font-size:   1.4em;
+        font-weight: 800;
+        /*background:  var(--is-active, linear-gradient(hsl(0,0%,100%), transparent)) hsl(200,70%,50%);*/
+        background:  var(--is-active, linear-gradient(hsl(0,0%,100%), transparent)) hsl(100, 40%, 70%);
+
+        border: 3px solid var(--is-active, hsl(244, 50%, 50%));
+        border-radius: 0.3em;
+
+        /*color:       hsl(100, 70%, 30%);*/
+        /*color:       var(--is-active, hsl(244, 70%, 50%));*/
+
+        color:       hsl(290, 70%, 30%);
+        color:;
+
+      }
+      .pvs-20210128193145 button:nth-child(2) {
+        --is-active: initial; /* turn on */
+      }
+    </style>
+    <p>........    </p>
+    <div class="pvs-20210128193145 c-pvs__parent -H25vh">
+      <button>neaktyvus</button>
+      <button>aktyvus</button>
+  </div>
+  </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

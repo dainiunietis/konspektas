@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+///////////////////////////////////////////////////////////////////////
+//
+//   defaultinis tagų apiforminimas
+//
+///////////////////////////////////////////////////////////////////
+
+figure {
+  display: block;
+  margin: 1rem auto 1rem;
+  padding: 1px 0;
+  //z-index: 100;
+  //position: relative;
+  > img {
+    // display: block;
+    border-radius: 3px;
+    line-height: 0;
+    vertical-align: bottom;
+    &:last-of-type {
+      margin-bottom: 0.2rem;
+    }
+  }
+  > pre {
+    //margin: rem(15px) rem(13px) rem(0px);
+    //margin: 0.5em 0 0;
+    //padding: rem(10px) rem(12px);
+
+    //background-color: scale-color($color-code, $lightness: 95%, $saturation: 0%);
+
+    //display: inline-block;
+    //vertical-align: top;
+    &:first-child {
+      //margin-top: 0;
+    }
+    > code {
+      //margin: 0;
+      //padding: 0;
+      //border: hsla(0, 0%, 48%, 0.3) dotted 1px;
+      //border: none;
+      //outline: hsla(0, 0%, 48%, 0.3) dotted 1px;
+      //outline-offset: 3px;
+      //background: none !important;
+    }
+    + pre {
+      //margin-top: 0;
+      //margin-left: 1em;
+      // border-left: cadetblue dotted 1px;
+    }
+    + figcaption {
+      // color: red;
+    }
+  }
+  > p, h1, h2, h3, h4, h5, h6 {
+    // margin-left: 10px;
+    // margin-right: 3em;
+    &:first-child {
+      // margin-top: .9rem;
+    }
+    &:last-child {}
+    + figcaption {
+      // text-align: center;
+    }
+  }
+}
+
+figcaption {
+  margin: 0;
+  padding: 0;
+  font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+
+
+
+

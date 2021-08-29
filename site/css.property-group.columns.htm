@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS stulpeliai  / Multiple-column Layout / Multicol / CSS Columns</h1>
+<p> <a href="https://drafts.csswg.org/css-multicol-1/">CSS Multi-column Layout Module Level 1</a></p>
+<dl>
+  <dt><dfn>multi-column container | multicol container</dfn></dt>
+  <dd>
+    <p>...</p>
+    <blockquote>
+      <p>By adding <code>column-count</code> or <code>column-width</code> to an element, that element becomes a <em>multi-column container</em>, or <em>multicol container</em> for short.</p>
+    </blockquote>
+  </dd>
+  <dt><dfn>column box</dfn></dt>
+  <dd>
+    <p>...</p>
+    <blockquote>
+      <p>The columns are anonymous boxes and described as <em>column boxes</em> in the specification.</p>
+    </blockquote>
+  </dd>
+</dl>
+<p><strong>Terminai:</strong> <br>
+<code>container-width</code> — container actual content width</p>
+<h2>Stulpelių skaičiaus nustatymas</h2>
+<h3><code>column-count: </code></h3>
+<p><code>column-count: &lt;integer&gt; | auto</code></p>
+<h3><code>column-width:</code></h3>
+<p><code>column-width: &lt;length&gt; | auto</code></p>
+<p class="FS1.05em"><span class="FS1.2em FLL MR2">🎯 </span> Nustato minimalų stulpelio plotį, t. y.: stulpeliai nebūna mažesni nei nustatyta su <code>column-width:</code>, ir didėjant <code>container-width</code>, didėja kol galima pridėti vieną stulpelį, kad visų stulpelių pločiai vėl būtų minimalaus pločio.</p>
+<blockquote>
+  <p>The container will have as many columns as can fit without any of them having a width less than the <code>column-width</code> value.</p>
+</blockquote>
+<figure class="c-figure c-figure--shadow" style="width:min-content">
+  <div class="c-figure__content">
+    <pre><code>1 stulpelis  == container-width &lt;  (column-width: * 2)
+2 stulpeliai == container-width &gt;= (column-width: * 2)  &amp;&amp;  container-width &lt; (column-width: * 3)
+3 stulpeliai == container-width &gt;= (column-width: * 3)  &amp;&amp;  container-width &lt; (column-width: * 4)
+...</code></pre>
+  </div>
+  <figcaption>Kaip keičiasi stulpelių skaičius didėjant <code>container-width</code></figcaption>
+</figure>
+<div class="c-em-note">
+  <p>Kai <code>container-width &lt;  column-width:</code> — pats vieno stulpelio konteineris įprastai mažėja:</p>
+  <blockquote>
+    <p>If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width.</p>
+  </blockquote>
+</div>
+<h3><code>column-count: &lt;integer&gt;</code> kartu su <code>column-width: &lt;length&gt;</code></h3>
+<p class="FS1.05em"><span class="FS1.2em FLL MR2">🎯 </span> <code>column-width: &lt;length&gt;</code> nustato stulpelių skaičių, o <code>column-count: &lt;integer&gt;</code> nustato kiek maksimaliai stulpelių gali būti.</p>
+<figure class="c-figure--shadow -figure--dashedTB">
+  <div class="c-figure__content">
+    <div class="d-ruler d-ruler--guide-right d-ruler--guide-300px" style="width: 300px" tabindex="-1">300px</div>
+    <div style="columns: 300px 3;" class="o-mcl--rule d-m">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. </p>
+      <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+      <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>
+      <p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. </p>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>
+    </div>
+  </div>
+  <figcaption><code>columns: 300px 3</code></figcaption>
+</figure>
+<h2>Susijusios CSS Fragmentation modulio CSS savybės</h2>
+<p>&nbsp;</p>
+<blockquote>
+  <p id="Relationship_to_Fragmentation">Relationship to Fragmentation</p>
+  <p>Multiple-column Layout is closely related to <a href="https://devdocs.io/css/css_pages">Paged Media</a>, in that each column box becomes a fragment, much like a printed page becomes a fragment of an overall document. Therefore the properties now defined in the <a href="https://devdocs.io/css/css_fragmentation">CSS Fragmentation</a> specification are required in order to control how content breaks between columns.</p>
+  <ul>
+    <li><a href="https://devdocs.io/css/break-after">break-after</a></li>
+    <li><a href="https://devdocs.io/css/break-before">break-before</a></li>
+    <li><a href="https://devdocs.io/css/break-inside">break-inside</a></li>
+    <li><a href="https://devdocs.io/css/orphans">orphans</a></li>
+    <li><a href="https://devdocs.io/css/widows">widows</a></li>
+  </ul>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Multicol modulio CSS savybės</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

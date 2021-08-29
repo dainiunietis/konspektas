@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>SASS'o realizacija ir valdymas || SASS || CSS preprocessor</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" --><h1>SASS'o realizacija ir valdymas</h1>
+<p><a href="http://sass-lang.com/">http://sass-lang.com/</a></p>
+<h2> Sass'o realizacija &#8212; gimtoji su Ruby</h2>
+<p><a href="http://rubyinstaller.org/">http://rubyinstaller.org/</a></p>
+<p><a href="https://groups.google.com/forum/#!forum/rubyinstaller">https://groups.google.com/forum/#!forum/rubyinstaller</a></p>
+<p><a href="https://github.com/oneclick/rubyinstaller/wiki">https://github.com/oneclick/rubyinstaller/wiki</a></p>
+<h3>Ruby'io instaliavimas</h3>
+<p>Tiesiog instaliuojame atsisiuntę iš <a href="http://rubyinstaller.org/">http://rubyinstaller.org/</a></p>
+<h3>Sass'o instaliavimas</h3>
+<p><a href="http://www.sass-lang.com/install">http://www.sass-lang.com/install</a></p>
+<dl>
+  <dt>Pasižiūrime kokie Ruby'io gems'ai-plūgai yra suinstaliuoti</dt>
+  <dd>
+    <p>CMD: <code></code><code>gem query --local</code>  </p>
+  </dd>
+  <dt>Instaliavimas</dt>
+  <dd>
+    <p>CMD: <code>gem install sass</code></p>
+  </dd>
+  <dt>Atnaujinimas</dt>
+  <dd>
+    <p>CMD: <code>gem update sass</code></p>
+  </dd>
+</dl>
+<p>Išinstaliavimas esamos ir instaliavimas naujos SASS'o versijos:</p>
+<pre><code>gem uninstall sass
+gem install sass -v 3.2.19</code></pre>
+<h2>Ruby'io Sass'o command line'inės programos veikimas</h2>
+<p>CMD'se: <code>sass --help</code> &#8212; rodo visas opcijas</p>
+<h3>CSS'ų generavimas-konvertavimas per CMD (command line)</h3>
+<h4>Katalogo watch'inimas</h4>
+<blockquote>
+  <p>CD to your project folder in your terminal and put Sass into Watch mode:</p>
+  <pre>sass --watch sass:stylesheets</pre>
+  <p>Sass will now listen to the sass files within the sass folder for   changes. When a Sass file is saved, Sass will generate a new version of   the corresponding CSS file in the stylesheets folder.</p>
+  <p>I highly suggest this route. The reason I suggest doing this versus   PhamlP or any other language-specific port of Sass (specifically Sass,   not Haml) is that you are able to work with current stable/beta/edge   releases of Sass as you'd like. As new features become available in Sass   (like the new SCSS superset syntax), you get access to them by   upgrading your Haml/Sass gem, not waiting for the developer of your   language-specific Sass interpreter to port the new version.</p>
+</blockquote>
+<p>Galima nurodyti sekti tiek vieną SASS'o failą, tiek kataloge visus SASS'o failus:</p>
+<blockquote>
+  <p><code>--watch</code> &#8212;                      Watch files or directories for changes.<br>
+    The location of the generated CSS can be set using a colon:<br>
+    <code>sass --watch input.sass:output.css<br>
+      sass --watch input-dir:output-dir</code></p>
+</blockquote>
+<p>Abstrakčiai:</p>
+<p><code>sass --watch sass:stylesheets</code></p>
+<p>Konkrečiai:</p>
+<dl>
+  <dt>Arba pilni keliai</dt>
+  <dd>
+    <p><code>sass --watch /d/kelias/iki/style.scss:/d/kelias/iki/style-min.css --style compressed</code></p>
+  </dd>
+  <dt>Arba santykiniai nuo *.bat'o failo katalogo</dt>
+  <dd>
+    <p><code>sass --watch style.scss:style-min.css --style compressed</code></p>
+  </dd>
+  <dt>watch'ina katalogą, kuriame yra pats *.bat'inis failas, arba jeigu įvykdoma per CMD, aktyvų katalogą</dt>
+  <dd>
+    <p><code>sass --watch .:. --sourcemap</code></p>
+  </dd>
+</dl>
+<h3>CSS'ų generavimas-konvertavimas per kontekstinį meniusą windows'ų explorer'yje</h3>
+<blockquote>
+  <p><a href="http://superuser.com/questions/492585/add-windows-explorer-context-menu-item-for-sass-watch-option">http://superuser.com/questions/492585/add-windows-explorer-context-menu-item-for-sass-watch-option</a></p>
+  <p><strong>Update 2:</strong> I thought I'd share my answer to my   question for those not using Sublime Text 2. By using the code from the   batch file found in the Github package above it's quite easy to do this.</p>
+  <ol>
+    <li>
+      <p>Open Notepad, paste in the following code, then save the file as "SASSWatch.bat" (<strong>with</strong> the quote marks):</p>
+      <pre>cd /d %1  sass --watch .:. --style compressed  pause  </pre>
+      <p>Note: remove --style compressed to output to a non-compressed .css file, or add other options like --no-cache to disable the cache folder.</p>
+    </li>
+    <li>
+      <p>Open the Run box (Win+R) and enter control folders. This opens the Folder Options settings.</p>
+    </li>
+    <li>
+      <p>Click on the File Types tab and scroll down to the SCSS filetype   (if it doesn't exist click the 'New' button instead and manually add the   SCSS extension). <br>
+        Once selected click the 'Advanced' button then click the 'New...' button to add a new Action. <br>
+        Name the Action 'Watch' and paste in the following code into the 'Application used to perform action' box (<strong>with</strong> the quote marks, change the path to where the batch file is located):</p>
+      <pre>"C:\Documents and Settings\Username\Desktop\SASSWatch.bat" "%1"  </pre>
+    </li>
+    <li>
+      <p>Click 'OK' on all the windows are you're done! Now right-click any .scss file and select 'Watch' to watch the file using SASS.</p>
+    </li>
+  </ol>
+</blockquote>
+<h2>Pagalbinės-integruojančios programos</h2>
+<p><a href="http://www.sass-lang.com/install">http://www.sass-lang.com/install</a></p>
+<p>Programos: <a href="file:///F|/install2/webdev/ScoutAppInstaller-0.7.1.exe">ScoutAppInstaller-0.7.1</a>, <a href="file:///F|/install2/webdev/ruby">ruby</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

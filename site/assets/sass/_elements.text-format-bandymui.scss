@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+i {
+  border: dotted currentColor;
+  border-width: 2px 0;
+}
+
+ acronym, abbr {
+  color: #910057;
+}
+
+h1 acronym, h1 abbr {
+  color: #666666;
+}
+
+dfn {
+  font-style: normal;
+  &:after {
+    content: '®';
+    font-size: 1em;
+    padding-left: .15em;
+  }
+  &:hover {
+    border-radius: 2em;
+    padding: 5px 9px;
+    margin: -13px;
+  }
+}
+
+kbd {
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-family: "Iosevka Medium", monospace;
+  background-color: hsl(0, 0%, 83%);
+  color: hsl(0, 0%, 10%);
+  padding: .07em .5em .07em;
+  border-radius: .4em;
+  border-style: solid;
+  border-width: 2px 3px 3px 2px;
+  border-color: hsl(0, 0%, 95%) hsl(0, 0%, 40%) hsl(0, 0%, 40%) hsl(0, 0%, 95%);
+}
+
+kbd.nebutinas {
+  opacity: .6;
+}
+
+
+
+
+

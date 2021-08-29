@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+// Jei projekte reikia kitokių ruler-guides, šį kintamajį su kitokiomis reikšmėmis
+// sukuriame pačiame projekte
+
+$d-ruler-guideSizes:
+  (size: 50px,  step: 50px, end: 900px)
+  (size: 25vh,  step: 25vh, end: 100vh)
+  (size: 150vh, step: 50vh, end: 300vh)
+!default;
+
+// @USAGE:
+// tabindex="-1" <<< reikalingas, kad veiktų :focus
+// <div class="d-ruler d-ruler--guides" style="width: 12em" tabindex="-1">12em</div>
+
+.d-ruler {
+  //@include szm-project-config-data-hideinDebugOff;
+  @include szm-hidden(debugOff); // debugOn debugOff envDev envProd
+  $color-main:      hsl(240, 100%, 50%);
+  $color-focus:     hsl(0, 100%, 50%);
+  --guide-height:   10rem;       // default guide height
+
+  background-color: scale_color($color-main, $alpha:-80%);
+  color:            scale_color($color-main, $alpha:0%);
+  font:             1em "Source Code Pro";
+  margin-bottom:    3px;
+  padding:          0 0 .07em;
+  position:         relative;
+  text-align:       center;
+
+  &:focus, &:hover {
+    background-color: scale_color($color-focus, $alpha:-80%);
+    outline: none;
+    &::before, &::after {
+      border-color: scale_color($color-focus, $alpha:0%);
+    }
+  }
+
+  &--right {
+    margin-left: auto;
+  }
+
+  &--center {
+    margin: 0 auto;
+  }
+
+  /////////////////////////////////////////////////////////////////////////////
+  //
+  //  # guides
+  //
+  /////////////////////////////////////////////////////////////////////////
+
+  &::before, &::after {
+    border:        solid scale_color($color-main, $alpha: 0%);
+    border-width:  0 0 0 1px;
+    height:        var(--guide-height);
+    margin-bottom: calc(var(--guide-height) * -1);
+    position:      absolute;
+    width:         0;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
+  //@mixin guides {
+  //  content: "";
+  //}
+
+  // .d-ruler--guide-left:before:focus
+  // .d-ruler--guide-left:focus:before
+  // $this: &;
+
+  &--guide-left {
+    &::before {
+      content: "";
+    }
+  }
+
+  &--guide-right {
+    &::after {
+      content: "";
+    }
+  }
+
+  &--guide-both {
+    &::before, &::after {
+      content: "";
+    }
+  }
+
+  /////////////////////////////////////////////////////////////////////////////
+  //
+  //  # guides — sizes
+  //
+  /////////////////////////////////////////////////////////////////////////
+
+  // .d-ruler--guide-{number}{unit}
+
+  @each $size-set in $d-ruler-guideSizes {
+    $size: map_get($size-set, size);
+    $step: map_get($size-set, step);
+    $end:  map_get($size-set, end);
+
+    @while $size <= $end {
+      &--guide-#{$size} {
+        --guide-height: #{$size};
+      }
+      $size: $size + $step;
+    }
+  }
+
+  &--guide-huge {
+    &::before, &::after {
+      height: 10000cm;
+      margin-bottom: -10000cm;
+    }
+  }
+}
+
+
+
+
+
+
+
+//$size: 50px;
+//$step: 50px;
+//$end:  900px;
+
+////$size: 25vh;
+////$step: 25vh;
+////$end:  100vh;
+//
+//@while $size <= $end {
+//  &--guide-#{$size} {
+//    &::before, &::after {
+//      height: $size;
+//      margin-bottom: -$size;
+//    }
+//  }
+//  $size: $size + $step;
+//}
+//
+////$size: 200vh;
+////$step: 100vh;
+////$end:  300vh;
+//
+//@while $size <= $end {
+//  &--guide-#{$size} {
+//    &::before, &::after {
+//      height: $size;
+//      margin-bottom: -$size;
+//    }
+//  }
+//  $size: $size + $step;
+//}
+
+
+//@mixin d-rule-base {
+//  z-index: 1000;
+//  border: dashed scale_color($d-guide-color, $alpha:-50%);
+//  &:before {
+//    font:  12px "IBM Plex Mono Medium";
+//    color: scale_color($d-guide-color, $alpha:-20%);
+//    white-space: nowrap;
+//    content: attr(style);
+//  }
+//}
+
+
+//&:before {
+//  position: fixed;
+//  //text-align: left;
+//  //top: 10px;
+//  //background-color: lightskyblue;
+//  border: dashed scale_color($d-ruler-color, $alpha:-50%);
+//  border-width: 0 0 0 1px;
+//  width: 0;
+//  height: 100%;
+//  display: block;
+//  content: " ";
+//}
+
+

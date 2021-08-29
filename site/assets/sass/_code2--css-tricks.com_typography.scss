@@ -1,0 +1,373 @@
+
+// https://cdn.css-tricks.com/wp-content/themes/CSS-Tricks-14/scss/_typography.scss
+
+html {
+  @include ff-sans;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  @include breakpoint(mama-bear) {
+    font-size: 18px;
+  }
+  @include breakpoint(baby-bear) {
+    font-size: 16px;
+  }
+}
+
+a {
+  color: $blue;
+  &:hover, &:focus {
+    color: #333;
+  }
+  &:active {
+    color: black;
+    border-bottom-color: black;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include ff-serif;
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  line-height: 1.1;
+  a {
+    color: #222;
+    border: 0;
+    &:hover, &:focus {
+      color: $blue;
+      .shape-arrow-right {
+        transform: translateX(5px) rotate(-45deg);
+      }
+    }
+  }
+  .shape-arrow-right {
+    width: 18px;
+    height: 18px;
+    transition: 0.2s;
+    @include breakpoint(baby-bear) {
+      width: 13px;
+      height: 13px;
+    }
+  }
+  .shape-link {
+    fill: #ccc;
+    vertical-align: bottom;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 1px;
+    @include breakpoint(baby-bear) {
+      width: 20px;
+      height: 20px;
+      top: 3px;
+      left: 1px;
+    }
+  }
+}
+
+h1, .h1 {
+  font-size: 2.7rem;
+  letter-spacing: -2px;
+  margin: 0 0 1rem 0;
+  @include breakpoint(baby-bear) {
+    font-size: 1.8rem;
+  }
+}
+h2, .h2 {
+  font-size: 2.2rem;
+  letter-spacing: -1px;
+  margin: 0 0 1rem 0;
+  @include breakpoint(baby-bear) {
+    font-size: 1.7em;
+  }
+}
+h3, .h3 { // In blog post sub sections
+  font-size: 1.8rem;
+  margin-top: 80px;
+  @include breakpoint(baby-bear) {
+    font-size: 1.6rem;
+  }
+}
+h4, .h4 {
+  font-size: 1.4rem;
+  margin: 0 0 0.8rem 0;
+  @include breakpoint(baby-bear) {
+    font-size: 1.2rem;
+  }
+}
+h5, .h5 {
+  font-size: 1.1rem;
+  margin: 0;
+  text-transform: uppercase;
+  @include breakpoint(baby-bear) {
+    font-size: 1.0rem;
+  }
+}
+h6 {
+  font-size: 1.0rem;
+}
+
+.site-section-title {
+  text-align: center;
+  padding: 50px 0 5px;
+}
+
+.bar-time {
+  @include ff-code;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  display: block;
+  color: #777;
+}
+.author-byline,
+.second-bar::after,
+.homepage-video::before {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin: 0 0 1rem 0;
+  .mega-header & {
+    margin: 0 0 5px 0;
+  }
+  .avatar {
+    border-radius: 3px;
+  }
+}
+.author-byline-inside {
+  .mega-header & {
+    background: white;
+    background: rgba(white, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 1px 1px 3px rgba(black, 0.1);
+  }
+  @include breakpoint(baby-bear) {
+    display: block;
+    margin-bottom: -10px;
+    letter-spacing: 1px;
+    .mega-header & {
+      padding: 8px 15px;
+    }
+    body:not(.single) & {
+      > a {
+        &::after {
+          content: "\A";
+          white-space: pre;
+        }
+      }
+    }
+    a, span, time {
+      font-size: 0.75rem !important;
+    }
+  }
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+blockquote {
+  margin: 0 0 20px 0;
+  border-left: 30px solid rgba(black, 0.15);
+  padding-left: 10px;
+  &::before {
+    content: "<blockquote>";
+    margin: 0 0 4px 0;
+  }
+  &::after {
+    content: "</blockquote>";
+    margin: 6px 0 0 0;
+  }
+  &::before,
+  &::after {
+    display: block;
+    text-transform: uppercase;
+    color: rgba(black, 0.5);
+    font-size: 0.6rem;
+    letter-spacing: 0.05rem;
+  }
+  p:last-child {
+    margin: 0;
+  }
+}
+
+// Explanations
+// This got messy. Whoops.
+
+// 1) Intro paragraph on single page
+body.single article p:first-of-type .explanation {
+  display: block;
+  font-style: normal;
+  &::before {
+    content: "<editor_intro>";
+    margin: 0 0 4px 0;
+  }
+  &::after {
+    content: "</editor_intro>";
+    margin: 6px 0 0 0;
+  }
+  &::before,
+  &::after {
+    display: block;
+    text-transform: uppercase;
+    color: #ccc;
+    font-size: 0.6rem;
+    letter-spacing: 0.05rem;
+  }
+}
+// 2) Mid-article
+article p:not(:first-of-type) .explanation,
+article div.explanation,
+article p.explanation {
+  display: block;
+  font-style: normal;
+  background: lightyellow;
+  padding: 10px;
+}
+article div.explanation {
+  margin: 0 0 1rem 0;
+}
+
+// 3) Homepage
+body.home .explanation {
+  font-style: normal;
+}
+
+
+dfn {
+  font-style: italic;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+p, pre, figure {
+  margin: 0 0 1rem 0;
+}
+
+pre {
+  color: white; // default code color
+  background: $darkGray;
+  padding: 0;
+  -moz-tab-size: 2;
+  -o-tab-size:   2;
+  tab-size:      2;
+  -ms-word-break:  normal;
+  word-break:      normal;
+  word-break:      normal;
+  -webkit-hyphens: none;
+  -moz-hyphens:    none;
+  -ms-hyphens:     none;
+  hyphens:         none;
+  position: relative;
+  line-height: 28px;
+  &[rel] { 
+    padding-top: 21px; 
+  }
+  &[rel]::before {
+    font-size: 0.75rem;
+    content: attr(rel);
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @include strips(#999, 10deg);
+    @include ff-sans;
+    padding: 1px 0;
+    text-indent: 15px;
+  }
+  &[rel="CSS"]::before {
+    @include strips($orange, 10deg);
+  }
+  &[rel="HTML"]::before {
+    @include strips($green, 10deg);
+  }
+  &[rel="jQuery"]::before,
+  &[rel="JavaScript"]::before,
+  &[rel="JSX"]::before {
+    @include strips($purple, 10deg);
+  }
+  code {
+    @include ff-code;
+    font-size: 0.9rem;
+    background: none;
+    padding: 15px;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: auto;
+  }
+  @include breakpoint(baby-bear) {
+    max-height: 100vh;
+    code {
+      max-height: 100vh;
+    }
+  }
+}
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  line-height: inherit;
+  padding: inherit 0;
+  margin-top: calc(1em + 18px);
+  background: linear-gradient(
+    to right,
+    rgba($yellow, 0.25) 50%,
+    rgba($yellow, 0)
+  );
+  pointer-events: none;
+  white-space: pre;
+  @include breakpoint(mama-bear) {
+    margin-top: calc(1em + 20px);
+  }
+  @include breakpoint(baby-bear) {
+    margin-top: calc(1em + 22px);
+  }
+}
+
+p, li, dd, td {
+  > code {
+    background: #eee;
+    padding: 0 5px 2px;
+    border-radius: 4px;
+    position: relative;
+    top: -1px;
+    margin: 0 3px 0 1px;
+    font-size: 90%;
+  
+    // sometimes code lines can be longer than screen is wide
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+small {
+  font-size: 75%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+

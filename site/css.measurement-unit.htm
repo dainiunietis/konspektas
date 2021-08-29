@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>
+<!-- #BeginEditable "body" -->
+<h1>Skaitinių CSS savybių reikšmių matavimo vienetai (CSS length units)</h1>
+<p><a href="http://konspektas-prev.local/client-side/css/values/css-savybiu-matavimo-vienetai.htm">http://konspektas-prev.local/client-side/css/values/css-savybiu-matavimo-vienetai.htm</a></p>
+<p><a href="https://developer.mozilla.org/en/docs/Web/CSS/length">https://developer.mozilla.org/en/docs/Web/CSS/length</a></p>
+<p><a href="https://css-tricks.com/the-lengths-of-css/">https://css-tricks.com/the-lengths-of-css/</a></p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3><code>vw vh vmin vmax</code></h3>
+      <p><a href="css.viewport.htm#***20210228141340">Viewport-percentage lengths</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><h3><code>fr</code> &#8212; fractional unit</h3>
+    <p><a href="css.module.grid-layout.htm#(h)">Grid'o matavimo vienetas fr (CSS data type — fractional unit)</a></p></td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Pasukimo matavimo vienetai</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Duomenų tipas <code>&lt;angle&gt;</code></h3>
+      <p><a href="">&lt;angle&gt; - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>Pasukimo matavimo vienetai priklauso <code>&lt;angle&gt;</code> duomenų tipui.      </p>
+      <p><img src="images/css.data-type.length-unit.angle.veikimo-schema.png" alt="" width="189" height="130"/></p>
+      <h4>deg</h4>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/angle#Units">Units | MDN</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>&nbsp;</h3>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="c-pvz">
+  <p class="c-pvz__caption">...</p>
+  <p class="c-pvz__title">pasukimas kas 45deg</p>
+  <div class="c-pvz__container" style="">
+    <div class="W20%c M2c" style="display: flex; flex-flow: wrap; height: 10.6rem">
+      <div class="c-pvz__target" style="">0deg</div>
+      <div class="c-pvz__target" style="">45deg</div>
+      <div class="c-pvz__target" style="">90deg</div>
+      <div class="c-pvz__target" style="">135deg</div>
+      <div class="c-pvz__target" style="">180deg</div>
+      <div class="c-pvz__target" style="">225deg</div>
+      <div class="c-pvz__target" style="">270deg</div>
+      <div class="c-pvz__target" style="">315deg</div>
+      <div class="c-pvz__target" style="">360deg</div>
+    </div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

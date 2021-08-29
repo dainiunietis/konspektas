@@ -1,0 +1,146 @@
+@charset "utf-8";
+
+// layout
+
+////////////////////////////////////////////////////////////////////////////
+/////                                                                   ////
+////         multiple-column layout / multicol / CSS columns           /////
+///                                                                   //////
+////////////////////////////////////////////////////////////////////////////
+
+// MultiCoL
+
+.o-mcl {
+  margin-bottom: $szm-spacing-vertical-paragraph;
+  //padding: 1px 0px;
+	//border-style: dashed;
+	//border-color: rgba(142, 71, 140, 0.30);
+	//border-width: 1px 0;
+
+	column-gap: szm-spacing-size(small-, em); // medium
+	//column-count: 2;
+	column-fill: balance;
+
+  //widows: 3;
+  //orphans: 3;
+
+	//> *:first-child {
+	//	@media screen and (-webkit-min-device-pixel-ratio:0) {
+	//		margin-top: 0;
+	//	}
+	//}
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # skiriamoji linija tarp stulpelių
+//
+////////////////////////////////////////////////////////////////////////
+
+.o-mcl--rule {
+  //column-rule: 1px dotted hsla(0, 0%, 0%, 0.2);
+  column-rule: 1px solid hsla(0, 0%, 0%, 0.2);
+  column-gap: szm-spacing-size("medium", em);
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # stulpeliai nurodant jų skaičių
+//
+////////////////////////////////////////////////////////////////////////
+
+// .o-mcl--NX { column-count: X }
+
+@for $i from 2 through 8 {
+	.o-mcl--N#{$i} {
+		column-count: #{$i};
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # stulpeliai nurodant jų plotį
+//
+////////////////////////////////////////////////////////////////////////
+
+//$mcl-width: 200px;
+//$mcl-width-step: 50px;
+$mcl-width: 10em;
+$mcl-width-step: 5em;
+
+@for $i from 1 through 7 {
+	.o-mcl--W#{$i} {
+		column-width: $mcl-width;
+	}
+	$mcl-width: $mcl-width + $mcl-width-step !global;
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # Kad būtų neperkeliamas tarp stulpelių tagų turinys
+//
+////////////////////////////////////////////////////////////////////////
+
+//.o-mcl__unbroken,
+//.o-mcl__unbr,
+//.o-mcl__whole,
+.o-mcl__continuous,
+.o-mcl--continuous-all > *,
+.o-mcl--continuous-p > p, //Kad būtų nekeliami paragrafai
+.o-mcl--continuous-bq > blockquote,
+.o-mcl--continuous-fig > figure,
+.o-mcl--continuous-dtdd > dl > dt,
+.o-mcl--continuous-dtdd > dl > dd,
+.o-mcl--continuous-dtdd > dl > dd,
+.o-mcl--continuous-dl > dl,
+.o-mcl--continuous-pre > pre {
+	//column-break-inside: avoid-column;
+	//column-break-inside: avoid;
+	break-inside: avoid;
+}
+
+
+
+
+//.o-mcl--continuous-dtdd > dl > dt {
+//  //-- !!! šiuo metuant Chrome neveikia, nors turėtų, o MS Edge veikia !!!
+//  //break-after: avoid;
+//  break-after: avoid-column;
+//
+//  //break-after: column;
+//  //break-before: column;
+//}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # Stulpelių tagų pradėjimas nuo stulpelio pradžios-viršaus
+//
+////////////////////////////////////////////////////////////////////////
+
+.o-mcl__start,
+.o-mcl--start-h1 > h1:not(:first-child),   // Kad head'ingus keltų į sekančio stulpelio pradžią
+.o-mcl--start-h2 > h2:not(:first-child),
+.o-mcl--start-h3 > h3:not(:first-child),
+.o-mcl--start-h4 > h4:not(:first-child),
+.o-mcl--start-h5 > h5:not(:first-child),
+.o-mcl--start-h6 > h6:not(:first-child) {
+	break-before: column;
+	//column-break-before: always;
+	//margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

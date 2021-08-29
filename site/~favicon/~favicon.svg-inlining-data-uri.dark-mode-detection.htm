@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+
+  <link rel="icon" href="data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <style>
+      svg {
+        background: white;
+      }
+      circle {
+        fill: black;
+      }
+      @media (prefers-color-scheme: dark)  {
+        svg {
+          background: black;
+        }
+        circle {
+          fill: white;
+        }
+      }
+    </style>
+    <circle cx='50' cy='50' r='50'/>
+  </svg>">
+
+  <style>
+    body {
+      font: 1.2em "IBM Plex Sans", sans-serif;
+      margin: 1em;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Favicon'o prijungimas per SVG Data-URI su <q>Dark Mode Detection</q></h1>
+
+<aside>
+  <p>Pagal <a href="https://austingil.com/svg-favicons/">OMG, SVG Favicons FTW!</a></p>
+  <blockquote>
+    <p>We can add a <code>&lt;style&gt;</code> tag to our SVG and use the <code>prefers-color-scheme</code> media query to change our icon based on the user’s dark mode preferences.</p>
+  </blockquote>
+</aside>
+
+<p>Prijungimas HTML faile:</p>
+<pre>&lt;link rel=&quot;icon&quot; href=&quot;data:image/svg+xml;utf8,
+&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;&gt;
+  &lt;style&gt;
+    ... CSS rules&#39;ai baltam-&scaron;viesiam režimui ...
+    @media (prefers-color-scheme: dark)  {
+      ... CSS rules&#39;ai juodam-tamsiam režimui ...
+    }
+  &lt;/style&gt;
+  ... SVG kodas ...
+&lt;/svg&gt;&quot;&gt;</code></pre>
+
+
+
+
+
+
+
+</body>
+</html>

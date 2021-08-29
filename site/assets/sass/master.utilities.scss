@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Settings
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "../sass.szm/settings.project";
+@import "settings.project";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Tools
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "tools.master-imports";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Settings needs tools
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// !!! čia geriau laikyti, tada setting'uose galima naudoti naudoti tool'sus
+
+@import "settings.misc";
+
+@import "../sass.szm/settings.misc";
+@import "../sass.szm/settings.box";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Utilities-Trumps
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Clearfix.............Bind our clearfix onto a utility class.
+// Widths...............Simple width helper classes.
+// Headings.............Reassigning our heading styles to helper classes.
+// Spacing..............Nudge bits of the DOM around with these spacing classes.
+// Print................Reset-like styles taken from the HTML5 Boilerplate.
+// Hide.................Helper classes to hide content
+
+//@import "../bower_components/inuitcss/utilities/utilities.clearfix";
+//$inuit-offsets: true;
+//@import "../bower_components/inuitcss/utilities/utilities.widths";
+//@import "../bower_components/inuitcss/utilities/utilities.headings";
+//@import "../bower_components/inuitcss/utilities/utilities.spacings";
+//@import "../bower_components/inuitcss/utilities/utilities.print";
+//@import "../bower_components/inuitcss/utilities/utilities.hide";
+
+@import "../sass.szm/utilities.layout.misc";
+
+@import "../sass.szm/utilities.visibility";
+
+@import "utilities.layout.spacing";
+
+@import "../sass.szm/utilities.layout.dimensions";
+@import "../sass/utilities.layout.dimensions";
+
+@import "../sass.szm/utilities.layout.float";
+@import "../sass.szm/utilities.layout.flex";
+
+@import "../sass.szm/utilities.box.background";
+@import "utilities.box.background";
+
+@import "utilities.color.scheme";
+
+@import "../sass.szm/utilities.box.border";
+@import "utilities.box.border";
+
+@import "../sass.szm/utilities.misc";
+@import "../sass.szm/utilities.table";
+
+@import "../sass.szm/utilities.table";
+
+//@import "utilities.site-specific";
+
+@import "../sass.szm/utilities.text";
+@import "../sass.szm/utilities.text.font";
+@import "utilities.text.font";
+//@import "utilities.reset-elements";   //siuo metu nenaudojami
+
+
+
+
+
+

@@ -1,0 +1,84 @@
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************
+ ****
+ *****   indikavimas nenaudotinų
+ ****
+ ****************************************************/
+
+.nenaudotinas () { outline: 2px dotted black; }
+
+.nenaudotinas-before () {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	line-height: .8;
+	color: white;
+	background-color: black;
+	margin: 1px 4px 1px 1px;
+	padding: 0px 4px;
+	/*opacity: .8;*/
+	border-radius: 2px;
+	/*border: 1px rgba(255, 72, 0, 1) outset;*/
+	/*box-shadow: 1px 1px 3px 0px #000000;*/
+}
+
+.nenaudotinas-before-hover () {
+	font-size: 1.3em;
+	/*-webkit-transform: scale(1.2);
+	        transform: scale(1.2);*/
+}
+
+/***/
+
+code .comm { .nenaudotinas }
+code .comm:before { content: "kažkoks tagas su .comm — komentarui naudoti naudoti mark.comment >"; .nenaudotinas-before; }
+code .comm:hover:before { .nenaudotinas-before-hover }
+
+code span:not([class]) { .nenaudotinas }
+code span:not([class]):before { content: "SPAN'as CODE'e be jokio class'o — komentarui naudoti mark.comment >"; .nenaudotinas-before; }
+code span:not([class]):hover:before { .nenaudotinas-before-hover }
+
+
+
+
+
+/**************************************************************
+  ***********************************************************
+  *******                 NENAUDOTI                *********
+ ***********************************************************
+*************************************************************/
+
+code .tag-comment {
+	color: #B2BCC5;
+	font-size: 1em;
+}
+
+code .mark-1 { background-color:rgba(255,55,55,.3); color:inherit; }   /* #FFA4A4 */
+code .mark-2 { background-color:rgba(245,255,66,.6); color:inherit; }   /* #FBFFA4 */
+code .mark-3 { background-color:rgba(96,255,91,.6); color:inherit; }   /* #A6FFA4 */
+code .mark-4 { background-color:rgba(164,249,255,.6); color:inherit; }   /* #A4F9FF */
+code .mark-5 { background-color:rgba(53,58,255,.25); color:inherit; }   /* #A4ADFF */
+code .mark-6 { background-color:rgba(255,70,255,.25); color:inherit; }   /* #FFA4FF */
+
+code span.clr-1 {
+	color: #CC3399;
+}
+
+code .tagCode-comment {
+	color: #A5BDD1;
+	font-size: .9em;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <title>Demonstracija kaip veikia overflow-y: DIV'ui</title>
+  <style>
+
+    html {
+      background: powderblue;
+      font:       600 italic 1.3em "IBM Plex Serif", sans-serif;
+      /*overflow-y: scroll;*/
+      /*overflow-y: hidden;*/
+    }
+
+    body {
+      background: hsla(0, 0%, 100%, .5);
+      /*margin:     0em;*/
+      /*height:     100vh;*/
+      margin:     1em;
+      height:     calc(100vh - 2em);
+      /*overflow-y: scroll;*/
+      /*overflow-y: hidden;*/
+    }
+
+    div {
+      border: 10px solid green;
+      height: 70%;
+      /*overflow-y: scroll;*/
+      /*overflow-y: hidden;*/
+      /*overflow-y: auto;*/
+    }
+
+  </style>
+</head>
+<body>
+
+<div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Donec ullamcorper nulla non metus
+    auctor fringilla. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Donec ullamcorper nulla non metus
+    auctor fringilla. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Donec ullamcorper nulla non metus
+    auctor fringilla. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor.</p>
+</div>
+
+</body>
+</html>

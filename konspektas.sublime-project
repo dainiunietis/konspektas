@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				".sass-cache",
+				"_SANDELYS_",
+				"bower_components",
+				"node_modules",
+				".vscode",
+				".idea"
+			],
+			"path": "."
+		},
+		{
+			"path": "D:\\webdev\\libs\\frontend\\site\\assets\\sass"
+		}
+	]
+}

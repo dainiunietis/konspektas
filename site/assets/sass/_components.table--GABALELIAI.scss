@@ -1,0 +1,41 @@
+
+&--sameInsideCollapse {
+  > tbody > tr > td > #{$this} {
+
+    @mixin common {
+      width: calc(100% + #{$paddHor * 2} + 2px);
+      margin-right: calc(-#{$paddHor} - 1px);
+      margin-left: calc(-#{$paddHor} - 1px);
+    }
+
+    @include common;
+
+    &:first-child {
+      //@include common;
+      margin-top: -#{$paddTop + 1px};
+      //margin-top: calc(-0.5em - 1px);
+    }
+
+    &:last-child {
+      //@include common;
+      margin-bottom: -#{$paddBottom + 1px};
+      //margin-bottom: calc(-0.35em - 0px);
+    }
+    //&:first-child:last-child {
+    //  //@include common;
+    //  margin-bottom: calc(-0.35em - 1px);
+    //  margin-top:    calc(-0.5em - 1px);
+    //  //margin: calc(-0.5em - 1px) calc(-0.7em - 1px) calc(-0.35em - 1px);
+    //}
+  }
+  //&-thinGap {
+  //  > tbody > tr > td > #{$this} {
+  //    width: calc(100% + 1.4em - 4px);
+  //    margin-right: calc(-0.7em + 2px);
+  //    margin-left: calc(-0.7em + 2px);
+  //  }
+  //}
+}
+
+
+

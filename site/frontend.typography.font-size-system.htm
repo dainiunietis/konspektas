@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Teksto dydžio valdymo sistemos</h1>
+<p><a href="frontend.typography.font-size-system.accessible-sizing_pvz.htm">frontend.typography.font-size-system.accessible-sizing_pvz</a></p>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <h3>Tagas HTML</h3>
+    <div class="c-em-important c-em--narrow">
+      <p>Patartina, <strong>kad veiktų vartotojo nustatymai naršyklėje</strong>:</p>
+      <dl>
+        <dt>leisti paveldėti tokį patį naršyklės bazinį šrifto dydį </dt>
+        <dd>
+          <p>nieko nenustatyti arba tą patį darytų —  <code>html { font-size: 100% | 1em }</code>        </p>
+        </dd>
+        <dt>arba scale'inti naršyklės bazinį šrifto dydį su <q>relative lengths</q></dt>
+        <dd>
+          <p><code>html { font-size: 1.2em }</code></p>
+        </dd>
+      </dl>
+    </div>
+    <p>&nbsp;</p>
+    <div class="c-em-alert c-em--narrow">
+      <p>Jeigu <code>&lt;html&gt;</code> ar <code>&lt;body&gt;</code> nustatytas <q>absolute length</q>, tada  naršyklės bazinis šrifto dydis visai neturi įtakos puslapio teksto dydžiams, pvz.:</p>
+      <pre><code>html { font-size: 20px }</code></pre>
+      <p>Išimtis būtų jei:</p>
+      <pre><code>html { font-size: 1em }   // ar 1.2em
+body { font-size: 20px }</code></pre>
+      <p>Tada
+        dar būtų galima su <code>rem</code> matavimo vienetais nustatyti teksto, ir bet ko kito, dydžius, kurių realus dydis pikseliais keistųsi, pakeitus naršyklės bazinį šrifto dydį, pvz.:
+  </p>
+      <pre><code>p { font-size: 1rem }</code></pre>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Naršyklės bazinis šrifto dydis / browser's font size settings    </h3>
+    <p>Naršyklės turi bazinio šrifto dydžio nustatymą, kurį vartotojas gali keisti. Tas dydis išreiškiamas <code>px</code>.</p>
+    <p>Tą dydį paveldi <code>&lt;html&gt;</code> tagas, todėl <code>html { font-size: 100% | 1em }</code> priims, ir <code>&lt;body&gt;</code> tagui perduos naršyklės bazinį šrifto dydį:</p>
+    <blockquote>
+      <p><code>font-size: 100%</code> listens to the browser's font size settings instead of overwriting it. By default in most browsers, this would place <code>1em</code> at <code>16px</code>.</p>
+    </blockquote>
+    <p class="c-em-note"><code>html { font-size: 1.2em }</code> — scale'ina naršyklės bazinį šrifto dydį.</p><p>&nbsp;</p>
+    <h4>Chrome nustatymai</h4>
+    <p>Yra du Chrome'o bazinio šrifto dydžio nustatymo būdai:</p>
+    <dl>
+      <dt>keyword'ais</dt>
+      <dd>
+        <figure class="figure--img-bigCaption"><img src="images/20200402_192806_Settings.png" alt="" width="233" height="140"/>
+          <figcaption>
+            <p>Chrome'o bazinio šrifto dydžio nustatymas keyword'ais.</p>
+          </figcaption>
+        </figure>
+<p>Keyword'ų reikšmės:</p>
+<ul>
+  <li>Very small <code>= 9px</code></li>
+  <li> Small <code>= 12px</code></li>
+  <li> Medium (Recommended) <code>= 16px</code></li>
+  <li>Large <code>= 20px</code></li>
+  <li> Very large <code>= 24px</code></li>
+</ul>
+      </dd>
+      <dt>tiksliai pikseliais</dt>
+      <dd>
+        <p><img src="images/chrome-bazinio-srifto-dydzio-nustatymas-2020-04-07.svg" alt="" width="200" /></p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Head'ingai </h3>
+    <blockquote>
+      <p>For large headings or when text is grouped with an image, use <a href="http://fittextjs.com/">FitText</a> to achieve scalable headlines. Stray away from vw and vh due to incomplete support, difficulty in precise configuration, and because it does not listen to browser font or zoom settings.</p>
+    </blockquote>
+    <p></p>
+  </div>
+  <div>
+    <h3>media query dimensions </h3>
+    <p>Geresnis tinklapių zoom'ingas kai MQ nurodomi su <code>em</code>'ais — <a href="https://css-tricks.com/zooming-squishes/">Zooming Squishes | CSS-Tricks</a></p>
+  </div>
+  <div>
+    <h3>Ar <code>font-size:</code> geriau nustatyti su <code>em</code>/<code>rem</code>, ar <code>px</code>?</h3>
+    <p> <a href="https://css-tricks.com/is-it-better-to-use-ems-rems-than-px-for-font-size/">Is it better to use ems/rems than px for font-size? | CSS-Tricks</a>    </p>
+    <p><code>em</code>/<code>rem</code> naudojimo privalumai:</p>
+    <ul>
+      <li>
+        <p>Naršyklės turi bazinio šrifto dydžio nustatymą, kurį vartotojas gali keisti, faktiškai tai yra <code>&lt;html&gt;</code> tago <code>font-size:</code>, tik paveldimi <code>em</code>/<code>rem</code> šį nustatymą daro veiksmingu.</p>
+        <blockquote>
+          <p>setting type in <code>px</code> prevents browser settings from making font size adjustments (which some people definitely use)</p>
+        </blockquote>
+        <figure class="figure--img-bigCaption"><img src="images/20200319_094139_Window.png" alt="" width="228" height="90"/>
+          <figcaption>
+    <p>bazinio šrifto dydžio nustatymas Chrome'e</p>
+  </figcaption>
+</figure>
+      </li>
+      <li>
+        <p>Nors iš principo browser zoom'as vienodai zoom'ina ir <code>em</code>/<code>rem</code>:, ir <code>px</code>:</p>
+        <blockquote>
+          <p>But browser zoom is the default method for making everything bigger (including text) these days and it works great even if you use px.</p>
+        </blockquote>
+        <p>Bet: </p>
+        <blockquote>
+          <p>setting type in relative units maintains greater design fidelity as users use browser zoom (which a lot of people definitely use).</p>
+        </blockquote>
+      </li>
+    </ul>
+  </div>
+</div>
+<h2>Konkrečių teksto-šrifto dydžių puslapyje-tinklapyje nustatymo metodikos </h2>
+<p>the typographic scale, 	a visual type scale, balanced and harmonious font sizing, modular scales</p>
+<p><strong>Evernote::</strong> font sizing typographic scale | webdev-tool</p>
+<p>Bendra idėja, kad apskaičiuojami harmoningų teksto dydžių skalė:</p>
+<blockquote>
+  <p>The next time you need to choose a size for a particular text on the website you don't choose from the infinite sizes incremented by 1 pixel, you choose from a finite range of predefined and calculated sizes. </p>
+</blockquote>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>Tool'o <a href="https://www.modularscale.com/">modularscale.com</a> naudojimas      </h3>
+      <p> <a href="https://us2.campaign-archive.com/?u=d2aaa3155cfda7e76c73817a0&id=624efc476f&e=9ec08ab570">Lesson 7: Modular scale &amp; meaningful typography</a>,<a href="https://www.evernote.com/l/AVlQ11UO63VLv66Cl2ZIwyis1-kYo42UFe8/">https://www.evernote.com/l/AVlQ11UO63VLv66Cl2ZIwyis1-kYo42UFe8/</a> — be kodo, pasakojimas</p>
+      <p><a href="https://www.codementor.io/@ricardozea/100-responsive-typography-system-using-a-modular-scale-s5rhft58g">100% Responsive Typography System using a Modular Scale | Codementor</a> — konkretus sprendimas, pvz.: <a href="frontend.typography.font-size-system.responsive-modular-scale-font-sizing_pvz.htm">frontend.typography.teksto-dydzio-valdymo-sistemos.responsive-modular-scale-font-sizing_pvz.htm</a></p>
+    </td>
+    <td width="20%">
+      <p><a href="http://spencermortensen.com/articles/typographic-scale/">The typographic scale</a> — įvadas ir konkretūs pvz.</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p> <a href="https://type-scale.com/">Type Scale - A Visual Calculator</a> — <strong>labai aiškiai pateikta</strong></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Fluid Typography</h2>
+<p><a href="https://www.smashingmagazine.com/2016/05/fluid-typography/">https://www.smashingmagazine.com/2016/05/fluid-typography/</a></p>
+<p> <a href="https://css-tricks.com/simplified-fluid-typography/">Simplified Fluid Typography | CSS-Tricks</a></p>
+<p>Tai yra:</p>
+<blockquote>
+  <p>Fluid typography is the idea that <code>font-size</code> (and perhaps other attributes of type, like <code>line-height</code>) change depending on the screen size (or perhaps container queries if we had them).</p>
+</blockquote>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer -o-grd--border o-grd--boxed o-flx o-flx--clsw3 WNNCc -B161c -BGCL1c">
+  <div>
+    <p>&nbsp;</p>
+    <h4>Tolygiai didėjantis šrifto dydis pagal naršyklės plotį, tarp nustatytų reikšmių</h4>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>the most common implementation ended up being an equation to calculate plain English:</p>
+      <p>I want the type to go between being 16px on a 320px screen to 22px on a 1000px screen.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Kodinimo technikos</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>didėjant naršyklės langui, visi paveldimi teksto dydžiai truputį didėja      </h3>
+      <pre><code>body {
+  font-size: calc(1em + 1vw);
+}</code></pre>
+      <p>Svarbu:</p>
+      <blockquote>
+        <p>However, the units used, the order and the operation (px + vw) ARE REQUIRED for a responsive behavior.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

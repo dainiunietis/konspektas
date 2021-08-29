@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+body {
+  background: hsla(29.8, 61.6%, 50%, 0.3);
+  // border: 5px dotted red;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+p {
+  border: hsla(242, 100%, 50%, 0.55) 1px dotted;
+  background-color: hsla(242, 100%, 50%, 0.05);
+}

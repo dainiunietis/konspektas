@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Grid'ai</h1>
+<h2><code>.grid--inlBlk</code> &#8212; <code>display: inline-block</code></h2>
+<h3><code>class="grid grid--inlBlk"</code> &#8212; natūralus plotis</h3>
+<div class="grid grid--inlBlk">
+  <pre><code class="">&lt;div id="content"&gt;
+  &lt;div class="toolbar"&gt;
+    &lt;button id="btn-new" class="btn" data-action="menu"&gt;New&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  <pre><code class="">&lt;div id="content"&gt;
+  &lt;div class="toolbar"&gt;
+    &lt;button&gt;New&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  <pre class="Cols-Brk-Bef"><code class="">// Loading Menu with jQuery, bind a click handler to the button
+
+$('#btn-new').click(function(){
+  var el = $(this);
+  el.addClass('is-pressed');
+  $('#menu-' + el.id.substr(4)).removeClass('is-hidden');
+});</code></pre>
+  <pre><code class="">&lt;div id="content"&gt;
+  &lt;div class="toolbar"&gt;
+    &lt;button&gt;New&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<h3><code>class="grid grid--inlBlk grid--w300"</code> &#8212; nustatytas plotis pikseliais</h3>
+<ul class="grid grid--inlBlk grid--w300">
+  <li>The problem with this approach is that this HTML structure is now
+    tied together. There must be a containing element. The menu and
+    button must exist within that containing element. Let’s hope we
+    don’t need to add any more buttons into that toolbar!</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+  <li>It still has the dependency of tying the menu
+    HTML with the button HTML: one has to come immediately after
+    the other. If you can establish that consistency in your project then
+    this is an approach that can work well for you.</li>
+  <li>The reason why this approach can be more troublesome over just
+    applying a state to each module is that it is no longer clear where
+    this rule set should go. The menu is no longer just a menu. It’s a
+    button menu. If you needed to modify the active state for this
+    module, do you find the CSS in with the button CSS or is it in with
+    the menu CSS?</li>
+</ul>
+<h3><code>class="grid grid--inlBlk grid--inlBlk-widthProc grid--w25p"</code> &#8212; nustatytas plotis  procentais</h3>
+<ul class="grid grid--inlBlk grid--inlBlk-widthProc grid--w25p">
+  <li>The problem with this approach is that this HTML structure is now
+    tied together. There must be a containing element. The menu and
+    button must exist within that containing element. Let’s hope we
+    don’t need to add any more buttons into that toolbar!</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+  <li>It still has the dependency of tying the menu
+    HTML with the button HTML: one has to come immediately after
+    the other. If you can establish that consistency in your project then
+    this is an approach that can work well for you.</li>
+  <li>The reason why this approach can be more troublesome over just
+    applying a state to each module is that it is no longer clear where
+    this rule set should go. The menu is no longer just a menu. It’s a
+    button menu. If you needed to modify the active state for this
+    module, do you find the CSS in with the button CSS or is it in with
+    the menu CSS?</li>
+</ul>
+<h3><code>class="grid grid--inlBlk grid--w200 grid--inlBlk-bottom"</code> &#8212; lygiuoja apačiomis</h3>
+<ul class="grid grid--inlBlk grid--inlBlk-bottom grid--w200">
+  <li>The problem with this approach is that this HTML structure is now
+    tied together. There must be a containing element. The menu and
+    button must exist within that containing element. Let’s hope we
+    don’t need to add any more buttons into that toolbar!</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+  <li>It still has the dependency of tying the menu
+    HTML with the button HTML: one has to come immediately after
+    the other. If you can establish that consistency in your project then
+    this is an approach that can work well for you.</li>
+  <li>The reason why this approach can be more troublesome over just
+    applying a state to each module is that it is no longer clear where
+    this rule set should go. The menu is no longer just a menu. It’s a
+    button menu. If you needed to modify the active state for this
+    module, do you find the CSS in with the button CSS or is it in with
+    the menu CSS?</li>
+</ul>
+<h3><code>class="grid grid--inlBlk grid--w200 grid--inlBlk-center"</code> &#8212; vertikaliai centruojasi</h3>
+<ul class="grid grid--inlBlk grid--w200 grid--inlBlk-center">
+  <li>The problem with this approach is that this HTML structure is now
+    tied together. There must be a containing element. The menu and
+    button must exist within that containing element. Let’s hope we
+    don’t need to add any more buttons into that toolbar!</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+  <li>It still has the dependency of tying the menu
+    HTML with the button HTML: one has to come immediately after
+    the other. If you can establish that consistency in your project then
+    this is an approach that can work well for you.</li>
+  <li>The reason why this approach can be more troublesome over just
+    applying a state to each module is that it is no longer clear where
+    this rule set should go. The menu is no longer just a menu. It’s a
+    button menu. If you needed to modify the active state for this
+    module, do you find the CSS in with the button CSS or is it in with
+    the menu CSS?</li>
+</ul>
+<h3><code>class="grid grid--inlBlk grid--w200 grid--paint-diff"</code> &#8212; spalvina skirtingomis spalvomis</h3>
+<ul class="grid grid--inlBlk grid--w200 grid--paint-diff">
+  <li>The problem with this approach is that this HTML structure is now
+    tied together. There must be a containing element. The menu and
+    button must exist within that containing element. Let’s hope we
+    don’t need to add any more buttons into that toolbar!</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+  <li>It still has the dependency of tying the menu
+    HTML with the button HTML: one has to come immediately after
+    the other. If you can establish that consistency in your project then
+    this is an approach that can work well for you.</li>
+  <li>The reason why this approach can be more troublesome over just
+    applying a state to each module is that it is no longer clear where
+    this rule set should go. The menu is no longer just a menu. It’s a
+    button menu. If you needed to modify the active state for this
+    module, do you find the CSS in with the button CSS or is it in with
+    the menu CSS?</li>
+  <li>It still has the dependency of tying the menu
+    HTML with the button HTML: one has to come immediately after
+    the other. If you can establish that consistency in your project then
+    this is an approach that can work well for you.</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+  <li>The reason why this approach can be more troublesome over just
+    applying a state to each module is that it is no longer clear where
+    this rule set should go. The menu is no longer just a menu. It’s a
+    button menu. If you needed to modify the active state for this
+    module, do you find the CSS in with the button CSS or is it in with
+    the menu CSS?</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+</ul>
+<h2><code>.grid--float</code> &#8212; <code>float: left</code></h2>
+<h3><code>class="grid grid--float"</code> &#8212; natūralus plotis</h3>
+<div class="grid grid--float">
+  <pre><code class="">&lt;div id="content"&gt;
+  &lt;div class="toolbar"&gt;
+    &lt;button id="btn-new" class="btn" data-action="menu"&gt;New&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  <pre class="Cols-Brk-Bef"><code class="">// Loading Menu with jQuery, bind a click handler to the button
+
+$('#btn-new').click(function(){
+  var el = $(this);
+  el.addClass('is-pressed');
+  $('#menu-' + el.id.substr(4)).removeClass('is-hidden');
+});</code></pre>
+</div>
+<p>&nbsp;</p>
+<h3><code>class="grid grid--float grid--w25p"</code> &#8212; nustatytas plotis  procentais</h3>
+<ul class="grid grid--float grid--w25p">
+  <li>The problem with this approach is that this HTML structure is now
+    tied together. There must be a containing element. The menu and
+    button must exist within that containing element. Let’s hope we
+    don’t need to add any more buttons into that toolbar!</li>
+  <li>I prefer this approach over applying a state class to a parent element as the state is more accurately combined with the module in
+    which it applies.</li>
+  <li>It still has the dependency of tying the menu
+    HTML with the button HTML: one has to come immediately after
+    the other. If you can establish that consistency in your project then
+    this is an approach that can work well for you.</li>
+  <li>The reason why this approach can be more troublesome over just
+    applying a state to each module is that it is no longer clear where
+    this rule set should go. The menu is no longer just a menu. It’s a
+    button menu. If you needed to modify the active state for this
+    module, do you find the CSS in with the button CSS or is it in with
+    the menu CSS?</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Darbiniai</h2>
+<p>&lt;ul&gt;</p>
+<ul class="-grid grid--inlBlk">
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </li>
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </li>
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </li>
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </li>
+</ul>
+<hr>
+<ul class="-grid grid--inlBlk">
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <pre><code class="">*</code></pre>
+    <pre><code class="">*</code></pre>
+    <p>&nbsp;</p>
+  </li>
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <pre><code class="">*</code></pre>
+    <pre><code class="">*</code></pre>
+    <p>&nbsp;</p>
+  </li>
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <pre><code class="">*</code></pre>
+    <pre><code class="">*</code></pre>
+    <p>&nbsp;</p>
+  </li>
+  <li style="width:370px">
+    <p>&nbsp;</p>
+    <pre><code class="">*</code></pre>
+    <pre><code class="">*</code></pre>
+    <p>&nbsp;</p>
+  </li>
+</ul>
+<p>&lt;div&gt;</p>
+<div class="grid grid--inlBlk">
+  <div style="width:370px">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div style="width:370px">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div style="width:370px">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<hr>
+<div class="grid grid--inlBlk">
+  <div style="width:370px">
+    <p>&nbsp;</p>
+    <pre><code class="">*</code></pre>
+    <pre><code class="">*</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div style="width:370px">
+    <p>&nbsp;</p>
+    <pre><code class="">*</code></pre>
+    <pre><code class="">*</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div style="width:370px">
+    <p>&nbsp;</p>
+    <pre><code class="">*</code></pre>
+    <pre><code class="">*</code></pre>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

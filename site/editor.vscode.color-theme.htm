@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>VS Code &#8212; sąsajos ir kodo redaktoriuje spalvinimas (<i>color themes</i>)</h1>
+<h2>VS Code'o <i>color themes</i></h2>
+<p> <a href="https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers#_workbench-colors">Visual Studio Code workbench colors</a></p>
+<p><a href="https://code.visualstudio.com/docs/getstarted/theme-color-reference">Visual Studio Code Theme Color Reference</a> &#8212; visų color theme'o savybių sąrašas, kurios naudojamos color theme'e, ir galima override'inti setting'uose</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Naujo color theme'o sukūrimas</h3>
+      <p> <a href="https://code.visualstudio.com/docs/getstarted/themes#_creating-your-own-color-theme">Creating your own Color Theme</a></p>
+      <p> <a href="https://code.visualstudio.com/docs/extensions/yocode#_new-color-theme">Yo Code - Extension Generator # New Color Theme</a></p>
+      <p> <a href="https://medium.com/@caludio/how-to-write-a-visual-studio-code-color-theme-from-scratch-7ccb7e5da2aa">How to write a Visual Studio Code color theme from scratch</a></p>
+      <h4>Kaip klonuoti aktyvią Color Theme'ą sukuriant VS Code'o Extension'ą su tuo Color Theme'u, t. y. pridėtų naują Color Theme'ą su nauju pavadinimu</h4>
+      <ol>
+        <li>
+          <p>Jeigu nėra globaliai suinstaliuotų npm'o package'ų &quot;Yeoman&quot; ir &quot;VS Code Extension generator&quot; &#8212; reikia suinstaliuoti:</p>
+          <blockquote>
+            <p>Install Yeoman and the VS Code Extension generator from the command prompt:</p>
+            <pre><code>npm install -g yo generator-code</code></pre>
+            <p></p>
+          </blockquote>
+        </li>
+        <li>
+          <p>Jei reikia, setting'uose per <code>&quot;editor.tokenColorCustomizations&quot;</code> ir <code>"editor.tokenColorCustomizations"</code> galima patiūninti ir tada
+            sukurti <code>*.color-theme.json</code>:</p>
+          <blockquote>
+            <p>Customize your colors in your user settings then generate a theme definition file with the <strong>Developer: Generate Color Theme From Current Settings</strong> command.</p>
+          </blockquote>
+        </li>
+        <li>
+          <p>Naujame kataloge padedame sugeneruotą <code>*.color-theme.json</code> ir tame kataloge įvykdome:</p>
+          <p><code>&gt; yo code</code></p>
+          <p>Keliaujame per vedlį:</p>
+          <ul>
+            <li>...</li>
+            <li>rezultate sukuriamas Extension'o katalogas</li>
+          </ul>
+        </li>
+        <li>
+          <p>Sugeneruotą Extension'o katalogą padedame į <code>C:\Users\zm\.vscode\extensions</code>: </p>
+          <blockquote>
+            <p>To load an extension, you need to copy the files to your VS Code extensions folder .vscode/extensions. Depending on your platform, it is located in the following folders:</p>
+            <ul>
+              <li><strong>Windows</strong> %USERPROFILE%\.vscode\extensions</li>
+              <li><strong>macOS</strong> ~/.vscode/extensions</li>
+              <li><strong>Linux</strong> ~/.vscode/extensions </li>
+            </ul>
+          </blockquote>
+        </li>
+        <li>Perkrauname VS Code'ą, naujas Color Theme'as jau yra.    </li>
+      </ol>
+    </td>
+    <td width="25%">
+      <h3>Color theme'o override'inimas setting'uose (customize color theme)</h3>
+      <p><a href="https://code.visualstudio.com/docs/getstarted/themes#_customizing-a-color-theme">Visual Studio Customizing a Color Theme</a></p>
+      <p>Setting'ų faile: </p>
+      <pre><code>"workbench.colorCustomizations": {
+  "editor.background": "#1d1f23"
+}</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <blockquote>
+        <ul>
+          <li>tab.activeModifiedBorder: Border on the top of modified (dirty) active tabs in an active group.</li>
+          <li>tab.inactiveModifiedBorder: Border on the top of modified (dirty) inactive tabs in an active group.</li>
+          <li>tab.unfocusedActiveModifiedBorder: Border on the top of modified (dirty) active tabs in an unfocused group.</li>
+          <li>tab.unfocusedInactiveModifiedBorder: Border on the top of modified (dirty) inactive tabs in an unfocused group.      </li>
+        </ul>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Redaktoriaus kodo programavimo kalbos spalvinimas (<i>syntax highlighting colors</i>)</h2>
+<p> <a href="https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers#_syntax-highlighting-colors">Visual Studio Code syntax highlighting colors</a></p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h2>TextMate theme</h2>
+      <p>TextMate grammars consist of a set of regular expression that are used to create a syntax tree out of the source code. </p>
+      <p>&nbsp;</p>
+      <p>Each tree node spans a source range and represents a scope. Scopes have a name and stand for either code sections (such as functions, blocks, comments) or symbols (for example keywords, numbers, operators).</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Override'inimas setting'uose   (to tune the editor's syntax highlighting colors)</h3>
+      <p class="c-em-note c-em--narrow"><a href="editor.vscode.hotkeys.htm#editCmd-color-themes-inspect-tm-scopes">[C][Developer: Inspect TM Scopes]</a> &#8212; kodo struktūrinio formatavimo tyrinėjimui      </p>
+      <p>Setting'ų faile taip override'ina visų programavimo kalbų spalvinimą visuose VS Code'o <i>color themes</i>'uose:</p>
+      <pre><code>"editor.tokenColorCustomizations": {
+  "comments": "#6C768E"
+}</code></pre>
+      <p>Čia galima spalvinti nedaug:</p>
+      <blockquote>
+        <p>A pre-configured set of syntax tokens ('comments', 'strings', ...) is available for the most common constructs.</p>
+      </blockquote>
+      <p>Norint daugiau:</p>
+      <blockquote>
+        <p>If you want more, you can do so by directly specifying TextMate theme color rules</p>
+      </blockquote>
+      <pre><code>"editor.tokenColorCustomizations": {
+  "textMateRules": [
+    ...
+  ]
+}</code></pre>
+      <h4>Override'inti tik konkretų Color theme'ą</h4>
+      <blockquote>
+        <p>Again, to customize a specific theme only, use the following syntax:</p>
+        <pre><code>"editor.tokenColorCustomizations": {
+  "[Monokai]": {
+    "comments": "#229977"
+  }
+}</code></pre>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

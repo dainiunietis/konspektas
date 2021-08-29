@@ -1,0 +1,212 @@
+@charset "utf-8";
+
+// !!! ĮVAIRŪS SPREINDIMAI !!!
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # https://www.smashingmagazine.com/2021/02/css-z-index-large-projects/
+//
+/////////////////////////////////////////////////////////////////////////////
+
+/*
+Taking inspiration from BEM, I made a naming convention for our constants to better organize
+had a template like this:
+the values and bring more order to the flat list of constants. The format I ended up using
+
+z<Context><Element>
+
+The<Context> portion is replaced with the name stacking context the constant belongs to.
+This is similar to the “block” in BEM and in practice almost always shares the same name
+as the component being styled.
+
+The final portion of the format, <Element> is for the name of the specific item to be
+positioned in the stacking context and is most similar to “element” in BEM.
+*/
+
+//---------------------------------------------------------------------------
+//  # SCSS
+//---------------------------------------------------------------------------
+
+
+// Z-index values
+$base: 0;
+$above: 1; // use this for all values above the base
+$below: -1; // and this for all values below the base
+
+// Page Layout
+$zLayoutNavigation: $above + $base;
+$zLayoutFooter: $above + $base;
+$zLayoutModal: $above + $zLayoutNavigation;
+$zLayoutPopUpAd: $above + $zLayoutModal;
+
+// NavMenu
+$zNavMenuBackdrop: $below + $base;
+$zNavMenuPopover: $above + $base;
+$zNavMenuToggle: $above + $zNavMenuPopover;
+
+// Usage ---
+
+.nav {
+  z-index: $zLayoutNavigation;
+}
+
+//---------------------------------------------------------------------------
+//  # CSS
+//---------------------------------------------------------------------------
+
+:root {
+  /* Z-index values */
+  --base: 0;
+  --above: 1; /* use this for all values above the base */
+  --below: -1; /* and this for all values below the base */
+
+  /* Page Layout */
+  --zLayoutNavigation: calc(var(--above) + var(--base));
+  --zLayoutFooter: calc(var(--above) + var(--base));
+  --zLayoutModal: calc(var(--above) + var(--zLayoutNavigation));
+  --zLayoutPopUpAd: calc(var(--above) + var(--zLayoutModal));
+
+  /* NavMenu */
+  --zNavMenuBackdrop: calc(var(--below) + var(--base));
+  --zNavMenuPopover: calc(var(--above) + var(--base));
+  --zNavMenuToggle: calc(var(--above) + var(--zNavMenuPopover));
+}
+
+/* Usage --- */
+
+.nav {
+  z-index: var(--zLayoutNavigation);
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # commnet from  https://www.smashingmagazine.com/2021/02/css-z-index-large-projects/
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// Stacking orders from lowest (top) to highest (bottom)
+$layers :
+  /* .. etc */
+  popups
+  popupsClose
+  productImgModal
+  productImgModalClose
+  uiPageLoader
+/* .. etc */
+;
+
+@mixin stacking($layer, $offset: 0) {
+  @if $layer == behind {
+    z-index: -1 + $offset;
+  } @else if $layer == base {
+    z-index: 0 + $offset;
+  } @else if $layer == infront {
+    z-index: 1 + $offset;
+  } @else {
+    z-index: index($layers, $layer) + 2  + $offset;
+  }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # https://www.smashingmagazine.com/2014/06/sassy-z-index-management-for-complex-layouts/
+//
+/////////////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------
+//
+//------------------------------------------------------------------
+
+//--- ZINDEX.SCSS ------------------
+
+$elements: project-covers, user-tooltip, sorting-bar, modals, navigation;
+$modal-elements: fields, form-controls, errors, autocomplete-dropdown;
+
+//--- MYPAGE.SCSS ------------------
+
+// @import '_zindex.scss'
+
+.modal {
+  z-index: index($elements, modals);
+}
+
+//------------------------------------------------------------------
+//
+//------------------------------------------------------------------
+
+//--- MYPAGE.SCSS ----------------------------------
+
+
+//@import '_zindex.scss'
+
+$modal-elements: append($modal-elements, close-button);
+$elements: insert-nth($elements, sidebar-filters, 3);
+
+.modal .close-button {
+  z-index: index($modal-elements, close-button);
+}
+.sidebar-filter {
+  z-index: index($elements, sidebar-filter);
+}
+
+//------------------------------------------------------------------
+// https://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+//------------------------------------------------------------------
+
+@function insert-nth($list, $index, $value) {
+  $result: null;
+
+  @if type-of($index) != number {
+    @warn "$index: #{quote($index)} is not a number for `insert-nth`.";
+  } @else if $index < 1 {
+    @warn "List index 0 must be a non-zero integer for `insert-nth`";
+  } @else if $index > length($list) {
+    @warn "List index is #{$index} but list is only #{length($list)} item long for `insert-nth'.";
+  } @else {
+    $result: ();
+
+    @for $i from 1 through length($list) {
+      @if $i == $index {
+        $result: append($result, $value);
+      }
+
+      $result: append($result, nth($list, $i));
+    }
+  }
+
+  @return $result;
+}
+
+//------------------------------------------------------------------
+//
+//------------------------------------------------------------------
+
+.objects {
+  z-index: index($elements, thing-not-in-my-list);
+}
+.objects {
+  z-index: false;
+}
+
+//-----------------------------
+
+.objects {
+  z-index: z($elements, thing-not-in-my-list);
+}
+
+@function z($list, $element) {
+
+  $z-index: index($list, $element);
+
+  @if $z-index {
+    @return $z-index;
+  }
+
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+  @return null;
+}
+
+
+
+

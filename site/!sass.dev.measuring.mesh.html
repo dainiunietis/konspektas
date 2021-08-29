@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title></title>
+  <!--<link rel="stylesheet" href="../assets/sass.szm/master.css">-->
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    :root {
+      --golden-ratio: 1.61;
+    }
+    .pvz-bg {
+      background-color: hsl(0, 0%, 94%);
+      display: flex;
+      flex-flow: wrap;
+    }
+    .pvz-bg > * {
+      margin: 7px;
+      width: 250px;
+      height: calc(250px / var(--golden-ratio));
+      flex: 1 0 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pvz-bg > *::before {
+      background: hsl(0,0%,100%);
+      padding: 0.15em 0.6em 0.2em;
+      border: 1px solid;
+      /*border-radius: 5% 10% 15% 20%;*/
+      border-radius: 2em;
+      content: attr(class);
+      font: 400 1em "Fira Code", monospace;
+    }
+    /*.cp-pvz > *:hover {*/
+    /*  background-color: hsl(0, 50%, 90%);*/
+    /*}*/
+    /*.cp-pvz code {*/
+    /*  background: hsl(0,0%,100%);*/
+    /*  padding: 0.2em 0.5em;*/
+    /*  border: 1px solid;*/
+    /*  border-radius: 1%;*/
+    /*}*/
+  </style>
+</head>
+<body class="-s-page-pvz">
+
+<h1>Tinklelis developinimui</h1>
+
+<p>SASS'o failai:</p>
+<ul>
+  <li>sass.szm/_dev.measuring.mesh.scss</li>
+  <li>sass\_dev.measuring.mesh.scss</li>
+</ul>
+<p><strong>Tinklelio-mesh'o generavimas su background'o sluoksniais — <code>background-image: linear-gradient()</code></strong></p>
+
+<h2>fiksuotas tinklelio-mesh'o zingsnis</h2>
+
+<h3>Pačiame tage</h3>
+<div class="pvz-bg MB2">
+  <div class="~M ~M50px:5 ~Mred">&nbsp;</div>
+  <div class="~M ~M50px:5 ~Mblue">&nbsp;</div>
+
+  <div class="~M ~M100px:10 ~Mred">&nbsp;</div>
+  <div class="~M ~M100px:10 ~Mblue">&nbsp;</div>
+</div>
+
+<h3>Tago pseudo elemente <code>::after</code></h3>
+<div class="pvz-bg MB2">
+  <div class="~MA ~M50px:5 ~Mred">&nbsp;</div>
+  <div class="~MA ~M50px:5 ~Mblue">&nbsp;</div>
+
+  <div class="~MA ~M100px:10 ~Mred">&nbsp;</div>
+  <div class="~MA ~M100px:10 ~Mblue">&nbsp;</div>
+</div>
+
+<h2>Tinklelis dalina visą tagą-konteinerį į lygias dalis, horizontalus ir vertikalus dalinimų skaičius gali būti skirtingas</h2>
+
+<h3>Pačiame tage</h3>
+<div class="pvz-bg MB2">
+  <div class="~M ~M3:3 ~Mred">&nbsp;</div>
+  <div class="~M ~M3:3 ~Mblue">&nbsp;</div>
+
+  <div class="~M ~M5:5 ~Mred">&nbsp;</div>
+  <div class="~M ~M5:5 ~Mblue">&nbsp;</div>
+
+  <div class="~M ~M5:3|3:3 ~Mred">&nbsp;</div>
+  <div class="~M ~M5:3|3:3 ~Mblue">&nbsp;</div>
+</div>
+
+<h3>Tago pseudo elemente <code>::after</code></h3>
+<div class="pvz-bg MB2">
+  <div class="~MA ~M3:3 ~Mred">&nbsp;</div>
+  <div class="~MA ~M3:3 ~Mblue">&nbsp;</div>
+
+  <div class="~MA ~M5:5 ~Mred">&nbsp;</div>
+  <div class="~MA ~M5:5 ~Mblue">&nbsp;</div>
+
+  <div class="~MA ~M5:3|3:3 ~Mred">&nbsp;</div>
+  <div class="~MA ~M5:3|3:3 ~Mblue">&nbsp;</div>
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--<div class="cp-pvz M2c">-->
+<!--  <div class="~M ~MD3:3 ~MCred"><code>.d-mesh-szm</code></div>-->
+<!--  <div class="~MA ~MD3:3 ~MCred"><code>.d-mesh-szm</code></div>-->
+<!--  <div class="~M ~MD5:3|3:3 ~MCblue"><code>.d-mesh-szm</code></div>-->
+<!--  <div class="~MA ~MD5:3|3:3 ~MCblue"><code>.d-mesh-szm</code></div>-->
+<!--  <div class="d-mesh-szm d-mesh-szm&#45;&#45;self-divide-3:3 d-mesh-szm&#45;&#45;blue"><code>.d-mesh-szm</code></div>-->
+<!--  <div class="d-mesh-szm d-mesh-szm&#45;&#45;after-divide-3:3 d-mesh-szm&#45;&#45;blue"><code>.d-mesh-szm</code></div>-->
+<!--  <div class="d-mesh-szm d-mesh-szm&#45;&#45;self-divide-3:3 d-mesh-szm&#45;&#45;red"><code>.d-mesh-szm</code></div>-->
+<!--  <div class="d-mesh-szm d-mesh-szm&#45;&#45;after-divide-3:3 d-mesh-szm&#45;&#45;red"><code>.d-mesh-szm</code></div>-->
+<!--&lt;!&ndash;  <div class="d-meshDivide5x4-magenta"><code>.d-meshDivide5x4-magenta</code></div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="d-meshDivide5x4-magenta-pseudoAfter"><code>.d-meshDivide5x4-magenta-pseudoAfter</code></div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="d-mesh50-red-pseudoAfter"><code>.d-mesh50-red-pseudoAfter</code></div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="d-mesh50-cyan"><code>.d-mesh50-cyan</code></div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="d-mesh50-cyan-pseudoAfter"><code>.d-mesh50-cyan-pseudoAfter</code></div>&ndash;&gt;-->
+<!--</div>-->
+
+<!--<h2>su <code>background-image: failas.png</code> prisegtame tage</h2>-->
+<!--<div class="cp-pvz M1c">-->
+<!--  <div class="d-mesh10-black100"><code>.d-mesh10-black100</code></div>-->
+<!--  <div class="d-mesh10-black50"><code>.d-mesh10-black50</code></div>-->
+<!--  <div class="d-mesh10-black30"><code>.d-mesh10-black30</code></div>-->
+<!--  <div class="d-mesh10-blue100"><code>.d-mesh10-blue100</code></div>-->
+<!--  <div class="d-mesh10-blue50"><code>.d-mesh10-blue50</code></div>-->
+<!--  <div class="d-mesh10-blue30"><code>.d-mesh10-blue30</code></div>-->
+<!--</div>-->
+
+<!--<h2>su <code>background-image: failas.png</code> prisegto tago pseudo elemente <code>::after</code></h2>-->
+<!--<div class="cp-pvz M1c">-->
+<!--  <div class="d-mesh10-black-pseudoAfter"><code>.d-mesh10-black-pseudoAfter</code></div>-->
+<!--  <div class="d-mesh10-black50-pseudoAfter"><code>.d-mesh10-black50-pseudoAfter</code></div>-->
+<!--  <div class="d-mesh10-black30-pseudoAfter"><code>.d-mesh10-black30-pseudoAfter</code></div>-->
+<!--</div>-->
+
+<!--<p>The basic idea of multicol, is that you can take a chunk of content and flow it into multiple columns, as in a newspaper. You do this by using one of two properties. The column-count property specifies the number of columns that you would like the content to break into. The column-width property specifies the ideal width, leaving the browser to figure out how many columns will fit.</p>-->
+<!--<p>It doesn't matter which elements are inside the content that you turn into a multicol container, everything remains in normal flow, but broken into columns. This makes multicol unlike other layout methods that we have in browsers today. Flexbox and Grid for example, take the child elements of the container and those items then participate in a flex or grid layout. With multicol, you still have normal flow, except inside a column.</p>-->
+<!--<p>In the below example I am using column-width, to display columns of at least 14em. Multicol assigns as many 14emcolumns as will fit and then shares out the remaining space between the columns. Columns will be at least 14em, unless we can only display one column in which case it may be smaller. Multicol was the first time that we saw this kind of behavior in CSS, columns being created which were essentialy responsive by default. You do not need to add Media Queries and change the number of columns for various breakpoints, instead we specify an optimal width and the browser will work it out.</p>-->
+<!--<p>The column boxes created when you use one of the column properties can't be targeted. You can't address them with JavaScript, nor can you style an individual box to give it a background color or adjust the padding and margins. All of the column boxes will be the same size. The only thing you can do is add a rule between columns, using the column-rule property, which acts like border. You can also control the gap between columns using the column-gap property, which has a default value of 1em however you can change it to any valid length unit.</p>-->
+<!--<p>That is the basic functionality of multicol. You can take a chunk of content and split it into columns. Content will fill the columns in turn, creating columns in the inline direction. You can control the gaps between columns and add a rule, with the same possible values as border. So far so good, and all of the above is very well supported in browsers and has been for a long time, making this spec very safe to use in terms of backwards compatibility.</p>-->
+<!--<p>There are some further things you might want to consider with your columns, and some potential issues to be aware of when using columns on the web.</p>-->
+<!--<p>Sometimes you might like to break some content into columns, but then cause one element to span across the column boxes. Applying the column-span property to a descendent of the multicol container achieves this.</p>-->
+<!--<p>In the example below, I have caused a &lt;blockquote&gt; element to span across my columns. Note that when you do this, the content breaks into a set of boxes above the span, then starts a new set of column boxes below. The content doesn't jump across the spanned element.</p>-->
+<!--<p>Be aware that in the current spec, the values for column-span are either all or none. You can't span just some of the columns, but you can get the kind of layout you might see in a newspaper by combining multicol with other layout methods. In this next example, I have a grid container with two column tracks. The left-hand track is 2fr, the right-hand track 1fr. The article in the left-hand track I have turned into a multicol container with two tracks, it also has a spanning element.</p>-->
+<!--<p>On the right, we have an aside which goes into the second Grid column track. By playing around with the various layout methods available to us, we can figure out exactly which layout method suits the job at hand — don't be afraid to mix and match!</p>-->
+
+</body>
+</html>

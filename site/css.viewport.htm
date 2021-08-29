@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" --><h1>Browser viewport</h1>
+<h2><code>&lt;html&gt;</code> arba <code>:root</code></h2>
+<p><a href="css.viewport.html-root-20200426193438_pvz.htm">Nors galima nustatyti <code>&lt;html&gt;</code> išmatavimus, bet <code>background:</code> nusistato visam viewport'ui.</a></p>
+<h2 id="***20210228141340"><code>vw vh vmin vmax</code> — viewport-percentage lengths</h2>
+<p> <a href="https://ishadeed.com/article/viewport-units/">CSS Viewport Units</a></p>
+<p><a href="css.measurement-unit_pvz.htm">Savas demonstracinis testas</a> &#8212; ypač gerai parodo, kas yra <code>vmin</code> and <code>vmax</code></p>
+<div class="c-em-important">
+  <blockquote>
+    <p>The CSS length value <code>100vw</code> is equal to the width of the <code>&lt;html&gt;</code> element.</p>
+  </blockquote>
+</div>
+<blockquote>
+  <p><a href="http://tutorialzine.com/2015/05/simplify-your-stylesheets-with-the-magical-css-viewport-units/">http://tutorialzine.com/2015/05/simplify-your-stylesheets-with-the-magical-css-viewport-units/</a></p>
+  <p>The viewport is the area of your browser where actual content is displayed – in other words your web browser without its toolbars and buttons. The units are <strong>vw</strong>, <strong>vh</strong>, <strong>vmin</strong> and <strong>vmax</strong>. They all represent a percentage of the browser (viewport) dimensions and scale accordingly on window resize.</p>
+  <p>Lets say we have a viewport of 1000px (width) by 800px (height):</p>
+  <ul>
+    <li><strong>vw</strong> – Represents 1% of the viewport&rsquo;s width. In our case 50vw = 500px.</li>
+    <li><strong>vh</strong> – A percentage of the window&rsquo;s height. 50vh = 400px.</li>
+    <li><strong>vmin</strong> – A percentage of the minimum of the two. In our example 50vmin = 400px since we are in landscape mode.</li>
+    <li><strong>vmax</strong> – A percentage of the bigger dimension. 50vmax = 500px.</li>
+  </ul>
+</blockquote>
+<p>&nbsp;</p>
+<h3>Problema — The CSS <code>100vw</code> value can cause a useless horizontal scrollbar</h3>
+<p> <a href="https://css-tricks.com/weekly-platform-news-reduced-motion-cors-whitehouse-gov-popups-and-100vw/#the-css-100vw-value-can-cause-a-useless-horizontal-scrollbar">Weekly Platform News: Reduced Motion, CORS, WhiteHouse.gov, popups, and 100vw | CSS-Tricks</a></p>
+<p>Yra dviejų rūšių  scrollbars'ai:  </p>
+<dl>
+  <dt><dfn>classic scrollbar</dfn></dt>
+  <dd>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>On Windows, when a web page has a vertical scrollbar, that scrollbar consumes space and reduces the width of the page's <code>&lt;html&gt;</code> element; this is called a <a href="https://drafts.csswg.org/css-overflow-4/#scrollbar-gutter-property">classic scrollbar</a>.</p>
+    </blockquote>
+  </dd>
+  <dt><dfn>overlay scrollbars</dfn></dt>
+  <dd>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>The same is not the case on macOS, which uses overlay scrollbars instead of classic scrollbars; a vertical overlay scrollbar does not affect the width of the <code>&lt;html&gt;</code> element.</p>
+    </blockquote>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>macOS'e galima padaryti ir <i>classic scrollbars</i>:</p>
+<blockquote>
+  <p>macOS users can switch from overlay scrollbars to classic scrollbars by setting "Show scroll bars" to "Always" in System preferences &gt; General.</p>
+</blockquote>
+<p>Problema kyla todėl, kad <i>classic scrollbars</i> sumažina realų <code>&lt;html&gt;</code> plotį, bet <code>100vw</code> apskaičiuojamas kaip <code>&lt;html&gt;</code> plotis be <i>classic scrollbars</i>:</p>
+<blockquote>
+  <p>The CSS length value <code>100vw</code> is equal to the width of the <code>&lt;html&gt;</code> element. However, if a classic vertical scrollbar is added to the page, the <code>&lt;html&gt;</code> element becomes narrower (as explained above), but <strong><code>100vw</code> stays the same</strong>. In other words, <code>100vw</code> is <em>wider</em> than the page when a classic vertical scrollbar is present.</p>
+</blockquote>
+<p>Kas dirba su macOS:</p>
+<blockquote>
+  <p>Web developers on macOS can <a href="https://www.matuzo.at/blog/css-pro-tip-for-mac-users-always-show-scroll-bars-in-macos/">switch to classic scrollbars</a> to make sure that overflow bugs caused by 100vw don't slip under their radar.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw2 WNNCc">
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw2 WNNCc">
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div class="-FXBCc M1c" style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center">
+  <figure class="figure--image-shadow" style="width:400px">
+    <figcaption>
+      <p>aaa</p></figcaption></figure>
+  <figure class="figure--image-shadow" style="width:400px">
+    <figcaption>aaa</figcaption>
+  </figure>
+</div>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

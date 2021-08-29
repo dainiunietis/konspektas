@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50'/></svg>">
+
+  <style>
+    body {
+      font: 1.2em "IBM Plex Sans", sans-serif;
+      margin: 1em;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Favicon'o prijungimas per SVG Data-URI — <q>Inlining SVG Favicons As Data-URI</q></h1>
+
+<aside>
+  <p>Pagal <a href="https://austingil.com/svg-favicons/">OMG, SVG Favicons FTW!</a></p>
+  <blockquote>
+    <p>Instead of linking to the path, prefix your entire SVG code with <code>data:image/svg+xml;utf8,</code> (including that last comma) and pass the whole thing to the <code>href</code> attribute.</p>
+    <pre><code>&lt;link rel="icon" href="data:image/svg+xml;utf8,&lt;svg...&gt;...&lt;/svg&gt;"&gt;</code></pre>
+  </blockquote>
+</aside>
+
+<p>Prijungimas HTML faile:</p>
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="icon" href="data:image/svg+xml;utf8,&lt;svg...&gt;...&lt;/svg&gt;"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+
+
+
+
+</body>
+</html>

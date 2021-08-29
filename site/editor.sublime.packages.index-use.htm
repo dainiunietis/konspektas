@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Mano naudojami Sublime text'o packages'ai</h1>
+<p>Verta pabandyti:</p>
+<p><a href="https://sublime.wbond.net/packages/Can%20I%20Use">https://sublime.wbond.net/packages/Can%20I%20Use</a></p>
+<p><a href="https://sublime.wbond.net/packages/Twitter%20Bootstrap%20Snippets">https://sublime.wbond.net/packages/Twitter%20Bootstrap%20Snippets</a></p>
+<p><a href="http://livestyle.emmet.io/">http://livestyle.emmet.io/</a></p>
+<p>Rinkiniai:</p>
+<p><a href="https://school.scotch.io/getting-started-with-sublime-text/packages-part-1">https://school.scotch.io/getting-started-with-sublime-text/packages-part-1</a> </p>
+<p>https://scotch.io/bar-talk/the-complete-visual-guide-to-sublime-text-3-plugins-part-1</p>
+<p>https://scotch.io/bar-talk/the-complete-visual-guide-to-sublime-text-3-plugins-part-2</p>
+<h3>editorconfig</h3>
+<p><a href="http://editorconfig.org/">http://editorconfig.org/</a></p>
+<p><a href="https://packagecontrol.io/packages/EditorConfig">https://packagecontrol.io/packages/EditorConfig</a> </p>
+<p><a href="https://packagecontrol.io/packages/EditorConfigSnippets">https://packagecontrol.io/packages/EditorConfigSnippets</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>...</h2>
+<h3>Java​Script Completions</h3>
+<p><a href="https://packagecontrol.io/packages/JavaScript%20Completions">https://packagecontrol.io/packages/JavaScript%20Completions</a>, </p>
+<p>naudoja: <a href="http://wesbos.com/uses">http://wesbos.com/uses</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Teksto-kodo paieška</h2>
+<h3>RegReplace</h3>
+<p><a href="https://github.com/facelessuser/RegReplace">https://github.com/facelessuser/RegReplace</a> </p>
+<p><a href="http://facelessuser.github.io/RegReplace/">http://facelessuser.github.io/RegReplace/</a> &#8212; vadovas-aprašymas</p>
+<table width="1893" class="Tag-Clean -c-table-linesGrid u-table-equelCols Tag-SmallText">
+  <tr>
+    <td width="20%"><p>Kokia RegExp sintaksė naudojama-veikia šiame plugin'e:</p>
+    <blockquote>
+      <p>Remember that the regular expression engine that is used is Python&rsquo;s <a href="https://docs.python.org/3.4/library/re.html">re</a>, not Sublime&rsquo;s internal regular expression engine. If enabling extended_back_references, additional syntax is added which is covered in the <a href="http://facelessuser.github.io/backrefs/usage/">backrefs documentation</a>.</p>
+      <p>To enable such features as case insensitivity or dotall, see <a href="https://docs.python.org/3.4/library/re.html">re&rsquo;s documentation</a>.</p>
+    </blockquote>
+    <p>Yra dviejų tipų išsaugomi find-replace'ai (two types of rules that can be created):    </p>
+    <ul>
+      <li><q><strong>scope rules</strong> (arba <strong>regex rules</strong>) (with optional scope qualifiers) (Regex with optional scope qualifiers)</q></li>
+      <li><q><strong>scope searches</strong> (arba <strong>scope regex</strong>) that apply regex to the targeted scopes (Scope search with regex applied to scope region)</q></li>
+    </ul>
+    <h4>Find-replace'o tipas: <strong>scope rules</strong></h4>
+    <p>Galimi find-replace'o rule'so parametrai:</p>
+    <pre> - find (required)
+ - replace
+ - literal
+ - literal_ignorecase
+ - greedy
+ - scope_filter
+ - plugin
+ - args</pre>
+    <p>Minimalus find-replace'as:</p>
+    <pre><code>"html5_remove_deprecated_type_attr": {
+    "find": "",
+    "replace": "",
+    "greedy": true
+}</code></pre>
+    <p>&nbsp;</p>
+    <h4>Find-replace'o tipas: <strong>scope searches</strong></h4>
+    <p>&nbsp;</p></td>
+    <td width="20%"><p><a href="http://facelessuser.github.io/RegReplace/usage/#create-find-and-replace-sequences">http://facelessuser.github.io/RegReplace/usage/#create-find-and-replace-sequences</a>      </p>
+      <h4>Kaip ir kur saugomi baziniai-vienetiniai find-replace'ais      </h4>
+      <figure class="c-figure--shadow -c-figure--dashedTB" style="">
+        <div class="c-figure__content"><pre><code>{
+  "format": "3.0",
+  "replacements":
+  {
+    "find-replace-pavadinimas": {
+      "find": "...",
+      "replace": "...",
+      "greedy": ...,
+      "case": ...
+    },
+    ...
+  }
+}</code></pre></div>
+      <figcaption>Packages\User\reg_replace_rules.sublime-settings</figcaption>
+  </figure>
+      <h4>Kaip įvykdyti vieną (basic replacement) ar daugiau bazinių find-replace'ų (chained replacements, run a sequence)</h4>
+    <p>Sukuriant Command Palette'ės komandas [Tools &gt; Command Palette…] (create a command in the command palette):</p>
+    <figure class="c-figure--dashedTB" style="">
+      <p>Gali būti vienas ar daugiau find-replace'mentų:</p>
+  <pre><code>{
+  "caption": "...",
+  "command": "reg_replace",
+  "args": {"replacements": ["find-replace-pavadinimas", ...]}
+}</code></pre>
+  <figcaption>Packages\User\Default.sublime-commands</figcaption>
+</figure>
+    <p>Sukuriant shortcut'us (bind a replacement command to a shortcut):</p>
+    <figure class="c-figure--dashedTB" style="">
+      <pre><code>{
+  &quot;keys&quot;: [&quot;...&quot;],
+  "command": "reg_replace",
+  "args": {"replacements": ["find-replace-pavadinimas", ...]}
+}</code></pre>
+      <figcaption>Packages\User\Default (Windows).sublime-keymap</figcaption>
+    </figure>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h4>Galima redaguoti (ir sukurti nuo nulio) RegReplace'o rules'us &#8212;  <q>in a Python syntax highlighted panel</q></h4>
+      <p>h<a href="#">ttp://facelessuser.github.io/RegReplace/usage/#a-better-way-to-create-regex-rules</a></p>
+      <p>Naudojame [Tools &gt; Command Palette…]:</p>
+      <ul>
+        <li>[C][RegReplace: Edit Regular Expression Rule]      </li>
+        <li>      [C][RegReplace: Create New Regular Expression Rule]      </li>
+        <li>      [C][RegReplace: Delete Regular Expression Rule]</li>
+      </ul>
+      <p class="em-note em--narrow">Kad į <code>Packages\User\reg_replace_rules.sublime-settings</code>išsaugoti ką suredagavome Python'o panel'ėje: <q>While in the edit panel, you can press ctrl + s</q></p>
+      <p>Paskutinį redaguotą find-replace'ą galima atidaryti Python'o panel'ėje su [C][RegReplace: Show Edit Panel]:</p>
+      <blockquote>
+        <p>Depending on how the test command was configured, it may cause the panel to close, or you might accidentally close it by pressing esc or running some other command. When closed, the currently opened rule is not lost and can be brought back by running the command palette command <code>RegReplace: Show Edit Panel</code> (the command will only work if the panel has been opened at least once). </p>
+      </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<h2>Failai</h2>
+<h3>FuzzyFileNav</h3>
+<p><a href="https://github.com/facelessuser/FuzzyFileNav">https://github.com/facelessuser/FuzzyFileNav</a></p>
+<table width="1893" class="Tag-Clean -c-table-linesGrid u-table-equelCols Tag-SmallText">
+  <tr>
+    <td width="20%"><p class="em-important">&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h4>Shortcut'ai FuzzyFileNav'o panel'ėje</h4></td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<h3>SideBarEnhancements</h3>
+(~PS) [files, side bar]
+<p><a href="https://github.com/titoBouzout/SideBarEnhancements">https://github.com/titoBouzout/SideBarEnhancements</a></p>
+<p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3">https://github.com/titoBouzout/SideBarEnhancements/tree/st3</a></p>
+<p>Šio package'o komandas galima vykdyti per:</p>
+<dl>
+  <dt>Side bar'o kontekstinį meniu</dt>
+  <dd>
+    <p>jis apibrėžtas: <code>~PS\Side Bar.sublime-menu</code></p>
+    <p>Pasirinkta komanda vykdoma su Side bar'e (projekto) pažymėtais failais. </p>
+  </dd>
+  <dt>[Tools &gt; Command Palette...]</dt>
+  <dd>
+    <p>jos apibrėžtos: <code>~PS\Commands.sublime-commands</code></p>
+    <p>Pasirinkta komanda vykdoma su aktyviu-redaguojamu failu. </p>
+  </dd>
+  <dt>ir žinoma priskirtais keybindings'ais</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<h4>Window'sinės operacijos, t. y. rezultate paliekame ST</h4>
+<p>&nbsp;</p>
+<h4>Operacijos su failais </h4>
+<div class="Command">
+  <p>CP: <code>File: New File Relative to Current View</code></p>
+  <p>SBKM: [New File...]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_new_file&quot;</code></p>
+  <p>Sukuria naują failą kataloge, kuriame  iškviestas kontekstinis meniu Side bar'e.</p>
+</div>
+<div class="Command">
+  <h1><kbd>alt+s</kbd></h1>
+  <p>CP: <code>File: Rename</code></p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_rename&quot;</code></p>
+  <p>Pervardina redaguojamą-aktyvų failą. </p>
+</div>
+<div class="Command">
+  <h1><kbd>alt+shift+s</kbd></h1>
+  <p>CP: <code>File: Duplicate</code></p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_duplicate&quot;</code></p>
+</div>
+<div class="Command">
+  <p>CP: <code>File: Move</code></p>
+  <p>SBKM: [Move...]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_move&quot;</code></p>
+  <p>Perkelia failą į kitą katalogą. </p>
+</div>
+<div class="Command">
+  <h1><kbd>---</kbd></h1>
+  <p>CP: <code>File: Delete</code></p>
+  <p>SBKM: [Delete]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_delete&quot;</code></p>
+  <p>Perkelia į Recycle Bin'ą </p>
+</div>
+<h4>Teksto failuose paieška</h4>
+<div class="Command">
+  <p>SBKM: [Find &amp; Replace…]</p>
+  <p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda ant ko iškviestas kontekstinis meniu Side bar'e, pasirinktuose failuose ar pasirinkto katalogo failuose</p>
+</div>
+<div class="Command">
+  <p>SBKM: [Find In Project…]</p>
+  <p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda <code>&lt;project&gt;</code> &#8212; paieška bus vykdoma visuose projekto kataloguose. </p>
+</div>
+<div class="Command">
+  <p>SBKM: [Find Advanced &gt; In Parent Folder…]</p>
+  <p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda pasirinkto failo ar katalogo katalogą. </p>
+</div>
+<div class="Command">
+  <p>SBKM: [Find Advanced &gt; In Project Folder…]</p>
+  <p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda pasirinkto failo/ų ar katalogo/ų &quot;šakninį&quot; projekto katalogą, pvz.: turime projektą apibrėžiantį failą <code>*.sublime-project</code></p>
+  <pre><code>{
+  "folders":
+  [
+    { "path": "/C/kažkas-1" }, <mark>&lt; šakninis projekto katalogas</mark>
+    { "path": "/C/kažkas-2" }, <mark>&lt; kitas šakninis projekto kat.</mark>
+  ]
+}</code></pre>
+  <p>kokiame projekto šakniniame kataloge kas nors pasirinkta, tą ar tuos šakninius projekto katalogus ir įves į &quot;Where&quot; laukelį.</p>
+</div>
+<div class="Command">
+  <p>SBKM: [Find Advanced &gt; In Parent Folders…]</p>
+  <p>Atrodo daro tą patį kaip ir SBKM: [Find In Project…] </p>
+</div>
+<div class="Command">
+  <p>SBKM: [Find Advanced &gt; In Files With Extension(s) XXX]</p>
+  <p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda pasirinkto failo ar failų tipų filtrus, pvz.: jei Side bar'e kontekstinis meniu buvo iškviestas ant <code>index.htm</code>, tada  &#8212; Where: <code>*.htm</code>. </p>
+</div>
+<h4>Failų paieška </h4>
+<div class="Command">
+  <p>CP: <code>File:  Search Files</code> &#8212; ieško nuo aktyvaus-redaguojamo failo katalogo.</p>
+  <p>SBKM: [Find Advanced &gt; In Paths Containing…] &#8212; ieško nuo Side bar'e pasirinkto  katalogo.</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_find_files_path_containing&quot;</code></p>
+  <p>Pačiame redaktoriaus lange-buferyje filtruoja failus su visu keliu nuo pasirinkto katalogo, apima ir visus vaikinius katalogus. Rastų failų atidaryti negalima, galima nusikopijuoti patį kelią.</p>
+</div>
+<h4> Kopijuojame failų kelius</h4>
+<div class="Command">
+  <p><kbd>alt+c,alt+shift+c</kbd></p>
+  <p>SBKM: [Copy as Text &gt; Name Encoded]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_name_encoded&quot;</code></p>
+  <p>Gauname: <code>index%20---%20GABALELIAI.php</code></p>
+</div>
+<hr>
+<div class="Command">
+  <p><kbd>alt+c,alt+shift+p</kbd></p>
+  <p>SBKM: [Copy as Text &gt; Path as URI]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_path_encoded&quot;</code></p>
+  <p>Gauname: <code>file:///D:/apache_sites/sites/1974films/index%20---%20GABALELIAI.php</code></p>
+</div>
+<hr>
+<div class="Command">
+  <p><kbd>alt+c,alt+a</kbd></p>
+  <p>SBKM: [Copy as Text &gt; Absolute Path From Project]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_path_absolute_from_project&quot;</code></p>
+  <p>Gauname: <code>/index --- GABALELIAI.php</code></p>
+</div>
+<div class="Command">
+  <p><kbd>alt+c,alt+shift+a</kbd></p>
+  <p>SBKM: [Copy as Text &gt; Absolute Path From Project Encoded]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_path_absolute_from_project_encoded&quot;</code></p>
+  <p>Gauname: <code>/index%20---%20GABALELIAI.php</code></p>
+</div>
+<h4>Operacijos su Projektu </h4>
+<div class="Command">
+  <p>SBKM: [Copy as Text &gt; Project Folders]</p>
+  <p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_project_directories&quot;</code></p>
+  <p>Kopijuoja visus projekto šakninius katalogus. Veikia nepriklausomai ant kokio katalogo ar failo buvo iškviestas kontekstinis meniu.</p>
+</div>
+<h4>Failų atidarymas naršyklėje</h4>
+<div class="Command" id="section">
+  <p><kbd>f12</kbd> / <kbd>alt+f12</kbd></p>
+  <p>Atidaro Side bar'e pažymėtą failą naršyklėje map'inant <strong>testing/production</strong> adresu.</p>
+  <p>Konfigūruoti galima:</p>
+  <dl>
+    <dt> ST'o viename faile absoliučiais keliais</dt>
+    <dd>
+      <p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-absolute-paths">https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-absolute-paths</a></p>
+      <p>testing ir production adresai saugomi (atidaro per Side bar'o kontekstinį meniu [Project &gt; Edit Projects Preview URLs]): <br>
+        <code>Sublime Text 2\Data\Settings\SideBarEnhancements.json</code></p>
+    </dd>
+    <dt>Laikant konfigūracinį failą projekto kataloge</dt>
+    <dd>
+      <p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-relative-paths">https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-relative-paths</a></p>
+    </dd>
+  </dl>
+</div>
+<h4>Side bar'o kontekstinio meniu punkto &quot;Open With&quot; atidaromo submeniu konfigūravimas</h4>
+<p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3#notes-on-configuring-the-open-with-menu">https://github.com/titoBouzout/SideBarEnhancements/tree/st3#notes-on-configuring-the-open-with-menu</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

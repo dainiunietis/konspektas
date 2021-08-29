@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Šriftai, fonts &#8212; Design Style Guide</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Šriftai, fonts  &#8212; Design Style Guide</h1>
+<h2>Sans</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Suinstaliuoti kompe</h3>
+      <p>&nbsp;</p>
+      <p>font-family: "Roboto", Tahoma, Arial, Verdana, sans-serif;</p>
+      <p> font-family: "Open Sans", Tahoma, Arial, Verdana, sans-serif;</p>
+      <p>&nbsp;</p>
+      <p>font-family: "IBM Plex Sans", Tahoma, Arial, Verdana, sans-serif;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Sans-serif</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Suinstaliuoti kompe</h3>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>monospace</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Suinstaliuoti kompe
+      </h3>
+      <h4>Hasklig</h4>
+      <p style="font-family: Hasklig, monospace;">ąĄčČęĘėĖįĮšŠųŲūŪžŽ 1234567890 .,?!@()#$%*+-=:;</p>
+      <p style="font-family: 'Hasklig Medium', monospace;">ąĄčČęĘėĖįĮšŠųŲūŪžŽ 1234567890 .,?!@()#$%*+-=:;</p>
+      <p style="font-family: 'Hasklig Bold', monospace;">ąĄčČęĘėĖįĮšŠųŲūŪžŽ 1234567890 .,?!@()#$%*+-=:;</p>
+      <p style="font-family: 'Hasklig Semibold', monospace;">ąĄčČęĘėĖįĮšŠųŲūŪžŽ 1234567890 .,?!@()#$%*+-=:;</p>
+      <p style="font-family: 'Hasklig Black', monospace;">ąĄčČęĘėĖįĮšŠųŲūŪžŽ 1234567890 .,?!@()#$%*+-=:;</p>
+      <p>&nbsp;</p>
+      <p>font-family: "DejaVu Sans Code", monospace;</p>
+      <p>font-family: "DejaVu Sans Code Bold", monospace;</p>
+      <p>font-family: "DejaVu Sans Code Bold Oblique", monospace;</p>
+      <p>font-family: "DejaVu Sans Code Oblique", monospace;</p>
+      <p>&nbsp;</p>
+      <p> font-family: "Iosevka Term", monospace;</p>
+      <p> font-family: "Iosevka Term Medium", monospace;</p>
+      <p> font-family: "Iosevka Term Bold", monospace;</p>
+      <p> font-family: "Iosevka Term Heavy", monospace;</p>
+      <p>&nbsp;</p>
+      <p> font-family: "Hack Regular", monospace;</p>
+      <p>&nbsp;</p>
+      <p> font-family: Consolas, monospace;</p>
+      <p>&nbsp;</p>
+      <p> font-family: "InputMono Thin", monospace;</p>
+      <p>font-family: "Input Mono", monospace;</p>
+      <p> font-family: "Input Mono Medium", monospace;</p>
+      <p> font-family: "Input Mono Bold", monospace;</p>
+      <p> font-family: "Input Mono Black", monospace;</p>
+      <p>&nbsp;</p>
+      <p> font-family: "Source Code Pro", monospace;</p>
+      <p> font-family: "Source Code Pro Medium", monospace;</p>
+      <p> font-family: "Source Code Pro Semibold", monospace;</p>
+      <p>&nbsp;</p>
+      <p> font-family: "Fira Code Regular", monospace;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p> font-family: "IBM Plex Mono", monospace;</p>
+      <p> font-family: "IBM Plex Mono Text", monospace;</p>
+      <p> font-family: "IBM Plex Mono Medium", monospace;</p>
+      <p> font-family: "IBM Plex Mono SemiBold", monospace;</p>
+      <p> font-family: "IBM Plex Mono Bold", monospace;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p></p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>&nbsp;</h3>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>&nbsp;</h3></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

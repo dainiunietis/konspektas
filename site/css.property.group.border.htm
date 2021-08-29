@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<style>
+  .p-pvz-initial {
+    font-size: 1.5em;
+    color: deepskyblue;
+    margin: 1em;
+    padding: 0.5em;
+    border: 3px solid hsla(294,84%,35%,1.00);
+  }
+
+</style>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1><code>border:</code></h1>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><code>border: <br>
+      </code></h3>
+      <p><code>&lt;line-width&gt; || &lt;line-style&gt; || &lt;color&gt;</code>      </p>
+      <div class="c-em-note c-em--narrow">
+        <p>shorthand'e <code>border:</code> galima nurodyti tik vieną reikšmę visoms kraštinėms, tesingas pvz.:</p>
+        <pre><code>border: 1px dotted red;</code></pre>
+        <p>o va tokie neteisingi:</p>
+        <pre><code>border: 1px 3px dotted red;
+border: 1px dotted solid red;
+border: 1px dotted red blue;</code></pre>
+        <p>tokius darome taip:</p>
+        <pre><code>border: dotted red;
+border-width: 1px 3px;
+
+border: 1px red;
+border-style: dotted solid;
+
+border: 1px dotted;
+border-color: red blue;</code></pre>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">kad su shorthand'u <code>border:</code> uždėti border'į</p>
+        <p class="c-pvz__title"> reikia mažiausiai<br>
+<code>border: &lt;line-style&gt;</code></p>
+        <p class="c-pvz__title">        nes nesamoms reikšmėms nustatomi default'ai: <br>
+          <code>border-style: none; <br>
+          border-width: medium; <br>
+          border-color: currentcolor</code></p>
+        <div class="c-pvz__container">
+          <div class="c-pvz__target" style="border: dashed">&nbsp;</div>
+        </div>
+        <p class="c-pvz__title">lygiai tą patį daro <code>border-style:</code></p>
+        <div class="c-pvz__container">
+          <div class="c-pvz__target" style="border-style: dashed">&nbsp;</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <style>
+          .id20190415210233 > * {
+            border: 5px red dotted;
+          }
+        </style>
+        <p class="c-pvz__caption">su shorthand'u negalima nustatyti tik vieną ar dvi reikšmes — nesamoms nustatomi default'ai</p>
+
+        <p class="c-pvz__title">čia nesėkmingas bandymas su shorthand'u pakeisti spalvą</p>
+        <div class="c-pvz__container id20190415210233">
+          <div class="c-pvz__target">&nbsp;</div>
+          <div class="c-pvz__target" style="border: blue">&nbsp;</div>
+          <div class="c-pvz__target">&nbsp;</div>
+        </div>
+
+        <p class="c-pvz__title">o čia sėkmingas naudojant "realią" CSS savybę</p>
+        <div class="c-pvz__container id20190415210233">
+          <div class="c-pvz__target">&nbsp;</div>
+          <div class="c-pvz__target" style="border-color: blue">&nbsp;</div>
+          <div class="c-pvz__target">&nbsp;</div>
+        </div>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3><code>border-top: border-right: border-rottom: <br>
+        border-left:</code></h3>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

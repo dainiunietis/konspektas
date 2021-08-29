@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="../assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="../assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="../assets/sass/master.utilities.css">
+<link rel="stylesheet" href="../assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="../assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="../assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="../assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="../assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Dizaino pavyzdžiai &#8212; sąrašai (definition lists)</h1>
+<h3>Defaultinis</h3>
+<dl>
+	<dt>Ankstyvieji indiški filmai</dt>
+	<dd>
+		<p> Neišsiskiria savo   technine kokybe, tačiau jie buvo neapsakomai dvasingi, skambūs nuo   begalės dainų ir gana tiksliai perteikdavo vedinių principų esmę. Tuo   met viskas buvo paprasčiau - mažas filmo biudžetas nebuvo problema, nes   vertybės buvo gilesnės, natūraliai suprantamos, be ypatingo ir labai   detalaus išorinio vaizdo.</p>
+	</dd>
+	<dt>Dievas nėra abstraktus</dt>
+	<dd>
+		<p> Yra asmeninis ir beasmenis Dievo aspektai, tačiau jie kyla iš   AUKŠČIAUSIOS, AMŽINOS, kupinos PALAIMOS ir ŽINOJIMO Dievo asmenybės.   Lygiai kaip vienas vandenyno lašas turi visas vandenyno vandens savybes,   taip ir mūsų sąmonė turi visas DIEVO sąmonės savybes.</p>
+	</dd>
+</dl>
+<h3>.Tag-Table</h3>
+<dl class="Tag-Table">
+	<dt>Ankstyvieji indiški filmai</dt>
+	<dd>
+		<p> Neišsiskiria savo   technine kokybe, tačiau jie buvo neapsakomai dvasingi, skambūs nuo   begalės dainų ir gana tiksliai perteikdavo vedinių principų esmę. Tuo   met viskas buvo paprasčiau - mažas filmo biudžetas nebuvo problema, nes   vertybės buvo gilesnės, natūraliai suprantamos, be ypatingo ir labai   detalaus išorinio vaizdo.</p>
+	</dd>
+	<dt>Dievas nėra abstraktus</dt>
+	<dd>
+		<p> Yra asmeninis ir beasmenis Dievo aspektai, tačiau jie kyla iš   AUKŠČIAUSIOS, AMŽINOS, kupinos PALAIMOS ir ŽINOJIMO Dievo asmenybės.   Lygiai kaip vienas vandenyno lašas turi visas vandenyno vandens savybes,   taip ir mūsų sąmonė turi visas DIEVO sąmonės savybes.</p>
+	</dd>
+</dl>
+<h3 class="spc-clearB">.Tag-Line</h3>
+<dl class="Tag-Line">
+	<dt>Ankstyvieji indiški filmai</dt>
+	<dd>
+		<p> Neišsiskiria savo   technine kokybe, tačiau jie buvo neapsakomai dvasingi, skambūs nuo   begalės dainų ir gana tiksliai perteikdavo vedinių principų esmę. Tuo   met viskas buvo paprasčiau - mažas filmo biudžetas nebuvo problema, nes   vertybės buvo gilesnės, natūraliai suprantamos, be ypatingo ir labai   detalaus išorinio vaizdo.</p>
+	</dd>
+	<dt>Dievas nėra abstraktus</dt>
+	<dd>
+		<p> Yra asmeninis ir beasmenis Dievo aspektai, tačiau jie kyla iš   AUKŠČIAUSIOS, AMŽINOS, kupinos PALAIMOS ir ŽINOJIMO Dievo asmenybės.   Lygiai kaip vienas vandenyno lašas turi visas vandenyno vandens savybes,   taip ir mūsų sąmonė turi visas DIEVO sąmonės savybes.</p>
+	</dd>
+</dl>
+<h3>.Tag-SameRow</h3>
+<dl class="Tag-SameRow">
+	<dt>Ankstyvieji indiški filmai</dt>
+	<dd>
+		<p> Neišsiskiria savo   technine kokybe, tačiau jie buvo neapsakomai dvasingi, skambūs nuo   begalės dainų ir gana tiksliai perteikdavo vedinių principų esmę. Tuo   met viskas buvo paprasčiau - mažas filmo biudžetas nebuvo problema, nes   vertybės buvo gilesnės, natūraliai suprantamos, be ypatingo ir labai   detalaus išorinio vaizdo.</p>
+	</dd>
+	<dt>Dievas nėra abstraktus</dt>
+	<dd>
+		<p> Yra asmeninis ir beasmenis Dievo aspektai, tačiau jie kyla iš   AUKŠČIAUSIOS, AMŽINOS, kupinos PALAIMOS ir ŽINOJIMO Dievo asmenybės.   Lygiai kaip vienas vandenyno lašas turi visas vandenyno vandens savybes,   taip ir mūsų sąmonė turi visas DIEVO sąmonės savybes.</p>
+	</dd>
+</dl>
+<h3>.Tag-SameRow2</h3>
+<dl class="Tag-SameRow2">
+	<dt>Ankstyvieji indiški filmai</dt>
+	<dd>
+		<p> Neišsiskiria savo   technine kokybe, tačiau jie buvo neapsakomai dvasingi, skambūs nuo   begalės dainų ir gana tiksliai perteikdavo vedinių principų esmę. Tuo   met viskas buvo paprasčiau - mažas filmo biudžetas nebuvo problema, nes   vertybės buvo gilesnės, natūraliai suprantamos, be ypatingo ir labai   detalaus išorinio vaizdo.</p>
+	</dd>
+	<dt>Dievas nėra abstraktus</dt>
+	<dd>
+		<p> Yra asmeninis ir beasmenis Dievo aspektai, tačiau jie kyla iš   AUKŠČIAUSIOS, AMŽINOS, kupinos PALAIMOS ir ŽINOJIMO Dievo asmenybės.   Lygiai kaip vienas vandenyno lašas turi visas vandenyno vandens savybes,   taip ir mūsų sąmonė turi visas DIEVO sąmonės savybes.</p>
+	</dd>
+</dl>
+<h3>.Tag-SameRow3 .Fnc-ClearChilds</h3>
+<dl class="Tag-SameRow3 Fnc-ClearChilds">
+	<dt><a href="http://www.w3.org/Style/CSS/">http://www.w3.org/Style/CSS/</a></dt>
+	<dd>W3C Cascading Style Sheets home page</dd>
+	<dt><a href="http://www.w3.org/Style/CSS/current-work">http://www.w3.org/Style/CSS/current-work</a></dt>
+	<dd>CSS current work, visų CSS modulių būsenos</dd>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

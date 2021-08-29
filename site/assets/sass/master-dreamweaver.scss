@@ -1,0 +1,221 @@
+@charset "utf-8";
+
+//@import url(master.utilities.css);
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Settings
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "../sass.szm/settings.project";
+@import "settings.project";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Tools
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "tools.master-imports";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Settings needs tools
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// !!! čia geriau laikyti, tada setting'uose galima naudoti naudoti tool'sus
+
+@import "settings.misc";
+
+@import "../sass.szm/settings.misc";
+@import "../sass.szm/settings.box";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Generic
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+//@import "generic.font-face";
+//@import "generic.font-face.ubuntu";
+@import "../sass.szm/generic.defaults";
+@import "../sass.szm/generic.user-interaction";
+@import "generic.layout.spacing";
+
+//@import "../sass.szm/generic.text.font";
+//@import "generic.text.font";
+@import "generic.typography";
+
+//--- font-awesome --------------------------------------------
+//@import "../fonts/font-awesome-4.1.0/scss/font-awesome.scss";
+//------------------------------------------- variantas be scss
+// @import "../../fonts/font-awesome-4.1.0/css/font-awesome.min.css";
+// @font-face {
+//   font-family: 'FontAwesome';
+//   src: url('assets/fonts/antonio/../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+//-------------------------------------------------------------
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # elements
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "elements.html-body";
+@import "elements.misc";
+@import "elements.list.ul-ol";
+@import "elements.list.dl";
+@import "elements.figure-figcaption";
+@import "elements.blockquote-cite-q";
+@import "elements.headings";
+@import "elements.p-paragraph";
+
+@import "../sass.szm/elements.table";
+@import "elements.table";
+
+@import "elements.text-format";
+
+@import "elements.pre-code";
+// @import "elements.pre-code_2"; // nauja versija, dar nebaigta
+
+@import "elements-pseudo.user-interaction";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+body {
+  font-weight: normal;
+}
+
+code {
+  background-color: transparent !important;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+details {
+  all: revert;
+  display: block;
+  position: relative;
+  border: solid blue 2px;
+  height: 200px;
+  margin: 1em 0;
+  padding: 0.5em;
+
+  //> * {
+  //  all: unset;
+  //  display: block;
+  //  visibility: visible;
+  //}
+}
+
+summary {
+  all: revert;
+  display: block;
+  position: relative;
+  visibility: visible;
+  border: solid firebrick 2px;
+  height: 200px;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+dt {
+  font-weight: bold;
+  border-top: solid #21de80 2px;
+  border-bottom: solid #21de80 2px;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Objects
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+//@import "objects.collapse";
+//
+//@import "../sass.szm/objects.grd-ibk-flt-flx";
+//@import "../sass.szm/objects.gfx";
+//@import "../sass.szm/objects.clm";
+//@import "../sass.szm/objects.mcl";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Components
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+//--- assets/bower_components/inuitcss/ -----------------------------------------------
+
+// Buttons..............An example button component, and how it fits into the inuitcss framework.
+
+//@import "components/example.components.buttons";
+
+//--- sass.szm ------------------------------------------------------------------------
+
+@import "../sass.szm/components.pvz";
+
+//--- vietiniai -----------------------------------------------------------------------
+
+@import "component-tag.mark";
+@import "elements.section";
+
+@import "components.tableCols";
+@import "components.table";
+
+@import "components.list.dl";
+
+@import "components.sidePanel";
+@import "components.jquery-toc";
+
+@import "component.side-fixed-panel";
+@import "component.figure";
+@import "component.emphasize";
+@import "component.editor-command";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # scopes
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+@import "scopes.page.pvz";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Utilities-Trumps
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// master.utilities.scss — visus utilities surenkame atskirame master'yje
+// master.utilities.css  — arba prijungiame šio failo pradžioje
+//                         arba pačiame HTML faile
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # Development-Debuging
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+// master.dev.css — prijungiame pačiame HTML faile
+
+// jei prireiktų viską laikyti viename faile
+//@import "../sass.szm/dev.master-import";
+//@import "dev.components.measuring.mesh";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # test
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+//@import "TEST-1";
+
+
+
+
+

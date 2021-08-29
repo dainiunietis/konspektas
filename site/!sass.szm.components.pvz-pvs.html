@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+  <title>-</title>
+  <!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>
+<!-- #BeginEditable "body" -->
+<h1>&#8212; Design Style Guide</h1>
+<h2><code>.c-pvz</code> — pagrindinis</h2>
+<p><code>sass.szm/_components.pvz.scss</code></p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Bazinis variantas</h3>
+<div class="c-pvz">
+  <p class="c-pvz__caption">va kas čia yra <code>kodo gabalėlis</code></p>
+  <p class="c-pvz__title">pavyzdys apie tai <code>kodo gabalėlis</code></p>
+  <p class="c-pvz__comment">O taip ir anaip, yra kaip ir taip. </p>
+  <div class="c-pvz__container" style="">
+    <div class="c-pvz__target" style="">PVZ 1</div>
+    <div class="c-pvz__target" style="">PVZ 2</div>
+    <div class="c-pvz__target" style="">PVZ 3</div>
+  </div>
+</div>
+<p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Su sekcijomis</h3>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">va kas čia yra <code>kodo gabalėlis</code></p>
+        <p class="c-pvz__section">SECTION &sect; apie kažką</p>
+        <p class="c-pvz__title">TITLE &sect; Va kas čia yra <code>kodo gabalėlis</code></p>
+        <div class="c-pvz__container" style="">
+          <div class="c-pvz__target" style="">PVZ 1</div>
+          <div class="c-pvz__target" style="">PVZ 2</div>
+          <div class="c-pvz__target" style="">PVZ 3</div>
+        </div>
+        <p class="c-pvz__section">SECTION &sect; apie kažką kita</p>
+        <p class="c-pvz__title">TITLE &sect; Va kas čia yra <code>kodo gabalėlis</code></p>
+        <div class="c-pvz__container" style="">
+          <div class="c-pvz__target" style="">PVZ 1</div>
+          <div class="c-pvz__target" style="">PVZ 2</div>
+          <div class="c-pvz__target" style="">PVZ 3</div>
+        </div>
+      </div>
+    </td>
+    <td width="25%">
+      <h3>Target'ai be class'ų</h3>
+      <p>Kad nereikėtų kiekvienam tagui priseginėti .c-pvz__target, visi tiesioginiai .c-pvz__container vaikai gauna .c-pvz__target apiforminimą</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">va kas čia yra <code>kodo gabalėlis</code></p>
+        <p class="c-pvz__title">pavyzdys apie tai <code>kodo gabalėlis</code></p>
+        <p class="c-pvz__comment">O taip ir anaip, yra kaip ir taip. </p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="">
+          <div style="">PVZ 1</div>
+          <div style="">PVZ 2</div>
+          <div style="">PVZ 3</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Grid'ai</h3>
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>.pvz__container--grid-50</code></p>
+        <div class="c-pvz__container c-pvz__container--grid-50" style="">
+          <div class="c-pvz__target" style="margin:50px 50px 0 50px; height: 50px;">PVZ</div>
+          <div class="c-pvz__target" style="margin:0 100px 50px; height: 50px;">PVZ</div>
+        </div>
+        <p class="c-pvz__title"><code>.c-pvz__container--grid-10</code></p>
+        <div class="c-pvz__container c-pvz__container--grid-10" style="">
+          <div class="c-pvz__target" style="margin:10px; height: 30px; box-sizing: content-box">PVZ</div>
+          <div class="c-pvz__target" style="margin:10px 30px;">PVZ</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<h3>Target'ų layout'as su Flexbox'u</h3>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>su papildomu target'us gaubiančiu wrap'eriu</p>
+      <p>pritaikytas lentai per visą ekraną su keturiais stulpeliais, kad tilptų 3 target'ai</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">...</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="PT2 W130pxc H80pxc MB2c P2c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="PT2 W130pxc H80pxc MB2c P2c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="">&nbsp;</div>
+            <div style="">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="PT2 W130pxc H80pxc MB2c P2c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="">&nbsp;</div>
+            <div style="">&nbsp;</div>
+            <div style="">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTargetL2 -c-pvz__container--childTargetL2-noBg">
+          <div class="PT2 W130pxc H80pxc MB2c P2c" style="display: flex; flex-flow: wrap; justify-content: space-evenly">
+            <div style="">&nbsp;</div>
+            <div style="">&nbsp;</div>
+            <div style="">&nbsp;</div>
+            <div style="">&nbsp;</div>
+          </div>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2><code>.c-pvs</code> — supaprastintas</h2>
+<p><code>sass.szm/_components.pvs.scss</code></p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h3><code>.c-pvs</code> — bazinis variantas</h3>
+    <div class="c-pvs">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+</div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Komponento root'inio elemento apiforminimas</h3>
+    <h4><code>.c-pvs--border</code></h4>
+    <div class="c-pvs c-pvs--border">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+      </div>
+    </div>
+    <h4><code>.c-pvs--outline</code></h4>
+    <div class="c-pvs c-pvs--outline">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-pvs--title</code></h3>
+    <p>Style'inamas kaip title'as tik pirmasis paragrafas.</p>
+    <hr>
+    <p>Pirmas tagas yra <code>&lt;p&gt;</code>    </p>
+    <div class="c-pvs c-pvs--title">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+      </div>
+    </div>
+    <hr>
+    <p>Pirmas tagas yra <code>&lt;style&gt;</code>, o antras <code>&lt;p&gt;</code></p>
+    <div class="c-pvs c-pvs--title">
+      <style></style>
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+      </div>
+    </div>
+    <hr>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--title">
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+      </div>
+      <p>kažkas tai</p>
+    </div>
+    <hr>
+    <p>&nbsp;</p>
+    <div class="c-pvs c-pvs--title">
+      <div>kažkas tai</div>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3><code>.c-pvs__section</code></h3>
+    <div class="c-pvs c-pvs--title">
+      <p>kažkas tai</p>
+      <p class="c-pvs__section">apie tai ir tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+      </div>
+      <p class="c-pvs__section">Apie anai ir anai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+      </div>
+    </div>
+    <h4>Kartu su <code>.c-pvs--border</code></h4>
+    <div class="c-pvs c-pvs--border c-pvs--title">
+      <p>kažkas tai</p>
+      <p class="c-pvs__section">apie tai ir tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+      </div>
+      <p class="c-pvs__section">Apie anai ir anai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-pvs__parent</code> apiforminimas</h3>
+    <h4><code>.c-pvs--parent-border</code></h4>
+    <div class="c-pvs c-pvs--parent-border">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>.c-pvs__parent--border</code></h4>
+    <div class="c-pvs">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent c-pvs__parent--border" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-pvs__parent</code> child'ų apiforminimas — išskirti skirtingais fonais</h3>
+    <h4><code>.c-pvs--child-bg</code></h4>
+    <p>Apiforminimas pritaikomas visų <code>.c-pvs__parent</code> child'ams.</p>
+    <div class="c-pvs c-pvs--child-bg">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>.c-pvs__parent--child-bg</code></h4>
+    <p>Apiforminimas pritaikomas tik priskirtam <code>.c-pvs__parent</code></p>
+    <div class="c-pvs">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent c-pvs__parent--child-bg" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>c-pvs__parent.BGCL1c</code> </h4>
+    <p>Galima naudoti bendro naudojimo utilsą-trumpą.</p>
+    <div class="c-pvs">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent BGCL1c" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>c-pvs__parent.BGCL2c</code></h4>
+    <div class="c-pvs">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent BGCL2c" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Hover'is komponento root'iniam elementui    </h3>
+    <h4><code>.c-pvs--hover</code></h4>
+    <div class="c-pvs c-pvs--hover">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>.s-c-pvs-hover</code> — scope name space</h4>
+    <div class="s-c-pvs-hover">
+      <div class="c-pvs">
+        <p>kažkas tai</p>
+        <div class="c-pvs__parent" style="">
+          <div style="">vienas</div>
+          <div style="">du</div>
+          <div style="">trys</div>
+          <div style="">keturi</div>
+          <div style="">penki</div>
+          <div style="">šeši</div>
+          <div style="">septyni</div>
+        </div>
+      </div>
+    </div>
+    <h4>Kaip veikia su kitais nustatymais</h4>
+    <h5><code>.c-pvs--border.c-pvs--hover</code></h5>
+    <div class="c-pvs c-pvs--border c-pvs--hover">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h5><code>.c-pvs--outline.c-pvs--hover</code></h5>
+    <div class="c-pvs c-pvs--outline c-pvs--hover">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Root'inio konteinerio resize'ingo suteikimas</h3>
+    <h4><code>.c-pvs--resize</code></h4>
+    <div class="c-pvs c-pvs--border c-pvs--resize">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>.c-pvs--resizeHor</code></h4>
+    <div class="c-pvs c-pvs--border c-pvs--resizeHor">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>.c-pvs--resizeVer</code>    </h4>
+    <div class="c-pvs c-pvs--border c-pvs--resizeVer">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-pvs__parent</code> float'ų clear fix'inimas, kad sufloat'inti jo child'ai neišlystų    </h3>
+    <h4>Be float'ų clear fix'o</h4>
+    <div class="c-pvs c-pvs--border c-pvs--child-bg c-pvs--parent-border">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent FLLc" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <h4><code>.c-pvs--clearFix</code></h4>
+    <p>Visiems <code>.c-pvs__parent</code> pritaikomas senasis float'ų clear fix'as su pseudo elementu <code>::after</code></p>
+    <div class="c-pvs c-pvs--border c-pvs--child-bg c-pvs--parent-border c-pvs--clearFix">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent FLLc" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <h4><code>.c-pvs--clearFix-new</code></h4>
+    <p>Pritaikomas naujausias <code>display: flow-root</code></p>
+    <div class="c-pvs c-pvs--border c-pvs--child-bg c-pvs--parent-border c-pvs--clearFix-new">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent FLLc" style="">
+        <div style="">vienas</div>
+        <div style="">du</div>
+        <div style="">trys</div>
+        <div style="">keturi</div>
+        <div style="">penki</div>
+        <div style="">šeši</div>
+        <div style="">septyni</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Išvedimas–inspektavimas HTML elementų atributų</h3>
+    <p>Imame iš  <a href="http://konspektas.local/!sass.dev.inspect.htm#atributo-class-ivedimasinspektavimas">HTML elementų inspektavimas ψ WebDev konspektas</a></p>
+    <div class="c-pvs c-pvs--border -c-pvs--child-bg c-pvs--parent-border">
+      <p>kažkas tai</p>
+      <div data-DIAH-style-top class="c-pvs__parent" style="padding: 1em">
+        <div data-DIAH-style-bottom style="font-size: .9em">vienas</div>
+        <div data-DIAH-style-bottom style="font-size: 1em">du</div>
+        <div data-DIAH-style-bottom style="font-size: 1.1em">trys</div>
+        <div data-DIAH-style-bottom style="font-size: 1.2em">keturi</div>
+        <div data-DIAH-style-bottom style="font-size: 1.3em">penki</div>
+        <div data-DIAH-style-bottom style="font-size: 1.4em">šeši</div>
+        <div data-DIAH-style-bottom style="font-size: 1.5em">septyni</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-pvs--btnHvrOnc</code> — kad ant hover'io parodytų button'ų <code>onclick</code> atributų turinį    </h3>
+    <div class="c-pvs c-pvs--border -c-pvs--child-bg c-pvs--parent-border c-pvs--btnHvrOnc">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div>vienas</div>
+        <div>du</div>
+        <div>trys</div>
+      </div>
+      <button onclick="let nodeList = this.previousElementSibling.childNodes;
+for (let i = 0; i < nodeList.length; i++) {
+  console.log(nodeList[i]);
+}">išvesti DevTools'ų konsolėje</button>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>.c-pvs--addBtnViewportFixFit</code> — su JS prideda button'ą, kuris užfiksuoja <code>.c-pvs</code> viewport'e priskiriant <code>position: fixed</code></h3>
+    <div class="c-pvs c-pvs--border -c-pvs--child-bg c-pvs--parent-border c-pvs--addBtnViewportFixFit">
+      <p>kažkas tai</p>
+      <div class="c-pvs__parent" style="">
+        <div>vienas</div>
+        <div>du</div>
+        <div>trys</div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title></title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1 class="text-transform: capitalize;">SASS'o duomenų tipai&#8211;struktūros</h1>
+<p>&nbsp;</p>
+<h2>Interpoliacija (interpolation)</h2>
+<p><a href="http://webdesign.tutsplus.com/tutorials/all-you-ever-need-to-know-about-sass-interpolation--cms-21375">http://webdesign.tutsplus.com/tutorials/all-you-ever-need-to-know-about-sass-interpolation--cms-21375</a></p>
+<blockquote>
+  <p>interpolation: variable interpolation or variable substitution, interpolating a variable or interpolating an expression</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre><code>$kaimynas: "Petras";
+@warn "Mano kaimynas yra #{$kaimynas}";</code></pre>
+<p>&nbsp;</p>
+<pre><code>$kiek: "17";
+@warn "Nupirk #{$kiek} obuolių";</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Konvertacijos tarp string'ų ir skaičių</h2>
+<pre>font-size: #{(70/16)*1rem};
+font-size: (70/16)+rem;
+font-size: (70rem/16);
+išveda: font-size: 4.375rem;
+
+font-size: (70/16rem); &#8212; klaida
+
+@return #{$pixels/$context}em      &lt;&lt;&lt; gerai - returns string
+@return $target / $context + 0em;  &lt;&lt;&lt; gerai - returns number
+</pre>
+<p>&nbsp;</p>
+<p>font: #{($base-font-size/16px)*1em}/#{$line-height-ratio} $base-font-family;</p>
+<p>margin-bottom: ($base-spacing-unit / $base-font-size)*1rem;</p>
+<h2>Eilutės (string)</h2>
+<p>Eilutės-string'ai yra:</p>
+<dl>
+  <dt>unquoted string</dt>
+  <dd>
+    <p><code>$fontas: CourierNew</code>    </p>
+    <p>Apribojimai: </p>
+    <blockquote>
+      <p>unquoted strings can’t begin
+        with numbers or special characters, and can’t contain spaces and some special charac-
+        ters like <code>*</code> or <code>&amp;</code></p>
+    </blockquote>
+  </dd>
+  <dt>quoted string</dt>
+  <dd>
+    <p><code>$fontas: "Courier New"</code></p>
+    <p>Tokiame string'e gali būti bet kokie simboliai, išskyrus nesu'escape'intas kabutes, pvz.:<code>&quot;tas &quot; anas&quot;</code></p>
+  </dd>
+</dl>
+<p>Kaip SASS'as nestandartiškai valdo kai kurias CSS konsktrukcijas:</p>
+<blockquote>
+  <p>There  are  also  a  few  special  constructs  that  Sass  considers  strings. </p>
+  <ul>
+    <li>The  most
+      straightforward is <code>!important</code>, which would not normally count as an unquoted string
+      (because it begins with <code>!</code>), but Sass counts it as one anyway. </li>
+    <li><code>url()</code> values are also considered to be unquoted strings, even though <code>(</code>, <code>)</code>, and special characters commonly
+      found in URLs aren’t normally allowed. But <code>url($variable)</code> is not considered to be a
+      string; it instead wraps the contents of <code>$variable</code> in <code>url()</code>.</li>
+  </ul>
+</blockquote>
+<p></p>
+<p>&nbsp;</p>
+<h2>Skaičiai (number)</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Maps</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

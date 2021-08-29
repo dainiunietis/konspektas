@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  DIAH — Dev Inspect Attr Hover
+//
+/////////////////////////////////////////////////////////////////////////
+
+//-----------------------------------------------------------------------
+// trumpesni
+//-----------------------------------------------------------------------
+
+// attribute = class
+
+@include dev-inspect-attr-hover("[data-DIAH-class-bottom]");
+@include dev-inspect-attr-hover("[data-DIAH-class-bottom-offset]", $outlineOffset: 1);
+
+@include dev-inspect-attr-hover("[data-DIAH-class-top]", $placement: "opposite");
+@include dev-inspect-attr-hover("[data-DIAH-class-top-offset]", $placement: "opposite", $outlineOffset: 1);
+
+// attribute = style
+
+@include dev-inspect-attr-hover("[data-DIAH-style-bottom]", $attribute: "style");
+@include dev-inspect-attr-hover("[data-DIAH-style-bottom-offset]", $attribute: "style", $outlineOffset: 1);
+
+@include dev-inspect-attr-hover("[data-DIAH-style-top]", $attribute: "style", $placement: "opposite");
+@include dev-inspect-attr-hover("[data-DIAH-style-top-offset]", $attribute: "style", $placement: "opposite", $outlineOffset: 1);
+
+//-----------------------------------------------------------------------
+// blue
+//-----------------------------------------------------------------------
+
+//// attribute = class
+//
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-bottom-blue]");
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-bottom-blue-offset]", $outlineOffset: 1);
+//
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-top-blue]", $placement: "opposite");
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-top-blue-offset]", $placement: "opposite", $outlineOffset: 1);
+//
+//// attribute = style
+//
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-bottom-blue]", $attribute: "style");
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-bottom-blue-offset]", $attribute: "style", $outlineOffset: 1);
+//
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-top-blue]", $attribute: "style", $placement: "opposite");
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-top-blue-offset]", $attribute: "style", $placement: "opposite", $outlineOffset: 1);
+
+//-----------------------------------------------------------------------
+// red
+//-----------------------------------------------------------------------
+
+//// attribute = class
+//
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-bottom-red]", $color: "red");
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-bottom-red-offset]", $color: "red", $outlineOffset: 1);
+//
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-top-red]", $color: "red", $placement: "opposite");
+//@include dev-inspect-attr-hover("[data-DIAH-class-after-top-red-offset]", $color: "red", $placement: "opposite", $outlineOffset: 1);
+//
+//// attribute = style
+//
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-bottom-red]", $attribute: "style", $color: "red");
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-bottom-red-offset]", $attribute: "style", $color: "red", $outlineOffset: 1);
+//
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-top-red]", $attribute: "style", $color: "red", $placement: "opposite");
+//@include dev-inspect-attr-hover("[data-DIAH-style-after-top-red-offset]", $attribute: "style", $color: "red", $placement: "opposite", $outlineOffset: 1);
+
+
+

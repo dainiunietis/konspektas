@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//  text-align:
+//
+/////////////////////////////////////////////////////////////
+
+//.u-textalign-left,
+.TAL { text-align: left !important }
+//.u-textalign-center,
+.TAC { text-align: center !important }
+//.u-textalign-right,
+.TAR { text-align: right !important }
+//.u-textalign-justify,
+.TAJ { text-align: justify !important }
+
+//////////////////////////////////////////////////////////////////
+//
+//  white-space:
+//
+/////////////////////////////////////////////////////////////
+
+//.u-whitespace-nowrap,
+.WSN { white-space: nowrap !important; }
+//.u-whitespace-pre,
+.WSP { white-space: pre !important; }
+//.u-whitespace-preWrap,
+.WSPW { white-space: pre-wrap !important; }
+
+//////////////////////////////////////////////////////////////////
+//
+//  # vertical-align:
+//
+/////////////////////////////////////////////////////////////
+
+.VAT, .VATc > * { vertical-align: top !important; }
+.VAM, .VAMc > * { vertical-align: middle !important; }
+.VAB, .VABc > * { vertical-align: bottom !important; }
+.VAL, .VALc > * { vertical-align: baseline !important; }
+
+//////////////////////////////////////////////////////////////////
+//
+//  u-text-truncate
+//
+/////////////////////////////////////////////////////////////
+
+.u-text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+

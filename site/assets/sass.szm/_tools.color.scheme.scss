@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   color scheme — lumen
+//
+/////////////////////////////////////////////////////////////////////////////
+
+@function szm-colorScheme-lumenComplementary($mainColor) {
+  $CSL-1: $mainColor;
+  $CSL-1H: harmonize($CSL-1);
+
+  $CSL-2: complement($CSL-1);
+  $CSL-2H: harmonize($CSL-2);
+
+  $colorSchemeLumen: (
+    '1':          $CSL-1,        // full saturation
+    '1H':         $CSL-1H,       // Harmonize
+    '1HD1': shade($CSL-1H, 20%), // Harmonize Dark
+    '1HD2': shade($CSL-1H, 40%),
+    '1HD3': shade($CSL-1H, 60%),
+    '1HD4': shade($CSL-1H, 80%),
+    '1HL1':  tint($CSL-1H, 25%), // Harmonize Light
+    '1HL2':  tint($CSL-1H, 50%),
+    '1HL3':  tint($CSL-1H, 75%),
+    '1HL4':  tint($CSL-1H, 93%),
+
+    '2':          $CSL-2,
+    '2H':         $CSL-2H,
+    '2HD1': shade($CSL-2H, 20%),
+    '2HD2': shade($CSL-2H, 40%),
+    '2HD3': shade($CSL-2H, 60%),
+    '2HD4': shade($CSL-2H, 80%),
+    '2HL1':  tint($CSL-2H, 25%),
+    '2HL2':  tint($CSL-2H, 50%),
+    '2HL3':  tint($CSL-2H, 75%),
+    '2HL4':  tint($CSL-2H, 93%),
+  );
+
+  @return $colorSchemeLumen;
+}
+
+@mixin szm-colorScheme-printCssVars($schemeColors) {
+  @each $colorName, $colorValue in $schemeColors {
+    --colorScheme-#{$colorName}: #{$colorValue};
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   color scheme — lumen — test component
+//
+/////////////////////////////////////////////////////////////////////////////
+
+@mixin szm-colorScheme-lumenComplementary-testComponent($schemeName, $schemeColors) {
+  //.c-szmtest-colorSet-#{$setName}
+  .c-szmtest-colorScheme-lumenComplementary-#{$schemeName} {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    //grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      "a b"
+      "a b"
+      "c d"
+      "c d";
+    gap: 5px;
+    > * {
+      padding: 2em 1em;
+      font: 400 1.3em "Roboto", monospace;
+      //text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      $i: 1;
+      @each $name, $color in $colorScheme-site-data {
+        &:nth-child(#{$i}) {
+          background: $color;
+          //color: invert($color);
+          //color: sergom-choose-contrast-color($color);
+          color:   bresau-color-contrast($color);
+          &::after {
+            content: "#{$name}";
+          }
+        }
+        $i: $i + 1;
+      }
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @EXAMLE:
+
+//----------------------- Coolors Exported Palette - coolors.co/292f36-4ecdc4-f7fff7-ff6b6b-ffe66d
+//$color-scheme-1: (
+//                   'gunmetal': hsl(212,14%,19%),
+//                   'medium-turquoise': hsl(176,56%,55%),
+//                   'mint-cream': hsl(120,100%,98%),
+//                   'pastel-red': hsl(0,100%,71%),
+//                   'maize': hsl(50,100%,71%)
+//                 );
+//
+//$color-scheme-main: (
+//                      'primary':    map-get($color-scheme-1, 'pastel-red'),
+//                      'accent':     map-get($color-scheme-1, 'maize'),
+//                      'secondary':  map-get($color-scheme-1, 'medium-turquoise'),
+//                      'foreground': map-get($color-scheme-1, 'gunmetal'),
+//                      'background': map-get($color-scheme-1, 'mint-cream')
+//                    );
+//------------------------------------------------------------------------------------------------
+
+// $scotch-colors: (
+//   'primary': #8e3329,
+//   'accent': #d98328,
+//   'secondary': #5a1321,
+//   'foreground': #191919,
+//   'background': #e9e9e9
+// );
+
+
+

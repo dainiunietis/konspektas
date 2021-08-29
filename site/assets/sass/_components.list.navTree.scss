@@ -1,0 +1,227 @@
+
+$cntree-link-txtClr:            hsl(240, 100%, 50%);
+$cntree-link-txtHoverClr:       scale-color($cntree-link-txtClr, $saturation: 0%, $lightness: -15%);
+$cntree-link-txtShadowHoverClr: scale-color($cntree-link-txtClr, $saturation: 0%, $lightness: 0%, $alpha: -85%);
+
+$cntree-container-bgClr:        scale-color($cntree-link-txtClr, $saturation: 0%, $lightness: 95%, $alpha: 0%);
+$cntree-container-bgHoverClr:   scale-color($cntree-link-txtClr, $saturation: 0%, $lightness: 92%, $alpha: 0%);
+
+$cntree-link-bgHoverClr:        scale-color($cntree-container-bgHoverClr, $saturation: 0%, $lightness: -7%, $alpha: 0%);
+
+$cntree-hierarchy-clr-base:     scale-color($cntree-link-txtClr, $saturation: 0%, $lightness: 0%, $alpha: -30%);
+$cntree-hierarchy-clr:          scale-color($cntree-hierarchy-clr-base, $saturation: 0%, $lightness: 60%);
+$cntree-hierarchy-hoverClr:     scale-color($cntree-hierarchy-clr-base, $saturation: 0%, $lightness: 0%);
+
+//$cntree-numbered-clr:       scale-color($cntree-hierarchy-clr-base, $saturation: 0%, $lightness: 30%, $alpha: 0%);
+//$cntree-numbered-hoverClr:  $cntree-link-txtHoverClr;
+//$cntree-numbered-hoverClr:  scale-color($cntree-numbered-clr, $saturation: 0%, $lightness: -40%, $alpha: 0%);
+
+$cntree-link-spacingHorizontal: .5em;
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # .c-navTree
+//
+///////////////////////////////////////////////////////////////////////
+
+.c-navTree {
+   --cntree-container-bgClr: initial;
+   --cntree-container-bgHoverClr: initial;
+   --cntree-hierarchy-clr: initial;
+   --cntree-hierarchy-hoverClr: initial;
+
+   //--cntree-numbered-clr: initial;
+   //--cntree-numbered-hoverClr: initial;
+
+   --cntree-link-txtClr: initial;
+   --cntree-link-txtHoverClr: initial;
+   --cntree-link-bgHoverClr: initial;
+   --cntree-link-txtShadowHoverClr: initial;
+
+  --cntree-leftIndent: 1em;
+  --cntree-spacingVertical: .12em; // šitą priskiriame jei reikia keisti
+  --cntree-spacingVertical-top: var(--cntree-spacingVertical);
+  --cntree-spacingVertical-bottom: calc(var(--cntree-spacingVertical-top) + .1em);
+
+  background-color: var(--cntree-container-bgClr, $cntree-container-bgClr);
+  padding: .5em .6em .5em 0;
+
+  &:hover {
+    background-color: var(--cntree-container-bgHoverClr, $cntree-container-bgHoverClr);
+  }
+
+  ul, ol, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  //---------------------------------------------------------------------
+  // <ul>
+  //---------------------------------------------------------------------
+
+  ul {
+    margin-left: var(--cntree-leftIndent);
+    list-style-type: none;
+  }
+
+  > ul {
+    margin: 0;
+  }
+
+  li > ul {
+    border-left: 3px solid var(--cntree-hierarchy-clr, $cntree-hierarchy-clr);
+    //margin-left: #{$cntree-link-spacingHorizontal};
+  }
+
+  li:hover > ul {
+    border-left-color: var(--cntree-hierarchy-hoverClr, $cntree-hierarchy-hoverClr);
+  }
+
+  > ul > li > ul {
+    //padding-left: #{$cntree-link-spacingHorizontal};
+  }
+
+  //---------------------------------------------------------------------
+  // <li>
+  //---------------------------------------------------------------------
+
+  li {
+    //border-left: 2px solid var(--cntree-hierarchy-clr, $cntree-hierarchy-clr);
+    //&:hover {
+    //  border-left-color: var(--cntree-hierarchy-hoverClr, $cntree-hierarchy-hoverClr);
+    //}
+  }
+
+  > ul > li {
+    //border-left: none;
+  }
+
+  //---------------------------------------------------------------------
+  // <a>
+  //---------------------------------------------------------------------
+
+  a {
+    display: block;
+    font-size: .95em;
+    line-height: 1.2;
+    padding: var(--cntree-spacingVertical-top) #{$cntree-link-spacingHorizontal} var(--cntree-spacingVertical-bottom) var(--cntree-leftIndent);
+
+    //font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    //font-family: Georgia, "Times New Roman", Times, serif;
+    //font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    //font-family: "MS Serif", "New York", serif;
+    //font-family: "Segoe UI";
+    //font-family: "Droid Sans";
+    //font-family: oswaldregular;
+    //font-family: Ubuntu, Arial, Helvetica, sans-serif;
+    //font-family: "Liberation Sans Regular", sans-serif;
+
+    &:link, &:visited {
+      text-decoration: none;
+      color:           var(--cntree-link-txtClr, $cntree-link-txtClr);
+    }
+
+    &:hover, &:active, &:focus {
+      background-color: var(--cntree-link-bgHoverClr, $cntree-link-bgHoverClr) !important;
+      color:            var(--cntree-link-txtHoverClr, $cntree-link-txtHoverClr);
+      text-decoration:  none !important;
+      text-shadow:      1px 1px 4px var(--cntree-link-txtShadowHoverClr, $cntree-link-txtShadowHoverClr);
+    }
+  }
+
+  > ul > li > a {
+    //padding-left: #{$cntree-link-spacingHorizontal};
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # .c-navTree--clean
+//
+///////////////////////////////////////////////////////////////////////
+
+//.c-navTree--clean {
+//}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # .c-navTree--numbered
+//
+///////////////////////////////////////////////////////////////////////
+
+.c-navTree--numbered {
+  ul, ol {
+    counter-reset: toc-listas;
+  }
+
+  > ul, > ol {
+  }
+
+  li {
+  }
+
+  a {
+    &::before {
+      counter-increment: toc-listas;
+      content:           counters(toc-listas, ".") ". ";
+      color: var(--cntree-hierarchy-clr, $cntree-hierarchy-clr);
+      font-weight: bold;
+    }
+  }
+
+  li:hover > a::before {
+    color: var(--cntree-hierarchy-hoverClr, $cntree-hierarchy-hoverClr);
+  }
+}
+
+//.c-navTree--numbered {
+//  ul, ol {
+//    padding-left: 1.2em;
+//    counter-reset: toc-listas;
+//    list-style-type: none;
+//    //list-style-type: decimal;
+//    width: 100%;
+//  }
+//
+//  > ul, > ol {
+//    //padding-left: 1.7em;
+//  }
+//
+//  li {
+//    display: flex;
+//    flex-flow: wrap;
+//    //width: max-content;
+//  }
+//
+//  li::before {
+//    counter-increment: toc-listas;
+//    content:           counters(toc-listas, ".") " ";
+//    color:             $cntree-link-txtClr;;
+//  }
+//
+//  a {
+//    flex-grow: 2;
+//  }
+//}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//  # li.c-navTree__noSubMenu
+//
+///////////////////////////////////////////////////////////////////////
+
+//li.c-navTree__noSubMenu#{$szm-js-addedByJsSufix} {
+//  border-left: none;
+//}
+
+
+
+
+
+
+
+
+
+
+
+

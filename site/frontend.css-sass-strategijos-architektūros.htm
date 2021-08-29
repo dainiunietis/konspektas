@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS–SASS strategijos–architektūros</h1>
+<ul>
+  <li><a href="https://philipwalton.com/articles/decoupling-html-css-and-javascript/">https://philipwalton.com/articles/decoupling-html-css-and-javascript/</a></li>
+  <li><a href="https://css-tricks.com/developing-extensible-html-css-components/">https://css-tricks.com/developing-extensible-html-css-components/</a></li>
+  <li><a href="https://m.alphasights.com/css-evolution-from-css-sass-bem-css-modules-to-styled-components-d4c1da3a659b#.w5jk4vqzu">https://m.alphasights.com/css-evolution-from-css-sass-bem-css-modules-to-styled-components-d4c1da3a659b#.w5jk4vqzu</a> </li>
+</ul>
+<p>&nbsp;</p>
+<blockquote>
+  <p>CSS Modules and local scope</p>
+  <p>In CSS there is no concept of true encapsulation, thus relying on the developer to choose unique class names.</p>
+  <p>CSS modules relies on creating a dynamic class names for each locally defined style, making sure no visual regressions are caused by injecting new css properties, all styles were properly encapsulated.</p>
+  <p>But… CSS Modules by itself doesn&rsquo;t solve the core problems of CSS, it only shows you a way of localizing style definitions: <em>a clever way of automating BEM so you don&rsquo;t need to think about chosing a class name ever again </em>(or at least think about it less).</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Styled Components to blend css in JS (fully)</p>
+  <p> Styled-components are pure visual primitives that act as a wrapping component; they can be mapped to actual html tags and what they do is wrap the children components with the styled-component.</p>
+</blockquote>
+<h2>Failų organizacija</h2>
+<blockquote>
+  <p><a href="https://github.com/jareware/css-architecture">https://github.com/jareware/css-architecture</a></p>
+  <p>2. Co-locate component code</p>
+  <p>When working on a component, it helps tremendously if everything related to that component — its JavaScript, styles, tests, documentation, etc — live very close to each other:</p>
+  <pre><code>ui/
+├── layout/
+|   ├── Header.js              // component code
+|   ├── Header.scss            // component styles
+|   ├── Header.spec.js         // component-specific unit tests
+|   └── Header.fixtures.json   // any mock data the component tests might need
+├── utils/
+|   ├── Button.md              // usage documentation for the component
+|   ├── Button.js              // ...and so on, you get the idea
+|   └── Button.scss</code></pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

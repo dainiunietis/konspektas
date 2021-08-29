@@ -1,0 +1,327 @@
+@charset "utf-8";
+
+//body {
+//  border: blue dashed 7px;
+//}
+
+// figure {
+//   background-color: red;
+// }
+
+////////////////////////////////////////////////////////////////////////
+//
+//   ins del
+//
+////////////////////////////////////////////////////////////////////
+
+ins {
+
+}
+
+del {
+  //$mainColor: #7a1c23;
+  //$mainColor:      #c7c4c4;
+  $clrNormal: hsla(0, 0%, 10%, .1);
+  $clrHover:  hsla(0, 100%, 50%, .2);
+  $clrFocus:  hsla(0, 100%, 50%, .7);
+
+  //background:      linear-gradient(200grad, hsl(0, 0%, 70%), hsl(0, 0%, 100%) 60%);
+  //background:      hsla(60, 100%, 50%, 0.5) content-box;
+  //border:          2px dashed $mainColor !important;
+  //outline:         2px dashed !important;
+  //outline-offset:  0.2em;
+  display:         block;
+  //mix-blend-mode:  multiply;
+  //outline:         2px dashed scale-color($clrNormal, $alpha: -70%);
+  outline:         2px dashed $clrNormal;
+  outline-offset:  1px;
+  text-decoration: none;
+
+  & > * {
+    display: none;
+  }
+
+  &::before {
+    content: " ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂  ✂"; // IŠTRINTA
+    //content: " ";
+    //background: hsl(0, 0%, 10%) content-box;
+
+    //---------------------------------------
+    // VEIKIA emojis SVG
+    //---------------------------------------
+    //content:     ""; // IŠTRINTA
+    //background: repeat-x;
+    //background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><foreignObject width=%22100px%22 height=%22100px%22><div xmlns=%22http://www.w3.org/1999/xhtml%22 style=%22font-size:70px%22>🔪</div></foreignObject></svg>");
+    //---------------------------------------
+    // arba naudoti:
+    //---------------------------------------
+    //background: szm-background-image-svgUrl-emoji(✂);
+    //---------------------------------------
+
+    display:     block;
+    font-size:   0.8em;
+    letter-spacing: 0.15em;
+    color: scale-color($clrNormal, $alpha: +85%);
+    margin:      1em 0;
+    overflow:    hidden;
+    text-align:  center;
+    height: 2.7ex;
+    //padding:    0.2em 0.2em;
+    //white-space: pre;
+  }
+
+  &:hover {
+    //background:    linear-gradient(200grad, hsla(0, 0%, 0%, 0.2), hsla(0, 0%, 0%, 0) 20%);
+    outline-color: $clrHover;
+    &::before {
+      color: scale-color($clrHover, $alpha: +70%);
+    }
+  }
+
+  &:focus {
+    outline-color: $clrFocus;
+    &::before {
+      color: scale-color($clrFocus, $alpha: +100%);
+    }
+    & > * {
+      display: block;
+    }
+  }
+
+
+  //&:hover, &:focus {
+  //  //background:    linear-gradient(200grad, hsla(0, 0%, 0%, 0.2), hsla(0, 0%, 0%, 0) 20%);
+  //  outline-color: $clrFocus;
+  //  &::before {
+  //    color: scale-color($clrFocus, $alpha: +100%);
+  //  }
+  //}
+
+
+  //position: relative;
+  //&::after {
+  //  position: absolute;
+  //  top: 0;
+  //  right: 0;
+  //  bottom: 0;
+  //  left: 0;
+  //}
+
+  //del * {
+  //  text-decoration: line-through;
+  //}
+}
+
+//----------------------------------------------------------------------
+// variantas rodyti visą sudeletintą turinį pablukintą
+//----------------------------------------------------------------------
+
+//height: 0;
+//overflow: hidden;
+
+//del {
+//  display: block;
+//  text-decoration: none;
+//
+//  $fade-white: hsla(0,0%,100%,0.9); // White Semi Transparent
+//  $line: currentColor;
+//  background:
+//    //linear-gradient($fade-white, $fade-white),
+//    repeating-linear-gradient(160grad, transparent 0px, hsla(0,0%,0%,0.2) 5px, $line 6px, $line 7px)
+//  ;
+//  //background-blend-mode: multiply;
+//  //mix-blend-mode: multiply;
+//  border: 1px solid;
+//  opacity: 0.4;
+//
+//  &:hover {
+//    background:
+//      linear-gradient($fade-white, $fade-white),
+//      repeating-linear-gradient(160grad, transparent 0px, hsla(0,0%,0%,0.2) 5px, $line 6px, $line 7px)
+//    ;
+//    border-color: hsla(0,0%,0%,0.1);
+//    opacity: 1;
+//  }
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   img
+//
+////////////////////////////////////////////////////////////////////
+
+img {
+  border:    none;
+  height:    auto;
+  max-width: 100%;
+  //behavior: url(../_js/png.htc);
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   hr
+//
+////////////////////////////////////////////////////////////////////
+
+$e-hr-clr: colorScheme-site('1HL1');
+
+hr {
+  border: solid scale-color($e-hr-clr, $lightness: 0%, $alpha: -0%);
+  border-width: 2px 0 0 0;
+  height:       0;
+  padding:      0;
+  //margin: 0.3rem 0 1rem;
+  //margin: 0.8rem 0 0.8rem;
+  margin: #{$szm-spacing-vertical-paragraph * 1.5} 0;
+  //line-height: 5em;
+}
+
+.hr--thin, .hr--thin-c > hr, .hr--thin-d hr {
+  border-top-width: 1px;
+}
+
+.hr--dashed, .hr--dashed-c > hr, .hr--dashed-d hr {
+  //border-top-width: 1px;
+  //border-top-style: dot-dash;
+  border-top-style: dashed;
+}
+
+.hr--dotted, .hr--dotted-c > hr, .hr--dotted-d hr {
+  //border-top-width: 1px;
+  //border-top-style: dot-dash;
+  border-top-style: dotted;
+}
+
+//.hr--wave, .hr--wave-c > hr, .hr--wave-d hr {
+//  border-top-width: 1px;
+//  border-top-style: wave;
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////
+
+:target, .pseCls-target#{$szm-js-addedByJsSufix} {
+  //background: turquoise;
+  //border: 2px solid hotpink;
+  //outline: rgba(255, 0, 128, 0.7) dotted 2px;
+  outline:        rgba(255, 0, 128, 0.7) solid 2px;
+  outline-offset: -2px;
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   details summary
+//
+////////////////////////////////////////////////////////////////////
+
+
+details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: .5em .5em 0;
+
+  &[open] {
+    padding: .5em;
+  }
+}
+
+
+summary {
+  font-weight: bold;
+  margin: -.5em -.5em 0;
+  padding: .5em;
+  cursor: pointer;
+
+  &:hover {
+    background: hsl(0, 0%, 0%, .1);
+  }
+
+  details[open] & {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .5em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   a - anchor
+//
+////////////////////////////////////////////////////////////////////
+
+a {
+  color: #0000FF;
+}
+
+//------------------------------------------------------------------
+//
+//------------------------------------------------------------------
+
+// Styles defined by the :active pseudo-class will be overridden by any subsequent link-related pseudo-class
+// (:link, :hover, or :visited) that has at least equal specificity. To style links appropriately,
+// put the :active rule after all other link-related rules, as defined by the LVHA-order: :link — :visited — :hover — :active.
+
+a:link {
+  //text-decoration: underline overline line-through blink;
+}
+
+a:visited {
+  color: #1A99D7;
+  //background-color: red;
+}
+
+//a:hover, a:active, a:focus {
+//  color: #0000FF;
+//  background-color: #FFFF66;
+//}
+
+a:hover {
+  //color: #0000FF;
+  background-color: #FFFF66;
+}
+
+a:active {
+  background-color: hsla(130, 100%, 50%, 0.5);
+}
+
+a:focus {
+  // Best practice is to never remove focus outlines
+  //outline: red solid 1px;
+  outline:        0.1em dotted;
+  outline-offset: 0.2em;
+}
+
+//------------------------------------------------------------------
+//
+//------------------------------------------------------------------
+
+a[href^="http://"]:link, a[href^="https://"]:link {
+  border-bottom:   dashed 1px currentcolor;
+  text-decoration: none;
+}
+
+//background-color:rgba(197,122,39,.2); border-radius:3px;
+
+a[href^="http://"]:visited {
+}
+
+a[href^="http://"]:hover {
+}
+
+a[href^="http://"]:active {
+}
+
+//a[href^="http://"]:link    { color: #689416; }
+//a[href^="http://"]:visited { color: #689416; }
+//a[href^="http://"]:active  { color: #9933CC; }
+//a[href^="http://"]:hover   { color: #83BA1D; }
+
+//a[href^="_atnesti"]:link    { font-size:10px; text-decoration:none; background-color:#918cd7; color:white; border-radius:3px; padding:0px 3px 1px; }
+//a[href^="_atnesti"]:visited { color: white; }
+//a[href^="_atnesti"]:active  { color: #9933CC; }
+//a[href^="_atnesti"]:hover   { color: white; background-color:#1e36ff; }
+
+
+

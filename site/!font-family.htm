@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Šriftai, fonts &#8212; Design Style Guide</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Šriftai, fonts  &#8212; Design Style Guide</h1>
+<h2>Intro</h2>
+<h3>Intro Head R Base</h3>
+<div class="FS4em MANd"  style="font-family:intro_head_rbase">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Intro Rust G Base 2 Line</h3>
+<div class="FS4em MANd"  style="font-family:intro_rust_gbase_2_line">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Intro Script R H2 Base</h3>
+<div class="FS4em MANd"  style="font-family:intro_script_rh2_base">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h2>oswald</h2>
+<h3>oswaldextralight</h3>
+<div class="FS4em MANd"  style="font-family:oswaldextralight">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswaldextralight-italic</h3>
+<div class="FS4em MANd"  style="font-family:oswaldextralight-italic">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswaldlight</h3>
+<div class="FS4em MANd"  style="font-family:oswaldlight">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswaldlight-italic</h3>
+<div class="FS4em MANd"  style="font-family:oswaldlight-italic">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Oswald Regular</h3>
+<div class="FS4em MANd"  style="font-family:oswaldregular">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Oswald Regular Italic</h3>
+<div class="FS4em MANd"  style="font-family:oswaldregular-italic">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswaldmedium</h3>
+<div class="FS4em MANd"  style="font-family:oswaldmedium">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswaldmedium-italic</h3>
+<div class="FS4em MANd"  style="font-family:oswaldmedium-italic">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswalddemibold</h3>
+<div class="FS4em MANd"  style="font-family:oswalddemibold">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswalddemibold-italic</h3>
+<div class="FS4em MANd"  style="font-family:oswalddemibold-italic">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswaldbold</h3>
+<div class="FS4em MANd"  style="font-family:oswaldbold">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>oswaldbold-italic</h3>
+<div class="FS4em MANd"  style="font-family:oswaldbold-italic">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h2>Ubuntu</h2>
+<pre>font-family:Ubuntu; font-weight:300; font-style:normal
+font-family:Ubuntu; font-weight:300; font-style:italic
+
+font-family:Ubuntu; font-weight:500; font-style:normal
+font-family:Ubuntu; font-weight:500; font-style:italic
+
+font-family:Ubuntu; font-weight:normal; font-style:normal
+font-family:Ubuntu; font-weight:normal; font-style:italic
+
+font-family:Ubuntu; font-weight:bold; font-style:normal
+font-family:Ubuntu; font-weight:bold; font-style:italic
+
+--------------------------------------------------------------------
+
+font-family:'Ubuntu Mono'; font-weight:normal; font-style:normal
+font-family:'Ubuntu Mono'; font-weight:normal; font-style:italic
+
+font-family:'Ubuntu Mono'; font-weight:bold; font-style:normal
+font-family:'Ubuntu Mono'; font-weight:bold; font-style:italic
+
+--------------------------------------------------------------------
+
+font-family:'Ubuntu Condensed'; font-weight:normal; font-style:normal</pre>
+<p>&nbsp;</p>
+<h3>Ubuntu Bold Italic || font-family:Ubuntu; font-weight:bold; font-style:italic</h3>
+<div class="FS4em MANd"  style="font-family:Ubuntu; font-weight:bold; font-style:italic">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<p>&nbsp;</p>
+<h3>Ubuntu Light || font-family:Ubuntu; font-weight:300; font-style:normal</h3>
+<div class="FS4em MANd"  style="font-family:Ubuntu; font-weight:300; font-style:normal">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<p>&nbsp;</p>
+<h2>Lora</h2>
+<h3>Lora Regular</h3>
+<div class="FS4em MANd"  style="font-family: Lora; font-weight: normal; font-style: normal;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Lora Italic</h3>
+<div class="FS4em MANd"  style="font-family: Lora; font-weight: normal; font-style: italic;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Lora Bold</h3>
+<div class="FS4em MANd"  style="font-family: Lora; font-weight: bold; font-style: normal;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Lora Bold Italic </h3>
+<div class="FS4em MANd"  style="font-family: Lora; font-weight: bold; font-style: italic;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h2>Cormorant Garamond</h2>
+<h3>Cormorant Garamond Regular</h3>
+<div class="FS4em MANd"  style="font-family: 'Cormorant Garamond'; font-weight: normal; font-style: normal;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Cormorant Garamond Italic</h3>
+<div class="FS4em MANd"  style="font-family: 'Cormorant Garamond'; font-weight: normal; font-style: italic;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Cormorant Garamond Bold</h3>
+<div class="FS4em MANd"  style="font-family: 'Cormorant Garamond'; font-weight: bold; font-style: normal;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Cormorant Garamond Medium</h3>
+<div class="FS4em MANd"  style="font-family: 'Cormorant Garamond'; font-weight: 500; font-style: normal;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Cormorant Garamond Medium Italic</h3>
+<div class="FS4em MANd"  style="font-family: 'Cormorant Garamond'; font-weight: 500; font-style: italic;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Cormorant Garamond Light</h3>
+<div class="FS4em MANd"  style="font-family: 'Cormorant Garamond'; font-weight: 300; font-style: normal;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h3>Cormorant Garamond Light Italic</h3>
+<div class="FS4em MANd"  style="font-family: 'Cormorant Garamond'; font-weight: 300; font-style: italic;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<h2>Playfair Display</h2>
+<p><a href="assets/fonts/Playfair_Display/demo.html">demo</a></p>
+<h3>Playfair Display Regular</h3>
+<div class="FS4em MANd"  style="font-family: 'Playfair Display'; font-weight: normal; font-style: normal;">
+  <p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</p>
+  <p>1234567890&amp;.,?!@()#$%*+-=:;</p>
+  <p>ąĄčČęĘėĖįĮšŠųŲūŪžŽ</p>
+</div>
+<p>&nbsp;</p>
+<p>font-family: 'Playfair Display'; font-weight: normal; font-style: normal;<br>
+  font-family: 'Playfair Display'; font-weight: normal; font-style: italic;<br>
+  font-family: 'Playfair Display'; font-weight: bold; font-style: normal;<br>
+  font-family: 'Playfair Display'; font-weight: bold; font-style: italic;<br>
+  font-family: 'Playfair Display'; font-weight: 900; font-style: normal;<br>
+  font-family: 'Playfair Display'; font-weight: 900; font-style: italic;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

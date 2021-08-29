@@ -1,0 +1,222 @@
+@charset "utf-8";
+
+/*
+https://www.rawkblog.com/2019/01/flexbox-gutters-negative-margins-solved/
+
+If we have a single Flexbox row, no wrapping, we can set horizontal gutters easily:
+
+.flex-parent > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+-------------------------------------------------------------------------------------
+
+.flex {
+  // ...
+  margin-left: -1rem;
+}
+
+.item {
+  margin: 0 0 1rem 1rem;
+}
+
+
+
+*/
+
+$o-grd-space-vertical:   szm-spacing-size(small);
+$o-grd-space-horizontal: szm-spacing-size(small);
+
+///////////////////////////////////////////////////////////////////////////
+//
+//  # ...
+//
+/////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+
+.o-grd {
+  margin:         0 -#{$o-grd-space-vertical} -#{$o-grd-space-horizontal} 0;
+  //clip-path: inset(0 $o-gfx-gutterVer $o-gfx-gutterHor 0);
+  //padding: 0;
+  padding-bottom: $szm-spacing-vertical-paragraph;
+  //background-color: #e3e397;
+
+  > * {
+    //padding: 0;
+    margin: 0 $o-grd-space-vertical $o-grd-space-horizontal 0;
+    list-style-type: none;
+    //background-color: hsla(302, 100%, 58%, 0.32);
+  }
+
+  > *:first-child {
+    //padding-left: 0;
+  }
+
+  > *:last-child {
+    //padding-right: 0;
+  }
+
+  > *:hover {
+    //outline: 2px dotted rgba(255, 32, 143, 1);
+    //outline-offset: 5px;
+  }
+
+  &--border > * {}
+
+  &--outline > * {
+    outline: 1px dotted black;
+    outline-offset: 1px;
+  }
+}
+
+////////////////////////////////////////////////////////////
+//
+//  # inline block
+//
+//////////////////////////////////////////////////////////
+
+.o-ibk {
+  > * {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+  }
+  &--right       { text-align: right; }
+  &--bottom > *  { vertical-align: bottom; }
+  &--center      {
+    text-align: center;
+    > * {
+      vertical-align: middle;
+    }
+  }
+  &--hCenter     { text-align: center; }
+  &--vCenter > * { vertical-align: middle; }
+}
+
+////////////////////////////////////////////////////////////
+//
+//  # float
+//
+//////////////////////////////////////////////////////////
+
+.o-grd-flt {
+  @include szm-float-clearfix;
+  //&:before, &:after { content: " "; display: table; }
+  //&:after { clear: both; }
+
+  > * { float: left; }
+
+  &--right > * { float: right; }
+}
+
+////////////////////////////////////////////////////////////
+//
+//		grid widths
+//
+//////////////////////////////////////////////////////////
+
+.o-grd-flx {
+//.o-flex-textAlign {
+  //height: 92vh;
+  //outline: 1px dotted hsl(0, 0%, 10%);
+  display: flex;
+  flex-wrap: wrap;
+
+  &--alignText {
+    align-items: baseline;
+  }
+
+  &__item {
+    flex-grow: 1;
+    //margin: 5px 7px;
+    //padding: 0.6em 0.3em;
+    //width: 100px;
+    //color: hsl(0, 0%, 0%);
+  }
+
+  &::after {
+    content: "\2003 ";
+    flex-grow: 2;
+    //background-color: lightskyblue;
+  }
+}
+
+////////////////////////////////////////////////////////////
+//
+//		grid widths
+//
+//////////////////////////////////////////////////////////
+
+//.o-grd--w200 > * { width: 200px; }
+//.o-grd--w300 > * { width: 300px; }
+//.o-grd--w400 > * { width: 400px; }
+//
+//.o-grd--w10p > * { width: 10%; }
+//.o-grd--w20p > * { width: 20%; }
+//.o-grd--w25p > * { width: 25%; }
+//.o-grd--w50p > * { width: 50%; }
+//.o-grd--w75p > * { width: 75%; }
+
+////////////////////////////////////////////////////////////
+//
+//		grid features
+//
+//////////////////////////////////////////////////////////
+
+//.o-grd--paint-diff > * {
+//	padding: 0.3em 0.5em;
+//	margin-right: 0.5em;
+//	margin-bottom: 0.75em;
+//	&:last-child { margin-right: 0; }
+//	> h2, > h3 {
+//		background-color: rgba(247,238,247,.5);
+//		background: none;
+//		}
+//}
+//
+//$grid-colors: #FDDB6D #EFDBC5 #CD9575 #78DBE2 #87A96B #FFA474 #FAE7B5 #9F8170 #FD7C6E #ADADD6 #B0B7C6 #1CD3A2 #9ACEEB #FDDB6D #EFCDB8 #B5C8FA #B5FAE7 #E7B5FA;
+//$i: 1;
+//@each $color in $grid-colors {
+//	.o-grd--paint-diff > :nth-child(#{$i}) { background-color: lighten($color, 10%); }
+//	$i: $i + 1 !global;
+//}
+
+////////////////////////////////////////////////////////////
+//
+//		grid features
+//
+//////////////////////////////////////////////////////////
+
+//.o-grd--noMrg { margin: 0; padding: 0; }
+//
+//.o-grd--headings > * {
+//	> h2:first-child { margin-top: 0; }
+//	> h3:first-child { margin-top: 0; }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

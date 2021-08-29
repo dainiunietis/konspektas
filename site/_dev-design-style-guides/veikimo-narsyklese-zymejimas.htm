@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="../assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="../assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="../assets/sass/master.utilities.css">
+<link rel="stylesheet" href="../assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="../assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="../assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="../assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="../assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Veikimo naršyklėse žymėjimas</h1>
+<h2>Kitų Pavyzdžiai</h2>
+<table class="c-table-linesGrid -u-table-equelCols">
+	<tr>
+		<td><p>Iš <a href="http://www.quirksmode.org/key.html">Key to charts</a>:</p>
+			<table class="c-table-linesGrid">
+				<tbody>
+					<tr>
+						<td>Yes</td>
+						<td>Supported completely and correctly</td>
+					</tr>
+					<tr>
+						<td>Almost</td>
+						<td>Supported completely and correctly except for a minor issue</td>
+					</tr>
+					<tr>
+						<td>Incomplete</td>
+						<td>Supported correctly but not completely</td>
+					</tr>
+					<tr>
+						<td>Alternative</td>
+						<td>Supported in an alternative way</td>
+					</tr>
+					<tr>
+						<td>Untestable</td>
+						<td>Depends on another  						method or property that is not supported</td>
+					</tr>
+					<tr>
+						<td>Minimal</td>
+						<td>Just barely supported but unusable in practice</td>
+					</tr>
+					<tr>
+						<td>Incorrect</td>
+						<td>Returns incorrect object or value and becomes badly usable</td>
+					</tr>
+					<tr>
+						<td>Buggy</td>
+						<td>Does something it should not do</td>
+					</tr>
+					<tr>
+						<td>No</td>
+						<td>Not supported</td>
+					</tr>
+					<tr>
+						<td>Crash</td>
+						<td>Crashes browser</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>&nbsp;</p></td>
+		<td><h2 id="legendHeader">Legend</h2>
+			<table id="legendTable" summary="Legend for letter codes and colours used in the CSS filter browser support table below">
+				<thead>
+					<tr>
+						<th>Code</th>
+						<th>Meaning</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Y</td>
+						<td><p>Browser applies rule.</p>
+							<p>Confirmed by myself.</p></td>
+					</tr>
+					<tr>
+						<td>y</td>
+						<td><p>Browser applies rule.</p>
+							<p>From other sources (linked to source).</p></td>
+					</tr>
+					<tr>
+						<td>y?</td>
+						<td><p>Browser probably applies rule.</p>
+							<p>Based on earlier and later browser version performance.</p></td>
+					</tr>
+					<tr>
+						<td>N</td>
+						<td><p>Browser does not apply rule.</p>
+							<p>Confirmed by myself.</p></td>
+					</tr>
+					<tr>
+						<td>n</td>
+						<td><p>Browser does not apply rule.</p>
+							<p>From other sources (linked to source).</p></td>
+					</tr>
+					<tr>
+						<td>n?</td>
+						<td><p>Browser probably does not apply rule.</p>
+							<p>Based on earlier and later browser version performance.</p></td>
+					</tr>
+					<tr>
+						<td>D</td>
+						<td><p>Browser destroys rule (crashes, hangs, errors, ignores or mis-parses other rules).</p>
+							<p>Confirmed by myself.</p></td>
+					</tr>
+					<tr>
+						<td>d</td>
+						<td><p>Browser destroys rule (crashes, hangs, errors, ignores or mis-parses other rules).</p>
+							<p>From other sources (linked to source).</p></td>
+					</tr>
+					<tr>
+						<td>?</td>
+						<td><p>Unknown / not tested.</p></td>
+					</tr>
+				</tbody>
+			</table>
+		<p>&nbsp; </p></td>
+	</tr>
+</table>
+<h2>Savo</h2>
+<table class="c-table-linesGrid u-table-equelCols" style="width:1200px">
+	<caption>
+		Naršyklių versijos
+	</caption>
+	<tr>
+		<td><p><code>&lt;naršyklės-kodas&gt;&lt;versija&gt;</code> reiškia versiją <code>&lt;versija&gt;</code></p>
+			<p><code>&lt;naršyklės-kodas&gt;&lt;versija&gt;+</code> reiškia versiją <code>&lt;versija&gt;</code> ir visas didesnes</p>
+			<p><code>&lt;naršyklės-kodas&gt;&lt;versija&gt;++</code> reiškia versiją <code>&lt;versija&gt; + 1</code> ir visas didesnes</p>
+			<p>analogiškai su <code>-</code>:</p>
+			<p><code>&lt;naršyklės-kodas&gt;&lt;versija&gt;-</code> reiškia versiją <code>&lt;versija&gt;</code> ir visas mažesnes</p>
+			<p><code>&lt;naršyklės-kodas&gt;&lt;versija&gt;--</code> reiškia versiją <code>&lt;versija&gt; - 1</code> ir visas mažesnes</p></td>
+		<td><p><code>&lt;naršyklės-kodas&gt;&lt;versija&gt;-&lt;naršyklės-kodas&gt;&lt;versija&gt;</code> versijų atkarpa</p></td>
+	</tr>
+</table>
+<p>Pagal standartą veikia:</p>
+<p>taip | beveik |  dalinai | minimaliai</p>
+<p>kitaip</p>
+<p>ne | neteisingai | klaidingai | lūžta</p>
+<h3>Paprastas tekstinis</h3>
+<p>Veikia: IE6/win= | IE7/win= | IE8/win= | FF2/win= | FF3/win= | Opera9.5/win= </p>
+<p>Pvz:</p>
+<p> Veikia: IE6/win=dalinai | IE7/win=taip | IE8/win= | FF2/win= | FF3/win=taip | Opera9.5/win=taip</p>
+<h3>Lentelinis</h3>
+<p>pagal <a href="http://www.quirksmode.org/compatibility.html#link1">Compatibility Master Table</a></p>
+<table class="Tag-Cmp-BrComp">
+	<caption>
+		Veikia naršyklėse
+	</caption>
+	<tbody>
+		<tr>
+			<th>IE 5.5</th>
+			<th>IE 6</th>
+			<th>IE 7</th>
+			<th>IE8 as IE7</th>
+			<th>IE8 as IE8</th>
+			<th>FF 2</th>
+			<th>FF 3.0</th>
+			<th>FF 3.5</th>
+			<th>Saf 3.0 Win</th>
+			<th>Saf 3.1 Win</th>
+			<th>Saf 4.0 Win</th>
+			<th>Chrome 1</th>
+			<th>Chrome 2</th>
+			<th>Opera 9.62</th>
+			<th>Opera 10b</th>
+			<th>Konqueror 3.5.7</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+<table class="Tag-Cmp-BrComp">
+	<tbody>
+		<tr>
+			<th>IE6</th>
+			<th>IE7</th>
+			<th>IE8 as IE7</th>
+			<th>IE8 as IE8</th>
+			<th>FF3</th>
+			<th>FF3.5</th>
+			<th>Saf4.0/Win</th>
+			<th>Chrome2</th>
+			<th>Opera9.62</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<p>Pvz.:</p>
+<table class="Tag-Cmp-BrComp">
+	<tbody>
+		<tr>
+			<th>IE 5.5</th>
+			<th>IE 6</th>
+			<th>IE 7</th>
+			<th>IE8 as IE7</th>
+			<th>IE8 as IE8</th>
+			<th>FF 2</th>
+			<th>FF 3.0</th>
+			<th>FF 3.5</th>
+			<th>Saf 3.0 Win</th>
+			<th>Saf 3.1 Win</th>
+			<th>Saf 4.0 Win</th>
+			<th>Chrome 1</th>
+			<th>Chrome 2</th>
+			<th>Opera 9.62</th>
+			<th>Opera 10b</th>
+			<th>Konqueror 3.5.7</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>beveik</td>
+			<td>taip</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>taip</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<h3>&lt;dl&gt;</h3>
+<dl class="Tag-Cmp-BrComp" title="Pagal standartą veikia">
+	<dt>IE6</dt>
+	<dd>-</dd>
+	<dt>IE7</dt>
+	<dd>-</dd>
+	<dt>IE8</dt>
+	<dd>-</dd>
+	<dt>FF3</dt>
+	<dd>-</dd>
+	<dt>FF3.5</dt>
+	<dd>-</dd>
+	<dt>Saf4</dt>
+	<dd>-</dd>
+	<dt>Chrome2</dt>
+	<dd>-</dd>
+	<dt>Opera9.62</dt>
+	<dd>-</dd>
+</dl>
+<p>&nbsp;</p>
+<dl class="Tag-Cmp-BrComp" title="Pagal standartą veikia">
+	<dt>IE8-</dt>
+	<dd>ne</dd>
+	<dt>FF3.5+</dt>
+	<dd>taip</dd>
+	<dt>SF3+</dt>
+	<dd>taip</dd>
+	<dt>HR2</dt>
+	<dd>taip</dd>
+	<dt>OP9.5</dt>
+	<dd>taip</dd>
+</dl>
+<p>&nbsp;</p>
+<dl class="Tag-SameRow" title="Pagal standartą veikia">
+	<dt>IE6</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+	<dt>IE7</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+	<dt>IE8</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+	<dt>FF3</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+	<dt>FF3.5</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+	<dt>Saf4</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+	<dt>Chrome2</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+	<dt>Opera9.62</dt>
+	<dd>
+		<p>-</p>
+	</dd>
+</dl>
+<h3>&lt;ul&gt;</h3>
+<p>Pagal standartą veikia:</p>
+<ul class="Tag-Cmp-BrComp">
+	<li><strong>IE6</strong>: -</li>
+	<li><strong>IE7</strong>: -</li>
+	<li><strong>IE8</strong>: -</li>
+	<li><strong>FF3</strong>: -</li>
+	<li><strong>FF3.5</strong>: -</li>
+	<li><strong>Saf4</strong>: -</li>
+	<li><strong>Chrome2</strong>: -</li>
+	<li><strong>Opera9.62</strong>: -</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

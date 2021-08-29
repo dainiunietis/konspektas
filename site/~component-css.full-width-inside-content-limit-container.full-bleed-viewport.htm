@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    /*body {*/
+    /*  font: 1.2em "IBM Plex Sans", sans-serif;*/
+    /*  margin: 1em;*/
+    /*}*/
+    /*.pvs-insideProb .c-pvs__parent {*/
+    .pvs-fullWidth {
+      --contentWidth: 75ch;
+      /*--fullWidthBg:  hsl(270, 90%, 93%);*/
+      /*background:     hsl(270, 90%, 93%);*/
+    }
+    .pvs-fullWidth__main  {
+      /*--fullWidthBg:  hsl(270, 90%, 93%);*/
+      background: hsl(270, 90%, 93%);
+    }
+    /*.pvs-insideProb .c-pvs__parent > * {*/
+    /*  max-width:  var(--contentWidth);*/
+    /*  margin:     0 auto;*/
+    /*  background: hsla(0, 0%, 0%, .1);*/
+    /*}*/
+  </style>
+</head>
+<body>
+<!-- kad darytų TOC-turinį -->
+<!--<script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>
+<script type="module" src="assets/js/master.js"></script>
+<div class="c-sidePanel c-sidePanel&#45;&#45;left c-sidePanel&#45;&#45;links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="Lay-ControlPanel-Toc" class="c-sidePanel c-sidePanel&#45;&#45;left c-sidePanel&#45;&#45;toc">
+  <ul id="Lay-ControlPanel-Toc2"></ul>
+</div>-->
+
+<h1>Full width inside-content limit container</h1>
+
+<p><a href="https://css-tricks.com/the-inside-problem/">The "Inside" Problem | CSS-Tricks</a></p>
+<p>Reikalavimai:</p>
+<blockquote>
+  <p>You need a full-width container element because the design has a background-color that goes from edge-to-edge horizontally. But the content inside doesn't necessarily need to be edge-to-edge. You want to:</p>
+  <ol>
+    <li>Limit the width (for large screens)</li>
+    <li>Pad the edges</li>
+    <li>Center the content</li>
+  </ol>
+  <hr>
+  <p>Centered, max-width/padding containers inside full-width color bands. </p>
+</blockquote>
+
+<h2>Naudojami du tagai</h2>
+
+<p>HTML'as:</p>
+<pre><code>&lt;div class=&quot;component&quot;&gt;
+  &lt;div class=&quot;wrapper&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;</code>
+</pre>
+<div class="c-pvs c-pvs--title -c-pvs--outline c-pvs--border c-pvs--hover pvs-fullWidth">
+  <p>The classic solution is an outer and inner container</p>
+  <pre><code>.component {
+  width: auto | 100%;
+  padding: 2rem 1rem;
+}
+
+.wrapper {
+  max-width: &lt;max-turinio-plotis&gt;;
+  margin: 0 auto;
+}</code></pre>
+  <div class="c-pvs__parent pvs-fullWidth__main" style="padding: 2rem 1rem">
+    <!--    <div class="d-ruler d-ruler&#45;&#45;center d-ruler&#45;&#45;guide-both" style="width: var(&#45;&#45;contentWidth)">-</div>-->
+    <div class="~M ~M100px:10 ~Mblue" style="max-width: var(--contentWidth); margin: 0 auto; -background: hsla(0, 0%, 0%, .1);">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.</div>
+  </div>
+</div>
+
+<h2>Naudojamas vienas tagas</h2>
+
+<p>HTML'as:</p>
+<pre><code>&lt;div class=&quot;component&quot;&gt;...&lt;/div&gt;</code></pre>
+<div class="c-pvs c-pvs--title -c-pvs--outline c-pvs--border c-pvs--hover pvs-fullWidth">
+  <p>it doesn't prevent <em>edge-touching</em></p>
+  <pre><code>.component {
+  padding: 2rem calc((100% - var(--contentWidth)) / 2);
+}</code></pre>
+  <div class="c-pvs__parent pvs-fullWidth__main" style="padding: 2rem calc((100% - var(--contentWidth)) / 2);">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.
+    <div class="~M ~M100px:10 ~Mblue" style="">&nbsp;</div>
+  </div>
+</div>
+
+<h2>Full bleed — kai reikia per visą viewport'ą ištempti elementą, kuris yra apgaubtas kito elemento</h2>
+<blockquote>What if you're already inside a container you can't control and need to break out of it?</blockquote>
+<div class="pvs-20200930124837 c-pvs -c-pvs--outline -c-pvs--border c-pvs--hover pvs-fullWidth" style="">
+  <style>
+    .pvs-20200930124837 .c-pvs__parent {
+      /*border: 3px solid hsl(0,0%,15%);*/
+    }
+
+    .pvs-20200930124837 .pvs-fullWidth__main {
+      /*background: lightcoral;*/
+      padding: 1rem 0;
+      /*** full bleed ***/
+      /*width: 100vw;*/
+      width: calc(100vw - 17px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .pvs-20200930124837 .pvs-fullWidth__main > * {
+    /*.pvs-20200930124837__full-width-inside {*/
+      box-sizing:    content-box;
+      padding-left:  .8rem;
+      padding-right: .8rem;
+      background:    honeydew;
+    }
+
+    .pvs-20200930124837 .c-pvs__parent, .pvs-20200930124837 .pvs-fullWidth__main > * {
+      max-width: var(--contentWidth);
+      margin: 0 auto;
+    }
+  </style>
+  <p>...</p>
+  <div class="o-gfx o-gfx--N2 -o-gfx--boxed u-spvm">
+  <pre><code>&lt;main&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;section class=&quot;full-width&quot;&gt;
+    &lt;div class=&quot;full-width-inside&quot;&gt;
+      &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+  &lt;p&gt;...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+  <pre><code>:root {
+  --contentWidth: 75ch;
+}
+
+main, .full-width-inside {
+  max-width: var(--contentWidth);
+  margin: 0 auto;
+}
+
+.full-width {
+  padding: 1rem 0;
+  width: calc(100vw - 17px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.full-width-inside {
+  box-sizing:    content-box;
+  padding-left:  .8rem;
+  padding-right: .8rem;
+}</code></pre>
+  </div>
+  <div class="c-pvs__parent">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae aut, libero, saepe hic, provident cupiditate blanditiis distinctio similique veniam amet temporibus error asperiores aspernatur quos architecto aliquam. Minima, reiciendis pariatur.</p>
+    <div class="pvs-fullWidth__main">
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit, labore nisi laborum doloribus quia praesentium officia quis, quibusdam accusamus quas hic quam consequuntur impedit! Provident unde aliquam blanditiis cumque?
+      </div>
+    </div>
+    <div class="~M ~M100px:10 ~Mblue" style="">&nbsp;</div>
+    <p>Quas repudiandae ex voluptatum libero similique alias ipsa ullam, fugit deserunt unde aliquid dolor sapiente magni officia tempore quos aperiam officiis placeat. Quos sint rem enim culpa praesentium, debitis labore.</p>
+  </div>
+</div>
+
+<!--
+<main>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae aut, libero, saepe hic, provident cupiditate blanditiis distinctio similique veniam amet temporibus error asperiores aspernatur quos architecto aliquam. Minima, reiciendis pariatur.</p>
+
+  <section class="full-width">
+    <div class="full-width-inside">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit, labore nisi laborum doloribus quia praesentium officia quis, quibusdam accusamus quas hic quam consequuntur impedit! Provident unde aliquam blanditiis cumque?</p>
+    </div>
+  </section>
+
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae aut, libero, saepe hic, provident cupiditate blanditiis distinctio similique veniam amet temporibus error asperiores aspernatur quos architecto aliquam. Minima, reiciendis pariatur.</p>
+</main>
+-->
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--<div class="o-gfx o-gfx&#45;&#45;W3 o-gfx&#45;&#45;boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>-->
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

@@ -1,0 +1,1706 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>K&deg; Sublime Text shortcuts'ai-keybinding'ai</title>
+<!--  K &Dagger; -->
+<!-- ☼ &nearhk; &race; &simdot; &Kopf; &Kscr;	&#x1D4A6;	&#119974; &middot; &brvbar;    -->
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<script src="_js/sutkatu-suvestine.js"></script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<div id="Lay-RightControlPanel" class="Lay-ControlPanel">
+	<input type="checkbox" id="checkbox-hideDescriptions"/>
+	<label for="checkbox-hideDescriptions">slėpti aprašymus</label>
+</div>
+<h1>Sublime text &#8212; šūtkatai</h1>
+<h2>Reikalingi &#8212; kad greitai paimti</h2>
+<p><code>sublime.log_commands(True)</code></p>
+<p><code>C:\progs2\Sublime Text 2\Data\Packages\User\Default (Windows).sublime-keymap</code></p>
+<h2>Sutrumpinimai</h2>
+<p>Čia naudojame  <a href="prev/redaktoriai/sublime-3/bendrai.htm#(h)">Sutrumpinimai</a>.</p>
+<p><kbd>super</kbd> = <kbd>Win</kbd></p>
+<h2>Klavišų operatoriai</h2>
+<h3>/ &#8212; jungia atskirus shortcut'us, įvykdančius to pačio tipo (panašaus pobūdžio) komandas, jos gali būti priešingos ar papildančios</h3>
+<p><kbd>ctrl+up</kbd> / <kbd>ctrl+down</kbd></p>
+<p> Perkelia eilutes su pažymėjimu ir kursoriu <strong>aukštyn/žemyn</strong></p>
+<h3>| &#8212;  jungia atskirus shortcut'us, įvykdančius tą pačią komandą</h3>
+<p><kbd>ctrl+shift+up</kbd> | <kbd>shift+backspace</kbd></p>
+<p>Antrasis shortcut'as gali būti pakartotas ir kitoje vietoje.</p>
+<h2>Windows'ų naudojamų hotkeys'ų remap'inimas Autohotkey'se</h2>
+<p><kbd>super+f</kbd></p>
+<p>[Find &gt; Incremental Find]</p>
+<p>nors realiai yra: <code>{ &quot;keys&quot;: [&quot;super+ctrl+alt+shift+f&quot;], &quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;incremental_find&quot;, &quot;reverse&quot;:false} }</code> bet su Autohotkey'su (čia C:\progdata\AutoHotkey\~darbinis-naudojamas.ahk) turime priskyrę kad nuspaustas Win+F generuoja super+ctrl+alt+shift+f</p>
+<p>realiai tai yra super+f, nes mano Autohotkey'so script'e (čia C:\progdata\AutoHotkey\~darbinis-naudojamas.ahk) turime priskyrę kad nuspaustas Win+F generuoja &quot;super+ctrl+alt+shift+f&quot;</p>
+<h2>Šūtkatų kūrimo strategijos</h2>
+<h3>Visiems bendras pirmas aukštas</h3>
+<p>Turime &quot;visų pirmajam aukštui&quot; skirtus klavišus,  pvz.: <kbd>f1</kbd> ir <kbd>f2</kbd>, turime šūtkatą <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to&quot; }</code>, norime: </p>
+<ul>
+		<li>su šiuo susieto kito &#8212; <code>{ &quot;keys&quot;: [&quot;f1&quot;, &quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to_kitur&quot; }</code>, </li>
+		<li>dar kito &#8212; <code>{ &quot;keys&quot;: [&quot;f2&quot;, &quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to_dar_kitur&quot; }</code>.</li>
+</ul>
+<h3>Unikalus pirmas aukštas</h3>
+<p>Turime šūtkatą <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to&quot; }</code> ir norime daugiau su šiuo susietų: </p>
+<ul>
+		<li>perdarome <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;,&quot;ctrl+]&quot;], &quot;command&quot;: &quot;move_to&quot; }</code></li>
+		<li> kitas &#8212; <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;,&quot;ctrl+[&quot;], &quot;command&quot;: &quot;move_to_kitur&quot; }</code>,</li>
+		<li>dar kitas &#8212; <code>{ &quot;keys&quot;: [&quot;ctrl+]&quot;,&quot;]&quot;], &quot;command&quot;: &quot;move_to_dar_kitur&quot; }</code>.</li>
+</ul>
+<p>Antram aukštui galima naudoti klavišus pagal:</p>
+<ul>
+		<li>prasmę: raidžių, skaičių klavišai, kitų simbolių,</li>
+		<li>arčiau prie pirmojo aukšto klavišų esantys klavišai.</li>
+</ul>
+<h2>Operacijos ne redaktoriuje</h2><table width="1896" class="Tag-Clean !c-table-linesGrid u-table-equelCols Tag-SmallText"><tr><td width="20%">
+				  <h3>Operacijos su failais</h3>
+				  <p><kbd>ctrl+n</kbd></p>
+				  <p>[File &gt; New File] </p>
+				  <p><a href="#cmd-file-new-window">[File &gt; New Window]</a></p>
+				  <p>&nbsp;</p>
+		  <section class="Command">
+                    <p><kbd>ctrl+s</kbd></p>
+                    <p>[File &gt; Save] </p>
+                    <p>Py: <code>&quot;command&quot;: &quot;save&quot;</code></p>
+                    <p>Naujai sukurtas ir dar neišsaugotas failas išsaugomas priklausomai koks išsaugojimo metu aktyvus projekto katalogas Side bar'e, tad norint kažkur konkrečiai išsaugoti, Side bar'e nueiname į tą katalogą ir save'iname, nors tą patį tiesa galima padaryti ir save'inimo lange.			</p>
+      </section>
+                  <p><kbd>ctrl+shift+s</kbd></p>
+<p>[File &gt; Save As...] </p>
+<p><kbd>ctrl+alt+s</kbd></p>
+<p>[File &gt; Save All] </p>
+<p>&nbsp;</p>
+				<p><kbd>ctrl+w</kbd></p>
+				<p>[File &gt; Close File] </p>
+				<p><a href="#cmd-file-close-window">[File &gt; Close Window]</a></p>
+				<p><kbd>ctrl+alt+w</kbd>				</p>
+				<p>[File &gt; Open Recent &gt;
+					Reopen Closed File] </p>
+				<h4>Perjunginėjimas atidarytų failų				</h4>
+				<section class="Command">
+					<p><kbd>ctrl+tab</kbd> / <kbd>ctrl+shift+tab</kbd></p>
+					<p>Atidaro prieš tai aktyvuotus failus.</p>
+			</section>
+			<section class="Command">
+					<p><kbd>super+pagedown</kbd> / <kbd>super+pageup</kbd></p>
+					<p>Aktyvuoja atidarytus failus iš eilės kaip yra side bar'o &quot;OPEN FILES&quot; sąraše. </p>
+				</section>
+				<h4>FTP</h4>
+				<p><a href="#cmd-sftp-ftp-upload-file">[MR][SFTP/FTP	&gt; Upload File]</a></p>
+				<p><a href="#cmd-sftp-ftp-upload-open-files">[MR][SFTP/FTP &gt; Upload Open Files]</a>				</p>
+				<p><a href="#cmd-sftp-ftp-upload-folder">[MR][SFTP/FTP	&gt; Upload Folder]</a></p>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Side bar'as
+				</h3>
+						<section class="Command">
+								<p><kbd>ctrl+e</kbd> </p>
+								<p>[View &gt; Side Bar &gt; Show/Hide Side Bar]</p>
+								<p>Atidaro-uždaro side bar'ą, kuriame atidaryto projekto failai.				</p>
+						</section>
+						<section class="Command">
+								<p><kbd>ctrl+shift+e</kbd></p>
+								<p>[MR][Reveal In Side Bar]				</p>
+								<p>[C][reveal_in_side_bar] </p>
+						</section>
+						<p>&nbsp;</p>
+						<section class="Command">
+								<p><kbd>alt+e</kbd></p>
+								<p>[C][focus_side_bar] </p>
+								<p>Sufokusuoja Side Bar'ą, su <kbd>up</kbd> ir <kbd>down</kbd> keičiame aktyvių failą ar katalogą, su <kbd>enter</kbd> atidarome.</p>
+						</section>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Redaktoriaus zona
+					</h3>
+					<section class="Command">
+						<p><kbd>f11</kbd></p>
+						<p>[View &gt; Enter Full Screen]</p>
+						<p>[C][toggle_full_screen]</p>
+					</section>
+					<section class="Command">
+						<p><kbd>shift+f11</kbd></p>
+						<p>[View &gt; Enter Distraction Free Mode]</p>
+						<p>[C][toggle_distraction_free]</p>
+					</section>
+					<section class="Command">
+						<p><kbd>ctrl+f11</kbd></p>
+						<p>[View &gt; Show Minimap]</p>
+						<p>[C][toggle_minimap] </p>
+						<p><code>Packages\Default\Minimap.sublime-settings</code> &#8212; minimap'o nustatymai, savo nustatymus laikyti <code>Packages\User\Minimap.sublime-settings</code></p>
+					</section>
+		<p>&nbsp;</p></td>
+				<td width="20%"><h3>Operacijos su langais </h3>
+					<section class="Command" id="cmd-file-new-window">
+						<p><kbd>ctrl+shift+n</kbd></p>
+						<p>[File &gt; New Window]</p>
+					</section>
+					<section class="Command" id="cmd-file-close-window">
+						<p><kbd>ctrl+shift+w</kbd></p>
+						<p>[File &gt; Close Window]</p>
+					</section>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+				<p></p>					<p>&nbsp;</p></td>
+				<td width="20%"><p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+		</tr>
+</table>
+<h2>Neredaguojantys veiksmai redaktoriuje</h2>
+<table width="1896" class="Tag-Clean -c-table-linesGrid u-table-equelCols Tag-SmallText">
+		<tr>
+				<td width="20%"><h3>Navigacija
+						</h3>
+					<p><kbd>ctrl+pageup</kbd> / <kbd>ctrl+pagedown</kbd></p>
+						<p>Perkelia į dokumento <strong>pradžią/pabaigą</strong>.</p>
+						<p><kbd>ctrl+shift+pageup</kbd> / <kbd>ctrl+shift+pagedown</kbd></p>
+						<p>Perkelia į dokumento <strong>pradžią/pabaigą</strong> su pažymėjimu.</p>
+						<hr>
+						<p><kbd>alt+up</kbd> / <kbd>alt+down</kbd></p>
+						<p>[Goto &gt; Scroll &gt; Line Up] / [...Line Down]</p>
+						<p>Stumdo aukštyn/žemyn dokumentą radaktoriuje po 1 eilutę.</p>
+						<p><kbd>alt+shift+up</kbd> / <kbd>alt+shift+down</kbd></p>
+						<p>Tas pats tik po 5 eilutes.</p>
+						<hr>
+						<p>&nbsp;</p>
+						<h3>Kursoriaus stumdymas						</h3>
+					<p>&nbsp;</p>
+						<p>&nbsp;</p></td>
+				<td width="20%"><h3>Žymėjimas
+						</h3>
+						<h4>Blokinis pažymėjimas (Column Selection)						</h4>
+						<section class="Command">
+								<p><kbd>tempti-ratuku</kbd> |  <kbd>tempti-dešniu + shift </kbd></p>
+								<p>žymėti bloku						</p>
+						</section>
+						<h4>Daugybinis pažymėjimas (Multiple Selection) </h4>
+						<section class="Command">
+								<p><kbd>ctrl</kbd> + žymėjimas</p>
+								<p>prie esamo pažymėjimo, ar tik padėto kursoriaus, prideda naują pažymėjimo zoną (add to selection), t. y. sukuria daugybinį pažymėjimą</p>
+						</section>
+						<p><kbd>alt</kbd> + žymėjimas &#8212; <strong>dabar neveikia</strong></p>
+						<p>iš esamo pažymėjimo/ų atima, atžymi (subtract from selection)</p>
+						<hr>
+						<section class="Command">
+							<p><kbd>alt+keypad_plus</kbd> / <kbd>alt+shift+keypad_plus</kbd></p>
+							<p>[Selection &gt; Expand Selection to Word] ir [Find &gt; Quick Add Next] abu meniu punktai įvykdo tą pačią komandą <br>
+									/ <br>
+							[Find &gt; Quick Find All] [command: find_all_under]</p>
+						</section>
+						<section class="Command">
+								<p><kbd>alt+keypad_minus</kbd></p>
+								<p>[Find &gt; Quick Skip Next] </p>
+						</section></td>
+				<td width="20%"><p>&nbsp;</p>
+						<p>&nbsp;</p></td>
+				<td width="20%"><p>&nbsp;</p></td>
+				<td width="20%">&nbsp;</td>
+		</tr>
+</table>
+<h2>Redagavimas — kodą–tekstą keičiančios operacijos</h2>
+<pre>
+*
+
+*</pre>
+<table width="1896" class="Tag-Clean -c-table-linesGrid u-table-equelCols Tag-SmallText">
+		<tr>
+				<td width="20%"><h3>Veiksmų-redagavimo istorija</h3>
+						<section class="Command">
+								<p><kbd>ctrl+z</kbd> / <kbd>ctrl+shift+z</kbd></p>
+								<p>command: undo / redo_or_repeat</p>
+								<p>[Edit &gt; <strong>Undo / Redo</strong> ...]</p>
+								<p>/								</p>
+								<p>Daro ir redo'są, ir pakartojimą-repeat'ą paskutinio veiksmo.</p>
+						</section>
+						<section class="Command">
+								<p><del tabindex="0"><kbd>ctrl+alt+z</kbd></del><strong> &lt;&lt;&lt;atjungtas</strong>, nes faktiškai užtenka &quot;redo_or_repeat&quot;</p>
+						<p>[command: redo]				</p>
+						<p>Daro tik redo'są. </p>
+</section>
+						<section class="Command">
+								<p><kbd>alt+z</kbd> / <kbd>alt+shift+z</kbd></p>
+						<p>[Edit &gt; Undo Selection &gt; Undo/Redo ...]				</p>
+		</section>
+						<section class="Command">
+								<p>KMR: [Show Unsaved Changes...]</p>
+						<p> command: diff_changes</p>
+						<p>Redaktoriaus lango apačioje parodo pakeistas kodo eilutes su artimiausiomis 2 prieš ir po nepakeistomis.</p>
+		</section>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Kopijavimas-pastavimas</h3>
+						<p>&nbsp;</p>
+						<section class="Command">
+								<p><kbd>ctrl+c</kbd> / <kbd>ctrl+x</kbd></p>
+								<p><strong>kopijuoja</strong>/<strong>iškerpa</strong>:</p>
+								<ul>
+										<li>jei nėra pažymėjimo &#8212; eilutę kurioje yra kursorius,</li>
+										<li>jei yra &#8212; pažymėjimą.</li>
+								</ul>
+						</section>
+						<p>&nbsp;</p>
+						<section class="Command">
+								<p><kbd>ctrl+v</kbd></p>
+								<p>[Edit &gt; Paste]</p>
+						</section>
+						<section class="Command">
+								<p><kbd>ctrl+shift+v</kbd></p>
+								<p>[Edit &gt; Paste and Indent]</p>
+						</section>
+						<h4>Eilučių</h4>
+				<section class="Command" id="cmd-lines-copy-selection-lines">
+						<p><kbd>super+c</kbd></p>
+						<p>Packages/user/macrosai/lines copy selection lines.sublime-macro</p>
+						<p>Kopijuoja eilutes kuriose yra kursorius ar pažymėjimas.</p>
+				</section>
+				<section class="Command" id="cmd-lines-paste-insert-no-replace">
+						<p><kbd>super+v</kbd></p>
+						<p>Packages/user/macrosai/lines paste insert no replace.sublime-macro</p>
+						<p>Paste'uoja virš eiltės, kurioje yra kursorius, ar kursoriai kai yra daugybinis pažymėjimas.</p>
+				</section>
+				<p>&nbsp;</p></td>
+				<td><h3>Trynimas</h3>
+						<h4>Simboliai</h4>
+						<section class="Command" id="cmd-backspaceDelete">
+								<h1><kbd>backspace</kbd> / <kbd>delete</kbd></h1>
+								<p>nuo kursoriaus pozicijos trina vieną simbolį <strong>prieš</strong>/<strong>už</strong> kursoriaus </p>
+						</section>
+						<section class="Command" id="cmd-ctrlBackspaceDelete">
+								<h1><kbd>ctrl+backspace</kbd> / <kbd>ctrl+delete</kbd></h1>
+								<p> nuo kursoriaus pozicijos trina iki žodžio pabaigos ar skyrybos ženklo <strong>prieš</strong>/<strong>už </strong>kursoriaus </p>
+						</section>
+						<section class="Command" id="cmd-ctrlShiftBackspaceDelete">
+								<h1><kbd>ctrl+shift+backspace</kbd> / <kbd>ctrl+shift+delete</kbd></h1>
+								<p> nuo kursoriaus pozicijos trina iki eilutės <strong>pradžios/pabaigos</strong></p>
+						</section>
+						<p>&nbsp;</p></td>
+				<td><h3>Esant daugybiniam pažymėjimui (Multiple Selection)</h3>
+						<p>&nbsp;</p>
+						<h4>...</h4>
+						<se class="comma">
+								<section class="Command">
+										<p><kbd>ctrl+j</kbd></p>
+										<p>[Edit &gt; Permute Selections &gt; Reverse]</p>
+										<p>Sukeičia priešingai pažymėjimų  eiliškumą, kokia eilės tvarka buvo daromas daugybinis pažymėjimas įtakos neturi.</p>
+								</section>
+						</se>
+						<section class="Command">
+								<p><kbd>ctrl+shift+j</kbd><strong> &lt;&lt;&lt; neveikia</strong></p>
+								<p>[Edit &gt; Permute Selections &gt; Shuffle] </p>
+								<p>atsitiktine tvarka sumaišo pažymėjimus vietomis</p>
+						</section>
+						<hr>
+						<section class="Command">
+								<p><kbd>super+j</kbd> / <kbd>super+shift+j</kbd></p>
+								<p>[Edit &gt; Permute Selections &gt; <strong>Sort / Sort (Case Sensitive)</strong>]</p>
+								<p>Rūšiuoja pažymėjimus  pagal pirmuosius simbolius. Kokiu eiliškumu buvo daromas daugybinis pažymėjimas &#8212; nesvarbu. </p>
+						</section>
+						<section class="Command">
+								<p><kbd>alt+j</kbd> <strong>&lt;&lt;&lt; neveikia</strong></p>
+								<p>[Edit &gt; Permute Selections &gt; Unique] </p>
+								<p>jei tarp pažymėjimų yra vienodų-identiškų, palieka tik pirmąjį, sekančius prameta</p>
+						</section></td>
+				<td><h3>Simbolius keičiančios operacijos</h3>
+						<p>Bandyti: <a href="https://github.com/jugyo/SublimeCamelSwitch">https://github.com/jugyo/SublimeCamelSwitch</a></p>
+						<h4>Operacijos su didžiosiomis-mažosiomis</h4>
+						<section class="Command" id="cmd-">
+								<p><kbd>ctrl+u</kbd> / <kbd>ctcmd-html_entitizerl+shift+u</kbd></p>
+								<p>[Edit &gt; Convert Case &gt; Lower Case / Upper Case]</p>
+						</section>
+						<section class="Command" id="cmd-">
+								<p><kbd>ctrl+alt+u</kbd></p>
+								<p>[Edit &gt; Convert Case &gt; Title Case]</p>
+						</section>
+						<section class="Command" id="cmd-">
+								<p><kbd>alt+u</kbd></p>
+								<p>[Edit &gt; Convert Case &gt; Swap Case] </p>
+						</section>
+						<h4>Užkodavimai-atkodavimai						</h4>
+						<p><kbd>ctrl+h</kbd></p>
+						<p>[CP][zm: HTML: Encode just MAIN special characters][zm_html_encode_main] </p>
+						<p>Packages\User\convertCharactersEntities.py</p>
+						<p><a href="#cmd-html_entitize">StringEncode: HTML Entitize / StringEncode: HTML Deentitize</a></p>
+						<section class="Command" id="cmd-">
+								<p>[CP][HTML: Encode special characters][encode_html_entities]						</p>
+						</section>
+			<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td width="20%"><h3>&quot;Inteligentiškos&quot; funkcijos</h3>
+						<h4>operacijos su spalvų kodais</h4>
+						<section class="Command" id="cmd-">
+								<p><kbd>ctrl+insert</kbd></p>
+								<p>iškviečia windose'inį Color Picker'į ir jame išsirinkus spalvą, įterpia į redaktorių (formatu <code>#2034BF</code>).</p>
+								<p>[Packages\SublimeColorPickerWindowsOnly] [command:pick_color]</p>
+								<p>Jeigu kursorius/pažymėjimas yra spalvos kode, atidarytame Color Picker'yje iš karto rodo tą spalvą.</p>
+						</section>
+						<section class="Command" id="cmd-">
+								<p><kbd>ctrl+shift+insert</kbd></p>
+								<p>įterpia po kursoriumi esančią spalvą</p>
+								<p>[Packages\SublimeColorPickerWindowsOnly] [command:pick_color]</p>
+						</section>
+						<section class="Command" id="cmd-">
+								<p><kbd>alt+insert</kbd></p>
+								<p>konvertuoja <code>#2034BF</code> &gt; <code>rgba(226,230,250,1)</code></p>
+								<p>[Packages\Hex-to-RGBA] [command:hex_to_rgba]</p>
+						</section>
+				<p>&nbsp;</p></td>
+				<td><h3>Komentavimas</h3>
+						<section class="Command" id="cmd-">
+								<p><kbd>ctrl+/</kbd></p>
+								<p>[Edit &gt; Comment &gt; Toggle Comment] </p>
+								<p>JS: eilutėms su kursoriu-pažymėjimu uždeda-nuima tų eilučių pradžioje <code>//</code></p>
+								<p>HTML: jei nėra pažymėjimo užkomentuoja visą eilutę, kurioje yra kursorius, jei yra &#8212; pažymėtą kodą.</p>
+						</section>
+						<section class="Command" id="cmd-">
+								<p><kbd>ctrl+shift+/</kbd></p>
+								<p>[Edit &gt; Comment &gt; Toggle Block Comment]</p>
+								<p>JS: kursorių-pažymėjimą apskliaudžia <code>/*</code>...<code>*/</code></p>
+								<p>HTML: kursorių-pažymėjimą apskliaudžia <code>&lt;!--</code> ... <code>--&gt;</code></p>
+						</section></td>
+				<td><p>&nbsp;</p></td>
+				<td><h3>Simbolių dublikavimas</h3>
+						<section class="Command" id="cmd-duplicate_line">
+								<p><kbd>super+right</kbd></p>
+								<p>[Edit &gt; Line &gt; Duplicate line] [C][duplicate_line]</p>
+								<p>Operacijos su simboliais: jei nėra   pažymėto teksto — dublikuoja eilutę, kurioje yra kursorius, jei yra — pažymėjimą </p>
+						</section>
+						<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>Simbolių kilojimas-perstumdymas</h3>
+						<section class="Command" id="cmd-2">
+								<p><kbd>ctrl+t</kbd></p>
+								<p>[Edit &gt; Text &gt; Transpose]</p>
+								<p>Jeigu kursorius yra žodyje &#8212; sukeičia vietomis šalia kursoriaus esančius simbolius.</p>
+								<p>Jeigu kursorius yra tarp žodžių (jis turi būti &quot;prie žodžio&quot;) &#8212; sukeičia vietomis tuos žodžius.</p>
+								<p>Kai yra pažymėjimas &#8212; nieko nedaro. </p>
+						</section>
+				<p></p></td>
+		</tr>
+</table>
+<h2>Pagal temą</h2>
+<pre>*
+
+*</pre>
+<table width="1896" class="Tag-Clean -c-table-linesGrid u-table-equelCols Tag-SmallText">
+		<tr>
+				<td width="20%"><h3>Build'ai</h3>
+						<p>&nbsp;</p>
+				<p>[Tools &gt; Build System &gt; ...]</p>
+				<p>&nbsp;</p>
+				<p><kbd>ctrl+b</kbd>				</p>
+				<p>[Tools &gt; Build]</p>
+				<p>&nbsp;</p>
+				<p><kbd>alt+b</kbd></p>
+				<p>[Tools &gt; Cancel Build]</p>
+				<p>&nbsp;</p>
+				<p><kbd>ctrl+shift+b</kbd></p>
+				<p><code>{ &quot;keys&quot;: [&quot;ctrl+shift+b&quot;], &quot;command&quot;: &quot;build&quot;, &quot;args&quot;: {&quot;variant&quot;: &quot;Run&quot;} }</code></p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Eilutės </h3>
+						<p>Nebandytas plūgas: <a href="https://github.com/MathiasPaumgarten/SmartDuplicate-Sublime">github.com/MathiasPaumgarten/SmartDuplicate-Sublime</a></p>
+						<h4>Eilučių trynimas						</h4>
+						<section class="Command" id="cmd-edit-line-delete-line">
+								<p><kbd>ctrl+super+backspace</kbd> | <kbd>ctrl+shift+up</kbd></p>
+								<p>[Edit &gt; Line &gt; Delete Line]						</p>
+								<p>Trina visas eilutes, kuriose yra kursorius ir pažymėjimas.</p>
+						</section>
+						<section class="Command" id="cmd-delete_blank_lines">
+								<p><kbd>super+backspace</kbd></p>
+								<p>Packages\DeleteBlankLines</p>
+								<p><code>&quot;command&quot;: &quot;delete_blank_lines&quot;, &quot;args&quot;: { &quot;surplus&quot;: false }</code>						</p>
+								<p>Pažymėtame kode trina visas visiškai tuščias eilutes, t. y. be nė vieno white space'o simbolio.</p>
+						</section>
+						<section class="Command" id="cmd-delete_blank_lines-surplus">
+								<p><kbd>super+shift+backspace</kbd></p>
+								<p>Packages\DeleteBlankLines</p>
+								<p><code>&quot;command&quot;: &quot;delete_blank_lines&quot;, &quot;args&quot;: { &quot;surplus&quot;: true }</code></p>
+								<p>Veikia kaip esanti virš, tik trina tas tuščias eilutes kurių yra kartu daugiau negu viena, ir visada vieną palieka.						</p>
+						</section>
+						<h4>Eiliškumo keitimas-kilojimas &#8212; rankinės operacijos</h4>
+						<section class="Command" id="cmd-swap-line-up-down">
+								<p><kbd>ctrl+up</kbd> / <kbd>ctrl+down</kbd></p>
+								<p>[Edit &gt; Line &gt; Swap Line <strong>Up</strong>/<strong>Down</strong>]</p>
+								<p>Perkelia eilutes su pažymėjimu ir/ar kursoriu <strong>aukštyn/žemyn</strong></p>
+						</section>
+						<h4>Eiliškumo keitimas-kilojimas &#8212; &quot;Inteligentiškos&quot;  operacijos</h4>
+						<section class="Command" id="cmd-3">
+								<p><kbd>ctrl+k</kbd></p>
+								<p>[Edit &gt; Permute Lines {<span id="result_box" lang="lt">sukeisti</span>/perstatyti} &gt; Reverse] </p>
+								<p>sukeičia pažymėtų eilučių eiliškumą</p>
+						</section>
+						<section class="Command" id="cmd-3">
+								<p><kbd>ctrl+shift+k</kbd></p>
+								<p>[Edit &gt; Permute Lines &gt; Shuffle {<span id="result_box2" lang="lt">sumaišyti</span>}] </p>
+								<p>atsitiktine tvarka sumaišo eilutes vietomis</p>
+						</section>
+						<hr>
+						<section class="Command" id="cmd-3">
+								<p><kbd>super+k</kbd> / <kbd>super+shift+k</kbd></p>
+								<p>[Edit &gt; Sort Lines]/[Edit &gt; Sort Lines (Case Sensitive)] </p>
+								<p>Rūšiuoja eilutes pagal pirmuosius eilučių simbolius <br>
+										<strong>BE Case Sensitive </strong>/ <strong>SU Case Sensitive</strong></p>
+						</section>
+						<hr>
+						<section class="Command" id="cmd-3">
+								<p><kbd>alt+k</kbd></p>
+								<p>[Edit &gt; Permute Lines &gt; Unique] </p>
+								<p>jei tarp pažymėtų eilučių yra vienodų-identiškų, palieka tik pirmąją eilutę, sekančias prameta</p>
+						</section>
+						<hr>
+						<h4>Eilučių sujungimas ir sukūrimas</h4>
+						<section class="Command" id="cmd-edit-line-join-lines">
+								<p><kbd>super+left</kbd></p>
+								<p>[Edit &gt; Line &gt; Join Lines]</p>
+								<p>Sujungimas–padalinimas: Sujungia  eilutes: jeigu nėra pažymėjimo &#8212; prie kursoriaus eilutės prijungia po ja esančią, jeigu yra &#8212; sujungia pažymėjimo eilutes plius vieną po pažymėjimu.</p>
+								<p>Tarp eilučių visada padaro vieną tarpą, nepriklausomai kiek white space'o simbolių buvo sujungtų eilučių pradžiose ir pabaigose. </p>
+						</section>
+						<p>...</p>
+						<h4>Dublikavimas-dauginimas</h4>
+						<section class="Command" id="cmd-packages-duplicate-lines">
+								<p><kbd>ctrl+shift+down</kbd></p>
+								<p>[Packages\Duplicate Lines]</p>
+								<p>jei nėra pažymėjimo — dublikuoja eilutę kurioje yra kursorius, jei yra — visas eilutes, kuriose yra pažymėjimas </p>
+						</section>
+						<h4>Kopijavimas-pastavimas</h4>
+						<p><a href="#cmd-lines-copy-selection-lines">Kopijuoja eilutes kuriose yra kursorius ar pažymėjimas.</a></p>
+						<p><a href="#cmd-lines-paste-insert-no-replace">Paste'uoja virš eiltės, kurioje yra kursorius, ar kursoriai kai yra daugybinis pažymėjimas.</a>						</p>
+						<h4>Teksto žymėjimas</h4>
+						<section class="Command" id="cmd-expand-selection-to-line">
+								<p> <kbd>ctrl+l</kbd> | <kbd>super+shift+down</kbd>						</p>
+								<p>[Selection &gt; Expand Selection to Line]</p>
+						</section>
+						<section class="Command" id="cmd-">
+								<p><kbd>ctrl+shift+l</kbd></p>
+								<p>[Selection &gt; Split into Lines]</p>
+								<p>Kai vientisas pažymėjimas yra per kelias eilutes, sukuria daugybinį pažymėjimą, kiekvienai eilutei po atskirą. Patogu naudoti kai reikia daugybinių kursorių eilučių, kurių ilgis skirtingas, galuose, kad kažką to pačio įvesti. </p>
+						</section></td>
+				<td width="20%"><h3>Overlay'ai ir paletės </h3>
+						<p><kbd>f2</kbd></p>
+						<p>[Tools &gt; Command Palette…]</p>
+						<p><a href="http://docs.sublimetext.info/en/latest/reference/command_palette.html">sublimetext.info/en/latest/reference/command_palette.html</a></p>
+						<p><kbd>alt+f2</kbd></p>
+						<p>[Tools &gt; Snippets…]</p>
+						<p>Tai ta pati &quot;Command Palette…&quot; panelė su įvestu <code>Snippet:</code></p>
+						<h4>Navigacija failų kode per sąsają</h4>
+						<p><kbd>f1</kbd></p>
+						<p>[Goto &gt; Goto Anything…]</p>
+						<p>Jeigu pirma neįvedamas spec. simbolis &#8212; overlay'ėjuje rodo failus, įvedant tekstą jie filtruojami su <em>fuzzy finder</em> &#8212; t. y. ..., filtruojami ir failų vardai, ir keliai, kokie failai rodomi:</p>
+						<ul>
+								<li>jeigu redaktoriaus lange nėra atidaryto projekto &#8212; visi tame lange atidaryti failai,</li>
+								<li>jeigu yra atidarytas projektas &#8212; visi projekto failai.</li>
+						</ul>
+						<p>Pasirinkus failas atidaromas.</p>
+						<p class="Note mazas siauras">Įvedus ar nieko neįvedus jokio filtro, su <kbd>&uarr;</kbd> ir <kbd>&darr;</kbd> pasirinkus failą, galima į filtrą įvesti spec. simboliį: <code>@</code>, <code>#</code> ar <code>:</code>, tada overlay'ėjuje išves atitinkamai: &quot;simbolius&quot;, žodžius ar čia nieko neišves (toliau įvedant skaičius nuskrūlins į įvestą eilutę),  ir toliau vedant tekstą jau filtruos naujajį sąrašą.</p>
+						<sec>
+								<p><kbd>alt+f1</kbd></p>
+								<p>[Goto &gt; Goto Symbol…]</p>
+								<p>Panelėje filtruojami failo &quot;simboliai&quot;: kintamieji, ...</p>
+								<p>Tai ta pati &quot;Goto Anything…&quot; panelė su pirmu simboliu <code>@</code>.</p>
+						</sec>
+						<section class="Command" id="cmd-">
+								<p><kbd>super+f1</kbd></p>
+								<p>[Goto &gt; Goto Word…]</p>
+								<p>Panelėje filtruojami faile esantys žodžiai.</p>
+								<p>Tai ta pati &quot;Goto Anything…&quot; panelė su pirmu simboliu <code>#</code>.</p>
+						</section>
+						<p><kbd>ctrl+f1</kbd></p>
+						<p>[Goto &gt; Goto Line…]</p>
+						<p>Nuskrūlina į įvestą eilutę.</p>
+						<p>Tai ta pati &quot;Goto Anything…&quot; panelė su pirmu simboliu <code>:</code>.</p>
+						<h4>Projektai</h4>
+						<p><kbd>super+f2</kbd></p>
+						<p>[Project &gt; Switch Project in Window…]</p>
+						<h4>Script'inimas</h4>
+						<p><kbd>ctrl+f2</kbd></p>
+						<p>[View &gt; Show Console]</p>
+						<p>Atidaro-uždaro Sublime'o Console'ę (Sublime&rsquo;s built-in terminal)</p></td>
+				<td width="20%"><h3>Kodo formatavimas white space'su eilučių pradžioje, t. y. atitraukimais-indent'ais</h3>
+						<h4>Žymėjimas</h4>
+						<section class="Command">
+								<h1><kbd>ctrl+shift+home</kbd></h1>
+								<p>[Selection &gt; Expand Selection to Indentation] </p>
+								<p>Pažymi pagal atitraukimą, pirmą kartą pažymi tą lygį kuriame yra kursorius, pakartotinai spaudžiant &#8212; aukštesniuosius.</p>
+						</section>
+						<h4>Indent'avimas </h4>
+						<section class="Command">
+								<p><kbd>ctrl+end</kbd> / <kbd>ctrl+home</kbd></p>
+								<p>[Edit &gt; Line &gt; Indent] / [Edit &gt; Line &gt; Unindent] </p>
+								<p>Rankinis indent'avimas.</p>
+						</section>
+						<section class="Command">
+								<p><kbd>super+end</kbd> / <kbd>---</kbd></p>
+								<p>Performatuoja su atitraukimais pažymėtą kodą. Išsaugo esamas eilutes.</p>
+								<p>1.</p>
+								<p>[Edit &gt; Line &gt; Reindent]</p>
+								<p><code>{  &quot;command&quot;: &quot;reindent&quot;, &quot;args&quot;: {&quot;single_line&quot;: <strong>true</strong>} }</code></p>
+								<p>2.</p>
+								<p><strong>ką daro kitaip?</strong></p>
+								<p><code>{  &quot;command&quot;: &quot;reindent&quot;, &quot;args&quot;: {&quot;single_line&quot;: <strong>false</strong>} }</code></p>
+						</section>
+						<p><a href="#cmd-tag-auto-format-tags-on-selection">[Edit &gt; Tag &gt; Auto-Format Tags on Selection]</a></p>
+						<h4>Indent'avimo simbolių keitimas</h4>
+						<section class="Command">
+								<p>[View &gt; Indentation &gt; Convert Indentation to <strong>Spaces</strong>/<strong>Tabs</strong>]</p>
+								<p>Arba klaktelėti kairįjį pelės klavišą status bar'e ant &quot;Tab Size:X&quot; &#8212; parodo tą patį meniu kaip ir [View &gt; Indentation &gt; ...]</p>
+								<p>Visame faile keičia indentation'ų simbolius, nepriklausomai  yra kodo pažymėjimas ar ne.</p>
+						</section>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Kodo struktūros</h3>
+						<p>Navigacija ir žymėjimas pagal kodo struktūras</p>
+						<p>Porinių klavišų <kbd>[{</kbd> <kbd>]}</kbd> ir <kbd>,&lt;</kbd> <kbd>.&gt;</kbd> naudojimas:</p>
+						<ul>
+								<li>į kairę &#8212; navigacijai ir žymėjimui,</li>
+								<li>į dešnę &#8212;	kokios	nors	kodą	keičiančios	operacijos. </li>
+						</ul>
+						<h4>Operacijos su visų tipų bracket'ais: <code>{} [] () &quot;&quot; ''</code></h4>
+						<h5>Navigacija ir žymėjimas </h5>
+						<p><a href="#cmd-packBH-jumpToBracket">ctrl+[ / ctrl+]</a></p>
+						<p><a href="#cmd-packBH-SelectBracket">ctrl+shift+]</a></p>
+						<p><a href="#cmd-packBH-FoldBracket">ctrl+shift+[</a></p>
+						<h5>Kodą redaguojančios operacijos </h5>
+						<p><a href="#cmd-packBH-swapBrackets">alt+]</a></p>
+						<p><a href="#cmd-packBH-WrapWithBrackets">alt+[</a></p>
+						<p><a href="#cmd-packBH-removeBrackets">alt+shift+[</a></p>
+						<h4>C ar JS stiliaus programavimo kalbos </h4>
+						<section class="Command">
+								<p><kbd>super+[</kbd> / <kbd>super+shift+[</kbd></p>
+								<p>[Goto &gt; Jump to Matching Bracket] / [Selection &gt; Expand Selection to Brackets]</p>
+								<p><strong>Šokinėja</strong> / <strong>selektina</strong> tarp <code>[] {} ()</code></p>
+						</section>
+						<section class="Command">
+								<h1><kbd>alt+[</kbd></h1>
+								<p>[Selection &gt; Expand Selection to Scope] </p>
+						</section>
+						<h4>XML-HTML </h4>
+						<section class="Command">
+								<h1><kbd>super+shift+,&lt;</kbd></h1>
+								<p>[Selection &gt; Expand Selection to Tag] </p>
+								<p>Pažymėdamas lipa XML-HTML medžiu aukštyn.</p>
+						</section>
+						<p><a href="#cmd-emmet-goToPair">command-emmet-goToPair</a></p>
+						<p><a href="#cmd-emmet-matchPairOutwardInward">command-emmet-matchPairOutwardInward</a></p>
+						<p><a href="#cmd-emmet-selectPreviousNextItem">command-emmet-selectPreviousNextItem</a></p>
+				<p><a href="#cmd-emmet-goToEditPoint">command-emmet-goToEditPoint</a></p>
+				<h4>CSS</h4>
+				<p>Packages\CSScomb JS</p>
+				<p>[Tools &gt;
+					Run CSScomb JS]</p>
+				<p>[MR][Run CSScomb JS]</p>
+				<p>Teturi šią vieną komandą, kuri vienodina CSS'o stilių, sugrupuoja CSS deklaracijas. Jei yra pažymėjimas &#8212; apdoroja tik pažymėtus CSS rules'us, jei nėra &#8212; visą CSS failą.</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td><h3>Kodo žymėjimas-atžymos</h3>
+				<p>&nbsp;</p>
+				<h4>Eilučių</h4>
+				<p>[Goto &gt; Bookmarks &gt; ...]</p>
+				<pre><code>{ "keys": ["f8"], "command": "next_bookmark" },
+{ "keys": ["f7"], "command": "prev_bookmark" },
+{ "keys": ["ctrl+f7"], "command": "toggle_bookmark" },
+{ "keys": ["ctrl+shift+f7"], "command": "clear_bookmarks" },
+{ "keys": ["ctrl+f8"], "command": "select_all_bookmarks" },</code></pre>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>Teksto paieška </h3>
+						<p><kbd>f3</kbd> / <kbd>f4</kbd></p>
+						<p>[C][find_under_prev] / [C][find_under] [Find &gt; Quick Find]</p>
+						<p>Ieško <strong>atgal</strong> / <strong>pirmyn</strong> pažymėto teksto, o jeigu nėra pažymėjimo &#8212; žodžio, kuriame yra kursorius (tame tarpe ir kai kursorius yra prie vieno iš žodžio šonų)</p>
+						<p>Ieškotas žodis įvedamas į Find ir Replace panel'ės  ieškomo teksto laukelį, tai padaro nepriklausomai atidaryta panelė ar ne.						</p>
+						<hr>
+						<p><kbd>ctrl+f</kbd></p>
+						<p>[Find &gt; Find...] </p>
+						<p>Atidaro ir aktyvuoja (reiškia kursorius yra ieškomo teksto laukelyje) &quot;search panel&quot; redaktoriaus lango apačioje. Jeigu prieš atidarant yra pažymėjimas &#8212; jis įkeliamas į ieškomo teksto laukelį, beje taip pat veikia jei panelė jau yra atidaryta.</p>
+						<p><kbd>ctrl+f3</kbd> / <kbd>ctrl+f4</kbd></p>
+						<p>[Find &gt; Find Previous / Find Next]</p>
+						<p>Atgal / pirmyn ieško teksto kuris yra paieškos panelės laukelyje. Pažymėtas tekstas veikimo neįtakoja.</p>
+						<hr>
+						<p><kbd>ctrl+shift+f</kbd></p>
+						<p>[Find &gt; Replace...]</p>
+						<p>Atidaro &quot;replace panel&quot; redaktoriaus lango apačioje. Ieškomo teksto laukelį veikia kaip [Find &gt; Find...] </p>
+						<p><kbd>ctrl+shift+f4</kbd></p>
+						<p>[Find &gt; Replace Next] </p>
+						<hr>
+						<p><kbd>super+f</kbd></p>
+						<p>[Find &gt; Use Selection for Find]</p>
+						<p>Pakeičia Find arba Replace panel'ės  ieškomo teksto laukelį  (tai padaro nepriklausomai atidaryta panelė ar ne):</p>
+						<ul>
+								<li>jeigu nėra pažymėjimo &#8212; jei kursorius yra žodyje arba prie vieno iš jo šonų &#8212; tuo žodžiu,</li>
+								<li>jeigu yra pažymėjimas &#8212; pažymėtu tekstu. </li>
+						</ul>
+						<p><kbd>super+shift+f</kbd></p>
+						<p>[Find &gt; Use Selection for Replace]</p>
+						<p>Pakeičia &quot;replace panel&quot;ės laukelį &quot;Replace With:&quot;, veikia kaip [Find &gt; Use Selection for Find]</p>
+						<hr>
+						<p><kbd>ctrl+alt+f</kbd></p>
+						<p>[Find &gt; Find in Files...] </p>
+						<p>Paieškos veikimo nustatymai-opcijos:</p>
+						<dl>
+								<dt>&quot;Use Buffer&quot;</dt>
+								<dd>
+										<p><img src="prev/redaktoriai/sublime-3/sutkatai_use-buffer.png" alt="" width="175" height="63"></p>
+										<p>Nustato kur bus išvedami paieškos rezultatai:</p>
+										<ul>
+												<li>Įjungta &#8212;   naujame redaktoriaus lange-buferyje, tokiu būdu <strong>galima turėti ne vienos paieškos rezultatus</strong> atskiruose languose.</li>
+												<li>Išjungta &#8212; panelėje redaktoriaus apačioje, ją su Esc paslėpus, galima su [Find &gt; Find Results &gt; Show Results Panel] vėl atidaryti. Čia rodomi paskutinės paieškos rezultatai.</li>
+										</ul>
+								</dd>
+						</dl>
+						<p>Laukelis &quot;Where:&quot;</p>
+						<p>*.php,&lt;open files&gt;,&lt;open folders&gt;,D:\apache_sites\sites\1974films\gallery </p>
+						<hr>
+						<p><kbd>alt+f4</kbd> / <kbd>alt+f3</kbd></p>
+						<p>[Find &gt; Incremental Find]</p>
+						<p>/</p>
+						<p><code>&quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;incremental_find&quot;, &quot;reverse&quot;:true}</code></p>
+						<hr>
+						<p><kbd>super+f3</kbd> / <kbd>super+f4</kbd></p>
+						<p>[Find &gt; Find Results &gt; <strong>Next Result / Previous Result</strong>] </p>
+						<p><kbd>super+ctrl+f</kbd></p>
+				<p>[Find &gt; Find Results &gt; Show Results Panel]</p></td>
+				<td><h3> Completions'ai ir auto-completions'ai</h3>
+					<p><a href="http://www.sublimetext.com/docs/2/auto_complete.html">http://www.sublimetext.com/docs/2/auto_complete.html</a></p>
+					<p>&quot;Auto complete&quot; yra:</p>
+					<blockquote>
+					  <p>Auto complete shows the completion popup as you type</p>
+				  </blockquote>
+					<p>&nbsp;</p>
+						<p>Completions &#8212; reiškia parodo meniusą kuriame galima išsirinkti ką įvesti, o auto-completions &#8212; automatiškai į redaktorių įveda.					</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+					<section class="Command" id="cmd-tab-completion">
+						<p><kbd>tab</kbd> / <kbd>shift+tab</kbd></p>
+						<p>[C][insert_best_completion {&quot;default&quot;: &quot;	&quot;, &quot;exact&quot;: true}]</p>
+								<p><a href="http://www.sublimetext.com/docs/2/tab_completion.html">http://www.sublimetext.com/docs/2/tab_completion.html</a></p>
+								<p>Ši komanda (Tab Completion'as ar Tab auto-completion'as) ieško prieš kursorių esančiam žodžiui tinkamiausio <a href="prev/redaktoriai/sublime-3/completions-files.htm">completion</a> ar <a href="prev/redaktoriai/sublime-3/snippets.htm">snippet'o</a>, jeigu randa &#8212; padaro auto-completion'są, t. y. expand'ina rastąjį, jeigu ne &#8212; įveda tab'o simbolį, <strong>completions meniuso neišveda</strong>.</p>
+						<div class="Note mazas">
+							<p>Šios komandos veikimas priklauso nuo setting'o <code>tab_completion</code>, jeigu <code>tab_completion = false</code>, tada ši komanda completion'a tik <a href="prev/redaktoriai/sublime-3/snippets.htm">snippet'us</a>, jeigu <code>tab_completion = true</code>, tada ir <a href="prev/redaktoriai/sublime-3/snippets.htm">snippet'us</a>, ir <a href="prev/redaktoriai/sublime-3/completions-files.htm">completion'us</a>.</p>
+</div>
+<div class="Important mazas">
+	<p>Dabar man atrodo, kad geriau turėti setting'ą <code>"tab_completion": false</code>, nes tada tabas tik expand'ins snippets'us, taip galima turėti savo snippet'ų sistemą ir būtent su <kbd>tab</kbd>'u juos expand'inti. <br>
+	</p>
+</div>
+<dl>
+										<dt>Jeigu yra pažymėjimas</dt>
+										<dd>
+											<dl>
+													<dt>jeigu pažymėjime yra naujos eilutės simbolis </dt>
+													<dd>
+															<p>indent<br>
+															/<br>
+															unindent</p>
+													</dd>
+													<dt>jeigu pažymėjime nėra naujos eilutės simbolio</dt>
+													<dd>
+															<p>nuo kursoriaus pozicijos daro auto-completions, t. y. jei pažymėtą kodą išsaugo<br>
+															/<br>
+															įveda tab'o simbolį</p>
+													</dd>
+											</dl>
+										</dd>
+										<dt>Jeigu nėra pažymėjimo</dt>
+										<dd>
+												<p>Nuo kursoriaus pozicijos daro Tab Completion'ą<br>
+												/<br>
+												Jeigu prieš kursorių yra tab'o simbolis &#8212; ištrina tą tabą, jeigu bet koks kitas simbolis &#8212; įveda tab'o simbolį.</p>
+										</dd>
+						</dl>
+							<p>&nbsp;</p>
+							<p>Shift+tab can be used to insert an explicit tab when tab_completion is enabled.</p>
+							<p>&nbsp;</p>
+								<blockquote>
+									<p>Commit on Tab</p>
+									<p>By default, the selected item in the completion popup will be   committed when enter is pressed. This can create ambiguity between   committing the completion, and inserting a newline. By setting the auto_complete_commit_on_tab   setting to true, enter will insert a newline, and tab will commit the   current completion. There are other benefits, too: because Sublime Text   knows there is no ambiguity, it will show a more curated list of   completions, with the one you want more likely to be in first place. </p>
+									<p>Enabling Commit on Tab is recommended, but it will take a short time to get used to. </p>
+								</blockquote>
+								<p>&nbsp;</p>
+					</section>
+						<section class="Command" id="show-completions">
+							<p><kbd>ctrl+space</kbd></p>
+								<p>[Edit &gt; Show Completions]</p>
+								<p>[C][auto_complete]								</p>
+								<p>Parodo Completions'ų meniusą:</p>
+								<dl>
+										<dt>Jeigu prieš kursorių nėra žodžio</dt>
+										<dd>
+												<p>Parodo Completions'ų meniusą su visais elementais.</p>
+										</dd>
+										<dt>Jeigu prieš kursorių yra žodis</dt>
+										<dd>
+												<p>Parodo atfiltruotą Completions'ų meniusą &#8212; įtraukiami tik tie elementai, kurie prasideda tuo žodžiu.										</p>
+										</dd>
+								</dl>
+								<p class="Important mazas">Jeigu yra vienintelis galimas Completions'ų meniuso elementas &#8212; Completions'ų meniusas neišvedamas, o iš karto expand'inamas tas vienintelis elementas.								</p>
+								<p>&nbsp;</p>
+								<blockquote>
+										<p>The completions list (Ctrl+spacebar) does its work in two ways: by bringing  up a list of suggested words to be completed, or by inserting the best match  directly.</p>
+								</blockquote>
+								<p>&nbsp;</p>
+								<p class="Important mazas">Kai jau parodytas Completions'ų meniusas &#8212; <kbd>ctrl+space</kbd> važiuoja per šį meniusą.								</p>
+								<p>Completions'ų meniusas formuojamas iš šių šaltinių ir pirmesni šaltiniai yra svarbesni, t. y. rodomi pirmiau, jei nėra svarbesnių kriterijų:</p>
+								<ul>
+										<li><code>*.sublime-snippet</code></li>
+										<li>API-injected completions</li>
+										<li><code>*.sublime-completions</code></li>
+										<li>Words in buffer</li>
+								</ul>
+								<p>Kaip pasirenkama ką automatiškai <span class="Important mazas">expand'in</span>ti ir kaip formuojamas Completions'ų meniusas:								</p>
+								<blockquote>
+										<p>Snippets will always win if the current prefix matches their tab trigger  exactly. For the rest of the completion sources, a fuzzy match is performed.  Furthermore, snippets always lose with fuzzy matches.</p>
+										<p>But this is relevant only when the completion is inserted automatically. When  a list of completions is shown, snippets will still be listed alongside the  other items, even if the prefix only partially matches the snippets&rsquo; tab  triggers.</p>
+								</blockquote>
+								<p>&nbsp;</p>
+								<p></p>
+					</section>
+						<h4>Failų kelių auto-completion'as</h4>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3><a href="prev/client-side/css/css/preprocesoriai/sass/index_.htm">Sass</a>'o palaikymas</h3>
+				<p>&nbsp;</p>
+				<p>Dabar naudoju: <a href="https://sublime.wbond.net/packages/Sass">https://sublime.wbond.net/packages/Sass</a>, <a href="https://github.com/nathos/sass-textmate-bundle">https://github.com/nathos/sass-textmate-bundle</a></p>
+				<p>&nbsp;</p>
+				<p>Šitas atrodo geresnis: <a href="https://sublime.wbond.net/packages/Syntax%20Highlighting%20for%20Sass">https://sublime.wbond.net/packages/Syntax%20Highlighting%20for%20Sass</a></p>
+				<p>&nbsp;</p>
+				<p>Dar vienas: <a href="https://github.com/MarioRicalde/SCSS.tmbundle/tree/SublimeText2">https://github.com/MarioRicalde/SCSS.tmbundle/tree/SublimeText2</a></p>
+				<p>&nbsp;</p>
+				<p><a href="https://github.com/n00ge/sublime-text-haml-sass">https://github.com/n00ge/sublime-text-haml-sass</a></p>
+				<p>&nbsp;</p>
+				<h4>Kompiliavimas</h4>
+				<p>Dabar naudoju: </p>
+				<p>Packages\SASS Build <a href="https://sublime.wbond.net/packages/SASS%20Build">https://sublime.wbond.net/packages/SASS%20Build</a></p>
+				<p>ir</p>
+				<p>Packages\SublimeOnSaveBuild <a href="https://sublime.wbond.net/packages/SublimeOnSaveBuild">https://sublime.wbond.net/packages/SublimeOnSaveBuild</a></p>
+				<p>&nbsp;</p>
+				<p>Šitas atrodo geresnis, užtenka vieno package'o:</p>
+				<p><a href="https://sublime.wbond.net/packages/SassBuilder">https://sublime.wbond.net/packages/SassBuilder</a></p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>kodo-teksto folding'as</h3>
+				<p>&nbsp;</p>
+				<pre><code>{ "keys": ["ctrl+-"], "command": "fold" },
+{ "keys": ["ctrl+shift+-"], "command": "fold_tag_attributes" },
+{ "keys": ["ctrl+="], "command": "unfold" },
+{ "keys": ["ctrl+shift+="], "command": "unfold_all" },
+{ "keys": ["ctrl+1"], "command": "fold_by_level", "args": {"level": 1} },
+{ "keys": ["ctrl+2"], "command": "fold_by_level", "args": {"level": 2} },
+{ "keys": ["ctrl+3"], "command": "fold_by_level", "args": {"level": 3} },
+{ "keys": ["ctrl+4"], "command": "fold_by_level", "args": {"level": 4} },
+{ "keys": ["ctrl+5"], "command": "fold_by_level", "args": {"level": 5} },
+{ "keys": ["ctrl+6"], "command": "fold_by_level", "args": {"level": 6} },
+{ "keys": ["ctrl+7"], "command": "fold_by_level", "args": {"level": 7} },
+{ "keys": ["ctrl+8"], "command": "fold_by_level", "args": {"level": 8} },
+{ "keys": ["ctrl+9"], "command": "fold_by_level", "args": {"level": 9} },</code></pre>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+			<td><h3>CSS</h3>
+				<p>&nbsp;</p>
+				<h4>CSS vendor preﬁxes</h4>
+				<h5>Su Emmet</h5>
+			<p>Package'as <a href="#$h3:contains('Emmet')">Emmet</a> deklaracijas su &quot;<code>-</code>&quot; prieš trumpinį expand'ina su vendor'ių preﬁxes'ais. </p>
+			<dl>
+				<dt>Įprastai</dt>
+				<dd>
+					<p><code>rsz</code> &gt;&gt;&gt; <code>resize: ;</code></p>
+				</dd>
+				<dt>Su &quot;<code>-</code>&quot; prieš trumpinį</dt>
+				<dd>
+					<p><code>-rsz</code> &gt;&gt;&gt; <code style="display:inline-block; vertical-align:text-top">-webkit-resize: ;<br>
+-moz-resize: ;<br>
+-ms-resize: ;<br>
+-o-resize: ;<br>
+resize: ;</code></p>
+				</dd>
+			</dl>
+			<del tabindex="0">
+			<h5>Su Prefixr</h5>
+			<p><a href="#$h3:contains('Prefixr')">Prefixr</a></p>
+			</del>
+			<h5>Su Autoprefixer</h5>
+			<p><a href="#(h)">Autoprefixer</a></p>
+			<p>&nbsp;</p></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+</table>
+<h2>Klavišų grupės</h2>
+<table width="1896" class="Tag-Clean -c-table-linesGrid u-table-equelCols Tag-SmallText">
+		<tr>
+				<td width="20%"><h3>Pagrindiniai rodyklių klavišai </h3>
+						<h4>[ctrl+...] line operations						</h4>
+						<p><a href="#cmd-swap-line-up-down">ctrl+up / ctrl+down [Edit &gt; Line &gt; Swap Line <strong>Up</strong>/<strong>Down</strong>]</a></p>
+						<p>&nbsp;</p>
+						<hr>
+						<p><a href="#cmd-edit-line-delete-line">ctrl+shift+up [Edit &gt; Line &gt; Delete Line] </a></p>
+						<p><a href="#cmd-packages-duplicate-lines">ctrl+shift+down [Packages\Duplicate Lines]</a></p>
+						<hr>
+						<p>&nbsp;</p>
+						<h4>super+...</h4>
+						<p><a href="#cmd-edit-line-join-lines">super+left [Edit &gt; Line &gt; Join Lines]</a></p>
+						<p><a href="#cmd-duplicate_line">super+right [Edit &gt; Line &gt; Duplicate line]</a></p>
+						<hr>
+						<p><a href="#cmd-expand-selection-to-line">ctrl+l | super+shift+down	 [Selection &gt; Expand Selection to Line]</a>						</p>
+						<h4>alt+...</h4>
+						<p><kbd>super+up</kbd> / <kbd>super+down</kbd></p>
+						<p>Blokinis žymėjimas (Column Selection), daro blokinį eilučių žymėjimą <strong>aukštyn/žemyn</strong></p>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Backspace ir Delete </h3>
+						<h4>Simbolių trynimas</h4>
+						<p><a href="#cmd-backspaceDelete">backspace / delete</a></p>
+						<p><a href="#cmd-ctrlBackspaceDelete">ctrl+backspace / ctrl+delete</a></p>
+				<p><a href="#cmd-ctrlShiftBackspaceDelete">ctrl+shift+backspace / ctrl+shift+delete</a></p>
+				<h4>Eilučių trynimas</h4>
+				<p><a href="#cmd-edit-line-delete-line">ctrl+shift+up [Edit &gt; Line &gt; Delete Line] </a></p>
+				<h4>Tuščių eilučių trynimas</h4>
+				<p><a href="#cmd-delete_blank_lines">super+backspace Packages\DeleteBlankLines</a></p>
+				<p><a href="#cmd-delete_blank_lines-surplus">super+shift+backspace Packages\DeleteBlankLines</a></p>
+				<hr>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td width="20%">&nbsp;</td>
+				<td width="20%">&nbsp;</td>
+				<td width="20%">&nbsp;</td>
+		</tr>
+</table>
+<h2>Packages'ai</h2>
+<p>Packages'ų pavadinimai yra jų katalogų vardai <code>C:\progs2\Sublime Text 2\Data\Packages</code></p>
+<p>Verta pabandyti:</p>
+<p><a href="https://sublime.wbond.net/packages/Can%20I%20Use">https://sublime.wbond.net/packages/Can%20I%20Use</a></p>
+<p><a href="https://sublime.wbond.net/packages/Twitter%20Bootstrap%20Snippets">https://sublime.wbond.net/packages/Twitter%20Bootstrap%20Snippets</a></p>
+<p><a href="http://livestyle.emmet.io/">http://livestyle.emmet.io/</a></p>
+<p>&nbsp;</p>
+<table width="1896" class="Tag-Clean -c-table-linesGrid u-table-equelCols Tag-SmallText">
+		<tr>
+				<td width="20%"><h3>Emmet</h3>
+						<p><a href="prev/redaktoriai/sublime-3/package-emmet.htm">Package'as Emmet</a></p>
+						<h4><a href="prev/redaktoriai/sublime-3/package-emmet.htm#(h)">Abbreviations'ų expand'inimas (expand abbreviations)</a></h4>
+						<p>Iš viso yra 4 abbreviations'ų expand'inimo būdai.</p>
+						<h5>Du pagrindiniai, baziniai &#8212; Expand Abbreviation</h5>
+						<p>Yra du baziniai, expand'inantys redaktoriuje įvestą tekstą, darantys tą patį, bet kiek veikiantys skirtingai: Tab'inis ir NEtab'inis.</p>
+						<p><a href="http://docs.emmet.io/actions/expand-abbreviation/">docs.emmet.io/actions/expand-abbreviation/</a></p>
+						<section class="Command">
+								<p><kbd>tab</kbd></p>
+								<p>Tab'inis abbreviations'ų expand'inimas, gali būti problemėlių: <a href="prev/redaktoriai/sublime-3/package-emmet.htm">Apie tab'inį abbreviations'ų expand'inimą</a>.</p>
+								<p>Veikia tik nustatytuose scope'uose:</p>
+								<blockquote>
+										<p>By default, Tab handler works in a limited <em>syntax scopes</em>: HTML, XML, HAML, CSS, SASS/SCSS, LESS and <em>strings in programming languages</em> (like JavaScript, Python, Ruby etc.)</p>
+								</blockquote>
+								<p><strong>Pažymėtą tekstą replace'ina tab'o simboliu.</strong></p>
+						</section>
+						<section class="Command">
+								<p><kbd>alt+enter</kbd></p>
+								<p>Veikia visuose scope'uose. <strong>Pažymėtą tekstą expand'ina.</strong></p>
+						</section>
+						<h5>Pažymėtą tekstą &quot;apskliaudžiantys&quot;</h5>
+						<section class="Command">
+								<p><kbd>alt+super+enter</kbd></p>
+								<p>Interactive &ldquo;Expand Abbreviation&rdquo; &#8212; t. y. redaktoriaus lango apačioje atidaro overlay'jų, kuriame vedamas abbreviation'sas, pažymėtas tekstas nenaudojamas abbreviation'sui, o  apskliaudžiamas įvestais tagais.</p>
+						</section>
+						<section class="Command">
+								<h1><kbd>super+enter</kbd></h1>
+								<p><a href="http://docs.emmet.io/actions/wrap-with-abbreviation/">docs.emmet.io/actions/wrap-with-abbreviation/</a></p>
+								<p>Wrap with Abbreviation &#8212; ...</p>
+								<p>Atrodo išliko toks pat veikimas kaip senojo ZenCoding'o &#8212; <a href="prev/redaktoriai/zen-coding-komandos.htm#(h)">Komandos &quot;Wrap with Abbreviation&quot; naudojimas</a>, čia puikiai ir vaizdžiai viskas parodyta, tik patikslinimas dėl veikimo kai nėra pažymėto teksto:</p>
+								<blockquote>
+										<p> If there&rsquo;s no selection, action will silently call <a href="http://docs.emmet.io/actions/match-pair/">&ldquo;Match Tag Pair&rdquo;</a> to wrap context element.</p>
+								</blockquote>
+						</section>
+						<h4>Operacijos su tagais</h4>
+						<section class="Command">
+								<h1><kbd>alt+delete</kbd></h1>
+								<p>Remove Tag</p>
+								<p><a href="http://docs.emmet.io/actions/remove-tag/">docs.emmet.io/actions/remove-tag/</a></p>
+						</section>
+						<section class="Command">
+								<h1><kbd>alt+shift+delete</kbd></h1>
+								<p>Split/Join Tag</p>
+								<p><a href="http://docs.emmet.io/actions/split-join-tag/">docs.emmet.io/actions/split-join-tag/</a></p>
+						</section>
+						<section class="Command">
+								<h1><kbd>alt+super+delete</kbd></h1>
+								<p>Rename Tag</p>
+						</section>
+						<h4>Navigacija </h4>
+						<section class="Command" id="cmd-emmet-goToPair">
+								<h1><kbd>ctrl+.&gt;</kbd></h1>
+								<p><a href="http://docs.emmet.io/actions/go-to-pair/">docs.emmet.io/actions/go-to-pair/</a></p>
+								<p>Kursorius šokinėja tarp atidarančio ir uždarančio tagų.</p>
+						</section>
+						<section class="Command" id="cmd-emmet-matchPairOutwardInward">
+								<h1><kbd>ctrl+shift+,&lt;</kbd> / <kbd>ctrl+shift+.&gt;</kbd></h1>
+								<p><a href="http://docs.emmet.io/actions/match-pair/">docs.emmet.io/actions/match-pair/</a></p>
+								<p>Match pair <strong>outward/inward</strong>. Pažymėdamas lipa XML-HTML medžiu <strong>aukštyn/gilyn</strong>.</p>
+						</section>
+						<section class="Command" id="cmd-emmet-selectPreviousNextItem">
+								<h1><kbd>alt+,&lt;</kbd> / <kbd>alt+.&gt;</kbd></h1>
+								<p><a href="http://docs.emmet.io/actions/select-item/">docs.emmet.io/actions/select-item/</a></p>
+								<p>Select <strong>previous</strong>/<strong>next</strong> item. <strong>Atgal/pirmyn</strong> selektina atidarančių tagų: tago vardą, visą atributą, atributo reikšmę be kabučių.</p>
+						</section>
+						<section class="Command" id="cmd-emmet-goToEditPoint">
+								<h1><kbd>alt+super+,&lt;</kbd> / <kbd>alt+super+.&gt;</kbd></h1>
+								<p><a href="http://docs.emmet.io/actions/go-to-edit-point/">docs.emmet.io/actions/go-to-edit-point/</a></p>
+								<p><strong>prev</strong>/<strong>next</strong> edit point. Padeda kursorių:</p>
+								<ul>
+										<li>tarp susiliečiančių tagų, t. y. tarp kurių nėra nė vieno simbolio,</li>
+										<li>tuščiuose atributuose.</li>
+								</ul>
+						</section>
+						<h4>Komentavimas</h4>
+						<section class="Command">
+								<h1><kbd>ctrl+super+/</kbd></h1>
+								<p>Packages\Emmet </p>
+								<p>Veikia inteligentiškai: <q>Emmet&rsquo;s one do this on <em>current context</em>. For HTML it&rsquo;s a full tag, for CSS it&rsquo;s a rule or full property</q>.</p>
+								<dl>
+										<dt>CSS</dt>
+										<dd>
+												<p>Kai neužkomentuotame kode nėra pažymėjimo:</p>
+												<ul>
+														<li>jei kursorius yra deklaracijoje arba &quot;liečia&quot; iš kurio nors šono &#8212; <strong>užkomentuoja tą deklaraciją</strong> (pvz. <code>left: 10px;</code>), </li>
+														<li>jei kursorius yra CSS rule'e &#8212; <strong>užkomentuoja visą tą rule'ą</strong> (pvz. <code>.galva {...}</code>).</li>
+												</ul>
+												<p>Kai neužkomentuotame kode yra pažymėjimas &#8212; užkomentuoja pažymėtą kodą.</p>
+												<p>Kai užkomentuotame kode yra kursorius ar pažymėjimas &#8212; atkomentuoja tą užkomentuotą kodą.</p>
+										</dd>
+										<dt>HTML</dt>
+										<dd>
+												<p>Veikia kaip su CSS, tik skiriasi objektas &#8212; kai neužkomentuotame kode nėra pažymėjimo &#8212; <strong> užkomentuoja tagą, kuriame yra kursorius</strong>. </p>
+										</dd>
+								</dl>
+						</section>
+						<h4>Operacijos su skaičiais</h4>
+						<section class="Command">
+								<p><kbd>ctrl+keypad_plus</kbd> / <kbd>ctrl+shift+keypad_plus</kbd> / <kbd>ctrl+super+keypad_plus</kbd></p>
+								<p>Skaičių padidina <strong>1/10/0.1</strong></p>
+						</section>
+						<section class="Command">
+								<p><kbd>ctrl+keypad_minus</kbd> / <kbd>ctrl+shift+keypad_minus</kbd> / <kbd>ctrl+super+keypad_minus</kbd></p>
+								<p>Skaičių sumažina <strong>1/10/0.1</strong></p>
+						</section>
+						<section class="Command">
+								<p><kbd>ctrl+keypad_enter</kbd></p>
+								<p>Įvykdo matematines operacijas, pvz.: turime <code>2+3</code> &#8212; spaudžiame, gauname &#8212; <code>5</code>.</p>
+						</section>
+						<p>&nbsp;</p></td>
+				<td width="20%"><h3>BracketHighlighter</h3>
+						<section class="Command">
+								<p>[Tools &gt; Packages &gt; BracketHighlighter &gt; <strong>BracketHighlighter: Toggle Global Enable</strong>]</p>
+								<p>Įjungia-išjungia visą package'so funkcionalą.</p>
+						</section>
+						<section class="Command">
+								<p>[Tools &gt; ... &gt; <strong>Toggle High Visibility Mode</strong>] </p>
+								<p>Įjungia-išjungia &quot;High Visibility Mode&quot;, kai jis įjungtas, visą bracket'ą outline'nina.</p>
+						</section>
+						<section class="Command">
+								<p>[Tools &gt; ... &gt; <strong>Toggle String Bracket Escape Mode</strong>] </p>
+								<p>??????</p>
+								<blockquote>
+										<p>This toggles BH's recognition mode of escaped sub brackets in strings   and regex.  The modes are string escape mode and regex escape mode.</p>
+								</blockquote>
+						</section>
+						<section class="Command">
+								<p>[Tools &gt; ... &gt; <strong>Match Brackets (ignore threshold)</strong>] </p>
+								<p>Faile <code>bh_core.sublime-settings</code> yra <code>&quot;search_threshold&quot;: 5000</code>, tai reiškia, jei teisingai suprantu, kad jei tarp bracket'ų yra daugiau nei nurodytas skaičius simbolių, tada komandos [Tools &gt; ... &gt; <strong>Jump to Left Bracket</strong> / <strong>Jump to Right Bracket</strong>] neveiks.</p>
+						</section>
+						<h4>Operacijos su visų tipų bracket'ais: <code>{} [] () &quot;&quot; ''</code></h4>
+						<h5>Navigacija ir žymėjimas</h5>
+						<section class="Command" id="cmd-packBH-jumpToBracket">
+								<h1><kbd>ctrl+[</kbd> / <kbd>ctrl+]</kbd></h1>
+								<p>[Tools &gt; ... &gt; <strong>Jump to Left Bracket</strong> / <strong>Jump to Right Bracket</strong>]</p>
+								<p>Kursorius naviguoja tarp  aktyvaus bracket'o kairiojo ir dešniojo simbolių.</p>
+						</section>
+						<section class="Command" id="cmd-packBH-SelectBracket">
+								<h1><kbd>ctrl+shift+]</kbd></h1>
+								<p>[Tools &gt; ... &gt; Select Bracket Content]</p>
+						</section>
+						<section class="Command" id="cmd-packBH-FoldBracket">
+								<h1><kbd>ctrl+shift+[</kbd></h1>
+								<p>[Tools &gt; ... &gt; Fold Bracket Content]</p>
+						</section>
+						<h5>Kodą redaguojančios operacijos</h5>
+						<section class="Command" id="cmd-packBH-swapBrackets">
+								<h1><kbd>alt+]</kbd></h1>
+								<p>[Tools &gt; ... &gt; Swap Brackets]</p>
+						</section>
+						<section class="Command" id="cmd-packBH-WrapWithBrackets">
+								<h1><kbd>alt+[</kbd></h1>
+								<p>[Tools &gt; ... &gt; Wrap Selections with Brackets]</p>
+						</section>
+						<section class="Command" id="cmd-packBH-removeBrackets">
+								<h1><kbd>alt+shift+[</kbd></h1>
+								<p>[Tools &gt; ... &gt; Remove Brackets]</p>
+								<p>Atidaro paletę, kurioje galima pasirinkti 4 aktyvaus bracket'o ištrynimo  ar aptrynimo būdus. </p>
+						</section>
+						<h4>Operacijos su kabėmis</h4>
+						<section class="Command" id="cmd-packBH-swapQuotes">
+								<p><kbd>alt+'</kbd></p>
+								<p>[Tools &gt; ... &gt; Swap Quotes]</p>
+								<p>Ką daro: <q>Convert single quote string to double quoted string and vice versa</q>.</p>
+								<p>Kokiomis sąlygomis pradeda veikti: kai yra aktyvuotas string'as, t. y. kai prie eilučių numerių rodo kabių ikoną, taip gali būti kai kursorius yra string'e ir kai yra pažymėjimas, pradėtas tame string'e, taigi <strong>pažymėti viso string'o nereikia</strong>.</p>
+								<p>Kaip daro: </p>
+								<ul>
+										<li><q>Will handle escaping or unescaping quotes within the string</q>.</li>
+										<li>Kadangi: <q>BH quote swapping is scope based</q> &#8212; tai jeigu kokiame nors failo tipe kokios nors kabės yra nelegalios, tai jų nepažins kaip kabių, pvz JSON'e galima naudoti tik dvigubas kabes, taigi viengubų šis package'as nemato, praktikoje gaunasi, kad dvigubas į viengubas konvertuoti galima, o viengubas į dvigubas ne: <q>JSON has one valid string   type, double quotes (single quotes are not valid strings in JSON;   therefore, they won't be of string scope type)</q>.</li>
+								</ul>
+						</section></td>
+				<td width="20%"><h3>SideBarEnhancements (~PS) </h3>
+						<p><a href="https://github.com/titoBouzout/SideBarEnhancements">https://github.com/titoBouzout/SideBarEnhancements</a></p>
+						<p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3">https://github.com/titoBouzout/SideBarEnhancements/tree/st3</a></p>
+						<p>Šio package'o komandas galima vykdyti per:</p>
+						<dl>
+								<dt>Side bar'o kontekstinį meniu:</dt>
+								<dd>
+										<p>jis apibrėžtas: <code>~PS\Side Bar.sublime-menu</code></p>
+										<p>Pasirinkta komanda vykdoma su Side bar'e (projekto) pažymėtais failais.								</p>
+								</dd>
+								<dt>[Tools &gt; Command Palette...]</dt>
+								<dd>
+										<p>jos apibrėžtos: <code>~PS\Commands.sublime-commands</code></p>
+										<p>Pasirinkta komanda vykdoma su aktyviu-redaguojamu failu.								</p>
+								</dd>
+								<dt>ir žinoma priskirtais keybindings'ais</dt>
+								<dd></dd>
+						</dl>
+						<h4>Window'sinės operacijos, t. y. rezultate paliekame ST</h4>
+						<section class="Command">
+								<h1><kbd>super+shift+e</kbd></h1>
+								<p>CP: <code>File: Reveal</code></p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_reveal&quot;</code></p>
+								<p>Atidaro naują window'sų explorer'io langą, kuriame pažymi redaguojamą-aktyvų failą.</p>
+						</section>
+						<section class="Command">
+								<p>SBKM: [Reveal]</p>
+								<p>Atidaro naujus window'sų explorer'io langus visiems Side bar'e pažymėtiems failams.</p>
+						</section>
+						<section class="Command">
+								<p>SBKM: [Open / Run]</p>
+								<p>Atidaro-paleidžia failą window'suose						</p>
+						</section>
+						<h4>Operacijos su failais						</h4>
+						<section class="Command">
+								<p>CP: <code>File: New File Relative to Current View</code></p>
+								<p>SBKM: [New File...]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_new_file&quot;</code></p>
+								<p>Sukuria naują failą kataloge, kuriame  iškviestas kontekstinis meniu Side bar'e.</p>
+</section>
+						<section class="Command">
+								<h1><kbd>alt+s</kbd></h1>
+								<p>CP: <code>File: Rename</code></p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_rename&quot;</code></p>
+								<p>Pervardina redaguojamą-aktyvų failą.						</p>
+						</section>
+						<section class="Command">
+								<h1><kbd>alt+shift+s</kbd></h1>
+								<p>CP: <code>File: Duplicate</code></p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_duplicate&quot;</code></p>
+						</section>
+						<section class="Command">
+								<p>CP: <code>File: Move</code></p>
+								<p>SBKM: [Move...]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_move&quot;</code></p>
+								<p>Perkelia failą į kitą katalogą. </p>
+</section>
+						<section class="Command">
+								<h1><kbd>---</kbd></h1>
+								<p>CP: <code>File: Delete</code></p>
+								<p>SBKM: [Delete]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_delete&quot;</code>								</p>
+								<p>Perkelia į Recycle Bin'ą						</p>
+						</section>
+						<h4>Teksto failuose paieška</h4>
+						<section class="Command">
+								<p>SBKM: [Find &amp; Replace…]</p>
+								<p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda ant ko iškviestas kontekstinis meniu Side bar'e, pasirinktuose failuose ar pasirinkto katalogo failuose</p>
+						</section>
+						<section class="Command">
+								<p>SBKM: [Find In Project…]</p>
+								<p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda <code>&lt;project&gt;</code> &#8212; paieška bus vykdoma visuose projekto kataloguose.						</p>
+						</section>
+						<section class="Command">
+								<p>SBKM: [Find Advanced &gt; In Parent Folder…]</p>
+								<p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda pasirinkto failo ar katalogo katalogą.						</p>
+						</section>
+						<section class="Command">
+								<p>SBKM: [Find Advanced &gt; In Project Folder…]</p>
+								<p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda pasirinkto failo/ų ar katalogo/ų &quot;šakninį&quot; projekto katalogą, pvz.: turime projektą apibrėžiantį failą <code>*.sublime-project</code></p>
+								<pre><code>{
+  "folders":
+  [
+    { "path": "/C/kažkas-1" }, <mark>&lt; šakninis projekto katalogas</mark>
+    { "path": "/C/kažkas-2" }, <mark>&lt; kitas šakninis projekto kat.</mark>
+  ]
+}</code></pre>
+								<p>kokiame projekto šakniniame kataloge kas nors pasirinkta, tą ar tuos šakninius projekto katalogus ir įves į &quot;Where&quot; laukelį.</p>
+						</section>
+						<section class="Command">
+								<p>SBKM: [Find Advanced &gt; In Parent Folders…]</p>
+								<p>Atrodo daro tą patį kaip ir SBKM: [Find In Project…]						</p>
+						</section>
+						<section class="Command">
+								<p>SBKM: [Find Advanced &gt; In Files With Extension(s) XXX]</p>
+								<p>Atidaro [Find &gt; Find in Files...] ir į laukelį &quot;Where&quot; įveda pasirinkto failo ar failų tipų filtrus, pvz.: jei Side bar'e kontekstinis meniu buvo iškviestas ant <code>index.htm</code>, tada  &#8212; Where: <code>*.htm</code>.						</p>
+						</section>
+						<h4>Failų paieška						</h4>
+						<section class="Command">
+								<p>CP: <code>File:  Search Files</code> &#8212; ieško nuo aktyvaus-redaguojamo failo katalogo.</p>
+								<p>SBKM: [Find Advanced &gt; In Paths Containing…] &#8212; ieško nuo Side bar'e pasirinkto  katalogo.</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_find_files_path_containing&quot;</code>								</p>
+								<p>Pačiame redaktoriaus lange-buferyje filtruoja failus su visu keliu nuo pasirinkto katalogo, apima ir visus vaikinius katalogus. Rastų failų atidaryti negalima, galima nusikopijuoti patį kelią.</p>
+						</section>
+						<h4> Kopijuojame failų kelius</h4>
+						<section class="Command">
+								<p><kbd>alt+c,alt+c</kbd></p>
+								<p>SBKM: [Copy Name]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_name&quot;</code></p>
+								<p>Gauname: <code>index --- GABALELIAI.php</code></p>
+						</section>
+						<section class="Command">
+								<p><kbd>alt+c,alt+shift+c</kbd></p>
+								<p>SBKM: [Copy as Text &gt; Name Encoded]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_name_encoded&quot;</code></p>
+								<p>Gauname: <code>index%20---%20GABALELIAI.php</code></p>
+						</section>
+						<hr>
+						<section class="Command">
+								<p><kbd>alt+c,alt+p</kbd></p>
+								<p>SBKM: [Copy as Text &gt; Path]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_path&quot;</code></p>
+								<p>Gauname: <code>D:\apache_sites\sites\1974films\index --- GABALELIAI.php</code></p>
+						</section>
+						<section class="Command">
+								<p><kbd>alt+c,alt+shift+p</kbd></p>
+								<p>SBKM: [Copy as Text &gt; Path as URI]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_path_encoded&quot;</code></p>
+								<p>Gauname: <code>file:///D:/apache_sites/sites/1974films/index%20---%20GABALELIAI.php</code></p>
+						</section>
+						<hr>
+						<section class="Command">
+								<p><kbd>alt+c,alt+a</kbd></p>
+								<p>SBKM: [Copy as Text &gt; Absolute Path From Project]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_path_absolute_from_project&quot;</code></p>
+								<p>Gauname: <code>/index --- GABALELIAI.php</code></p>
+						</section>
+						<section class="Command">
+								<p><kbd>alt+c,alt+shift+a</kbd></p>
+								<p>SBKM: [Copy as Text &gt; Absolute Path From Project Encoded]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_path_absolute_from_project_encoded&quot;</code></p>
+								<p>Gauname: <code>/index%20---%20GABALELIAI.php</code></p>
+						</section>
+						<h4>Operacijos su Projektu						</h4>
+						<section class="Command">
+								<p>SBKM: [Copy as Text &gt; Project Folders]</p>
+								<p>Py: <code>&quot;command&quot;: &quot;side_bar_copy_project_directories&quot;</code></p>
+								<p>Kopijuoja visus projekto šakninius katalogus. Veikia nepriklausomai ant kokio katalogo ar failo buvo iškviestas kontekstinis meniu.</p>
+						</section>
+						<h4>Failų atidarymas naršyklėje</h4>
+						<section class="Command" id="">
+								<p><kbd>f12</kbd> / <kbd>alt+f12</kbd></p>
+								<p>Atidaro Side bar'e pažymėtą failą naršyklėje map'inant <strong>testing/production</strong> adresu.</p>
+								<p>Konfigūruoti galima:</p>
+								<dl>
+									<dt> ST'o viename faile absoliučiais keliais</dt>
+									<dd>
+										<p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-absolute-paths">https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-absolute-paths</a></p>
+										<p>testing ir production adresai saugomi (atidaro per Side bar'o kontekstinį meniu [Project &gt; Edit Projects Preview URLs]): <br>
+											<code>Sublime Text 2\Data\Settings\SideBarEnhancements.json</code></p>
+									</dd>
+									<dt>Laikant konfigūracinį failą projekto kataloge</dt>
+									<dd>
+										<p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-relative-paths">https://github.com/titoBouzout/SideBarEnhancements/tree/st3#with-relative-paths</a></p>
+									</dd>
+								</dl>
+						</section>
+						<h4>Side bar'o kontekstinio meniu punkto &quot;Open With&quot; atidaromo submeniu konfigūravimas</h4>
+				<p><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3#notes-on-configuring-the-open-with-menu">https://github.com/titoBouzout/SideBarEnhancements/tree/st3#notes-on-configuring-the-open-with-menu</a></p></td>
+				<td width="20%"><h3>FileSystem Autocompletion
+				</h3>
+						<p><a href="https://github.com/lingo/sublime-fscompletion">https://github.com/lingo/sublime-fscompletion</a></p>
+				<p>Vienintelė šio packages'o komanda gali būti iškviesta dvejais būdais:</p>
+				<blockquote>
+						<p>Depending on the path, the file completion can be trigged automatically using the default Ctrl-Space auto-completion or it can be explicitly triggered by Ctrl-x, Ctrl-f shortcut.</p>
+				</blockquote>
+				<p>Per [Edit &gt; Show Completions] iškviečiamas-parodomas kai jau esamas kelias yra absoliutus:</p>
+				<blockquote>
+						<p>If the path has a root, this means it starts with <code style="font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 12px; margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">./</code>, <code style="font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 12px; margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">~/</code>, <code style="font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 12px; margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">/</code> (or <code style="font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 12px; margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">C:\</code> (<code style="font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 12px; margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">C:/</code> on win32) the auto completion will be triggered automatically using the regular auto-complete command.</p>
+		</blockquote>
+				<p>&nbsp;</p>
+				<p class="Alert">Completion'a tik nuo C:\</p>
+				<p>&nbsp;</p>
+				<section class="Command">
+						<p><kbd>super+space</kbd></p>
+						<p>[C][file_system_comp_trigger]</p>
+						<p>[CP][Autocomplete file name]</p>
+						<p>&nbsp;</p>
+				</section>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td width="20%"><h3>Filter Lines</h3>
+						<p><strong>Atrodo ne labai naudingas.</strong></p>
+				<p>Default'iniai setting'ai yra <code>Packages\Filter Lines\Filter Lines.sublime-settings</code>, atidaro [Preferences &gt; Package Settings &gt; Filter Lines &gt; Settings – Default], norint juos pakeisti geriausia turėti analogišką <code>Packages\User\Filter Lines.sublime-settings</code>, jeigu jo dar nėra, tai padaro [Preferences &gt; Package Settings &gt; Filter Lines &gt; Settings – User]				</p>
+				<p>Per [Tools &gt; <mark>C</mark>ommand <mark>P</mark>alette...] yra (Packages\Filter Lines\Default.sublime-commands):				</p>
+				<pre><code>[
+    { "caption": "Filter Lines: Filter With Regex", "command": "filter_to_lines", "args": { "search_type": "regex" } },
+    { "caption": "Filter Lines: Filter With String", "command": "filter_to_lines", "args": { "search_type": "string" } },
+    { "caption": "Filter Lines: Fold With Regex", "command": "fold_to_lines", "args": { "search_type": "regex" } },
+    { "caption": "Filter Lines: Fold With String", "command": "fold_to_lines", "args": { "search_type": "string" } }
+]</code></pre>
+				<p>[Edit &gt; Line &gt; Filter With <strong>Regex</strong>/<strong>String</strong>]</p>
+				<p>[Edit &gt; Fold &gt; Fold With <strong>Regex</strong>/<strong>String</strong>]</p>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td><h3>JsFormat</h3>
+				<p><a href="https://sublime.wbond.net/packages/JsFormat">https://sublime.wbond.net/packages/JsFormat</a></p>
+				<p>Kaip formatuojama nustato:</p>
+				<p><code>Packages\JsFormat\JsFormat.sublime-settings</code>				</p>
+				<section class="Command">
+						<p>[CP][Format: Javascript]</p>
+						<p>[MR][JsFormat]</p>
+						<p>Vienintelė Package'o komanda daranti JS kodo formatavimą. Jei nėra pažymėjimo &#8212; formatuoja visą failą, jei yra &#8212; pažymėjimą.</p>
+		</section>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>AAAPackageDev</h3>
+				<p><a href="https://github.com/SublimeText/AAAPackageDev">https://github.com/SublimeText/AAAPackageDev</a></p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>SublimeCodeIntel
+				</h3>
+						<p><a href="https://github.com/SublimeCodeIntel/SublimeCodeIntel">https://github.com/SublimeCodeIntel/SublimeCodeIntel</a>				</p>
+						<section class="Command">
+								<p>Packages\SublimeCodeIntel\Default.sublime-commands:</p>
+						<pre>SublimeCodeIntel: Reset
+SublimeCodeIntel: Enable Plugin
+SublimeCodeIntel: Disable Plugin
+SublimeCodeIntel: Enable Live Autocompletion
+SublimeCodeIntel: Disable Live Autocompletion
+SublimeCodeIntel: Enable Live Autocompletion for Current Language
+SublimeCodeIntel: Disable Live Autocompletion for Current Language</pre>
+		</section>
+				<pre>* Jump to definition = ``Alt+Click``
+* Jump to definition = ``Control+Windows+Alt+Up``
+* Go back = ``Control+Windows+Alt+Left``
+* Manual CodeIntel = ``Control+Shift+space``</pre>
+				<section class="Command">
+						<p><kbd>ctrl+shift+space</kbd></p>
+						<p>[C][code_intel_auto_complete]</p>
+						<p>Iškvietus funkcijos iškvietimo skliausteliuose &#8212; įterpia parametrus iš funkcijos apibrėžimo.</p>
+</section>
+				<section class="Command">
+						<p><kbd>ctrl+button2</kbd> Ctrl+dešnysPelėsKlavišas</p>
+						<p><kbd>alt+home</kbd></p>
+						<p>[MR][Jump to Symbol Definition]</p>
+						<p>[C][goto_python_definition]</p>
+</section>
+				<section class="Command">
+						<p><kbd>alt+end</kbd></p>
+						<p>[C][back_to_python_definition]</p>
+</section>
+				<h4>Konfigūravimas</h4>
+				<section class="Command">
+						<p>[Preferences &gt; Package Settings &gt; SublimeCodeIntel &gt; ...] </p>
+						<p>galima atidaryti packages'o ir user'io: settings'ų, keymap'ų ir mousemap'ų failus.</p>
+				</section>
+				<h5>Savo bibliotekų autocomplytams ir visam kam kitam pridėjimas</h5>
+				<blockquote>
+						<p>For adding additional library paths (django and extra libs paths for Python or extra paths to look for .js files for JavaScript for example), either add those paths as folders to your project, or create an optional codeintel configuration file in your home or in your project's root.</p>
+						<p>Configuration files (<code>~/.codeintel/config</code> (<code>~</code> yra <code>C:\Documents and Settings\Administrator\</code>) or <code>project_root/.codeintel/config</code>). All configurations are optional.</p>
+				</blockquote>
+				<p>Yra du būdai:</p>
+				<dl>
+						<dt>Fiziškai bibliotekų failus padėti į projekto šakninį katalogą</dt>
+						<dd>
+								<p>...</p>
+						</dd>
+						<dt>Konfigūravimas duomenų struktūra</dt>
+						<dd>
+								<p>Tai JSON'as:</p>
+								<pre><code>{
+  &quot;bbilioteka 1&quot;: {
+    ...	nustatymai ...
+  },
+  &quot;bbilioteka 2&quot;: {
+    ...	nustatymai ...
+  }
+  ...
+}</code></pre>
+								<p>Konkretus pvz.:</p>
+								<pre><code>{
+    "PHP": {
+        "php": '/usr/bin/php',
+        "phpExtraPaths": [],
+        "phpConfigFile": 'php.ini'
+    },
+    "JavaScript": {
+        "javascriptExtraPaths": []
+    },
+    "Perl": {
+        "perl": "/usr/bin/perl",
+        "perlExtraPaths": []
+    },
+    "Ruby": {
+        "ruby": "/usr/bin/ruby",
+        "rubyExtraPaths": []
+    },
+    "Python": {
+        "python": '/usr/bin/python',
+        "pythonExtraPaths": []
+    },
+    "Python3": {
+        "python": '/usr/bin/python3',
+        "pythonExtraPaths": []
+    }
+}</code></pre>
+				<p>Ši  struktūra gali būti:</p>
+				<dl>
+						<dt><code>Packages\User\SublimeCodeIntel.sublime-settings</code></dt>
+						<dd>
+								<pre><code>{
+  ...
+  &quot;codeintel_config&quot;: <mark>{
+    &quot;bbilioteka 1&quot;: {
+      ...	nustatymai ...
+    },
+    &quot;bbilioteka 2&quot;: {
+      ...	nustatymai ...
+    }
+    ...
+  }</mark>
+  ...
+}</code></pre>
+<p>Analogiška žinoma yra ir <code>Packages\SublimeCodeIntel\SublimeCodeIntel.sublime-settings</code>, bet jeigu yra user'io faile &#8212; nieko nedaro.</p></dd>
+						<dt>faile be išplėtimo-tipo <code>config</code></dt>
+						<dd>
+								<p>Ši  failas gali būti:</p>
+								<dl>
+										<dt>Operacinės user'io kataloge </dt>
+										<dd>
+												<p><code>~/.codeintel/config</code> (<code>~</code> yra <code>C:\Documents and Settings\Administrator\</code>)</p>
+										</dd>
+										<dt>Projekto kataloge</dt>
+										<dd>
+												<p><code>projekto_katalogas/.codeintel/config</code></p>
+										</dd>
+								</dl>
+								<p>Pavyzdys yra <code>Packages\SublimeCodeIntel\.codeintel\config</code>.</p>
+						</dd>
+				</dl>
+						</dd>
+				</dl>
+				<h4>Package'o katalogas operacinės user'io kataloge</h4>
+				<p>Šis package'as sukuria ir naudoja <code>C:\Documents and Settings\Administrator\.codeintel\</code></p>
+				<p>Sprendimas problemoms spręsti:</p>
+				<blockquote>
+						<p>Troubleshooting</p>
+						<p>To force re-indexation of the code intelligence database you need to follow these steps:</p>
+						<ul>
+								<li>Close Sublime Text 2</li>
+								<li>Open a terminal or navigate through your directories to find the directory <tt>~/.codeintel</tt> that contains <tt>codeintel.log</tt>, <tt>VERSION</tt> and the directory <tt>db</tt>. In Windows, this should be at<tt>%userprofile%\.codeintel</tt>.</li>
+								<li>Delete the whole directory <tt>~/.codeintel</tt> and all of its content. Particularly, if you want to delete only the indexes, the code intelligence database indexes are located inside <tt>~/.codeintel/db</tt>.</li>
+								<li>Start Sublime Text 2 and enjoy a clean re-indexing!				</li>
+						</ul>
+				</blockquote></td>
+				<td><h3>AutoHotkey</h3>
+						<p><a href="https://github.com/robertcollier4/AutoHotkey">https://github.com/robertcollier4/AutoHotkey</a></p>
+				<p><a href="http://livestyle.emmet.io/"></a>[C][ahkrun] </p>
+				<p>[M][Tools &gt; AutoHotkey - Run]</p>
+				<p>[CP][AutoHotkey - Run] </p>
+				<p>&nbsp;</p>
+				<p>[C][ahkcompile] </p>
+				<p>[M][Tools &gt; AutoHotkey - Compile]</p>
+				<p>[CP][AutoHotkey - Compile] </p>
+				<p>&nbsp;</p>
+				<p>[C][ahkrunpiped] </p>
+				<p>[M][Tools &gt; Run As Piped Buffer]</p>
+				<p>[CP][AutoHotkey - Run As Piped Buffer]</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>ScopeHunter</h3>
+						<p><a href="https://github.com/facelessuser/ScopeHunter">https://github.com/facelessuser/ScopeHunter</a></p>
+						<h4>Data\Packages\ScopeHunter\Default.sublime-commands</h4>
+						<pre><code class="brush: js">/*
+Get Selection Scope
+pagal scope_hunter.sublime-settings nustatymus išveda
+kursoriaus pozicijos Scope'us (Scope'ų Selectors'us)
+*/
+{
+  "caption": "Scope Hunter: Show Scope Under Cursor(s)",
+  "command": "get_selection_scope"
+},
+
+/*
+Toggle Instant Scoper
+Įjungia-išjungia automatinį kursoriaus pozicijos Scope'o Selectors'o rodymą-išvedimą
+*/
+{
+  "caption": "Scope Hunter: Toggle Instant Scoper",
+  "command": "toggle_selection_scope"
+}</code></pre>
+						<h4>scope_hunter.sublime-settings</h4>
+						<p>Yra package'o kataloge:</p>
+						<p><code>Data\Packages\ScopeHunter\scope_hunter.sublime-settings</code></p>
+						<p>Sukūriau ir savo:</p>
+						<p><code>Data\Packages\User\scope_hunter.sublime-settings</code>						</p>
+						<p>Kai su [CP][Scope Hunter: Toggle Instant Scoper] yra įjungtas automatinis Scope'o Selectors'ų išvedimas:</p>
+						<ul>
+								<li>jeigu
+										<code>&quot;highlight_extent&quot;: true</code>, tada dar priedo pažymimas-išskiriamas visas Scope'as, kuriame yra kursorius, ši savybė-funkcionalas vadinamas &quot;Highlight scope extent&quot;</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p><strong>Ką reiškia</strong>:</p>
+						<ul>
+								<li>Dump scope extent in line/char format and/or point format</li>
+						</ul>
+						<pre><code class="brush: js">// Show scope extent in line/char format
+"extent_line_char": false,
+// Show scope extent in point format
+"extent_points": false,</code></pre>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<h3>ScopeStatus</h3>
+						<p>IŠINSTALIAVAU !!!</p>
+				<p><a href="https://github.com/willurd/ScopeStatus">https://github.com/willurd/ScopeStatus</a></p>
+				<p>[Tools &gt; Show Scope in Status Bar]</p>
+				<p>Įjungia-išjungia kursoriaus pozicijos Scope'o Selectors'o rodymą Status Bar'e.</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+				<td><h3>Tag</h3>
+				<p><a href="https://sublime.wbond.net/packages/Tag">https://sublime.wbond.net/packages/Tag</a>, <a href="https://github.com/SublimeText/Tag">https://github.com/SublimeText/Tag</a></p>
+				<p>&nbsp;</p>
+				<section class="Command" id="cmd-tag-auto-format-tags-on-selection">
+						<p><kbd>super+shift+end</kbd></p>
+						<p>[Edit &gt; Tag &gt; Auto-Format Tags on Selection]</p>
+						<p>[CP][Tag: Auto-Format Tags on Selection]</p>
+						<p>[C][tag_indent]				</p>
+						<p>Reindent'uoja HTML'ą padalindamas tagus į atskiras eilutes, jeigu yra vienoje.</p>
+				</section>
+				<p>&nbsp;</p>
+				<p>[Edit &gt; Tag &gt; Auto-Format Tags on Document]</p>
+				<p>[CP][Tag: Auto-Format Tags on Document]</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+				<td><h3>HTML-CSS-JS Prettify</h3>
+				<p><a href="https://github.com/victorporof/Sublime-HTMLPrettify">https://github.com/victorporof/Sublime-HTMLPrettify</a></p>
+				<p><strong>labai jau ribotas !!!</strong></p>
+				<section class="Command" id="cmd-tag-auto-format-tags-on-selection2">
+						<p>[Tools &gt; HTML/CSS/JS Prettify &gt; Prettify Code]</p>
+						<p>[MR][HTML/CSS/JS Prettify &gt; Prettify Code]</p>
+						<p>[CP][HTMLPrettify][htmlprettify]</p>
+						<p>Vienintelė naudojimui skirta komanda - formatuoja visą dokumentą.</p>
+</section>
+				<p>&nbsp;</p></td>
+				<td><h3>SFTP</h3>
+			    <p><a href="http://wbond.net/sublime_packages/sftp">wbond.net/sublime_packages/sftp</a></p>
+			    <p>Yra 2 būdai kaip galima naudoti šį package'ą: &quot;Remote Workflow&quot; ir &quot;Server Workflow&quot;, detaliau &#8212; <a href="http://wbond.net/sublime_packages/sftp/workflows">wbond.net/sublime_packages/sftp/workflows</a></p>
+			    <p>&nbsp;</p>
+			    <p>Kokius prideda meniusus:</p>
+			    <ul>
+			    	<li>Sidebar'e [MSB][SFTP/FTP &gt; ...] ir redaktoriaus kontekstiniame [MR][SFTP/FTP &gt; ...] &#8212; tas pats meniu, jo komandos operuoja su pasirinktu failu pagal &quot;Remote Workflow&quot;.</li>
+			    	<li>[File &gt; SFTP/FTP &gt; ...] &#8212; komandos skirtos tik &quot;Server Workflow&quot;.</li>
+			    </ul>
+			    <p>&nbsp;</p>
+			    <section class="Command" id="cmd-sftp-ftp-upload-file">
+			    	<p><kbd>super+s</kbd></p>
+						<p>[MR][SFTP/FTP	&gt; Upload File]</p>
+						<p>[C][sftp_upload_file]</p>
+						<blockquote>
+							<p>Upload the current file.</p>
+						</blockquote>
+					</section>
+			    <section class="Command" id="cmd-sftp-ftp-upload-open-files">
+			    	<p><kbd>super+shift+s</kbd></p>
+						<p>[MR][SFTP/FTP &gt; Upload Open Files]</p>
+						<p>[C][sftp_upload_open_files]</p>
+						<blockquote>
+							<p>Upload all open files that are configured with an SFTP/FTP remote.</p>
+						</blockquote>
+		    	</section>
+			    <section class="Command" id="cmd-sftp-ftp-upload-folder">
+			    	<p><kbd>super+ctrl+s</kbd></p>
+						<p>[MR][SFTP/FTP	&gt; Upload Folder]</p>
+						<p>[C][sftp_upload_folder]</p>
+						<blockquote>
+							<p>Uploading the entire folder the current file is located in.</p>
+						</blockquote>
+					</section>
+			    <p>&nbsp;</p>
+			    <p><kbd>super+alt+s</kbd></p>
+			    <p>[MR][SFTP/FTP	&gt; Sync Local -&gt; Remote…]</p>
+					<blockquote>
+						<p>Compare file modification times and confirm actions before uploading the selected file or folder. This will also delete files off of the remote server that do not exist locally.</p>
+					</blockquote>
+					<p>&nbsp;</p>
+					<p>[MR][SFTP/FTP	&gt;	    	Monitor File (Upload on External Save)]</p>
+			    <blockquote>
+			    	<p>Watch the file for modifications (from Sublime or other applications). When the file modification time changes, the file will be uploaded. This was designed to be used with programs such as <a href="http://livereload.com/">LiveReload</a> and CSS compliers. <strong>The file must remain open in Sublime to be monitored.</strong> Once it is closed, monitoring stops.</p>
+		    	</blockquote>
+			    <p>&nbsp;</p></td>
+		  <td><h3>WinMerge</h3>
+	  	<p><a href="https://github.com/SublimeText/WinMerge">https://github.com/SublimeText/WinMerge</a><br>
+	  	</p>
+	  	<section class="Command" id="cmd-tag-auto-format-tags-on-selection3">
+	  		<p>[MR][Palyginti du failus su WinMerge]</p>
+				<p>[C][win_merge]</p>
+				<p>Atidaro WinMerge, jo palyginimo languose atidaro <q>the last 2 active views, even if they are in different Sublime windows</q>.</p>
+</section>
+	  	<p>&nbsp;</p></td>
+				<td><h3>&nbsp;</h3>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p></td>
+		</tr>
+		<tr>
+			<td><h3>Autoprefixer</h3>
+			<p><a href="https://sublime.wbond.net/packages/Autoprefixer">https://sublime.wbond.net/packages/Autoprefixer</a></p>
+			<p><a href="http://habrahabr.ru/company/evilmartians/blog/176909/">http://habrahabr.ru/company/evilmartians/blog/176909/</a></p>
+			<section class="Command" id="cmd-sftp-ftp-upload-file3">
+				<p><kbd>ctrl+p</kbd></p>
+				<p>[CP][Autoprefix CSS]</p>
+				<p>Kaip veikia kai pažymėjimo:</p>
+				<dl>
+					<dt>Nėra</dt>
+					<dd>
+						<p>Autoprefixer'ina visą failą.					</p>
+					</dd>
+					<dt>Yra</dt>
+					<dd>
+						<p>Autoprefixer'ina pažymėtą kodą. </p>
+					</dd>
+				</dl>
+				<p class="Important">Geriausia prieš įvykdant komandą pažymėti visą ruleset'ą.</p>
+			</section>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p></td>
+			<td><h3>StringEncode</h3>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<section class="Command" id="cmd-html_entitize">
+				<p><kbd>&#8212;</kbd> / <kbd>ctrl+shift+h</kbd></p>
+				<p>[CP][StringEncode: HTML Entitize][html_entitize]</p>
+				<p>Converts characters to their HTML entity</p>
+				<p>/</p>
+				<p>[CP][StringEncode: HTML Deentitize][html_deentitize]</p>
+				<p>Converts HTML entities to a character</p>
+			</section>
+			<p>&nbsp;</p>
+			<p>[CP][StringEncode: Safe HTML Entitize][safe_html_entitize]</p>
+			<p>Converts characters to their HTML entity, but preserves HTML reserved characters</p>
+			<p>/</p>
+			<p>[CP][StringEncode: Safe HTML Deentitize][safe_html_deentitize]</p>
+			<p>Converts HTML entities to a character, but preserves HTML reserved characters</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>: </p>
+			<p>: </p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<section class="Command" id="cmd-">
+				<p><kbd>super+ctrl+s</kbd></p>
+				<p>[MR][SFTP/FTP	&gt; Upload Folder]</p>
+				<p>[C][sftp_upload_folder]</p>
+				<blockquote>
+					<p>Uploading the entire folder the current file is located in.</p>
+				</blockquote>
+			</section>
+			<p>&nbsp;</p></td>
+			<td><h3>BoundKeys</h3>
+			<p>[CP][List bound keys] </p>
+			<p>Sukuria naują failą-buferį ir jame išveda visus ST'o šūtkatus, suskirstytus pagal package'us.</p>
+			<p>&nbsp;</p></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="Note mazas siauras">
+		<p>Side bar'o kontekstinis meniu:</p>
+		<p>&nbsp;</p>
+</div>
+<p>&lt;&lt;&lt; KARTAIS veikia LABAI lėtai</p>
+<h3>Operacijos su simboliais</h3>
+<h3>Simbolių transformacijos - esamų simbolių keitimas</h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

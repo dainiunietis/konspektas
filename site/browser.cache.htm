@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Naršyklės kešas</h1>
+<p>&nbsp;</p>
+<blockquote>
+  <p>E:\download tixati\failai\Девид Макфарланд - Новая большая книга CSS(Бестселлеры O'Reilly) - 2016.pdf || 614 p.</p>
+  <p>Кэш браузера, как правило, является помощником ка-<br>
+    ждого владельца сайта. Как мы уже обсуждали в этой <br>
+    книге, кэш гарантирует, что частым посетителям вашего <br>
+    сайта не придется загружать один и тот же файл снова <br>
+    и снова, что замедлило бы открытие страниц и повы-<br>
+    сило плату за хостинг. Тем не менее кэш может стать <br>
+    головной болью, когда вам необходимо обновить внеш-<br>
+    ний вид сайта. Например, если все его страницы ссыла-<br>
+    ются на внешнюю таблицу стилей с именем main.css, <br>
+    у посетителей этот файл будет кэширован. Но при обнов-<br>
+    лении файла и, соответственно, изменении внешнего <br>
+    вида сайта предыдущие посетители могут по-прежнему <br>
+    иметь доступ к старой таблице стилей, сохраненной на <br>
+    их жестком диске, вместо нового файла main.css.<br>
+    Со временем кэш посетителей все же очистится и они <br>
+    получат новые CSS-файлы. Однако у вас есть один про-<br>
+    стой способ победить кэш — обновить элемент link <br>
+    на каждой HTML-странице. Обычно элемент link для <br>
+    внешней таблицы стилей выглядит следующим об-<br>
+    разом:<br>
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;main.css&quot;&gt;<br>
+    Однако если добавить строку запроса после имени CSS-<br>
+    файла (например, main.css?v=1), то браузер будет ви-<br>
+    деть файл как main.css?v=1, а не как main.css. Если <br>
+    вы измените число после символов v= при обновлении <br>
+    внешней таблицы стилей, то браузеры воспримут этот <br>
+    код как появление нового файла и загрузят внешнюю <br>
+    таблицу стилей с веб-сервера вместо использования <br>
+    кэшированной версии.<br>
+    Предположим, что, когда вы впервые публикуете ваш <br>
+    сайт, файл main.css является первой версией каскад-<br>
+    ной таблицы стилей сайта. Вы можете использовать <br>
+    следующую ссылку:<br>
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;main.css?v=1&quot;&gt;<br>
+    Затем, когда вы обновите файл main.css, можно из-<br>
+    менить код элемента link следующим образом:<br>
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;textcss&quot; href=&quot;main.<br>
+    css?v=2&quot;&gt;</p>
+  <p>Браузер определит, что таблица стилей отлична от со-<br>
+    храненной в кэше версии файла main.css и загрузит <br>
+    файл с веб-сервера. <br>
+    На самом деле код ?v=1 ничего не делает и не влияет <br>
+    на то, как работает веб-сервер. Это лишь способ сооб-<br>
+    щить браузеру о необходимости повторной загрузки <br>
+    файла.<br>
+    Недостатком этого метода является необходимость <br>
+    обновлять код элемента link для каждого HTML-фай-<br>
+    ла сайта.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

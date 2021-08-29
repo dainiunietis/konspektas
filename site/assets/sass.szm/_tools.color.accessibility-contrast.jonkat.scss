@@ -1,0 +1,191 @@
+@charset "utf-8";
+
+// https://medium.com/@jonnykates/automating-colour-contrast-ratios-with-sass-e201f3b52797
+// https://codepen.io/jonnykates/pen/aYaBEM
+
+@function jonkat-getColorBrightness($color) {
+  @return round((red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000);
+}
+
+@function jonkat-getColorLight() {
+  @return round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+}
+
+@function jonkat-isColorDark($color) {
+  $color-brightness: jonkat-getColorBrightness($color);
+  $light-color: jonkat-getColorLight();
+  @if abs($color-brightness) < ($light-color/2) {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// See https://www.w3.org/TR/AERT/#color-contrast for original algorithm used for this function
+@function jonkat-getColorContrastRatio($background, $foreground) {
+  $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
+  $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
+  $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
+  $sum-rgb: $r + $g + $b;
+  @return $sum-rgb;
+}
+
+@function jonkat-isColorAccessibleContrast($background, $foreground, $colorContrastRatio: 500) {
+  @if jonkat-getColorContrastRatio($background, $foreground) < $colorContrastRatio {
+    @return false;
+  } @else {
+    @return true;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// .kazkas {
+//   background: $color;
+//   color: jonkat-getColorAccessibleContrast-ratio($color);
+// }
+
+@function jonkat-getColorAccessibleContrast-ratio($color, $colorContrastRatio: 500) {
+  //@debug unquote("$color ==") $color;
+  
+  $colorIsDark: jonkat-isColorDark($color);
+  //@debug unquote("$colorIsDark ==") $colorIsDark;
+  
+  $colorAccessible: if($colorIsDark, lighten($color, 35%), darken($color, 35%));
+  //@debug unquote("$colorAccessible ==") $colorAccessible;
+  
+  //$colorContrastRatio: jonkat-getColorContrastRatio($color, $colorAccessible);
+  //@debug unquote("$colorContrastRatio ==") $colorContrastRatio;
+  
+  @while (jonkat-isColorAccessibleContrast($color, $colorAccessible, $colorContrastRatio) == false) AND ($colorAccessible != #000000) AND ($colorAccessible != #ffffff) {
+    $colorAccessible: if($colorIsDark, lighten($colorAccessible, 1%), darken($colorAccessible, 1%));
+    //@debug unquote("@while $colorAccessible ==") $colorAccessible;
+  }
+  
+  @return $colorAccessible;
+}
+
+// @USAGE:
+// .kazkas {
+//   background: $color;
+//   color: jonkat-getColorAccessibleContrast-fixed($color);
+// }
+
+@function jonkat-getColorAccessibleContrast-fixed($color, $colorAccessibleBlack: black, $colorAccessibleWhite: white) {
+  $color-brightness: jonkat-getColorBrightness($color);
+  $light-color: jonkat-getColorLight();
+  @if abs($color-brightness) < ($light-color/2) {
+    @return $colorAccessibleWhite;
+  }
+  @else {
+    @return $colorAccessibleBlack;
+  }
+}
+
+
+
+
+
+//–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//.a20190501130039 {
+//  $color: #ffaba5;
+//  @if $color >= #000000 {
+//
+//  }
+//  color:            #000000;
+//  background-color: #ffffff;
+//}
+
+
+
+
+//// See https://www.w3.org/TR/AERT/#color-contrast for original algorithm used for this function
+//@function colour-difference($foreground, $background) {
+//  $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
+//  $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
+//  $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
+//  $sum-rgb: $r + $g + $b;
+//
+//  @if $sum-rgb < 500 {
+//    @return "false";
+//  } @else {
+//    @return "true";
+//  }
+//}
+
+//@mixin text-contrast($n) {
+//  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+//  $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+//
+//  @if abs($color-brightness) < ($light-color/2) {
+//    color: white;
+//  }
+//  @else {
+//    color: black;
+//  }
+//}
+
+///
+
+//$button-background-colour: red;
+//
+//button {
+//  background-color: $button-background-colour;
+//  border: 0;
+//  padding: 1em 2em;
+//  @include text-contrast($button-background-colour);
+//}
+//
+/////
+//
+//$heading-colour: #FFD828; // rgb(255,216,40)
+//
+//h1 {
+//  color: $heading-colour;
+//  @while (colour-difference($heading-colour, #fff) == "false") {
+//    color: $heading-colour;
+//    $heading-colour: darken($heading-colour, 1%);
+//    @if (colour-difference($heading-colour, #fff) == "true") {
+//      color: $heading-colour;
+//    }
+//  }
+//}
+//
+/////
+//
+//$grey: #F0F0F0; // rgb(240,240,240)
+//
+//span {
+//  @while (colour-difference($heading-colour, $grey) == "false") {
+//    color: $heading-colour;
+//    $heading-colour: darken($heading-colour, 1%);
+//    @if (colour-difference($heading-colour, $grey) == "true") {
+//      color: $heading-colour;
+//    }
+//  }
+//}
+//
+//.background {
+//  display: block;
+//  padding: 20px;
+//  background-color: #F0F0F0;
+//}
+//
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+//
+//* {
+//  font-family: 'Open Sans', sans-serif;
+//}

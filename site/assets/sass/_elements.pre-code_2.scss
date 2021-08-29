@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+// paimta iš -- https://css-tricks.com/sass-style-guide/
+
+// font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+
+/*
+TODO: baigti
+*/
+
+pre {
+  color: white; // default code color
+  // background: $darkGray;
+  padding: 0;
+
+  -moz-tab-size: 2;
+  -o-tab-size:   2;
+  tab-size:      2;
+
+  -ms-word-break:  normal;
+  word-break:      normal;
+  word-break:      normal;
+
+  -webkit-hyphens: none;
+  -moz-hyphens:    none;
+  -ms-hyphens:     none;
+  hyphens:         none;
+
+  position: relative;
+  line-height: 28px;
+  &[rel] {
+    padding-top: 21px;
+  }
+  &[rel]::before {
+    font-size: 0.75rem;
+    content: attr(rel);
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @include strips(#999, 10deg);
+    @include ff-sans;
+    padding: 1px 0;
+    text-indent: 15px;
+  }
+  &[rel="CSS"]::before {
+    @include strips($orange, 10deg);
+  }
+  &[rel="HTML"]::before {
+    @include strips($green, 10deg);
+  }
+  &[rel="jQuery"]::before,
+  &[rel="JavaScript"]::before,
+  &[rel="JSX"]::before {
+    @include strips($purple, 10deg);
+  }
+  code {
+    @include ff-code;
+    font-size: 0.9rem;
+    background: none;
+    padding: 15px;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: auto;
+  }
+  @include breakpoint(baby-bear) {
+    max-height: 100vh;
+    code {
+      max-height: 100vh;
+    }
+  }
+}
+
+
+
+pre {
+    color: white;
+    background: #1d1f21;
+    padding: 0;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
+    -ms-word-break: normal;
+    word-break: normal;
+    word-break: normal;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    position: relative;
+    line-height: 28px
+}
+pre[rel] {
+    padding-top: 21px
+}
+pre[rel]::before {
+    font-size: 0.75rem;
+    content: attr(rel);
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #a89494 -webkit-linear-gradient(80deg, #a89494 0%, #a89494 10%, #9f8d8d 10%, #9f8d8d 20%, #948383 19%, #978686 21%, #978686 20%, #978686 30%, #8b7b7b 29%, #8f7e7e 31%, #8f7e7e 30%, #8f7e7e 40%, #837474 39%, #867777 41%, #867777 40%, #867777 50%, #7a6c6c 49%, #7e6f6f 51%, #7e6f6f 50%, #7e6f6f 60%, #726565 59%, #756868 61%, #756868 60%, #756868 70%, #6a5d5d 69%, #6d6060 71%, #6d6060 70%, #6d6060 80%, #615656 79%, #655959 81%, #655959 80%, #655959 90%, #594f4f 89%, #5c5252 91%, #5c5252 90%, #5c5252 100%);
+    background: #a89494 linear-gradient(10deg, #a89494 0%, #a89494 10%, #9f8d8d 10%, #9f8d8d 20%, #948383 19%, #978686 21%, #978686 20%, #978686 30%, #8b7b7b 29%, #8f7e7e 31%, #8f7e7e 30%, #8f7e7e 40%, #837474 39%, #867777 41%, #867777 40%, #867777 50%, #7a6c6c 49%, #7e6f6f 51%, #7e6f6f 50%, #7e6f6f 60%, #726565 59%, #756868 61%, #756868 60%, #756868 70%, #6a5d5d 69%, #6d6060 71%, #6d6060 70%, #6d6060 80%, #615656 79%, #655959 81%, #655959 80%, #655959 90%, #594f4f 89%, #5c5252 91%, #5c5252 90%, #5c5252 100%);
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 1px 0;
+    text-indent: 15px
+}
+
+pre code {
+    font-family: 'Source Code Pro', Menlo, Consolas, Monaco, monospace;
+    font-size: 0.9rem;
+    background: none;
+    padding: 15px;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: auto
+}
+
+

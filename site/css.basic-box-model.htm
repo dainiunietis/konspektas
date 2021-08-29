@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Basic box model</h1>
+<ul>
+  <li> <a href="http://konspektas-prev.local/client-side/css/css/properties/margin.htm"></a> <a href="file:///D:/webdev/konspektas-prev/client-side/css/koncepcijos/box-model.htm">konspektas-prev.local — CSS "Box Model"</a></li>
+  <li> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">Introduction to the CSS basic box model - CSS: Cascading Style Sheets | MDN</a></li>
+  <li> <a href="https://www.w3.org/TR/css-box-3/#box-model">CSS Box Model Module Level 3</a></li>
+</ul>
+<div class="-FXBCc M1c" style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center">
+  <figure class="figure--image-shadow" style="width:400px"> <img src="images/box-2019-11-17.png" alt="" width="234" height="137">
+    <figcaption>
+      <p><a href="https://www.w3.org/TR/css-box-3/#box-model">W3C CSS 3 — CSS Box Model Module Level 3</a></p>
+    </figcaption>
+  </figure>
+  <figure class="figure--image-shadow" style="width:400px"> <img src="images/boxdim.png" alt="" width="188" height="139">
+    <figcaption>
+      <p><a href="https://www.w3.org/TR/css-box-3/#box-model">W3C CSS 2.1 — Box model</a></p>
+    </figcaption>
+  </figure>
+  <figure class="figure--image-shadow" style="width:400px"> <img src="images/boxmodel-2019-11-17.png" alt="" width="167" height="116">
+    <figcaption><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">MDN</a></figcaption>
+  </figure>
+</div>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h3>Vidiniai box model'ės box'ai</h3>
+      <p>Yra keturi box'ai, galimo jų didėjimo tvarka:</p>
+      <ul>
+        <li><i>content box</i></li>
+        <li><i>padding box</i> — pagal išorinę kraštinę (padding edge)</li>
+        <li><i>border box</i> — pagal išorinę kraštinę (border edge)</li>
+        <li><i>margin box</i> — pagal išorinę kraštinę (margin edge)</li>
+      </ul>
+      <blockquote>
+        <p>The specification describes the <em>content box</em>, <em>padding box</em>, <em>border box</em>, and <em>margin box</em>, each being defined by the edges of the content, padding, border, and margin respectively.</p>
+      </blockquote>
+      <p><img src="images/css-basic-box-model-20191119205815.png" alt="" width="220" /> <img src="images/css-basic-box-model-20191119205846.png" alt="" width="220" /></p>
+      <p><img src="images/css-basic-box-model-20191119210033.png" alt="" width="220" /><img src="images/css-basic-box-model-20191119210106.png" alt="" width="220" /></p>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

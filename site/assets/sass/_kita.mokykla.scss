@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+// $environment: dev;
+
+// A map of global config settings. Define any project-level configuration,
+// feature switches, etc. in here.
+$global-config: (
+  env: dev, // dev || prod
+  // healthcheck: false,
+  debug: true,
+  markNS-c: 0,
+  markNS-o: 0,
+);
+
+// You can access data in this map using the following function:
+// inuit-config(<key>)
+// Example usage:
+// @if (global-config(debug) == true) { ...  }
+@function global-config($key) {
+  @return map-get($global-config, $key);
+}
+
+
+

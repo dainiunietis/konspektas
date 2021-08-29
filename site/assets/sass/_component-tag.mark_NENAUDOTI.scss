@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+mark.light { background-color: rgba(255, 230, 0, 0.15) }
+mark.meta { background: none; color:#000000; }
+
+mark.bg1,         .MarkBg-1 { background-color:rgba(255,55,55,.3); color:inherit; }   /* #FFA4A4 */
+mark.bg1.light,   .MarkBg-1.light { background-color:rgba(255,55,55,.15); color:inherit; }   /* #FFA4A4 */
+mark.bg1.light-1, .MarkBg-1.light-1 { background-color:rgba(255,55,55,.075); color:inherit; }   /* #FFA4A4 */
+mark.bg2,         .MarkBg-2 { background-color:rgba(245,255,66,.6); color:inherit; }   /* #FBFFA4 */
+mark.bg3,         .MarkBg-3 { background-color:rgba(96,255,91,.6); color:inherit; }   /* #A6FFA4 */
+mark.bg3.light,   .MarkBg-3.light { background-color:rgba(96,255,91,.15); }
+mark.bg4, .MarkBg-4 { background-color:rgba(164,249,255,.6); color:inherit; }   /* #A4F9FF */
+mark.bg4.light, .MarkBg-4.light { background-color:rgba(164,249,255,.1); }
+mark.bg5, .MarkBg-5 { background-color:rgba(53,58,255,.25); color:inherit; }   /* #A4ADFF */
+mark.bg6, .MarkBg-6 { background-color:rgba(255,70,255,.25); color:inherit; }   /* #FFA4FF */
+
+/* NENAUDOTI */
+mark.bg1.brighter, .MarkBg-1.brighter { background-color:rgba(255,55,55,.15); color:inherit; }   /* #FFA4A4 */
+mark.bg1.brighter-1, .MarkBg-1.brighter-1 { background-color:rgba(255,55,55,.1); color:inherit; }   /* #FFA4A4 */
+
+
+/*.mark-1 { background-color:#E9E9E9; padding-left:.5em; padding-right:.5em;  }*/
+/*border: dotted 1px #999; border-width:1px 0;*/
+
+

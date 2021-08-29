@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    /*body {*/
+    /*  font: 1.2em "IBM Plex Sans", sans-serif;*/
+    /*  margin: 1em;*/
+    /*}*/
+    :root {
+      --contentMaxWidth: 75ch;
+    }
+  </style>
+</head>
+<body>
+<!-- kad darytų TOC-turinį -->
+<!--<script src="assets/js/~pvz-example-test-template.js"></script>-->
+
+<h1>Full bleed — kai reikia per visą viewport'ą ištempti elementą, kuris yra apgaubtas kito elemento</h1>
+
+<p><a href="https://css-tricks.com/full-width-containers-limited-width-parents/">Full Width Containers in Limited Width Parents | CSS-Tricks</a></p>
+
+
+
+<h2>Su CSS Grid #1</h2>
+<p><a href="https://www.joshwcomeau.com/css/full-bleed/">CSS Grid full-bleed layout tutorial</a></p>
+<pre><code>grid-template-columns: 1fr min(var(--contentMaxWidth), 100%) 1fr;</code></pre>
+<div class="content-root-20210422214246">
+  <style>
+    .content-root-20210422214246, div.content-root-20210422214246__full-bleed {
+      display: grid;
+      grid-template-columns: 1fr min(var(--contentMaxWidth), 100%) 1fr;
+    }
+    .content-root-20210422214246 img {
+      max-height: 20vh;
+      object-fit: cover;
+    }
+    .content-root-20210422214246 > *, div.content-root-20210422214246__full-bleed > * {
+      grid-column: 2;
+    }
+    .content-root-20210422214246__full-bleed {
+      width: 100%;
+      grid-column: 1 / 4;
+    }
+    .content-root-20210422214246__full-bleed--viewport {
+      /*width: 100vw;*/
+      /*position: relative;*/
+      /*left: 50%;*/
+      /*margin-left: -50vw;*/
+      width: calc(100vw - 17px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    div.content-root-20210422214246__full-bleed {
+      padding: 1.5rem 2.3rem;
+    }
+    div.content-root-20210422214246__full-bleed > *:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+  <h3>Full bleed'as iki gaubiančio tagio / content-root kraštų</h3>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <img class="content-root-20210422214246__full-bleed u-spvm" src="images/graphics/vaizdelis.jpg" />
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede.</p>
+  <div class="content-root-20210422214246__full-bleed BGCL1-11 u-spvm">
+    <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+  </div>
+  <p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>
+  <h3>Full bleed'as per viewport'ą</h3>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p><strong>Patį <code>img</code>'ą padaryti platesnį nei grid container'is negalima</strong></p>
+  <img class="content-root-20210422214246__full-bleed content-root-20210422214246__full-bleed--viewport u-spvm" src="images/graphics/vaizdelis.jpg" />
+  <p><strong>O va įdėjus į <code>p</code> — veikia</strong></p>
+  <p class="content-root-20210422214246__full-bleed content-root-20210422214246__full-bleed--viewport">
+    <img class="" style="width: 100%;" src="images/graphics/vaizdelis.jpg" />
+  </p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede.</p>
+  <div class="content-root-20210422214246__full-bleed content-root-20210422214246__full-bleed--viewport BGCL1-11 u-spvm">
+    <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+  </div>
+  <p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>
+</div>
+
+
+
+<h2>Su CSS Grid #2 — šoniniai grid'o stulpeliai turi ir minimalų plotį</h2>
+<p><a href="https://codepen.io/thomasmassmann/pen/JqryVZ?editors=1100">Full Width Bars Using CSS Grid</a></p>
+<pre><code>grid-template-columns: minmax(1rem, 1fr) minmax(min-content, var(--contentMaxWidth)) minmax(1rem, 1fr);</code></pre>
+<div class="a20210427134457">
+  <style>
+    .a20210427134457, .a20210427134457 > aside {
+      display: grid;
+      grid-template-columns: minmax(2rem, 1fr) minmax(min-content, var(--contentMaxWidth)) minmax(2rem, 1fr);
+    }
+    .a20210427134457 > *, .a20210427134457 > aside > * {
+      grid-column: 2 / -2;
+    }
+    .a20210427134457 > aside {
+      grid-column: 1 / -1;
+    }
+  </style>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <!--  <img class="u-spvm" style="max-height:30vh; object-fit:cover" src="images/graphics/vaizdelis.jpg" />-->
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede.</p>
+  <aside class="BGCL1-11 u-spvm">
+    <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>
+  </aside>
+  <p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>
+</div>
+
+
+
+<h2>Su </h2>
+<p><a href="https://css-tricks.com/the-inside-problem/#what-if-youre-already-inside-a-container-you-cant-control-and-need-to-break-out-of-it">The "Inside" Problem | CSS-Tricks</a></p>
+<style>
+  /*html, body {*/
+  /*  overflow-y: hidden;*/
+  /*}*/
+  html {
+    --scrollbarWidth: 17px;
+    scrollbar-width: var(--scrollbarWidth); /* future standards way */
+    scrollbar-width: 10px; /* future standards way */
+    /*overflow-y: hidden;*/
+  }
+  html::-webkit-scrollbar { /* long-standing webkit way */
+    width: var(--scrollbarWidth);
+  }
+  html::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+  html::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+  /****************************************************************/
+  .a20210426141313, .a20210426141313 > aside > * {
+    max-width: var(--contentMaxWidth);
+    margin: 0 auto;
+  }
+  .a20210426141313 > aside {
+    padding: 1rem 0;
+    width: calc(100vw - var(--scrollbarWidth));
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    /*width: 100vw;*/
+    /*margin-left: calc(50% - 50vw);*/
+  }
+  .a20210426141313 > aside > * {
+    box-sizing:    content-box;
+    padding-left:  .8rem;
+    padding-right: .8rem;
+  }
+</style>
+<div class="a20210426141313">
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+<!--  <img class="u-spvm" style="max-height:30vh; object-fit:cover" src="images/graphics/vaizdelis.jpg" />-->
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede.</p>
+  <aside class="BGCL1-11 u-spvm">
+    <div>
+      <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>
+    </div>
+  </aside>
+  <p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>
+</div>
+
+
+
+
+
+
+<p style="height: 50vh">&nbsp;</p>
+
+<!--<div class="c-pvs"></div>-->
+
+<!--<p style="height: 1000vh">&nbsp;</p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>-->
+<!--<p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>-->
+<!--<p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>-->
+<!--<p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>-->
+<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>-->
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+/////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// <table class="c-tableCols">
+
+//.table-layout {
+.c-tableCols {
+  $headingColor: colorScheme-site("1H");
+  $headingBG:    colorScheme-site("1HL4");
+  $borderColor:  colorScheme-site("1HL2");
+  border-collapse: collapse;
+  box-shadow: none !important;
+
+  //@mixin level-1 {
+  //  font-size: 1.3rem;
+  //  //padding-bottom: .15em;
+  //}
+  //
+  //@mixin level-2 {
+  //  //margin-top: 1em;
+  //  font-size: 1rem;
+  //  //padding: 0 8px .1em;
+  //  //padding-left: .4rem;
+  //}
+
+  > tbody > tr > td {
+    // font-size: .8em;
+
+    padding-top: 0;
+    //padding-bottom: $szm-spacing-vertical-paragraph;
+    padding-bottom: szm-spacing-size("small", "em"); // medium large
+
+    border-color: $borderColor;
+    border-style: dotted;
+    box-shadow: none;
+    vertical-align: top;
+
+    > h2, h3, h4, h5, h6 {
+      //color: $headingColor;
+      background: $headingBG;
+      //margin-left: -8px;
+      //margin-right: -8px;
+      margin: 0 -0.4rem 0.7em;
+      padding: 0.15em .4rem;
+      text-align: center;
+      //code {
+      //  //color: inherit;
+      //}
+      //&:before {
+      //  //color: #999;
+      //  color: $headingColor;
+      //}
+
+      &:first-child {
+        margin-top: 0;
+      }
+      
+      &:only-child {
+        margin-bottom: -7px;
+      }
+      //&:last-child {
+      //  margin-bottom: 0;
+      //}
+    }
+
+    @each $htag in h2 h3 h4 h5 h6 {
+      > #{$htag} {
+        //font-size: ms-function(map_get($elements-headings-ms-sizes, $htag));
+        font-size: ms-function(map_get($elements-headings-ms-sizes, $htag) - 1);
+      }
+    }
+
+    > hr {
+      //border-width: 2px 0 0 0;
+      //border-style: dashed;
+      //border-color: scale-color($e-hr-clr, $lightness: 0%, $alpha: -20%);
+      margin-left: -7px;
+      margin-right: -7px;
+      //padding: 0;
+      //height: 0px;
+      //border-style: solid;
+      //border-color: #db64a0;
+      //border-width: 2px 0 0 0;
+      //line-height: 5em;
+    }
+  }
+  //&--h2h3 {
+  //  > tbody > tr > td {
+  //    > h2 {
+  //      @include level-1;
+  //    }
+  //    > h3 {
+  //      @include level-2;
+  //    }
+  //  }
+  //}
+  //&--h3h4 {
+  //  > tbody > tr > td {
+  //    > h3 {
+  //      @include level-1;
+  //    }
+  //    > h4 {
+  //      @include level-2;
+  //    }
+  //  }
+  //}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  # buvusi versija iki 2020-12-06
+//
+/////////////////////////////////////////////////////////////////////////
+
+// find-replace:
+// \sclass="(.*)(table-layout)(.*)"
+// class="$1c-tableCols$3"
+
+// @USAGE:
+// <table class="c-tableCols c-tableCols--h2h3">
+
+////.table-layout {
+//.c-tableCols {
+//  $headingColor: colorScheme-site("1H");
+//  $headingBG:    colorScheme-site("1HL4");
+//  $borderColor:  colorScheme-site("1HL2");
+//  border-collapse: collapse;
+//  box-shadow: none !important;
+//
+//  @mixin level-1 {
+//    font-size: 1.3rem;
+//    //padding-bottom: .15em;
+//  }
+//
+//  @mixin level-2 {
+//    //margin-top: 1em;
+//    font-size: 1rem;
+//    //padding: 0 8px .1em;
+//    //padding-left: .4rem;
+//  }
+//
+//  > tbody > tr > td {
+//    padding-top: 0;
+//
+//    //padding-bottom: $szm-spacing-vertical-paragraph;
+//    padding-bottom: szm-spacing-size("small", "em"); // medium large
+//
+//    border-color: $borderColor;
+//    border-style: dotted;
+//    box-shadow: none;
+//    vertical-align: top;
+//    > h2, h3, h4 {
+//      //color: $headingColor;
+//      background: $headingBG;
+//      //margin-left: -8px;
+//      //margin-right: -8px;
+//      margin: 0 -0.4rem 0.7em;
+//      padding: 0.15em .4rem;
+//      text-align: center;
+//      //code {
+//      //  //color: inherit;
+//      //}
+//      //&:before {
+//      //  //color: #999;
+//      //  color: $headingColor;
+//      //}
+//      &:first-child {
+//        margin-top: 0;
+//      }
+//      &:only-child {
+//        margin-bottom: -7px;
+//      }
+//      //&:last-child {
+//      //  margin-bottom: 0;
+//      //}
+//    }
+//    > hr {
+//      //border-width: 2px 0 0 0;
+//      //border-style: dashed;
+//      //border-color: scale-color($e-hr-clr, $lightness: 0%, $alpha: -20%);
+//      margin-left: -7px;
+//      margin-right: -7px;
+//      //padding: 0;
+//      //height: 0px;
+//      //border-style: solid;
+//      //border-color: #db64a0;
+//      //border-width: 2px 0 0 0;
+//      //line-height: 5em;
+//    }
+//  }
+//  &--h2h3 {
+//    > tbody > tr > td {
+//      > h2 {
+//        @include level-1;
+//      }
+//      > h3 {
+//        @include level-2;
+//      }
+//    }
+//  }
+//  &--h3h4 {
+//    > tbody > tr > td {
+//      > h3 {
+//        @include level-1;
+//      }
+//      > h4 {
+//        @include level-2;
+//      }
+//    }
+//  }
+//}
+
+
+
+

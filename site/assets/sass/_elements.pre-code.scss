@@ -1,0 +1,119 @@
+@charset "utf-8";
+
+//========================================================
+//=====                                              =====
+//====       PRE ir CODE bazinis formatavimas         ====
+//=====                                              =====
+//========================================================
+
+pre, code {
+	//font-family: "Courier New", Courier, monospace;
+	//font-family: "Source Code Pro Medium";
+	//font-family: "Source Code Pro Light";
+	//font-family: "Source Code Pro";
+	//font-family: "DejaVu Sans Mono";
+	//font-family: "Ubuntu Mono";
+	//font-family: "Droid Sans Mono";
+	//font-family: "Envy Code R";
+ 	//font-family: Consolas;
+	//font-family: Iosevka, monospace;
+ 	//font-family: "Iosevka Light", monospace;
+ 	//font-family: "Iosevka Extralight", monospace;
+ 	//font-family: "Iosevka Thin", monospace;
+ 	//font-family: "Fira Code", monospace;
+ 	//font-family: "JetBrains Mono", monospace;
+
+ 	font-family: "Recursive Mono Linear Static", monospace;
+ 	//font-family: "Recursive Mono Casual Static", monospace;
+}
+
+pre {
+  margin: 0 0 .7em 0;
+  padding: 0 0 0 0;
+  width: auto;
+  // overflow: auto;
+  white-space: pre;
+  font-size: 1em;
+  //background-color: rgba(255,255,153,1);
+  word-break: normal;
+  hyphens: none;
+  tab-size: 2;
+   	//&:nth-last-of-type(1n+2) {
+     //     background-color: aquamarine;
+     // }
+  & + &, table & + & {
+    //margin-top: -0.2rem;
+    // margin-bottom: .5em;
+  }
+  > code {
+    display: block;
+     	//background-color: rgba(51,128,204,.06);
+     //	background-color: rgba(240,240,240,.7) !important;
+     //	outline: 1px dotted rgba(51,128,204,1);
+    // 	background-color: rgba(51,128,204,0.07)!important;
+    // 	border: 1px dotted rgba(51,128,204,.3);
+    // 	border-radius: 3px;
+
+    outline: 1px dotted scale-color($color-code, $lightness: 80%, $saturation: 0%);
+    outline-offset: 2px;
+
+    width: 100%;
+    overflow: hidden;
+    &:hover {
+       		//border: 1px dashed rgba(51,128,204,.7);
+       		//margin-bottom: 0;
+      outline: 1px dotted scale-color($color-code, $lightness: 50%, $saturation: 0%);
+      outline-offset: 2px;
+      width: fit-content;
+      background-color: hsla(0, 0%, 100%, .8);
+      z-index: 1000;
+      position: relative;
+    }
+  }
+  //> code.code-format {
+  //  // background: none;
+  //}
+}
+
+code {
+	//padding: .1em .2em;
+	padding: .1em 0;
+	font-size: 1em;
+	//color: #0066CC;
+	color: $color-code;
+	//background-color: #F7FAFD;
+
+  > b {
+  	//font-weight: normal;
+
+  	//background: scale-color(invert($color-code), $alpha: -80%);
+
+    //outline: 1px solid scale-color($color-code, $alpha: -80%);
+    //outline-offset: 1px;
+
+    //text-shadow: currentColor 0.1em 0.05em 0.4em;
+  }
+
+	&.inlineBlock {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	a:link, a:visited {
+		color: inherit;
+		text-decoration: underline;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

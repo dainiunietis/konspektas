@@ -1,0 +1,317 @@
+@charset "utf-8";
+
+///////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////
+
+.c-figure {
+  //@extend %c-figure-base; // naudojame jei nėra: figure { @extend %c-figure-base; }
+
+  //$thisBlock: &;
+
+  //$this-aaa1: null;
+  //
+  //.aaa1 {
+  //  padding: 0;
+  //  $this-aaa1: &;
+  //}
+  //
+  //.aaa2 {
+  //  padding: 0;
+  //  > #{$this-aaa1}--kitas {
+  //    margin: 0;
+  //  }
+  //}
+
+  //display: flex;
+  //flex-direction: column;
+  //> * {
+  //	flex-basis: 250px;
+  //}
+
+  //> figcaption {
+  //  margin: rem(11px) 0 0 0;
+  //  padding: 0 rem(10px) rem(0px);
+  //  text-align: center;
+  //}
+}
+
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .c-figure__content
+//
+////////////////////////////////////////////////////////////////////
+
+//<figure class="c-figure">
+//  <div class="c-figure__content">...</div>
+//  <figcaption>...</figcaption>
+//</figure>
+
+.c-figure__content {
+  //margin: rem(0px) 0 0 0;
+  //padding: rem(17px) rem(24px) rem(16px);
+  margin-bottom: 0.7em;
+
+  > *:last-child {
+    margin-bottom: 0;
+    //padding-bottom: 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//   .c-figure--ridgeBox
+////////////////////////////////////////////////////////////////////
+
+//<figure class="c-figure c-figure--ridgeBox">
+//	<div class="c-figure__content">...</div>
+//	<figcaption>...</figcaption>
+//</figure>
+
+.c-figure--ridgeBox {
+  > .c-figure__content {
+    padding: rem(13px) rem(22px) rem(15px);
+    border: 9px silver ridge;
+    box-shadow: 1px 1px 10px 0px rgba(94, 94, 94, 0.4), inset 1px 1px 10px 0px rgba(94, 94, 94, 0.4);
+    // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  }
+  > figcaption {
+    margin: rem(6px) 0 0 0;
+    text-align: center;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//   .c-figure--shadow > .c-figure__content
+////////////////////////////////////////////////////////////////////
+
+//<figure class="c-figure c-figure--shadow">
+//  <div class="c-figure__content">...</div>
+//  <figcaption>...</figcaption>
+//</figure>
+
+.c-figure--shadow {
+  //margin: rem(14px) auto rem(2px);
+  padding: 0;
+  > .c-figure__content {
+    margin: 0 auto;
+    padding: rem(19px) rem(29px) rem(21px);
+    border: none;
+    box-shadow: 0 2px 5px 0 hsla(0,0%,0%,0.19), 0 2px 10px 0 hsla(0,0%,0%,0.15);
+    //background-color: hsla(0, 0%, 0%, 0.02);
+    background-image: linear-gradient(-65deg, hsla(0,0%,0%,0.03), hsla(0, 0%, 0%, 0));
+    //> pre {
+    //  // margin: 0;
+    //  // padding: 0;
+    //  display: inline-block;
+    //  vertical-align: top;
+    //  > code {
+    //    // margin: 0;
+    //    // padding: 0;
+    //    border: rgba(123,123,123,0.4) dotted 1px;
+    //    background: none !important;
+    //  }
+    //  + pre {
+    //    margin-top: 0;
+    //    // border-left: cadetblue dotted 1px;
+    //  }
+    //  + figcaption {
+    //    // color: red;
+    //  }
+    //}
+
+  }
+  > figcaption {
+    margin: rem(11px) 0 0 0;
+    padding: 0 rem(10px) rem(0px);
+    text-align: center;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .c-figure--clmFlex-fit
+//
+////////////////////////////////////////////////////////////////////
+
+// stulpelių plotis daromas proporcingas maksimaliam turinio pločiui, t. y. ką nustato width: max-content
+
+//.c-figure--clm-maxContentScale {
+//  > .c-figure__content {
+//    display: flex;
+//    > * {
+//      width: max-content;
+//      flex: 1 1 auto;
+//      margin: 0;
+//      //&:not(:last-child) <<< daro tą patį
+//      &:nth-last-child(1n+2) {
+//        margin-right: $element-figure-clmGap;
+//      }
+//    }
+//  }
+//  > figcaption {
+//    margin-top: 0.4em;
+//  }
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .c-figure--clmFlex-fit
+//
+////////////////////////////////////////////////////////////////////
+
+//.c-figure--clm-flex-maxContentScale--- {
+//  > .c-figure__content {
+//    display: flex;
+//    //flex-wrap: wrap;
+//    //justify-content: space-between;
+//    > * {
+//      //outline: 1px dotted blue;
+//
+//      //width: max-content;
+//      //flex: 1 1 min-content;
+//
+//      //width: auto;
+//      //flex: 1 1 auto;
+//
+//      width: max-content;
+//      flex: 1 1 auto;
+//
+//      //width: max-content;
+//      //flex: 1 1 content;
+//
+//      margin: 0;
+//
+//      //&:not(:last-child) <<< daro tą patį
+//      &:nth-last-child(1n+2) {
+//        margin-right: $element-figure-clmGap;
+//      }
+//
+//      //&:nth-child(1n+2) {
+//      //  margin-left: 1em;
+//      //}
+//      //&:nth-child(3) {
+//      //  flex-shrink: 7;
+//      //}
+//    }
+//  }
+//  > figcaption {
+//    //outline: 1px dotted grey;
+//    //width: 100%;
+//    //flex:  none;
+//
+//    //flex-shrink: 0;
+//    //flex-grow:   0;
+//    //flex-basis:  0;
+//    //font-size: 1.5em;
+//
+//    margin-top: 0.4em;
+//  }
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .c-figure--code
+//
+////////////////////////////////////////////////////////////////////
+
+// <figure class="c-figure--code">
+
+.c-figure--code {
+  $clrBase: scale-color($color-code, $saturation: -60%, $alpha: -25%);
+  $clrBorder: scale-color($clrBase, $lightness: 75%);
+  //$bgClr: scale-color($color-code, $lightness: 87%);
+
+  & > .c-figure__content {
+    //width: 100%;
+    //position: relative;
+    margin: 0 0 0 0;
+    padding: .4em .7em;
+    //padding-top: 50%;
+    background: scale-color($clrBase, $lightness: 90%);
+    border-radius: 10px 10px 0 0;
+    border: solid $clrBorder;
+    border-width: 1px 1px 0 1px;
+  }
+
+  > figcaption {
+    margin:        0em 0 0 0;
+    padding:       .4em 0 .25em;
+
+    // hsla(0, 0%, 0%, 0)
+    //background:    scale-color($clrBase, $lightness: 70%);
+    //$clr: scale-color($clrBase, $lightness: 70%);
+    background:    linear-gradient(0grad, scale-color($clrBase, $lightness: 70%), scale-color($clrBase, $lightness: 95%));
+
+    color:         scale-color($clrBase, $lightness: -50%);
+    font-weight:   700;
+    text-align:    center;
+    border-radius: 0 0 20px 20px;
+    border: solid $clrBorder;
+    border-width: 0 1px 1px 1px;
+    //border-top: 1px dashed #505050;
+    //font-size: 1.1em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .c-figure--videoFluid
+//
+////////////////////////////////////////////////////////////////////
+
+.c-figure--videoFluid {
+  & > .c-figure__content {
+    width: 100%;
+    position: relative;
+    padding: 0;
+    //padding-top: 50%;
+  }
+
+  //iframe,
+  //object,
+  //embed,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+  }
+}
+
+// <figure>
+//   <div class="fluid-width-video-task" style="padding-top: 50%;">
+//     <video src="https://css-tricks.com/wp-content/uploads/2019/02/flip-grid.mp4" controls="" name="fitvid1"></video>
+//   </div>
+// </figure>
+
+//.fluid-width-video-task {
+//  width: 100%;
+//  position: relative;
+//  padding: 0;
+//}
+
+//.fluid-width-video-task iframe,
+//.fluid-width-video-task object,
+//.fluid-width-video-task embed,
+//.fluid-width-video-task video {
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  width: 100%;
+//  height: 100% !important;
+//}
+
+//iframe, img, video {
+//  max-width: 100%;
+//}
+
+
+
+
+
+
+

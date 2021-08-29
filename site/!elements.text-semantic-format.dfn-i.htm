@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Semantinis teksto formatavimas — &lt;dfn&gt; &lt;i&gt; &#8212; dizaino pavyzdžiai</h1>
+<p><code>&lt;dfn&gt;</code> — terminams apibrėžti</p>
+<p><code>&lt;i&gt;</code> — terminams, naudojamiems-kartojamiems tekste, pažymėti</p>
+<p>&nbsp;</p>
+<p><dfn>scelerisque dignissim</dfn> — lacus neque lobortis dolor, sit amet fringilla felis diam in sem</p>
+<p><dfn>vestibulum sit amet maximus</dfn> — faucibus, elit a interdum tempor, lacus neque lobortis dolor, sit amet fringilla </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed ac lorem facilisis, convallis ipsum eu, commodo dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec id massa euismod, posuere orci volutpat, ornare ligula. Integer <i>scelerisque dignissim</i> velit, interdum vestibulum turpis interdum non. Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis, sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl. Vestibulum libero lacus, <i>vestibulum sit amet maximus</i> sed, tempor eu ipsum. Donec faucibus, elit a interdum tempor, lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae iaculis.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Terminų formatavimas (ir kitomis kalbomis)</h2>
+<p><a href="https://www.w3.org/International/questions/qa-b-and-i-tags">https://www.w3.org/International/questions/qa-b-and-i-tags</a> </p>
+<p><a href="http://html5doctor.com/i-b-em-strong-element/">http://html5doctor.com/i-b-em-strong-element/</a> </p>
+<p>HTML5 specifikacija tam pataria naudoti <code>&lt;i&gt;</code>:</p>
+<blockquote>
+  <p>The <a data-link-type="element" href="https://www.w3.org/TR/html5/textlevel-semantics.html#elementdef-i" id="ref-for-elementdef-i①⑦">i</a> element <a data-link-type="dfn" href="https://www.w3.org/TR/html5/dom.html#represent" id="ref-for-represent⑥④">represents</a> a span of text in an alternate voice or mood, or otherwise offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation,
+    <mark>a technical term</mark>
+  ,
+  <mark>an idiomatic phrase from another language</mark>
+  , transliteration, a thought, or a ship name in Western texts.</p>
+  <p><a href="https://www.w3.org/TR/html5/text-level-semantics.html#the-i-element">https://www.w3.org/TR/html5/text-level-semantics.html#the-i-element</a> </p>
+</blockquote>
+<hr>
+<p>A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement. A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement. A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement.</p>
+<blockquote>
+  <p>A <i>grid line</i> is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement. A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement. A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement.</p>
+</blockquote>
+<div class="em-note">
+  <p>A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement. A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement. A <i>grid line </i>is a horizontal or vertical dividing line within the <i>grid container</i>. These are placed as the author directs and create grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. <i>Grid lines</i> can be labeled with <i>identifier tokens</i>; that's the basis of <i>grid item</i> placement.</p>
+</div>
+<hr>
+<h2><code>&lt;dfn&gt;</code></h2>
+<h3>Nustatytas grid'as: <dfn><i>explicit grid</i></dfn>, <dfn><i>defined grid</i></dfn></h3>
+<blockquote>
+  <p>Nustatytas grid'as: <dfn><i>explicit grid</i></dfn>, <dfn><i>defined grid</i></dfn></p>
+</blockquote>
+<p>Nustatytas grid'as: <dfn><i>explicit grid</i></dfn>, <dfn><i>defined grid</i></dfn></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

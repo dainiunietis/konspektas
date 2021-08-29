@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+$elements-dl-bgClr: colorScheme-site("2HL3");
+$elements-dl-brdClr: colorScheme-site("2H");
+//$elements-dl-brdClr: darken(colorScheme-site("2HL3"), 10%);
+
+dl {
+  //margin: .7em 0;
+}
+
+dt {
+  margin: 0 0 0 0;
+  padding: .25em 3em .23em .8em;
+  //background-color: $elements-dl-bgClr;
+  background: linear-gradient(90deg, transparentize($elements-dl-brdClr, 0.7), hsla(0, 0%, 0%, 0));
+  font-weight: bold;
+  color: colorScheme-site("2HD3");
+}
+
+dd {
+  margin: 0;
+  padding: .8em 0 .9em .8em;
+  clear: both;
+
+  //     &:hover {
+  //         $hover-color: hsla(273, 100%, 50%, 0.5);
+  // //         border-color: $hover-color;
+  // //         border-top-color: $hover-color;
+  // //         border-top-width: 33px;
+  // //         border-top-style: solid;
+  // //         margin-top: -33px;
+  //         outline: 2px dotted $hover-color;
+  //         outline-offset: 4px;
+  // //         background-color: scale-color($hover-color, $lightness: 92%, $saturation: 0%);
+  //     }
+}
+
+dt, dd {
+  border: solid $elements-dl-brdClr;
+  border-width: 0 0 0 3px;
+}
+
+
+
+
+

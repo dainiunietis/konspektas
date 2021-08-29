@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # hiding content from everyone
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// By using the hidden attribute or setting visibility: hidden and/or display: none you
+// hide content completely. Users can't see it and screen readers or search engines can't read it.
+
+// Hide visually and from screen readers
+
+.u-hidden
+//, [hidden]
+{
+  display: none !important;
+}
+
+// Hide visually and from screen readers, but maintain layout
+
+.u-invisible {
+  visibility: hidden !important;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # accessible hiding
+//
+/////////////////////////////////////////////////////////////////////////////
+
+.u-hidden-visually {
+  @include szm-hidden-visually;
+}
+
+//---------------------------------------------------------------------------
+// skip link'as — :active ir :focus perrašo .u-hidden-visually su jo modifier'iu
+//---------------------------------------------------------------------------
+
+// https://github.com/h5bp/main.css/blob/main/dist/_helpers.css
+//
+// Extends the .visually-hidden class to allow the element
+// to be focusable when navigated to via the keyboard:
+// https://www.drupal.org/node/897638
+
+// @USAGE:
+// <body>
+// <a href="#content" class="u-hidden-visually u-hidden-visually--focusable">Skip to Content</a>
+// ...
+// <main id="content">...</main>
+// </body>
+
+.u-hidden-visually--focusable {
+  &:active, &:focus {
+    clip:      auto;
+    clip-path: none;
+    height:    auto;
+    margin:    0;
+    overflow:  visible;
+    position:  static !important;
+    width:     auto;
+    white-space: inherit;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # skip link'as su :not()
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// <body>
+// <a href="#content" class="u-hidden-visually-focusable-not">Skip to Content</a>
+// ...
+// <main id="content">...</main>
+// </body>
+
+.u-hidden-visually-focusable-not {
+  //position: absolute;
+  //top: 8px;
+  //left: 8px;
+
+  &:not(:focus) {
+    @include szm-hidden-visually;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Flexbox'o sprendimai-technikos</h1>
+<p>&nbsp;</p>
+<p style="width: 300px; background-color: blueviolet">&nbsp;</p>
+<p>&nbsp;</p>
+<h2><code>width: min-content | max-content</code> naudojimas flex item'ams</h2>
+<table width="1883" class="c-table-linesGrid -u-table-equelCols">
+  <tr>
+    <td width="14%">&nbsp; </td>
+    <th width="6%">flex item'ų turinio free space'o</th>
+    <th width="32%"> visų flex item'ų turinys identiškas </th>
+    <th width="24%"> visų flex item'ų ilgiausi žodžiai vienodi, bet vieno bendras simbolių skaičius didesnis    </th>
+    <th width="24%"> visų flex item'ų bendras simbolių skaičius vienodas, bet vienas turi ilgesnį žodį    </th>
+  </tr>
+  <tr>
+    <th rowspan="2">
+      <p>flex item'ų plotis daromas pagal jų ilgiausią žodį (ar kokį  tagą, pvz. <code>&lt;img&gt;</code>):</p>
+      <p><code>width: min-content; flex-grow: 1</code></p>
+    </th>
+    <th>YRA </th>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas555555</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas 55555</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas 55555</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>NĖRA </th>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra </div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas555555 čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas 55555 čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas 55555 čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th colspan="5"><code>width: auto</code> ir <code>width: max-content</code> veikia vienodai &#8212; flex item'ų plotis daromas pagal jų turinio plotį</th>
+  </tr>
+  <tr>
+    <th rowspan="2">
+      <p><code>width: auto; flex-grow: 1</code></p>
+    </th>
+    <th>YRA </th>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas555555</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas 55555</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas 55555</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>NĖRA </th>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra </div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra </div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas555555 čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas 55555 čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: auto; flex-grow: 1">kažkas 55555 čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th rowspan="2">
+      <p><code>width: max-content; flex-grow: 1</code> </p>
+    </th>
+    <th>YRA </th>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas555555</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas 55555</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas 55555</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>NĖRA </th>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="c-pvz">
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas555555 čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas 55555 čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas 55555 čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<h2>Tarpelių tarp flex item'ų padarymo technikos</h2>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Su margin'sais tarp  flex item'ų ir minusiniu margin'su container'iui      </h3>
+      <div class="c-pvz">
+        <p class="c-pvz__title"><code>flex-wrap: nowrap</code></p>
+        <div id="pvz-1" class="c-pvz__container" style="display: flex; margin-right: -10px">
+          <div class="c-pvz__target" style="margin-right: 10px; flex-grow: 1;">aaa aaa aaa</div>
+          <div class="c-pvz__target" style="margin-right: 10px; flex-grow: 1;">bbb bbb<br>bbb bbb<br>bbb bbb</div>
+          <div class="c-pvz__target" style="margin-right: 10px; flex-grow: 1;">ccc ccc ccc ccc<br>ccc ccc ccc ccc</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <!--<style>
+          #pvz-1 > * {
+/*            width: max-content;*/
+            margin-right: 10px;
+            flex-grow: 1;
+          }
+        </style>-->
+        <p class="c-pvz__title"><code>flex-wrap: wrap</code></p>
+        <div id="pvz-2" class="c-pvz__container">
+          <div style="display: flex; flex-wrap: wrap; margin: 0 -10px -10px 0">
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">aaa aaa aaa</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">bbb bbb<br>bbb bbb<br>bbb bbb</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">ccc ccc ccc ccc<br>ccc ccc ccc ccc</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">aaa aaa aaa</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">bbb bbb<br>bbb bbb<br>bbb bbb</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">ccc ccc ccc ccc<br>ccc ccc ccc ccc</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">aaa aaa aaa</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">bbb bbb<br>bbb bbb<br>bbb bbb</div>
+            <div class="c-pvz__target" style="margin:0 10px 10px 0; flex-grow: 1;">ccc ccc ccc ccc<br>ccc ccc ccc ccc</div>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>...</h3>
+      <p>&nbsp; </p>
+    </td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p> <a href="">11 вещей которые я узнал, читая спецификацию flexbox / Habr</a></p>
+<p>Что я не знал до сей поры, это то, что, в общем случае, я хочу одну из трех комбинаций:</p>
+<ul>
+  <li>Если я хочу, чтобы элемент немного сжимался, когда места недостаточно, но не тянулся шире чем ему надо: <strong>flex: 0 1 auto</strong></li>
+  <li>Если мой flex-элемент должен тянуться для заполнения всего доступного пространства, и немного сжиматься если места не хватает: <strong>flex: 1 1 auto</strong></li>
+  <li>Если мой элемент не должен менять размеры совсем: <strong>flex: 0 0 auto</strong></li>
+</ul>
+<p>Надеюсь, что ты пока не на максимальном изумлении — сейчас станет еще поразительнее.</p>
+<p>Видишь ли, Бригада Flexbox'а (мне нравится думать, что команда flexbox'а носит кожаные куртки с этой надписью сзади — доступны мужские и женские размеры). Где там было это предложение? Ах да, Бригада Flexbox'а знала, что я хочу эти три комбинации свойств в большинстве случаев. Поэтому они дали им <a href="https://www.w3.org/TR/css-flexbox-1/#flex-common">ключевые слова специально для меня</a>.</p>
+<p>Первый случай — это значение <strong>initial</strong> так что ключевое слово не нужно. Для второго случая используется <strong>flex: auto</strong>, и <strong>flex: none</strong> замечательно простое решение чтобы элемент не тянулся совсем.</p>
+<p>&nbsp;</p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <div class="c-pvz">
+        <p class="c-pvz__caption">flex item'ų plotis daromas pagal jų ilgiausią žodį (ar kokį  tagą, pvz. <code>&lt;img&gt;</code>)<br>
+        <code>width: min-content; flex-grow: 1</code></p>
+        <p class="c-pvz__section">YRA free space'o</p>
+        <p class="c-pvz__title">visų flex item'ų turinys identiškas</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+        <p class="c-pvz__title">visų flex item'ų ilgiausi žodžiai vienodi, bet vieno bendras simbolių skaičius didesnis</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+        <p class="c-pvz__title">NEvienodi</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkasssssss čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+        <p class="c-pvz__section">NĖRA free space'o</p>
+        <p class="c-pvz__title">visų flex item'ų ilgiausi žodžiai vienodi</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+        <p class="c-pvz__title">NEvienodi</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkassssssssssssss čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: min-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">flex item'ų plotis daromas pagal jų ilgiausią žodį (ar kokį  tagą, pvz. <code>&lt;img&gt;</code>)<br>
+          <code>width: max-content; flex-grow: 1</code></p>
+        <p class="c-pvz__section">YRA free space'o</p>
+        <p class="c-pvz__title">visų flex item'ų turinys identiškas</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+        <p class="c-pvz__title">NEvienodi</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra</div>
+        </div>
+        <p class="c-pvz__section">NĖRA free space'o</p>
+        <p class="c-pvz__title">visų flex item'ų ilgiausi žodžiai vienodi</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+        <p class="c-pvz__title">NEvienodi</p>
+        <div class="c-pvz__container" style="display: flex">
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkassssssssssssss čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+          <div class="c-pvz__target" style="width: max-content; flex-grow: 1">kažkas čia yra kažkas čia yra kažkas čia yra</div>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

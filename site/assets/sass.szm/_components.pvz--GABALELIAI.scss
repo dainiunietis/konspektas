@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  .c-pvz__note (element)
+//
+/////////////////////////////////////////////////////////////////////////
+
+// ?????????????????????????????
+//.c-pvz__note {
+//  font-size: .9em; font-style: italic;
+//  color: rgba(255,255,255,.9); background: $pvz-mainRedColor;
+//  padding: .15em .3em;
+//}
+
+
+
+
+
+
+/*outline: 1px dashed rgb(255, 84, 96);*/ /*width: 250px*/
+// .c-pvz__container.c-pvz__grid { background-position: 1px 2px; }
+
+
+
+
+
+// <div class="pvz__container pvz__container--mark-targets">
+//   <div class="pvz__target">TARGET</div>
+//   <div class="pvz__target">TARGET</div>
+//   <div class="pvz__target">TARGET</div>
+// </div>
+//$i: 1;
+//@each $color in $dev-colors-fullSat-24-light-2 {
+//	.c-pvz__container--mark-targets .c-pvz__target:nth-child(#{$i}) { background-color: $color; }
+//	$i: $i + 1 !global;
+//}
+
+
+
+
+//D:\webdev\konspektas\site\assets\sass\master.scss
+//D:\webdev\libs\frontend\site\assets\sass\_components.pvz.scss
+//../../../../libs\frontend\site\assets\sass\pvz.scss
+
+/*======  @FILE::assets\sass\_components.pvz.scss  ===========================*/
+/*======  @FILE-PVZ::design-guide__pvz.2-bem.scss -- komentarai apie visa pvz grupe.html  ======================*/
+
+/* @import "lib/_layout-mixins.scss"; */
+//@import "lib/generic-mixins";
+//@import "lib/layout-mixins";
+// @import "pvz-table";
+
+//@import "dev.2-marking";
+//@import "pvz.2-common";
+//@import "pvz.2-tags";
+
+//////////////////////////////////////////////////////////////////////
+//
+//  block modifier - stulpeliai
+//
+//////////////////////////////////////////////////////////////////
+
+//.pvz--cols {
+//  @include cols-common(1em);
+//  .pvz__title {
+//    @include vendor(break-before, column); // Kad head'ingus keltų į sekančio stulpelio pradžią
+//    @include vendor(column-break-before, always);
+//  }
+//  .pvz__container {
+//    @include vendor(column-break-inside, avoid); // Kad būtų neperkeliamas tarp stulpelių tagų turinys
+//    @include vendor(break-inside, avoid);
+//  }
+//}
+//
+//.pvz--cols-n2 {
+//  @include cols-count(2);
+//}
+//
+//.pvz--cols-n3 {
+//  @include cols-count(3);
+//}
+//
+//.pvz--cols-n4 {
+//  @include cols-count(4);
+//}
+//
+//.pvz--cols-w1 {
+//  @include cols-width(15em);
+//}
+//
+//.pvz--cols-w2 {
+//  @include cols-width(25em);
+//}
+//
+//.pvz--cols-w3 {
+//  @include cols-width(35em);
+//}
+
+
+
+
+
+
+
+
+
+
+

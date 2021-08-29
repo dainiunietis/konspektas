@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->(
+<h1>Sublime'o komandos (commands) &#8212; Sublime Text</h1>
+<p><a href="http://www.sublimetext.com/docs/commands">http://www.sublimetext.com/docs/commands</a></p>
+<p><a href="http://docs.sublimetext.info/en/latest/extensibility/commands.html">http://docs.sublimetext.info/en/latest/extensibility/commands.html</a></p>
+<p><a href="http://docs.sublimetext.info/en/latest/reference/commands.html">http://docs.sublimetext.info/en/latest/reference/commands.html</a> &#8212; komandų sąrašas</p>
+<p>Tai kažkiek aukšto lygio, deklaratyvios komandos, spec. Python'o funkcijos, kuriomis atliekami visi veiksmai Sublime'e. Jos naudojamos visur:</p>
+<blockquote>
+  <p>Commands are ubiquitous in Sublime Text: key bindings, menu items and macros all work through the command system. They are found in other places too.</p>
+  <p>Some commands are implemented in the editor&rsquo;s core, but many of them are provided as Python plugins. Every command can be called from a Python plugin.</p>
+</blockquote>
+<h2>Komandų įvykdymas Console'ėje metodu <code>.run_command()</code></h2>
+<p><code>sublime.run_command(&quot;komandos_pavadinimas&quot;, &lt;args&gt;)</code></p>
+<p>Vidiniai ST objektai kuriems galima iškviesti <code>.run_command()</code>:</p>
+<blockquote>
+  <p>Command Dispatching</p>
+  <p>Normally, commands are bound to the application object, a window object or a view object. Window objects, however, will dispatch commands based on input focus, so you can issue a view command from a window object and the correct view instance will be found for you.</p>
+</blockquote>
+<h3>Pavyzdžiai</h3>
+<p> Turime <em>key binding</em>'ą <code>{ &quot;keys&quot;: [&quot;ctrl+insert&quot;], &quot;command&quot;: &quot;pick_color&quot;, &quot;args&quot;: {} }</code>, tą patį galime gauti konsolėje įvykdę <code>sublime.run_command(&quot;pick_color&quot;)</code></p>
+<p><code>view.run_command(&quot;goto_line&quot;, {&quot;line&quot;: 10})</code></p>
+<p><code>view.run_command('insert_snippet', {"contents": "&lt;$SELECTION&gt;"})</code></p>
+<p><code>view.window().run_command("prompt_select_project")</code></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

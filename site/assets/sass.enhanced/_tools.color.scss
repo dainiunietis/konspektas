@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+/////////////////////////////////////////////////////////////////////////////
+
+//adjust-color($color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha])
+//adjust-color($color, $red: -50, $green  : 20, $blue: 220)
+//
+//scale-color($color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha])
+//scale-color($color, $red: 10%, $green: 90%, $blue: 20%)
+//
+//change-color($color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha])
+//change-color($color, $red: 255, $green: 60, $blue: 170)
+
+@function scale-color-list($colors, $args...) {
+  $colors-new: ();
+  @each $color in $colors {
+    $color-new: scale-color($color, $args...);
+    $colors-new: append($colors-new, $color-new);
+  }
+  @return $colors-new;
+}
+
+@function adjust-color-list($colors, $args...) {
+  $colors-new: ();
+  @each $color in $colors {
+    $color-new: adjust-color($color, $args...);
+    $colors-new: append($colors-new, $color-new);
+  }
+  @return $colors-new;
+}
+
+@function change-color-list($colors, $args...) {
+  $colors-new: ();
+  @each $color in $colors {
+    $color-new: change-color($color, $args...);
+    $colors-new: append($colors-new, $color-new);
+  }
+  @return $colors-new;
+}
+
+//@function scale-color-list($colors, $red: "", $green: "", $blue: "", $saturation: "", $lightness: "", $alpha: "") {
+//  $colors-new: ();
+//  @each $color in $colors {
+//    $color-new: scale-color($color, $red, $green, $blue, $saturation, $lightness, $alpha);
+//    $colors-new: append($colors-new, $color-new);
+//  }
+//  @return $colors-new;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

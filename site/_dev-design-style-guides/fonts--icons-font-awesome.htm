@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title></title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="../assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="../assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="../assets/sass/master.utilities.css">
+<link rel="stylesheet" href="../assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="../assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="../assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="../assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="../assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Ikoniniai šriftai &#8212; Font Awesome</h1>
+<p><a href="http://fontawesome.io/">http://fontawesome.io/</a></p>
+<p><code>/_assets/fonts/font-awesome-4.1.0/</code> &#8212; konspekte yra padėta</p>
+<h2>Įterpiame ikonas su Font Awesome'o class'ais su ikonai skirtu tagu</h2>
+<p><a href="http://fontawesome.io/examples/">http://fontawesome.io/examples/</a> &#8212; įvairūs naudojimo variantai</p>
+<p>Simbolių-ikonų pavadinimus imame iš: </p>
+<ul>
+	<li><a href="http://fontawesome.io/icons/">http://fontawesome.io/icons/</a></li>
+	<li><a href="http://fontawesome.io/cheatsheet/">http://fontawesome.io/cheatsheet/</a></li>
+	<li> <a href="http://astronautweb.co/snippet/font-awesome/">http://astronautweb.co/snippet/font-awesome/</a></li>
+</ul>
+<h3>Paprasčiausias variantas</h3>
+<p><i class="fa fa-camera-retro"></i> retro fotikas &#8212; <code>&lt;i class=&quot;fa fa-<strong>ikonos-pavadinimas</strong>&quot;&gt;&lt;/i&gt;</code></p>
+<h3>Ikonos padidinimas</h3>
+<p><i class="fa fa-camera-retro fa-lg"></i> &#8212; kažkiek didesnis &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-lg</strong>&quot;&gt;&lt;/i&gt;</code></p>
+<p><i class="fa fa-camera-retro fa-2x"></i> &#8212; didesnis 2x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-2x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+<p><i class="fa fa-camera-retro fa-3x"></i> &#8212; didesnis 3x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-3x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+<p><i class="fa fa-camera-retro fa-4x"></i> &#8212; didesnis 4x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-4x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+<p><i class="fa fa-camera-retro fa-5x"></i> &#8212; didesnis 5x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-5x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+<h3>List'ų ikonų nustatymas</h3>
+<pre><code>&lt;ul class="<strong>fa-ul</strong>"&gt;
+  &lt;li&gt;&lt;i class="<strong>fa-li</strong> fa fa-ikonos-pavadinimas"&gt;&lt;/i&gt;Apie tai anai&lt;/li&gt;
+  ...
+&lt;/ul&gt;</code></pre>
+<ul class="fa-ul">
+  <li><i class="fa-li fa fa-check-square"></i>List icons</li>
+  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+  <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+  <li><i class="fa-li fa fa-square"></i>in lists</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<dl>
+	<dt>Paprasčiausias variantas</dt>
+	<dd>
+		<p><i class="fa fa-camera-retro"></i> retro fotikas &#8212; <code>&lt;i class=&quot;fa fa-<strong>ikonos-pavadinimas</strong>&quot;&gt;&lt;/i&gt;</code></p>
+	</dd>
+	<dt>Ikonos padidinimas</dt>
+	<dd>
+		<p><i class="fa fa-camera-retro fa-lg"></i> &#8212; kažkiek didesnis &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-lg</strong>&quot;&gt;&lt;/i&gt;</code></p>
+		<p><i class="fa fa-camera-retro fa-2x"></i> &#8212; didesnis 2x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-2x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+		<p><i class="fa fa-camera-retro fa-3x"></i> &#8212; didesnis 3x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-3x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+		<p><i class="fa fa-camera-retro fa-4x"></i> &#8212; didesnis 4x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-4x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+		<p><i class="fa fa-camera-retro fa-5x"></i> &#8212; didesnis 5x &#8212; <code>&lt;i class=&quot;fa fa-camera-retro <strong>fa-5x</strong>&quot;&gt;&lt;/i&gt;</code></p>
+	</dd>
+	<dt>&nbsp;</dt>
+	<dd>
+		<p><code>&lt;i class=&quot;fa fa-simbolio-pavadinimas&quot;&gt;&lt;/i&gt;</code></p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+	</dd>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

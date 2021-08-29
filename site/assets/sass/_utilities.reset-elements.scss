@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////
+//
+//   reset headings
+//
+////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// <h1..6 class="u-reset-heading">
+//
+// <div class="u-reset-heading-c">
+//   <h1>
+//
+// <div class="u-reset-heading-d">
+//   <div>
+//     <h1>
+
+.u-reset-heading,
+.RSH {
+  &:before { content: ""; }
+  strong { font-weight: bold; background: none; }
+}
+
+@each $tag in h1 h2 h3 h4 h5 h6 {
+  .u-reset-heading-d #{$tag}, .u-reset-heading-c > #{$tag},
+  .RSHd #{$tag}, .RSHc > #{$tag} {
+    @extend .u-reset-heading;
+  }
+}
+
+//--------------------------------------- pirmasis veikiantis variantas
+//$heading-tags: h1 h2 h3 h4 h5 h6;
+//
+//// <div class="u-reset-headings">
+////   <h1>
+//@each $tag in $heading-tags {
+//  .u-reset-headings #{$tag} {
+//    &:before { content: ""; }
+//    strong { font-weight: bold; background: none; }
+//  }
+//}
+//---------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////
+//
+//   .
+//
+////////////////////////////////////////////////////////////////////

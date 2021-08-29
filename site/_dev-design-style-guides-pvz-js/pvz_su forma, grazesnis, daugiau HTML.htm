@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sprendimai su string'ais-eilutėmis</title>
+
+<style type="text/css">
+body { font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; margin: 1.3em; }
+p { margin: 0 0 7px 0; }
+
+form { border: dotted 1px #F94F4F; padding: .1em .6em .6em; margin: 1em 0; }
+input[type="text"], textarea, select { width:100%; margin: 2px 0px 0px 0px; padding: .3em 0 .3em .3em; color: #F94F4F; font: bold 0.9em Verdana, Arial, Helvetica, sans-serif; }
+input[type="button"] { color: black; margin: 0 0 0 0; padding: .1em 2em .2em; font-size: 1em; }
+label { font-size: .9em; color: gray; }
+
+.Row { clear:both; margin: .5em .5em 0 0; padding: 0; background-color: -RED }
+.Col1, .Col2 { float:left; padding:0 0px 0 0; margin:0 2% 0 0; }
+.Col1 { width: 100%; } .Col1:last-child { margin-right: 0; }
+.Col2 { width: 48%; } .Col2:last-child { margin-right: 0; width: 50%; }
+.w150 {  }
+
+.ClearChilds { display: block; }
+.ClearChilds:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; font-size: 0; }
+</style>
+
+<script type="text/javascript" src="../assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_zm/debug_data.js"></script>-->
+
+<script type="text/javascript">
+var sprendimuFunkcijos = {};
+
+$(document).ready(function(){
+	$('.js-darom').click(function(){
+		var inputs = $("[class^='js-input']",this.form).map(function(){
+			return $(this).val();
+		}).get();
+		var resultElem = $('.js-result',this.form);
+		sprendimuFunkcijos[this.form.id](inputs,resultElem);
+	});
+});
+</script>
+</head>
+<body>
+
+<h3>extract front part of string prior to searchString</h3>
+<script type="text/javascript">
+sprendimuFunkcijos.F1 = function(inputTextArr,resultElem) {
+	var output;
+	var tekstas = inputTextArr[0];
+	var rasti = inputTextArr[1];
+
+	/*var offset = tekstas.indexOf(rasti);			//be RegExp
+	if (offset == -1) output = 'nerasta';
+	else output = tekstas.substring(0,offset);*/
+
+	var pattern = new RegExp(rasti);					//su RegExp
+	var result = pattern.exec(tekstas)
+	if (result) output = RegExp.leftContext;
+	else output = 'nerasta';
+
+	$(resultElem).val(output);
+}
+</script>
+<form id="F1">
+	<div class="Row ClearChilds">
+		<div class="Col2">
+			<label>Tekstas:</label><br />
+			<input class="js-input-1" type="text" value="bėgo kiškis pievute" />
+			<!--<textarea class="js-input-1" rows="3">bėgo kiškis pievute</textarea>-->
+		</div>
+		<div class="Col2">
+			<label>Rasti:</label><br />
+			<input class="js-input-2" type="text" value="kiškis" />
+			<!--<textarea class="js-input-2" rows="3">kiškis</textarea>-->
+		</div>
+	</div>
+	<div class="Row ClearChilds">
+		<div class="Col1">
+			<label>Rezultatas:</label><br />
+			<input class="js-result" type="text" value="" />
+			<!--<textarea class="js-result" rows="4"></textarea>-->
+		</div>
+	</div>
+	<div class="Row ClearChilds">
+			<input class="js-darom" type="button" value="Darom" />
+	</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+/*   /////
+    ///
+   ///		Definition lists
+  ///
+ /////   */
+
+
+/***/
+
+
+/***/
+
+dl.tagSEcode dt, .tagSEcode-dl dt {
+	font-family: "Courier New", Courier, mono;
+	color: #0066CC;
+	line-height: 18px;
+}
+
+dl.tagSEcode dd, .tagSEcode-dl dd {
+	line-height: 18px;
+	font-size: .85em;
+}
+
+/***/
+
+dl.Tag-SameRow dl {
+	margin: 0;
+	padding: 0;
+}
+
+dl.Tag-SameRow dt {
+	width: 9em;
+	margin: 0em 0 0 0;
+	/*padding: .3em 0 0 0;*/
+	padding: .2em .5em .7em .2em;
+	float: left;
+	clear: both;
+	border: solid #BEBEBE 3px;
+	border-width: 0px 0 0 0;
+	text-align: right;
+}
+
+dl.Tag-SameRow dt:first-child {
+	/*margin-top: 0;*/
+}
+
+dl.Tag-SameRow dt + dd {
+	/*margin-top: 1em;*/
+}
+
+dl.Tag-SameRow dd {
+	margin: 0 0 .7em 9.7em;
+	padding: .3em 0 .2em .5em;
+	border: solid #BEBEBE 3px;
+	border-width: 0 0 0 3px;
+	clear: none;
+}
+
+dl.Tag-SameRow dd p:first-child {
+	margin-top: 0;
+}
+
+/***/
+
+dl.Tag-SameRow2 dl {
+	margin: 0;
+	padding: 0;
+}
+
+dl.Tag-SameRow2 dt {
+	width: 9em;
+	margin: 0em 0 0 0;
+	/*padding: .3em 0 0 0;*/
+	padding: .2em .5em .7em .2em;
+	float: left;
+	clear: both;
+	border: solid #BEBEBE 3px;
+	border-width: 3px 0 0 0;
+	text-align: right;
+}
+
+dl.Tag-SameRow2 dt:first-child {
+	/*margin-top: 0;*/
+}
+
+dl.Tag-SameRow2 dt + dd {
+	/*margin-top: 1em;*/
+}
+
+dl.Tag-SameRow2 dd {
+	margin: 0 0 .7em 9.7em;
+	padding: .3em 0 .2em .5em;
+	border: solid #BEBEBE 3px;
+	border-width: 3px 0 0 0;
+	clear: none;
+}
+
+dl.Tag-SameRow2 dd p:first-child {
+	margin-top: 0;
+}
+
+/*******************************
+ *
+ *          dl.Tag-SameRow3 Fnc-ClearChilds
+ *
+ *******************************/
+
+dl.Tag-SameRow3 {
+	border: none;
+}
+
+dl.Tag-SameRow3 dt {
+	width: auto;
+	margin: 0 0 0 0;
+	padding: 0 1em 1em 0;
+	float: left;
+	clear: both;
+	background: none;
+	border: none;
+}
+
+dl.Tag-SameRow3 dd {
+	margin: 0 0 0 0;
+	padding: 0 0 0 2em;
+	/*padding: .3em 0 .2em .5em;*/
+	/*border: solid #BEBEBE 3px;*/
+	/*border-width: 3px 0 0 0;*/
+	clear: none;
+	border: none;
+}
+
+
+/*******************************
+ *
+ *          dl.Tag-Line
+ *
+ *******************************/
+
+dl.Tag-Line dl {
+	margin: 0;
+	padding: 0;
+}
+
+dl.Tag-Line dt {
+	width: 7em;
+	margin: 0em 0 0 0;
+	padding: .3em 0 0 0;
+	float: left;
+	clear: both;
+	background: none;
+	border: none;
+	/*font-weight: bold;*/
+}
+
+dl.Tag-Line dt:first-child {
+	/*margin-top: 0;*/
+}
+
+dl.Tag-Line dt + dd {
+	/*margin-top: 1em;*/
+}
+
+dl.Tag-Line dd {
+	margin: 0 0 .7em 8em;
+	padding: .3em 0 .2em .5em;
+	border-left: 1px solid #666;
+	clear: none;
+}
+
+dl.Tag-Line dd p:first-child {
+	margin-top: 0;
+}
+
+
+
+

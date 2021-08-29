@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Kodas, code &#8212; Design Style Guide</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Kodas, code &#8212; Design Style Guide</h1>
+<h2>Kodo formatavimas-spalvinimas su JS</h2>
+<p>Kaip nurodome HTML'e programavimo kalbą:</p>
+<pre><code>&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;
+  ...
+&lt;/code&gt;&lt;/pre&gt;</code>
+</pre>
+<p>Nurodome HTML'e nedaryti formatavimo-spalvinimo su JS:</p>
+<pre><code>&lt;pre&gt;&lt;code class=&quot;language-none&quot;&gt;
+  ...
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+<h3>highlightjs.org</h3>
+<p>Kaip įjungiamas formatavimas-spalvinimas: <br>
+/assets/js/master.requirejs.js # formatavimas-spalvinimas su highlightjs.org</p>
+<div class="o-mcl o-mcl--N3 o-mcl--start-h4">
+  <h4>automatinis prog. kalbos nustatymas </h4>
+  <p><code>&lt;pre&gt;&lt;code&gt;</code> &#8212; čia daro kodo spalvinimą</p>
+  <pre><code>&lt;div&gt;
+  &lt;p&gt;Agurkai šiemet auga negausiai &amp;#8212; kodėl?&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<pre><code>div {
+  padding: 0 1em;
+  border: solid red 3px;
+}
+
+.geras {
+  text-align: left;
+  color: blue;
+}</code></pre>
+<pre><code>$plotis: 80%;
+
+#navbar {
+  width: $plotis;
+  height: 23px;
+  ul { list-style-type: none; }
+  li {
+    float: left;
+    a { font-weight: bold; }
+  }
+}</code></pre>
+  <pre><code>function RemoveText(el){
+  var parent = el.parentNode;
+  for(var i=0; i &lt; parent.childNodes.length;i++) {
+    var para = parent.childNodes[i];
+    if(para.nodeName == "P" &amp;&amp; para.getAttribute('class')=='added') {
+      parent.removeChild(para);
+      break;
+    }
+  }
+}</code></pre>
+  <h4>nurodyta prog. kalba</h4>
+  <p><code>&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;</code> &#8212; čia daro kodo spalvinimą</p>
+  <pre><code class="language-html">&lt;div&gt;
+  &lt;p&gt;Agurkai šiemet auga negausiai &amp;#8212; kodėl?&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<pre><code>div {
+  padding: 0 1em;
+  border: solid red 3px;
+}
+
+.geras {
+	text-align: left;
+  color: blue;
+}</code></pre>
+<pre><code class="language-scss">$plotis: 80%;
+
+#navbar {
+  width: $plotis;
+  height: 23px;
+  ul { list-style-type: none; }
+  li {
+    float: left;
+    a { font-weight: bold; }
+  }
+}</code></pre>
+  <pre><code class="language-js">function RemoveText(el){
+  var parent = el.parentNode;
+  for(var i=0; i &lt; parent.childNodes.length;i++) {
+    var para = parent.childNodes[i];
+    if(para.nodeName == "P" &amp;&amp; para.getAttribute('class')=='added') {
+      parent.removeChild(para);
+      break;
+    }
+  }
+}</code></pre>
+  <h4>išjungtas formatavimas</h4>
+  <p><code>&lt;pre&gt;&lt;code class=&quot;nohighlight&quot;&gt;</code> &#8212; taip išjungia kodo spalvinimą</p>
+  <pre><code class="nohighlight">&lt;div&gt;
+  &lt;p&gt;Agurkai šiemet auga negausiai &amp;#8212; kodėl?&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<pre><code class="nohighlight">div {
+  padding: 0 1em;
+  border: solid red 3px;
+}
+
+.geras {
+	text-align: left;
+  color: blue;
+}</code></pre>
+<pre><code class="nohighlight">$plotis: 80%;
+
+#navbar {
+  width: $plotis;
+  height: 23px;
+  ul { list-style-type: none; }
+  li {
+    float: left;
+    a { font-weight: bold; }
+  }
+}</code></pre>
+  <pre><code class="nohighlight">function RemoveText(el){
+  var parent = el.parentNode;
+  for(var i=0; i &lt; parent.childNodes.length;i++) {
+    var para = parent.childNodes[i];
+    if(para.nodeName == "P" &amp;&amp; para.getAttribute('class')=='added') {
+      parent.removeChild(para);
+      break;
+    }
+  }
+}</code></pre>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Nebaigtas kodo variantas _code2.scss:</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

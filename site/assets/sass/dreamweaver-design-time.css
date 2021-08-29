@@ -1,0 +1,46 @@
+i {
+  position: static;
+  background-color: transparent !important;
+}
+
+blockquote {
+  font-size: 1em;
+  position: static;
+}
+
+td, th {
+  vertical-align: top;
+}
+
+details, summary {
+  display: block;
+}
+
+del > * {
+  display: unset;
+}
+
+.o-collapse-locdep {
+  position: static;
+}
+.c-figure {
+  position: static !important;
+}
+
+html > body figure {
+  position: static !important;
+}
+
+figure {
+  position: static !important;
+}
+
+.figure--img-bigCaption, .c-figure--dashedTB {
+  position: static !important;
+}
+
+.c-pvz__title code {
+  background-color: transparent;
+}
+
+/*# sourceMappingURL=dreamweaver-design-time.css.map */

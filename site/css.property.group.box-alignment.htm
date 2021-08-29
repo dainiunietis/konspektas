@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1> Box Alignment (CSS Box Alignment module)</h1>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment">CSS Box Alignment - CSS: Cascading Style Sheets | MDN</a></p>
+<p> <a href="https://www.w3.org/TR/css-align-3/">CSS Box Alignment Module Level 3</a></p>
+<p> <a href="https://drafts.csswg.org/css-align/">CSS Box Alignment Module Level 3</a></p>
+<p>&nbsp;</p>
+<p>Kur <q>box alignment properties</q> naudojamos:</p>
+<blockquote>
+  <p>The CSS Box Alignment module specifies CSS features that relate to the alignment of boxes in the various CSS box layout models: block layout, table layout, flex layout, and grid layout.</p>
+</blockquote>
+<p>Tos pačios <q>box alignment properties</q> skirtinguose <q>CSS layout models</q>uose gali veikti skirtingai:</p>
+<blockquote>
+  <p>As different layout methods pose different constraints in terms of alignment, some of the behaviour of Box Alignment is layout method dependent.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Key concepts and terminology</h2>
+<p> <a href="https://rachelandrew.co.uk/css/cheatsheets/box-alignment">Box Alignment Cheatsheet - rachelandrew.co.uk</a></p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>HTML tagų-elementų struktūra</h3>
+      <p>Yra dviejų tipų tagai-elementai: <i>alignment container</i> ir <i>alignment subject</i> </p>
+      <table width="445" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="22%">&nbsp;</td>
+          <td width="40%">
+            <p><i>alignment container</i></p>
+          </td>
+          <td width="38%"><i>alignment subject</i></td>
+        </tr>
+        <tr>
+          <td>Flex layout</td>
+          <td>flex container</td>
+          <td>flex item </td>
+        </tr>
+        <tr>
+          <td>Grid layout</td>
+          <td>Grid container </td>
+          <td>Grid item </td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>When you align an item, you do so within an <strong>alignment container</strong>. This is the rectangle you are aligning the item or items inside, usually the containing block. The item you are aligning inside that block is the <strong>alignment subject</strong>.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>writing modes </h3>
+      <blockquote>
+        <p id="Relationship_to_writing_modes">Relationship to writing modes</p>
+        <p>Alignment is linked to writing modes in that when we align an item we do not consider whether we are aligning it to the physical dimensions of top, right, bottom and left. Instead we describe alignment in terms of the start and end of the particular dimension we are working with. This ensures that alignment works in the same way whichever writing mode the document has. </p>
+      </blockquote>
+      <blockquote>
+        <p>Most of these keyword values work in reference to the writing mode of the document. Therefore <code>start</code> may be the left-hand line of a grid container when working in English, but the right-hand line when working in a right-to-left language.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Kryptys / Dimension, Axis</h3>
+      <p>Yra dvi viena kitai statmenos krytys, kurių konkrečią horizantalią ar vertikalią kryptį nustato <i>writing mode</i>:</p>
+      <ul>
+        <li><i>inline-main axis</i></li>
+        <li><i>block-cross axis</i></li>
+      </ul>
+      <table width="445" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="27%">&nbsp;</td>
+          <td width="35%">Inline Axis (<a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-axis">inline</a>)</td>
+          <td width="38%">Block Axis (<a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-axis">block</a>)</td>
+        </tr>
+        <tr>
+          <td>Flex layout</td>
+          <td>Main Axis (<a data-link-type="dfn" href="https://www.w3.org/TR/css-flexbox-1/#main-axis">main</a>)</td>
+          <td>Cross Axis (<a data-link-type="dfn" href="https://www.w3.org/TR/css-flexbox-1/#cross-axis">cross</a>)</td>
+        </tr>
+        <tr>
+          <td>Grid layout</td>
+          <td>Row Axis</td>
+          <td>Column Axis</td>
+        </tr>
+      </table>
+      <blockquote>
+        <p>Block and Inline Axis</p>
+        <p>You will find the Block and Inline Axis referred to in various ways. The Block Axis, is referred to as the <strong>Column Axis</strong> in the Grid specification and in Flexbox as the <strong>Cross Axis</strong> as it runs across the <strong>Main Axis</strong>.</p>
+        <p>The Inline Axis is referred to as the <strong>Row Axis</strong> in the Grid specification and in Flexbox as the <strong>Main Axis</strong>.</p>
+        <p>Alignment on these Axes is easier to understand in Grid as we always have strict rows and columns, in flexbox we also have to consider the ability to change the direction of the main axis from row to column.</p>
+      </blockquote>
+      <blockquote>
+        <p id="Two_dimensions_of_alignment">Two dimensions of alignment</p>
+        <p>When using the box alignment properties you will align content on one of two axes — the inline (or main) axis, and the block (or cross) axis. The inline axis is the axis along which words in a sentence flow in the writing mode being used — for English, for example, the inline axis is horizontal. The block axis is the axis along which blocks, such as paragraph elements, are laid out and it runs across the Inline axis.</p>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Pačios <q>box alignment properties</q></h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <td colspan="2">
+      <h3>Savybių suvestinė</h3>
+      <p><img src="images/20190308_180708_CSS Box Alignment Module Level 3.png" alt="" width="776" height="461"/></p>
+    </td>
+    <td width="25%">
+      <h3>Savybių pavadinimų sistema-struktūra </h3>
+      <p><q>box alignment properties</q> pavadinimų fragmentų reikšmės:</p>
+      <dl>
+        <dt>prasideda:</dt>
+        <dd>
+          <ul>
+            <li><code>justify-*:</code> &#8212;  reguliuoja <i>inline-main axis</i></li>
+            <li><code>align-*:</code> &#8212; reguliuoja <i>block-cross axis</i></li>
+          </ul>
+          <blockquote>
+            <p>Note: This specification uses the terms "justify" and "align" to distinguish between alignment in the main/inline and cross/block dimensions, respectively. The choice is somewhat arbitrary, but having the two terms allows for a consistent naming scheme that works across all of CSS's layout models (including <a href="https://www.w3.org/TR/css-flexbox-1/#box-model">CSS Flexbox 1 §2 Flex Layout Box Model and Terminology</a>)</p>
+          </blockquote>
+        </dd>
+        <dt>baigiasi:</dt>
+        <dd>
+          <ul>
+            <li><code>*-items:</code> &#8212;  skirta <i>alignment container</i>, bet reguliuoja jo <i>alignment subject</i></li>
+            <li><code>*-self:</code> &#8212;  skirta ir reguliuoja<i></i> <i>alignment subject</i></li>
+          </ul>
+          <blockquote>
+            <p>Note: The <code>*-items:</code> properties don't affect the element itself. When set on a container, they specify the interpretation of any <code>*-self: auto</code> used on children of the container element.</p>
+          </blockquote>
+        </dd>
+      </dl>
+      <p></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Savybių paskirties architektūra</h3>
+      <p>Kiekviena <q>box alignment property</q> turi du aspektus:</p>
+      <ul>
+        <li>
+          <p>kokią kryptį reguliuoja</p>
+          <blockquote>
+            <p>which dimension they apply to (<a data-link-type="dfn" href="https://www.w3.org/TR/css-flexbox-1/#main-axis" id="ref-for-main-axis">main</a>/<a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-axis" id="ref-for-inline-axis">inline</a> vs. <a data-link-type="dfn" href="https://www.w3.org/TR/css-flexbox-1/#cross-axis" id="ref-for-cross-axis">cross</a>/<a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-axis" id="ref-for-block-axis">block</a>)</p>
+          </blockquote>
+        </li>
+        <li>
+          <p>ir ar skirta <i>alignment container</i>, ar <i>alignment subject</i></p>
+          <blockquote>
+            <p>whether they control the position of the box within its parent, or the box's content within itself.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%">
+      <h3>Savybių reikšmių tipai</h3>
+      <blockquote>
+        <p>The specification defines three types of alignment:</p>
+        <ul>
+          <li><a href="https://drafts.csswg.org/css-align/#positional-values">Positional alignment</a> - keywords such as start, end, center</li>
+          <li><a href="https://drafts.csswg.org/css-align/#baseline-values">Baseline alignment</a> - baseline, last baseline, first baseline</li>
+          <li><a href="https://drafts.csswg.org/css-align/#distribution-values">Distributed alignment</a> - includes space-between and space-around </li>
+        </ul>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <h3>Pabandymai kaip veikia su <i>block container</i></h3>
+      <div class="c-pvz">
+        <p class="c-pvz__caption">...</p>
+        <p class="c-pvz__section">...</p>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="justify-content: center; height: 270px">
+          <div>flex item 1</div>
+          <div>flex item 2</div>
+          <div>flex
+            item <br>
+            3</div>
+          <div>flex item 4</div>
+          <div>flex <br>
+            item <br>
+            5</div>
+          <div>flex item 6</div>
+        </div>
+        <p class="c-pvz__title">...</p>
+        <div class="c-pvz__container c-pvz__container--childTarget" style="-justify-content: center; justify-items: center; align-items: center; height: 270px">
+          <span>item 1</span>
+          <span>item 2</span>
+          <span>item <br>
+            3</span>
+          <span>item 4</span>
+          <span>item<br>
+            5</span>
+          <span>item 6</span>
+        </div>
+        <p class="c-pvz__title">&nbsp;</p>
+        <p class="c-pvz__title">&nbsp;</p>
+        <p class="c-pvz__title">&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

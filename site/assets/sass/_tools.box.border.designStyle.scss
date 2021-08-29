@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////
+//
+//   $g-designStyle
+//
+///////////////////////////////////////////////////////////////////
+
+@function szm-designStyle-border-data() {
+  @return (
+    thin:       solid coral 1px,
+    thinDotted: dotted deeppink 1px,
+    dashed:     dashed scale-color(coral, $lightness:   -20%) 2px,
+    thick:      solid scale-color(deeppink, $lightness: -60%) 3px
+  );
+}
+//$szm-designStyle-border-data: (
+//  thin:       solid coral 1px,
+//  thinDotted: dotted deeppink 1px,
+//  dashed:     dashed scale-color(coral, $lightness:   -20%) 2px,
+//  thick:      solid scale-color(deeppink, $lightness: -60%) 3px
+//);
+
+@function szm-designStyle-border-variation-data() {
+  @return (
+    styles: dotted dashed solid double,
+    widths: map_values($szm-line-thickness),
+    // du galimi list'o reikšmių variantai:
+    //   magenta          <<< color name and value
+    //   (red: crimson)   <<< red — color name
+    //                        crimson — color value
+    colors: red magenta gold coral aqua blue deeppink
+  );
+}
+//$szm-designStyle-border-variation-data: (
+//  styles: dotted dashed solid double,
+//  widths: map_values($szm-line-thickness),
+//  // du galimi list'o reikšmių variantai:
+//  //   magenta          <<< color name and value
+//  //   (red: crimson)   <<< red — color name
+//  //                        crimson — color value
+//  colors: red magenta gold coral aqua blue deeppink,
+//);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

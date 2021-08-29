@@ -1,0 +1,132 @@
+
+//.test-colorScheme-site {
+//  > * {
+//    //width: 200px;
+//    min-width: 4em;
+//    text-align: center;
+//    padding: 5em .5em;
+//    display: inline-block;
+//    text-shadow: 1px 1px 1px #e4e4e4;
+//    list-style: none;
+//    white-space: pre;
+//  }
+//  $i: 1;
+//  @each $name, $color in $colorScheme-site-data {
+//    > *:nth-child(#{$i}) {
+//      background: $color;
+//      &::before {
+//        //content: attr(id);
+//        content: "[#{$i}] \a #{$name}";
+//      }
+//    }
+//    $i: $i + 1;
+//  }
+//}
+
+
+
+
+
+//@function colorScheme-site($key: 'primary') {
+//  @return map-get($color-scheme-main, $key);
+//}
+
+
+//@each $name, $color in $color-scheme-lumen {
+//  #color-scheme-lumen_#{$name} {
+//    //width: 200px;
+//    min-width: 6em;
+//    text-align: center;
+//    padding: 5em .5em;
+//    display: inline-block;
+//    text-shadow: 1px 1px 1px #e4e4e4;
+//    background: get-color-scheme-lumen("#{$name}");
+//    &::before {
+//      //content: "aaa";
+//      //content: attr(id);
+//      content: $name;
+//    }
+//  }
+//}
+
+
+
+
+
+//$social: (twitter: $Twitter, facebook: $FB, linkedin: $LinkedIn, googleplus: $GPlus);
+//@each $social, $color in $social {
+//  .social-link--#{$social} {
+//    background-color: $color; transition: background-color,
+//  .5s, ease-in; margin: 5px; box-shadow: 3px 3px 5px 0px
+//  rgba(0,0,0,0.75);
+//    &:focus, &:hover {
+//      background-color: darken($color,10%);
+//    }
+//    &:before {
+//      background-image: url('../img/#{$social}.png');
+//    }
+//  }
+//}
+
+
+//#color-scheme-lumen_1 {
+//  background: get-color-scheme-lumen("1");
+//}
+//
+//#color-scheme-lumen_1-harmon {
+//  background: get-color-scheme-lumen("1-harmon");
+//}
+//
+//#color-scheme-lumen_1-harmon-dark1 {
+//  background: get-color-scheme-lumen("1-harmon-dark1");
+//}
+//
+//#color-scheme-lumen_1-harmon-dark2 {
+//  background: get-color-scheme-lumen("1-harmon-dark2");
+//}
+//
+//#color-scheme-lumen_1-harmon-dark3 {
+//  background: get-color-scheme-lumen("1-harmon-dark3");
+//}
+//
+//#color-scheme-lumen_1-harmon-light1 {
+//  background: get-color-scheme-lumen("1-harmon-light1");
+//}
+//
+//#color-scheme-lumen_1-harmon-light2 {
+//  background: get-color-scheme-lumen("1-harmon-light2");
+//}
+//
+//#color-scheme-lumen_1-harmon-light3 {
+//  background: get-color-scheme-lumen("1-harmon-light3");
+//}
+//
+////---------------------------------------------------------
+//
+//#color-scheme-lumen_2 {
+//  background: get-color-scheme-lumen("2");
+//}
+//
+//#color-scheme-lumen_2-harmon {
+//  background: get-color-scheme-lumen("2-harmon");
+//}
+//
+//#color-scheme-lumen_2-harmon-dark1 {
+//  background: get-color-scheme-lumen("2-harmon-dark1");
+//}
+//
+//#color-scheme-lumen_2-harmon-dark2 {
+//  background: get-color-scheme-lumen("2-harmon-dark2");
+//}
+//
+//#color-scheme-lumen_2-harmon-light1 {
+//  background: get-color-scheme-lumen("2-harmon-light1");
+//}
+//
+//#color-scheme-lumen_2-harmon-light2 {
+//  background: get-color-scheme-lumen("2-harmon-light2");
+//}
+
+//background: $c-color;
+
+

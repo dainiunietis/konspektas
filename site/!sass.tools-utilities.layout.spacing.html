@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <style>
+    :root {
+    }
+
+    /*-------------------------------------------------------------*/
+
+    .a20210404145110 {
+      --pvz-color-bg:   hsl(177, 60%, 61%);
+      --pvz-color-item: hsla(0, 0%, 100%, 0.7);
+      display:          flex;
+      align-items:      flex-start;
+      /*flex-wrap: wrap;*/
+      /*gap:              1em .7em;*/
+    }
+
+    .a20210404145110 > * {
+      /*background: var(--pvz-color-bg);*/
+      text-align: justify;
+    }
+
+    .a20210404145110 > *::before,
+    .cp-pvz--wrap > * > *::before {
+      content: "." attr(class) " ";
+      font: 900 2em "Source Code Pro", monospace;
+      /*color: blue;*/
+    }
+  </style>
+</head>
+<body class="-s-page-pvz">
+<!-- kad darytų TOC-turinį -->
+<script src="assets/js/~pvz-example-test-template.js"></script>
+
+<h1>SASS ir CSS priemonės  tarpams-atstumams / spacing'ui</h1>
+<p>utilities-trump class'ai tarpams-atstumams / spacing'ams nustatyti su <code>padding:</code> ir <code>margin:</code></p>
+<h2>Paragrafinis vertikalus spacing'as</h2>
+<h3>SASS kintamasis</h3>
+<p>sass\_tools.layout.spacing.scss ✒ <code>$szm-spacing-vertical-paragraph</code></p>
+<h3>CSS kintamasis</h3>
+<p>sass\_utilities.layout.spacing.scss ✒ <code>var(--szm-spacing-vertical-paragraph)</code></p>
+<h3>Utilities class'ai</h3>
+<p>sass\_utilities.layout.spacing.scss ✒</p>
+<pre><code>// SPacing Vertical Margin
+.u-spvm, .u-spvm-c > * {
+  margin-bottom: $szm-spacing-vertical-paragraph !important;
+}
+
+// SPacing Vertical Padding
+.u-spvp, .u-spvp-c > * {
+  padding-bottom: $szm-spacing-vertical-paragraph !important;
+}</code></pre>
+<h2>Užvardintų tarpų–atstumų / spacing'ų dydžių skalė</h2>
+<h3>Patys spacing'o dydžiai nustatyti kintamąjame map'e</h3>
+<p><code style="color: inherit">sass/_tools.layout.spacing.scss: ✒ </code><code>$szm-spacing-sizes-px</code></p>
+<h3>Funkcija užvardintiems spacing'o dydžiams išvesti</h3>
+<p>sass.szm/_tools.layout.spacing.scss: ✒ <code>szm-spacing-size($sizeName, $unit: px)</code></p>
+<pre><code>div {
+  padding:       szm-spacing-size(tiny);
+  margin-bottom: szm-spacing-size(tiny, em);
+}</code></pre>
+<pre><code>div {
+  padding: 4px;
+  margin-bottom: 0.4em;
+}</code></pre>
+<h3>CSS kintamieji</h3>
+<p>sass\_utilities.layout.spacing.scss ✒</p>
+<pre><code>var(--szm-spacing-size-px-tiny)
+var(--szm-spacing-size-px-small)
+var(--szm-spacing-size-px-medium)
+var(--szm-spacing-size-px-large)
+var(--szm-spacing-size-px-huge)</code></pre>
+<H3>Mixin'ai išvesti <code>padding:</code> ir <code>margin:</code> deklaracijas su užvardintais spacing'o dydžiais</h3>
+<p>Galima padaryti 2 būdais:</p>
+<dl>
+  <dt>su SZM bibliotekos mixin'u</dt>
+  <dd>
+    <p>sass.szm/_tools.layout.spacing.scss:<br>
+      <code>@mixin szm-spacing-size-boxSides($property, $sizeName, $side: "", $important: "!")</code></p>
+    <pre><code>div {
+  @include szm-spacing-size-boxSides(margin, medium, right);
+  @include szm-spacing-size-boxSides(padding, small, horizontal);
+}</code></pre>
+    <pre><code>div {
+  margin-right:  16px !important;
+  padding-left:  10px !important;
+  padding-right: 10px !important;
+}</code></pre>
+  </dd>
+  <dt>su projekto mixin'ais, kurie yra pirmosios SZM bibliotekos mixin'o shorthand'ai</dt>
+  <dd>
+    <p>sass/_tools.layout.spacing.scss:<br>
+      <code>@mixin u-margin($sizeName, $side: "", $important: "!")</code><br>
+      <code>@mixin u-padding($sizeName, $side: "", $important: "!")</code></p>
+    <pre><code>div {
+  @include u-margin(medium, right);
+  @include u-padding(small, horizontal);
+}</code></pre>
+    <pre><code>div {
+  margin-right:  16px !important;
+  padding-left:  10px !important;
+  padding-right: 10px !important;
+}</code></pre>
+  </dd>
+</dl>
+<h3>Utilities class'ai</h3>
+<p><code style="color: inherit">sass.szm/_tools.layout.spacing.scss: ✒ </code><code>@mixin szm-spacing-outputUtilities-sizes-px {...}</code></p>
+<p>sass\_utilities.layout.spacing.scss ✒ <code>@include szm-spacing-outputUtilities-sizes-px;</code></p>
+<h4><code>padding:</code></h4>
+
+<script>
+  let htmlText = '';
+  ["", "top", "right", "bottom", "left", "horizontal", "vertical"].forEach(item => {
+    const letter = item ? item.substr(0,1).toUpperCase() : "";
+    const word = item ? "-" + item : "";
+    htmlText += `<div class="c-pvs c-pvs--border c-pvs--child-bg">
+<pre><code>.P${letter}[0 | 1 | 2 | 3 | 4 | 5]
+.u-padding${word}-[none | tiny | small | medium | large | huge]</code></pre>
+  <div class="c-pvs__parent a20210404145110">
+    <div class="P${letter}0">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P${letter}1">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P${letter}2">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P${letter}3">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P${letter}4">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P${letter}5">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+  </div>
+</div>`;
+  });
+  // console.log(htmlText);
+  document.write(htmlText);
+</script>
+
+<h4><code>margin:</code></h4>
+
+<script>
+  htmlText = '';
+  ["", "top", "right", "bottom", "left", "horizontal", "vertical"].forEach(item => {
+    const letter = item ? item.substr(0,1).toUpperCase() : "";
+    const word = item ? "-" + item : "";
+    htmlText += `<div class="c-pvs c-pvs--border c-pvs--child-bg">
+<pre><code>.M${letter}[0 | 1 | 2 | 3 | 4 | 5]
+.u-margin${word}-[none | tiny | small | medium | large | huge]</code></pre>
+  <div class="c-pvs__parent a20210404145110">
+    <div class="M${letter}0">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="M${letter}1">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="M${letter}2">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="M${letter}3">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="M${letter}4">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="M${letter}5">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+  </div>
+</div>`;
+  });
+  // console.log(htmlText);
+  document.write(htmlText);
+</script>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--<div class="c-pvs c-pvs&#45;&#45;border">
+  <pre><code>.P[0 | 1 | 2 | 3 | 4 | 5]
+.u-padding-[none | tiny | small | medium | large | huge]</code></pre>
+  <div class="c-pvs__parent a20210404145110">
+    <div class="P0">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P1">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P2">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P3">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P4">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="P5">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+  </div>
+</div>
+
+<div class="c-pvs c-pvs&#45;&#45;border">
+  <pre><code>.PT[0 | 1 | 2 | 3 | 4 | 5]
+.u-padding-top-[none | tiny | small | medium | large | huge]</code></pre>
+  <div class="c-pvs__parent a20210404145110">
+    <div class="PT0">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="PT1">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="PT2">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="PT3">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="PT4">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+    <div class="PT5">iš debesies suspindi saulė vėl, ir vyturėliai juokias. rasotom pievom atbrenda pavakarys; ir ežero melduos pablūdusios lakštutės suokia</div>
+  </div>
+</div>-->
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//    @@Intro
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// Intro Head R Base
+
+@font-face {
+    font-family: 'intro_head_rbase';
+    src: url('../fonts/intro-head-r-base/introheadr-base-webfont.eot');
+    src: url('../fonts/intro-head-r-base/introheadr-base-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/intro-head-r-base/introheadr-base-webfont.woff2') format('woff2'),
+         url('../fonts/intro-head-r-base/introheadr-base-webfont.woff') format('woff'),
+         url('../fonts/intro-head-r-base/introheadr-base-webfont.ttf') format('truetype'),
+         url('../fonts/intro-head-r-base/introheadr-base-webfont.svg#intro_head_rbase') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Intro Rust G Base 2 Line
+
+@font-face {
+    font-family: 'intro_rust_gbase_2_line';
+    src: url('../fonts/intro-rust-g-base/introrustg-base2line-webfont.eot');
+    src: url('../fonts/intro-rust-g-base/introrustg-base2line-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/intro-rust-g-base/introrustg-base2line-webfont.woff2') format('woff2'),
+         url('../fonts/intro-rust-g-base/introrustg-base2line-webfont.woff') format('woff'),
+         url('../fonts/intro-rust-g-base/introrustg-base2line-webfont.ttf') format('truetype'),
+         url('../fonts/intro-rust-g-base/introrustg-base2line-webfont.svg#intro_rust_gbase_2_line') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Intro Script R H2 Base
+
+@font-face {
+    font-family: 'intro_script_rh2_base';
+    src: url('../fonts/intro-script-r-base/introscriptr-h2base-webfont.eot');
+    src: url('../fonts/intro-script-r-base/introscriptr-h2base-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/intro-script-r-base/introscriptr-h2base-webfont.woff2') format('woff2'),
+         url('../fonts/intro-script-r-base/introscriptr-h2base-webfont.woff') format('woff'),
+         url('../fonts/intro-script-r-base/introscriptr-h2base-webfont.ttf') format('truetype'),
+         url('../fonts/intro-script-r-base/introscriptr-h2base-webfont.svg#intro_script_rh2_base') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   @@oswald
+//
+/////////////////////////////////////////////////////////////////////////////
+
+@include szm-font-face(oswaldextralight,        "../fonts/oswald/oswald-extralight-webfont", normal, normal, woff2 woff);
+@include szm-font-face(oswaldextralight-italic, "../fonts/oswald/oswald-extra-lightitalic-webfont", normal, normal, woff2 woff);
+
+@include szm-font-face(oswaldlight,             "../fonts/oswald/oswald-light-webfont", normal, normal, woff2 woff);
+@include szm-font-face(oswaldlight-italic,      "../fonts/oswald/oswald-lightitalic-webfont", normal, normal, woff2 woff);
+
+@include szm-font-face(oswaldregular,           "../fonts/oswald/oswald-regular-webfont", normal, normal, woff2 woff);
+@include szm-font-face(oswaldregular-italic,    "../fonts/oswald/oswald-regularitalic-webfont", normal, normal, woff2 woff);
+
+
+@include szm-font-face(oswaldmedium,            "../fonts/oswald/oswald-medium-webfont", normal, normal, woff2 woff);
+@include szm-font-face(oswaldmedium-italic,     "../fonts/oswald/oswald-mediumitalic-webfont", normal, normal, woff2 woff);
+
+@include szm-font-face(oswalddemibold,          "../fonts/oswald/oswald-demibold-webfont", normal, normal, woff2 woff);
+@include szm-font-face(oswalddemibold-italic,   "../fonts/oswald/oswald-demi-bolditalic-webfont", normal, normal, woff2 woff);
+
+@include szm-font-face(oswaldbold,              "../fonts/oswald/oswald-bold-webfont", normal, normal, woff2 woff);
+@include szm-font-face(oswaldbold-italic,       "../fonts/oswald/oswald-bolditalic-webfont", normal, normal, woff2 woff);
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   @@Lora
+//
+/////////////////////////////////////////////////////////////////////////////
+
+@include szm-font-face(Lora, "../fonts/Lora/hinted-Lora-Regular", normal, normal, $exts: eot woff ttf);
+@include szm-font-face(Lora, "../fonts/Lora/hinted-Lora-Italic", normal, italic, $exts: eot woff ttf);
+@include szm-font-face(Lora, "../fonts/Lora/hinted-Lora-Bold", bold, normal, $exts: eot woff ttf);
+@include szm-font-face(Lora, "../fonts/Lora/hinted-Lora-BoldItalic", bold, italic, $exts: eot woff ttf);
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   @@Domine
+//
+/////////////////////////////////////////////////////////////////////////////
+
+@include szm-font-face(Domine, "../fonts/Domine/hinted-Domine-Regular", normal, normal, $exts: eot woff ttf);
+@include szm-font-face(Domine, "../fonts/Domine/hinted-Domine-Bold", bold, normal, $exts: eot woff ttf);
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   @@Cormorant Garamond
+//
+/////////////////////////////////////////////////////////////////////////////
+
+@include szm-font-face("Cormorant Garamond", "../fonts/Cormorant_Garamond/hinted-CormorantGaramond-Regular", normal, normal, $exts: eot woff ttf);
+@include szm-font-face("Cormorant Garamond", "../fonts/Cormorant_Garamond/hinted-CormorantGaramond-Italic", normal, italic, $exts: eot woff ttf);
+@include szm-font-face("Cormorant Garamond", "../fonts/Cormorant_Garamond/hinted-CormorantGaramond-Bold", bold, normal, $exts: eot woff ttf);
+
+@include szm-font-face("Cormorant Garamond", "../fonts/Cormorant_Garamond/hinted-CormorantGaramond-Medium", 500, normal, $exts: eot woff ttf);
+@include szm-font-face("Cormorant Garamond", "../fonts/Cormorant_Garamond/hinted-CormorantGaramond-MediumItalic", 500, italic, $exts: eot woff ttf);
+
+@include szm-font-face("Cormorant Garamond", "../fonts/Cormorant_Garamond/hinted-CormorantGaramond-Light", 300, normal, $exts: eot woff ttf);
+@include szm-font-face("Cormorant Garamond", "../fonts/Cormorant_Garamond/hinted-CormorantGaramond-LightItalic", 300, italic, $exts: eot woff ttf);
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//   @@Playfair Display
+//
+/////////////////////////////////////////////////////////////////////////////
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BlackItalic.eot');
+  src: local('Playfair Display Black Italic'), local('PlayfairDisplay-BlackItalic'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BlackItalic.eot?#iefix') format('embedded-opentype'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BlackItalic.woff') format('woff'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Black.eot');
+  src: local('Playfair Display Black'), local('PlayfairDisplay-Black'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Black.eot?#iefix') format('embedded-opentype'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Black.woff') format('woff'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Bold.eot');
+  src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Bold.woff') format('woff'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Italic.eot');
+  src: local('Playfair Display Italic'), local('PlayfairDisplay-Italic'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Italic.eot?#iefix') format('embedded-opentype'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Italic.woff') format('woff'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BoldItalic.eot');
+  src: local('Playfair Display Bold Italic'), local('PlayfairDisplay-BoldItalic'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BoldItalic.eot?#iefix') format('embedded-opentype'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BoldItalic.woff') format('woff'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Regular.eot');
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Regular.woff') format('woff'),
+               url('../fonts/Playfair_Display/hinted-PlayfairDisplay-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+

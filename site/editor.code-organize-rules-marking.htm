@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Kodo Style Guides, organizacijos taisyklės, sutartiniai žymėjimai</h1>
+<h2>Kodo Style Guides</h2><p>&nbsp;</p>
+<blockquote>
+  <p>We have set style guides for the company. Here are a few:</p>
+  <ul>
+    <li>use <strong>spaces</strong> for indentation</li>
+    <li>indent by <strong>two</strong> spaces for all* languages</li>
+    <li>*indent by <strong>four</strong> spaces for Javascript</li>
+    <li>absolutely no trailing whitespace</li>
+  </ul>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Failo kodo struktūravimas (komentaruose)</h2>
+<p>&nbsp;</p>
+<p>Bendras žymeklis kodo struktūravimui</p>
+<p> <code>~zm~</code></p>
+<p>Kandidatai:   <code>~z~</code> || <code> ~`~</code> ||
+  <code>`zm`</code> ||
+<code>`~`</code></p>
+<p>&nbsp;</p>
+<p>TODO'sai</p>
+<p> ~zm~TODO:</p>
+<p>&nbsp;</p>
+<p>Skyriai</p>
+<pre><code>//---------------------------------------------------
+// ~zm~H: Pirmas lygis
+//---------------------------------------------------
+
+//---------------------------------------------------
+// ~zm~H: -- Antras lygis
+//---------------------------------------------------</code></pre>
+<p>Naudojimas</p>
+<pre><code>//---------------------------------------------------
+// ~zm~USAGE: Paprastas naudojimo pvz.
+//---------------------------------------------------
+
+//---------------------------------------------------
+// ~zm~USAGE-TEST: Veikiantis-testinis naudojimo pvz.
+//---------------------------------------------------</code></pre>
+<p>&nbsp;</p>
+<h2>Failų pavadinimų taisyklės</h2>
+<h3>SASS'o failai</h3>
+<table class="c-table-linesGrid u-table-equelCols" width="1200">
+  <tr>
+    <td width="40%"><p><code>master.no-tags<mar>--</mar>.scss</code></p>
+    <p><code>_utilities.widths--variantas su džemu.scss</code></p></td>
+    <td width="60%"><p>Bet kur failo pavadinime <code>--</code>,  toks <code>*.scss</code> failas nebus generuojamas.</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><p><code>_component-tag.mark__nenaudoti.scss</code></p>
+    <p><code>_component-tag.mark__old.scss</code></p></td>
+    <td><p><code>*__nenaudoti.scss</code> arba <code>*__old.scss</code> &#8212; senesnė versija, kurią naudojame-pajungiame (nes yra su jo class'ais apiformintas HTML'as), bet nebevystome</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Jei reikia, kad koks *.scss failas nebūtų generuojamas, jo pradžioje pridedame <code>!</code>, pvz.:</p>
+<p>Gulp'e darome taip:</p>
+<pre><code>gulp.src(['site/assets/sass/*.scss','!site/assets/sass/!*.scss'])</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

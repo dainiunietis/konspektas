@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* Blur images when they have no alt attribute */
+img:not([alt]) {
+  filter: blur(10px);
+}
+
+/*
+https://twitter.com/tanishaaa03/status/1275505781459181568
+The other day, Tanisha Sabherwal mentioned that you can use the following CSS
+to check the accessibility of our form elements, namely which labels don’t have
+a for attribute and which inputs don’t have an id:
+*/
+
+input:not([type="button"])
+     :not([type="reset"])
+     :not([type="submit"])
+     :not([aria-labelledby])
+     :not([id]),
+label:not([for]) {
+  outline: 2px dashed red;
+}
+
+
+

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>AHK script'o informacinis langas</h1>
+<p>AHK script'o langą per Windows'ų sąsają  atidarome per script'o tray'jaus icon'ą:</p>
+<ol>
+  <li>
+    <p> Per jos kontekstinį meniu:</p>
+    <p><img src="images/2016.09.30_12-04-30-.png" alt=""/></p>
+  </li>
+  <li>Arba dvigubas click'as ant pačios icon'os.</li>
+</ol>
+<h2>View'sas &quot;Hotkeys and their methods&quot;</h2>
+<p><a href="https://autohotkey.com/docs/commands/ListHotkeys.htm">https://autohotkey.com/docs/commands/ListHotkeys.htm</a></p>
+<p>Atidaromo būdai:</p>
+<ul>
+  <li>Pačiame AHK script'o lange per lango meniu [View &gt; Hotkeys and their methods]</li>
+  <li><code>ListHotkeys</code> &#8212; komanda AHK script'e</li>
+</ul>
+<p>Ką reiškia stulpelis &quot;Type&quot;:</p>
+<blockquote>
+  <p>reg: The hotkey is implemented via the operating system's RegisterHotkey() function.<br>
+    reg(no): Same as above except that this hotkey is inactive (due to being unsupported, disabled, or <a href="https://autohotkey.com/docs/commands/Suspend.htm">suspended</a>).<br>
+    k-hook: The hotkey is implemented via the <a href="https://autohotkey.com/docs/commands/_InstallKeybdHook.htm">keyboard hook</a>.<br>
+    m-hook: The hotkey is implemented via the <a href="https://autohotkey.com/docs/commands/_InstallMouseHook.htm">mouse hook</a>.<br>
+    2-hooks: The hotkey requires both the hooks mentioned above.<br>
+    joypoll: The hotkey is implemented by polling the joystick at regular intervals.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

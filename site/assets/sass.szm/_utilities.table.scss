@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+//////////////////////////////////////////////////////////////////
+//
+//   .
+//
+/////////////////////////////////////////////////////////////
+
+// @USAGE:
+// <table class="u-table-equelCols">
+
+.u-table-equelCols,
+.TBEC {
+  > tbody > tr {
+    > td, > th {
+      width: 25% !important;
+    }
+  }
+}
+
+//.u-table-equelCols-d,
+//.TBECd {
+//  td, th {
+//    width: 25% !important;
+//  }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

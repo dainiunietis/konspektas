@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS savybių reikšmių aprašymo kalba (CSS value definition syntax, a formal grammar)</h1>
+<p><a href="https://www.w3.org/TR/css3-values/#value-defs">https://www.w3.org/TR/css3-values/#value-defs</a></p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax">Value definition syntax - CSS: Cascading Style Sheets | MDN</a></p>
+<h2>Suvestinė iš chenhuijing.com</h2>
+<p><a href="https://www.chenhuijing.com/css-property-syntax/">https://www.chenhuijing.com/css-property-syntax/</a></p>
+<table class="c-tableCols c-tableCols--h3h4 -u-table-equelCols" width="1868">
+  <tr>
+    <td width="577"><h3>Component Value Types</h3>
+      <table width="100%">
+        <thead>
+          <tr>
+            <th width="97">Value type</th>
+            <th width="276">Description</th>
+            <th width="174">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Keyword values</td>
+            <td>Actual value used; No quotation marks or angle brackets</td>
+            <td><code>auto</code> or <code>none</code></td>
+          </tr>
+          <tr>
+            <td>Basic data types</td>
+            <td>To be replaced with actual values; Angle brackets</td>
+            <td><code>&lt;length&gt;</code> <br>
+            or <br>
+            <code>&lt;percentage&gt;</code></td>
+          </tr>
+          <tr>
+            <td>Property data type</td>
+            <td><p>Uses same set of values as defined property, usually used for shorthand property definitions; Quotation marks within angle brackets</p>
+            <p class="em-note em--narrow em--small">Tai reiškia visas galimas nurodytos CSS deklaracijos reikšmes, pvz.: <code>&lt;'width'&gt;</code> </p></td>
+            <td><code>&lt;'grid-template-rows'&gt;</code> <br>
+              or <br>
+            <code>&lt;'flex-basis'&gt;</code></td>
+          </tr>
+          <tr>
+            <td>Non-property data type</td>
+            <td>Set of values is defined somewhere else in the specification, usually near its first appearance; Angle brackets only</td>
+            <td><code>&lt;line-names&gt;</code> <br>
+            or <br>
+            <code>&lt;track-repeat&gt;</code></td>
+          </tr>
+        </tbody>
+    </table>      <p>&nbsp;</p></td>
+    <td width="597"><h3>Component Value Combinators</h3>
+      <table width="100%">
+        <thead>
+          <tr>
+            <th width="13%">Symbol</th>
+            <th width="24%">Explanation</th>
+            <th width="63%">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Space-separated adjacent values</td>
+            <td>All values must occur in specified order</td>
+            <td><pre data-initialized="true" data-gclp-id="1">&lt;'property-name'&gt; = value1 value2 value3</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="2">.selector { property: value1 value2 value3; }</pre></td>
+          </tr>
+          <tr>
+            <td align="center">&amp;&amp;</td>
+            <td>All values must occur, order doesn't matter</td>
+            <td><pre data-initialized="true" data-gclp-id="3">&lt;'property-name'&gt; = value1 &amp;&amp; value2</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="4">.selector { property: value1 value2; }
+.selector { property: value2 value1; }</pre></td>
+          </tr>
+          <tr>
+            <td align="center">|</td>
+            <td><p>Only 1 value must occur</p></td>
+            <td><pre data-initialized="true" data-gclp-id="5">&lt;'property-name'&gt; = value1 | value2 | value3</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="6">.selector { property: value1; }
+.selector { property: value2; }
+.selector { property: value3; }</pre></td>
+          </tr>
+          <tr>
+            <td align="center">||</td>
+            <td>1 or more values must occur, order doesn't matter</td>
+            <td><pre data-initialized="true" data-gclp-id="7">&lt;'property-name'&gt; = value1 || value2 || value3</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="8">.selector { property: value3; }
+.selector { property: value2 value3; }
+.selector { property: value1 value2 value3; }
+and so on...</pre></td>
+          </tr>
+          <tr>
+            <td align="center">[ ]</td>
+            <td>Components belong to a single grouping</td>
+            <td><pre data-initialized="true" data-gclp-id="9">&lt;'property-name'&gt; = [ value1 | value2 ] value3</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="10">.selector { property: value1 value3; }
+.selector { property: value2 value3; }</pre></td>
+          </tr>
+        </tbody>
+    </table>      <p>&nbsp;</p></td>
+    <td width="678"><h3>Component Value Multipliers</h3>
+      <table width="100%">
+        <thead>
+          <tr>
+            <th width="67">Symbol</th>
+            <th width="489">Explanation</th>
+            <th width="817">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">?</td>
+            <td>Optional value, can occur 0 or 1 time</td>
+            <td><pre data-initialized="true" data-gclp-id="11">&lt;'property-name'&gt; = value1 [, value2 ]?</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="12">.selector { property: value1; }
+.selector { property: value1, value2; }</pre></td>
+          </tr>
+          <tr>
+            <td align="center">*</td>
+            <td>Optional value, can occur 0 or many times, multiple values are comma-separated</td>
+            <td><pre data-initialized="true" data-gclp-id="13">&lt;'property-name'&gt; = value1 [, &lt;value2&gt;]*</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="14">.selector { property: value1; }
+.selector { property: value1, &lt;value2&gt;; }
+.selector { property: value1, &lt;value2&gt;, &lt;value2&gt;, &lt;value2&gt;; }
+and so on...</pre></td>
+          </tr>
+          <tr>
+            <td align="center">+</td>
+            <td>Can occur 1 or many times, multiple values are space-separated</td>
+            <td><pre data-initialized="true" data-gclp-id="15">&lt;'property-name'&gt; = &lt;value&gt;+</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="16">.selector { property: &lt;value&gt;; }
+.selector { property: &lt;value&gt; &lt;value&gt;; }
+.selector { property: &lt;value&gt; &lt;value&gt; &lt;value&gt; &lt;value&gt;; }
+and so on...</pre></td>
+          </tr>
+          <tr>
+            <td align="center">{𝓍}</td>
+            <td>Value occurs 𝓍 times, multiple values are space-separated</td>
+            <td><pre data-initialized="true" data-gclp-id="17">&lt;'property-name'&gt; = &lt;value&gt;{2}</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="18">.selector { property: &lt;value&gt; &lt;value&gt;; }</pre></td>
+          </tr>
+          <tr>
+            <td align="center">{𝓍, 𝓎}</td>
+            <td>Value occurs at least 𝓍 times, at most 𝓎 times, multiple values are space-separated</td>
+            <td><pre data-initialized="true" data-gclp-id="19">&lt;'property-name'&gt; = &lt;value&gt;{1,3}</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="20">.selector { property: &lt;value&gt;; }
+.selector { property: &lt;value&gt; &lt;value&gt;; }
+.selector { property: &lt;value&gt; &lt;value&gt; &lt;value&gt;; }</pre></td>
+          </tr>
+          <tr>
+            <td align="center">{𝓍,}</td>
+            <td>Value occurs at least 𝓍 times, no maximum limit, multiple values are space-separated</td>
+            <td><pre data-initialized="true" data-gclp-id="21">&lt;'property-name'&gt; = &lt;value&gt;{1,}</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="22">.selector { property: &lt;value&gt;; }
+.selector { property: &lt;value&gt; &lt;value&gt; &lt;value&gt;; }
+and so on...</pre></td>
+          </tr>
+          <tr>
+            <td align="center">#</td>
+            <td>Value occurs 1 or many times, multiple values are comma-separated</td>
+            <td><pre data-initialized="true" data-gclp-id="23">&lt;'property-name'&gt; = &lt;value&gt;#</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="24">.selector { property: &lt;value&gt;; }
+.selector { property: &lt;value&gt;, &lt;value&gt;; }
+.selector { property: &lt;value&gt;, &lt;value&gt;, &lt;value&gt;, &lt;value&gt;; }
+and so on...</pre></td>
+          </tr>
+          <tr>
+            <td align="center">[ ]!</td>
+            <td>Values in grouping are required, at least 1 value must occur</td>
+            <td><pre data-initialized="true" data-gclp-id="25">&lt;'property-name'&gt; = &lt;value1&gt; [ &lt;value2&gt; | &lt;value3&gt; ]!</pre>
+              ↓
+              <pre data-initialized="true" data-gclp-id="26">.selector { property: &lt;value1&gt; &lt;value2&gt;; }
+.selector { property: &lt;value1&gt; &lt;value3&gt;; }</pre></td>
+          </tr>
+        </tbody>
+    </table></td>
+  </tr>
+</table>
+<h2>Suvestinė iš developer.mozilla.org</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax#Summary">https://developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax#Summary</a></p>
+<table width="1088" align="center" class="-c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+  <thead>
+    <tr>
+      <th width="84" scope="col">Sign</th>
+      <th width="171" scope="col">Name</th>
+      <th width="443" scope="col">Description</th>
+      <th width="370" scope="col">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th colspan="4">Combinators</th>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Juxtaposition</td>
+      <td>Components are mandatory and should appear in that order</td>
+      <td><code>solid &lt;length&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>&amp;&amp;</code></td>
+      <td>Double ampersand</td>
+      <td>Components are mandatory but may appear in any order</td>
+      <td><code>&lt;length&gt; &amp;&amp; &lt;string&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>||</code></td>
+      <td>Double bar</td>
+      <td>At least one of the components must be present, and they may appear in any order.</td>
+      <td><code>&lt;'border-image-outset'&gt; || &lt;'border-image-slice'&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>|</code></td>
+      <td>Single bar</td>
+      <td>Exactly one of the components must be present</td>
+      <td><code>smaller | small | normal | big | bigger</code></td>
+    </tr>
+    <tr>
+      <td><code>[ ]</code></td>
+      <td>Brackets</td>
+      <td>Group components to bypass precedence rules</td>
+      <td><code>bold [ thin &amp;&amp; &lt;length&gt; ]</code></td>
+    </tr>
+    <tr>
+      <th colspan="4">Multipliers</th>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>No multiplier</td>
+      <td>Exactly 1 times</td>
+      <td><code>solid</code></td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Asterisk</td>
+      <td>0 or more times</td>
+      <td><code>bold smaller*</code></td>
+    </tr>
+    <tr>
+      <td><code>+</code></td>
+      <td>Plus sign</td>
+      <td>1 or more times</td>
+      <td><code>bold smaller+</code></td>
+    </tr>
+    <tr>
+      <td><code>?</code></td>
+      <td>Question mark</td>
+      <td>0 or 1 time (that is <em>optional)</em></td>
+      <td><code>bold smaller?</code></td>
+    </tr>
+    <tr>
+      <td><code>{A,B}</code></td>
+      <td>Curly braces</td>
+      <td>At least A times, at most B times</td>
+      <td><code>bold smaller{1,3}</code></td>
+    </tr>
+    <tr>
+      <td><code>#</code></td>
+      <td>Hash mark</td>
+      <td>1 or more times, but each occurrence separated by a comma (',')</td>
+      <td><code>bold smaller#</code></td>
+    </tr>
+    <tr>
+      <td><code>!</code></td>
+      <td>Exclamation point</td>
+      <td>Group must produce at least 1 value</td>
+      <td><code>[ bold? smaller? ]!</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<table class="standard-table" style="margin: 0px 0px 24px; padding: 0px; border: 2px solid rgb(255, 255, 255); box-sizing: border-box; width: 1038px; max-width: 100%; border-collapse: collapse; color: rgb(51, 51, 51); font-family: 'Open Sans', arial, x-locale-body, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+  <thead style="margin: 0px; padding: 0px; border: 0px;">
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <th scope="col" style="margin: 0px; padding: 2px 8px 4px; border-width: 2px; border-style: solid; border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(212, 221, 228); border-image: initial; font-style: inherit; font-weight: 700; text-align: left; background: rgba(212, 221, 228, 0.5); font-family: x-locale-heading-primary, zillaslab, Palatino, 'Palatino Linotype', x-locale-heading-secondary, serif;" bgcolor="rgba(212, 221, 228, 0.5)">Sign</th>
+      <th scope="col" style="margin: 0px; padding: 2px 8px 4px; border-width: 2px; border-style: solid; border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(212, 221, 228); border-image: initial; font-style: inherit; font-weight: 700; text-align: left; background: rgba(212, 221, 228, 0.5); font-family: x-locale-heading-primary, zillaslab, Palatino, 'Palatino Linotype', x-locale-heading-secondary, serif;" bgcolor="rgba(212, 221, 228, 0.5)">Name</th>
+      <th scope="col" style="margin: 0px; padding: 2px 8px 4px; border-width: 2px; border-style: solid; border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(212, 221, 228); border-image: initial; font-style: inherit; font-weight: 700; text-align: left; background: rgba(212, 221, 228, 0.5); font-family: x-locale-heading-primary, zillaslab, Palatino, 'Palatino Linotype', x-locale-heading-secondary, serif;" bgcolor="rgba(212, 221, 228, 0.5)">Description</th>
+      <th scope="col" style="margin: 0px; padding: 2px 8px 4px; border-width: 2px; border-style: solid; border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(212, 221, 228); border-image: initial; font-style: inherit; font-weight: 700; text-align: left; background: rgba(212, 221, 228, 0.5); font-family: x-locale-heading-primary, zillaslab, Palatino, 'Palatino Linotype', x-locale-heading-secondary, serif;" bgcolor="rgba(212, 221, 228, 0.5)">Example</th>
+    </tr>
+  </thead>
+  <tbody style="margin: 0px; padding: 0px; border: 0px;">
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <th colspan="4" style="margin: 0px; padding: 2px 8px 4px; border-width: 2px; border-style: solid; border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(212, 221, 228); border-image: initial; font-style: inherit; font-weight: 700; text-align: left; font-family: x-locale-heading-primary, zillaslab, Palatino, 'Palatino Linotype', x-locale-heading-secondary, serif; background: rgba(212, 221, 228, 0.5);" bgcolor="rgba(212, 221, 228, 0.5)">Combinators</th>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"> </td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Juxtaposition</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Components are mandatory and should appear in that order</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">solid &lt;length&gt;</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">&amp;&amp;</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Double ampersand</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Components are mandatory but may appear in any order</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">&lt;length&gt; &amp;&amp; &lt;string&gt;</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">||</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Double bar</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">At least one of the components must be present, and they may appear in any order.</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">&lt;'border-image-outset'&gt; || &lt;'border-image-slice'&gt;</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">|</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Single bar</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Exactly one of the components must be present</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">smaller | small | normal | big | bigger</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">[ ]</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Brackets</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Group components to bypass precedence rules</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">bold [ thin &amp;&amp; &lt;length&gt; ]</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <th colspan="4" style="margin: 0px; padding: 2px 8px 4px; border-width: 2px; border-style: solid; border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(212, 221, 228); border-image: initial; font-style: inherit; font-weight: 700; text-align: left; font-family: x-locale-heading-primary, zillaslab, Palatino, 'Palatino Linotype', x-locale-heading-secondary, serif; background: rgba(212, 221, 228, 0.5);" bgcolor="rgba(212, 221, 228, 0.5)">Multipliers</th>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"> </td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">No multiplier</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Exactly 1 times</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">solid</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">*</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Asterisk</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">0 or more times</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">bold smaller*</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">+</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Plus sign</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">1 or more times</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">bold smaller+</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">?</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Question mark</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">0 or 1 time (that is <em style="margin: 0px; padding: 0px; border: 0px;">optional)</em></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">bold smaller?</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">{A,B}</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Curly braces</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">At least <code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">A</code> times, at most <code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">B</code> times</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">bold smaller{1,3}</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">#</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Hash mark</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">1 or more times, but each occurrence separated by a comma ('<code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">,</code>')</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.25); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">bold smaller#</code></td>
+    </tr>
+    <tr style="margin: 0px; padding: 0px; border: 0px;">
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">!</code></td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Exclamation point</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;">Group must produce at least 1 value</td>
+      <td style="margin: 0px; padding: 6px 8px; border: 2px solid rgb(255, 255, 255); text-align: left; background-color: rgba(212, 221, 228, 0.15); box-shadow: rgba(212, 221, 228, 0.5) 0px -1px 0px 0px inset;"><code style="margin: 0px; padding: 0px 2px; border: 0px; font-style: inherit; font-weight: inherit; background-color: rgba(220, 220, 220, 0.5); border-radius: 2px; font-family: consolas, 'Liberation Mono', courier, monospace; word-wrap: break-word;">[ bold? smaller? ]!</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

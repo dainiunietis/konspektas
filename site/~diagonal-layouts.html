@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      /*font-size: 1.2em;*/
+      margin: 0;
+    }
+    .diagonal-box {
+      /*background-image: linear-gradient(45deg, #6303B1, #ff0099);*/
+      position: relative;
+
+      /* viršutinis-apatinis-padding = tan(pakreipimo-laipsniai) * plotis / 2 */
+      /*padding: 4.66em 0;*/
+      padding: calc(4.4em - 3vw) 0;
+    }
+    .diagonal-box:before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-image: linear-gradient(45deg, #654ea3, #eaafc8);
+      transform: skewY(-11deg);
+    }
+    .content {
+      max-width: 40em;
+      margin: 0 auto;
+      outline: dotted 1px;
+      position: relative;
+      padding: calc(1.5em - 2vw) 1em;
+      /*transform: skewY(11deg);*/
+    }
+  </style>
+</head>
+<body>
+
+<p><a href="https://9elements.com/blog/pure-css-diagonal-layouts/">CSS Tutorial: Create Diagonal Layouts Like It's 2020</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<div class="diagonal-box">
+  <div class="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor sodales massa sit amet condimentum. Sed ac lorem facilisis, convallis ipsum eu, commodo dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec id massa euismod, posuere orci volutpat, ornare ligula. Integer scelerisque dignissim velit, interdum vestibulum turpis interdum non.</p>
+    <p>Curabitur consequat nisi sit amet velit ultrices, sit amet tincidunt arcu placerat. Ut varius risus turpis, sagittis dapibus est egestas ac. Mauris ac ex molestie dui consectetur pellentesque eget eu nisl.</p>
+    <p>Vestibulum libero lacus, vestibulum sit amet maximus sed, tempor eu ipsum. Donec faucibus, elit a interdum tempor, lacus neque lobortis dolor, sit amet fringilla felis diam in sem. Nam porttitor accumsan ipsum vitae iaculis.</p>
+  </div>
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+</html>

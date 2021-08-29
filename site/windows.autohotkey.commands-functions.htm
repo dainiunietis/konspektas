@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>AutoHotkey komandos-funkcijos (commands-functions)</h1>
+<p><a href="https://autohotkey.com/docs/commands/index.htm">https://autohotkey.com/docs/commands/index.htm</a></p>
+<h2>Klaviatūros klavišų ir pelės mygtukų paspaudimų generavimas su <code>Send*</code> komandomis</h2>
+<p><a href="https://www.autohotkey.com/docs/commands/Send.htm">https://www.autohotkey.com/docs/commands/Send.htm</a></p>
+<p>Apie didžiąsias-mažąsias:</p>
+<blockquote>
+  <p>As capital letters are produced by sending the SHIFT key, A produces a different effect in some programs than a. For example, !A presses ALT+SHIFT+A and !a presses ALT+a. If in doubt, use lowercase</p>
+</blockquote>
+<h3>Klavišų generavimo režimai</h3>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="25%"><h4>{Raw}</h4>
+        <div class="em-important">
+          <p>Greičiausias būdas generuoti daug teksto:</p>
+          <p><code>SendInput {Raw}daug teksto daug teksto daug teksto daug teksto daug teksto daug teksto</code></p>
+        </div>
+        <p>Metodai <code>SendInput</code>, <code>SendPlay</code>, <code>SendEven</code> veikia dvejuose režimuose:</p>
+        <ul>
+          <li>
+            <blockquote><strong>Normal mode</strong>: When not in raw mode, the following symbols have special meaning: !+^#{}</blockquote>
+          </li>
+          <li>
+            <blockquote>
+              <p id="SendRaw"><strong>Raw mode</strong> - <em>SendRaw</em> or <a href="https://autohotkey.com/docs/commands/Send.htm#Raw">{Raw}</a>: The characters ^+!#{} are interpreted literally rather than translating {Enter} to an ENTER keystroke, ^c to Control-C, etc. To use raw mode with SendInput, SendPlay, or SendEvent, write <a href="https://autohotkey.com/docs/commands/Send.htm#Raw">{Raw}</a> as the first item in the string; for example: SendInput {Raw}abc.</p>
+              <p><em>Raw mode</em> does not affect the interpretation of <a href="https://autohotkey.com/docs/commands/_EscapeChar.htm">escape sequences</a>, <a href="https://autohotkey.com/docs/Variables.htm#retrieving">variable references</a> and <a href="https://autohotkey.com/docs/Variables.htm#Expressions">expressions</a>. For example, SendRaw, ``100`% sends the string `100%. When using <a href="https://autohotkey.com/docs/commands/ControlSend.htm">ControlSend</a>, it is also necessary to escape literal commas (`,).</p>
+            </blockquote>
+          </li>
+        </ul>
+        <p>Raw režimas gali prasidėti ne nuo pat send'ingo pradžios:</p>
+        <blockquote>
+          <p>Although the string {Raw} need not occur at the beginning of the string, once specified, it stays in effect for the remainder of the string.</p>
+        </blockquote>
+        <p>Pvz.: SendInput ^c{Home}čia pradžia {Raw}^c</p></td>
+      <td width="25%"><h4>{Blind}</h4>
+        <p>Užfiksuoja send'ingo pradžioje pagalbinių klavišų būseną, ir ją išlaiko iki send'ingo galo:</p>
+        <blockquote>
+          <p>When {Blind} is the first item in the string, the program avoids releasing Alt/Control/Shift/Win if they started out in the down position. For example, the hotkey<code>+s::Send {Blind}abc</code>would send ABC rather than abc because the user is holding down the Shift key.</p>
+        </blockquote>
+        <p>&nbsp;</p>
+        <blockquote>
+          <p>{Blind} omits the extra Control keystrokes that would otherwise be sent; such keystrokes prevent: 1) Start Menu appearance during LWin/RWin keystrokes; 2) menu bar activation during Alt keystrokes.</p>
+        </blockquote>
+        <p>Šį režimą palaiko <code>SendInput</code> ir <code>SendEvent</code>:</p>
+        <blockquote>
+          <p>{Blind} is not supported by SendRaw and <a href="https://autohotkey.com/docs/commands/ControlSend.htm">ControlSendRaw</a>. Furthermore, it is not completely supported by <a href="https://autohotkey.com/docs/commands/Send.htm#SendPlayDetail">SendPlay</a>, especially when dealing with the modifier keys (Control, Alt, Shift, and Win).</p>
+        </blockquote></td>
+    </tr>
+  </tbody>
+</table>
+<h3>Atskiro klavišo paspaudimo parametrai</h3>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="50%"><h4>Pakartojimas (To repeat a keystroke)</h4>
+        <pre><code>Send {DEL 4}  ; Presses the Delete key 4 times.
+Send {S 30}   ; Sends 30 uppercase S characters.
+Send +{TAB 4}  ; Presses Shift-Tab 4 times.</code></pre>
+        <p>&nbsp;</p></td>
+      <td width="50%"><h4>Generuoti atskirai nuspaudimą ir atleidimą (To hold down or release a key)</h4>
+        <pre><code>Send {b down}{b up}
+Send {TAB down}{TAB up}
+Send {Up down}  ; Press down the up-arrow key.
+Sleep 1000  ; Keep it down for one second.
+Send {Up up}  ; Release the up-arrow key.</code></pre>
+        <p>&nbsp;</p>
+        <blockquote>
+          <p><span style="font-variant-ligatures:normal; font-variant-caps:normal; letter-spacing:normal; orphans:2; text-align:start; text-indent:0px; text-transform:none; white-space:normal; widows:2; word-spacing:0px; -webkit-text-stroke-width:0px; background-color:rgb(254, 254, 254); display:inline !important; float:none; font-family:Arial, sans-serif; font-size:14px; color:rgb(0, 0, 0); font-style:normal; font-weight:normal; ">The word<span class="Apple-converted-space"> </span></span><em style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(254, 254, 254);">DownTemp</em><span style="font-family:Arial, sans-serif; font-size:14px; color:rgb(0, 0, 0); font-style:normal; font-weight:normal; "><span class="Apple-converted-space"> </span>may also be used. Its effect is the same as<span class="Apple-converted-space"> </span></span><em style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(254, 254, 254);">Down</em><span style="font-family:Arial, sans-serif; font-size:14px; color:rgb(0, 0, 0); font-style:normal; font-weight:normal; "><span class="Apple-converted-space"> </span>except for the modifer keys (Control/Shift/Alt/Win). In those cases,<span class="Apple-converted-space"> </span></span><em style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(254, 254, 254);">DownTemp</em><span style="font-family:Arial, sans-serif; font-size:14px; color:rgb(0, 0, 0); font-style:normal; font-weight:normal; ">tells subsequent sends that the key is not permanently down, and may be released whenever a keystroke calls for it. For example,<span class="Apple-converted-space"> </span></span><code style="border-right: 1px solid rgb(200, 200, 200); border-bottom: 1px solid rgb(200, 200, 200); background-color: rgb(246, 246, 232); font-family: Consolas, 'Courier New', monospace; padding: 0px 1px; color: rgb(0, 0, 0); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Send {Control DownTemp}</code><span style="font-family:Arial, sans-serif; font-size:14px; color:rgb(0, 0, 0); font-style:normal; font-weight:normal; "><span class="Apple-converted-space"> </span>followed later by<span class="Apple-converted-space"> </span></span><code style="border-right: 1px solid rgb(200, 200, 200); border-bottom: 1px solid rgb(200, 200, 200); background-color: rgb(246, 246, 232); font-family: Consolas, 'Courier New', monospace; padding: 0px 1px; color: rgb(0, 0, 0); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Send a</code><span style="font-family:Arial, sans-serif; font-size:14px; color:rgb(0, 0, 0); font-style:normal; font-weight:normal; "><span class="Apple-converted-space"> </span>would produce a normal "a" keystroke, not a control-A keystroke.</span></p>
+        </blockquote></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<h3>Komanda-šūtkatas-aliasas: <code>Send Keys</code></h3>
+<p>Default'iškai <code>Send</code> yra aliasas <code>SendEvent</code>, bet galima su <code>Send</code> naudoti ir naujesnius metodus:</p>
+<blockquote>
+  <p>By default, <em>Send</em> is synonymous <em>SendEvent</em>; but it can be made a synonym for <a href="https://autohotkey.com/docs/commands/Send.htm#SendInputDetail">SendInput</a> or <a href="https://autohotkey.com/docs/commands/Send.htm#SendPlayDetail">SendPlay</a> via <a href="https://autohotkey.com/docs/commands/SendMode.htm">SendMode</a>.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h3>Naujausi&#8211;geriausi metodai</h3>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="25%"><h4><code>SendInput Keys</code></h4>
+        <p><a href="https://autohotkey.com/docs/commands/Send.htm#SendInputDetail">https://autohotkey.com/docs/commands/Send.htm#SendInputDetail</a></p>
+        <p>Šiuo metu geriausias send'ingo metodas:</p>
+        <blockquote>
+          <p>SendInput is generally the preferred method to send keystrokes and mouse clicks because of its superior speed and reliability. Under most conditions, SendInput is nearly instantaneous, even when sending long strings. Since SendInput is so fast, it is also more reliable because there is less opportunity for some other window to pop up unexpectedly and intercept the keystrokes. Reliability is further improved by the fact that anything the user types during a SendInput is postponed until afterward.</p>
+        </blockquote>
+        <p><code>SendInput</code>'as nesusijęs su <code>SetKeyDelay</code>:</p>
+        <blockquote>
+          <p>SendInput ignores SetKeyDelay because the operating system does not support a delay in this mode. However, when SendInput reverts to <a href="https://autohotkey.com/docs/commands/Send.htm#SendEvent">SendEvent</a> under the conditions described below, it uses <a href="https://autohotkey.com/docs/commands/SetKeyDelay.htm">SetKeyDelay -1, 0</a> </p>
+        </blockquote>
+        <p>&nbsp;</p>
+        <p>Vienos komandos generuoramų keypress'ų limitas:</p>
+        <blockquote>
+          <p>Unlike the other sending modes, the operating system limits SendInput to about 5000 characters (this may vary depending on the operating system's version and performance settings). Characters and events beyond this limit are not sent.</p>
+        </blockquote>
+        <p>&nbsp;</p></td>
+      <td width="25%"><h4><code>SendPlay Keys</code></h4></td>
+    </tr>
+  </tbody>
+</table>
+<h3>Senesni metodai</h3>
+<table width="1870" class="-Tag-Clean c-table-linesGrid -u-table-equelCols -Tag-SmallText">
+  <tbody>
+    <tr>
+      <td width="25%"><h4><code>SendEvent Keys</code>        </h4>
+        <blockquote>
+          <p>SendEvent sends keystrokes using the same method as the pre-1.0.43 <em>Send</em> command. The rate at which keystrokes are sent is determined by <a href="https://autohotkey.com/docs/commands/SetKeyDelay.htm">SetKeyDelay</a>. </p>
+        </blockquote>
+        <p>&nbsp;</p></td>
+      <td width="25%"><h4><code>SendRaw Keys</code></h4>
+      <p>&nbsp;</p></td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>AHK script'o vykdymas &#8212; laiko kontrolė</h2>
+<h2>Klavišų būsena</h2>
+<h2>Hotkeys'ų sukūrimas ir valdymas</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

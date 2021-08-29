@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+section {
+  --section-bdrClr: hsla(41, 33%, 67%);
+  border:        1px solid var(--section-bdrClr);
+  //border-radius: 3px;
+  margin-bottom: $szm-spacing-vertical-paragraph;
+
+  &:hover {
+    --section-hover-sameColor: hsla(41, 33%, 47%, 0.13);
+    background-color: var(--section-hover-sameColor);
+    border-color:     var(--section-hover-sameColor);
+    background-clip:  content-box;
+    outline: 1px solid var(--section-bdrClr);
+    outline-offset: 4px;
+    //border-color:     hsl(41, 33%, 47%);
+    //box-shadow: 0 0 12px -3px hsla(41, 33%, 47%, 1);
+    //box-shadow: inset 0 0 30px hsla(41, 33%, 37%, 0.2), 0 0 15px hsla(41, 33%, 37%, 0.1);
+  }
+}
+
+//section > *:last-child {
+//	margin-bottom: .4em;
+//}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  # .section__title .section--titleFirst
+//
+////////////////////////////////////////////////////////////////////////////////////////
+
+%elements-section-title {
+  font-size:   1.5em;
+  font-family: "Helvetica Neue LT W1G Condensed", sans-serif;
+  font-weight: 700;
+  background:  var(--section-bdrClr);
+  padding:     0 .5em;
+  margin:      0 0 .4rem;
+  color:       scale_color($g-text-color-main, $alpha: -15%);
+}
+
+%elements-section-title-hover {
+  border: solid var(--section-bdrClr);
+  border-width: 1px 1px 0;
+  margin-top: -1px;
+  margin-right: -1px;
+  margin-left: -1px;
+}
+
+.section__title {
+  @extend %elements-section-title;
+
+  section:hover > & {
+    @extend %elements-section-title-hover;
+  }
+}
+
+.section--titleFirst {
+  & > *:first-child {
+    @extend %elements-section-title;
+  }
+
+  &:hover > *:first-child {
+    @extend %elements-section-title-hover;
+  }
+}
+
+
+

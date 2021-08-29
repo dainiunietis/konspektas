@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Quotation and Citation Elements</h1>
+<h2>Savi</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Plika citata be nuorodos į šaltinį</h3>
+    <blockquote>
+  <p>Running&nbsp;Gulp: List plugins&nbsp;from the command palette will display all gulp plugins available on a searcheable list. Picking one will open its github repo on your default browser.    </p>
+    </blockquote>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Su nuoroda į šaltinį naudojant <code>FIGURE</code> ir <code>FIGCAPTION</code>, bei <code>CITE</code> dėl kūrinio pavadinimo</h3>
+      <figure>
+        <blockquote>
+          <p>Nieko neveiksi, matušėle, reik leisti Jonukui vesti, tegul ieško mergos su gera dalia... apsimokėsim šiek tiek skolas... Negali niekur nė nosies iškišti, labiausiai karčemoje, kai apstos, vienas – palūkų, kitas šieno, pasėlio; kitas vėl kaip velnias prisispyręs kamantinės: "kuomet atiduosi? kuomet atiduosi?", rodos, kad nieko daugiau nė šnekėti nebemoka. </p>
+        </blockquote>
+        <figcaption>Citata iš <b>Žemaitės</b> apsakymo <cite>Marti</cite></figcaption>
+      </figure>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Supaprastintas su citatos šaltinio adreso nuoroda pačiame <code>BLOCKQUOTE</code></h3>
+      <p class="c-em-note c-em--narrow">Jeigu veikia JS'as, bus prisegtas <code>.blockquote--citeSource_ADDED_BY_JS</code>, jeigu neveikia, reikia prisegti <code>.blockquote--citeSource</code></p>
+      <blockquote>
+        <p>Running&nbsp;Gulp: List plugins&nbsp;from the command palette will display all gulp plugins available on a searcheable list. Picking one will open its github repo on your default browser.</p>
+        <p><a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a></p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>aaa</p>
+        <p>aaa <strong>bbb</strong> ccc <a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a></p>
+      </blockquote>
+      <hr>
+      <blockquote>
+        <p>aaa</p>
+        <p>aaa bbb ccc <a href="konspekto-susitarimai.htm">konspekto <strong>susitarimai</strong></a></p>
+      </blockquote>
+<hr>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h4>Tarpai</h4>
+      <blockquote>
+        <p>tarpai prieš</p>
+      <p>     <a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a></p>
+      </blockquote>
+      <hr>
+      <blockquote>
+        <p>tarpai po</p>
+      <p><a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a>     </p>
+      </blockquote>
+      <hr>
+      <blockquote>
+        <p>tarpai prieš ir po</p>
+      <p>  <a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a>     </p>
+      </blockquote>
+      <h4>Tekstas</h4>
+      <blockquote>
+        <p>tekstas prieš</p>
+      <p>aaa aaa aaa <a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a></p>
+      </blockquote>
+      <hr>
+      <blockquote>
+        <p>tekstas po</p>
+      <p><a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a> aaa aaa aaa</p>
+      </blockquote>
+      <hr>
+      <blockquote>
+        <p>tekstas prieš ir po</p>
+      <p>aaa aaa aaa <a href="https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins">https://github.com/NicoSantangelo/sublime-gulp#listing-gulp-plugins</a> aaa aaa aaa</p>
+      </blockquote>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Kitų</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p><a href="http://html5doctor.com/cite-and-blockquote-reloaded/">http://html5doctor.com/cite-and-blockquote-reloaded/</a></p>
+      <pre><code>&lt;blockquote&gt;
+&lt;p&gt;As my fellow HTML5 Doctor, Oli Studholme has showed,
+people seldom quote exactly &ndash; so sacrosanctity of the
+quoted text isn&rsquo;t a useful ideal &ndash; and in print etc,
+citations almost always appear as part of the quotation
+&ndash; it&rsquo;s highly conventional.&lt;/p&gt;
+&lt;footer&gt;
+&mdash; &lt;cite&gt;&lt;a href=&quot;&quot;&gt;Bruce Lawson&lt;/a&gt;&lt;/cite&gt;
+&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+    <p>&nbsp;</p></td>
+    <td width="25%"><p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element</a></p>
+    <pre><code>&lt;figure&gt;
+ &lt;blockquote&gt;
+  &lt;p&gt;The truth may be puzzling. It may take some work to grapple with.
+  It may be counterintuitive. It may contradict deeply held
+  prejudices.&lt;/p&gt;
+ &lt;/blockquote&gt;
+ &lt;figcaption&gt;Carl Sagan, in &quot;&lt;cite&gt;Wonder and Skepticism&lt;/cite&gt;&quot;, from
+ the &lt;cite&gt;Skeptical Inquirer&lt;/cite&gt; Volume 19, Issue 1 (January-February
+ 1995)&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre></td>
+    <td width="25%"><p><a href="https://www.w3.org/International/questions/qa-b-and-i-tags">https://www.w3.org/International/questions/qa-b-and-i-tags</a></p>
+    <pre><code>&lt;blockquote class="print" cite="https://www.w3.org/TR/html5/text-level-semantics.html#the-i-element"&gt;
+  &lt;p&gt;
+    &lt;q&gt;The &lt;code class="kw" translate="no"&gt;i&lt;/code&gt; element represents a span of text in an alternate voice or mood, or otherwise
+    offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation, a technical term,
+    an idiomatic phrase from another language, transliteration, a thought, or a ship name in Western texts.&lt;/q&gt;
+  &lt;/p&gt;
+&lt;/blockquote&gt;</code></pre></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Naujausias HTML 5.3</h2>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p><a href="https://w3c.github.io/html/grouping-content.html#the-blockquote-element">https://w3c.github.io/html/grouping-content.html#the-blockquote-element</a></p>
+      <p>the citation is contained within the <a data-link-type="element" href="https://w3c.github.io/html/sections.html#elementdef-footer" id="ref-for-elementdef-footer-22">footer</a> of a <a data-link-type="element" href="https://w3c.github.io/html/grouping-content.html#elementdef-figure" id="ref-for-elementdef-figure-5">figure</a> element, this groups and associates the information, about the quote, with the quote. The <a data-link-type="element" href="https://w3c.github.io/html/grouping-content.html#elementdef-figcaption" id="ref-for-elementdef-figcaption-2">figcaption</a> element was not used, in this case, as a container for the citation as it is not a caption.</p>
+    <pre><code>&lt;figure&gt;
+  &lt;blockquote&gt;
+    &quot;That monster custom, who all sense doth eat
+    Of habit&rsquo;s devil,&quot; &lt;abbr title=&quot;et cetera&quot;&gt;&amp;c.&lt;/abbr&gt; not in Folio
+
+    &quot;What a falling off was there !
+    From me, whose love was of that dignity
+    That it went hand in hand even with the vow
+    I made to her in marriage, and to decline
+    Upon a wretch.&quot;
+  &lt;/blockquote&gt;
+  &lt;footer&gt;
+    &mdash; &lt;cite class=&quot;title&quot;&gt;Shakespeare manual&lt;/cite&gt;
+    by &lt;cite class=&quot;author&quot;&gt;Frederick Gard Fleay&lt;/cite&gt;,
+    p19 (in Google Books)
+  &lt;/footer&gt;
+&lt;/figure&gt;</code></pre></td>
+    <td width="25%"><p>the attribution is given in a footer after the quoted text, to clearly relate the quote to its attribution:</p>
+    <pre><code>&lt;blockquote&gt;
+  &lt;p&gt;I contend that we are both atheists. I just believe in one fewer
+  god than you do. When you understand why you dismiss all the other
+  possible gods, you will understand why I dismiss yours.&lt;/p&gt;
+  &lt;footer&gt;&mdash; &lt;cite&gt;Stephen Roberts&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre></td>
+    <td width="25%"><p>Here the attribution is given in a <a data-link-type="element" href="https://w3c.github.io/html/textlevel-semantics.html#elementdef-cite" id="ref-for-elementdef-cite-5">cite</a> element on the last line of the quoted text. Note that a link to the author is also included.</p>
+    <pre><code>&lt;blockquote&gt;
+  The people recognize themselves in their commodities; they find their
+  soul in their automobile, hi-fi set, split-level home, kitchen equipment.
+  &mdash; &lt;cite&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Herbert_Marcuse&quot;&gt;Herbert Marcuse&lt;/a&gt;&lt;/cite&gt;
+&lt;/blockquote&gt;</code></pre></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+// <div class="side-fixed-panel">
+// 	<input type="checkbox" id="checkbox-hideDescriptions"/>
+// 	<label for="checkbox-hideDescriptions">slėpti aprašymus</label>
+// </div>
+
+.side-fixed-panel {
+	position: fixed;
+  z-index: 100;
+	margin:0 0 0 0;
+  padding:8px 0 4px 10px;
+	background-color: rgba(142,71,140,.5);
+	max-height: 250px;
+	border-radius: 2px 0 0 2px;
+	font-size: 12px;
+	color: white;
+	font-weight: normal;
+	//font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	//font-family: Georgia, "Times New Roman", Times, serif;
+	//font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	//font-family: "MS Serif", "New York", serif;
+	//font-family: "Segoe UI";
+	font-family: "Droid Sans", Arial, Helvetica, sans-serif;
+	overflow: hidden;
+
+	&:hover {
+		background-color: rgba(142,71,140,.95);
+		overflow: auto;
+	}
+
+	a:link, a:visited {
+		text-decoration: none;
+		color: white;
+	}
+
+	a:hover, a:active, a:focus {
+		background: none;
+		color:#6FF;
+	}
+
+	&--right {
+		width:200px; top:70px; right:-195px; height: 200px;
+		&:hover {
+			right: 0px;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #Lay-ControlPanel-Links {
+// 	width:500px; top:0px; left:-495px;
+// }
+
+// #Lay-ControlPanel-Links:hover {
+// 	left: 0px;
+// }
+
+
+
+

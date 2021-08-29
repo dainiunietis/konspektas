@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>WebStorm'o Completion'ai</h1>
+<p><a href="http://127.0.0.1:63342/help/webstorm/2018.1/auto-completing-code.html">Auto-Completing Code and Paths - Help | WebStorm</a></p>
+<h2>Įvesti Completion List'o elementą galima skirtingais shortcut'ais</h2>
+<blockquote>
+  <p id="accept">Accept a suggestion</p>
+  <p id="d4917e448">You can accept a suggestion from the list in one of the following ways:</p>
+  <ul>
+    <li id="d4917e452">Press <kbd>Enter</kbd> or <kbd>double-click</kbd> a list item to insert it to the left of the caret.</li>
+    <li id="d4917e456">Press <kbd>Tab</kbd> to replace the characters to the right from the caret.</li>
+    <li id="d4917e460">Use <kbd>Ctrl+Shift+Enter</kbd> to make the current code construct syntactically correct (balance parentheses, add missing braces and semicolons, etc.)</li>
+  </ul>
+</blockquote>
+<table width="1876" class="-c-tableCols -c-tableCols--h3h4 -u-table-equelCols">
+  <tr>
+    <th width="10%">&nbsp;</th>
+    <th width="30%">pradinis Completion'o tekstas</th>
+    <th width="30%">įvedimas su <kbd>Enter</kbd></th>
+    <th width="30%">įvedimas su <kbd>Tab</kbd></th>
+  </tr>
+  <tr>
+    <td><p>paprasčiausias</p></td>
+    <td><p class="TAC"><img src="images/2018.08.11_13-30-42-site_assets_sass_mokykla.scss  - WebStorm.png" alt=""/></p></td>
+    <td colspan="2"><p class="TAC"><img src="images/2018.08.11_13-32-35-.png" alt=""/></p></td>
+  </tr>
+  <tr>
+    <td><p>kai <q>CamelCase or snake_case names initial letters</q></p></td>
+    <td><p class="TAC"><img src="images/2018.08.11_13-35-25-.png" alt=""/></p></td>
+    <td colspan="2"><p class="TAC"><img src="images/2018.08.11_13-35-47-.png" alt=""/></p></td>
+  </tr>
+  <tr>
+    <td><p>kai kursorius yra žodyje</p></td>
+    <td><p class="TAC"><img src="images/2018-08-15 12_42_45-site_assets_sass.mokykla.css_TEST.css  - WebStorm.png" alt=""/></p></td>
+    <td><p class="TAC"><img src="images/2018-08-15 12_47_29-site_assets_sass.mokykla.css_TEST.css  - WebStorm.png" alt=""/></p></td>
+    <td><p class="TAC"><img src="images/20180815_130947_site_assets_sass.mokykla.css_TEST.css  - WebStorm.png" alt=""/></p></td>
+  </tr>
+</table>
+<h2>Papildomos komandos Completion List'o elementams</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>[View &gt; Quick Definition] </h3>
+      <blockquote>
+        <p>You can use the <a href="http://127.0.0.1:63342/help/webstorm/2018.1/viewing-definition.html">Quick Definition View</a> by pressing Ctrl+Shift+I when you select an entry in the suggestions list:</p>
+        <p><img src="images/image_3.png" alt=""/></p>
+    </blockquote></td>
+    <td width="25%"><h3>[View &gt; Quick Documentation Lookup]</h3>
+    <p>You can use the <a href="http://127.0.0.1:63342/help/webstorm/2018.1/viewing-inline-documentation.html">Quick Information View</a> by pressing Ctrl+Q when you select an entry in the suggestions list:</p>
+    <p><img src="images/20180815_193544_Auto-Completing Code and Paths - Help _ WebStorm.png" alt=""/></p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Pasirinkus Completion List'o elementą, į redaktorių bus įvesta neparyškintas tekstas</p>
+<p>to insert the selected completion suggestion</p>
+<p><img src="images/20180810164439.svg" alt="" width="154" height=""/></p>
+<p>&nbsp;</p>
+<h2>Bendri principai</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

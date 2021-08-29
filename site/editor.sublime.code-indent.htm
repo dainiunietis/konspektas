@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" --><h1>kodo indent'avimas / indent'o valdymas</h1>
+<p>Mano <a href="editor.code-organize-rules-marking.htm#(h)">Kodo Style Guides</a></p>
+<h2>Setting'ai</h2>
+<p>User'io setting'ai Packages\User\Preferences.sublime-settings:</p>
+<pre><code>// The number of spaces a tab is considered equal to
+"tab_size": 2,</code></pre>
+<p>&nbsp;</p>
+<h3><code>translate_tabs_to_spaces</code></h3>
+<table width="650" class="c-table-linesGrid u-table-equelCols">
+  <tr>
+    <td width="50%"><p>Kai setting'uose yra:</p>
+      <p><code>&quot;translate_tabs_to_spaces&quot;: true</code></p>
+    <p>&nbsp;</p></td>
+    <td width="50%"><blockquote>
+      <p>Set to true to insert spaces when tab is pressed.</p>
+    </blockquote>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h2>Indent'avimo parametrų parodymas-indikavimas Status Bar'e </h2>
+<p>Status Bar'e parodo: </p>
+<ul>
+  <li>kokiais simboliais daromas indent'avimas, tai reiškia tik kokie simboliai bus naudojami darant indent'avimą,</li>
+  <li>ir koks vieno indet'o-tab'o dydis tarpeliais</li>
+</ul>
+<p><img src="images/2017.01.21_20-03-11.png" alt=""/> <img src="images/2017.01.21_19-52-52-D.png" alt=""/></p>
+<h2>Indent'avimo parametrų keitimas</h2>
+<h3>Indent'avimui naudojamų simbolių keitimas</h3>
+<table width="710" class="c-table-linesGrid -u-table-equelCols">
+  <tr>
+    <td width="40%"><p>Kai indentavimui naudojami tarpeliai, t. y. Status Bar'e rodo:</p>
+      <p><img src="images/2017.01.21_21-30-08-D__progs_Sublime Text 3_Data_Packages_User_Preferences__GABALELIAI__.sublime-set.png" alt="" width="192" height="253"/></p></td>
+    <td width="60%"><p>Tada Status Bar'o indent'avimo meniu komanda &quot;Indent Using Spaces&quot; yra pažymėta:</p>
+      <p><em><img src="images/2017.01.21_21-21-52-D__progs_Sublime Text 3_Data_Packages_User_Preferences__GABALELIAI__.sublime-set.png" alt="" width="193" height="255"/></em></p></td>
+  </tr>
+  <tr>
+    <td><p>Nuėmus pažymėjimą:</p>
+      <p><img src="images/2017.01.21_21-44-22-.png" alt="" width="189" height="249"/></p></td>
+    <td><p>Indentavimui pradedami naudoti tab'ai ir  Status Bar'e rodo:</p>
+      <p><img src="images/2017.01.21_21-46-01-D__progs_Sublime Text 3_Data_Packages_User_Preferences__GABALELIAI__.sublime-set.png" alt="" width="191" height="252"/></p></td>
+  </tr>
+</table>
+<h2>Indent'avimo dokumente keitimas</h2>
+<h3>Indent'avimo simbolių tab'ų pakeitimas į tarpus</h3>
+<p>Prieš konvertavimą pasitikriname ar yra nustatytas tinkamas-norimas Tabs Size'as.</p>
+<dl>
+  <dt>Jei reikia keisti Tabs Size'ą:</dt>
+  <dd>
+     <p>Pele iškviestu meniu per indent'avimo parametrus Status Bar'e:</p>
+    <table width="650" class="c-table-linesGrid u-table-equelCols">
+      <tr>
+        <td width="50%"><p>Spaudžiame kairįjį pelės klavišą ant Indent'avimo parametrų Status Bar'e:</p>
+          <p><img src="images/2017.01.21_20-25-12-D__progs_Sublime Text 3_Data_Packages_User_Preferences.sublime-settings (Sublime.png" alt="" width="206" height="270"/></p></td>
+        <td width="50%"><p>Ir atsiradusiame meniuse pakeičiame Tabs Size'ą:</p>
+          <p><img src="images/2017.01.21_20-23-56-D__progs_Sublime Text 3_Data_Packages_User_Preferences.sublime-settings (Sublime.png" alt="" width="207" height="272"/></p></td>
+      </tr>
+    </table>
+  </dd>
+  <dt>Konvertuojame indent'avimo simbolius tab'us į tarpus:</dt>
+  <dd>
+    <p>Galima šią komandą iškviesti [CP][Indentation: Convert to Spaces], arba pele per indent'avimo parametrus Status Bar'e:</p>
+    <p><img src="images/2017.01.21_20-33-53-.png" alt="" width="199" height="261"/></p>
+  </dd>
+</dl>
+<h3>Indent'avimo Tabs Size'o keitimas kai indent'avui naudojami tarpai</h3>
+<dl>
+  <dt>Konvertuojame indent'avimo simbolius tarpus į tab'us:</dt>
+  <dd>
+    <p>[CP][Indentation: Convert to Tabs]</p>
+  </dd>
+  <dt> Keičiame Tabs Size'ą:</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>Konvertuojame atgal indent'avimo simbolius tarpus:</dt>
+  <dd>
+    <p>[CP][Indentation: Convert to Spaces]</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

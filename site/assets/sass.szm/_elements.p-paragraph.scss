@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+p {
+  // Optimalus paragrafinio teksto dydis — 18..20px.
+  // As the characteristics of typefaces may differ a lot, it doesn't make sense to
+  // define a standard minimum size, but 18–20px probably is a good starting point for smaller screen sizes.
+  font-size: 1em;
+
+  // Defining paragraph widths
+  // According to several sources designers should strive for 45 to 85 characters per line since the ideal width for a paragraph is supposedly 65 characters.
+  // When defining widths of text blocks the ch unit may come in handy since 1ch is equivalent to the width of the zero (0) character. It also changes as the font-family or font-size changes.
+  max-width: 65ch;
+}
+
+
+

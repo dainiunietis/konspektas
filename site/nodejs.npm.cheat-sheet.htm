@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>npm (Node Package Manager) cheat sheet</h1>
+<p>&nbsp;</p>
+<h2>Pačio npm'o instaliavimas ir atnaujinimas</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p><a href="https://www.npmjs.com/get-npm">npm | get npm</a></p>
+      <p><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Downloading and installing Node.js and npm | npm Documentation</a></p>
+      <p><a href="http://stackoverflow.com/questions/6237295/how-can-i-update-node-js-and-npm-to-the-next-versions">http://stackoverflow.com/questions/6237295/how-can-i-update-node-js-and-npm-to-the-next-versions</a></p>
+    </td>
+    <td width="25%">
+      <h3>Instaliavimas</h3>
+      <blockquote>
+        <p>The preferred way of installing a fresh version of npm is to <a href="https://nodejs.org/en/download/">use the node.js installer itself</a></p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Atnaujinimas</h3>
+      <dl>
+        <dt><code>&gt; npm -v</code></dt>
+        <dd>
+          <p>Parodo lokaliai suinstaliuoto npm'o versiją — <q>See what version of npm you're running</q>. </p>
+        </dd>
+        <dt><a href="https://github.com/npm/cli/releases/latest">https://github.com/npm/cli/releases/latest</a></dt>
+        <dd>
+          <p>Sužinoti kokia yra naujausia npm'o versija — <q>The current stable version of npm</q>.</p>
+        </dd>
+        <dt><code> npm install npm@latest -g</code></dt>
+        <dd>
+          <p><q>upgrade to the latest version of npm</q></p>
+          <p>Jeigu kyla problemų:</p>
+          <blockquote>
+            <p>[Windows] Upgrading npm on Windows can fail due to issues with the node.js installer. You can use <a href="https://github.com/felixrieseberg/npm-windows-upgrade#upgrade-npm-on-windows">npm-windows-upgrade <span title="2281 clicks">2.3k</span></a> to try to bypass these issues.</p>
+          </blockquote>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Naudojimas <q>Node.js version manager</q></h3>
+      <p><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#windows-node-version-managers">Windows Node version managers</a></p>
+      <p>Pats npm'as pataria:</p>
+      <blockquote>
+        <p><strong>We strongly recommend using a Node version manager to install Node.js and npm.</strong> We do not recommend using a Node installer, since the Node installation process installs npm in a directory with local permissions and can cause permissions errors when you run npm packages globally.</p>
+      </blockquote>
+      <p>nes:</p>
+      <blockquote>
+        <p id="using-a-node-version-manager-to-install-nodejs-and-npm">Node version managers allow you to install and switch between multiple versions of Node.js and npm on your system so you can test your applications on multiple versions of npm to ensure they work for users on different versions.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h2>Atskiros komandos</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><code>npm init</code></h3>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>npm install</code></h3>
+      <p><a href="https://docs.npmjs.com/cli/install">https://docs.npmjs.com/cli/install</a></p>
+      <p> <a href="https://www.stackchief.com/tutorials/npm%20install%20%7C%20how%20it%20works">npm install | how it works | StackChief</a></p>
+      <p>npm'o modulių instaliavimas</p>
+      <pre>npm install (with no args, in package dir)
+npm install [&lt;@scope&gt;/]&lt;name&gt;
+npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;tag&gt;
+npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;version&gt;
+npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;version range&gt;
+npm install &lt;tarball file&gt;
+npm install &lt;tarball url&gt;
+npm install &lt;folder&gt;</pre>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>By default, <code>npm install</code> recursively installs the target's dependencies (as specified in package.json), choosing the latest available version that satisfies the dependency's semver pattern.</p>
+      </blockquote>
+      <p>Flag'ai:      </p>
+      <dl>
+        <dt><code>-S</code>, <code>--save</code><br>
+          <code>-D</code>, <code>--save-dev</code><br>
+        <code>-O</code>, <code>--save-optional</code></dt>
+        <dd>
+          <blockquote>
+            <p><code>npm install</code> takes 3 exclusive, optional flags which save or update the package version in your main package.json:</p>
+            <ul>
+              <li><code>-S</code>, <code>--save</code>: Package will appear in your dependencies.</li>
+              <li><code>-D</code>, <code>--save-dev</code>: Package will appear in your devDependencies.</li>
+              <li><code>-O</code>, <code>--save-optional</code>: Package will appear in your optionalDependencies.</li></ul></blockquote>
+        </dd>
+        <dt><code>--global</code></dt>
+        <dd>
+          <p><code>&gt; npm install --global &lt;module-name&gt;</code></p>
+          <p><code>C:\Users\zm\AppData\Roaming\npm</code> &#8212; čia instaliuoja-padeda globalius node'o modulius        </p>
+        </dd>
+        <dt><code>--production</code></dt>
+        <dd>
+          <blockquote>
+            <p><code>npm install</code> will install/update devDependencies unless <code>--production</code> flag is added.</p>
+          </blockquote>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3><code>npm update</code></h3>
+      <p><a href="https://docs.npmjs.com/cli/update">https://docs.npmjs.com/cli/update</a></p>
+      <p><a href="https://www.stackchief.com/tutorials/npm%20update%20%7C%20how%20it%20works">npm update | how it works | StackChief</a></p>
+      <p>Atnaujina npm modulius:</p>
+      <blockquote>
+        <p>Update packages to their latest stable versions and installs missing packages.</p>
+      </blockquote>
+      <p>Kokią versiją instaliuoja:</p>
+      <blockquote>
+        <p><code>npm update</code> respects semvar. This means if the latest version of <code>dep1</code> is <code>1.3.0</code> but your <strong>package.json</strong> specifies <code>"dep1" : "~1.2.3"</code> you wont get the latest version. Instead, npm will install the latest version of <code>dep1</code> that also satisfies semvar (if there is one).</p>
+      </blockquote>
+      <div class="c-em-important c-em--small">
+        <p>Kad atnaujinti modulį iki tam tikros versijos, naudojame:</p>
+        <p><code>npm install toks-modulis@4.8.2 --save</code></p>
+        <blockquote>
+          <p>If you want to update a package to specific version, use <code>npm install</code> with the specified <code>@version</code> tag instead...</p>
+          <p>Using the <code>--save</code> flag is important for updating the <strong>package.json</strong>.</p>
+        </blockquote>
+      </div>
+      <div class="c-em-note c-em--small">
+        <p>Ir be, ir su flag'ais, <code>npm update</code> visada į <code>package.json</code> įrašo atnaujintų modulių versijas (<strong>ar tikrai ????????????</strong>):</p>
+        <blockquote>
+          <p>As of npm@5.0.0, the <strong>package.json</strong> file is updated when running <code>npm update</code>.</p>
+        </blockquote>
+      </div>
+      <p>Lokalių-projekto modulių atnaujinimas:</p>
+      <dl>
+        <dt><code>&gt; npm update</code></dt>
+        <dd>
+          <p>Atnaujina lokalius-projekto modulius, kurie surašyti <code>package.json</code>, išskyrus <code>devDependencies</code> modulius, t. y. jų neatnaujina:</p>
+          <blockquote>
+            <p>If no packages are specified, <code>npm update</code> will update every (non-dev) dependency listed in <code>package.json</code>.</p>
+            <p><code>npm update</code> will ignore <code>devDependencies</code> unless <code>--dev</code> flag is added.</p>
+          </blockquote>
+          <del tabindex="0"><p>Atnaujina visus lokalius modulius, bet nedaro atnaujintų modulių versijų pakeitimų į package.json'o: <code>devDependencies</code>, <code>dependencies</code>:</p>
+          <blockquote>
+            <p>You can install the latest version without modifying your package file by using <code>npm update</code>. </p>
+          </blockquote></del>
+        </dd>
+        <dt><code>&gt; npm update toks-modulis</code><br>
+        <code>&gt; npm update koks-nors-modulis kitas-modulis</code>        </dt>
+        <dd>
+          <p>&nbsp;</p>
+          <blockquote><p>If packages are specified then only those packages will be updated...</p></blockquote>
+        </dd>
+        <dt><code>npm install</code></dt>
+        <dd>
+          <p>a</p>
+          <blockquote>
+            <p>&nbsp;</p>
+          </blockquote>
+        </dd>
+        <dt><code>&gt; npm update --dev | -D</code><br>
+        <code>&gt; npm update --save-dev | -D</code>        </dt>
+        <dd>
+          <p>Atnaujina visus lokalius-projekto modulius, kurie surašyti <code>package.json</code>, tame tarpe ir <code>devDependencies</code>:</p>
+          <blockquote>
+            <p>Just like <a href="https://www.stackchief.com/tutorials/npm%20install%20%7C%20how%20it%20works">npm install</a>, if the <code>--save-dev</code> flag is specified, <code>npm update</code> will update devDependencies as well...</p>
+            <pre><code>npm update --save-dev</code></pre>
+            <pre><code>npm update --dev</code></pre>
+            <p>Both <code>--save-dev</code> and <code>--dev</code> do the same thing.</p>
+          </blockquote>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>Globalių modulių atnaujinimas:</p>
+      <dl>
+        <dt><code>&gt; npm update -g</code></dt>
+        <dd>
+          <p>Atnaujina visus globalius modulius.</p>
+          <blockquote>
+            <p><code>npm update -g</code> will apply the update action to each globally installed package that is outdated -- that is, has a version that is different from latest.</p>
+          </blockquote>
+        </dd>
+        <dt><code>npm install -g &lt;package&gt;</code></dt>
+        <dd>
+          <p>Atnaujina vieną nurodytą globalų modulį.</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <del tabindex="0"><dl>
+        <dt><code>&gt; npm update --dev</code></dt>
+        <dd>
+          <p>Nors čia <a href="https://docs.npmjs.com/cli/update">https://docs.npmjs.com/cli/update</a> rašoma &#8212; <q>As with all commands that install packages, the --dev flag will cause devDependencies to be processed as well.</q> &#8212; bet kuo tai pasireiškia nesuprantu, ko tikrai nedaro, tai atnaujintų modulių versijų nesurašo į package.json'ą.</p>
+          <p class="em-note em--narrow">Spėju <code>--dev</code> nurodo, kad modulius atnaujinti pagal package.json'o <code>devDependencies</code> nurodytas versijas, t. y. ???????????????</p>
+        </dd>
+        <dt><code>npm update --save-dev</code></dt>
+        <dd>
+          <p>Atnaujina visus lokalius modulius, ir atnaujintą modulio versiją įrašo į package.json'o <code>devDependencies</code>: </p>
+          <blockquote>
+            <p><a href="https://docs.npmjs.com/cli/update#recording-updates-with---save">https://docs.npmjs.com/cli/update#recording-updates-with---save</a></p>
+            <p>When you want to update a package and save the new version as the minimum required dependency in package.json, you can use <code>npm update -S</code> or <code>npm update --save</code>. For example if package.json contains:</p>
+            <pre>&quot;dependencies&quot;: {
+  &quot;dep1&quot;: &quot;^1.1.1&quot;
+}</pre>
+            <p>Then <code>npm update --save</code> will install dep1@1.2.2 (i.e., latest), and package.json will be modified:</p>
+            <pre>&quot;dependencies&quot;: {
+  &quot;dep1&quot;: &quot;^1.2.2&quot;
+}</pre>
+          </blockquote>
+        </dd>
+      </dl></del>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>npm'o modulių atnaujinimas su tam skirtais moduliais</h3>
+      <h4> npm-check-updates</h4>
+      <p>Visų lokalių modulių atnaujinimas su npm'o plugin'u npm-check-updates</p>
+      <p><a href="https://www.npmjs.com/package/npm-check-updates">https://www.npmjs.com/package/npm-check-updates</a></p>
+      <p><a href="https://github.com/tjunnone/npm-check-updates">https://github.com/tjunnone/npm-check-updates</a></p>
+      <dl>
+        <dt><code>&gt; ncu</code></dt>
+        <dd>
+          <p>Išves lokalių modulių sąrašą, kurie turi naujesnes stable versijas internete, daro lygiai tą patį kaip ir <code>npm outdated --depth=0</code></p>
+        </dd>
+        <dt><code>&gt; ncu -u</code></dt>
+        <dd>
+          <p>Atrodo ši komanda daro tik vieną operaciją &#8212; į package.json'o <code>devDependencies</code> surašo naujausias versijas (latest stable), pačių modulių neatnaujina.</p>
+          <blockquote>
+            <p>Upgrade a project's package file.</p>
+            <p>To update all of the dependencies within that package.json</p>
+          </blockquote>
+          <p>&nbsp;</p>
+        </dd>
+        <dt>&nbsp;</dt>
+        <dd>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <pre>> npm-check-updates -u
+> npm install </pre>
+      <p>&nbsp;</p>
+      <h4><a href="https://github.com/tbranyen/salita">https://github.com/tbranyen/salita</a></h4>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h3>npm'o modulių versijos</h3>
+      <p><a href="https://docs.npmjs.com/misc/semver">https://docs.npmjs.com/misc/semver</a></p>
+      <p><a href="http://semver.org/">http://semver.org/</a></p>
+      <p><a href="https://github.com/npm/node-semver#caret-ranges-123-025-004">https://github.com/npm/node-semver#caret-ranges-123-025-004</a></p>
+      <p>&nbsp;</p>
+      <h4>Sužinoti kurie pas save suinstaliuoti moduliai turi naujesnę versiją, t. y. pasenę-outdated </h4>
+      <blockquote>
+        <p>To find out which packages need to be updated.</p>
+      </blockquote>
+      <p><code>&gt; npm outdated -g --depth=0</code> &#8212; išves globaliai suinstaliuotus pasenusius modulius</p>
+      <p><code>&gt; npm outdated --depth=0</code> &#8212; o taip lokaliai </p>
+      <h4>Sužinoti vieno-konkretaus modulio versijas iš interneto, kur modulis laikomas-host'inamas (remote) </h4>
+      <p>Išvesti visas modulio versijas:</p>
+      <blockquote>
+        <p>If you'd like to see all available (remote) versions for a particular module, then do:</p>
+        <pre><code>npm view &lt;module_name&gt; versions</code></pre>
+      </blockquote>
+      <p>Išvesti naujausią modulio versiją:</p>
+      <blockquote>
+        <p>For latest remote version:</p>
+        <pre><code>npm view &lt;module_name&gt; version</code></pre>
+      </blockquote>
+    <p>&nbsp;</p></td>
+    <td><h3>Suinstaliuotų npm'o modulių išvedimas</h3>
+      <div class="em-note">
+        <p>Su parametru-flag'u <code>--depth=0</code> išveda tik user'io suinstaliuotų npm'o modulių sąrašą be su jais kartu suinstaliuotais pagalbiniais moduliais (package dependencies), pvz.:</p>
+        <p><code>&gt; npm list --depth=0</code></p>
+      </div>
+      <dl>
+        <dt><code>&gt; npm list</code></dt>
+        <dd>
+          <p>išveda aktyviame kataloge (t. y. kuriame iškviesta ši komanda) suinstaliuotus npm'o modulius</p>
+        </dd>
+        <dt><code>&gt; npm list -g</code></dt>
+        <dd>
+          <p>išveda globaliai (t. y. C:\Users\zm\AppData\Roaming\npm) suinstaliuotus  npm'o modulius</p>
+        </dd>
+        <dt><code>&gt; npm list --dev</code></dt>
+        <dd>
+          <p>išveda tik tuos npm'o modulius, kurie yra package.json'e:</p>
+          <pre><code>{
+  ...
+  &quot;devDependencies&quot;: {
+    &quot;npm-modulis&quot;: &quot;versija&quot;,
+    ...
+  }
+}</code></pre>
+          <p></p>
+        </dd>
+      </dl>
+    <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Technikos</h2>
+<table width="1757" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>npm'o modulių atnaujinimas</h3>
+      <p><a href="https://greenkeeper.io/">https://greenkeeper.io/</a></p>
+      <p><a href="https://dependencyci.com/">https://dependencyci.com/</a></p>
+      <p><a href="https://docs.npmjs.com/getting-started/updating-local-packages">https://docs.npmjs.com/getting-started/updating-local-packages</a></p>
+      <h4>Su npm'o <code>outdated</code> ir <code>update</code></h4>
+      <p>&nbsp;</p>
+      <p>neatsižvelgiant į package.json'o <code>devDependencies</code> ???????</p>
+      <p>&nbsp;</p>
+      <dl>
+        <dt>Atnaujina visus <strong>lokalius</strong> modulius iki naujausių versijų:</dt>
+        <dd>
+          <ol>
+            <li><code>&gt; npm outdated --depth=0</code> &#8212; pažiūrime ar yra atnaujintų modulių</li>
+            <li><code>&gt; npm update --dev</code> &#8212; jei yra ką atnaujinti &#8212; atnaujina visus  pasenusius modulius</li>
+          </ol>
+        </dd>
+        <dt>Atnaujina visus <strong>globalius</strong> modulius iki naujausių versijų:</dt>
+        <dd>
+          <ol>
+            <li><code>&gt; npm outdated --depth=0 -g</code></li>
+            <li><code>&gt; npm update  --dev -g</code>        </li>
+          </ol>
+        </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <h4>npm 2+:  npm outdated+npm update+npm shrinkwrap</h4>
+      <p><a href="http://stackoverflow.com/a/30607722">http://stackoverflow.com/a/30607722</a></p>
+      <p>Reikia naudoti <code>npm shrinkwrap</code>:</p>
+      <blockquote>
+        <p>Be sure to shrinkwrap your deps, or you may wind up with a dead project. I pulled out a project the other day and it wouldn't run because my deps were all out of date/updated/a mess. If I'd shrinkwrapped, npm would have installed exactly what I needed.</p>
+      </blockquote>
+      <blockquote>
+        <p><strong>Use npm-check-updates or npm outdated to suggest the latest versions.</strong></p>
+        <pre># `outdated` is part of newer npm versions (2+)
+$ npm outdated
+# If you agree, update.
+$ npm update
+# ------------------ OR ------------------
+# Install and use the `npm-check-updates` package.
+$ npm install -g npm-check-updates
+# Then check your project
+$ npm-check-updates
+# If you agree, update package.json.
+$ npm-check-updates -u</pre>
+        <p><strong>Then do a clean install (w/o the rm I got some dependency warnings)</strong></p>
+        <pre>$ rm -rf node_modules
+$ npm install </pre>
+        <p><strong>Lastly, save exact versions to npm-shrinkwrap.json with npm shrinkwrap</strong></p>
+        <pre>$ rm npm-shrinkwrap.json
+$ npm shrinkwrap</pre>
+        <p><strong>Now, npm install will now use exact versions in npm-shrinkwrap.json</strong></p>
+        <p>If you check npm-shrinkwrap.json into git, all installs will use the exact same versions.</p>
+        <p>This is a way to transition out of development (all updates, all the time) to production (nobody touch nothing).</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%"><h3>Naujo projekto sukūrimas</h3>
+    <p>&nbsp;</p>
+    <ol>
+      <li>
+        <p>Padarome package.json'ą su reikiamais moduliais:</p>
+        <pre><code>{
+  ...
+  &quot;devDependencies&quot;: {
+    &quot;npm-modulis&quot;: &quot;latest&quot;,
+    ...
+  }
+}</code></pre>
+        <p></p>
+        </li>
+      <li>
+        <p><code>npm install</code></p>
+      </li>
+    </ol>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1345" class="c-table-linesGrid u-table-equelCols">
+  <tr>
+    <td width="16%"><code>&gt; npm list</code></td>
+    <td width="84%">išveda aktyviame kataloge (t. y. kuriame iškviesta ši komanda) suinstaliuotus npm'o modulius</td>
+  </tr>
+  <tr>
+    <td><p><code>&gt; npm list -g</code></p></td>
+    <td><p>išveda globaliai (t. y. C:\Users\zm\AppData\Roaming\npm) suinstaliuotus  npm'o modulius</p></td>
+  </tr>
+  <tr>
+    <td><code>&gt; npm list --dev</code></td>
+    <td><p>išveda tik tuos npm'o modulius, kurie yra package.json'e:</p>
+      <pre><code>{
+  ...
+  &quot;devDependencies&quot;: {
+    &quot;npm-modulis&quot;: &quot;versija&quot;,
+    ...
+  }
+}</code></pre>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

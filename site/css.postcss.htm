@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title></title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>PostCSS bendrai</h1>
+<p><a href="http://postcss.org/">http://postcss.org/</a></p>
+<p><a href="https://github.com/postcss/postcss">https://github.com/postcss/postcss</a></p>
+<p>&nbsp;</p>
+<p>http://cssnext.io/</p>
+<p>https://www.smashingmagazine.com/2015/12/introduction-to-postcss/</p>
+<h2>Kas yra PostCSS</h2>
+<p>Visumoje PostCSS yra:</p>
+<blockquote>
+  <p><a href="http://davidtheclark.com/its-time-for-everyone-to-learn-about-postcss/">http://davidtheclark.com/its-time-for-everyone-to-learn-about-postcss/</a> </p>
+  <p>With the word &ldquo;PostCSS&rdquo; we might alternately refer to two things:</p>
+  <ol>
+    <li>There is <a href="https://github.com/postcss/postcss">PostCSS</a>, the tool itself — what you get when you run <code>npm install postcss</code> — and</li>
+    <li><a href="https://github.com/postcss/postcss#plugins">The PostCSS plugin ecosystem</a> powered by that tool.</li>
+  </ol>
+</blockquote>
+<p>Ką daro pats node.js'o modulis PostCSS:</p>
+<blockquote>
+  <p>The tool itself is a Node.js module that parses CSS into an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree (AST)</a>; passes that AST through any number of &ldquo;plugin&rdquo; functions; and then converts that AST back into a string, which you can output to a file. Each function the AST passes through may or may not transform it; sourcemaps will be generated to keep track of any changes.</p>
+</blockquote>
+<blockquote>
+  <p><a href="https://webdesign.tutsplus.com/tutorials/postcss-deep-dive-what-you-need-to-know--cms-24535">https://webdesign.tutsplus.com/tutorials/postcss-deep-dive-what-you-need-to-know--cms-24535</a> </p>
+  <p>In a nutshell, PostCSS takes CSS and turns it into a form of data that JavaScript can manipulate. JavaScript-based plugins for PostCSS then perform said code manipulations. PostCSS itself doesn&rsquo;t change your CSS, it just paves the way for plugins to perform whatever transformations they&rsquo;ve been designed to make.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1880" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>&nbsp;</h3>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>&nbsp;</h3>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>&nbsp;</h3></td>
+    <td width="25%"><h3>&nbsp;</h3></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

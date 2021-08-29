@@ -1,0 +1,1243 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>GIT — distributed version control system</h1>
+<p><a href="version-control-system.git_2021-07-01_perkelti.html">version-control-system.git_2021-07-01_perkelti</a></p>
+<p>&nbsp;</p>
+<figure>
+  <figcaption>GIT terminai</figcaption>
+  <div class="o-mcl o-mcl--W5 o-mcl--continuous-dtdd">
+    <dl>
+      <dt><dfn>Repository</dfn>, <dfn>Repo</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>A repository represents the entire project. All of the project code along with any changes are stored in a repository.</p>
+          <p>A repository is a collection of <em>commits</em>, each of which is an archive of what the project's <i>working tree</i> looked like at a past date, whether on your machine or someone else's. </p>
+        </blockquote>
+        <div class="c-em-alert c-em--small">
+          <p>Jeigu lokalus repas yra surištas su kitur esančiu repu, juose esantys kodai gali skirtis, jei nėra atlikta sinchronizacija:</p>
+          <blockquote>
+            <p>Your local copy of the repository doesn't necessarily contain every change. It may in-fact be missing large portions of code that are stored in other repositories. For example two developers working independently can each have changes in their local repository that the other is not aware of.        </p>
+          </blockquote>
+        </div>
+        <p>Centralised remote repository:</p>
+        <blockquote>
+          <p>Git does not require a centralised remote repository, although this is the most common way of working with Git. Services like <strong>GitHub</strong> provide hosting for repositories as well as tools to help us review code and manage changes via <strong>pull requests</strong>.</p>
+        </blockquote>
+        <p>&nbsp;</p>
+      </dd>
+      <dt><dfn>Cloning</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>The initial step of copying an existing repository to your local file system is called <i>cloning</i>.</p>
+        </blockquote>
+      </dd>
+      <dt>Push,  Pull, Synchronise</dt>
+      <dd>
+        <blockquote>
+          <p>To share changes we can <i>push</i> code to a remote repository and <i>pull</i> to get updates. By regularly synchronising with a centralised repository multiple developers can share work and manage changes.</p>
+        </blockquote>
+      </dd>
+      <dt><dfn>Branches</dfn></dt>
+      <dd>
+        <p><i>Branche</i> — tai viso projekto versija.</p>
+        <blockquote>
+          <p>Git allows individuals to have their own copy of the code, or even multiple copies at the same time, each stored on a different <strong>branch</strong>. A branch typically contains a new feature or a significant change.</p>
+        </blockquote>
+        <p>Repo <i>branch</i>'e saugoma tik kodo pakeitimai:</p>
+        <blockquote>
+          <p>Git is clever and it only stores changes we make from the time we create a new branch. It remembers the base, (the point where the branch was <em>forked</em>) and saves the minimal amount of information required to represent that change. The ability to store only the differences from the previous version is central to Git.</p>
+        </blockquote>
+        <p><dfn>Checkout</dfn> — tai <i>branche</i>'o perkėlimas iš repo į <i>working tree</i></p>
+        <blockquote>
+          <p>You can <strong>checkout</strong> a branch at any time to work on it. This will update all the files in your local repository to reflect the selected branch.</p>
+        </blockquote>
+        <p><i>Branch</i>'ų naudojimas:</p>
+        <blockquote>
+          <p>Branches are intended to eventually be merged back into the trunk. The trunk is just the main branch and it's typically called 'master'. You normally branch off master, but if you have a good reason, you can create a branch off any other branch.</p>
+        </blockquote>
+      </dd>
+      <dt><dfn>Commits</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>A <i>branch</i> is made up of one or more sets of changes to files. We call these <i>commits</i>. If a branch represents a feature, a commit represents an implementation step. </p>
+        </blockquote>
+        <p><i>Commit</i>'ų apiforminimas:</p>
+        <blockquote>
+          <p>Each commit has an associated message and ideally this message should describe the step taken and perhaps more importantly why.</p>
+          <p>A good series of commit messages should read like steps in a recipe or a set of instructions. For example the commit messages for adding timestamps to posts on my <a href="https://www.madebymike.com.au/writing/">Writing</a> page, might look something like this:</p>
+          <ol>
+            <li>Write tests for formatDate function</li>
+            <li>Create formatDate function</li>
+            <li>Add timestamps to articles using html time element</li>
+            <li>Add CSS to style timestamps</li>
+          </ol>
+        </blockquote>
+        <p>&nbsp;</p>
+      </dd>
+      <dt><dfn>Staging</dfn></dt>
+      <dd>
+        <blockquote>
+          <p>Selecting files to be added to a commit is called <i>staging</i>.</p>
+        </blockquote>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>aaa</dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>aaa</dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+  </div>
+</figure>
+<h2>Nustatymai / Setup, Preferences, Configuration</h2>
+<p>&nbsp;</p>
+<p><code>git config</code> opcijos nustatyti <i>configuration scope</i></p>
+<ul>
+  <li><code>--local</code></li>
+  <li><code>--global</code></li>
+  <li><code>--system</code></li>
+</ul>
+<p>&nbsp;</p>
+<p><code>gitignore</code> turi būti šakniniame projekto kataloge.</p>
+<blockquote>
+  <p>A <code>.gitignore</code> is a list of files that Git should <em>not</em> track, for instance, files with passwords!</p>
+</blockquote>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--exact o-gfx--boxed">
+  <div>
+    <h3>Nustatymų architektūra</h3>
+    <h4>Git'o konfiginių failų saugojimo vietos</h4>
+    <p><a href="https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Where-system-global-and-local-Windows-Git-config-files-are-saved">Where system, global and local Windows Git config files are saved - Coffee Talk: Java, News, Stories and Opinions</a></p>
+    <figure class="c-figure c-figure--shadow" style="mmax-width:400px">
+      <div class="c-figure__content">
+        <ol>
+          <li>Local — <code>&lt;projektas&gt;\.git\config</code></li>
+          <li>Global — <code>C:\Users\zm\.gitconfig</code></li>
+          <li>System — <code>C:\Program Files\Git\mingw64\etc\gitconfig</code></li>
+        </ol>
+      </div>
+      <figcaption>Šiuo metu pas mane Git'o konfiginiai failai saugomi      </figcaption>
+    </figure>
+    <p>Kur saugomi:</p>
+    <blockquote>
+      <p>Where are Git config files stored?</p>
+      <p>As for the location of these three Windows Git configuration files, here is where you'll find them:</p>
+      <ul>
+        <li>The system Git config file is found in the <em>mingw32\</em>etc folder of the Git installation.</li>
+        <li>The global Git configuration file is found in the root of the user's local profile or home directory <em>(C:\Users\git-user\).</em></li>
+        <li>The local Git config file is stored inside the .git directory of the repository in which you are working.</li>
+      </ul>
+    </blockquote>
+    <p>Visos galimos <code>&gt; git config</code> opcijos konfiginių failų vietai nustatyti:</p>
+    <blockquote>
+      <pre><code>Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file &lt;file&gt;     use given config file
+    --blob &lt;blob-id&gt;      read config from given blob object</code></pre>
+    </blockquote>
+    <p>Kokie failų pavadinimai:</p>
+    <blockquote>
+      <p>Names of Windows Git config files</p>
+      <p>Just to make life a bit more complicated, the Git configuration files all have different names. Furthermore, Windows Git config files are each stored in different locations.</p>
+      <ul>
+        <li>The <em>extensionless</em> system Git config file is named <em>gitconfig.</em></li>
+        <li>The global Git config file has no name, but is instead just an extension. The global Windows Git config file is named <em>.gitconfig.</em></li>
+        <li>The local Windows Git configuration file is simply named <em>config, </em>and like the system Git config file, it has no extension.</li>
+      </ul>
+    </blockquote>
+    <h4>Konfiginių failų pritaikymo principai</h4>
+    <p>Kaip veikia:</p>
+    <blockquote>
+      <p>System, global and local Git config files</p>
+      <p>Git provides three different scopes for storing configuration data. Accordingly, when using the <em>git config</em> command, one of these three scopes can be specified:</p>
+      <ol>
+        <li>Local</li>
+        <li>Global</li>
+        <li>System</li>
+      </ol>
+      <p>The scopes are cascading, so system scope trumps global scope and local scope trumps global scope.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3><code>&gt; git config</code> įpatybės</h3>
+    <p>&nbsp;</p>
+    <p>Per CMD galima atidaryti redaktoriuje config failus:</p>
+    <blockquote>
+      <p>Editing Windows Git config files</p>
+      <p>If you are interested in viewing or editing Git config files, simply use the git <em>config</em> command, specify the scope and add an –edit switch.</p>
+      <pre><code>$ git config --global --edit
+$ git config --system --edit
+$ git config --local --edit</code></pre>
+      <p>Each of these <a href="https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Need-to-git-cherry-pick-a-commit-Heres-an-example-how">Git commands</a> will open the corresponding Windows Git config file in the configuration specified editor.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Identifikacija / Identity</h3>
+    <blockquote>
+      <p>After you install Git it's a good idea to add your user name and email address. This is important because every Git commit uses this information.</p>
+    </blockquote>
+    <p>Suinstaliavus kompe GIT'ą globaliame lygyje nustatome:</p>
+    <pre><code>&gt; git config --global user.name &quot;dainiunietis&quot;
+&gt; git config --global user.email &quot;zydrunas.martinkus@gmail.com&quot;</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>End of Line (EOL) symbols (CRLF — carriage return, line feed) handling strategy    </h3>
+    <h4>Windows'ų specifika    </h4>
+    <div class="c-em-note c-em--small c-em--narrow">
+      <p>Galima skirtingiems failų tipams nustatyti skirtingus EOL simbolius.</p>
+      <p> <a href="https://stackoverflow.com/questions/170961/whats-the-best-crlf-carriage-return-line-feed-handling-strategy-with-git/10855862#10855862">cross platform - What's the best CRLF (carriage return, line feed) handling strategy with Git? - Stack Overflow</a></p>
+      <blockquote>
+        <p>using the <strong>text</strong> attribute in the <a href="https://git-scm.com/docs/gitattributes#_checking_out_and_checking_in" rel="noreferrer"><strong>.gitattributes</strong> file</a>.</p>
+        <p>Example:</p>
+        <pre>*.vcproj    text eol=crlf 
+*.sh        text eol=lf</pre>
+      </blockquote>
+    </div>
+    <h5><code>core.safecrlf</code> </h5>
+    <p>Visada: <br>
+      <code>&gt; git config --global core.safecrlf true</code>    </p>
+    <h5><code>core.autocrlf</code></h5>
+    <p><a href="https://stackoverflow.com/questions/1967370/git-replacing-lf-with-crlf/20653073#20653073">git replacing LF with CRLF - Stack Overflow</a></p>
+    <blockquote>
+      <p><strong>Moral</strong> (for Windows): </p>
+      <ul>
+        <li>use <code>core.autocrlf = true</code> if you plan to use this project under Unix as well (and unwilling to configure your editor/IDE to use unix line endings), </li>
+        <li>use <code>core.autocrlf = false</code> if you plan to use this project under Windows only (or you have configured your editor/IDE to use unix line endings), </li>
+        <li><em>never</em> use <code>core.autocrlf = input</code> unless you have a good reason to (<em>eg</em> if you're using unix utilities under windows or if you run into makefiles issues), </li>
+      </ul>
+    </blockquote>
+    <figure class="figure--dl">
+      <figcaption><code>core.autocrlf</code> variantai ant Windows'ų</figcaption>
+      <dl>
+        <dt>Default'iškai laikome, kad projektuose gali būti failų su windows'iniais EOL == CRLF</dt>
+        <dd>
+          <p>Laikome globalius nustatymus:</p>
+          <pre><code>&gt; git config --global core.autocrlf true</code></pre>
+          <P>Jei žinome, kad visų failų projekte EOL == LF (kai naudojami redaktoriai su EOL = LF, ir atsisiunčiami failai taip pat), pačiame rep'e nustatome:</p>
+          <pre><code>D:\webdev\konspektas&gt; git config --local core.autocrlf false</code></pre>
+        </dd>
+        <dt>Default'iškai laikome, kad projektuose visi failai su EOL == LF  — atrodo šitas geriausias</dt>
+        <dd>
+          <p>Laikome globalius nustatymus:</p>
+          <pre><code>&gt; git config --global core.autocrlf false</code></pre>
+          <P>Jeigu koks projektas su failais su windows'iniais CRLF, pačiame rep'e nustatome: :</p>
+          <pre><code>D:\webdev\konspektas&gt; git config --local core.autocrlf true</code></pre>
+        </dd>
+      </dl>
+    </figure>
+    <h4>Unix/Mac</h4>
+    <pre><code>git config --global core.autocrlf input
+git config --global core.safecrlf true</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Išvesti nustatymus</h3>
+    <p>Išveda visus globalius nustatymus:</p>
+    <pre><code>&gt; git config --global --list
+user.name=dainiunietis
+user.email=zydrunas.martinkus@gmail.com</code></pre>
+    <p>Išveda nurodytą nustatymą: </p>
+    <pre><code>&gt; git config --global user.username
+dainiunietis</code></pre>
+    <p></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Autentifikacijos automatizavimas / Credentials (authenticate with a remote repository)    </h3>
+    <blockquote>
+      <p>If you are making a lot of changes and regularly pushing these to a remote repository, you will be prompted to enter a username and password. To avoid entering this every time you can use a git credential manager.</p>
+      <p>To store credentials indefinitely on your hard drive:</p>
+      <pre>git config credential.helper store</pre>
+      <p>To store credentials in memory for a short period of time:</p>
+      <pre>git config credential.helper cache</pre>
+      <p>Hopefully I don't need to say it, but you should consider security before storing credentials.</p>
+      <p>There are a number of other ways you can authenticate with a remote repository including SSH keys and third-party credential managers. I'm not going to cover them here.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Dažnai naudojamų komandų Alias'ai / Aliases</h3>
+    <blockquote>
+      <p>One of the first things I do on any new machine is set up a bunch of aliases for the commands I'll be using ever day: status, checkout, branch and commit. Aliases allow me to give a command an alternative name. <strong>I could not work without these</strong>.</p>
+      <pre>git config --global alias.s status<br>git config --global alias.co checkout<br>git config --global alias.br branch<br>git config --global alias.ci commit</pre>
+      <p>You can set up your own aliases, but I recommend these. I use git s religiously. For some reason, I don't use an alias for add or push. I think add is short and simple to type and I find it satisfying to pound the letters P-U-S-H as I demonstrate my victory over the code</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p id="heading-list-all-aliases">List all aliases</p>
+      <p>Added a new alias but can't remember it yet?</p>
+      <pre>git config --get-regexp alias   </pre>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Failų-katalogų ignoravimas — su .gitignore failais</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--exact o-gfx--boxed">
+  <div>
+    <p><a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#_ignoring">Git - Recording Changes to the Repository — Ignoring Files</a></p>
+    <p>2019 goalkicker -- Git Notes for Professionals.pdf<br>
+      Chapter 5: Ignoring Files and Folders<br>
+      Section 5.1: Ignoring ﬁles and directories with a .gitignore ﬁle </p>
+    <h3>Kaip veikia</h3>
+    <ul>
+      <li>.gitignore failų gali būti ne vienas projekte (tiksliau <i>working tree</i>), jie gali būti ir šakniniame, ir gilesniuose subkataloguose, </li>
+      <li>gitignore faile esantys failų keliai pritaikomi nuo katalogo, kuriame pats failas yra, t. y. ir tame pačiame, ir sukataloguose.</li>
+    </ul>
+    <blockquote>
+      <p>When created in the top level directory, the rules will apply recursively to all ﬁles and sub-directories throughout 
+        the entire repository. When created in a sub-directory, the rules will apply to that speciﬁc directory and its subdirectories.</p>
+    </blockquote>
+    <p>Kokios konkrečiai pasekmės ignoruojamiems failams-katalogams:</p>
+    <blockquote>
+      <p>When a ﬁle or directory is ignored, it will not be:</p>
+      <ul>
+        <li> tracked by Git </li>
+        <li> reported by commands such as <code>git status</code> or <code>git diff</code></li>
+        <li> staged with commands such as <code>git add -A</code></li>
+      </ul>
+    </blockquote>
+    <div class="c-em-alert c-em--small c-em--narrow">
+      <p>Atsargiai, kai norima jau GIT'o track'intus failus pridėti į .gitignore:</p>
+      <blockquote>
+        <p>In the unusual case that you need to ignore tracked ﬁles, special care should be taken. </p>
+      </blockquote>
+      <p>Detaliau:</p>
+      <p>2019 goalkicker -- Git Notes for Professionals.pdf<br>
+        Section 5.5: Ignore ﬁles that have already been committed to a Git repository </p>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Sintaksė</h4>
+    <p>Pagrindinės taisyklės:</p>
+    <blockquote>
+      <p>The rules for the patterns you can put in the .gitignore file are as follows:</p>
+      <ul>
+        <li>
+          <p>Blank lines or lines starting with # are ignored.</p>
+        </li>
+        <li>
+          <p>Standard glob patterns work, and will be applied recursively throughout the entire working tree.</p>
+        </li>
+        <li>
+          <p>You can start patterns with a forward slash (/) to avoid recursivity.</p>
+        </li>
+        <li>
+          <p>You can end patterns with a forward slash (/) to specify a directory.</p>
+        </li>
+        <li>
+          <p>You can negate a pattern by starting it with an exclamation point (!).</p>
+        </li>
+      </ul>
+    </blockquote>
+    <p>Glob patterns sintaksė:</p>
+    <blockquote>
+      <p>Glob patterns are like simplified regular expressions that shells use. An asterisk (*) matches zero or more characters; [abc] matches any character inside the brackets (in this case a, b, or c); a question mark (?) matches a single character; and brackets enclosing characters separated by a hyphen ([0-9]) matches any character between them (in this case 0 through 9). You can also use two asterisks to match nested directories; a/**/z would match a/z, a/b/z, a/b/c/z, and so on.</p>
+    </blockquote>
+    <h4><code>!</code> (exclamation mark) naudojimas panaikinti ignoravimą</h4>
+    <div class="c-em-note c-em--small c-em--narrow">
+      <p>Note: For ﬁle names beginning with an exclamation mark, add two exclamation marks or escape with the \
+      character:</p>
+      <pre><code>!!includethis
+\!excludethis</code></pre>
+    </div>
+    <p>Paprasčiausias veikiantis pvz.:</p>
+    <blockquote>
+      <p>If you ignore ﬁles by using a pattern but have exceptions, preﬁx an exclamation mark(!) to the exception. For example:</p>
+      <pre><code>*.txt
+!important.txt</code></pre>
+      <p> The above example instructs Git to ignore all ﬁles with the .txt extension except for ﬁles named important.txt.</p>
+    </blockquote>
+    <p>Su ignoruojamu katalogu sudėtingiau, taip neveikia:</p>
+    <blockquote>
+      <p>If the ﬁle is in an ignored folder, you can NOT re-include it so easily:</p>
+      <pre><code>folder/
+!folder/*.txt</code></pre>
+      <p> In this example all .txt ﬁles in the folder would remain ignored.</p>
+    </blockquote>
+    <p>O taip veikia:</p>
+    <blockquote>
+      <p>The right way is re-include the folder itself on a separate line, then ignore all ﬁles in folder by *, ﬁnally re-include<br>
+      the *.txt in folder, as the following:</p>
+      <pre><code>!folder/
+folder/*
+!folder/*.txt</code></pre>
+    </blockquote>
+    <h4>Sintaksė pavyzdžiais</h4>
+    <details>
+      <summary>#1</summary>
+      <pre><code># ignore all .a files
+*.a
+
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+
+# ignore all files in any directory named build
+build/
+
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+
+# ignore all .pdf files in the doc/ directory and any of its subdirectories
+doc/**/*.pdf</code></pre>
+    </details>
+    <p>&nbsp;</p>
+    <details>
+      <summary>#2</summary>
+      <pre><code># Lines starting with `#` are comments.
+
+# Ignore files called 'file.ext'
+file.ext
+
+# Comments can't be on the same line as rules!
+# The following line ignores files called 'file.ext # not a comment'
+file.ext # not a comment
+
+# Ignoring files with full path.
+# This matches files in the root directory and subdirectories too.
+# i.e. otherfile.ext will be ignored anywhere on the tree.
+dir/otherdir/file.ext
+otherfile.ext
+
+# Ignoring directories
+# Both the directory itself and its contents will be ignored.
+bin/
+gen/
+
+# Glob pattern can also be used here to ignore paths with certain characters.
+# For example, the below rule will match both build/ and Build/
+[bB]uild/
+
+# Without the trailing slash, the rule will match a file and/or
+# a directory, so the following would ignore both a file named `gen`
+# and a directory named `gen`, as well as any contents of that directory
+bin
+gen
+
+# Ignoring files by extension
+# All files with these extensions will be ignored in
+# this directory and all its sub-directories.
+*.apk
+*.class
+
+# It's possible to combine both forms to ignore files with certain
+# extensions in certain directories. The following rules would be
+# redundant with generic rules defined above.
+java/*.apk
+gen/*.class
+
+# To ignore files only at the top level directory, but not in its
+# subdirectories, prefix the rule with a `/`
+/*.apk
+/*.class
+
+# To ignore any directories named DirectoryA
+# in any depth use ** before DirectoryA
+# Do not forget the last /,
+# Otherwise it will ignore all files named DirectoryA, rather than directories
+**/DirectoryA/
+# This would ignore
+# DirectoryA/
+# DirectoryB/DirectoryA/
+# DirectoryC/DirectoryB/DirectoryA/
+# It would not ignore a file named DirectoryA, at any level
+
+# To ignore any directory named DirectoryB within a
+# directory named DirectoryA with any number of
+# directories in between, use ** between the directories
+DirectoryA/**/DirectoryB/
+# This would ignore
+# DirectoryA/DirectoryB/
+# DirectoryA/DirectoryQ/DirectoryB/
+# DirectoryA/DirectoryQ/DirectoryW/DirectoryB/
+
+# To ignore a set of files, wildcards can be used, as can be seen above.
+# A sole '*' will ignore everything in your folder, including your .gitignore file.
+# To exclude specific files when using wildcards, negate them.
+# So they are excluded from the ignore list:
+!.gitignore
+
+# Use the backslash as escape character to ignore files with a hash (#)
+# (supported since 1.6.2.1)
+\#*#</code></pre>
+    </details>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>Kokius failus-katalogus reikia įtraukti į .gitignore</h4>
+    <blockquote>
+      <p>In software projects, .gitignore typically contains a listing of ﬁles and/or directories that are generated during the build process or at runtime. Entries in the .gitignore ﬁle may include names or paths pointing to:</p>
+      <ul>
+        <li>temporary resources e.g. caches, log ﬁles, compiled code, etc. </li>
+        <li>local conﬁguration ﬁles that should not be shared with other developers </li>
+        <li>ﬁles containing secret information, such as login passwords, keys and credentials </li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h4>GIT'o ignoruojamų failų-katalogų išvedimas</h4>
+    <p>2019 goalkicker -- Git Notes for Professionals.pdf<br>
+      Section 5.2: Checking if a ﬁle is ignored</p>
+    <p><code>git check-ignore</code></p>
+    <blockquote>
+      <p>The git check-ignore command reports on ﬁles ignored by Git.<br>
+        You can pass ﬁlenames on the command line, and git check-ignore will list the ﬁlenames that are ignored. For<br>
+        example:<br>
+        $ cat .gitignore<br>
+        *.o<br>
+        $ git check-ignore example.o Readme.md<br>
+        example.o<br>
+        Here, only *.o ﬁles are deﬁned in .gitignore, so Readme.md is not listed in the output of git check-ignore.<br>
+        If you want to see line of which .gitignore is responsible for ignoring a ﬁle, add -v to the git check-ignore command:<br>
+        $ git check-ignore -v example.o Readme.md<br>
+        .gitignore:1:*.o        example.o</p>
+    </blockquote>
+    <p><code>git status --ignored</code></p>
+    <blockquote>
+      <p>From Git 1.7.6 onwards you can also use git status --ignored in order to see ignored ﬁles. You can ﬁnd more<br>
+        info on this in the oﬃcial documentation or in Finding ﬁles ignored by .gitignore.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Operacijos su lokaliu rep'u / Working Locally</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--exact o-gfx--boxed">
+  <div>
+    <h3>Sukūrimas</h3>
+    <dl>
+      <dt><code>&gt; git init</code></dt>
+      <dd>
+        <p>Kataloge, kuriame įvykdyta ši komanda, sukuria tuščią <i>rep</i>'ą, t. y. katalogas <code>.git/</code> su pradinia <i>rep</i>'o katalogų-failų struktūra.</p>
+        <div class="c-em-note c-em--small c-em--narrow">
+          <p>Ją galima vykdyti tiek tuščiame, tiek ne tuščiame, kataloge, abejais atvejais rezultatas toks pat — sukuriamas identiškas katalogas <code>.git/</code></p>
+        </div>
+        <blockquote>
+          <p>The command initializes an empty Git repository in the current directory.</p>
+          <p>This <code>.git</code>  directory <em>is the "repo"</em>! This is where git records all of the commits and keeps track of everything!</p>
+        </blockquote>
+        <p class="c-em-note c-em--narrow"><code>&gt; ls -a</code> — išveda ir paslėptus katalogus ir failus, todėl ji išves ir su <code>&gt; git init</code> sukurtą katalogą <code>/.git</code></p>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Informacijos gavimas    </h3>
+    <h4><code>&gt; git status</code>    </h4>
+    <blockquote>
+      <p>to monitor the state between the repository and the working directory.</p>
+    </blockquote>
+    <hr>
+    <pre><code>$ git status
+On branch master
+nothing to commit, working tree clean</code></pre>
+    <p>Šis pranešimas reiškia, kad visi &quot;working directory&quot; failai padėti į &quot;repository&quot;:</p>
+    <blockquote>
+      <p>The status command reports that there is nothing to commit. This means that the repository has all the current state of the working directory. There are no outstanding changes to record.</p>
+    </blockquote>
+    <hr>
+    <pre><code>λ git status
+On branch master
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+        modified:   sveiki.md
+
+no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
+    <p>Failas sveiki.md &quot;working directory&quot; kataloge redaguotas ir išsaugotas. </p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Operacijos su branch'ais</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--exact o-gfx--boxed">
+  <div>
+    <div class="c-em-important c-em--small c-em--narrow">
+      <p>Patarimas viisus pakeitimus projekte daryti sukuriant branch'us.</p>
+      <blockquote>
+        <p>Before we start any work we should create a new branch. Working on master is not a good idea and almost any workplace will have processes that prevent this. Most work will be merged to master via a pull request. Working in branches is a good habit when working locally too. </p>
+      </blockquote>
+    </div>
+    <h3>Kam skirti papildomi branch'ai</h3>
+    <p> Papildomi  branch'ai sukuriami ir naudojami projekto vystymui organizuoti. Galimos  branch'ų paskirtys:</p>
+    <ul>
+      <li>Team work'ui — kiekviemas developer'is, ar jų grupė, turi savo  branch'ą.</li>
+      <li>
+        <p>Atskiram funkcionalui kurti:</p>
+        <blockquote>
+          <p>When you're working on a project, you're going to have a bunch of different features or ideas in progress at any given time – some of which are ready to go, and others which are not. Branching exists to help you manage this workflow.</p>
+          <p>When you create a branch in your project, you're creating an environment where you can try out new ideas. Changes you make on a branch don't affect the master branch, so you're free to experiment and commit changes, safe in the knowledge that your branch won't be merged until it's ready to be reviewed by someone you're collaborating with.</p>
+        </blockquote>
+      </li>
+    </ul>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Git repositories use branches to isolate work when needed. It's common practice when working on a project or with others on a project to create a <strong>branch</strong> to keep your working changes in. This way you can do your work while the main, commonly named 'master', branch stays stable. When the work on your branch is finished you merge it back into the 'master' master branch.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Branch'ų sukūrimas ir aktyvavimas</h3>
+    <h4><code>&gt; git branch</code>    </h4>
+    <dl>
+      <dt><code>&gt; git branch</code></dt>
+      <dd>
+        <blockquote><p>List the branches.</p></blockquote>
+      </dd>
+      <dt><code>&gt; git branch &lt;branch-name&gt;</code></dt>
+      <dd>
+        <p>&nbsp;</p>
+        <blockquote>
+          <p>When you create a branch, Git copies everything from the current branch you're on and places it in the branch you've requested be made.</p>
+        </blockquote>
+      </dd>
+      <dt><code>&gt; git branch -m &lt;new-branch-name&gt;</code></dt>
+      <dd>
+        <p>Pakeičia aktyvaus branch'o pavadinimą.      </p>
+      </dd>
+      <dt>...</dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+    <h4><code>&gt; git checkout</code>    </h4>
+    <dl>
+      <dt><code>&gt; git checkout &lt;branch-name&gt;</code></dt>
+      <dd>
+        <p>&nbsp;</p>
+        <blockquote>
+          <p>To go into that branch and work on it you <strong>checkout</strong> a branch.</p>
+        </blockquote>
+      </dd>
+      <dt><code>&gt; git checkout -b &lt;branch-name&gt;</code></dt>
+      <dd>
+        <blockquote>
+          <p>You can create and switch to a branch in one line.        </p>
+        </blockquote>
+      </dd>
+      <dt>&gt; <code>git checkout master ./path-to-file</code></dt>
+      <dd>
+        <blockquote>
+          <p id="heading-checkout-a-file-from-another-branch">Checkout a file from another branch</p>
+          <p>Sometimes you want to checkout a specific file from another branch. Usually master, and usually to fix a mess. You can do that:</p>
+          <pre>git co master ./path-to-file</pre>
+          <p>This will replace the file on you current branch with what is on master. </p>
+        </blockquote>
+      </dd>
+      <dt>-</dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Branch'ų merge'inimas ir pašalinimas</h3>
+    <div class="c-em-note c-em--small c-em--narrow">
+      <p>Branch'ai sukuriami tam tikram tikslui, ateina laikas juos panaikinti:</p>
+      <blockquote>
+        <p>Cleaning up</p>
+        <p>Once you don't need branches anymore you can delete them locally and remotely. This is helpful so that you don't end up with a pile of old branches.</p>
+      </blockquote>
+    </div>
+    <p>&nbsp;</p>
+    <dl>
+      <dt><code>&gt; git merge &lt;branch-name&gt;</code></dt>
+      <dd>
+        <p>Į aktyvų branch'ą su'merge'ina nurodytą <code>&lt;branch-name&gt;</code>.</p>
+        <blockquote><p>Merge a branch into current branch. </p></blockquote>
+      </dd>
+      <dt>&gt; <code>git branch -d &lt;branch-name&gt;</code></dt>
+      <dd>
+        <p>Ištrina nurodytą branch'ą <code>&lt;branch-name&gt;</code>. </p>
+      </dd>
+      <dt>&gt; <code>git push &lt;remote-name&gt; --delete &lt;branch-name&gt;</code></dt>
+      <dd>
+        <p>Ištrina nurodytą branch'ą remote'e.</p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>... / Managing merge conflicts</h3>
+    <div class="c-em-important c-em--small c-em--narrow">
+      <p>...</p>
+      <blockquote>
+        <p>There are not magic secrets for making merge conflicts easier. They can be terrible. Making smaller commits and syncing often helps avoid having them, which is the best strategy.</p>
+      </blockquote>
+    </div>
+    <p>Problema ir kaip sprendžiama:</p>
+    <blockquote>
+      <p>Sometimes when you merge or pull you will end up with conflicts where 2 branches have modified the same files. If Git can't resolve this automatically it will ask you to resolve the conflict manually.</p>
+    </blockquote>
+    <p>Patogu taisyti redaktoriuje:</p>
+    <blockquote>
+      <p>You resolve these in your editor and stage the files when the conflicts have been removed. This is where a VSCode or a GUI are especially useful for highlighting the differences and allowing you to select the desired change.</p>
+    </blockquote>
+    <p><code>&gt; git status</code> parodo esamus konfliktus:</p>
+    <blockquote>
+      <p>For larger merge conflicts use <code>git status</code> to see which files still need changes.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>... / Stash</h3>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Stash is good for when you want to quickly check out a different branch but are not ready to commit your current work. To quickly stash files, use the command:</p>
+      <pre>git stash</pre>
+      <p>You can now switch branches and work on something else and when you are ready to retrieve work from the stash run:</p>
+      <pre>git stash pop</pre>
+      <p>If you are like me, git stash is sometimes where things go to die. You can use git stash list to remember what you put there. And you can even add a message to any stash with -m just like a commit.</p>
+      <p>You can then retrieve a specific stash with git stash apply stash@{1} where stash@{1} is the index from the list.    </p>
+    </blockquote>
+    <hr>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">Stash is good for when you want to quickly check out a different branch but are not ready to commit your current work. To quickly stash files, use the command:</p>
+    <pre class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 1rem 0px 0px; padding: 1em; background: rgb(243, 242, 243); text-align: left; white-space: pre; word-spacing: 0px; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none; overflow: auto; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 0px; padding: 0px; background: 0px 0px; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">git</span> stash</code></pre>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">You can now switch branches and work on something else and when you are ready to retrieve work from the stash run:</p>
+    <pre class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 1rem 0px 0px; padding: 1em; background: rgb(243, 242, 243); text-align: left; white-space: pre; word-spacing: 0px; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none; overflow: auto; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 0px; padding: 0px; background: 0px 0px; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">git</span> stash pop</code></pre>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">If you are like me, <code style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: var(--THEME_HIGHLIGHT); overflow-wrap: break-word; margin: 0px; padding: 0px 5px; --THEME_BACKGROUND:#c9f3e0; --THEME_BACKGROUND_50:#f2fcf8; --THEME_COLOR:#244e3b; display: inline-block; font-size: 0.85rem; background: var(--THEME_BACKGROUND_50); border: 1px solid rgb(204, 204, 204);" bgcolor="var(--THEME_BACKGROUND_50)">git stash</code> is sometimes where things go to die. You can use <code style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: var(--THEME_HIGHLIGHT); overflow-wrap: break-word; margin: 0px; padding: 0px 5px; --THEME_BACKGROUND:#c9f3e0; --THEME_BACKGROUND_50:#f2fcf8; --THEME_COLOR:#244e3b; display: inline-block; font-size: 0.85rem; background: var(--THEME_BACKGROUND_50); border: 1px solid rgb(204, 204, 204);" bgcolor="var(--THEME_BACKGROUND_50)">git stash list</code> to remember what you put there. And you can even add a message to any stash with <code style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: var(--THEME_HIGHLIGHT); overflow-wrap: break-word; margin: 0px; padding: 0px 5px; --THEME_BACKGROUND:#c9f3e0; --THEME_BACKGROUND_50:#f2fcf8; --THEME_COLOR:#244e3b; display: inline-block; font-size: 0.85rem; background: var(--THEME_BACKGROUND_50); border: 1px solid rgb(204, 204, 204);" bgcolor="var(--THEME_BACKGROUND_50)">-m</code> just like a commit.</p>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">You can then retrieve a specific stash with <code style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: var(--THEME_HIGHLIGHT); overflow-wrap: break-word; margin: 0px; padding: 0px 5px; --THEME_BACKGROUND:#c9f3e0; --THEME_BACKGROUND_50:#f2fcf8; --THEME_COLOR:#244e3b; display: inline-block; font-size: 0.85rem; background: var(--THEME_BACKGROUND_50); border: 1px solid rgb(204, 204, 204);" bgcolor="var(--THEME_BACKGROUND_50)">git stash apply stash@{1}</code> where <code style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: var(--THEME_HIGHLIGHT); overflow-wrap: break-word; margin: 0px; padding: 0px 5px; --THEME_BACKGROUND:#c9f3e0; --THEME_BACKGROUND_50:#f2fcf8; --THEME_COLOR:#244e3b; display: inline-block; font-size: 0.85rem; background: var(--THEME_BACKGROUND_50); border: 1px solid rgb(204, 204, 204);" bgcolor="var(--THEME_BACKGROUND_50)">stash@{1}</code> is the index from the list.</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p id="heading-see-which-branches-you've-been-working-on-recently">See which branches you've been working on recently <a href="https://www.madebymike.com.au/writing/how-to-git/#heading-see-which-branches-you've-been-working-on-recently">permalink</a></p>
+      <pre><code>git for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"</code></pre>
+      <p>I have to admit, I learnt this one from Harry Roberts but I use it all the time. I've also aliased this to git recent and you should too. Read the rest of <a href="https://csswizardry.com/2017/05/little-things-i-like-to-do-with-git/">Harry's git tricks</a>.    </p>
+    </blockquote>
+    <p>&nbsp;</p>  
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <hr>
+    <p id="heading-delete-merged-branches" style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 2rem 0px 0px; padding: 0px; line-height: 1.12; font-weight: 700; hyphens: none; font-size: 1.96rem; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">Delete merged branches <a href="https://www.madebymike.com.au/writing/how-to-git/#heading-delete-merged-branches" class="heading-permalink" style="box-sizing: border-box; font-family: inherit; color: inherit; overflow-wrap: break-word; margin: 0px; padding: 0px; text-decoration: underline 0.2em; text-decoration-skip-ink: auto; cursor: pointer;"><span class="visually-hidden" style="box-sizing: border-box; font-family: inherit; color: inherit; overflow-wrap: break-word; margin: 0px; padding: 0px; clip: rect(0px, 0px, 0px, 0px); height: auto; overflow: hidden; position: absolute; width: 1px; white-space: nowrap;">permalink</span></a></p>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">On larger projects eventually you end up with a lot of local branches. If you automatically delete branches on remote after merging you can run:</p>
+    <pre class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 1rem 0px 0px; padding: 1em; background: rgb(243, 242, 243); text-align: left; white-space: pre; word-spacing: 0px; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none; overflow: auto; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 0px; padding: 0px; background: 0px 0px; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">git</span> fetch --prune</code></pre>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">This will delete local branches that have been deleted on remote.</p>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">This next one is not so much a Git command as a <code style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: var(--THEME_HIGHLIGHT); overflow-wrap: break-word; margin: 0px; padding: 0px 5px; --THEME_BACKGROUND:#c9f3e0; --THEME_BACKGROUND_50:#f2fcf8; --THEME_COLOR:#244e3b; display: inline-block; font-size: 0.85rem; background: var(--THEME_BACKGROUND_50); border: 1px solid rgb(204, 204, 204);" bgcolor="var(--THEME_BACKGROUND_50)">bash</code> command - sorry Window users (use WSL).</p>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">If your remote branches are not tidy or you just have a local mess, the following command will find all branches merged into the current branch, and delete them:</p>
+    <pre class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 1rem 0px 0px; padding: 1em; background: rgb(243, 242, 243); text-align: left; white-space: pre; word-spacing: 0px; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none; overflow: auto; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><code class="language-bash" style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: rgb(80, 48, 80); overflow-wrap: normal; margin: 0px; padding: 0px; background: 0px 0px; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; line-height: 1.5; font-size: 0.71429rem; tab-size: 4; hyphens: none;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">git</span> branch --merged <span class="token operator" style="box-sizing: border-box; font-family: inherit; color: rgb(134, 80, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">|</span><br style="box-sizing: border-box; font-family: inherit; color: inherit; overflow-wrap: break-word; margin: 0px; padding: 0px;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">grep</span> -v <span class="token string" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">"\*"</span> <span class="token operator" style="box-sizing: border-box; font-family: inherit; color: rgb(134, 80, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">|</span><br style="box-sizing: border-box; font-family: inherit; color: inherit; overflow-wrap: break-word; margin: 0px; padding: 0px;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">grep</span> -v <span class="token string" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">"master"</span> <span class="token operator" style="box-sizing: border-box; font-family: inherit; color: rgb(134, 80, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">&gt;</span>/tmp/merged <span class="token operator" style="box-sizing: border-box; font-family: inherit; color: rgb(134, 80, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">&amp;&amp;</span><br style="box-sizing: border-box; font-family: inherit; color: inherit; overflow-wrap: break-word; margin: 0px; padding: 0px;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">nano</span> /tmp/merged <span class="token operator" style="box-sizing: border-box; font-family: inherit; color: rgb(134, 80, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">&amp;&amp;</span><br style="box-sizing: border-box; font-family: inherit; color: inherit; overflow-wrap: break-word; margin: 0px; padding: 0px;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">cat</span> /tmp/merged <span class="token operator" style="box-sizing: border-box; font-family: inherit; color: rgb(134, 80, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">|</span><br style="box-sizing: border-box; font-family: inherit; color: inherit; overflow-wrap: break-word; margin: 0px; padding: 0px;"><span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">xargs</span> -n <span class="token number" style="box-sizing: border-box; font-family: inherit; color: rgb(13, 10, 16); overflow-wrap: break-word; margin: 0px; padding: 0px;">1</span> <span class="token function" style="box-sizing: border-box; font-family: inherit; color: rgb(80, 48, 80); overflow-wrap: break-word; margin: 0px; padding: 0px;">git</span> branch -d</code></pre>
+    <p style="box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(85, 85, 85); overflow-wrap: break-word; margin: 1rem 0px 0px; padding: 0px; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">It's a little long because it tries to be safe. It will always exclude master and allow you to edit the list of branches in <code style="box-sizing: border-box; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; color: var(--THEME_HIGHLIGHT); overflow-wrap: break-word; margin: 0px; padding: 0px 5px; --THEME_BACKGROUND:#c9f3e0; --THEME_BACKGROUND_50:#f2fcf8; --THEME_COLOR:#244e3b; display: inline-block; font-size: 0.85rem; background: var(--THEME_BACKGROUND_50); border: 1px solid rgb(204, 204, 204);" bgcolor="var(--THEME_BACKGROUND_50)">nano</code> first. Delete any you don't want removed.    </p>
+    <hr>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>  
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Darbas su nuotoliniais rep'ais / GitHubbin, working remotely</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--exact o-gfx--boxed">
+  <div>
+    <h3>Kitų rep'ų naudojimas — atsikopijavimas pas save</h3>
+    <h4><code>&gt; git clone</code></h4>
+    <p>Bet kur esančio nuotolinio rep'o kopijos sukūrimas lokaliai.    </p>
+    <figure>
+      <figcaption>Kaip Github'inį rep'ą atsikopijuoti į savo kompą</figcaption>
+      <dl>
+        <dt>1. Kopijuojame Github'inio rep'o URL:</dt>
+        <dd>
+          <p><img src="images/20210807_232226_GitHub - MadeByMike_supermaya.png" alt="" width="173" height="79"/></p>
+        </dd>
+        <dt>2. Kataloge, kuriame norime sukurti atkopijuojamo rep'o šakninį katalogą:</dt>
+        <dd>
+          <p>Įvykdome:</p>
+          <pre><code>D:\webdev\tests&gt; git clone https://github.com/MadeByMike/supermaya.git</code></pre>
+          <p>Bus sukurtas nuotolinio rep'o šakninis katalogas ir į jį atkopijuoti nuotolinio rep'o failai: </p>
+          <pre><code>D:\webdev\tests\supermaya</code></pre>
+        </dd>
+      </dl>
+    </figure>
+    <p>&nbsp;</p>
+    <figure>
+      <figcaption>Atkopijuojamo rep'o šakninio katalogo nustatymo variantai</figcaption>
+      <dl>
+        <dt><code>&gt; git clone &lt;github-url&gt;</code> — sukuria nuotolinio rep'o pavadinimo katalogą</dt>
+        <dd>
+          <pre><code>D:\webdev\tests
+&gt; git clone https://github.com/MadeByMike/supermaya.git
+D:\webdev\tests\supermaya <mark>👈 nuotolinio rep'o kopijos šakninis katalogas</mark></code></pre>
+        </dd>
+        <dt><code>&gt; git clone &lt;github-url&gt; &lt;rep-folder&gt;</code> — sukuria <code>&lt;rep-folder&gt;</code> katalogą</dt>
+        <dd>
+          <pre><code>D:\webdev\tests
+&gt; git clone https://github.com/MadeByMike/supermaya.git saitas-super
+D:\webdev\tests\saitas-super <mark>👈 nuotolinio rep'o kopijos šakninis katalogas</mark></code></pre>
+        </dd>
+        <dt><code>&gt; git clone &lt;github-url&gt; .</code> — nesukuria katalogo, nuotolinio rep'o turinys kopijuojamas į aktyvų katalogą, t. y. kuriame įvykdyta komanda</dt>
+        <dd>
+          <pre><code>D:\webdev\tests\Miko-supermaya
+&gt; git clone https://github.com/MadeByMike/supermaya.git .
+D:\webdev\tests\Miko-supermaya <mark>👈 nuotolinio rep'o kopijos šakninis katalogas</mark></code></pre>
+        </dd>
+      </dl>
+    </figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Failų siuntimas tarp Local ir Remote rep'ų</h3>
+    <h4><code>&gt; git push</code>    </h4>
+    <dl>
+      <dt><code>&gt; git push</code></dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>      
+      <dt><code>&gt; git push &lt;remote-name&gt; &lt;branch&gt;</code></dt>
+      <dd>
+        <p>Lokalaus rep'o branch'o <code>&lt;branch&gt;</code> siuntimas į <code>&lt;remote-name&gt;</code> — <q>push changes</q>.</p>
+        <blockquote>
+          <p>Next you want to <strong>push</strong> (send) everything you've done locally to your remote repository on GitHub. This is something you'll do often so that your remote version is up to date and matching the state of your local version.</p>
+        </blockquote>
+        <p><code>&gt; git push origin master</code> — default'iniai branch'o ir remote'o pavadinimai</p>
+      </dd>
+    </dl>
+    <h4><code>&gt; git pull</code>    </h4>
+    <dl>
+      <dt><code>&gt; git pull</code></dt>
+      <dd>
+        <blockquote>
+          <p>This will fetch the latest code for the branch you are on as well as an index of any branches other developers have pushed to remote. Now you can now checkout their branches too.</p>
+        </blockquote>
+      </dd>
+      <dt><code>&gt; git pull &lt;remote-name&gt; &lt;remote-branch&gt;</code></dt>
+      <dd>
+        <blockquote>
+          <p>Pull in changes from a remote branch.</p>
+        </blockquote>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Sprendimai</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--exact o-gfx--boxed">
+  <div>
+    <h3>Projekto pakeitimų žingsnis, kurį galima įvardinti</h3>
+    <ol>
+      <li>Redaguojame (working tree) failus, ar sukuriame naujus.</li>
+      <li>Pasitikriname kokius pakeitimus rodo Git'as:
+        <p><code>&gt; git status</code></p>
+      </li>
+      <li>
+        <p>Pridedame redaguotus failus į index'ą:</p>
+        <p><code>&gt; git add tas.js anas.css</code></p>
+      </li>
+      <li>
+        <p>Visą index'o turinį perkeliame į repository:</p>
+        <p><code>&gt; git commit -m "padaryta tas ir anas"</code></p>
+      </li>
+    </ol>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Feature branch'o naudojimo ciklas</h3>
+    <ol class="ulol--lines">
+      <li>
+        <p><code>&gt; git branch nuotraukų-galerija</code></p>
+        <p>Esant aktyviam šakniniam branch'ui <code>master</code>, sukuriamas vaikinis branch'as <code>nuotraukų-galerija</code>.</p>
+      </li>
+      <li>
+        <p><code>&gt; git checkout nuotraukų-galerija</code></p>
+        <p>Aktyvuojamas naujas branch'as.</p>
+      </li>
+      <li>
+        <p>Vyksta failų redagavimas ir padėjimas į rep'ą:</p>
+        <ol>
+          <li>Redaguojame (working tree) failus, ar sukuriame naujus. </li>
+          <li>
+            <p><code>&gt; git add tas.js anas.css</code></p>
+            <p>Pridedame redaguotus failus į index'ą.</p>
+          </li>
+          <li>
+            <p><code>&gt; git commit -m "padaryta tas ir anas"</code></p>
+            <p>Visą index'o turinį perkeliame į repository.</p>
+          </li>
+          <li>
+            <p><code>&gt; git push origin nuotraukų-galerija</code></p>
+            <p>Pakeitimus siunčiame į GitHub'ą.</p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p><code>&gt; git checkout master</code></p>
+        <p>Padarius kas numatyta su branch'u, pradedame jo šalinimą — aktyvuojame tėvinį branch'ą.</p>
+      </li>
+      <li>
+        <p><code>&gt; git merge         nuotraukų-galerija</code></p>
+        <p>Branch'e <code>nuotraukų-galerija</code> padarytus pakeitimus pridedame prie šakninio branch'o <code>master</code>.</p>
+      </li>
+      <li>
+        <p><code>&gt; git branch -d nuotraukų-galerija</code></p>
+        <p>Pašalinamas branch'as <code>nuotraukų-galerija</code>.</p>
+      </li>
+      <li>
+        <p>&gt; <code>git push origin --delete nuotraukų-galerija</code></p>
+        <p>Pašalinamas branch'as <code></code>ir  GitHub'e. </p>
+      </li>
+    </ol>
+    <p>&nbsp;</p>
+    <p>Pagal  <a href="https://www.madebymike.com.au/writing/how-to-git/">Git from Beginner to Advanced - MadeByMike</a> , komandos per <a href="#$:header:contains('Dažnai naudojamų komandų Alias')">Alias'us</a> | <a href="#(h)">Dažnai naudojamų komandų Alias'ai / Aliases</a></p>
+    <dl>
+      <dt>1. Pasitikriname ir įsitikiname, kad aktyvus yra pagrindinis branch'as <code>master</code></dt>
+      <dd>
+        <p><code>&gt; git s</code></p>
+      </dd>
+      <dt>2. Sukuriamas vaikinis <code>master</code>'io branch'as <code>pakeitimai</code></dt>
+      <dd>
+        <p><code>&gt; git br pakeitimai</code></p>
+      </dd>
+      <dt>3. Aktyvuojamas naujas branch'as <code>pakeitimai</code></dt>
+      <dd>
+        <p><code>&gt; git co pakeitimai</code></p>
+      </dd>
+      <dt>4. Failų redagavimo ir padėjimo į rep'ą ciklas</dt>
+      <dd>
+        <blockquote>
+          <p> In my opinion, it's easier, and a better habit to just commit more often.</p>
+        </blockquote>
+        <dl>
+          <dt>1.  Failų redagavimas</dt>
+          <dd>
+            <p>&nbsp;</p>
+          </dd>
+          <dt>2. Redaguotų failų padėjimas į index'ą (staging area) / Staging files</dt>
+          <dd>
+            <div class="c-em-note c-em--small c-em--narrow">
+              <p>Tai patogiau daryti redaktoriuje:</p>
+              <blockquote>
+                <p>If you want to pluck individual files into different commits, the VSCode source control pane is how I usually do it. I find the visual editor better for these kind of tasks.</p>
+              </blockquote>
+            </div>
+            <p>Padėjimo į index'ą būdai:</p>
+            <ul>
+              <li>
+                <p><code>&gt; git add .</code></p>
+                <blockquote>
+                  <p>You can be clever and surgical to make sure you only stage the files and folders you want, but in truth, about 90% of the time I want to stage everything. </p>
+                </blockquote>
+              </li>
+              <li><code>&gt; git add ./tas/</code></li>
+              <li><code>&gt; git add ./anas/ten.html</code></li>
+            </ul>
+            <p>pašalinimas iš index'o / Unstaging files:</p>
+            <ul>
+              <li>
+                <p><code>&gt; git reset ./tas/kitas.html</code></p>
+                <p></p>
+              </li>
+            </ul>
+          </dd>
+          <dt>3. index'e esančių failų perkėlimas į rep'ą / Commit</dt>
+          <dd>
+            <p>Commit'as:</p>
+            <ul>
+              <li><code>&gt; git ci -m &quot;pastorinti border'iai&quot;</code></li>
+            </ul>
+            <p>Uncommit'as — į rep'ą pridėtų failų atšaukimas-pašalinimas / Unstaging a commit:</p>
+            <ul>
+              <li>
+                <p><code>&gt; git reset HEAD~1</code></p>
+                <blockquote>
+                  <p>Sometimes I commit a set of changes before realising I've made a mistake or I commit files to the wrong branch. When this happens, the easiest way to fix it is to reset like this:</p>
+                  <p>This tells Git to reset everything back to the previous commit. By default it will keep all your changes and just unstage them.</p>
+                </blockquote>
+              </li>
+              <li>
+                <p><code>&gt; git reset HEAD~1 --hard</code></p>
+                <blockquote>
+                  <p>Use <code>--hard</code> after the command if you want to reset and wipe everything back to the previous state. But be careful!</p>
+                </blockquote>
+              </li>
+            </ul>
+            <div class="c-em-alert c-em--small c-em--narrow">
+              <blockquote>
+                <p><strong>Note</strong>: If you have pushed and reset a commit after this, your history will be different from the remote. Try to avoid it, but if you need to fix a mistake like this you can force push <code>git push -f</code>.</p>
+              </blockquote>
+            </div>
+          </dd>
+          <dt>4. siuntimas į <i>remote repository</i></dt>
+          <dd>
+            <blockquote>
+              <p>After each commit you want to push these to the remote repository.</p>
+            </blockquote>
+            <p>...</p>
+            <ul>
+              <li><code>&gt; git push</code></li>
+            </ul>
+            <p></p>
+          </dd>
+        </dl>
+      </dd>
+      <dt>5. Aktyvuojamas pagrindinis branch'as <code>master</code></dt>
+      <dd>
+        <p>&nbsp;</p>
+        <ul>
+          <li><code>&gt; git co master</code></li>
+        </ul>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>6. branch'as <code>pakeitimai</code> įliejamas į <code>master</code></dt>
+      <dd>
+        <p>&nbsp;</p>
+        <ul>
+          <li><code>&gt; git merge pakeitimai</code></li>
+        </ul>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>7. </dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Esamam projektui sukurti local ir surištą remote <i>rep</i>'us    </h3>
+    <dl>
+      <dt>1. Sukurti local <i>rep</i>'ą</dt>
+      <dd>
+        <pre><code>D:\webdev\learn.git\mok2
+&gt; git init</code></pre>
+      </dd>
+      <dt>2. Sukurti naują remote rep'ą GitHub'e be initializacijos</dt>
+      <dd>
+        <p><img src="images/20210809_235344_Create a New Repository.png" alt="" width="71" height="70"/></p>
+      </dd>
+      <dt>3. ... / add a remote origin</dt>
+      <dd>
+        <pre><code>D:\webdev\learn.git\mok2&gt; 
+git remote add origin https://github.com/dainiunietis/mok2.git</code></pre>
+        <blockquote>
+          <p>Now your local knows where to push and pull from you can sync with the remote repository as long as you have the correct permissions.</p>
+        </blockquote>
+      </dd>
+      <dt>&nbsp;</dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+    <p>Tada galima local repą nusiųsti į remote:    </p>
+    <dl>
+      <dt>šita komanda reikalinga, jeigu local ir remote rep'ų pagrindinių branch'ų pavadinimai skiriasi</dt>
+      <dd>
+        <p>local rep'o pagrindinį branch'ą pavadina "master"</p>
+        <pre><code>git branch -M master</code>
+        </pre>
+      </dd>
+      <dt>aa</dt>
+      <dd>
+        <pre><code>git push -u origin master</code></pre>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Tuščių ir susietų local ir remote rep'ų sukūrimas</h3>
+    <dl>
+      <dt>1. Sukurti naują remote rep'ą GitHub'e su initializacija</dt>
+      <dd>
+        <p>GitHub'e savo acount'e sukuriame rep'ą su initializacija, t. y. naujame rep'e sukuriamas branch'as su bent vienu failu.</p>
+        <figure class="figure--img-bigCaption">
+          <img src="images/20210809_132530_Create a New Repository.png" alt="" width="74" height="77"/>
+          <figcaption>Turi būti pažymėtas bent vienas checkbox'as iš trijų, pažymėtų rodyklėmis, tada rep'as inicializuojamas.</figcaption>
+        </figure>
+        <p>Sukurtas GitHub'o repas — <code>https://github.com/dainiunietis/mok1</code>      </p>
+      </dd>
+      <dt>2. Clone'inti sukurtą remote rep'ą savo kompe, t. y. padarome local rep'ą</dt>
+      <dd>
+        <ol>
+          <li>
+            <p>Nukopijuojame rep'o URL'ą: <img src="images/20210809_155542_dainiunietis_mok1.png" alt="" width="128" height="51"/></p>
+          </li>
+          <li>
+            <pre><code>D:\webdev\learn.git&gt; 
+git clone https://github.com/dainiunietis/mok1.git</code></pre>
+          </li>
+          <li>
+            <p>Sukurtas local rep'as — <code>D:\webdev\learn.git\mok1</code></p>
+          </li>
+        </ol>
+        <blockquote>
+          <p>Once you have cloned your project it will be set-up to track the remote origin. This means when you push git, it knows where to send things.</p>
+        </blockquote>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    <del>
+    <p>Naujo nuotolinio rep'o sukūrimas</p>
+    <p>Atrodo paprasčiausias būdas pasidaryti tuščius ir surištus local ir remote rep'us:</p>
+    <ol>
+      <li>GitHub'e per naršyklę sukurti naują ir tuščią repą.</li>
+      <li>Savo kompe su <code>&gt; git clone</code> atsikopijuoti tą rep'ą. </li>
+    </ol>
+    <blockquote>
+      <p>Using GitHub you can initialise a new repository via the UI and then clone it. Make sure you check the "initialise this repository" option.</p>
+    </blockquote>
+    </del>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--exact o-gfx--boxed">
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

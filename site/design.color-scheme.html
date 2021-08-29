@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Dizaino spalvų paletė-rinkinys / color scheme-palette</h1>
+<p>Spalvos, spalvotyra</p>
+<h2>tallys color theory</h2>
+<p><a href="http://tallys.github.io/color-theory/">http://tallys.github.io/color-theory/</a></p>
+<figure class="c-figure--shadow" style="max-width:500px">
+	<div class="c-figure__content">
+    <p><img src="images/2017.07.20_18-43-49-Practical Color Theory for People Who Code.png" alt="" /></p>
+	</div>
+  <figcaption>a decision tree for mixing a set of colors</figcaption>
+</figure>
+<blockquote>
+  <p>Because colors interact with each other, each time you introduce a color, you add complexity. Build your color schemes like you build the rest of your application - a reasonable system of relationships that is maintainable.</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>In color theory, a color scheme is the choice of colors used in design for a range of media.</p>
+</blockquote>
+<h3>Pradinės spalvos parinkimas</h3>
+<blockquote>
+  <p>Pick any color by selecting its hue (0-360) on the color wheel at full saturation (100%) and at half lightness (50%) - this way you start with the 'most colorful color' you can get.</p>
+</blockquote>
+<p><code>hsl(0-360, 100%, 50%)</code></p>
+<h3>Priešinga-papildanti spalva (complementary color)</h3>
+<blockquote>
+  <p>The complement to any color is always 180 degrees across on the other side of the color wheel. If you've ever wondered why it's the color wheel instead of a color line, this is part of that answer. Remember that the color wheel is our visual documentation for color relationships. </p>
+  <p> Fun fact, if you mix complementary colors, they'll cancel each other out and you'll end up with a neutral gray.</p>
+  <p> The opposition of these two colors stimulate your photoreceptor cells in a good way!</p>
+</blockquote>
+<h4>Spalvų suvienodinimas-pamaišymas, kad gauti to pačio apšvietimo įspūdį</h4>
+<table width="741" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="10%" style="background-color: hsl(240,100%,50%)">&nbsp;</td>
+    <td width="90%"><p><code>hsl(240,100%,50%)</code></p></td>
+  </tr>
+  <tr>
+    <td style="background-color: hsl(60,100%,50%)">&nbsp;</td>
+    <td><code>hsl(60,100%,50%)</code></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table class="c-table-linesGrid">
+  <tbody>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p><code>hsl(240, 100%, 50%)</code></p></td>
+      <td><code>hsl(0-360, 100%, 50%)</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Establish a color relationship by mixing them together. This makes the colors look like they're under similar lighting conditions.</p>
+  <p>Here, you see less saturated hues, with a clear relationship between each other.</p>
+  <p>Our eyes may be legacy systems, but they are really good at spotting patterns, especially things that look like they don't belong in a set.</p>
+  <p>This mixing method is another way we can simulate lighting and color found in nature. It's a bit more complicated, but my favorite way of explaining it is this: Everything outside has some "yellow" mixed in from the sunshine during the day. Same thing happens when everyone and everything looks bad in photos taken under the glow of green flourescent lights - there is green added to all of the colors you're looking at, including adding a green glow to your skin if you're standing under the flourescent light yourself. Whether it looks good or bad, this color (light) mixing creates a visual harmony. We don't really notice it when it's there, but we really notice its absence.</p>
+  <p>When you're painting, you want to simulate similar lighting conditions for a scene, and that effect is accomplished mixing a bit of one color into the other. Mixing different ratios of the same colors will usually generate a matching color palette.</p>
+  <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+</blockquote>
+<h3>Neutralios-prigesintos spalvos (neutrals)</h3>
+<blockquote>
+  <p>The colors are way too intense at their full saturation for our eyes to handle. If all the colors are bright, none of the colors are bright.</p>
+  <p>I picked my starting color for a reason - I want that to be the heart of my design! That means the complementary color should support the chosen color, and we do that by mixing neutrals. Our eyes don't really handle saturated colors very well next to other saturated colors. Our eyes get confused at the edges - is it this color or the other one? Ahh both! We end up seeing optical illusions. Just give your eyes a break between super strong saturated colors with neutrals so they don't stress out about that much visual information. At the very minimum a rule of thumb is that your viewport should have 33% neutral space (white, desaturated, or black colors) so your poor eyes can have a break and process the information right. Otherwise you get eye strain!</p>
+  <p>&nbsp;</p>
+  <p>Let your chosen color pop (in other words, don't exhaust your eyes by making them process non-stop intense chromatic colors!) by surrounding it with neutrals. Desaturate the painter way: by mixing complementary colors! Then, vary that neutral's lightness to create a highlight and a shadow.</p>
+  <p>Making the complementary color neutrals will help the 'call to action' color you selected stand out - notice how much the button in the top right "pops" all of a sudden. Make things "pop" by making other things around them not pop.</p>
+  <p>&nbsp;</p>
+  <p>We can do the same for our primary color too. More neutrals to work with.</p>
+  <p>Doesn't it seem like we went too far with this whole making things neutral? Now, nothing "pops"! But, on the plus side, none of this seems to be irritating any eyeballs, either. Remember that our eyes don't like to handle seeing everything our computers are capable of rendering.</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Why not just desaturate?</p>
+  <p>You totally can! Desaturate does a great job. But, I think not only is it important to understand what "desaturate" means. How would you desaturate a real color in the real world? Remember, you want "ugly" colors for your neutrals! You want to create bland and forgettable colors that recede into the background. These ugly duckling colors are how you get those other call to actions and buttons "pop"!</p>
+  <p>Even though these may look "ugly", neutral colors are the heart of any painting, and that is the case on the web, too. </p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Mix a &quot;White&quot; and &quot;Black&quot;</p>
+  <p> Finally, some contrast! Make sure you don't use pure black or white - this is just like mixing neutrals, just mix them really bright and really dark.</p>
+  <p>Contrast is key. Don't just focus on the H in HSL - the lightness, and therefore contrast, is super important. You should be able to tell elements apart easily, even if the hue information is removed.</p>
+  <p> Not everyone sees color the same. Accessibility is important, and it's good for everyone. Increasing contrast is one of the ways you can immediately improve your design on all levels. Your layout should still work when you take out ALL of the color information (desaturate it all, take out all of the hue information, and leave only lightness and darkness to differentiate between areas). Just about every famous master painting still looks amazing if you desaturate the whole thing.</p>
+  <p>Yes, people will notice. But, be careful, too much contrast will be too intense and irritate your eyes. Mix up a matching white and a matching gray from your ever expanding palette and you will ensure that it will always match the rest of your design.</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Make it pop! Tints and Shades</p>
+  <p> This is the color you wanted in the first place, so make sure you're using it. But, remember that it's about context - make sure you're using the right amount of contrast! The header on our little layout has a lighter version of our primary color.</p>
+  <p>Overall, this is a pretty simple setup - but it's an example of what you can build from just one color.</p>
+  <p>Make the call to action button stand out - leave it saturated and surround it with neutrals, and pay attention to contrast when you do.</p>
+  <p> That's right, the pattern you may be noticing is that you can use what you've already got to mix up more colors and keep building those color relationships. These colors can be achieved just by adjusting lightness and darkness. Up to you!</p>
+  <p>A lighter and darker version of your primary color is useful for things like hover states.</p>
+</blockquote>
+<h3>Kontrastas</h3>
+<blockquote>
+  <p>Contrast (between lightness and darkness) is key</p>
+  <p>There is so much more to color than just "hue"! Value - the visible lightness or darkness of a color is incredibly important to consider when creating a color palette. Color is light.</p>
+  <p>When you mix colors, you should create relationships. Remember, color theory is a design pattern - logical and predictable! Learn the patterns, and play with Sass functions - they're a great tool!<br>
+    I used this function to pair font colors with their backgrounds. It's not perfect, but you get the idea.</p>
+</blockquote>
+<h2>3 colors: 60/30/10 rule</h2>
+<p><a href="https://www.parthean.com/blog/10-design-tips-to-level-up-your-next-project">https://www.parthean.com/blog/10-design-tips-to-level-up-your-next-project</a></p>
+<blockquote>
+  <div>
+    <div><strong>3 colors: 60/30/10 rule</strong><br>
+    </div>
+  </div>
+  <div>
+    <div>Throughout this post, we've spoken a lot about using design principles to draw attention to specific elements or actions. We've discussed using type, space, and even arrows. In this section, I'd like to focus on the use of colors.<br>
+    </div>
+  </div>
+  <div>
+    <div>Color can create hierarchy, but it can also evoke emotion. To decide what emotion you want to evoke (also known as brand), you should develop a color palette. Here are some tools to help you do so:<br>
+    </div>
+    <ul role="list">
+      <li>Beginner generators/libraries: <a href="https://coolors.co/" target="_blank">Coolors</a>, <a href="http://colormind.io/" target="_blank">Colormind</a>, and <a href="https://colorhunt.co/" target="_blank">Color Hunt</a></li>
+      <li>More advanced palette tools: <a href="https://color.adobe.com/create/color-wheel" target="_blank">Adobe Colour</a>, <a href="https://colors.eva.design/?ref=designresourc.es" target="_blank">Eva Design System</a>, <a href="https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF" target="_blank">Paletton</a>, <a href="https://material.io/resources/color/#!/" target="_blank">Google Material Color</a>, and <a href="https://leonardocolor.io/?colorKeys=%236fa7ff&base=ffffff&ratios=3%2C4.5&mode=CAM02" target="_blank">Leonardo Color</a>.</li>
+    </ul>
+  </div>
+  <div>
+    <div>In your palette, you should have three colors: your primary, your secondary, and your accent. Your primary color is the one you should use the most (60% of the time), followed by your secondary color (30% of the time). Your accent color, which should only be used 10% of the time, should be used to draw attention to the most important thing on the screen -- usually a call-to-action.</div>
+  </div>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

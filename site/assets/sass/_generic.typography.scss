@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+html {
+  //font-size: 1em;
+}
+
+// 1. The default line height in browsers is at roughly 1.2. According to the Web Content Accessibility
+//    Guidelines it should be at least 1.5 within paragraphs in blocks of text.
+
+body {
+  //font: 500 1em / 1.4 "IBM Plex Sans", Arial, sans-serif;
+
+  //font: 400 1em / 1.4 Bahnschrift, Arial, sans-serif;
+
+  font: 500 1em / 1.4 "Recursive Sans Linear Static", Arial, sans-serif;
+  //font: 400 1em / 1.4 "Recursive Sans Casual Static", Arial, sans-serif;
+
+  //font-family: Myriad Pro;
+  //font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+  //font-family: Droid Sans;
+  //font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif;
+  //font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+  //font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+  //font-family: Verdana, Geneva, Helvetica, sans-serif;
+  //font-family: "Segoe UI", "Myriad Pro", "Myriad Pro Cond", Consolas, "Droid Sans Mono";
+  //font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+  //font-family: Ubuntu, sans-serif; font-weight: normal; font-style: normal;
+  //font-family: 'Century Gothic', sans-serif;
+  //font-family: 'Calibri Light', sans-serif;
+  //font-family: Calibri, sans-serif;
+  //font-family: 'Liberation Sans Regular', sans-serif;
+
+  //font-family: 'Lato Regular', sans-serif;
+  //font-family: 'Roboto', sans-serif;
+  //font-family: 'Open Sans', sans-serif;
+  //font-family: 'Source Sans Pro', sans-serif;
+  //font-family: "Helvetica Neue LT W1G", sans-serif;
+
+  //--------------------------------------------------------------------------------------------
+  // font-size:
+  //--------------------------------------------------------------------------------------------
+
+  //--- gerai veikia, truputį didina visus tekstus platėjant naršyklės langui
+  //font-size: calc(0.15vw + 0.92em);
+
+  //--- veikia
+  //font-size: szm-mq-calc-interpolation(mq-px2em(mq-get-breakpoint-width(mobile)), 1em, mq-px2em(mq-get-breakpoint-width(desktop)), 1.3em);
+
+  //--- veikia
+  //font-size: szm-mq-calc-interpolation(320px, 16px, 1024px, 20px);
+
+  //--- veikia
+  //@include szm-mq-interpolate(font-size, mq-px2em(mq-get-breakpoint-width(mobile)), mq-px2em(mq-get-breakpoint-width(desktop)), 1em, 1.1em);
+
+  //--------------------------------------------------------------------------------------------
+  // color:
+  //--------------------------------------------------------------------------------------------
+
+  color:       $g-text-color-main;
+
+  //--------------------------------------------------------------------------------------------
+  //
+  //--------------------------------------------------------------------------------------------
+
+  //text-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+
+  //-------------------------------------------------------
+  // greičiausiai nebereikia https://devhints.io/css-antialias
+  //-------------------------------------------------------
+  //-webkit-font-smoothing: subpixel-antialiased;
+  //-webkit-font-smoothing: antialiased;
+  //-moz-osx-font-smoothing: grayscale;
+  //-------------------------------------------------------
+
+  -webkit-text-size-adjust: 100%;
+}
+
+p {
+  // https://css-tricks.com/almanac/properties/h/hanging-punctuation/
+  hanging-punctuation: first allow-end  last;
+}
+
+p,
+h1, h2, h3, h4, h5, h6,
+dt, dd,
+li {
+  //--- Help prevent overflow of long words/names/URLs
+  //word-break: break-word;
+}

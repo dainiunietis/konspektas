@@ -1,0 +1,218 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+.c-dl-table {
+  @include szm-float-clearfix;
+  > dt {
+    float:        left;
+    clear:        both;
+    width:        27%;
+    margin:       0 0 1em;
+    padding:      .3em .5em;
+    border:       solid #999999;
+    border-width: 1px 0 1px 1px;
+    background:   none;
+  }
+  > dd {
+    float:        left;
+    clear:        none;
+    width:        73%;
+    margin:       0 0 1em;
+    padding:      .3em .5em;
+    border:       solid #999999;
+    border-width: 1px;
+    &:first-of-type {
+      //border-top-width:1px;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+@mixin c-dl-grid {
+  display: grid;
+  grid-gap: 0 1rem;
+  & > dt {
+    align-self: end;
+  }
+  & > dd {
+    margin-bottom: 0.7em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+.c-dl-grid-oneRow {
+  @include c-dl-grid;
+  //grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  //grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+  //grid-template-columns: repeat(auto-fit, minmax(max-content, auto));
+  //minmax(auto, max-content)
+  //grid-template-columns: repeat(auto-fill, minmax(auto, max-content));
+  //grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
+  //grid-template-columns: repeat(auto-fit, 1fr);
+
+  & > dd {
+    grid-row: 2;
+    @for $i from 1 through 9 {
+      &:nth-of-type(#{$i}) {
+        grid-column: #{$i};
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+.c-dl-grid-cols {
+  @include c-dl-grid;
+
+  & > dt {
+  }
+
+  & > dd {
+    //background: hsla(4, 100%, 95%, 0.7);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+///////////////////////////////////////////////////////////////////////
+
+@for $gridColumns from 3 through 6 {
+  $gridLines: 3;
+
+  // @USAGE:
+  // <dl class="c-dl-grid-cols c-dl-grid-cols--fitN2..6">
+
+  .c-dl-grid-cols--fitN#{$gridColumns} {
+    grid-template-columns: repeat(#{$gridColumns}, minmax(auto, 1fr));
+    & > dd {
+      @for $line from 1 through $gridLines {
+        @for $column from 1 through $gridColumns {
+          &:nth-of-type(#{(($line - 1) * $gridColumns) + $column}) {
+            grid-area: #{$line * 2} / #{$column};
+          }
+        }
+      }
+    }
+  }
+
+  // @USAGE:
+  // <dl class="c-dl-grid-cols c-dl-grid-cols--equalN2..6">
+
+  .c-dl-grid-cols--equalN#{$gridColumns} {
+    //@extend .c-dl-grid-cols;
+
+    //grid-template-columns: repeat(3, 1fr);
+    //grid-template-columns: repeat(#{$gridColumns}, #{100% / $gridColumns});
+    grid-template-columns: repeat(#{$gridColumns}, minmax(0, 1fr));
+
+    & > dd {
+      //overflow-x: scroll;
+      overflow-x: auto;
+      &:focus {
+        overflow-x: visible;
+        width:      fit-content;
+        z-index:    1000;
+        background: hsla(0, 0%, 100%, 0.9);
+      }
+      @for $line from 1 through $gridLines {
+        @for $column from 1 through $gridColumns {
+          &:nth-of-type(#{(($line - 1) * $gridColumns) + $column}) {
+            grid-area: #{$line * 2} / #{$column};
+          }
+        }
+      }
+    }
+  }
+}
+
+//@for $gridColumns from 3 through 6 {
+//  .c-dl-grid-cols--fitN#{$gridColumns} {
+//    grid-template-columns: repeat(#{$gridColumns}, minmax(auto, 1fr));
+//    & > dd {
+//      $gridLines: 3;
+//      @for $line from 1 through $gridLines {
+//        @for $column from 1 through $gridColumns {
+//          &:nth-of-type(#{(($line - 1) * $gridColumns) + $column}) {
+//            grid-area: #{$line * 2} / #{$column};
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+
+//$gridLines:     5;
+//$gridColumns:   6;
+//@for $line from 1 through $gridLines {
+//  @for $column from 3 through $gridColumns {
+//
+//
+//
+//    &:nth-of-type(#{(($line - 1) * $gridColumns) + $column}) {
+//      grid-area: #{$line * 2} / #{$column};
+//    }
+//  }
+//}
+
+//.c-dl-grid-cols--3 {
+//  grid-template-columns: repeat(3, minmax(auto, 1fr));
+//}
+//
+//.c-dl-grid-cols--4 {
+//  grid-template-columns: repeat(4, minmax(auto, 1fr));
+//}
+//
+//.c-dl-grid-cols--5 {
+//  grid-template-columns: repeat(5, minmax(auto, 1fr));
+//}
+//
+//.c-dl-grid-cols--6 {
+//  grid-template-columns: repeat(6, minmax(auto, 1fr));
+//}
+
+
+
+//.c-dl-grid-cols--equal {
+//  //@extend .c-dl-grid-cols;
+//  //grid-template-columns: repeat(3, 1fr);
+//  grid-template-columns: repeat(3, 100% / 3);
+//  & > dd {
+//    //overflow-x: scroll;
+//    overflow-x: auto;
+//    &:focus {
+//      overflow-x: visible;
+//    }
+//  }
+//}
+
+
+
+
+
+
+
+
+
+

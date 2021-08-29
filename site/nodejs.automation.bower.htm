@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Bower</h1>
+<p><a href="https://bower.io/">https://bower.io/</a></p>
+<p>Tutorials'ai: <a href="http://andy-carter.com/blog/a-beginners-guide-to-package-manager-bower-and-using-gulp-to-manage-components">http://andy-carter.com/blog/a-beginners-guide-to-package-manager-bower-and-using-gulp-to-manage-components</a>, </p>
+<h2>Kam skirtas ir ką daro Bower'is</h2>
+<p>Bower'is yra node.js'o plugin'as, tiksliau  npm (Node’s package manager) package'as.</p>
+<p>Ką daro ir ko nedaro:</p>
+<blockquote>
+  <p>Bower can manage components that contain HTML, CSS, JavaScript, fonts or even image files. Bower doesn&rsquo;t concatenate or minify code or do anything else - it just installs the right versions of the packages you need and their dependencies.</p>
+</blockquote>
+<p>Įpatybės:</p>
+<blockquote>
+  <p>Bower is optimized for the front-end.</p>
+</blockquote>
+<h2>Bower'io komandinės eilutės struktūra</h2>
+<p>Struktūra:</p>
+<p><code>&gt;bower &lt;command&gt; [&lt;args&gt;] [&lt;options&gt;]</code></p>
+<p>help'as per CMD:</p>
+<p><code>&gt;bower help</code> &#8212; išveda sąrašą Bower'io komandų (<code>&lt;command&gt;</code>) ir opcijų (<code>&lt;options&gt;</code>)</p>
+<p><code>&gt;bower help &lt;command&gt;</code> &#8212; išsami info apie komandą</p>
+<p>Bower'io komandos:</p>
+<p><a href="https://bower.io/docs/api/#commands">https://bower.io/docs/api/#commands</a></p>
+<h2>Globalus Bower'io, Node'o package'o, instaliavimas</h2>
+<p>Reikia teisingai-tinkamai suinstaliuoti  <a href="http://git-for-windows.github.io/">Git for Windows</a>:</p>
+<blockquote>
+  <p><a href="https://github.com/bower/bower#windows-users">https://github.com/bower/bower#windows-users</a></p>
+  <h3>Windows users</h3>
+  <p>To use Bower on Windows, you must install <a href="http://git-for-windows.github.io/">Git for Windows</a> correctly. Be sure to check the options shown below:</p>
+  <p><img src="images/2016.11.12_12-11-52-GitHub - bower_bower_ A package manager for the web.png" alt="" width="344" height="269"/> &nbsp;&nbsp;<img src="images/2016.11.12_12-13-19-GitHub - bower_bower_ A package manager for the web.png" alt="" width="341" height="267"/></p>
+  <p>Note that if you use TortoiseGit and if Bower keeps asking for your SSH password, you should add the following environment variable: GIT_SSH - C:\Program Files\TortoiseGit\bin\TortoisePlink.exe. Adjust the TortoisePlink path if needed.</p>
+</blockquote>
+<p>Darome tai su npm (Node’s package manager):</p>
+<pre><code>$ npm install -g bower</code></pre>
+<p>Bower'io versiją sužinome:</p>
+<pre><code>&gt; bower -v</code></pre>
+<p>Čia <a href="https://bower.io/">https://bower.io/</a> pažiūrime kokia naujausia versija, jeigu pas save senesnė, atnaujiname:</p>
+<pre><code>npm update -g bower</code></pre>
+<h2>Bower'io projekte-tinklalapyje instaliavimas (Setup Bower for a Project)</h2>
+<p class="em-note">Visas Bower'io command-prompt'o / terminal'o komandas vykdome iš šakninio projekto-tinklalapio katalogo (project’s root folder).</p>
+<p>Bower'is instaliuojamas sukuriant failą <code>bower.json</code> šakniniame projekto-tinklalapio kataloge, tai galima padaryti 2 būdais:</p>
+<dl>
+  <dt>Rankiniu</dt>
+  <dd>
+    <blockquote>
+      <p>The project needs a file called <code>bower.json</code>. Create one in the project&rsquo;s folder, the contents of the file should be something like:</p>
+      <pre><code>{
+  "name": "my-project"
+}</code></pre>
+    </blockquote>
+  </dd>
+  <dt>Su terminal'o komanda</dt>
+  <dd>
+    <p><code>&gt; bower init</code></p>
+    <p>Ši komanda paleidžia wizad'ą, kuriame surašius ko prašo, sukurs <code>bower.json</code> failą šakniniame projekto-tinklalapio kataloge.  </p>
+  </dd>
+</dl>
+<h2>Bower'io konfigūravimas</h2>
+<p><a href="https://bower.io/docs/config/">https://bower.io/docs/config/</a></p>
+<blockquote>
+  <p>Bower keeps track of these packages in a manifest file, <code>bower.json</code>.</p>
+</blockquote>
+<h3>Bower'io package'ų instaliavimo vietos-katalogo nustatymas</h3>
+<blockquote>
+  <p>By default Bower is going to download everything to the <em>bower_components</em> folder. We can change this using the directory setting in the <em>.bowerrc</em> file. If this file doesn&rsquo;t yet exist you will need to add it to the same folder that contains your <em>bower.json</em> file. This file is a JSON file for defining your <a href="http://bower.io/docs/config/">Bower settings</a>. To change the folder that Bower installs packages add the directory setting like:-</p>
+  <pre>{    "directory": "public/vendor"  }  </pre>
+  <p>This will cause Bower to download everything to <em>public/vendor/</em> instead of <em>bower_components</em>.</p>
+</blockquote>
+<h2>Bower'io package'ų radimas</h2>
+<p><a href="https://bower.io/search/">https://bower.io/search/</a></p>
+<blockquote>
+  <p>Finding Packages</p>
+  <p>There are a few of ways of finding Bower packages. You can search via the <a href="http://bower.io/search">Bower website</a> or alternatively you can use the command line.</p>
+  <p>To search for packages from the terminal you use Bower&rsquo;s search command followed by what you&rsquo;re searching for:-</p>
+  <pre>$ bower search &lt;query&gt;  </pre>
+  <p>For example, to search for jQuery packages:-</p>
+  <pre>$ bower search jquery  </pre>
+  <p>Try it yourself. You should see a very long list of available packages.</p>
+</blockquote>
+<h2>Bower'io package'ų valdymas: instaliavimas, išinstaliavimas, atnaujinimas</h2>
+<div class="em-note">
+  <p>Bower'is rūpinasi dependents'ais:</p>
+  <blockquote>
+    <p>Another neat trick that Bower will perform is that if you attempt to install a package that depends on another one it will download both and make sure the packages are compatible.</p>
+  </blockquote>
+</div>
+<div class="o-mcl o-mcl--N4 o-mcl--start-h3">
+  <h3>Konkretaus package'o instaliavimas</h3>
+  <p>Instaliuojama su terminal'o komanda:</p>
+  <pre><code>&gt; bower install &lt;package&gt; --save</code></pre>
+  <p>Ši komanda:</p>
+  <ul>
+    <li> Sukuria (kai iškviečiama pirmą kartą projekte) katalogą <code>bower_components</code> šakniniame projekto-tinklalapio kataloge.</li>
+    <li>Iš interneto atsiunčia nurodytą <code>&lt;package&gt;</code>, ir padeda į <code>bower_components</code> katalogą.</li>
+    <li>
+      <blockquote>
+        <p>The <code>--save</code> flag tells Bower to add the package to the <em>bower.json</em> file for future reference.</p>
+        <p>install a package and add it to bower.json</p>
+      </blockquote>
+    </li>
+  </ul>
+  <p>Konkrečios Bower'io package'o versijos instaliavimas (install specific version of a package and add it to bower.json):</p>
+  <pre><code>&gt; bower install &lt;package&gt;#&lt;version&gt; --save
+<mark>konkrečiai:</mark>
+&gt; bower install jquery#1.8 --save</code></pre>
+  <h3>Konkretaus package'o išinstaliavimas-pašalinimas</h3>
+  <pre><code>bower uninstall &lt;package-name&gt; --save</code></pre>
+  <p>Ką daro flag'as <code>--save</code>:</p>
+  <blockquote>
+    <p>The <code>--save</code> flag will remove the package from the <em>bower.json</em> file as well as uninstall it.</p>
+  </blockquote>
+  <h3>Bower'io package'ų instaliavimas pagal <code>bower.json</code> (install dependencies listed in <code>bower.json</code>)</h3>
+  <p class="em-important">Čia matyt tam atvejui, kai turi kokį tai <code>bower.json</code> , kuriame yra įrašai apie suinstaliuotus package'us, ir jį padedi į kito-naujo-tuščio projekto katalogą.</p>
+  <pre><code>&gt; bower install</code></pre>
+  <h3>Visų Bower'io package'ų, t. y. pagal projekto <code>bower.json</code>, atnaujinimas</h3>
+  <pre><code>&gt; bower update</code>
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

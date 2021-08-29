@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="assets/sass/master.css">
+  <link rel="stylesheet" href="assets/sass/master.utilities.css">
+  <link rel="stylesheet" href="assets/sass/master.dev.css">
+  <script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script data-main="assets/js/loader" src="assets/js.vendor/requirejs/require.js"></script>
+  <script type="module" src="assets/js/master.js"></script>
+</head>
+<body class="-s-page-pvz">
+<div class="c-sidePanel c-sidePanel--left c-controlPanel--links">
+  <ul>
+    <li><a href="index_.html" target="_top">pradžia</a></li>
+  </ul>
+</div>
+<div id="Lay-ControlPanel-Toc" class="c-sidePanel c-sidePanel--left c-controlPanel--toc">
+  <ul id="Lay-ControlPanel-Toc2"></ul>
+</div>
+
+<h1>Liniuotės</h1>
+
+<p>sass.szm\_dev.measuring.ruler.scss</p>
+
+<h2><code>class="d-ruler"</code> — bazinis variantas</h2>
+<div class="d-ruler" style="width: 200px">200px</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+<p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+
+<h2><code>class="d-ruler d-ruler--guide-right"</code> — guide'as dešnėje</h2>
+<div class="d-ruler d-ruler--guide-right" style="width: 200px">200px</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+<p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+
+<h2><code>class="d-ruler d-ruler--right d-ruler--guide-left"</code> —  guide'as kairėje ir pati liniuotė dešnėje</h2>
+<div class="d-ruler d-ruler--right d-ruler--guide-left" style="width: 200px">200px</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+<p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+
+<h2><code>class="d-ruler d-ruler--center d-ruler--guide-both"</code> —  abu guide'ai ir liniuotė vidury</h2>
+<div class="d-ruler d-ruler--center d-ruler--guide-both" style="width: 200px">200px</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+<p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+
+<h2>Guide'ų aukščiai</h2>
+
+<h3><code>class="d-ruler d-ruler--guide-right d-ruler--guide-{50+50..900}px"</code> — pikseliais</h3>
+<div id="20200608143256" class="-FLLc -FLCF" style="display:flex; align-items: flex-start;"></div>
+<script type="module">
+  let markup = '';
+  for (let size = 50; size <= 900; size += 50) {
+    markup += `<div class="d-ruler d-ruler--guide-right d-ruler--guide-${size}px" style="width: 100px; margin-bottom: ${size}px">${size}px</div>`;
+  }
+  // console.log(markup);
+  document.getElementById("20200608143256").innerHTML = markup;
+</script>
+<!--<div style="height: 900px"></div>-->
+
+<h3><code>class="d-ruler d-ruler--guide-right d-ruler--guide-{25+25..100 && 150+50..300}vh"</code> — vh — Viewport Height</h3>
+<div id="20200608144616" class="FLLc FLCF"></div>
+<script type="module">
+  let markup = '';
+  for (let size = 25; size <= 100; size += 25) {
+    markup += `<div class="d-ruler d-ruler--guide-right d-ruler--guide-${size}vh" style="width: 100px; margin-bottom: ${size}vh">${size}vh</div>`;
+  }
+  for (let size = 150; size <= 300; size += 50) {
+    markup += `<div class="d-ruler d-ruler--guide-right d-ruler--guide-${size}vh" style="width: 100px; margin-bottom: ${size}vh">${size}vh</div>`;
+  }
+  // console.log(markup);
+  document.getElementById("20200608144616").innerHTML = markup;
+</script>
+
+<h3>Galima guide'o aukštį nustatyti HTML'e su <code>style="--guide-height: &lt;length&gt;"</code></h3>
+<div class="d-ruler d-ruler--guide-right" style="width: 10em; --guide-height: 70px;">10em</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<h4>Guide'o aukštis atvirkščiai proporcingas viewport'o pločiui</h4>
+<div class="d-ruler d-ruler--guide-right" style="width: 10em; --guide-height: calc(100px + (1920px - 100vw) * 0.3);">10em</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+<p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+<p style="height: calc(0px + (1920px - 100vw) * 0.15)"></p>
+
+<h2>Kad fokusuotų paspaudus pele ar klaviatūros tab'u, t. y. kad veiktų <code>:focus</code></h2>
+<p class="c-em-note">Reikia tagui pridėti <code>tabindex="-1"</code></p>
+<div class="d-ruler d-ruler--guide-right" style="width: 200px" tabindex="-1">200px</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis mattis aliquam faucibus purus in massa tempor. Faucibus turpis in eu mi bibendum.</p>
+<p>Lobortis feugiat vivamus at augue eget arcu. Congue eu consequat ac felis donec et. Dui faucibus in ornare quam viverra orci sagittis eu volutpat. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Ipsum a arcu cursus vitae congue.</p>
+<p>Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Semper feugiat pulvinar.</p>
+
+
+
+
+
+<p style="height: 50vh">&nbsp;</p>
+<!--<p>The basic idea of multicol, is that you can take a chunk of content and flow it into multiple columns, as in a newspaper. You do this by using one of two properties. The column-count property specifies the number of columns that you would like the content to break into. The column-width property specifies the ideal width, leaving the browser to figure out how many columns will fit.</p>-->
+<!--<p>It doesn't matter which elements are inside the content that you turn into a multicol container, everything remains in normal flow, but broken into columns. This makes multicol unlike other layout methods that we have in browsers today. Flexbox and Grid for example, take the child elements of the container and those items then participate in a flex or grid layout. With multicol, you still have normal flow, except inside a column.</p>-->
+<!--<p>In the below example I am using column-width, to display columns of at least 14em. Multicol assigns as many 14emcolumns as will fit and then shares out the remaining space between the columns. Columns will be at least 14em, unless we can only display one column in which case it may be smaller. Multicol was the first time that we saw this kind of behavior in CSS, columns being created which were essentialy responsive by default. You do not need to add Media Queries and change the number of columns for various breakpoints, instead we specify an optimal width and the browser will work it out.</p>-->
+<!--<p>The column boxes created when you use one of the column properties can't be targeted. You can't address them with JavaScript, nor can you style an individual box to give it a background color or adjust the padding and margins. All of the column boxes will be the same size. The only thing you can do is add a rule between columns, using the column-rule property, which acts like border. You can also control the gap between columns using the column-gap property, which has a default value of 1em however you can change it to any valid length unit.</p>-->
+<!--<p>That is the basic functionality of multicol. You can take a chunk of content and split it into columns. Content will fill the columns in turn, creating columns in the inline direction. You can control the gaps between columns and add a rule, with the same possible values as border. So far so good, and all of the above is very well supported in browsers and has been for a long time, making this spec very safe to use in terms of backwards compatibility.</p>-->
+<!--<p>There are some further things you might want to consider with your columns, and some potential issues to be aware of when using columns on the web.</p>-->
+<!--<p>Sometimes you might like to break some content into columns, but then cause one element to span across the column boxes. Applying the column-span property to a descendent of the multicol container achieves this.</p>-->
+<!--<p>In the example below, I have caused a &lt;blockquote&gt; element to span across my columns. Note that when you do this, the content breaks into a set of boxes above the span, then starts a new set of column boxes below. The content doesn't jump across the spanned element.</p>-->
+<!--<p>Be aware that in the current spec, the values for column-span are either all or none. You can't span just some of the columns, but you can get the kind of layout you might see in a newspaper by combining multicol with other layout methods. In this next example, I have a grid container with two column tracks. The left-hand track is 2fr, the right-hand track 1fr. The article in the left-hand track I have turned into a multicol container with two tracks, it also has a spanning element.</p>-->
+<!--<p>On the right, we have an aside which goes into the second Grid column track. By playing around with the various layout methods available to us, we can figure out exactly which layout method suits the job at hand — don't be afraid to mix and match!</p>-->
+
+</body>
+</html>

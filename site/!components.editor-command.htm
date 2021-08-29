@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>component.collapse — Design Style Guide</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<script src="assets/js/component.collapse--SENAS.js"></script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1> .c-editor-command &#8212; Design Style Guide</h1>
+<h2>Kažkas</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Navigacija </h3>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+E</kbd></p>
+        <p>[View &gt; Side Bar]        </p>
+        <p>Kažkas apie tai.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>ctrl+R</kbd> @@AHKremap:</p>
+        <p>&quot;key&quot;: &quot;shift+ctrl+win+alt+r&quot;<br>
+          &quot;command&quot;: &quot;workbench.action.files.revealActiveFileInWindows&quot;</p>
+        <p>Kažkas apie tai.</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p class="c-editor-command__title">Naujo failo sukūrimas</p>
+        <p><kbd>ctrl+N</kbd></p>
+      <p>[File &gt; New &gt; failo tipas] </p>
+      <p>Kažkas apie tai.</p></div>
+      <p>&nbsp;</p></td>
+    <td width="25%"><h3>Komandų-hotkey'ų nuorodos</h3>
+      <p>su <code>assets\js\sutkatu-suvestine.js</code></p>
+      <h4>Kaip padaroma</h4>
+      <p>Komanda-hotkey'sas target'as turi būti:</p>
+      <pre><code>&lt;div id=&quot;<mark>editCmd-</mark>unikalusKomandosId&quot; class=&quot;c-editor-command o-collapse-locdep&quot;&gt;
+ ...
+ &lt;/div&gt;</code></pre>
+      <p>Komanda-hotkey'as nuoroda  turi būti:</p>
+      <pre><code>&lt;a href=&quot;#<mark>editCmd-</mark>unikalusKomandosId&quot;&gt;aaa&lt;/a&gt;</code></pre>
+      <h4>Demonstracija</h4>
+      <p>Komanda-hotkey'sas target'as:</p>
+      <div id="editCmd-go-switchEditor-previousNextEditor" class="c-editor-command o-collapse-locdep">
+        <p>[<u>G</u>o &gt; Switch <u>E</u>ditor &gt; Previous Editor]</p>
+        <p>Kažkas apie tai.</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Komanda-hotkey'as nuoroda:</p>
+      <p><a href="#editCmd-go-switchEditor-previousNextEditor">aaa</a></p>
+      <p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2>Kažkas kita</h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p><kbd>+</kbd></p>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="c-editor-command o-collapse-locdep">
+        <p class="c-editor-command__title">&nbsp;</p>
+        <p><kbd>+</kbd></p>
+        <p>&nbsp;</p>
+      </div>
+    <p>&nbsp;</p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

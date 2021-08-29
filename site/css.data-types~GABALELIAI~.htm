@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS savybių reikšmių duomenų tipai (CSS data types)</h1>
+<p> <a href="https://www.w3.org/TR/css-values-3/">CSS Values and Units Module Level 3</a></p>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types">CSS basic data types - CSS: Cascading Style Sheets | MDN</a></p>
+<p>&nbsp;</p>
+<blockquote>
+  <p><strong>CSS basic data types</strong> define typical values (including keywords and units) accepted by CSS properties and functions. They are a special kind of <a href="https://www.w3.org/TR/css3-values/#component-types" rel="noopener">component value type</a>.</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</blockquote>
+<h2>Generiniai-bendri duomenų tipai (<i>generic data types</i>)</h2>
+<p><a href="https://bitsofco.de/generic-css-data-types/">https://bitsofco.de/generic-css-data-types/</a></p>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Generic data types are not related to any specific property. For example we can have a value of <code>10px</code>, which is a <code>&lt;length&gt;</code> data type, for the <code>margin</code>, <code>font-size</code> or a number of other propertes.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Specifiniai duomenų tipai (<i>specific data types</i>)</h2>
+<blockquote>
+  <p>Specific data types are related a single property or a small group of properties. For example, the <code>&lt;transform-function&gt;</code> data type is used as the value for the <code>transform:</code> property alone.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

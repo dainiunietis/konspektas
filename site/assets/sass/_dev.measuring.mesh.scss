@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+/////////////////////////////////////////////////////////////////////////
+
+// prideda background'ą į patį tagą
+// class="~M ~М50рх:5 -Mred"
+
+@include szm-dev-mesh_selector-uniform((50px 5, 100px 10));
+
+@include szm-dev-mesh_selector-divide((
+  3 3,
+  5 5,
+  (5 3, 3 3)
+));
+
+@include szm-dev-mesh_selector-color((
+  red: hsla(0, 100%, 50%, 0.7) hsla(0, 100%, 50%, 0.2),
+  //magenta: hsla(300, 100%, 50%, 0.8) hsla(300, 100%, 50%, 0.2),
+  blue: hsla(240, 100%, 50%, 0.8) hsla(240, 100%, 50%, 0.2),
+  //cyan: hsla(180, 100%, 50%, 0.8) hsla(180, 100%, 50%, 0.2)
+));
+
+

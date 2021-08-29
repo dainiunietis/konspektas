@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Skirstyti-pasideti</h1>
+<p>&nbsp;</p>
+<p><strong>Failų ir katalogų komentavimo-žymėjimo formatas:</strong></p>
+<p>Preferences~GABALELIAI~.sublime-settings</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://haz.io/">http://haz.io/</a></p>
+<p>Būdas išvengti <code>margin-top:</code> ir <code>margin-bottom:</code> mergin'imosi &#8212; kai konteineris yra <code>display: block</code>, 	tada <code>margin-top:</code> ir <code>margin-bottom:</code> mergin'asi vieni su kitais. O kai <code>display: inline-block</code> &#8212; tada nesimergin'a.</p>
+<p><a href="css/mustache.htm">Mustache</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4>Pasidėti kodą</h4>
+<p>hover'is ant :before pseudo konteinerio:</p>
+<pre><code>code .comm:<strong>hover</strong>:before { .nenaudotinas-before-hover } &lt;&lt;&lt; veikia
+code .comm:before:<strong>hover</strong> { .nenaudotinas-before-hover } &lt;&lt;&lt; NEveikia</code></pre>
+<p></p>
+<p>&nbsp;</p>
+<p><a href="http://css3please.com/">http://css3please.com/</a> &#8212; pasitikrinti kas žinoma apie CSS3 naujoves </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

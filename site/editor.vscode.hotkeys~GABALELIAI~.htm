@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>VS Code &#8212; cheat sheet</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><p>&nbsp;</p>
+      <h4>Kaip veikia &quot;files to include&quot;</h4>
+      <p>Kokiuose failuose ieško, kai:</p>
+      <dl>
+        <dt>nieko neįvesta</dt>
+        <dd>
+          <ul>
+            <li> visuose projekto failuose</li>
+            <li>atidarytuose ne projekto failuose </li>
+          </ul>
+        </dd>
+        <dt>-</dt>
+        <dd>&nbsp; </dd>
+      </dl>
+      <p>&nbsp;</p>
+      <div class="em-important em--small em--narrow o-collapse-locdep">
+        <p>nurodžius absoliutų kelią, tiek pačiame projekte, tiek bet kur kitur diske &#8212; &quot;glob syntax&quot; neveikia, veikiantis pvz.:</p>
+        <p>files to include: <code>C:\temp</code><br>
+          ieško visuose failuose: <code>C:\temp\*.*</code> ir subkataloguose, t. y. pilnai: <br>
+          <code>C:\temp\**\*.*</code></p>
+        <p>ir neveikiantis &quot;glob syntax&quot;:</p>
+        <p>files to include: <code>C:\te*</code><br>
+          neieško </p>
+      </div>
+      <p>&nbsp;</p>
+      <p>Sprendimai:</p>
+      <dl>
+        <dt>ieškoti konkrečiame kataloge</dt>
+        <dd>
+          <p>nurodyti kelią nuo projekto šakninio katalogo, pvz.:</p>
+          <p>files to include: <code>./site/assets</code></p>
+        </dd>
+        <dt>ieškoti nurodyto &quot;gylio&quot; subkataloge </dt>
+        <dd>
+          <p>files to include: <code><code></code>assets\*\*</code><br>
+            ieško faile: <code>./site/assets/sass/kazkas.scss</code><br>
+            neieško: <code>./site/assets/kazkas.scss</code></p>
+        </dd>
+      </dl>
+      <p></p>
+    <p></p></td>
+    <td width="25%"><p>&nbsp;</p>
+      <table width="100%" class="-c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+        <tr>
+          <th width="31%">files to include</th>
+          <th width="69%">ieško failuose</th>
+        </tr>
+        <tr>
+          <td><p><code>C:\temp</code></p></td>
+          <td><p>visuose failuose: <br>
+            <code>C:\temp\*.*</code> <br>
+            ir subkataloguose, t. y. pilnai: <br>
+            <code>C:\temp\**\*.*</code></p>
+            <p>C:\temp\kazkas.txt</p></td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+      <table width="100%" class="-c-tableCols c-tableCols--h3h4 -u-table-equelCols">
+        <caption>
+          Tipiniai pavyzdžiai
+        </caption>
+        <tr>
+          <th width="35%">files to include</th>
+          <th width="65%">ieško failuose</th>
+        </tr>
+        <tr>
+          <td><p><code>sass</code></p></td>
+          <td><p>glob syntax:<br>
+            <code>**/<mark>sass</mark>/**/*</code></p>
+            <p>konkretūs:<br>
+              <code>site/assets/<mark>sass</mark>/kazkas.scss</code><br>
+              <code>site/assets/<mark>sass</mark>/kitas/kazkas.scss</code><br>
+              <code><mark>sass</mark>/kazkas.scss</code></p></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <dl>
+      <dt>files to include: <code>sass</code></dt>
+      <dd>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      </dd>
+      <dt>ieškoti konkrečiame kataloge</dt>
+      <dd>
+        <p>nurodyti kelią nuo projekto šakninio katalogo, pvz.:</p>
+        <p>files to include: <code>./site/assets</code></p>
+      </dd>
+      <dt>ieškoti nurodyto &quot;gylio&quot; subkataloge </dt>
+      <dd>
+        <p>files to include: <code><code></code>assets\*\*</code><br>
+          ieško faile: <code>./site/assets/sass/kazkas.scss</code><br>
+          neieško: <code>./site/assets/kazkas.scss</code></p>
+      </dd>
+    </dl>
+    <p></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p></p></td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="800" border="3" cellspacing="11" cellpadding="9" summary="sssssssssssssssssssssssssssssss">
+  <caption>
+    aaaaaaaaaaaaaaaa
+  </caption>
+  <tbody>
+    <tr>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS kalbos sintaksė (CSS syntax)</h1>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax">https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax</a></p>
+<p><a href="https://www.udacity.com/course/viewer#!/c-ud000/l-4137958782/m-3611108698">https://www.udacity.com/course/viewer#!/c-ud000/l-4137958782/m-3611108698</a></p>
+<table width="1875" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%"><h3>CSS deklaracijos (CSS declarations)</h3>
+      <p><img src="images/2018.05.21_13-21-24-Syntax - CSS_ Cascading Style Sheets _ MDN.png" alt="" width="270" height="122"/></p>
+      <p>Kas yra ir ką daro:</p>
+      <blockquote>
+        <p>Setting CSS properties to specific values is the core function of the CSS language. A property and value pair is called a <strong>declaration</strong>, and any CSS engine calculates which declarations apply to every single element of a page in order to appropriately lay it out, and to style it.</p>
+      </blockquote>
+      <p>Įpatybės:</p>
+      <blockquote>
+        <p>Both properties and values are case-insensitive by default in CSS.</p>
+      </blockquote>
+    <p>Kai CSS savybei priskiriama neteisinga reikšmė:</p>
+    <blockquote>
+      <p>When a value is not valid for a given property, the declaration is deemed <em>invalid</em> and is wholly ignored by the CSS engine.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h3>CSS declarations blocks
+    </h3>
+      <p><img src="images/2018.05.21_13-44-24-Syntax - CSS_ Cascading Style Sheets _ MDN.png" alt="" width="412" height="139"/></p>
+    <p>&nbsp;</p></td>
+    <td width="20%"><h3>CSS rulesets  (or rules) </h3>
+    <p><img src="images/2018.05.21_14-07-34-Syntax - CSS_ Cascading Style Sheets _ MDN.png" alt=""/></p>
+    <p><img src="images/2018.06.22_11-03-03-slides-students-C04 - PDF-XChange Editor.png" alt="" width="276" height="154"/></p>
+    <div class="em-alert em--narrow">
+      <p>Vienas klaidingas selektorius selektorių grupėje, &quot;išjungia&quot; visus kitus:</p>
+      <blockquote>
+        <p>It is important to note that even if a ruleset characterized by a group of selectors is a kind of shorthand replacing rulesets with a single selector each, this doesn't apply to the validity of the ruleset itself. </p>
+        <p>This leads to an important consequence: if one single basic selector is invalid, like when using an unknown pseudo-element or pseudo-class, the whole <em>selector</em> is invalid and therefore the entire rule is ignored (as invalid too).      </p>
+      </blockquote>
+  </div></td>
+    <td width="20%"><h3>CSS statements</h3>
+      <p><img src="images/2018.05.21_19-14-21-Syntax - CSS_ Cascading Style Sheets _ MDN.png" alt="" width="306" height="151"/></p>
+    <p>Formalus apibrėžimas:</p>
+    <blockquote>
+      <p>A <strong>statement</strong> is a building block that begins with any non-space characters and ends at the first closing brace or semi-colon (outside a string, non-escaped and not included into another {}, () or [] pair).</p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>There are two kinds of statements:</p>
+      <ul>
+        <li><strong>Rulesets</strong> (or <em>rules</em>) that, as seen, associate a collection of CSS declarations to a condition described by a selector.</li>
+        <li><strong>At-rules</strong> that start with an at sign, '@' (U+0040 COMMERCIAL AT), followed by an identifier and then continuing up the end of the statement, that is up to the next semi-colon (;) outside of a block, or the end of the next block. Each type of <a href="https://developer.mozilla.org/en/CSS/At-rule" title="At-rule">at-rules</a>, defined by the identifier, may have its own internal syntax, and semantics of course. They are used to convey meta-data information (like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@charset" title="The @charset CSS at-rule specifies the character encoding used in the style sheet. It must be the first element in the style sheet and not be preceded by any character; as it is not a nested statement, it cannot be used inside conditional group at-rules. If several @charset at-rules are defined, only the first one is used, and it cannot be used inside a style attribute on an HTML element or inside the <style> element where the character set of the HTML page is relevant.">@charset</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import" title="The @import CSS at-rule is used to import style rules from other style sheets. These rules must precede all other types of rules, except @charset rules; as it is not a nested statement, @import cannot be used inside conditional group at-rules.">@import</a>), conditional information (like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media" title="The @media CSS at-rule can be used to apply styles based on the result of one or more media queries, which test a device's type, specific characteristics, and environment.">@media</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@document" title="The @document CSS at-rule restricts the style rules contained within it based on the URL of the document. It is designed primarily for user-defined style sheets, though it can be used on author-defined style sheets, too.">@document</a>), or descriptive information (like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face" title="The @font-face CSS at-rule allows authors to specify fonts (online url(), and locally local()), to display text on their web pages. By allowing authors to provide their own fonts, @font-face eliminates the need to depend on the limited number of fonts users have installed on their computers. By allowing authors to access users fonts, @font-face eliminates the dependencies of having internet access, as well as downloading the font's resources locally. These seemingly contrasting options empower developers to take advantage of the users settings in order to provide a seamless typographical experience. The @font-face at-rule may be used not only at the top level of a CSS, but also inside any CSS conditional-group at-rule.">@font-face</a>).</li>
+      </ul>
+    </blockquote>
+    <p>Apie <q>nested statements</q>:</p>
+    <blockquote>
+      <p>There is another group of statements – the <strong>nested statements.</strong> These are statements that can be used in a specific subset of at-rules – the <em>conditional group rules</em>. These statements only apply if a specific condition is matched: the @media at-rule content is applied only if the device on which the browser runs matches the expressed condition; the @documentat-rule content is applied only if the current page matches some conditions, and so on. In CSS1 and CSS2.1, only <em>rulesets</em> could be used inside conditional group rules. That was very restrictive and this restriction was lifted in <a href="https://developer.mozilla.org/en/CSS/CSS3#Conditionals" title="en/CSS/CSS3#Conditionals"><em>CSS Conditionals Level 3</em></a>. Now, though still experimental and not supported by every browser, conditional group rules can contain a wider range of content: rulesets but also some, but not all, at-rules.</p>
+    </blockquote>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

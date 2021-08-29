@@ -1,0 +1,303 @@
+@charset "utf-8";
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # blockquote
+//
+////////////////////////////////////////////////////////////////////
+
+//@mixin blockquote_foneKabes_noSpacing {
+//  font-family: "Lora", serif;
+//  font-size:   0.9em;
+//  line-height: 1.33;
+//  padding:     0 0 0 0;
+//  position:    relative;
+//  &:before {
+//    font-family: "Lora", Times, serif;
+//    font-weight: bold;
+//    font-size:   10em;
+//    color:       hsla(0, 0%, 0%, 0.2);
+//    display:     block;
+//    content:     "\201C"; // 201D
+//    position:    absolute;
+//    z-index:     -1;
+//    left:        0.1em;
+//    top:         -0.39em;
+//    height:      .5em;
+//  }
+//}
+
+//@mixin blockquote_foneKabes_BGgradient_spacing {
+//}
+
+//----------------------------------------------------------------------
+//
+//----------------------------------------------------------------------
+
+$e-blockquote-text-clr: hsl(0, 0%, 20%);
+
+blockquote {
+  //font-family: "Droid Serif", "Times New Roman", serif;
+  //font-family: "Iosevka", "Times New Roman", serif;
+  //font-family: "Times New Roman", serif;
+  //font-family: "Playfair Display", serif;
+  //font-family: "Garamond", "Times New Roman", serif;
+  //font-family: "Cormorant Garamond", serif;
+  //font-weight: bold;
+  //font-family: "Lora", serif;
+  font-family: "IBM Plex Serif", serif;
+  font-size:   1em;
+  //line-height: 1.25;
+  text-shadow: 1px 1px 2px hsla(0, 0%, 0%, 0.1);
+
+  //margin:      1.3em 0;
+  padding:     0.1em 0 .3em .7rem;
+  margin-bottom: $szm-spacing-vertical-paragraph;
+  //margin-bottom: calc(#{$szm-spacing-vertical-paragraph} + 0.5em);
+  position:    relative;
+  z-index:     1;
+
+  //opacity: .9;
+  //font-family: "Times New Roman", Times, serif;
+  //border-left: dashed 1px rgba(0, 0, 0, 0.81);
+  //  border-right: dashed 1px rgba(0, 0, 0, 0.81);
+  //border: dashed 1px rgba(0, 0, 0, 0.5);
+
+  //background-color: rgba(0, 0, 0, 0.04);
+  //border-radius: 10px;
+  //background-color: rgba(107, 107, 107, 0.11);
+
+  & + & {
+    margin-top: 1.7em;
+  }
+
+  & & {
+    //all: revert;
+    //margin: 0 0 0 0;
+    padding: .3em .5em;
+    border: 1px hsl(0, 0%, 60%) solid;
+
+    &:before {
+      all: unset;
+    }
+  }
+
+  &:before {
+    //font-family: "Times New Roman", Times, serif;
+    //font-family: "Century Gothic", Times, serif;
+    //font-family: "Lora", Times, serif;
+    text-shadow: none;
+    font-weight: bold;
+    font-size:   15em;
+    line-height: 0.57;
+    //color:       hsla(0, 0%, 0%, 0.1);
+    color:       hsla(0, 0%, 100%, .7);
+    //color:       colorScheme-site("2HL3");
+    content:     "\201C"; // 201D
+    text-indent: 1.5rem;
+
+    //to right
+    background:  linear-gradient(to right, hsla(0, 0%, 0%, 0.1) 0%, hsla(0, 0%, 0%, 0) 50%);
+    //border: solid 1px rgba(0, 0%, 0%, 0.1);
+    //border-width: 0 1px;
+
+    //background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+    display:     block;
+    box-sizing:  content-box;
+    position:    absolute;
+    z-index:     -1;
+    left:        0;
+    top:         -0.4rem;
+    height:      calc(100% - 0.05rem);
+    width:       100%;
+    padding:     .4rem 0 .4rem 0;
+    overflow:    hidden;
+    //color: #7a7a7a;
+
+    //.em-note & {
+    //    //  color: #EEFFD5;
+    //    //}
+  }
+
+  &:hover {
+    outline: solid 1px hsl(0, 0%, 70%, .4);
+  }
+
+  & > *:not(&) {
+    //filter: grayscale(0) brightness(1) opacity(1) saturate(0.3);
+    //filter: saturate(.4) opacity(.8);
+    filter: saturate(.4) opacity(.85) brightness(.7);
+  }
+
+  & > dl {
+    //filter: grayscale(0) brightness(1) opacity(1) saturate(1);
+  }
+
+  p {
+    //color: $e-blockquote-text-clr;
+    //filter: grayscale(0) brightness(4);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    //color: hsl(0,0%,30%);
+    background: none;
+
+    &:before {
+      content: none;
+    }
+  }
+
+  em {
+    font-size: 1.05em;
+  }
+
+  hr {
+    //border-color: hsl(0,0%,30%);
+  }
+
+  dl {
+    //filter: grayscale(50%) brightness(0.6);
+  }
+
+  //&:after {
+  //  //font-family: "Times New Roman", Times, serif;
+  //  //font-family: "Century Gothic", Times, serif;
+  //  font-family: "Lora", Times, serif;
+  //  font-weight: bold;
+  //  font-size:   10em;
+  //  color:       hsla(0, 0%, 0%, 0.2);
+  //  //background:  hsl(354, 94%, 55%);
+  //
+  //  display:     block;
+  //  content:     "\201D";
+  //  position:    absolute;
+  //  z-index:     -1;
+  //  right:        0.05em;
+  //  bottom:       -0.1em;
+  //  height:      .5em;
+  //  //color: #7a7a7a;
+  //}
+
+  //> *:first-child {
+  //  margin-top: 0
+  //}
+
+  //> *:last-child {
+  //  margin-bottom: 0
+  //}
+}
+
+.blockquote--citeSource {
+  @include szm-js-extendThisWithAddedByJs;
+
+  & > p:last-child {
+    //background: hsla(0, 0%, 0%, .5);
+    //border-radius: 10em;
+    text-align: right;
+    font-size: .6em;
+    //line-height: 50px;
+    vertical-align: bottom;
+    margin-top: -.7rem;
+
+    height: 1.5rem;
+    //overflow: visible;
+    //overflow-clip: ;
+    //text-after-overflow: ;
+    //background: lightskyblue;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    //::after {
+    //  content: "🔗⛓";
+    //}
+
+    & > a {
+      color: hsl(0, 0%, 20%);
+    }
+
+    &:hover > a {
+    }
+  }
+
+  &:hover > p:last-child {
+    font-size: unset;
+    //& > a {
+    //}
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # cite
+//
+////////////////////////////////////////////////////////////////////
+
+cite {
+  a:link {
+    color: inherit;
+    //text-decoration: none;
+    //border-color: currentcolor;
+  }
+
+  &::before, &::after {
+    //font-style: normal;
+    font-size: 1.3em;
+    line-height: 0;
+    //font-weight: bold;
+    //font: 1.3em "Lora", serif;
+    //vertical-align: baseline;
+  }
+
+  // "G:\gdrive Laptop autosync\konspektas\Punctuation Cheat Sheet - Jens Oliver Meiert.xlsx"
+  // http://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
+
+  &::before {
+    //content: "[";
+    content: "„";
+    padding: 0 0.05em 0 0;
+    //vertical-align: .03em;
+  }
+
+  &::after {
+    //content: "]";
+    content: "“";
+    padding: 0 0 0 0.05em;
+    //vertical-align: -0.1em;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # q
+//
+////////////////////////////////////////////////////////////////////
+
+q {
+  font-family: "Lora", serif;
+  font-size:   1.1em;
+
+  &::before, &::after {
+    font: 1.3em "Lora", serif;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+
+  &::before {
+    content: "\201E";
+    //content: open-quote;
+    padding: 0 0.05em 0 0;
+    vertical-align: .03em;
+  }
+
+  &::after {
+    content: "\201C";
+    //content: close-quote;
+    //padding: 0 0 0 0em;
+    vertical-align: -0.1em;
+  }
+}
+
+// h1 q, h2 q, h3 q, h4 q, h5 q, h6 q { color: inherit; opacity: .8; }
+

@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS selektorių suvestinė</h1>
+<p><a href="http://konspektas-prev.local/client-side/css/koncepcijos/selectors.htm">http://konspektas-prev.local/client-side/css/koncepcijos/selectors.htm</a></p>
+<p>Vadovai:</p>
+<ul>
+  <li> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#Selectors">CSS reference - CSS: Cascading Style Sheets | MDN — Selectors</a></li>
+</ul>
+<p>Suvestinė / Cheat sheet</p>
+<ul>
+  <li> <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS Selectors Reference</a></li>
+</ul>
+<p>Užduotys:</p>
+<ul>
+  <li> <a href="https://flukeout.github.io/">CSS Diner - Where we feast on CSS Selectors!</a></li>
+</ul>
+<h2>Selektorių grupavimas / Grouping selectors,  Selector list</h2>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Selector_list">Selector list - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>Kableliu (comma) atskirti selektoriai savo suselektintiems tagams priskiria tas pačias deklaracijas, tai vadinama selektorių grupavimu. Taigi grupavimas leidžia skirtingiems selektoriams priskirti tą patį deklaracijų bloką.</p>
+      <pre><code>// Single Line Grouping
+p, pre { ... }
+
+// Multi Line Grouping
+p,
+pre { ... }</code></pre>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Selector list invalidation</h3>
+      <p>Vienas neteisingas selektorius &quot;išjungia&quot; visą selektorių grupę.</p>
+      <blockquote>
+        <p>A downside to using selector lists is that the following aren't equivalent:</p>
+        <pre><code>h1 { ... }
+h2:maybe-unsupported { ... }
+h3 { ... }
+
+h1, h2:maybe-unsupported, h3 { ... }</code></pre>
+        <p>This is because a single unsupported selector in a selector list invalidates the whole rule.</p>
+      </blockquote>
+      <p>Yra sprendimas su <code>:is()</code>:</p>
+      <blockquote>
+        <p>A way to remedy this us to use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is" title="The documentation about this has not yet been written; please consider contributing!">:is()</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where" title="The documentation about this has not yet been written; please consider contributing!">:where()</a> selectors, which accept a forgiving selector list. This will ignore invalid selectors in the list but accept those which are valid.</p>
+        <pre><code>:is(h1, h2:maybe-unsupported, h3) { ... }</code></pre>
+      </blockquote>
+    </td>
+  </tr>
+</table>
+<h2>Pagrindiniai-baziniai  (basic selectors)</h2>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Universalus selektorius / universal selector, an asterisk</h3>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors">Universal selectors</a></p>
+      <p>Selektina visus dokumento tagus.      </p>
+      <pre><code>* {}</code></pre>
+      <pre><code><mark>&lt;html&gt;
+&lt;body&gt;</mark>
+  <mark>&lt;h1&gt;</mark>
+  <mark>&lt;p&gt;</mark>
+  <mark>&lt;p&gt;</mark></code></pre>
+      <p>Gali būti praleistas ir nuspėjamas (implied), jei yra ne vienintelis &quot;simple selector&quot;iaus komponentas, pvz. yra tas pats: </p>
+      <pre><code>*#kazkas {}
+#kazkas {}
+
+*.kazkas {}
+.kazkas {}
+
+*[src] {}
+[src] {}</code></pre>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Tago-elemento  selektorius / type selector arba element type selector
+    </h3>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors">Type selectors</a></p>
+      <pre><code>p {}</code></pre>
+      <pre><code><mark>&lt;p&gt;</mark>
+&lt;h2&gt;<mark>
+&lt;p&gt;</mark><mark>
+&lt;p&gt;</mark></code></pre>
+    <p>&nbsp;</p></td>
+    <td width="25%">
+      <h3>Klasės selektorius / class selector</h3>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Class_selectors">Class selectors</a></p>
+    <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Atributo selektorius / attribute selector</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">Attribute selectors</a></li>
+        <li> <a href="https://tympanus.net/codrops/css_reference/attribute-selectors/">Attribute Selectors | Codrops</a></li>
+      </ul>
+      <pre><code>*[href] {}  <em>pilna forma</em>
+ [href] {}  <em>sutrumpinta forma</em></code></pre>
+      <p>Selektina  bet kokį tagą turintį nurodytą atributą su bet kokia reikšme: </p>
+      <pre><code>[class] {}</code></pre>
+      <pre><code><mark>&lt;h2 class=&quot;tas&quot;&gt;</mark><mark>
+&lt;p class=&quot;anas&quot;&gt;</mark></code></pre>
+      <h4>Flag'as case-insensitive</h4>
+      <p>Default'iškai visos string'ų palyginimo operacijos yra case-sensitive:</p>
+      <pre><code>input[type=&quot;email&quot;] {}
+</code></pre>
+      <pre><code><mark>&lt;input type=&quot;email&quot;&gt;</mark>
+&lt;input type=&quot;Email&quot;&gt;
+&lt;input type=&quot;EMAIL&quot;&gt;</code></pre>
+      <p> Kad būtų case-insensitive: </p>
+      <pre><code>input[type=&quot;email&quot; <strong>i</strong>] {}
+</code></pre>
+      <pre><code><mark>&lt;input type=&quot;email&quot;&gt;</mark>
+<mark>&lt;input type=&quot;Email&quot;&gt;</mark>
+<mark>&lt;input type=&quot;EMAIL&quot;&gt;</mark></code></pre>
+      <h4>Operatorius <code>=</code></h4>
+      <pre><code>[class=&quot;tas&quot;] {}</code></pre>
+      <pre><code><mark>&lt;h2 class=&quot;tas&quot;&gt;</mark>
+&lt;p class=&quot;tas2&quot;&gt;
+&lt;p class=&quot;tas-2&quot;&gt;</code></pre>
+      <h4>Operatorius <code>~=</code></h4>
+      <p>Tago atributo reikšmė padalinama joje esančiais tarpais (a whitespace-separated list of words) (tiksliau gali būti bet kokie withespace'o simboliai) į masyvą, atributas laikomas atitinkančiu selektoriaus sąlygą, jei bent vienas to masyvo elementas lygus nurodytam selektoriuje. </p>
+      <pre><code class="UM6BG_c"><mark>[class~=&quot;tas&quot;]</mark> {}
+<mark>[class~=&quot;suris&quot;]</mark> {}</code></pre>
+      <pre><code class="UM6BG_c"><mark>&lt;h2 class=&quot;tas obuolys&quot;&gt;</mark>
+&lt;p class=&quot;tas_obuolys&quot;&gt;
+<mark>&lt;p class=&quot;anas suris&quot;&gt;</mark></code></pre>
+      <h4>Operatorius <code>|=</code></h4>
+      <p>Pažymėti selektina:</p>
+      <pre><code><mark>[class|=&quot;tas&quot;]</mark> {}
+<mark>[class|=&quot;tas-obuolys&quot;]</mark> {}
+[class|=&quot;tas-ob&quot;] {}
+[class|=&quot;obuolys&quot;] {}</code></pre>
+      <pre><code>&lt;p class=&quot;tas-obuolys&quot;&gt;</code></pre>
+      <h4>Substring'avimo operatoriai: <code>^= $= *=</code></h4>
+      <p><code>^=</code> substring'as turi būti nuo pradžios:</p>
+      <pre><code>[class^=&quot;tas&quot;] {}
+</code></pre>
+      <pre><code><mark>&lt;p class=&quot;tas&quot;&gt;</mark>
+<mark>&lt;p class=&quot;tasten&quot;&gt;</mark>
+&lt;p class=&quot;tentas&quot;&gt;</code></pre>
+      <p><code>$=</code> substring'as turi būti nuo galo:</p>
+      <pre><code>[class$=&quot;tas&quot;] {}
+</code></pre>
+      <pre><code><mark>&lt;p class=&quot;tas&quot;&gt;</mark>
+&lt;p class=&quot;tasten&quot;&gt;
+<mark>&lt;p class=&quot;tentas&quot;&gt;</mark></code></pre>
+      <p><code>*=</code> substring'as gali būti bet kur:</p>
+      <pre><code>[class*=&quot;tas&quot;] {}
+</code></pre>
+    <pre><code><mark>&lt;p class=&quot;tas&quot;&gt;</mark>
+<mark>&lt;p class=&quot;tasten&quot;&gt;</mark>
+<mark>&lt;p class=&quot;tentas&quot;&gt;</mark>
+<mark>&lt;p class=&quot;kurtasten&quot;&gt;</mark></code></pre></td>
+    <td width="25%">
+      <h3>ID selektorius / ID selector</h3>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors">ID selectors</a></p>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h2> Kombinatoriai / Combinators</h2>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <p>&nbsp;</p>
+      <p>Selektorius gali būti sudarytas iš kelių paprastų-elementarių selektorių, tarp kurių turi būti kombinatorius, kuris nurodo kaip tie paprasti selektoriai, tarp kurių yra kombinatorius, susiję.</p>
+      <p>&nbsp;</p>
+      <p>3 kombinatoriai apibrėžti CSS 2 standarte:</p>
+      <ul>
+        <li><code>&quot; &quot;</code> Palikuoninis kombinatorius (descendant)</li>
+        <li><code>&gt;</code> Vaikinis kombinatorius  (child)</li>
+        <li><code>+</code> Pirmo-artimiausio kaimyno kombinatorius (Adjacent Sibling) </li>
+      </ul>
+      <p>Ir vienas &#8211; CSS 3:</p>
+      <ul>
+        <li><code>~</code> Visų kaimynų kombinatorius (General Sibling)</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Palikuonių kombinatorius / Descendant combinator — <code>A B</code></h3>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator">Descendant combinator - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+     <h3>Tiesioginių palikuonių kombinatorius / Child combinator — <code>A &gt; B</code></h3>
+     <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator">Child combinator - CSS: Cascading Style Sheets | MDN</a></p>
+     <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>Pirmo artimiausio kaimyno kombinatorius / Adjacent sibling combinator — <code>A + B</code></h3>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator">Adjacent sibling combinator - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Paskesnių kaimynų kombinatorius / General sibling combinator <code>A ~ B</code></h3>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_combinator">General sibling combinator - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td>
+      <h3>Column combinator — <code>A || B</code></h3>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Column_combinator">Column combinator - CSS: Cascading Style Sheets | MDN</a>      </p>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>Psiaudo klasės  / Pseudo classes — <code>:</code></h2>
+<p>Vadovai:</p>
+<ul>
+  <li> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes#Index">Pseudo-classes - CSS: Cascading Style Sheets | MDN</a></li>
+</ul>
+<p>Psiaudo klasės sąrašas-indeksas:</p>
+<ul>
+  <li> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes#Alphabetical_index">Pseudo-classes - CSS: Cascading Style Sheets | MDN — Alphabetical index</a></li>
+</ul>
+<h3>Tree-structural pseudo-classes</h3>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <p><code>:root</code></p>
+      <p><code>:empty</code></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <ul>
+        <li><code>:only-child</code></li>
+        <li><code>:only-of-type</code> </li>
+      </ul>
+    </td>
+    <td width="20%">
+      <ul>
+        <li><code>:first-child</code></li>
+        <li><code>:last-child</code></li>
+      </ul>
+      <ul>
+        <li><code>:first-of-type</code></li>
+        <li><code>:last-of-type</code>    </li>
+      </ul>
+    </td>
+    <td width="20%">
+      <ul>
+        <li><code>:nth-child</code></li>
+        <li><code>:nth-last-child</code></li>
+      </ul>
+      <ul>
+        <li><code>:nth-of-type</code></li>
+        <li><code>:nth-last-of-type</code></li>
+      </ul>
+    </td>
+    <td width="20%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<h4><code>:nth-child()</code></h4>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child">https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child</a></li>
+        <li><a href="http://lea.verou.me/demos/nth.html">http://lea.verou.me/demos/nth.html</a></li>
+      </ul>
+      <p><a href="css.syntax.selectors.nth-child_pvz.htm">savas testinis pvz</a></p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h5><code>:nth-child(N)</code></h5>
+      <pre><code>:nth-child(2) {}
+:nth-child(0n+2) {}</code></pre>
+      <pre><code>&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;</code></pre>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h5><code>:nth-child(odd | even)</code></h5>
+      <pre><code>:nth-child(even) {}
+:nth-child(2n+0) {}
+:nth-child(2n+2) {}</code></pre>
+      <pre><code>&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;</code></pre>
+      <pre><code>:nth-child(odd) {}
+:nth-child(2n+1) {}</code></pre>
+      <pre><code><mark>&lt;p&gt;</mark>
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+<mark>&lt;p&gt;</mark></code></pre>
+      <p><code></code></p>
+    </td>
+    <td width="20%">
+      <h5><code>:nth-child(an+b)</code> (number expression)</h5>
+      <ul>
+        <li><code>a</code> &#8212; kas kelintą selektinti.
+          <ul>
+            <li><code>a=-N</code> (neigiamas skaičius) &#8212; selektina nuo <code>b</code> iki pirmojo</li>
+            <li><code>a=0</code> &#8212; selektina vieną <code>b</code> pozicijos</li>
+            <li><code>a=N</code> (teigiamas skaičius) — selektina nuo <code>b</code> iki paskutinio </li>
+          </ul>
+        </li>
+        <li><code>b</code> &#8212; nuo kelinto pradėti selektinti, <code>1</code> yra pirmasis tagas.
+          <ul>
+            <li>Kai <code>b=-N</code>&#8212;   pirmoji pozicija  gaunama <code>a-b</code></li>
+            <li>Kai <code>b=0</code> &#8212; tada pirmoji pozicija gaunama <code>a+b</code></li>
+            <li>Kai <code>b=N</code> &#8212;  pirmoji pozicija yra pats <code>b</code></li>
+          </ul>
+        </li>
+      </ul>
+      <dl>
+        <dt>Paprasti-praktiški pavyzdžiai</dt>
+        <dd>
+          <p>Selektinti kas antrą (<code>a=2</code>) nuo pirmojo (<code>b=1</code>): </p>
+          <pre><code>:nth-child(2n+1) {}
+:nth-child(odd) {}
+</code></pre>
+          <pre><code><mark>&lt;p&gt;</mark>
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;</code></pre>
+          <p>Selektinti kas trečią (<code>a=3</code>) nuo antrojo (<code>b=2</code>): </p>
+          <pre><code>:nth-child(3n+2) {}</code></pre>
+          <pre><code>&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;</code></pre>
+          <p>Selektinti kiekvieną (<code>a=1</code>) nuo trečiojo (<code>b=3</code>) iki paskutinio:</p>
+          <pre><code>:nth-child(1n+3) {}
+:nth-child(n+3) {}
+</code></pre>
+          <pre><code>&lt;p&gt;
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+<mark>&lt;p&gt;
+&lt;p&gt;<mark></mark></mark></code></pre>
+          <p>Selektinti kiekvieną (<code>a=-1</code>) nuo trečiojo (<code>b=3</code>) iki pirmojo (todėl, kad <code>a</code> neigiamas):</p>
+          <pre><code>:nth-child(-1n+3) {}</code></pre>
+          <pre><code><mark>&lt;p&gt;
+&lt;p&gt;
+&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;<mark></mark></code></pre>
+          <p>Selektina visus:</p>
+          <pre><code>:nth-child(1n+1) {}
+* {}</code></pre>
+          <pre><code><mark>&lt;p&gt;
+&lt;p&gt;
+&lt;p&gt;</mark></code></pre>
+        </dd>
+        <dt>Sintaksiniai  pavyzdžiai &#8212; <code>a</code></dt>
+        <dd>
+          <p>Kai <code>a=0</code> &#8212; selektina tik vieną su <code>b</code> nurodytą tagą: </p>
+          <pre><code>:nth-child(0n+2) {}</code></pre>
+          <pre><code>&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;</code></pre>
+          <p>Kai <code>a=N</code> (teigiamas skaičius) &#8212; selektina nuo <code>b</code> iki paskutinio:</p>
+          <pre><code>:nth-child(1n+3) {}</code></pre>
+          <pre><code>&lt;p&gt;
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+<mark>&lt;p&gt;
+&lt;p&gt;<mark></mark></mark></code></pre>
+          <p>Kai <code>a=-N</code> (neigiamas skaičius) &#8212; selektina nuo <code>b</code> iki pirmojo:</p>
+          <pre><code>:nth-child(-1n+3) {}</code></pre>
+          <pre><code><mark>&lt;p&gt;
+&lt;p&gt;
+&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;<mark></mark></code></pre>
+        </dd>
+        <dt>Sintaksiniai  pavyzdžiai &#8212; <code>b</code></dt>
+        <dd>
+          <p>Kai <code>b=N</code> (teigiamas skaičius) &#8212;  pirmoji pozicija yra pats <code>b</code>, šiuo atveju <code>2</code>: </p>
+          <pre><code>:nth-child(3n+2) {}
+</code></pre>
+          <pre><code>&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;</code></pre>
+          <p>Kai <code>b=0</code> &#8212; tada pirmoji pozicija gaunama<code>a+b</code>, šiuo atveju <code>3+0=3</code>: </p>
+          <pre><code>:nth-child(3n+0) {}
+:nth-child(3n+3) {}
+:nth-child(3n) {}
+</code></pre>
+          <pre><code>&lt;p&gt;
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;</code></pre>
+          <p>Kai <code>b=-N</code> (neigiamas skaičius) &#8212;   pirmoji pozicija  gaunama <code>a-b</code> , šiuo atveju <code>3-1=2</code>:</p>
+          <pre><code>:nth-child(3n-1) {}
+:nth-child(3n+2) {}
+</code></pre>
+          <pre><code>&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;
+<mark>&lt;p&gt;</mark>
+&lt;p&gt;
+&lt;p&gt;</code></pre>
+        </dd>
+      </dl>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="20%">
+      <h4><code> :nth-last-child()</code></h4>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">
+      <h4>
+        <co><code>:nth-of-type()</code></co>
+      </h4>
+      <p><code>:nth-child(N)</code> selektina pagal perduotą parametrą, bet visus tagus vienodai, t. y. nesvarbu koks tagas: <code>&lt;p&gt;</code> ar <code>&lt;div&gt;</code>, o <code>:nth-of-type()</code> priima analogišką parametrą, ir jį supranta taip pat, bet skirtingų tipų tagus skaičuoja atskirai: </p>
+      <table width="100%" class="c-table-clean">
+        <tr>
+          <td>
+            <pre><code>:nth-of-type(2)</code></pre>
+            <pre><code>p1 &lt;p&gt;&lt;/p&gt;
+p2 <mark>&lt;p&gt;&lt;/p&gt;</mark>
+p3 &lt;p&gt;&lt;/p&gt;
+d1 &lt;div&gt;&lt;/div&gt;
+d2 <mark>&lt;div&gt;&lt;/div&gt;</mark>
+d3 &lt;div&gt;&lt;/div&gt;</code></pre>
+          </td>
+          <td>
+            <pre><code>:nth-child(2)</code></pre>
+            <pre><code>1 &lt;p&gt;&lt;/p&gt;
+2 <mark>&lt;p&gt;&lt;/p&gt;</mark>
+3 &lt;p&gt;&lt;/p&gt;
+4 &lt;div&gt;&lt;/div&gt;
+5 &lt;div&gt;&lt;/div&gt;
+6 &lt;div&gt;&lt;/div&gt;</code></pre>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" class="c-table-clean">
+        <tr>
+          <td>
+            <pre><code>:nth-of-type(4n+1)</code></pre>
+            <pre><code><mark>p1 &lt;p&gt;&lt;/p&gt;</mark>
+p2 &lt;p&gt;&lt;/p&gt;
+p3 &lt;p&gt;&lt;/p&gt;<mark>
+d1 &lt;div&gt;&lt;/div&gt;</mark>
+d2 &lt;div&gt;&lt;/div&gt;
+d3 &lt;div&gt;&lt;/div&gt;
+p4 &lt;p&gt;&lt;/p&gt;
+<mark>p5 &lt;p&gt;&lt;/p&gt;</mark>
+p6 &lt;p&gt;&lt;/p&gt;
+d4 &lt;div&gt;&lt;/div&gt;
+<mark>d5 &lt;div&gt;&lt;/div&gt;</mark>
+d6 &lt;div&gt;&lt;/div&gt;</code></pre>
+          </td>
+          <td>
+            <pre><code>:nth-child(4n+1)</code></pre>
+            <pre><code>1  <mark>&lt;p&gt;&lt;/p&gt;</mark>
+2  &lt;p&gt;&lt;/p&gt;
+3  &lt;p&gt;&lt;/p&gt;
+4  &lt;div&gt;&lt;/div&gt;
+5  <mark>&lt;div&gt;&lt;/div&gt;</mark>
+6  &lt;div&gt;&lt;/div&gt;
+7  &lt;p&gt;&lt;/p&gt;
+8  &lt;p&gt;&lt;/p&gt;
+9  <mark>&lt;p&gt;&lt;/p&gt;</mark>
+10 &lt;div&gt;&lt;/div&gt;
+11 &lt;div&gt;&lt;/div&gt;
+12&lt;div&gt;&lt;/div&gt;</code></pre>
+          </td>
+        </tr>
+      </table>
+      <p><code>:nth-*</code> pseudo klasės visada operuoja bendru elementų eiliškumo indeksu: </p>
+      <table width="100%" class="c-table-clean">
+        <tr>
+          <td>
+            <pre><code>p:nth-of-type(4n+1)</code></pre>
+            <pre><code><mark>p1 &lt;p&gt;&lt;/p&gt;</mark>
+p2 &lt;p&gt;&lt;/p&gt;
+p3 &lt;p&gt;&lt;/p&gt;
+d1 &lt;div&gt;&lt;/div&gt;
+d2 &lt;div&gt;&lt;/div&gt;
+d3 &lt;div&gt;&lt;/div&gt;
+p4 &lt;p&gt;&lt;/p&gt;
+<mark>p5 &lt;p&gt;&lt;/p&gt;</mark>
+p6 &lt;p&gt;&lt;/p&gt;
+d4 &lt;div&gt;&lt;/div&gt;
+d5 &lt;div&gt;&lt;/div&gt;
+d6 &lt;div&gt;&lt;/div&gt;</code></pre>
+          </td>
+          <td>
+            <pre><code>p:nth-child(4n+1)</code></pre>
+            <pre><code>1  <mark>&lt;p&gt;&lt;/p&gt;</mark>
+2  &lt;p&gt;&lt;/p&gt;
+3  &lt;p&gt;&lt;/p&gt;
+4  &lt;div&gt;&lt;/div&gt;
+5  &lt;div&gt;&lt;/div&gt;
+6  &lt;div&gt;&lt;/div&gt;
+7  &lt;p&gt;&lt;/p&gt;
+8  &lt;p&gt;&lt;/p&gt;
+9  <mark>&lt;p&gt;&lt;/p&gt;</mark>
+10 &lt;div&gt;&lt;/div&gt;
+11 &lt;div&gt;&lt;/div&gt;
+12&lt;div&gt;&lt;/div&gt;</code></pre>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="20%">
+      <h4><code>:nth-last-of-type()</code></h4>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="20%">&nbsp;</td>
+    <td width="20%"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+  </tr>
+</table>
+<h3>Location pseudo-classes — links</h3>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h4><code>:link</code></h4>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link">:link - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>Selektina neaplankytus tagus <code>&lt;a&gt; &lt;area&gt;</code>. Tai reiškia turi atributą <code>href</code>, kuriame nurodytas adresas nebuvo aplankytas, tksliau nėra naršyklės aplankytų puslapių-adresų istorijoje.</p>
+      <blockquote>
+        <p>The <strong>:link</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo-class</a> represents an element that has not yet been visited. It matches every unvisited <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" title="The HTML <a> element (or anchor element), with its href attribute, creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.">&lt;a&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area" title="The HTML <area> tag defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hypertext link.">&lt;area&gt;</a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link" title="The HTML External Resource Link element (<link>) specifies relationships between the current document and an external resource. This element is most commonly used to link to stylesheets, but is also used to establish site icons (both 'favicon' style icons and icons for the home screen and apps on mobile devices) among other things.">&lt;link&gt;</a> element that has an href attribute.</p>
+        <hr>
+        <p>Refers to any anchor that is a hyperlink (i.e., has an <code>href</code> attribute) and points to an address that has not
+        been visited. </p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4><code>:visited</code></h4>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited">:visited - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>Selektina aplankytus tagus <code>&lt;a&gt; &lt;area&gt;</code>.</p>
+      <blockquote>
+        <p>The <strong>:visited</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo-class</a> represents links that the user has already visited.</p>
+      </blockquote>
+      <h5>Apie &quot;privacy reasons&quot;</h5>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Privacy_and_the_:visited_selector">Privacy and the :visited selector - CSS: Cascading Style Sheets | MDN</a></p>
+      <blockquote>
+        <p id="Privacy_restrictions">Privacy restrictions</p>
+        <p>For privacy reasons, browsers strictly limit which styles you can apply using this pseudo-class, and how they can be used:</p>
+        <ul>
+          <li>Allowable CSS properties are <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color" title="The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value.">color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color" title="The background-color CSS property sets the background color of an element.">background-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-color" title="The border-color shorthand CSS property sets the color of an element's border.">border-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color" title="The border-bottom-color CSS property sets the color of an element's bottom border.">border-bottom-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-color" title="The border-left-color CSS property sets the color of an element's left border.">border-left-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-color" title="The border-right-color CSS property sets the color of an element's right border.">border-right-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-color" title="The border-top-color CSS property sets the color of an element's top border.">border-top-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color" title="The column-rule-color CSS property sets the color of the line drawn between columns in a multi-column layout.">column-rule-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color" title="The outline-color CSS property sets the color of an element's outline.">outline-color</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color" title="The text-decoration-color CSS property sets the color of decorations added to text by text-decoration-line.">text-decoration-color</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-color" title="The text-emphasis-color CSS property sets the color of emphasis marks. This value can also be set using the text-emphasis shorthand.">text-emphasis-color</a>.</li>
+          <li>Allowable SVG attributes are <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill">fill</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke">stroke</a>.</li>
+          <li>The alpha component of the allowed styles will be ignored. The alpha component of the element's non-:visited state will be used instead, except when that component is 0, in which case the style set in :visited will be ignored entirely.</li>
+          <li>Although these styles can be change the appearance of colors to the end user, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle">window.getComputedStyle</a> method will lie and always return the value of the non-:visited color.</li>
+          <li>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt;</a> element is never matched by :visited.      </li>
+        </ul>
+      </blockquote>
+    </td>
+    <td width="25%">
+      <h4><code>:any-link</code></h4>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link">:any-link - CSS: Cascading Style Sheets | MDN</a></p>
+      <p>Selektina ir neaplankytus, ir aplankytus tagus <code>&lt;a&gt; &lt;area&gt;</code>.</p>
+      <blockquote>
+        <p>The <code>:any-link</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo-class</a> selector represents an element that acts as the source anchor of a hyperlink, independent of whether it has been visited. In other words, it matches every <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" title="The HTML <a> element (or anchor element), with its href attribute, creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.">&lt;a&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area" title="The HTML <area> tag defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hypertext link.">&lt;area&gt;</a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link" title="The HTML External Resource Link element (<link>) specifies relationships between the current document and an external resource. This element is most commonly used to link to stylesheets, but is also used to establish site icons (both 'favicon' style icons and icons for the home screen and apps on mobile devices) among other things.">&lt;link&gt;</a> element that has an href attribute. Thus, it matches all elements that match <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link" title="The :link CSS pseudo-class represents an element that has not yet been visited. It matches every unvisited <a>, <area>, or <link> element that has an href attribute.">:link</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited" title="The :visited CSS pseudo-class represents links that the user has already visited. For privacy reasons, the styles that can be modified using this selector are very limited.">:visited</a>.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4><code>:local-link</code></h4>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link">:local-link - CSS: Cascading Style Sheets | MDN</a></p>
+      <blockquote>
+        <p>The <strong><code>:local-link</code></strong> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo-class</a> represents an link to the same document. Therefore an element that is the source anchor of a hyperlink whose target's absolute URL matches the element's own document URL.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h3>Location pseudo-classes — targeted elements within the current document</h3>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h4><code>:target</code></h4>
+      <ul>
+        <li> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">:target - CSS: Cascading Style Sheets | MDN</a></li>
+        <li> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors/Using_the_%3Atarget_pseudo-class_in_selectors">Using the :target pseudo-class in selectors - CSS: Cascading Style Sheets | MDN</a></li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4><code>:target-within</code></h4>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4><code>:scope</code></h4>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<h3>User action pseudo-classes</h3>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h4><code>:hover</code></h4>
+      <p>&nbsp;</p>
+      <blockquote>
+        <p>The <code>:hover</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" title="Pseudo-classes">pseudo-class</a> matches when the user interacts with an element with a pointing device, but does not necessarily activate it. It is generally triggered when the user hovers over an element with the cursor (mouse pointer).</p>
+      </blockquote>
+      <p>Veikimas planšetėse-touchscreens'uose ribotas ir prastai standartizuotas:</p>
+      <blockquote>
+        <p><strong>Note</strong>: The :hover pseudo-class is problematic on touchscreens. Depending on the browser, the :hover pseudo-class might never match, match only for a moment after touching an element, or continue to match even after the user has stopped touching and until the user touches another element. Web developers should make sure that content is accessible on devices with limited or non-existent hovering capabilities.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4><code>:active</code>      </h4>
+      <p>Selektina bet kurį elementą, ant kurio yra paspausta pelės žymekliu (arba paspausta pirštu planšetėse-touchscreens'uose), t. y. esant pelės žymekliui virš elemento, paspaustas bet kuris pelės klavišas: kairysis, dešnysis, ar ratukas. Atleidus pelės klavišą — <code>:active</code> būsena baigiasi.      </p>
+      <blockquote>
+        <p>Refers to any element that has been activated by user input—e.g., a hyperlink on which a user clicks during the<br>
+        time the mouse button is held down.</p>
+        <hr>
+        <p>The <code>:active</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/docs/CSS/Pseudo-classes" title="Pseudo-classes">pseudo-class</a> represents an element (such as a button) that is being activated by the user. When using a mouse, "activation" typically starts when the user presses down the primary mouse button.</p>
+      </blockquote>
+      <p>&nbsp;</p>
+      <div class="c-em-important c-em--small">
+        <p>Ištikrųjų paspaustas sufokusuojamas elementas atitinka <code>:focus:active</code> selektorių:</p>
+        <blockquote>
+          <p>When clicked the button is in <code>:focus:active</code> state.</p>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4><code>:focus</code></h4>
+      <p>Selektina sufokusuotą elementą, kuris priima klaviatūros įvedimą.      </p>
+      <blockquote>
+        <p>Refers to any element that currently has the input focus—i.e., can accept keyboard input or be activated in
+        some way.</p>
+        <hr>
+        <p><code>:focus</code> represents the state when the element is currently selected to receive input.</p>
+        <hr>
+        <p>The <code>:focus</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" title="Pseudo-classes">pseudo-class</a> represents an element (such as a form input) that has received focus. It is generally triggered when the user clicks or taps on an element or selects it with the keyboard's <kbd>Tab</kbd> key.</p>
+      </blockquote>
+      <div class="c-em-important c-em--small">
+        <p>Vienu metu sufokusuotas gali būti tik vienas tagas-elementas visame dokumente.      </p>
+      </div>
+      <div class="c-em-note c-em--small">
+        <p>Sufokusuojami elementai, kurie gali priimti klaviatūros įvedimą:</p>
+        <ul>
+          <li><code>&lt;a href=&quot;&quot;&gt;</code></li>
+          <li><code>&lt;button&gt;</code></li>
+          <li>Formos elementai: <code>&lt;input&gt; ...</code></li>
+          <li>bet kuris elementas su <span class="co"><code>tabindex="0..N"</code></span>      </li>
+        </ul>
+      </div>
+      <div class="c-em-note c-em--small">
+        <p>Sufokusuojamų elementų fokusavimo būdai:</p>
+        <ul>
+          <li>Su <kbd>Tab</kbd>.</li>
+          <li>Su pelės kursorių ant elemento ir paspaudus pagrindinį kairyjį arba kontekstinį dešnįjį klavišą.</li>
+        </ul>
+      </div>
+      <div class="c-pvs c-pvs--border c-pvs--title">
+        <style>
+          .pvs-20201211183908 { font-weight: normal; color: black; background: hsl(0,0%,95%); outline: none }
+          .pvs-20201211183908:focus { background-color: palegreen; }
+          .pvs-20201211183908:active { color: red; }
+          .pvs-20201211183908:focus:active { font-weight: bold; }
+        </style>
+        <p><code>:focus</code> ir <code>:active</code> veikimas</p>
+        <blockquote>
+          <p>There are four cases.</p>
+          <ol>
+            <li>By default, active and focus are both off.</li>
+            <li>When you <em>tab</em> to cycle through <em>focusable elements</em>, they will enter :focus (without active).</li>
+            <li>When you <em>click</em> on a <em>non-focusable element</em>, it enters :active (without focus).</li>
+            <li>When you <em>click</em> on a <em>focusable element</em> it enters :active:focus (active and focus simultaneously).</li>
+          </ol>
+        </blockquote>
+        <div class="c-pvs__parent" style="">
+          <p><input class="pvs-20201211183908" type="text"></p>
+          <p><a class="pvs-20201211183908" href="">nuoroda</a></p>
+          <p><button class="pvs-20201211183908">buttonas</button></p>
+          <p class="pvs-20201211183908" tabindex="0">sufokusuojamas tagas prisegus tabindex="0"</p>
+          <p class="pvs-20201211183908" tabindex="0" contenteditable>tabindex="0" plius contenteditable</p>
+          <p class="pvs-20201211183908">nesufokusuojamas elementas</p>
+        </div>
+      </div>
+      <h5><code>:focus</code> pagavimas-nustatymas su JS</h5>
+      <p> <a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/activeElement">DocumentOrShadowRoot.activeElement - Web APIs | MDN</a></p>
+      <blockquote>
+        <p>Also note that you can get the focused element by using the confusingly named <code>document.activeElement</code> property, although it needs to be in a <code>try catch</code> because IE8 can throw an exception. And be aware that older versions of browsers may treat <code>:active</code> and <code>:focus</code> differently. </p>
+        <pre><code>function activeElement() {
+  try {
+    /* can get exeption in IE8 */
+    return document.activeElement;
+  }
+  catch(e) { }
+}</code>
+      </pre>
+      </blockquote>
+      <h5>Accessibility</h5>
+      <blockquote>
+        <p>Accessibility concerns</p>
+        <p>Make sure the visual focus indicator can be seen by people with low vision.  This will also benefit anyone use a screen in a brightly lit space (like outside in the sun). <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html" rel="noopener">WCAG 2.1 SC 1.4.11 Non-Text Contrast</a> requires that the visual focus indicator be at least 3 to 1.</p>
+      </blockquote>
+      <div class="c-em-alert c-em--small">
+        <p><code>:focus { outline: none; }</code> — tokio rule'o neturi būti:</p>
+        <blockquote>
+          <p>Never just remove the focus outline (visible focus indicator) without replacing it with a focus outline that will pass <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html" rel="noopener">WCAG 2.1 SC 1.4.11 Non-Text Contrast</a>.</p>
+          <ul>
+            <li>Quick Tip: <a href="https://a11yproject.com/posts/never-remove-css-outlines/" rel="noopener">Never remove CSS outlines</a>      </li>
+          </ul>
+        </blockquote>
+      </div>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h4><code>:focus-visible</code></h4>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4><code>:focus-within</code></h4>
+      <p>&nbsp;</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Psiaudo elementai / Pseudo elements — <code>::</code></h2>
+<p>&nbsp;</p>
+<table width="1878" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>iki pirmojo, (neigiama <code>a</code> reikšmė selektina tagus nuo <code>b</code> iki pirmojo):</p>
+<p> iki trečiojo (<code>b=3</code>):</p>
+<p>Kai pradinė pozicija ir pasikartojimas sutampa. </p>
+<p>Kai <code>b=0</code> &#8212; tada pirmoji pozicija gaunama<code>a+b</code>, šiuo atveju <code>3+0=3</code>: </p>
+<p>&nbsp;</p>
+<p> gaunamas funkcijai naudojamas <code>a</code></p>
+<p><code>5n-2</code> selektina: 3, 8, 13, ... &#8212; pirmas suselektintas tagas <code>-2</code>, reiškia tokio nėra, nes tagai numeruojami nuo <code>1</code>, bet tai įtakoja kaip apskaičiuojamas antras <code>-2+5=3</code>, o kitas <code>+5</code> ir taip toliau.</p>
+<p>&nbsp;</p>
+<p>cijai naudojamas <code>a</code>:</p>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="1883" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+    <td width="25%">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

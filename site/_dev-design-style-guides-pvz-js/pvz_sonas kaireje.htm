@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="lt">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv= "pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<meta http-equiv="Cache-control" content="no-cashe">
+<!--<link rel="stylesheet" type="text/css" href="http://common-resources.local/_css/zm_common/1.0/pvz.doc.defaults.css">
+<link rel="stylesheet" type="text/css" href="http://common-resources.local/_css/zm_common/1.0/pvz.doc.classes.css">
+<link rel="stylesheet" type="text/css" href="http://common-resources.local/_css/zm_common/1.0/dev.marking.css">-->
+<style type="text/css">
+html { margin:0em; padding:0; }
+body { margin:.8em 1em; padding:0; font-size: .9em }
+body, button { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+p { margin:.7em 0 }
+
+code { font-size: .9em; color: #0059BB; font-family: "DejaVu Sans Mono"; }/*Consolas*/
+button {  font-size: .8em; margin: .2em .1em; }
+
+.FiksuotasSonas { position: fixed; top: 0; bottom: 0; width: 350px; padding: 5px; overflow: auto; }
+#FiksuotasSonas-kaireje { left: 0;  }
+#FiksuotasSonas-desneje { right: 0; }
+#Vidurys { margin: 0 0 0 350px; }
+
+.Testinis { width:auto; padding:0 .5%; border:3px solid #CFCFCF; }
+.Testinis-turinys {}
+.Testinis-turinys-isvesta { border-color:#c5ee6f; }
+.Testinis-isvedimas { margin-bottom: .9em;  padding:0 .5% .2em; background-color:#CFCFCF; }
+.Testinis-isvedimas-isvesta { background-color:#c5ee6f; border-color:#c5ee6f; }
+.Testinis div { border:1px dotted white; }
+
+.pat1 { outline:2px dashed #FF157E!important; }
+.pat2 { border:2px dashed fuchsia!important; }
+.pat3 { background-color: #fdf7a8!important; }
+
+#divSuDaugP { /* height:50px; width:50%; position:absolute; left:10px; top:10px; */ background-color:yellow; }
+</style>
+<script type="text/javascript" src="http://common-resources.local/_js/_libs/jquery/jquery-1.4.min.js"></script>
+<script type="text/javascript" src="http://common-resources.local/_js/_zm/zm.js"></script>
+<script type="text/javascript" src="http://common-resources.local/_js/_zm/zm.debug.js"></script>
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_libs/yui/3/yui-min.js"></script>-->
+<script type="text/javascript">
+
+var globObj = {'aa':1,'bb':2,'cc':3};
+var globArr = ['aa',['bb','bbb'],'cc'];
+
+function test_getBoundingClientRect(clicked) {
+	var elmTarg = $('#pDidelis').addClass('pat1')[0].getBoundingClientRect();
+	zm.debug.FBCdir("#pDidelis.getBoundingClientRect()",elmTarg);
+	$(clicked).append(" | žiūrime Firebug'o konsolėje");
+}
+
+function test_getClientRects(clicked) {
+	var elmTarg = $('#pDidelis em').addClass('pat1')[0].getClientRects();
+	zm.debug.FBCdir("#pDidelis.getClientRects()",elmTarg);
+	$(clicked).append(" | žiūrime Firebug'o konsolėje");
+}
+
+function test_scrollIntoView(clicked) {
+	var elmTarg = $('#divSuDaugP')[0].scrollIntoView();
+}
+
+
+
+</script>
+</head>
+<body class="yui-skin-sam">
+
+	<div id="FiksuotasSonas-kaireje" class="FiksuotasSonas">
+		<a onClick="test_getBoundingClientRect(this)" href="javascript:void(0)"><code>nodeElement.getBoundingClientRect()</code></a><br>
+		<a onClick="test_getClientRects(this)" href="javascript:void(0)"><code>nodeElement.getClientRects()</code></a><br>
+		<a onClick="test_scrollIntoView(this)" href="javascript:void(0)"><code>nodeElement.scrollIntoView()</code></a><br>
+	</div>
+	
+	<div id="Vidurys">
+		<button type="button" onClick="alert('window.innerWidth = '+window.innerWidth+'\nwindow.innerHeight = '+window.innerHeight)">
+			<code>window.innerWidth</code> ir <code>window.innerHeight</code>
+		</button>
+		<button type="button" onClick="alert('window.outerWidth = '+window.outerWidth+'\nwindow.outerHeight = '+window.outerHeight)">
+			<code>window.outerWidth</code> ir <code>window.outerHeight</code>
+		</button>
+		<button type="button" onClick="alert('window.pageXOffset = '+window.pageXOffset+'\nwindow.pageYOffset = '+window.pageYOffset)">
+			<code>window.pageXOffset</code> ir <code>window.pageYOffset</code>
+		</button>
+		<button type="button" onClick="alert('window.screenX = '+window.screenX+'\nwindow.screenY = '+window.screenY)">
+			<code>window.screenX</code> ir <code>window.screenY</code>
+		</button>
+
+		<hr>
+
+		<h4>document.elementFromPoint(x,y)</h4>
+		X: <input id="efp_x" type="text" value="400"> &nbsp;&nbsp;&nbsp; 
+		Y: <input id="efp_y" type="text" value="50"> &nbsp;&nbsp;
+		<button type="button" onClick="$(document.elementFromPoint($('#efp_x').val(),$('#efp_y').val())).addClass('pat1')">Žymėti</button>
+		<br>
+
+		<hr>
+		
+		<div id="divSuDaugP">
+			<p>
+				tekstas tekstas tekstas tekstas <em>tekstas tekstas</em> tekstas tekstas tekstas tekstas tekstas tekstas
+				tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+			</p>
+			<p>
+				tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+				tekstas tekstas tekstas <strong>tekstas tekstas</strong> tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+			</p>
+			<p>
+				tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+				tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+			</p>
+		</div>
+
+		<p id="pDidelis">tekstas tekstas <em>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas <strong>tekstas tekstas</strong> tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas</em> tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+		<p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+		<p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas 
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+		<p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+		<p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+		<p>tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas 
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas
+		tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas tekstas </p>
+	</div>
+
+	<!--<div id="FiksuotasSonas-desneje" class="FiksuotasSonas">
+		<div id="stukeles" class="Testinis">
+			<em>svarbi štūka</em>
+			<strong>svarbiausia štūka 1</strong>
+			<strong>svarbiausia štūka 2</strong>
+			<strong>svarbiausia štūka 3</strong>
+		</div>
+
+		<div id="t1" class="Testinis">
+			<dl>
+				<dt>Upė</dt>
+				<dd>Vandens srovė. Vandens srovė.</dd>
+				<dt>Bitė</dt>
+				<dd>Medunešė. Medunešė. Medunešė. Medunešė.</dd>
+				<dt>Gandras</dt>
+				<dd>Vaikanešis. Vaikanešis. Vaikanešis.</dd>
+			</dl>
+		</div>
+		<div id="t1out" class="Testinis Testinis-isvedimas"></div>
+
+		<div id="t2" class="Testinis">
+			<p>P1</p>
+			<p class="svarbu" id="t1-vienintelis">P2</p>
+			<p>P3</p>
+			<p class="svarbu">P4</p>
+			<p>P5</p>
+		</div>
+		<div id="t2out" class="Testinis Testinis-isvedimas"></div>
+	</div>-->
+	
+</body>
+</html>

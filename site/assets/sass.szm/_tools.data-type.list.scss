@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// @USAGE:
+// $mapas:  (key1: value1, key2: value2, key3: value3);
+// $mapas2: (key1: value1, key2: (key1: value1, key2: value2, key3: value3), key3: value3);
+// $mapas3: (key1: value1, key2: aaa bbb ccc, key3: value3);
+// //@debug $mapas;
+// @debug printVarIndent($mapas3);
+//
+// $listas: aaa bbb ccc;
+// $listas2: aaa bbb (key1: value111, key2: value2, key3: value3) ccc;
+// //@debug $listas;
+// //@debug printVarIndent($listas2);
+//
+// //@debug printVarIndent("geras");
+
+@function szm-printVarIndent($var, $indentLevel: 1) {
+  //@return "aaa aaa aaa";
+  //$CMD_CR: "\000D\000A";
+  $str: "";
+
+  $indentStep: "  ";
+  $indent: "";
+  @for $i from 1 through $indentLevel {
+    $indent: $indent + $indentStep;
+  }
+
+  @if type-of($var) == list {
+    @each $v in $var {
+      @if type-of($v) == map OR type-of($v) == list {
+        //$str: "#{$str}#{$CMD_CR}#{$indent}#{print-var($v, $indentLevel + 1)}";
+        $str: "#{$str}#{szm-printVarIndent($v, $indentLevel + 1)}";
+      }
+      @else {
+        $str: "#{$str}#{$CMD_CR}#{$indent}#{$v}";
+      }
+    }
+    @return $str;
+  }
+
+  //@if type-of($var) == list {
+  //  $i: 1;
+  //  @each $v in $var {
+  //    $sep: if($i < length($var), ",", "");
+  //    @if type-of($v) == map OR type-of($v) == list {
+  //      $str: "#{$str}#{$CMD_CR} #{print-indent-var($v, $indentLevel + 1)}#{$sep}";
+  //    }
+  //    @else {
+  //      $str: "#{$str} #{$v}#{$sep}";
+  //    }
+  //    $i: $i + 1;
+  //  }
+  //  @return $str;
+  //}
+
+  @else if type-of($var) == map {
+    @each $k, $v in $var {
+      @if type-of($v) == map OR type-of($v) == list {
+        $str: "#{$str}#{$CMD_CR}#{$indent}#{$k}: #{szm-printVarIndent($v, $indentLevel + 1)}";
+      }
+      @else {
+        $str: "#{$str}#{$CMD_CR}#{$indent}#{$k}: #{$v}";
+      }
+    }
+    @return $str;
+  }
+
+  //@else if type-of($var) == map {
+  //  $i: 1;
+  //  @each $k, $v in $var {
+  //    $sep: if($i < length($var), ",", "");
+  //    @if type-of($v) == map {
+  //      $str: "#{$str} \000D\000A #{$k}: ( #{print-indent-var($v)} \000D\000A )#{$sep} ";
+  //    }
+  //    @else {
+  //      $str: "#{$str}#{$cr}  #{$k}: #{$v}#{$sep}";
+  //    }
+  //    $i: $i + 1;
+  //  }
+  //  @return $str;
+  //}
+
+  @else {
+    //@return "#{$cr}#{$indent}#{$var}";
+    @return $cr + $indent + $var;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+/////////////////////////////////////////////////////////////////////////////
+
+// https://gist.github.com/morewry/9522776
+//@function print-map ( $map, $str: "" ) {
+//  @if type-of($map) != map {
+//    @error turi būti mapas;
+//  }
+//  @each $k, $v in $map {
+//    @if type-of($v) == map {
+//      $str: "#{$str} \000D\000A #{$k}: ( #{print-map($v)} \000D\000A ), ";
+//    }
+//    @else {
+//      $str: "#{$str} \000D\000A \0009 #{$k}: #{$v}, ";
+//    }
+//  } // each
+//  @return $str;
+//} // @function print-map
+
+
+

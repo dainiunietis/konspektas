@@ -1,0 +1,432 @@
+@charset "utf-8";
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//  # grupiniai
+//
+/////////////////////////////////////////////////////////////////////////////
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0 0 .5em 0;
+
+  page-break-after: avoid;
+  page-break-inside: avoid;
+
+  color: colorScheme-site('1H');
+
+  //-------------------------------------------------------------------------
+  // šriftų pavadinimus reikia žiūrėti ir imti iš Windows 10 [Settings > Personalization > Fonts]
+  //-------------------------------------------------------------------------
+
+  ////font-family: "Recursive Sans Casual Static", Arial, sans-serif;
+  //font-family: "Recursive Sans Linear Static", Arial, sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-style: italic;
+
+  //// VEIKIA !!!
+  //// čia https://www.recursive.design/ yra generatorius
+  //// turi būti: master.scss >>> @import url("../fonts/Recursive/font-face-recursive.css");
+  //font-family: "Recursive", Arial, sans-serif;
+  //--mono: "MONO" 0;
+  //--casl: "CASL" 0.21;
+  //--wght: "wght" 800;
+  //--slnt: "slnt" -7.4;
+  //--CRSV: "CRSV" 1;
+  //font-variation-settings: var(--mono), var(--casl), var(--wght), var(--slnt), var(--CRSV);
+
+  font: condensed 700 1em / 1.2 "Helvetica Neue LT W1G", sans-serif;
+  //font-family: "Helvetica Neue LT W1G", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: condensed;
+
+  //font: condensed 700 1em / 1.2 "Noto Sans Display", sans-serif;
+  //font-family: "Noto Sans Display", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: ultra-condensed;
+  //font-stretch: 50%;
+
+  //font: 600 1em / 1.2 "Oswald", sans-serif;
+
+  //font: condensed 700 1em / 1.2 "Open Sans", sans-serif;
+  //font-family: "Open Sans";
+
+  //font: 700 1em / 1.2 "IBM Plex Sans Condensed", sans-serif;
+  //font: condensed 700 1em / 1.2 "IBM Plex Sans Condensed", sans-serif;
+  //font: condensed 700 1em / 1.2 "IBM Plex Sans", sans-serif;
+  //font-family: "IBM Plex Sans", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: extra-condensed;
+
+  //font-family: "IBM Plex Serif", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-style: italic;
+
+  //font-family: "Bahnschrift", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: condensed;
+
+  //font-family: "Open Sans", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: condensed;
+
+  //font-family: "Roboto", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: condensed;
+
+  //font-family: "Arial Nova", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: condensed;
+
+  //font-family: Nina, sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: condensed;
+
+  //font-family: Archivo, sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+
+  //font-family: "Franklin Gothic", sans-serif;
+  //font-weight: 700;
+  //line-height: 1.2;
+  //font-stretch: condensed;
+
+  a:hover {
+    color: rgba(142, 71, 140, 1);
+  }
+
+  //   strong { background-color: #E1C4E0; }
+
+  code {
+    //background:  none!important;
+    // scale_color($color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha])
+    background: scale-color(colorScheme-site('1H'), $alpha: -90%, $lightness: -20%);
+
+    //color: inherit!important;
+    //color: #62478E;
+    color: inherit;
+    //color:       hsl(299, 45%, 40%);
+
+    //font-weight: bold;
+    //font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+
+    //font: 700 italic .95em "IBM Plex Mono", monospace;    // <<< VEIKIA
+
+    //font: 400 .9em "Iosevka Slab", monospace;
+    font: 700 .95em "Iosevka", monospace;
+
+    //font: 400 .95em "NovaMono", monospace;
+
+    //font: 800 italic .95em "Lilex", monospace;
+
+    //font: 700 italic .9em "Recursive Mono Linear Static", monospace;
+    //font: 700 italic .9em "Recursive Mono Linear Static", monospace;
+
+    //font: 700 condensed .9em "Input Mono", monospace;
+    //font: 400 condensed .9em "Input Mono Compressed", monospace; <<< Chrome NEVEIKIA, Firefox VEIKIA
+
+    //font-weight: 600;
+    //font-size: 0.9em;
+  }
+
+  // &:hover { background-color: scale-color(colorScheme-site('1'), $lightness: 90%); } // #EDD8ED
+
+  &:before {
+    box-sizing: content-box;
+    //margin: 0 -.5em 0 0;
+    padding: 0 .2em;
+    position: absolute;
+    transform: translate(-1em, 0);
+    border-radius: 3em;
+    transition: all .2s;
+    background: transparent;
+
+    //left: 1em;
+    //width: min-content;
+    //display: inline-block;
+    //vertical-align: text-top;
+    //text-align: left;
+    //font-weight: bold;
+    //font-style: italic;
+    font-size: 15px;
+
+    font-family: "IBM Plex Sans", sans-serif;
+    //font-family: "Envy Code R", monospace;
+    //font-family: "Georgia Pro", "Times New Roman", serif;
+    //font-family: "Georgia Pro Bold", "Times New Roman", serif;
+    //font-family: "Georgia Pro Black", "Times New Roman", serif;
+    //font-family: "Georgia Pro", "Times New Roman", serif;
+
+    // color: #a86da5; /*color: #E8CEE7;*/
+    //color: currentColor;
+    //color: colorScheme-site('1'); /*color: #E8CEE7;*/
+    //background-color: hsla(230, 100%, 50%, 0.5);
+  }
+
+  &:hover:before {
+    font-size: 24px;
+    background: colorScheme-site('1H');
+    color: white;
+    padding: .075em .35em .095em;
+    transform: translate(-1.5em, 0);
+    //margin: 0 -.5em 0 0;
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  // 3background-color: #F7EEF7;
+   padding-left: calc(.5em + 2%);
+   margin: 1em 0 .5em;
+  //color: #FFFFFF;
+  //  background-color: rgba(142,71,140,.9);
+  //  padding: 0 .1em .07em .2em;
+  //background-color: #8E478C;
+  //  background-color: rgba(213, 11, 194, 1);
+  background:
+    linear-gradient(to right,
+      // hsla(0,0%,100%,1) 0,
+      // hsla(0,0%,100%,0) 1em,
+      hsla(0,0%,100%,0)   0%,
+      hsla(0,0%,100%,0.3) 40%,
+      hsla(0,0%,100%,1)   100%
+    ),
+    linear-gradient(to bottom,
+      scale-color(colorScheme-site('1'), $alpha:-100%) 0%,
+      scale-color(colorScheme-site('1'), $alpha:-97%) 0.91em,
+      scale-color(colorScheme-site('1'), $alpha:-93%) 0.91em,
+      scale-color(colorScheme-site('1'), $alpha:-100%) 1.5em
+    ),
+    linear-gradient(to bottom,
+      scale-color(colorScheme-site('1'), $alpha:-100%) 0%,
+      scale-color(colorScheme-site('1'), $alpha:-100%) 0.91em,
+
+      // 1px linija
+      scale-color(colorScheme-site('1'), $alpha:-85%)  0.91em,
+      scale-color(colorScheme-site('1'), $alpha:-85%) calc(0.91em + 1px),
+
+      scale-color(colorScheme-site('1'), $alpha:-95%) calc(0.91em + 1px),
+      scale-color(colorScheme-site('1'), $alpha:-100%) calc(calc(0.91em + 1px) + 0.2em),
+//       scale-color(colorScheme-site('1'), $alpha:-80%)  0.91em,
+//       scale-color(colorScheme-site('1'), $alpha:-100%) 0.95em
+    )
+    ;
+  //background-blend-mode: overlay;
+  //mask-image: linear-gradient(to right,
+  //    // hsla(0,0%,100%,1) 0,
+  //    // hsla(0,0%,100%,0) 1em,
+  //    hsla(0,0%,100%,0)   0%,
+  //    hsla(0,0%,100%,0.3) 40%,
+  //    hsla(0,0%,100%,1)   100%
+  //  );
+  mix-blend-mode: multiply;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h3, h4, h5, h6 {
+  // margin-left: -.45em
+}
+
+//h1 a:link, h1 a:visited, h2 a:link, h2 a:visited, h3 a:link, h3 a:visited, h4 a:link, h4 a:visited, h5 a:link, h5 a:visited, h6 a:link, h6 a:visited {
+//	color: rgba(255,255,255,0.8);
+//}
+
+////////////////////////////////////////////////////////////////////////
+//
+//   kiekvieno atskirai
+//
+////////////////////////////////////////////////////////////////////
+
+$elements-headings-ms-sizes: (h1: 5, h2: 4, h3: 3, h4: 2, h5: 1, h6: 0);
+
+h1 {
+  //position: relative;
+  //  left: .4em;
+  // margin: 0 0 .3em 0;
+  // padding: 0 0 .2em 0;
+  //font-size: 2.6rem;
+  //font-size: ms-function(5);
+  font-size: ms-function(map_get($elements-headings-ms-sizes, "h1"));
+  text-align: right;
+  //background-color: #FAEFF0;
+  &:hover {
+    //background-color: rgb(241,228,241);
+    margin-right: -.2em; padding-right: .2em;
+  }
+  &:before { content: "1 "; }
+
+  //font-weight: bold;
+  //color: colorScheme-site('1HL4');
+  //color: white;
+  //text-shadow: hsl(0, 0%, 100%) 0 0 1px,
+  //             rgb(90, 102, 82) 0 1px 0px,
+  //             rgb(90, 102, 82) 0 2px 0px,
+  //             rgb(90, 102, 82) 0 3px 0px,
+  //             rgb(90, 102, 82) 0 4px 0px,
+  //             rgba(0, 0, 0, 0.2) 0 5px 1px,
+  //             rgba(0, 0, 0, 0.3) 0 0px 10px,
+  //             rgba(0, 0, 0, 0.4) 0 3px 5px,
+  //             rgba(0, 0, 0, 0.5) 0 6px 5px,
+  //             rgba(0, 0, 0, 0.6) 0 10px 10px;
+}
+
+//------------------------------------------------------------------
+
+h2 {
+  //font-size: 2rem;
+  font-size: ms-function(map_get($elements-headings-ms-sizes, "h2"));
+  margin: 1em 0 0 0;
+  //padding: 0 0 .6em .8em;
+  padding-bottom: .6em;
+  // border-top: colorScheme-site('1') solid 1px;
+  &:before {
+    content: "2 ";
+    // margin-left: 0;
+    // padding: 0 0 0 .8em;
+  }
+  // background: linear-gradient(to bottom, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
+}
+
+//------------------------------------------------------------------
+
+h3 {
+  //$this: &;
+  //font-size: 1.5rem;
+  font-size: ms-function(map_get($elements-headings-ms-sizes, "h3"));
+  &:before { content: "3 "; }
+}
+
+//.h3 {
+//  &--small, &--small-d h3 {
+//    font-size: ms-function(2);
+//  }
+//  &--tiny, &--tiny-d h3 {
+//    font-size: ms-function(1);
+//  }
+//}
+
+//------------------------------------------------------------------
+
+h4 {
+  //font-size: 1.2rem;
+  font-size: ms-function(map_get($elements-headings-ms-sizes, "h4"));
+  //font-weight: 600;
+  &:before { content: "4 "; }
+}
+
+//------------------------------------------------------------------
+
+h5 {
+  //font-size: 1.1rem;
+  font-size: ms-function(map_get($elements-headings-ms-sizes, "h5"));
+  &:before { content: "5 "; }
+}
+
+//------------------------------------------------------------------
+
+h6 {
+  //font-size: 1.1rem;
+  font-size: ms-function(map_get($elements-headings-ms-sizes, "h6"));
+  &:before { content: "6 "; }
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  # scope'iniai .hx
+//
+////////////////////////////////////////////////////////////////////
+
+// visi heading'ai
+// ⇔⇆
+
+@each $elm, $size in $elements-headings-ms-sizes {
+
+  // Sumažinti prisegant prie pačio heading'o:
+  // h1⇔6.hx--small ....... -1
+  // h1⇔6.hx--tiny ........ -2
+
+  // Sumažinti scope'e visi heading'ai:
+  // .hx--small-c > h1⇔6
+  // .hx--tiny-c  > h1⇔6
+  // .hx--small-d   h1⇔6
+  // .hx--tiny-d    h1⇔6
+
+  #{$elm}.hx--small, .hx--small-d #{$elm}, .hx--small-c > #{$elm} {
+    font-size: ms-function($size - 1);
+  }
+
+  #{$elm}.hx--tiny, .hx--tiny-d #{$elm}, .hx--tiny-c > #{$elm} {
+    font-size: ms-function($size - 2);
+  }
+
+  //--------------------------------------------------------------
+
+  // Sumažintas scope'e tik nurodytas heading'as:
+  //   .h1⇔6--small-c > h1⇔6
+  //   .h1⇔6--tiny-c >  h1⇔6
+  //   .h1⇔6--small-d   h1⇔6
+  //   .h1⇔6--tiny-d    h1⇔6
+
+  .#{$elm}--small-d #{$elm}, .#{$elm}--small-c > #{$elm} {
+    font-size: ms-function($size - 1);
+  }
+
+  .#{$elm}--tiny-d #{$elm}, .#{$elm}--tiny-c > #{$elm} {
+    font-size: ms-function($size - 2);
+  }
+}
+
+
+
+//@each $elm, $size in $elements-headings-ms-sizes {
+//  #{$elm}.u-heading--small, .u-heading--small-d #{$elm} {
+//    font-size: ms-function($size - 1);
+//  }
+//  #{$elm}.u-heading--tiny, .u-heading--tiny-d #{$elm} {
+//    font-size: ms-function($size - 2);
+//  }
+//}
+
+//.heading--small {
+//  $this: &;
+//
+//  h1#{$this}, &-d h1 {
+//    font-size: ms-function(4);
+//  }
+//
+//  h2#{$this}, &-d h2 {
+//    font-size: ms-function(3);
+//  }
+//
+//  h3#{$this}, &-d h3 {
+//    font-size: ms-function(2);
+//  }
+//
+//  h4#{$this}, &-d h4 {
+//    font-size: ms-function(1);
+//  }
+//
+//  h5#{$this}, &-d h5 {
+//    font-size: ms-function(0);
+//  }
+//
+//  h6#{$this}, &-d h6 {
+//    font-size: ms-function(-1);
+//  }
+//}
+
+//h3.heading--tiny, h3.heading--tiny-d h3 {
+//  font-size: ms-function(1);
+//}

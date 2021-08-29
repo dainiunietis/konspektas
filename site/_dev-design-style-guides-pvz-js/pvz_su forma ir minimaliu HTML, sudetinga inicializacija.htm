@@ -1,0 +1,73 @@
+<!--
+FILEINFO testinis JS šablonas, su forma ir minimaliu HTML'u
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sprendimai su string'ais-eilutėmis</title>
+<style type="text/css">
+body { margin:1.3em; }
+body, pre { font:12px Tahoma, Verdana, Arial, Helvetica, sans-serif; }
+input[type="text"], textarea, select { width:270px; margin:0px 7px 10px 0px; padding:.3em; color:#1154D0; font:bold 0.9em Verdana, Arial, Helvetica, sans-serif; }
+</style>
+  <script type="text/javascript" src="../assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<!--<script type="text/javascript" src="http://common-resources.local/_js/_zm/debug_data.js"></script>-->
+<script type="text/javascript">
+var sprendimuFunkcijos = {};
+
+$(document).ready(function(){
+	$('input[type="button"]').click(function(){
+		var inputs = $("input[type='text']:not(input[type='text']:last)",this.form).map(function() {
+			return $(this).val();
+		}).get();
+		var resultElem = $("input[type='text']:last",this.form);
+		sprendimuFunkcijos[this.form.id](inputs,resultElem);
+	});
+});
+type="text"
+</script>
+</head>
+<body>
+
+<h3>Gauti prieš rastą.</h3>
+<script type="text/javascript">
+  sprendimuFunkcijos.F1 = function(inputTextArr,resultElem) {
+    var output;
+    var tekstas = inputTextArr[0];
+    var rasti = inputTextArr[1];
+
+    /*var offset = tekstas.indexOf(rasti);			//be RegExp
+    if (offset == -1) output = 'nerasta';
+    else output = tekstas.substring(0,offset);*/
+
+    var pattern = new RegExp(rasti);					//su RegExp
+    var result = pattern.exec(tekstas)
+    if (result) output = RegExp.leftContext;
+    else output = 'nerasta';
+
+    $(resultElem).val(output);
+  }
+</script>
+<form id="F1"><pre>
+  Tekstas: <input type="text" value="bėgo kiškis pievute" />
+  Rasti: <input type="text" value="kiškis" />
+  Rezultatas: <input type="text" value="" />
+  <input type="button" value="Darom" />
+</pre></form>
+
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

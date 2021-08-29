@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>JavaScript sintaksės-gramatikos suvestinė (syntax cheat sheet)</h1>
+<h2>...</h2>
+<p>Pagrindai / Fundamentals</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <h3>ECMAScript standarto versijos</h3>
+    <p><a href="js.language-versions.htm#$h2:contains('use strict')">directive &quot;use strict&quot; — įjungia &quot;the modern mode&quot;</a></p>
+    <p>Visada turi būti kodo pradžioje: </p>
+    <dl>
+      <dt>JS faile:</dt>
+      <dd>
+        <pre><code>&quot;use strict&quot;;
+...</code></pre>
+      </dd>
+      <dt>HTML faile:</dt>
+      <dd>
+        <pre><code>&lt;script&gt;
+&quot;use strict&quot;;
+...
+&lt;script&gt;</code></pre>
+      </dd>
+      <dt>Funkcijoje:</dt>
+      <dd>
+        <pre><code>function kažkas() {
+  &quot;use strict&quot;;
+  ...
+}</code></pre>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Kintamieji / Variables</h3>
+    <p> <a href="https://javascript.info/variables">Variables</a></p>
+    <h4>Value vs. Reference Variable Assignment</h4>
+    <p> <a href="https://github.com/nas5w/javascript-tips-and-tidbits#value-vs-reference-variable-assignment">nas5w/javascript-tips-and-tidbits: A continuously-evolving compendium of javascript tips based on common areas of confusion or misunderstanding.</a></p>
+    <blockquote>
+      <p>When JavaScript assigns one of the five primitive type (i.e., <code>Boolean</code>, <code>null</code>, <code>undefined</code>, <code>String</code>, and <code>Number</code>) to a variable, the JavaScript runtime gets to determine whether that primitive is assigned by <em>reference</em> or by <em>value</em>. It doesn't really matter how it's done because primitives can't be mutated (they're <em>immutable</em>). However, when the assigned value is an <code>Array</code>, <code>Function</code>, or <code>Object</code> a reference to the array/function/object in memory is assigned.</p>
+    </blockquote>
+    <figure>
+      <pre><code>const var1 = 'My string';
+let var2 = var1;
+
+var2 = 'My new string';
+
+console.log(var1); // 'My string'
+console.log(var2); // 'My new string'</code></pre>
+      <figcaption>primitive type String assignment</figcaption>
+    </figure>
+    <figure>
+      <pre><code>const var1 = { name: 'Jim' };
+const var2 = var1;
+
+var2.name = 'John';
+
+console.log(var1); // { name: 'John' }
+console.log(var2); // { name: 'John' }</code></pre>
+      <figcaption>object assignment</figcaption>
+    </figure>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Funkcijos</h2>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Arrow	Functions</h3>
+    <p> <a href="https://javascript.info/arrow-functions-basics">Arrow functions, the basics</a></p>
+    <p>Su keliais argumentais:</p>
+    <pre><code>// Arrow function
+let sum = (a, b) =&gt; a + b;
+
+// Function expression
+let sum = function(a, b) {
+  return a + b;
+};</code></pre>
+    <p>Kai tėra vienas argumentas, nereikia jo apskliausti:</p>
+    <pre><code>let double = n =&gt; n * 2;
+let double = function(n) { return n * 2 }</code></pre>
+    <p>Kai nėra argumentų, reikia tuščių skliaustelių: </p>
+    <pre><code>let sayHi = () =&gt; alert(&quot;Hello!&quot;);
+let sayHi = function() { alert(&quot;Hello!&quot;) }</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Duomenų tipai / Data types</h2>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p>Boolean (logical type)</p>
+    <p>Number</p>
+    <p>BigInt    </p>
+    <p>&nbsp;</p>
+    <p>Date and time</p>
+    <p>Map and Set</p>
+    <p>WeakMap and WeakSet</p>
+    <p>&nbsp;</p>
+    <p>The "null" value</p>
+    <p>The "undefined" value</p>
+    <p>&nbsp;</p>
+    <p>Object.keys, values, entries</p>
+    <p>&nbsp;</p>
+    <p>Objects and Symbols</p>
+    <p>The typeof operator </p>
+    <p>&nbsp;</p>
+    <p>Methods of primitives</p>
+    <p>&nbsp;</p>
+    <p>Array methods</p>
+    <p>Iterables</p>
+    <p>&nbsp;</p>
+    <p>Destructuring assignment</p>
+    <p>&nbsp;</p>
+    <p>JSON methods, toJSON </p>
+  </div>
+  <div>
+    <h3>Duomenų tipų konvertacija į kitus duomenų tipus / Type Conversions</h3>
+    <p> <a href="https://javascript.info/type-conversions">Type Conversions</a></p>
+    <p>Pagal kontekstą vykdomas automatinis konvertavimas:</p>
+    <blockquote>
+      <p>Most of the time, operators and functions automatically convert the values given to them to the right type.</p>
+      <p>For example, <code>alert</code> automatically converts any value to a string to show it. Mathematical operations convert values to numbers.</p>
+    </blockquote>
+    <p>Ir galima įvykdyti norimą konvertaciją — explicit convertion:</p>
+    <blockquote>
+      <p>There are also cases when we need to explicitly convert a value to the expected type.</p>
+    </blockquote>
+    <h4>Konvertacija į string'us / string conversion </h4>
+    <p>Automatinis:</p>
+    <pre><code>alert(false); // 'false' </code></pre>
+    <p>Nurodomas: </p>
+    <pre><code>str = String(true); // str == 'true'
+str = String(47);   // str == '47'</code></pre>
+    <h4>Konvertacija į skaičius / numeric conversion </h4>
+    <p>Automatinis:</p>
+    <pre><code>alert( "6" / "2" ); // 3</code></pre>
+    <p>Nurodomas: </p>
+    <pre><code>//--- strings ----------------------------
+
+num = Number('123');   // num == 123
+num = Number('');      // num == 0
+
+// Whitespaces from the start and end are removed
+num = Number(' 123 '); // num == 123
+num = Number('  ');    // num == 0
+
+// conversion failed
+num = Number('aaa'); // num == NaN
+
+//--- boolean ----------------------------
+
+num = Number(true);    // num == 1
+num = Number(false);   // num == 0
+
+//--- ... ----------------------------
+
+num = Number(undefined); // num == NaN
+num = Number(null);      // num == 0</code></pre>
+    <h4>Konvertacija į loginę reikšmę / boolean conversion</h4>
+    <p>Automatiškai vykdoma <q>in logical operations</q>., pvz.:</p>
+    <pre><code>if (5) {
+  ...
+}</code></pre>
+    <blockquote>
+      <p>The conversion rule:</p>
+      <ul>
+        <li>Values that are intuitively "empty", like <code>0</code>, an empty string, <code>null</code>, <code>undefined</code>, and <code>NaN</code>, become <code>false</code>.</li>
+        <li>Other values become <code>true</code>.</li>
+      </ul>
+    </blockquote>
+    <pre><code>//--- skaičiai ----------------------------
+
+bln = Boolean(1);           // bln == true
+bln = Boolean(-5);          // bln == true
+
+bln = Boolean(0);           // bln == false
+
+//--- strings ----------------------------
+
+bln = Boolean('belekas');   // bln == true
+bln = Boolean('  ');        // bln == true
+bln = Boolean('0');         // bln == true
+
+bln = Boolean('');          // bln == false
+
+//--- ... ----------------------------
+
+bln = Boolean(null);       // bln == false
+bln = Boolean(undefined);  // bln == false
+bln = Boolean(NaN);        // bln == false</code></pre>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Eilutės / String</h3>
+    <p>&nbsp;</p>
+    <h4>Template literals</h4>
+    <p> <a href="https://exploringjs.com/es6/ch_template-literals.html">8. Template literals</a></p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Arrays</h3>
+    <p>
+      <a href="https://blog.bitsrc.io/8-methods-to-search-javascript-arrays-fadbce8bea51">8 Methods to Find, Search, and Filter JavaScript Arrays | by Joel Thoms | Sep, 2020 | Bits and Pieces</a>
+</p>
+
+<p><strong>Paspaudus button'ą išvedimas daromas DevTool'sų console'ėje.</strong></p>
+<h4>Array.filter() — masyvo filtravimas su predicate funkcija</h4>
+
+  <p>Kiekvienas masyvo elemnetas patikrinamas metodui <code>.filter</code> perduota funkcija — jei įvykdžius su jai perduotu masyvo elementu grąžina <code>true</code> — tas elementas lieka grąžinamame masyve, pvz.:</p>
+  <pre><code>const input = [1, 2, 3]
+const predicate = ArrElm => ArrElm > 1
+const output = input.filter(predicate) // [2, 3]</code></pre>
+
+  <div class="c-pvs c-pvs--border">
+    <button onclick="pvz_20200908004052(this)">masyve palikti tik lyginius skaičius</button>
+    <button onclick="pvz_20200908175524(this)">masyve palikti tik didesnius už 3 skaičius</button>
+    <script>
+      function pvz_20200908004052(btnElm) {
+        const pvzTitle = btnElm.innerHTML
+        console.group(pvzTitle)
+
+        const input = [1, 2, 3, 4, 5]
+        console.log('input =', input)
+
+        const isEven = number => number % 2 === 0
+        const output = input.filter(isEven)
+        console.log('output =', output)
+
+        console.groupEnd()
+      }
+      function pvz_20200908175524(btnElm) {
+        const pvzTitle = btnElm.innerHTML
+        console.group(pvzTitle)
+
+        const input = [1, 2, 3, 4, 5]
+        console.log('input =', input)
+
+        const predicate = number => number > 3
+        const output = input.filter(predicate)
+        console.log('output =', output)
+
+        console.groupEnd()
+      }
+    </script>
+  </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Moduliai / Modules</h2>
+<p>ECMAScript modules, ES modules</p>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p><a href="https://javascript.info/modules">Modules</a></p>
+    <p><a href="!components.collapse__test-esmodule_dynamic-import.htm">!components.collapse__test-esmodule_dynamic-import.htm</a></p>
+    <p><a href="!components.collapse__test-esmodule_static-import.htm">!components.collapse__test-esmodule_static-import.htm</a>  </p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W2 o-gfx--boxed u-spvm -B161c">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

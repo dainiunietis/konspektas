@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  <script>
+    // $(() => document.getElementsByTagName('body')[0].className = "hr--dotted-c");
+//    $(() => document.getElementsByTagName('body')[0].className = "hr--dashed-c");
+    // $(function() {
+    //   document.getElementsByTagName('body')[0].className = "hr--dotted-c";
+    // });
+  </script>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1><code></code>HTML content model (content categories)</h1>
+<p> <a href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content">HTML Standard – 3.2.5.2 Kinds of content</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Transparent_content_model">Content categories - Developer guides | MDN</a></p>
+<p><a href="https://clearlydecoded.com/html-content-models">HTML Content Models</a></p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <p>— </p>
+    <p><dfn>Content model</dfn> ir <dfn>Content category</dfn> — HTML elementų grupė su bendromis savybėmis, t. y. paskirtis, kur gali būti naudojamas ir koks turinys jame gali būti (kokie HTML elementai ar tekstas).</p>
+    <p class="c-em-note">Abu terminai kaip ir sinonimai, tik pirmasis atrodo kiek platesnis terminas, kuris apskritai reiškia visumą su taisyklėmis.    </p>
+    <p>Trys apibūdinimai iš skirtingų šaltinių:</p>
+    <blockquote>
+      <ol>
+        <li>Elements are organized into content categories and there are
+          general rules, based on these categories, which define where an element can be used and what it can contain. <cite>Pro HTML5 with CSS, JavaScript, and Multimedia Complete Website Development and Best Practices.pdf</cite></li>
+        <li>Content Model refers to the set of rules that define what type of content each element is allowed to have. Mostly, this translates into what other elements are allowed to be nested inside which other elements.</li>
+        <li>Each element in HTML falls into zero or more categories that group elements with similar characteristics together. <cite><a href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content">HTML Standard – 3.2.5.2 Kinds of content</a></cite></li>
+      </ol>
+    </blockquote>
+    <p>Yra HTML elementų kurie:</p>
+    <ul>
+      <li>nepriklauso nei vienai <i>content category</i>,</li>
+      <li>priklauso vienai,</li>
+      <li>priklauso kelioms.    </li>
+    </ul>
+    <blockquote>
+      <p>An element can be in more than one category and there are a few elements that don't belong in any category.    </p>
+      <p>Most of the elements that are not in any content category are used only as child elements for a
+        specific element. For example, the <code>table</code> element is in the flow category, but the child elements such as <code>tr</code> and    <code>td</code> are not assigned a category as they are only used within a <code>table</code>.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p><dfn>block-level element</dfn> —</p>
+    <blockquote>
+      <ul>
+        <li><em>Block-level</em> elements render (i.e., are displayed) to begin on a new line in the flow of the document by default.</li>
+        <li><em>Block-level</em> elements are allowed to wrap <em>inline</em> or other <em>block-level</em> elements.</li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p><dfn>inline element</dfn> —</p>
+    <blockquote>
+      <ul>
+        <li><em>Inline</em> elements render on the same line in the flow of the document by default.</li>
+        <li><em>Inline</em> elements are restricted to only contain other <em>inline</em> elements. In other words, an inline element cannot have a <em>block-level</em> element as part of its content.</li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>The "block-level" category roughly corresponds to the category of <a href="https://developer.mozilla.org/en/HTML/Content_categories#Flow_content">flow content</a> in HTML5, while "inline" corresponds to <a href="https://developer.mozilla.org/en/HTML/Content_categories#Phrasing_content">phrasing content</a>, but there are additional categories.</p>
+<p>&nbsp;</p>
+<p>The full list of content categories (for more info, see <a href="https://developer.mozilla.org/en-US/docs/HTML/Content_categories">Mozilla Developer Network</a>):</p>
+<ul>
+  <li>Metadata content</li>
+  <li>Flow content</li>
+  <li>Sectioning content</li>
+  <li>Heading content</li>
+  <li>Phrasing content</li>
+  <li>Embedded content</li>
+  <li>Interactive content</li>
+  <li>Form-associated content
+    <ul>
+      <li>listed</li>
+      <li>labelable</li>
+      <li>submittable</li>
+      <li>resettable</li>
+    </ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<div class="c-em-note">
+  <p>Browser (user agent) CSS atitinka HTML elementams priskirtus <i>content model</i>:</p>
+  <blockquote>
+    <p>It also refers to the default way the browser treats the content wrapped by a particular tag.</p>
+  </blockquote>
+</div>
+<p>&nbsp;</p>
+<figure class="c-figure c-figure--shadow" style="-max-width:400px">
+  <div class="c-figure__content">
+    <p>&nbsp;</p>
+  </div>
+  <figcaption>Kaip buvo iki HTML5</figcaption>
+</figure>
+<p>&nbsp;</p>
+<p>Senesnėse HTML versijose buvo dvi <i>content model</i>:</p>
+<blockquote>
+  <p>Prior to the modern HTML specification, HTML elements were either <em>block-level</em> or <em>inline</em> elements.</p>
+</blockquote>
+<p>O HTML5 tapo septynios:</p>
+<blockquote>
+  <p>Modern HTML specification split these two content models into seven models. So, things got a bit more complicated.</p>
+</blockquote>
+<p>Bet praktiškai tuos naujus septynis <i>content model</i> galima priskirti prie <i>block-level element</i> arba <i>inline element</i>:</p>
+<blockquote>
+  <p>However, in practical terms, you can still think of those seven models as falling into the same traditional categories: <em>block-level</em> and <em>inline</em> elements.</p>
+  <p>So, as far as HTML coding is concerned, you can still pretty much think of all of them falling into either <em>block-level</em> or <em>inline</em> elements. Obviously, it's a little bit of an over-simplification, but it works. 😀</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>Viena priežasčių sukurti <i>content model</i>, yra semantika, t. y. tago turinio paskirtis:</p>
+<blockquote>
+  <p>Most of the reasons, however, are <a href="https://clearlydecoded.com/modern-html-semantic-elements" target="_blank"><em>semantic</em></a> in nature. For example, the <em>Heading</em> category elements are not simply generic <em>Flow</em> or <em>block-level</em> elements. They also convey a meaning: the content they wrap is to be treated as <em>heading</em> content.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p><code>&lt;div&gt; &lt;span&gt;</code></p>
+<blockquote>
+  <p>Perhaps the most generic element in each category are the div and the span elements. </p>
+  <p>The div element stands for <em>division</em> (as in divide the document into smaller parts) and is a common <em>block-level</em> (or <em>Flow</em>) element.</p>
+  <p>The span element, which simply stands for span, is a common <em>inline</em> (or <em>Phrasing</em>) element.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Pagrindinės <i>content categories</i></h2>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Most of the elements that are not in any content category are used only as child elements for a
+    specific element. For example, the <code>table</code> element is in the flow category, but the child elements such as <code>tr</code> and
+  <code>td</code> are not assigned a category as they are only used within a table.</p>
+</blockquote>
+<p>&nbsp;</p>
+<figure class="c-figure c-figure--shadow" style="width: min-content">
+  <div class="c-figure__content">
+    <p>
+      <object width="1000" height="288" data="images/content-venn.svg"></object>
+    </p>
+  </div>
+  <figcaption>iš <a href="https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content">HTML Standard – 3.2.5.2 Kinds of content</a></figcaption>
+</figure>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W3 o-gfx--boxed u-spvm">
+  <div>
+    <h3>Flow</h3>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Just about <em>everything</em> is included as part of the <em>Flow</em> category.    </p>
+    </blockquote>
+    <p>&nbsp;</p>
+    <ul>
+      <li><code>&lt;a&gt; &lt;abbr&gt; &lt;address&gt; &lt;article&gt; &lt;aside&gt; &lt;audio&gt; &lt;b&gt;&lt;bdo&gt; &lt;bdi&gt; &lt;blockquote&gt; &lt;br&gt; &lt;button&gt; &lt;canvas&gt; &lt;cite&gt; &lt;code&gt; &lt;data&gt; &lt;datalist&gt; &lt;del&gt; &lt;details&gt; &lt;dfn&gt; &lt;div&gt; &lt;dl&gt; &lt;em&gt; &lt;embed&gt; &lt;fieldset&gt; &lt;figure&gt; &lt;footer&gt; &lt;form&gt; &lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; &lt;header&gt; &lt;hgroup&gt; &lt;hr&gt; &lt;i&gt; &lt;iframe&gt; &lt;img&gt; &lt;input&gt; &lt;ins&gt; &lt;kbd&gt; &lt;label&gt; &lt;main&gt; &lt;map&gt; &lt;mark&gt; &lt;math&gt; &lt;menu&gt; &lt;meter&gt; &lt;nav&gt; &lt;noscript&gt; &lt;object&gt; &lt;ol&gt; &lt;output&gt; &lt;p&gt; &lt;picture&gt; &lt;pre&gt; &lt;progress&gt; &lt;q&gt; &lt;ruby&gt; &lt;s&gt; &lt;samp&gt; &lt;script&gt; &lt;section&gt; &lt;select&gt; &lt;small&gt; &lt;span&gt; &lt;strong&gt; &lt;sub&gt; &lt;sup&gt; &lt;svg&gt; &lt;table&gt; &lt;template&gt; &lt;textarea&gt; &lt;time&gt; &lt;ul&gt; &lt;var&gt; &lt;video&gt; &lt;wbr&gt; &lt;<a href="https://html.spec.whatwg.org/multipage/custom-elements.html#autonomous-custom-element">autonomous custom elements</a>&gt;</code></li>
+      <li>Tekstas</li>
+    </ul>
+    <p>Tiksliau iš oficialios specifikacijos:</p>
+    <blockquote>
+      <p>Most elements that are used in the body of documents and applications are categorized as flow content.</p>
+      <ul class="LSNc DIc M0">
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">abbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">address</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">area</a> (if it is a descendant of a <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a> element)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">article</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">aside</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-audio-element">audio</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">bdi</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">bdo</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">blockquote</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">br</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">button</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">canvas</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">cite</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">code</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">data</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">datalist</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">del</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">details</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">dfn</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">dialog</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">dl</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">em</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-embed-element">embed</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element">fieldset</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">figure</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">footer</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">form</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h2</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h3</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h4</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h5</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">header</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">hgroup</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">hr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-iframe-element">iframe</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">img</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">input</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">ins</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">kbd</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">label</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">link</a> (if it is <a id="flow-content:allowed-in-the-body2" href="https://html.spec.whatwg.org/multipage/semantics.html#allowed-in-the-body">allowed in the body</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">main</a> (if it is a <a id="flow-content:hierarchically-correct-main-element2" href="https://html.spec.whatwg.org/multipage/grouping-content.html#hierarchically-correct-main-element">hierarchically correct main element</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">mark</a></li>
+        <li><a id="flow-content:mathml-math2" href="https://www.w3.org/Math/draft-spec/chapter2.html#interf.toplevel" data-x-internal="mathml-math">MathML math</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">menu</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element">meta</a> (if the <a href="https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute">itemprop</a> attribute is present)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">meter</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">nav</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element">noscript</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element">object</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">ol</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">output</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element">picture</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">pre</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">progress</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">q</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">ruby</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">s</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">samp</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">script</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">section</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">select</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">slot</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">small</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">strong</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sub</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sup</a></li>
+        <li><a id="flow-content:svg-svg2" href="https://svgwg.org/svg2-draft/struct.html#SVGElement" data-x-internal="svg-svg">SVG svg</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">table</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">template</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">textarea</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element">time</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">ul</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">var</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-video-element">video</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element">wbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#autonomous-custom-element" id="flow-content:autonomous-custom-element2">autonomous custom elements</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/dom.html#text-content" id="flow-content:text-content2">text</a></li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">abbr</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">address</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">area</a> (if it is a descendant of a <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a> element)</p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">article</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">aside</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/media.html#the-audio-element">audio</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">bdi</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">bdo</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">blockquote</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">br</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">button</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">canvas</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">cite</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">code</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">data</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">datalist</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">del</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">details</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">dfn</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">dialog</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">dl</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">em</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-embed-element">embed</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element">fieldset</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">figure</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">footer</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">form</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h2</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h3</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h4</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h5</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">header</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">hgroup</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">hr</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-iframe-element">iframe</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">img</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">input</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">ins</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">kbd</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">label</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">link</a> (if it is <a id="flow-content:allowed-in-the-body" href="https://html.spec.whatwg.org/multipage/semantics.html#allowed-in-the-body">allowed in the body</a></p>
+    <p>)</p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">main</a> (if it is a <a id="flow-content:hierarchically-correct-main-element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#hierarchically-correct-main-element">hierarchically correct main element</a></p>
+    <p>)</p>
+    <p><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">mark</a></p>
+    <p id="flow-content:mathml-math" href="https://www.w3.org/Math/draft-spec/chapter2.html#interf.toplevel" data-x-internal="mathml-math"><a id="flow-content:mathml-math" href="https://www.w3.org/Math/draft-spec/chapter2.html#interf.toplevel" data-x-internal="mathml-math">MathML math</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">menu</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element">meta</a> (if the <a href="https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute">itemprop</a> attribute is present)</p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">meter</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">nav</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element">noscript</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element">object</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">ol</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">output</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element">picture</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">pre</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">progress</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">q</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">ruby</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">s</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">samp</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">script</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">section</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">select</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">slot</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">small</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">strong</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sub</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sup</a></p>
+    <p id="flow-content:svg-svg" href="https://svgwg.org/svg2-draft/struct.html#SVGElement" data-x-internal="svg-svg"><a id="flow-content:svg-svg" href="https://svgwg.org/svg2-draft/struct.html#SVGElement" data-x-internal="svg-svg">SVG svg</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">table</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">template</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">textarea</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element">time</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">ul</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">var</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/media.html#the-video-element">video</a></p>
+    <p><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element">wbr</a></p>
+    <p id="flow-content:autonomous-custom-element" href="https://html.spec.whatwg.org/multipage/custom-elements.html#autonomous-custom-element"><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#autonomous-custom-element" id="flow-content:autonomous-custom-element">autonomous custom elements</a></p>
+    <p id="flow-content:text-content" href="https://html.spec.whatwg.org/multipage/dom.html#text-content"><a href="https://html.spec.whatwg.org/multipage/dom.html#text-content" id="flow-content:text-content">text</a></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Metadata</h3>
+    <blockquote>
+      <p>Elements belonging to the <em>metadata content</em> category modify the presentation or the behavior of the rest of the document, set up links to other documents, or convey other <em>out of band</em> information.</p>
+    </blockquote>
+    <ul>
+      <li><code>&lt;base&gt; &lt;link&gt; &lt;meta&gt; &lt;noscript&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt;</code>  </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Sectioning</h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Heading</h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Phrasing</h3>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>The <em>Phrasing</em> category roughly translates into the traditional <em>inline</em> category.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Embedded</h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <h3>Interactive</h3>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Kitos <i>content categories</i></h2>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Palpable content</p>
+      <p>Content is palpable when it's neither empty or hidden; it is content that is rendered and is substantive. Elements whose model is flow content or phrasing content should have at least one node which is palpable.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Transparent content model</p>
+      <p>If an element has a transparent content model, then its contents must be structured such that they would be valid HTML 5, even if the transparent element were removed and replaced by the child elements.</p>
+      <p>For example, the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del" title="The HTML <del tabindex="0"> element represents a range of text that has been deleted from a document.">&lt;del&gt;</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins" title="The HTML <ins> element represents a range of text that has been added to a document.">&lt;ins&gt;</a> elements are transparent:</p>
+      <p><code>&lt;p&gt;We hold these truths to be &lt;del&gt;&lt;em&gt;sacred <span title="&">&amp;amp;</span> undeniable&lt;/em&gt;&lt;/del&gt; &lt;ins&gt;self-evident&lt;/ins&gt;.&lt;/p&gt; <span aria-hidden="true"> </span></code></p>
+      <p>If those elements were removed, this fragment would still be valid HTML (if not correct English).</p>
+      <p><code>&lt;p&gt;We hold these truths to be &lt;em&gt;sacred <span title="&">&amp;amp;</span> undeniable&lt;/em&gt; self-evident.&lt;/p&gt;</code></p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Secondary categories</p>
+      <p>There are some secondary classifications of elements that can be useful to be aware of as well.</p>
+      <p>Script-supporting elements</p>
+      <p><strong>Script-supporting elements</strong> are elements which don't directly contribute to the rendered output of a document. Instead, they serve to support scripts, either by containing or specifying script code directly, or by specifying data that will be used by scripts.</p>
+      <p>The script-supporting elements are:</p>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" title="The HTML <script> element is used to embed or reference executable code; this is typically used to embed or refer to JavaScript code.">&lt;script&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template" title="The HTML Content Template (<template>) element is a mechanism for holding HTML that is not to be rendered immediately when a page is loaded but may be instantiated subsequently during runtime using JavaScript.">&lt;template&gt;</a></li>
+      </ul>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Form-associated content</p>
+      <p>Form-associated content comprises elements that have a form owner, exposed by a <strong>form</strong> attribute. A form owner is either the containing <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" title="The HTML <form> element represents a document section containing interactive controls for submitting information.">&lt;form&gt;</a> element or the element whose id is specified in the <strong>form</strong> attribute.</p>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" title="The HTML <button> element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.">&lt;button&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset" title="The HTML <fieldset> element is used to group several controls as well as labels (<label>) within a web form.">&lt;fieldset&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" title="The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ">&lt;input&gt;</a></li>
+        <li><span title="This deprecated API should no longer be used, but will probably still work."></span><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen" title="The HTML <keygen> element exists to facilitate generation of key material, and submission of the public key as part of an HTML form. This mechanism is designed for use with Web-based certificate management systems. It is expected that the <keygen> element will be used in an HTML form along with other information needed to construct a certificate request, and that the result of the process will be a signed certificate.">&lt;keygen&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" title="The HTML <label> element represents a caption for an item in a user interface.">&lt;label&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter" title="The HTML <meter> element represents either a scalar value within a known range or a fractional value.">&lt;meter&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" title="The HTML <object> element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.">&lt;object&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output" title="The HTML Output element (<output>) is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.">&lt;output&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress" title="The HTML <progress> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar.">&lt;progress&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" title="The HTML <select> element represents a control that provides a menu of options">&lt;select&gt;</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" title="The HTML <textarea> element represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.">&lt;textarea&gt;</a></li>
+      </ul>
+      <p>This category contains several sub-categories:</p>
+      <dl>
+        <dt id="Form_listed">listed</dt>
+        <dd>Elements that are listed in the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements">form.elements</a> and fieldset.elements IDL collections. Contains <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" title="The HTML <button> element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.">&lt;button&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset" title="The HTML <fieldset> element is used to group several controls as well as labels (<label>) within a web form.">&lt;fieldset&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" title="The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ">&lt;input&gt;</a>, <span title="This deprecated API should no longer be used, but will probably still work."></span><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen" title="The HTML <keygen> element exists to facilitate generation of key material, and submission of the public key as part of an HTML form. This mechanism is designed for use with Web-based certificate management systems. It is expected that the <keygen> element will be used in an HTML form along with other information needed to construct a certificate request, and that the result of the process will be a signed certificate.">&lt;keygen&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" title="The HTML <object> element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.">&lt;object&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output" title="The HTML Output element (<output>) is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.">&lt;output&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" title="The HTML <select> element represents a control that provides a menu of options">&lt;select&gt;</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" title="The HTML <textarea> element represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.">&lt;textarea&gt;</a>.</dd>
+        <dt id="Form_labelable">labelable</dt>
+        <dd>Elements that can be associated with <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" title="The HTML <label> element represents a caption for an item in a user interface.">&lt;label&gt;</a> elements. Contains <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" title="The HTML <button> element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.">&lt;button&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" title="The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ">&lt;input&gt;</a>, <span title="This deprecated API should no longer be used, but will probably still work."></span><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen" title="The HTML <keygen> element exists to facilitate generation of key material, and submission of the public key as part of an HTML form. This mechanism is designed for use with Web-based certificate management systems. It is expected that the <keygen> element will be used in an HTML form along with other information needed to construct a certificate request, and that the result of the process will be a signed certificate.">&lt;keygen&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter" title="The HTML <meter> element represents either a scalar value within a known range or a fractional value.">&lt;meter&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output" title="The HTML Output element (<output>) is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.">&lt;output&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress" title="The HTML <progress> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar.">&lt;progress&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" title="The HTML <select> element represents a control that provides a menu of options">&lt;select&gt;</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" title="The HTML <textarea> element represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.">&lt;textarea&gt;</a>.</dd>
+        <dt id="Form_submittable">submittable</dt>
+        <dd>Elements that can be used for constructing the form data set when the form is submitted. Contains <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" title="The HTML <button> element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.">&lt;button&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" title="The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ">&lt;input&gt;</a>, <span title="This deprecated API should no longer be used, but will probably still work."></span><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen" title="The HTML <keygen> element exists to facilitate generation of key material, and submission of the public key as part of an HTML form. This mechanism is designed for use with Web-based certificate management systems. It is expected that the <keygen> element will be used in an HTML form along with other information needed to construct a certificate request, and that the result of the process will be a signed certificate.">&lt;keygen&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" title="The HTML <object> element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.">&lt;object&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" title="The HTML <select> element represents a control that provides a menu of options">&lt;select&gt;</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" title="The HTML <textarea> element represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.">&lt;textarea&gt;</a>.</dd>
+        <dt id="Form_resettable">resettable</dt>
+        <dd>Elements that can be affected when a form is reset. Contains <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" title="The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ">&lt;input&gt;</a>, <span title="This deprecated API should no longer be used, but will probably still work."></span><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen" title="The HTML <keygen> element exists to facilitate generation of key material, and submission of the public key as part of an HTML form. This mechanism is designed for use with Web-based certificate management systems. It is expected that the <keygen> element will be used in an HTML form along with other information needed to construct a certificate request, and that the result of the process will be a signed certificate.">&lt;keygen&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output" title="The HTML Output element (<output>) is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.">&lt;output&gt;</a>,<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select" title="The HTML <select> element represents a control that provides a menu of options">&lt;select&gt;</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea" title="The HTML <textarea> element represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.">&lt;textarea&gt;</a>.</dd>
+      </dl>
+      <p></p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="o-gfx o-gfx--W1 o-gfx--boxed u-spvm">
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<p>HTML dokumento turinys: elementai-tagai ir tekstas, priskiriami <i>turinio kategorijoms (content categories)</i>.</p>
+<p><dfn>Turinio kategorijoms (content categories)</dfn> apibendrina bendras elementų-tagų savybes:</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

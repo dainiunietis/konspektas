@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+<h1>Tinklelis developinimui</h1>
+<p>sass.szm/_dev.components.measuring.mesh.scss <br> sass.szm/_dev.tools.measuring.mesh.scss</p>
+
+<h2>su <code>background-image: linear-gradient()</code> prisegtame tage ir prisegto tago pseudo elemente <code>::after</code></h2>
+<div class="cp-pvz M2c">
+<!--  <div class="d-aaa">.d-aaa</div>-->
+  <div class="d-mesh-szm d-mesh-szm--self-uniform-50px:5 d-mesh-szm--blue"><code>.d-mesh-szm</code></div>
+  <div class="d-mesh-szm d-mesh-szm--after-uniform-50px:5 d-mesh-szm--blue"><code>.d-mesh-szm</code></div>
+  <div class="d-mesh-szm d-mesh-szm--self-uniform-50px:5 d-mesh-szm--red"><code>.d-mesh-szm</code></div>
+  <div class="d-mesh-szm d-mesh-szm--after-uniform-50px:5 d-mesh-szm--red"><code>.d-mesh-szm</code></div>
+</div>
+
+<h2>tinklelis dalina visą tagą-konteinerį į lygias dalis, horizontalus ir vertikalus dalinimų skaičius gali būti skirtingas</h2>
+<div class="cp-pvz M2c">
+  <div class="d-mesh-szm d-mesh-szm--self-divide-3:3 d-mesh-szm--blue"><code>.d-mesh-szm</code></div>
+  <div class="d-mesh-szm d-mesh-szm--after-divide-3:3 d-mesh-szm--blue"><code>.d-mesh-szm</code></div>
+  <div class="d-mesh-szm d-mesh-szm--self-divide-3:3 d-mesh-szm--red"><code>.d-mesh-szm</code></div>
+  <div class="d-mesh-szm d-mesh-szm--after-divide-3:3 d-mesh-szm--red"><code>.d-mesh-szm</code></div>
+
+
+
+<!--  <div class="d-meshDivide5x4-magenta"><code>.d-meshDivide5x4-magenta</code></div>-->
+<!--  <div class="d-meshDivide5x4-magenta-pseudoAfter"><code>.d-meshDivide5x4-magenta-pseudoAfter</code></div>-->
+<!--  <div class="d-mesh50-red-pseudoAfter"><code>.d-mesh50-red-pseudoAfter</code></div>-->
+<!--  <div class="d-mesh50-cyan"><code>.d-mesh50-cyan</code></div>-->
+<!--  <div class="d-mesh50-cyan-pseudoAfter"><code>.d-mesh50-cyan-pseudoAfter</code></div>-->
+</div>
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  .d-mesh{STEP-LENGTH}-{COLOR}
+//
+/////////////////////////////////////////////////////////////////////////
+
+//.d-aaa {
+//  --c1: red;
+//  --c2: blue;
+//  background: linear-gradient(45deg, var(--c1), var(--c2));
+//}
+
+// <div class="d-mesh-szm d-mesh-szm--self-uniform-50px-5 d-mesh-szm--blue"><code>.d-mesh-szm</code></div>
+// <div class="d-mesh-szm d-mesh-szm--after-uniform-50px-5 d-mesh-szm--blue"><code>.d-mesh-szm</code></div>
+
+.d-mesh-szm {
+
+  // uniform
+  //$this-root: str_slice(&, 2);
+  $this-root: &;
+
+  &--self-uniform-50px\:5 {
+    @include szm-dev-mesh_bg-uniform(50px, 5);
+    //@include szm-dev-mesh_modifier-size("self") {
+    //}
+  }
+
+  &--after-uniform-50px\:5 {
+    @include szm-dev-mesh_after {
+      @extend #{$this-root}--self-uniform-50px\:5;
+      //@include szm-dev-mesh_bg-uniform(50px, 5);
+    }
+  }
+
+  // divide
+
+  &--self-divide-3\:3 {
+    @include szm-dev-mesh_bg-divide(3 3);
+  }
+
+  &--after-divide-3\:3 {
+    @include szm-dev-mesh_after {
+      @include szm-dev-mesh_bg-divide(3 3);
+    }
+  }
+
+  // colors
+
+  &--blue {
+    $lineMainColor: hsla(240, 100%, 50%, 0.8);
+    $lineSubColor:  scale_color($lineMainColor, $alpha: -75%);
+    @include szm-dev-mesh_color($lineMainColor, $lineSubColor);
+  }
+
+  &--red {
+    $lineMainColor: hsla(0, 100%, 50%, 0.8);
+    $lineSubColor:  scale_color($lineMainColor, $alpha: -75%);
+    @include szm-dev-mesh_color($lineMainColor, $lineSubColor);
+  }
+}
+
+
+
+//.d-mesh-uniform-50px-5 {
+//  $lineMainColor: hsla(0, 100%, 50%, 0.8);
+//  $lineSubColor:  scale_color($lineMainColor, $alpha: -75%); //transparentize($lineMainColor, 0.5);
+//  $bgGrad: szm-dev-mesh_bg-uniform($lineMainColor, $lineSubColor, 50px, 5);
+//  background: $bgGrad;
+//  @include szm-dev-mesh_pseudoAfter {
+//    background: $bgGrad;
+//  }
+//}
+
+//.d-mesh-uniform-red {
+//}
+
+//.d-mesh50-red {
+//  $lineMainColor: hsla(0, 100%, 50%, 0.8);
+//  $lineSubColor:  scale_color($lineMainColor, $alpha: -75%); //transparentize($lineMainColor, 0.5);
+//  $bgGrad: szm-dev-mesh_bg-uniform($lineMainColor, $lineSubColor, 50px, 5);
+//  background: $bgGrad;
+//  @include szm-dev-mesh_pseudoAfter {
+//    background: $bgGrad;
+//  }
+//}
+
+//.d-mesh50-cyan {
+//  $lineMainColor: hsla(180, 100%, 50%, 1);
+//  $lineSubColor:  scale_color($lineMainColor, $alpha: -75%);
+//  $bgGrad: szm-dev-mesh_bg-uniform($lineMainColor, $lineSubColor, 50px, 5);
+//  background: $bgGrad;
+//  @include szm-dev-mesh_pseudoAfter {
+//    background: $bgGrad;
+//  }
+//}
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// .d-meshDivide{NUMBER-HORIZONTAL}x{NUMBER-VERTICAL}-{COLOR}
+//
+/////////////////////////////////////////////////////////////////////////
+
+//.d-meshDivide5x4-magenta {
+//  //color:                hsl(300, 100%, 50%);
+//  $mainColor:           hsla(300, 100%, 50%, 0.8);
+//  $subColor:            scale_color($mainColor, $alpha: -75%);
+//  $bgGrad: szm-dev-mesh_bg-divide($mainColor, $subColor, 5 5, 4 5);
+//  background:           $bgGrad;
+//  @include szm-dev-mesh_pseudoAfter {
+//    background: $bgGrad;
+//  }
+//  //background:
+//  //  //linear-gradient(0grad, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.8)) no-repeat 0 0/100% 1px,
+//  //  //linear-gradient(-100grad, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.8)) no-repeat 0 1px/1px calc(100% - 2px),
+//  //  linear-gradient(0grad, rgba(255, 0, 0, 0.8) 1px, transparent 1px) repeat-y 1px 0/calc(100% - 2px) 20%,
+//  //  linear-gradient(-100grad, rgba(255, 0, 0, 0.8) 1px, transparent 1px) repeat-x 0 1px / 20% calc(100% - 2px),
+//  //
+//  //  linear-gradient(0grad, transparent 50%, blue 50%, blue calc(50% + 1px), transparent calc(50% + 1px)) repeat-y 1px 0/calc(100% - 2px) 20%,
+//  //  //linear-gradient(-100grad, transparent 10%, rgba(255, 0, 0, 0.2) 10%, rgba(255, 0, 0, 0.2) calc(10% + 1px), transparent calc(10% + 1px)) repeat-x 0 1px / 20% calc(100% - 2px);
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+

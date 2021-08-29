@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+  <style>
+    :root {
+      --pvz-blend-bg: hsl(350, 87%, 75%);
+    }
+    .pvz-txt {
+      font-size: 4em;
+      color: hsl(140,100%,70%);
+      font-weight: bold;
+    }
+    .pvz-bg1 {
+      background: var(--pvz-blend-bg);
+    }
+  </style>
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>CSS Blend Modes</h1>
+<p> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Compositing_and_Blending">Compositing and Blending - CSS: Cascading Style Sheets | MDN</a></p>
+<p> <a href="https://drafts.fxtf.org/compositing-1/">Compositing and Blending Level 1</a></p>
+<p>&nbsp;</p>
+<p> <a href="https://speckyboy.com/css-blend-mode/">Add Cool Effects with CSS Blend Mode</a></p>
+<p> <a href="https://getflywheel.com/layout/css-blend-modes/">How to use CSS blend modes | Layout</a> — <strong>skaityti ir konspektuoti</strong></p>
+<h2>Bendrai apie Blend Mode'us</h2>
+<p><a href="images/tikriname kaip veikia background sluoksnių background-blend-mode režimai.psd">tikriname kaip veikia background sluoksnių background-blend-mode režimai.psd</a></p>
+<p class="c-em-important">Patys Blend Mode'ai taip pat vadinasi ir veikia kaip Adobe Photoshop'e.</p>
+<p>Naudingiausi:</p>
+<blockquote>
+  <p>You'll find that the most useful blend modes for pleasing results are <em>darken</em>, <em>multiply</em>, <em>overlay</em>, <em>screen</em> and <em>soft-light</em>.</p>
+</blockquote>
+<h2>Blend Mode'ai tagams</h2>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw2 WNNCc">
+  <div>
+    <h3><code>mix-blend-mode:</code></h3>
+    <p> <a href="https://css-tricks.com/almanac/properties/m/mix-blend-mode/">mix-blend-mode | CSS-Tricks</a></p>
+    <p>Visas tago turinio spalvas blend'ina su viskuo kas yra po juo:</p><blockquote>
+      <p>The mix-blend-mode <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a> property sets how an element's content should blend with the content of the element's parent and the element's background.</p>
+    </blockquote>
+    <p>Sukuria <q>new stacking context</q>:</p>
+    <blockquote>
+      <p>It's worth noting that setting a blend mode other than normal will generate a new stacking context which must then be blended with the stacking context that contains the element.</p>
+    </blockquote>
+    <p class="c-em-alert">Google Chrome v82 nedaro blend'ingo <code>&lt;body&gt;</code> background'ui.    </p>
+    <p>Be blend'ingo — <code>mix-blend-mode: normal</code></p>
+    <div class="pvz-bg1">
+      <p><span class="pvz-txt">TEKSTAS</span></p>
+      <p>PNG: <img src="images/graphics/rugiagėlės-žiedas.png" width="150" alt=""></p>
+      <p>SVG: <img src="images/graphics/1f40c-twemoji-snail-sraigė.svg" width="150" alt=""></p>
+    </div>
+    <p>Su blend'ingu — <code>mix-blend-mode: multiply</code></p>
+    <div class="pvz-bg1">
+      <p style="mix-blend-mode: multiply"><span class="pvz-txt">TEKSTAS</span></p>
+      <p style="mix-blend-mode: multiply">PNG: <img src="images/graphics/rugiagėlės-žiedas.png" width="150" alt=""></p>
+      <p style="mix-blend-mode: multiply">SVG: <img src="images/graphics/1f40c-twemoji-snail-sraigė.svg" width="150" alt=""></p>
+    </div>
+    <p>Čia demonstracija, kad blend'ina su tagais, kurie stack'e yra žemiau, kur jie yra DOM medyje — nesvarbu:</p>
+    <div class="pvz-bg1">
+      <div style="background: #8f00ff; height: 90px; margin-bottom: -90px;"></div>
+      <p style="mix-blend-mode: multiply">SVG: <img src="images/graphics/1f40c-twemoji-snail-sraigė.svg" width="150" alt=""></p>
+    </div>
+    <p>Aukščiau esančių tagų neblend'ina, jie uždengia:</p>
+    <div class="pvz-bg1">
+      <div style="background: #8f00ff; height: 90px; margin-bottom: -90px; z-index: 100; position:relative;"></div>
+      <p style="mix-blend-mode: multiply"><img src="images/graphics/1f40c-twemoji-snail-sraigė.svg" width="150" alt=""></p>
+    </div>
+  </div>
+  <div>
+    <h3><code>isolation:</code></h3>
+    <p> <a href="https://css-tricks.com/almanac/properties/i/isolation/">isolation | CSS-Tricks</a></p>
+    <p>Veikia pagal DOM paveldimumą:</p>
+    <pre>&lt;div&gt;....................................NEveikia blending'as
+  &lt;div&gt;..................................NEveikia blending'as
+    <mark>&lt;div style="isolation: isolate"&gt;</mark>.....veikia blending'as
+      &lt;div&gt;&lt;/div&gt;........................veikia blending'as
+      &lt;div style="mix-blend-mode: multiply"&gt;&lt;/div&gt;
+    <mark>&lt;/div&gt;</mark>
+  &lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;............................NEveikia blending'as
+&lt;/div&gt;</pre>
+    <dl>
+      <dt>Paprasčiausias naudojimo būdas:</dt>
+      <dd>
+        <div class="pvz-bg1">
+          <div>
+            <p style="mix-blend-mode: multiply"><span class="pvz-txt">TEKSTAS</span></p>
+          </div>
+          <div style="isolation: isolate">
+            <p style="mix-blend-mode: multiply"><span class="pvz-txt">TEKSTAS</span></p>
+          </div>
+        </div>
+      </dd>
+      <dt>Demonstracija, kad <code>isolation:</code> atjungia <code>mix-blend-mode:</code> veikimą ir netiesioginiams DOM medžio protėviams.</dt>
+      <dd>
+       <div class="pvz-bg1">
+      <div style="isolation: isolate">
+        <p style="mix-blend-mode: multiply; position:relative; top: 3em"><span class="pvz-txt">TEKSTAS</span></p>
+      </div>
+    </div>
+    <div class="pvz-bg1">&nbsp;</div>
+      </dd>
+      <dt>Demonstracija, kad pačiam tagui su <code>isolation:</code> jo vaikų <code>mix-blend-mode:</code> jam veikia, bet nebeveikia visiems kitiems:</dt>
+      <dd>
+        <div class="pvz-bg1">
+          <div style="">
+            <p style="mix-blend-mode: multiply">TEKSTAS-1</p>
+          </div>
+          <div style="isolation: isolate; height: 40px; margin-bottom:30px; outline: 1px dotted; background: #8f00ff;">
+            <p style="mix-blend-mode: multiply"><span class="pvz-txt">TEKSTAS-2</span></p>
+          </div>
+          <p>&nbsp;</p>
+        </div>
+      </dd>
+      <dt>- - -</dt>
+      <dd>
+        <p>&nbsp;</p>
+      </dd>
+    </dl>
+    <p>&nbsp;</p>
+    <blockquote>
+      <p>Another spot where isolation seems to be invalidated is when it is used in conjunction with translate on the same element. You might bump into this if you attempt to center an element both vertically and horizontally using absolute positioning and translate together:</p>
+      <pre rel="CSS">.module {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  isolation: isolate;
+}</pre>
+      <p>The use of translate appears to isolate the element on its own without the use isolation.</p>
+    </blockquote>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<h2>Blend Mode'ai tagų background'ams</h2>
+<p><a href="css.properties-group.background.htm#(h)">background-blend-mode:</a></p>
+<p><a href="~bg-gauti-skirtingo-intensyvumo-currentColor-geras-fonas-tekstui.html"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="o-grd o-grd--spcVer o-grd--boxed o-flx o-flx--clsw2 WNNCc">
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<dl>
+  <dt>aaa</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>aaa</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+  <dt>aaa</dt>
+  <dd>
+    <p>&nbsp;</p>
+  </dd>
+</dl>
+<p>&nbsp;</p>
+<p>Demonstracija, kad <code>isolation:</code> atjungia visiems vaikiniams tagams <code>mix-blend-mode:</code> veikimą tagams, kurie DOM medyje tėviniai tago su <code>isolation:</code> atžvilgiu, bet pačiam tagui su <code>isolation:</code> blend'ingas dar veikia:</p>
+<p>&nbsp;</p>
+<p><code>isolation: isolate</code> yra skirtas tagams, kurie yra tarp:</p>
+<ul>
+  <li> žemiau esančio tago, į kurį blend'inama, </li>
+  <li>ir aukščiau esančio su <code>mix-blend-mode: multiply</code>, kuris blendina.</li>
+</ul>
+<p>&nbsp;</p>
+<div class="pvz-bg1">
+  <div style="isolation: isolate; background: #8f00ff; height: 40px; margin-bottom: -40px;"></div>
+      <p style="mix-blend-mode: multiply"><span class="pvz-txt">TEKSTAS</span></p>
+    </div>
+    <p></p>
+    <div class="pvz-bg1" style="position: relative">
+      <div style="isolation: isolate; background: #8f00ff; height: 40px; width: 100%; position: absolute; top: 0;"></div>
+      <p style="mix-blend-mode: multiply"><span class="pvz-txt">TEKSTAS</span></p>
+    </div>
+<p>&nbsp;</p>
+    <p>+++</p>
+    <div class="pvz-bg1" style="position: relative">
+      <div style="isolation: isolate; background: #8f00ff; height: 40px; width: 100%; position: absolute; top: 0;"></div>
+      <div>
+        <p style="mix-blend-mode: multiply"><span class="pvz-txt">TEKSTAS</span></p>
+      </div>
+    </div>
+    <p>+++</p>
+<p>&nbsp;</p>
+      <div class="pvz-bg1" style="position: relative">
+      <div>
+        <p style="mix-blend-mode: multiply">
+          <span class="pvz-txt">TEKSTAS </span>
+          <span class="pvz-txt" style="isolation: isolate">TEKSTAS</span>
+        </p>
+      </div>
+    </div>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

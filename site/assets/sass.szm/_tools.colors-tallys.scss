@@ -1,0 +1,165 @@
+@charset "utf-8";
+// $environment: dev;
+
+// Practical Color Theory for People Who Code
+// http://tallys.github.io/color-theory/
+// natalya shelburne
+
+// hsl($hue, $saturation, $lightness)
+
+// Pick any color by selecting its hue (0-360) on the color wheel at full saturation (100%) and
+// at half lightness (50%) - this way you start with the 'most colorful color' you can get.
+// Pick a starting color to mix with and select a hue between 0-360 (check the color wheel!)
+$first-color-hue: 215;
+$first-color: hsl($first-color-hue, 100%, 50%);
+
+//==========================================================================================
+// Generate Complementary Color
+//==========================================================================================
+
+// Find the hue 180 degrees away on the color wheel
+$second-color: complement($first-color);
+
+//==========================================================================================
+// Color Relationship Established by Mixing: harmonious-mix( );
+//==========================================================================================
+
+// Check if the color is a cool color
+@function is-cool-color($color) {
+  @return hue($color) < 300 and hue($color) > 120;
+}
+
+// Check if the color is high value or low value
+@function is-high-key-value($color) {
+  @return hue($color) > 30 and hue($color) < 140;
+}
+
+//Establish a relationship (similar lighting conditions) between colors.
+@function harmonious-mix($mix, $base) {
+  @if (is-cool-color($mix)){
+    @if is-high-key-value($base) {
+      @return mix($mix, $base, 11%);
+    }
+    @else {
+      @return mix($mix, $base, 16%);
+    }
+  }
+  @else {
+    @if is-high-key-value($base) {
+      @return mix($mix, $base, 13%);
+    }
+    @else {
+      @return mix($mix, $base, 23%);
+    }
+  }
+}
+
+//==========================================================================================
+// Create Neutrals: mix-neutral( ); lighten( ); darken( );
+//==========================================================================================
+
+@function mix-neutral($color) {
+  @if (is-highest-key-value($color)) {
+    @if is-high-key-value(complement($color)) {
+      @return mix(complement($color), $color, 19%);
+    }
+    @else {
+      @return mix(complement($color), $color, 13%);
+    }
+  }
+  @else if (is-high-key-value($color)) {
+    @if is-high-key-value(complement($color)) {
+      @return mix(complement($color), $color, 31%);
+    }
+    @else {
+      @return mix(complement($color), $color, 23%);
+    }
+  }
+  @else {
+    @if is-highest-key-value(complement($color)) {
+      @return mix(complement($color), $color, 31%);
+    }
+    @if is-high-key-value(complement($color)) {
+      @return mix(complement($color), $color, 26%);
+    }
+    @else {
+      @return mix(complement($color), $color, 23%);
+    }
+  }
+}
+
+@function desaturate-neutral($color) {
+  @if (is-highest-key-value($color)) {
+    @if is-high-key-value(complement($color)) {
+      @return desaturate($color, 19%);
+    }
+    @else {
+      @return desaturate($color, 13%);
+    }
+  }
+  @else if (is-high-key-value($color)) {
+    @if is-high-key-value(complement($color)) {
+      @return desaturate($color, 31%);
+    }
+    @else {
+      @return desaturate($color, 23%);
+    }
+  }
+  @else {
+    @if is-highest-key-value(complement($color)) {
+      @return desaturate($color, 31%);
+    }
+    @if is-high-key-value(complement($color)) {
+      @return desaturate($color, 26%);
+    }
+    @else {
+      @return desaturate($color, 23%);
+    }
+  }
+}
+
+//==========================================================================================
+// Contrast (between lightness and darkness) is key
+//==========================================================================================
+
+@function pick-contrast($color) {
+  @if is-high-key-value($color){
+    @if lightness($color) < 30% {
+      @return lighten(complement($color), 86);
+    }
+    @else if lightness($color) > 70% {
+      @return darken(complement($color), 68);
+    }
+    @else {
+      @return darken(complement($color), 53);
+    }
+} @else {
+  @if lightness($color) < 30% {
+      @return lighten(complement($color), 86);
+    }
+    @else if lightness($color) > 70% {
+      @return darken(complement($color), 68);
+    }
+    @else {
+      @return lighten(complement($color), 53);
+    }
+  }
+}
+
+//==========================================================================================
+//
+//==========================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+

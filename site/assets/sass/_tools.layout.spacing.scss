@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+// design-measure
+
+//////////////////////////////////////////////////////////////////
+//
+//  # $g-spacing
+//
+/////////////////////////////////////////////////////////////
+
+$spacing-sizes-step: 2px;
+
+$szm-spacing-sizes-px: (
+  "none":   0,
+  "tiny":   $spacing-sizes-step * 2,
+  "small":  $spacing-sizes-step * 5,
+  "medium": $spacing-sizes-step * 8,
+  "large":  $spacing-sizes-step * 11,
+  "huge":   $spacing-sizes-step * 14,
+);
+
+//////////////////////////////////////////////////////////////////
+//
+//  # $g-spacingEM
+//
+/////////////////////////////////////////////////////////////
+
+$spacing-sizes-start: 0.2em;
+$spacing-sizes-step:  0.2em;
+
+$szm-spacing-sizes-em: (
+  "none":     0,
+
+  "tiny-":   $spacing-sizes-start,
+  "tiny":    $spacing-sizes-start + ($spacing-sizes-step * 1),
+  "tiny+":   $spacing-sizes-start + ($spacing-sizes-step * 2),
+
+  "small-":  $spacing-sizes-start + ($spacing-sizes-step * 3),
+  "small":   $spacing-sizes-start + ($spacing-sizes-step * 4),
+  "small+":  $spacing-sizes-start + ($spacing-sizes-step * 5),
+
+  "medium-": $spacing-sizes-start + ($spacing-sizes-step * 6),
+  "medium":  $spacing-sizes-start + ($spacing-sizes-step * 7),
+  "medium+": $spacing-sizes-start + ($spacing-sizes-step * 8),
+
+  "large-":  $spacing-sizes-start + ($spacing-sizes-step * 9),
+  "large":   $spacing-sizes-start + ($spacing-sizes-step * 10),
+  "large+":  $spacing-sizes-start + ($spacing-sizes-step * 11),
+
+  "huge-":   $spacing-sizes-start + ($spacing-sizes-step * 12),
+  "huge":    $spacing-sizes-start + ($spacing-sizes-step * 13),
+  "huge+":   $spacing-sizes-start + ($spacing-sizes-step * 14),
+);
+
+
+//////////////////////////////////////////////////////////////////
+//
+//  # @mixin u-margin u-padding
+//
+/////////////////////////////////////////////////////////////
+
+//$szm-spacing-vertical-paragraph: szm-spacing-size("small", em);
+$szm-spacing-vertical-paragraph: szm-spacing-size("medium-", em);
+
+//////////////////////////////////////////////////////////////////
+//
+//  # @mixin u-margin u-padding
+//
+/////////////////////////////////////////////////////////////
+
+// @USAGE:
+// div {
+//  @include u-margin(none);
+//  @include u-padding(small);
+// }
+// div {
+//   @include u-margin(huge, horizontal);
+//   @include u-padding(medium, horizontal);
+// }
+
+@mixin u-margin($sizeName, $side: "", $important: "!") {
+  @include szm-spacing-size-boxSides("margin", $sizeName, $side, $important);
+}
+
+@mixin u-padding($sizeName, $side: "", $important: "!") {
+  @include szm-spacing-size-boxSides("padding", $sizeName, $side, $important);
+}
+
+// @TEST: 20190525195638
+//
+//.all {
+//  @include u-margin(none);
+//  @include u-margin(tiny);
+//  @include u-margin(small);
+//  @include u-margin(medium);
+//  @include u-margin(large);
+//  @include u-margin(huge);
+//
+//  @include u-padding(none);
+//  @include u-padding(tiny);
+//  @include u-padding(small);
+//  @include u-padding(medium);
+//  @include u-padding(large);
+//  @include u-padding(huge);
+//}
+//
+//.top {
+//  @include u-margin(none,   top);
+//  @include u-margin(tiny,   top);
+//  @include u-margin(small,  top);
+//  @include u-margin(medium, top);
+//  @include u-margin(large,  top);
+//  @include u-margin(huge,   top);
+//
+//  @include u-padding(none,   top);
+//  @include u-padding(tiny,   top);
+//  @include u-padding(small,  top);
+//  @include u-padding(medium, top);
+//  @include u-padding(large,  top);
+//  @include u-padding(huge,   top);
+//}
+//
+//.horizontal {
+//  @include u-margin(none,   horizontal);
+//  @include u-margin(tiny,   horizontal);
+//  @include u-margin(small,  horizontal);
+//  @include u-margin(medium, horizontal);
+//  @include u-margin(large,  horizontal);
+//  @include u-margin(huge,   horizontal);
+//
+//  @include u-padding(none,   horizontal);
+//  @include u-padding(tiny,   horizontal);
+//  @include u-padding(small,  horizontal);
+//  @include u-padding(medium, horizontal);
+//  @include u-padding(large,  horizontal);
+//  @include u-padding(huge,   horizontal);
+//}
+
+
+// .u-<property-word>-<size-word>, .<property-letter><size-number> {...}
+// <property-word>     margin margin-top margin-right margin-bottom margin-left margin-horizontal margin-vertical
+// <property-letter>   M      MT         MR           MB            ML          MH                MV
+// <size-word>         none tiny small medium large huge
+// <size-number>       0    1    2     3      4     5
+
+// .u-padding-none, .u-padding-none-d *, .u-padding-none-c > *,
+// .P0,             .P0d *,              .P0c > * {...}
+// .u-padding-top-none, .u-padding-top-none-d *, .u-padding-top-none-c > *,
+// .PT0,                .PT0d *,                 .PT0c > * {...}
+
+// @each $property in padding, margin {
+//   $propertyShort: to_upper_case(str_slice($property, 1, 1));
+//   @each $sideName, $sideRules in $g-box-sides {
+//     $sizeShort: 0;
+//     $sideNameShort: to_upper_case(str_slice($sideName, 2, 2));
+//     @each $sizeName, $size in $g-spacing-sizes {
+//       $selector: "u-" + $property + $sideName + "-" + $sizeName;
+//       $selectorShort: $propertyShort + $sideNameShort + $sizeShort;
+//       .#{$selector}, .#{$selector}-d *, .#{$selector}-c > *,
+//       .#{$selectorShort}, .#{$selectorShort}d *, .#{$selectorShort}c > * {
+//         @each $side in $sideRules {
+//           #{$property}#{$side}: $size !important;
+//         }
+//       }
+//       $sizeShort: $sizeShort + 1;
+//     }
+//   }
+// }
+
+
+
+

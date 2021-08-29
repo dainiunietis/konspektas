@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Dizaino pavyzdžiai &#8211; tables</h1>
+<h2>TABLE tagas be class'ų</h2>
+<h3>Bazinis table'as</h3>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table>
+  <caption>
+    Adresai ir kontaktai
+  </caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h3>Su TBODY ir daugiau</h3>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table summary="Daug gero ir įdomaus.">
+  <caption>
+    Adresai ir kontaktai
+  </caption>
+  <tbody>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">Phone</th>
+      <th scope="col">E-mail</th>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>
+        <p>Easy Workers SA</p>
+        <p>Easy Workers SA</p>
+      </td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+  </tbody>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<h4>Su paragrafais</h4>
+<table width="80%" summary="Daug gero ir įdomaus.">
+  <caption>
+    Adresai ir kontaktai
+  </caption>
+  <tbody>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col" style="wwidth: 100px">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">Phone</th>
+      <th scope="col">E-mail</th>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>
+        <p>Under the "fixed" layout method, the entire table can be rendered once the first table row has been downloaded and analyzed. </p>
+        <p> Cells use the overflow property to determine whether to clip any overflowing content, but only if the table has a known width; otherwise, they won't overflow the cells.</p>
+      </td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>
+        <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided. </p>
+        <p>Under the "fixed" layout method, the entire table can be rendered once the first table row has been downloaded and analyzed.      </p>
+      </td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>
+        <p>Easy Workers SA</p>
+        <p>Easy Workers SA</p>
+      </td>
+      <td wwidth="300" style="wwidth: 300px">
+        <p>Under the "fixed" layout method, the entire table can be rendered once the first table row has been downloaded and analyzed. </p>
+        <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided. Cells use the overflow property to determine whether to clip any overflowing content, but only if the table has a known width; otherwise, they won't overflow the cells.</p>
+      </td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+  </tbody>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<h2><code>.c-table-clean</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-clean">
+  <caption>Adresai ir kontaktai</caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>
+      <p>Easy Workers SA</p>
+      <p>Easy Workers SA</p>
+</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h2><code>.c-table-linesVer-inside</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<table class="c-table-linesVer-inside">
+  <caption>Adresai ir kontaktai</caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. </p>
+<h2><code>.c-table-linesVer</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-linesVer">
+  <caption>Adresai ir kontaktai</caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h2><code>.c-table-linesHor</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-linesHor">
+  <caption>
+    Adresai ir kontaktai
+  </caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h2><code>.c-table-3dHorBg-Inset</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-3dHorBg-Inset">
+  <caption>
+    Adresai ir kontaktai
+  </caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h2><code>.c-table-3dGrid-insetRidge</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-3dGrid-insetRidge">
+  <caption>
+    Adresai ir kontaktai
+  </caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h2><code>.c-table-linesGrid</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-linesGrid">
+	<tr>
+		<th>Title</th>
+		<th>Address</th>
+		<th>City</th>
+		<th>Phone</th>
+		<th>E-mail</th>
+	</tr>
+	<tr>
+		<td>Easy Workers SA</td>
+		<td>Rose str.</td>
+		<td>Posto</td>
+		<td>22 55587855</td>
+		<td>info@trud.mu</td>
+	</tr>
+	<tr>
+		<td>Lavaša UAB</td>
+		<td>Rožių str.</td>
+		<td>Vilnensky</td>
+		<td>22 55877755</td>
+		<td>info@kebanis.lt</td>
+	</tr>
+	<tr>
+		<td>Easy Workers SA</td>
+		<td>Rose str.</td>
+		<td>Posto</td>
+		<td>22 55587855</td>
+		<td>info@trud.mu</td>
+	</tr>
+	<tr>
+		<td>Lavaša UAB</td>
+		<td>Rožių str.</td>
+		<td>Vilniensky</td>
+		<td>22 55877755</td>
+		<td>info@kebanis.lt</td>
+	</tr>
+	<tr>
+		<td>Easy Workers SA</td>
+		<td>Rose str.</td>
+		<td>Posto</td>
+		<td>22 55587855</td>
+		<td>info@trud.mu</td>
+	</tr>
+	<tr>
+		<td>Lavaša UAB</td>
+		<td>Rožių str.</td>
+		<td>Vilniensky</td>
+		<td>22 55877755</td>
+		<td>info@kebanis.lt</td>
+	</tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h3><code>.c-table-linesGrid--sticky</code></h3>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-linesGrid c-table-linesGrid--sticky">
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h3><code>.c-table-linesGrid--sticky-1row</code></h3>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<div class="o-mcl -o-mcl--W2 o-mcl--N2">
+  <table class="c-table-linesGrid c-table-linesGrid--sticky-1row">
+    <caption>
+    <code>.c-table-linesGrid--sticky-1row</code>
+    </caption>
+    <tr>
+      <th>Title</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+  </table>
+  <table class="c-table-linesGrid c-table-linesGrid--sticky">
+    <caption>
+      <code>.c-table-linesGrid--sticky</code>
+    </caption>
+    <tr>
+      <th>Title</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilnensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Easy Workers SA</td>
+      <td>Rose str.</td>
+      <td>Posto</td>
+      <td>22 55587855</td>
+      <td>info@trud.mu</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+    <tr>
+      <td>Lavaša UAB</td>
+      <td>Rožių str.</td>
+      <td>Vilniensky</td>
+      <td>22 55877755</td>
+      <td>info@kebanis.lt</td>
+    </tr>
+  </table>
+</div>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h3><code>c-table-linesGrid--sameInsideCollapse</code> — kad vidinės lentos &quot;įsilietų&quot;</h3>
+<p>Be &quot;įsiliejimo&quot;:</p>
+<table width="1657" class="c-table-linesGrid -u-table-equelCols">
+  <tr>
+    <th width="14%">&nbsp;</th>
+    <th width="40%"><i>Grid container</i>'io deklaracijos</th>
+    <th width="46%"><i>Grid item</i>'o deklaracijos</th>
+  </tr>
+  <tr>
+    <th><i>gutters</i>, <i>alleys</i> </th>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>row-gap: RG</code></td>
+          <td width="30%" rowspan="2" style="vertical-align: middle"><code>gap: RG CG</code></td>
+        </tr>
+        <tr>
+          <td><code>column-gap: CG</code></td>
+        </tr>
+      </table>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>
+      <p><i>grid items</i> positioning against <i>grid lines</i></p>
+      <p>the grid-placement properties</p>
+    </th>
+    <td>&nbsp;</td>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>grid-row-start: RS<br>
+            grid-row-end: RE</code></td>
+          <td width="30%" style="vertical-align: middle"><code>grid-row: RS / RE</code></td>
+          <td width="39%" rowspan="2" style="vertical-align: middle">
+            <p><code>grid-area: RS / CS / RE / CE</code></p>
+            <p><code>grid-area: RS / CS</code></p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>grid-column-start: CS<br>
+            grid-column-end: CE</code></td>
+          <td style="vertical-align: middle"><code>grid-column: CS / CE</code></td>
+        </tr>
+      </table>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code> grid-row-end: RE</code></td>
+          <td width="30%" style="vertical-align: middle"><code>grid-row: auto / RE</code></td>
+          <td width="39%" rowspan="2" style="vertical-align: middle">
+            <p><code>grid-area: auto / auto / RE / CE</code></p>
+          </td>
+        </tr>
+        <tr>
+          <td><code> grid-column-end: CE</code></td>
+          <td style="vertical-align: middle"><code>grid-column: auto / CE</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>grid-template-rows: TR</code></td>
+          <td width="30%" rowspan="3" style="vertical-align: middle"><code>grid-template: TC</code></td>
+        </tr>
+        <tr>
+          <td><code>grid-template-columns: TC</code></td>
+        </tr>
+        <tr>
+          <td><code>grid-template-areas: TA</code></td>
+        </tr>
+      </table>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Su &quot;įsiliejimu&quot;:</p>
+<table width="1657" class="c-table-linesGrid c-table-linesGrid--sameInsideCollapse -u-table-equelCols">
+  <tr>
+    <th width="14%">&nbsp;</th>
+    <th width="40%"><i>Grid container</i>'io deklaracijos</th>
+    <th width="46%"><i>Grid item</i>'o deklaracijos</th>
+  </tr>
+  <tr>
+    <th><i>gutters</i>, <i>alleys</i> </th>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>row-gap: RG</code></td>
+          <td width="30%" rowspan="2" style="vertical-align: middle"><code>gap: RG CG</code></td>
+        </tr>
+        <tr>
+          <td><code>column-gap: CG</code></td>
+        </tr>
+      </table>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>
+      <p><i>grid items</i> positioning against <i>grid lines</i></p>
+      <p>the grid-placement properties</p>
+    </th>
+    <td>&nbsp;</td>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>grid-row-start: RS<br>
+            grid-row-end: RE</code></td>
+          <td width="30%" style="vertical-align: middle"><code>grid-row: RS / RE</code></td>
+          <td width="39%" rowspan="2" style="vertical-align: middle">
+            <p><code>grid-area: RS / CS / RE / CE</code></p>
+            <p><code>grid-area: RS / CS</code></p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>grid-column-start: CS<br>
+            grid-column-end: CE</code></td>
+          <td style="vertical-align: middle"><code>grid-column: CS / CE</code></td>
+        </tr>
+      </table>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code> grid-row-end: RE</code></td>
+          <td width="30%" style="vertical-align: middle"><code>grid-row: auto / RE</code></td>
+          <td width="39%" rowspan="2" style="vertical-align: middle">
+            <p><code>grid-area: auto / auto / RE / CE</code></p>
+          </td>
+        </tr>
+        <tr>
+          <td><code> grid-column-end: CE</code></td>
+          <td style="vertical-align: middle"><code>grid-column: auto / CE</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <td>
+      <table width="100%" class="c-table-linesGrid -u-table-equelCols">
+        <tr>
+          <td width="31%"><code>grid-template-rows: TR</code></td>
+          <td width="30%" rowspan="3" style="vertical-align: middle"><code>grid-template: TC</code></td>
+        </tr>
+        <tr>
+          <td><code>grid-template-columns: TC</code></td>
+        </tr>
+        <tr>
+          <td><code>grid-template-areas: TA</code></td>
+        </tr>
+      </table>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2><code>.c-table-folders</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-folders" width="745">
+  <tr>
+    <td width="170">
+      <pre>/kazkas</pre>
+    </td>
+    <td width="563">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>   failas.htm</pre>
+    </td>
+    <td>
+      <p>ensures an optimal layout in print</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>   /kitas
+      /ten
+      /šen</pre>
+    </td>
+    <td>
+      <p>are responsible for the correct display in all browsers</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>   /penktas</pre>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>      /pirmyn</pre>
+    </td>
+    <td>
+      <p>ensures an optimal layout in print</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre>      /atgal</pre>
+    </td>
+    <td>
+      <p>are responsible for the correct display in all browsers</p>
+    </td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h2><code>.c-table-code</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-code" width="768">
+  <tr>
+    <td width="36%">
+      <pre><code>.c-table-clean {</code></pre>
+    </td>
+    <td width="64%">
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>  border-collapse: collapse;</code></pre>
+    </td>
+    <td>
+      <p>You can always go back to previous behavior by updating Ctrl+UpArrow, Ctrl+DownArrow and Ctrl+UpArrow keybindings.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>  margin: 0.9rem 0 1.1rem;</code></pre>
+    </td>
+    <td>
+      <p>Note: We also removed all existing 18 History Navigation Commands and unified them into two commands history.showPrevious and history.showNext.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre><code>}</code></pre>
+    </td>
+    <td>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<h2><code>.table--stickyHead</code></h2>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. A collection of properties that represent the presence of different browser features or bugs.</p>
+<table class="c-table-3dHorBg-Inset table--stickyHead">
+  <caption>Adresai ir kontaktai</caption>
+  <tr>
+    <th>Title</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>E-mail</th>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilnensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+  <tr>
+    <td>Easy Workers SA</td>
+    <td>Rose str.</td>
+    <td>Posto</td>
+    <td>22 55587855</td>
+    <td>info@trud.mu</td>
+  </tr>
+  <tr>
+    <td>Lavaša UAB</td>
+    <td>Rožių str.</td>
+    <td>Vilniensky</td>
+    <td>22 55877755</td>
+    <td>info@kebanis.lt</td>
+  </tr>
+</table>
+<p>A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</p>
+<div style="padding: 10px; border: 2px dashed hsla(205,83%,63%,1.00)">
+  <p style="position: sticky; top: 5px; background: hsla(267,77%,68%,1.00)">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>
+  <p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.  </p>
+  <p>Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc.</p>
+  <p>Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla.Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. </p>
+  <p>Consectetuer adipiscing elit donec sed pede etiam ante purus. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem.  </p>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Vestibulum dignissim, leo vel aliquam dignissim, nibh ligula cursus tortor, in vulputate neque lorem eu sem. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Donec sed pede. Etiam ante purus, consectetuer id, bibendum fermentum, accumsan sed, nunc. Morbi nibh nulla, tempus ac, varius sed, porta sit amet, nulla. Proin laoreet. Consectetuer adipiscing elit donec sed pede etiam ante purus.</p>
+</div>
+<p style="height: 100vh">&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

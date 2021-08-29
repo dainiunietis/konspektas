@@ -1,0 +1,25 @@
+{
+  "name": "konspektas-assets",
+  "description": "",
+  "main": "",
+  "authors": [
+    "zm"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "isotope": "^3.0.1",
+    "inuitcss": "^6.0.0-beta.4",
+    "requirejs": "^2.3.5",
+    "require-css": "^0.1.10",
+    "prism": "Prism#^1.6.0",
+    "highlight-js": "^9.12.0"
+  }
+}

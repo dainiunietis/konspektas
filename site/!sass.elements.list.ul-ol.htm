@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="lt"><!-- #BeginTemplate "/Templates/konspekto.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>-</title>
+<!-- #EndEditable -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+<meta name="author" content="Žydrūnas Martinkus">
+<meta name="description" content="Mano web-dev konspektas">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+  
+<link rel="preload" as="style" href="assets/sass/master.css">
+<!--<link rel="stylesheet" href="../assets/node_modules/normalize.css/normalize.css">-->
+<link rel="stylesheet " href="assets/sass/master.css"> <!-- taip — rel="stylesheet " — DW nepakrauna-nepritaiko CSS failo, o naršyklės pritaiko -->
+<link rel="stylesheet" href="assets/sass/master.utilities.css">
+<link rel="stylesheet" href="assets/sass/master.dev.css">
+  
+<link rel="stylesheet" href="assets/sass/master-dreamweaver.css">
+<link rel="stylesheet" href="assets/sass/dreamweaver-design-time.css">
+<script>
+// kad naršyklėje neveiktų CSS failai skirti darbui dreamweaver'yje
+document.querySelectorAll("link[href$='dreamweaver-design-time.css'], link[href$='master-dreamweaver.css']").forEach(function(elem) {
+  // document.querySelectorAll("link[href$='dreamweaver-design-time.css']").forEach(function(elem) {
+  // elem.setAttribute("disabled", true); // neveikia ant Firefox'o
+  elem.parentNode.removeChild(elem);
+});
+</script>
+  
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script data-main="assets/js/master.requirejs" src="../assets/js.vendor/requirejs/require.js"></script>-->
+<script type="module" src="assets/js/master.js"></script>
+<!-- #BeginEditable "head" -->
+<!-- #EndEditable -->
+</head>
+<body>
+<div class="c-sidePanel c-sidePanel--left">
+  <nav class="c-navTree">
+    <ul>
+      <li><a href="index_.html">pradžia </a></li>
+    </ul>
+  </nav>
+  <!--<hr>-->
+  <nav class="c-sidePanel__toc c-navTree c-navTree--numbered" aria-label="page table of content">
+    <ul id="page-toc"></ul>
+  </nav>
+</div>  
+<!-- #BeginEditable "body" -->
+<h1>Dizaino pavyzdžiai &#8212; sąrašai (lists)</h1>
+<h2>Default'inis &#8212; <code>UL</code></h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3>Be <code>P</code> &#8212; trumpi tekstai</h3>
+      <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul>
+        <li>border</li>
+        <li>border</li>
+        <li>border</li>
+        <ul>
+          <li>border-color</li>
+          <li>border-style</li>
+          <li>border-width</li>
+          <li>border-top</li>
+          <ul>
+            <li>border-top-color</li>
+            <li>border-top-style</li>
+            <li>border-top-width</li>
+            <li>border-right</li>
+            <ul>
+              <li>border-right-color</li>
+              <li>border-right-style</li>
+              <li>border-right-width</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>border-bottom</li>
+        <li>border-bottom</li>
+        <li>border-bottom</li>
+        <ul>
+          <li>border-bottom-color</li>
+          <li>border-bottom-style</li>
+          <li>border-bottom-width</li>
+        </ul>
+        <li>border-left</li>
+        <ul>
+          <li>border-left-color</li>
+          <li>border-left-style</li>
+          <li>border-left-width</li>
+        </ul>
+      </ul>
+      <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%"><h3>Be <code>P</code> &#8212; ilgi tekstai</h3>
+      <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul>
+        <li>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</li>
+        <li>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</li>
+        <li>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</li>
+        <li>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code.</li>
+        <li>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</li>
+      </ul>
+    <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+    <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%"><h3>Su <code>P</code> &#8212; ilgi tekstai</h3>
+      <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul>
+        <li>
+          <p>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</p>
+        </li>
+        <li>
+          <p>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</p>
+        </li>
+        <li>
+          <p>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</p>
+        </li>
+        <li>
+          <p>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code.</p>
+        </li>
+        <li>
+          <p>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</p>
+        </li>
+      </ul>
+    <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+    <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%"><h3>Su <code>P</code> &#8212; keli paragrafai viename <code>LI</code></h3>
+      <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul>
+        <li>
+          <p>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. </p>
+          <p>The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</p>
+        </li>
+        <li>
+          <p>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. </p>
+          <p>This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. </p>
+          <p>The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</p>
+        </li>
+        <li>
+          <p>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. </p>
+          <p>The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</p>
+        </li>
+        <li>
+          <p>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. </p>
+          <p>Items within the same container are laid out in ascending order according to their order values. </p>
+          <p>Elements with the same order value are laid out in the order in which they appear in the source code.</p>
+        </li>
+        <li>
+          <p>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). </p>
+          <p>Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</p>
+        </li>
+      </ul>
+      <p>This can speed up rendering time over the "automatic" layout method, but subsequent cell content might not fit in the column widths provided.</p>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+  </tr>
+</table>
+<h2>Default'inis &#8212; <code>OL</code></h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h3>Be <code>P</code> &#8212; trumpi tekstai
+    </h3>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ol>
+        <li>border</li>
+        <li>border</li>
+        <li>border</li>
+        <ol>
+          <li>border-color</li>
+          <li>border-style</li>
+          <li>border-width</li>
+          <li>border-top</li>
+          <ol>
+            <li>border-top-color</li>
+            <li>border-top-style</li>
+            <li>border-top-width</li>
+            <li>border-right</li>
+            <ol>
+              <li>border-right-color</li>
+              <li>border-right-style</li>
+              <li>border-right-width</li>
+            </ol>
+          </ol>
+        </ol>
+        <li>border-bottom</li>
+        <li>border-bottom</li>
+        <li>border-bottom</li>
+        <ol>
+          <li>border-bottom-color</li>
+          <li>border-bottom-style</li>
+          <li>border-bottom-width</li>
+        </ol>
+        <li>border-left</li>
+        <ol>
+          <li>border-left-color</li>
+          <li>border-left-style</li>
+          <li>border-left-width</li>
+        </ol>
+      </ol>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%"><h3>Be <code>P</code> &#8212; ilgi tekstai</h3>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ol>
+        <li>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</li>
+        <li>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</li>
+        <li>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</li>
+        <li>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code.</li>
+        <li>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</li>
+      </ol>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%"><h3>Su <code>P</code> &#8212; ilgi tekstai</h3>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ol>
+        <li>
+          <p>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</p>
+        </li>
+        <li>
+          <p>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</p>
+        </li>
+        <li>
+          <p>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</p>
+        </li>
+        <li>
+          <p>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code.</p>
+        </li>
+        <li>
+          <p>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</p>
+        </li>
+      </ol>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%"><h3>Su <code>P</code> &#8212; keli paragrafai viename <code>LI</code></h3>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ol>
+        <li>
+          <p>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. </p>
+          <p>The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</p>
+        </li>
+        <li>
+          <p>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. </p>
+          <p>This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. </p>
+          <p>The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</p>
+        </li>
+        <li>
+          <p>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. </p>
+          <p>The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</p>
+        </li>
+        <li>
+          <p>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. </p>
+          <p>Items within the same container are laid out in ascending order according to their order values. </p>
+          <p>Elements with the same order value are laid out in the order in which they appear in the source code.</p>
+        </li>
+        <li>
+          <p>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). </p>
+          <p>Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</p>
+        </li>
+      </ol>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+  </tr>
+</table>
+<h2><code>UL.ulol--compact</code></h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%"><h4>Trumpi tekstai</h4>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul class="ulol--compact">
+        <li>border</li>
+        <ul>
+          <li>border-color</li>
+          <li>border-style</li>
+          <li>border-width</li>
+          <li>border-top</li>
+          <ul>
+            <li>border-top-color</li>
+            <li>border-top-style</li>
+            <li>border-top-width</li>
+            <li>border-right</li>
+            <ul>
+              <li>border-right-color</li>
+              <li>border-right-style</li>
+              <li>border-right-width</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>border-bottom</li>
+        <ul>
+          <li>border-bottom-color</li>
+          <li>border-bottom-style</li>
+          <li>border-bottom-width</li>
+        </ul>
+        <li>border-left</li>
+        <ul>
+          <li>border-left-color</li>
+          <li>border-left-style</li>
+          <li>border-left-width</li>
+        </ul>
+    </ul>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <h4>Trumpi tekstai, didesnis šriftas</h4>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul class="ulol--compact FS1.3rem">
+        <li>border</li>
+        <ul>
+          <li>border-color</li>
+          <li>border-style</li>
+          <li>border-width</li>
+          <li>border-top</li>
+          <ul>
+            <li>border-top-color</li>
+            <li>border-top-style</li>
+            <li>border-top-width</li>
+            <li>border-right</li>
+            <ul>
+              <li>border-right-color</li>
+              <li>border-right-style</li>
+              <li>border-right-width</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>border-bottom</li>
+        <ul>
+          <li>border-bottom-color</li>
+          <li>border-bottom-style</li>
+          <li>border-bottom-width</li>
+        </ul>
+        <li>border-left</li>
+        <ul>
+          <li>border-left-color</li>
+          <li>border-left-style</li>
+          <li>border-left-width</li>
+        </ul>
+      </ul>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%">
+      <h4>Ilgi tekstai</h4>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul class="ulol--compact">
+        <li>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</li>
+        <li>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</li>
+        <li>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</li>
+        <li>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code.</li>
+        <li>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</li>
+      </ul>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%">
+      <h4>Su <code>P</code> — Ilgi tekstai</h4>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul class="ulol--compact">
+        <li>
+          <p>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</p>
+        </li>
+        <li>
+          <p>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</p>
+        </li>
+        <li>
+          <p>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</p>
+        </li>
+        <li>
+          <p>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code.</p>
+        </li>
+        <li>
+          <p>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</p>
+        </li>
+      </ul>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+    <td width="25%">
+      <h4>Su <code>P</code> — Keli paragrafai viename <code>LI</code></h4>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+      <ul class="ulol--compact">
+        <li>
+          <p>This transformation is a shear mapping (<a href="https://en.wikipedia.org/wiki/Shear_mapping" rel="noopener">transvection</a>) that distorts each point within an element by a certain angle in the horizontal and vertical directions. </p>
+          <p>The coordinates of each point are modified by a value proportionate to the specified angle and the distance to the origin; thus, the farther from the origin a point is, the greater will be the value added it.</p>
+        </li>
+        <li>
+          <p>Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout. </p>
+          <p>This is done by anchoring one of the units to a physical unit, and then defining the others relative to it. </p>
+          <p>The anchor is done differently for low-resolution devices, such as screens, versus high-resolution devices, such as printers.</p>
+        </li>
+        <li>
+          <p>For low-dpi devices, the unit px represents the physical <em>reference pixel</em>; other units are defined relative to it. Thus, 1in is defined as 96px, which equals 72pt. </p>
+          <p>The consequence of this definition is that on such devices, dimensions described in inches (in), centimeters (cm), or millimeters (mm) doesn't necessary match the size of the physical unit with the same name.</p>
+        </li>
+        <li>
+          <p>The <strong>order</strong> <a href="../CSS.html">CSS</a> property specifies the order used to lay out a flex or grid item in its flex or grid container. </p>
+          <p>Items within the same container are laid out in ascending order according to their order values. </p>
+          <p>Elements with the same order value are laid out in the order in which they appear in the source code.</p>
+        </li>
+        <li>
+          <p>The <strong>revert</strong> CSS keyword <em>rolls back the cascade</em> so that a property takes on the value it would have had if there were no styles in the current style origin (author, user, or user-agent). </p>
+          <p>Thus, it resets the property to the default value established by the user-agent stylesheet (or by user styles, if any exist). It can be applied to any CSS property, including the CSS shorthand <a href="all.html" title="The all CSS shorthand property sets all of an element's properties (other than unicode-bidi and direction) to their initial or inherited values, or to the values specified in another stylesheet origin.">all</a>.</p>
+        </li>
+      </ul>
+      <p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data.</p>
+    </td>
+  </tr>
+</table>
+<h2><code>OL.ulol--compact</code></h2>
+<p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data. In this case, before starting a debugging session, always make sure that Chrome is not already running with your user data.</p>
+<ol class="ulol--compact">
+  <li>border</li>
+  <ol>
+    <li>border-color</li>
+    <li>border-style</li>
+    <li>border-width</li>
+    <li>border-top</li>
+    <ol>
+      <li>border-top-color</li>
+      <li>border-top-style</li>
+      <li>border-top-width</li>
+      <li>border-right</li>
+      <ol>
+        <li>border-right-color</li>
+        <li>border-right-style</li>
+        <li>border-right-width</li>
+      </ol>
+    </ol>
+  </ol>
+  <li>border-bottom</li>
+  <ol>
+    <li>border-bottom-color</li>
+    <li>border-bottom-style</li>
+    <li>border-bottom-width</li>
+  </ol>
+  <li>border-left</li>
+  <ol>
+    <li>border-left-color</li>
+    <li>border-left-style</li>
+    <li>border-left-width</li>
+  </ol>
+</ol>
+<p>To open a new Chrome instance with your familiar look-and-feel, configure Chrome in WebStorm to start with your user data. In this case, before starting a debugging session, always make sure that Chrome is not already running with your user data.</p>
+<h2><code>.ulol--lines</code></h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><code>.ulol--lines</code> — Be <code>P</code></h3>
+      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+      <ul class="ulol--lines">
+        <li> That's right, the pattern you may be noticing is that you can use what you've already got to mix up more colors and keep building those color relationships. These colors can be achieved just by adjusting lightness and darkness. Up to you! A lighter and darker version of your primary color is useful for things like hover states.      </li>
+      <li> I picked my starting color for a reason - I want that to be the heart of my design! That means the complementary color should support the chosen color, and we do that by mixing neutrals. Our eyes don't really handle saturated colors very well next to other saturated colors. Our eyes get confused at the edges - is it this color or the other one? Ahh both! We end up seeing optical illusions. Just give your eyes a break between super strong saturated colors with neutrals so they don't stress out about that much visual information. At the very minimum a rule of thumb is that your viewport should have 33% neutral space (white, desaturated, or black colors) so your poor eyes can have a break and process the information right. Otherwise you get eye strain!      </li>
+      <li> How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.      </li>
+      <li> You totally can! Desaturate does a great job. But, I think not only is it important to understand what "desaturate" means. How would you desaturate a real color in the real world? Remember, you want "ugly" colors for your neutrals! You want to create bland and forgettable colors that recede into the background. These ugly duckling colors are how you get those other call to actions and buttons "pop"!      </li>
+</ul>
+    <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+    <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p></td>
+    <td width="25%"><h3><code>.ulol--lines</code> — Su <code>P</code></h3>
+      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+      <ul class="ulol--lines">
+        <li>
+          <p>That's right, the pattern you may be noticing is that you can use what you've already got to mix up more colors and keep building those color relationships. These colors can be achieved just by adjusting lightness and darkness. Up to you! A lighter and darker version of your primary color is useful for things like hover states.</p>
+        </li>
+        <li>
+          <p>I picked my starting color for a reason - I want that to be the heart of my design! That means the complementary color should support the chosen color, and we do that by mixing neutrals. Our eyes don't really handle saturated colors very well next to other saturated colors. Our eyes get confused at the edges - is it this color or the other one? Ahh both! We end up seeing optical illusions. Just give your eyes a break between super strong saturated colors with neutrals so they don't stress out about that much visual information. At the very minimum a rule of thumb is that your viewport should have 33% neutral space (white, desaturated, or black colors) so your poor eyes can have a break and process the information right. Otherwise you get eye strain!</p>
+        </li>
+        <li>
+          <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+        </li>
+        <li>
+          <p>You totally can! Desaturate does a great job. But, I think not only is it important to understand what "desaturate" means. How would you desaturate a real color in the real world? Remember, you want "ugly" colors for your neutrals! You want to create bland and forgettable colors that recede into the background. These ugly duckling colors are how you get those other call to actions and buttons "pop"!</p>
+        </li>
+      </ul>
+      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p></td>
+    <td width="25%">
+      <h3><code>.ulol--lines</code> — Su <code>P</code> ir keliais paragrafais</h3>
+      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+      <ul class="ulol--lines">
+        <li>
+          <p>That's right, the pattern you may be noticing is that you can use what you've already got to mix up more colors and keep building those color relationships. </p>
+          <p>These colors can be achieved just by adjusting lightness and darkness. Up to you! A lighter and darker version of your primary color is useful for things like hover states.</p>
+        </li>
+        <li>
+          <p>I picked my starting color for a reason - I want that to be the heart of my design! That means the complementary color should support the chosen color, and we do that by mixing neutrals. </p>
+          <p>Our eyes don't really handle saturated colors very well next to other saturated colors. Our eyes get confused at the edges - is it this color or the other one? Ahh both! We end up seeing optical illusions. </p>
+          <p>Just give your eyes a break between super strong saturated colors with neutrals so they don't stress out about that much visual information. At the very minimum a rule of thumb is that your viewport should have 33% neutral space (white, desaturated, or black colors) so your poor eyes can have a break and process the information right. Otherwise you get eye strain!</p>
+        </li>
+        <li>
+          <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+          <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+        </li>
+        <li>
+          <p>You totally can! Desaturate does a great job. But, I think not only is it important to understand what "desaturate" means. How would you desaturate a real color in the real world? Remember, you want "ugly" colors for your neutrals! You want to create bland and forgettable colors that recede into the background. </p>
+          <p>These ugly duckling colors are how you get those other call to actions and buttons "pop"!</p>
+        </li>
+      </ul>      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p></td>
+    <td width="25%"><h3><code>.ulol--lines-thick</code></h3>
+      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+      <ul class="ulol--lines-thick">
+        <li>
+          <p>That's right, the pattern you may be noticing is that you can use what you've already got to mix up more colors and keep building those color relationships. </p>
+          <p>These colors can be achieved just by adjusting lightness and darkness. Up to you! A lighter and darker version of your primary color is useful for things like hover states.</p>
+        </li>
+        <li>
+          <p>I picked my starting color for a reason - I want that to be the heart of my design! That means the complementary color should support the chosen color, and we do that by mixing neutrals. </p>
+          <p>Our eyes don't really handle saturated colors very well next to other saturated colors. Our eyes get confused at the edges - is it this color or the other one? Ahh both! We end up seeing optical illusions. </p>
+          <p>Just give your eyes a break between super strong saturated colors with neutrals so they don't stress out about that much visual information. At the very minimum a rule of thumb is that your viewport should have 33% neutral space (white, desaturated, or black colors) so your poor eyes can have a break and process the information right. Otherwise you get eye strain!</p>
+        </li>
+        <li>
+          <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+          <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+        </li>
+        <li>
+          <p>You totally can! Desaturate does a great job. But, I think not only is it important to understand what "desaturate" means. How would you desaturate a real color in the real world? Remember, you want "ugly" colors for your neutrals! You want to create bland and forgettable colors that recede into the background. </p>
+          <p>These ugly duckling colors are how you get those other call to actions and buttons "pop"!</p>
+        </li>
+      </ul>      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <h3><code>.ulol--lines-dashed</code></h3>
+      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+      <ul class="ulol--lines-dashed">
+        <li>
+          <p>That's right, the pattern you may be noticing is that you can use what you've already got to mix up more colors and keep building those color relationships. </p>
+          <p>These colors can be achieved just by adjusting lightness and darkness. Up to you! A lighter and darker version of your primary color is useful for things like hover states.</p>
+        </li>
+        <li>
+          <p>I picked my starting color for a reason - I want that to be the heart of my design! That means the complementary color should support the chosen color, and we do that by mixing neutrals. </p>
+          <p>Our eyes don't really handle saturated colors very well next to other saturated colors. Our eyes get confused at the edges - is it this color or the other one? Ahh both! We end up seeing optical illusions. </p>
+          <p>Just give your eyes a break between super strong saturated colors with neutrals so they don't stress out about that much visual information. At the very minimum a rule of thumb is that your viewport should have 33% neutral space (white, desaturated, or black colors) so your poor eyes can have a break and process the information right. Otherwise you get eye strain!</p>
+        </li>
+        <li>
+          <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+          <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+        </li>
+        <li>
+          <p>You totally can! Desaturate does a great job. But, I think not only is it important to understand what "desaturate" means. How would you desaturate a real color in the real world? Remember, you want "ugly" colors for your neutrals! You want to create bland and forgettable colors that recede into the background. </p>
+          <p>These ugly duckling colors are how you get those other call to actions and buttons "pop"!</p>
+        </li>
+      </ul>
+      <p>How do I decide what to do? Thanks to art school and science, I know that cool colors have lower luminosity than warm colors, and will dominate in mixes, with yellow being the lightest color. </p>
+      <p>For example, a touch of blue will really affect yellow, whereas you can add a lot of yellow to blue before it is affected. So, here is this decision making in function form - I am weighing different colors differently when mixing.</p>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2><code>.ulol--flow-*</code></h2>
+<table width="1876" class="c-tableCols c-tableCols--h3h4 u-table-equelCols">
+  <tr>
+    <td width="25%">
+      <h3><code>.ulol--flow-inline</code>      </h3>
+      <ul class="ulol--flow-inline">
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">abbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">address</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">area</a> (if it is a descendant of a <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a> element)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">article</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">aside</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-audio-element">audio</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">bdi</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">bdo</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">blockquote</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">br</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">button</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">canvas</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">cite</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">code</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">data</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">datalist</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">del</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">details</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">dfn</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">dialog</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">dl</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">em</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-embed-element">embed</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element">fieldset</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">figure</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">footer</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">form</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h2</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h3</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h4</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h5</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">header</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">hgroup</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">hr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-iframe-element">iframe</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">img</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">input</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">ins</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">kbd</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">label</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">link</a> (if it is <a id="flow-content:allowed-in-the-body2" href="https://html.spec.whatwg.org/multipage/semantics.html#allowed-in-the-body">allowed in the body</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">main</a> (if it is a <a id="flow-content:hierarchically-correct-main-element2" href="https://html.spec.whatwg.org/multipage/grouping-content.html#hierarchically-correct-main-element">hierarchically correct main element</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">mark</a></li>
+        <li><a id="flow-content:mathml-math2" href="https://www.w3.org/Math/draft-spec/chapter2.html#interf.toplevel" data-x-internal="mathml-math">MathML math</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">menu</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element">meta</a> (if the <a href="https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute">itemprop</a> attribute is present)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">meter</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">nav</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element">noscript</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element">object</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">ol</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">output</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element">picture</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">pre</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">progress</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">q</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">ruby</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">s</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">samp</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">script</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">section</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">select</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">slot</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">small</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">strong</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sub</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sup</a></li>
+        <li><a id="flow-content:svg-svg2" href="https://svgwg.org/svg2-draft/struct.html#SVGElement" data-x-internal="svg-svg">SVG svg</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">table</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">template</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">textarea</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element">time</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">ul</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">var</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-video-element">video</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element">wbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#autonomous-custom-element" id="flow-content:autonomous-custom-element2">autonomous custom elements</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/dom.html#text-content" id="flow-content:text-content2">text</a></li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>.ulol--flow-inlineSep</code></h3>
+      <ul class="ulol--flow-inlineSep">
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">abbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">address</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">area</a> (if it is a descendant of a <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a> element)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">article</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">aside</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-audio-element">audio</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">bdi</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">bdo</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">blockquote</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">br</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">button</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">canvas</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">cite</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">code</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">data</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">datalist</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">del</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">details</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">dfn</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">dialog</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">dl</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">em</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-embed-element">embed</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element">fieldset</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">figure</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">footer</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">form</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h2</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h3</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h4</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h5</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">header</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">hgroup</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">hr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-iframe-element">iframe</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">img</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">input</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">ins</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">kbd</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">label</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">link</a> (if it is <a id="flow-content:allowed-in-the-body" href="https://html.spec.whatwg.org/multipage/semantics.html#allowed-in-the-body">allowed in the body</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">main</a> (if it is a <a id="flow-content:hierarchically-correct-main-element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#hierarchically-correct-main-element">hierarchically correct main element</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">mark</a></li>
+        <li><a id="flow-content:mathml-math" href="https://www.w3.org/Math/draft-spec/chapter2.html#interf.toplevel" data-x-internal="mathml-math">MathML math</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">menu</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element">meta</a> (if the <a href="https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute">itemprop</a> attribute is present)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">meter</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">nav</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element">noscript</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element">object</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">ol</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">output</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element">picture</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">pre</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">progress</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">q</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">ruby</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">s</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">samp</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">script</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">section</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">select</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">slot</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">small</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">strong</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sub</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sup</a></li>
+        <li><a id="flow-content:svg-svg" href="https://svgwg.org/svg2-draft/struct.html#SVGElement" data-x-internal="svg-svg">SVG svg</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">table</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">template</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">textarea</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element">time</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">ul</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">var</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-video-element">video</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element">wbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#autonomous-custom-element" id="flow-content:autonomous-custom-element">autonomous custom elements</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/dom.html#text-content" id="flow-content:text-content">text</a></li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3><code>.ulol--flow-flex</code></h3>
+      <ul class="ulol--flow-flex">
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">abbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">address</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">area</a> (if it is a descendant of a <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a> element)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">article</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">aside</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-audio-element">audio</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">bdi</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">bdo</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">blockquote</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">br</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">button</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">canvas</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">cite</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">code</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">data</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">datalist</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">del</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">details</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">dfn</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">dialog</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">dl</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">em</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-embed-element">embed</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element">fieldset</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">figure</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">footer</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">form</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h2</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h3</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h4</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h5</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">header</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">hgroup</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">hr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-iframe-element">iframe</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">img</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">input</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">ins</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">kbd</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">label</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">link</a> (if it is <a id="flow-content:allowed-in-the-body3" href="https://html.spec.whatwg.org/multipage/semantics.html#allowed-in-the-body">allowed in the body</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">main</a> (if it is a <a id="flow-content:hierarchically-correct-main-element3" href="https://html.spec.whatwg.org/multipage/grouping-content.html#hierarchically-correct-main-element">hierarchically correct main element</a>)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">map</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">mark</a></li>
+        <li><a id="flow-content:mathml-math3" href="https://www.w3.org/Math/draft-spec/chapter2.html#interf.toplevel" data-x-internal="mathml-math">MathML math</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">menu</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element">meta</a> (if the <a href="https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute">itemprop</a> attribute is present)</li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">meter</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">nav</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element">noscript</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element">object</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">ol</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">output</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element">picture</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">pre</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">progress</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">q</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">ruby</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">s</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">samp</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">script</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">section</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">select</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">slot</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">small</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">strong</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sub</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">sup</a></li>
+        <li><a id="flow-content:svg-svg3" href="https://svgwg.org/svg2-draft/struct.html#SVGElement" data-x-internal="svg-svg">SVG svg</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">table</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">template</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">textarea</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element">time</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">ul</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">var</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/media.html#the-video-element">video</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element">wbr</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#autonomous-custom-element" id="flow-content:autonomous-custom-element3">autonomous custom elements</a></li>
+        <li><a href="https://html.spec.whatwg.org/multipage/dom.html#text-content" id="flow-content:text-content3">text</a>      </li>
+      </ul>
+      <p>&nbsp;</p>
+    </td>
+    <td width="25%">
+      <h3>&nbsp;</h3>
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>
