@@ -1,4 +1,4 @@
 
 # čia konfiginis failas "GitHub Pages" naudojamo Jekyll (static site generator)
 
-exclude: [ assets/ ]
+exclude: [ assets/**/*.md ]
