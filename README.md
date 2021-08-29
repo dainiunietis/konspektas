@@ -1,2 +1,3 @@
-# konspektas
-webdev konspektas
+# webdev konspektas
+
+GitHub Pages URL — https://dainiunietis.github.io/konspektas/
