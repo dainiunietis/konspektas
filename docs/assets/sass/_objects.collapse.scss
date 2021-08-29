@@ -85,8 +85,8 @@
   margin: 0 0 .5em;
   border: 1px solid colorScheme-site('2HL2');
   border-radius: 5px;
-  //background-color: scale-color(colorScheme-site('2HL3'), $alpha:-60%);
-  //background-color: colorScheme-site('2HL4');
+  //background-color: scale-color(colorScheme-docs('2HL3'), $alpha:-60%);
+  //background-color: colorScheme-docs('2HL4');
   position: relative;
   box-shadow: inset 0 0 25px 0px colorScheme-site('2HL4');
 
@@ -94,10 +94,10 @@
     //border-color: hsl(41, 33%, 47%);
     //background-color: hsla(41, 33%, 70%, 0.1);
     //border: 1px dashed hsla(41, 33%, 40%, 1);
-    //background-color: colorScheme-site('2HL4');
+    //background-color: colorScheme-docs('2HL4');
 
     //border-style: dashed;
-    //border-color: colorScheme-site('2HD1');
+    //border-color: colorScheme-docs('2HD1');
 
     box-shadow: inset 0 0 40px 0px colorScheme-site('2HL3');
   }

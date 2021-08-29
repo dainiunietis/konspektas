@@ -33,14 +33,14 @@
 //    ////outline: 2px dashed hsla(0, 0%, 0%, 0.3);
 //    ////outline: 2px dashed currentcolor;
 //    ////outline-offset: .2em;
-//    ////$this_clr: colorScheme-site('1H');
-//    ////border: 6px dashed transparentize(colorScheme-site('1H'), 0.5);
-//    //border: 4px dashed scale-color(colorScheme-site('1H'), $saturation:100%, $alpha: -65%);
+//    ////$this_clr: colorScheme-docs('1H');
+//    ////border: 6px dashed transparentize(colorScheme-docs('1H'), 0.5);
+//    //border: 4px dashed scale-color(colorScheme-docs('1H'), $saturation:100%, $alpha: -65%);
 //    ////border: 2px dashed $this_clr;
-//    ////border: 2px dashed colorScheme-site('2H');
-//    ////border: 2px dashed scale-color(colorScheme-site('1H'), $saturation: 0%, $lightness: 0%, $alpha: 50%);
+//    ////border: 2px dashed colorScheme-docs('2H');
+//    ////border: 2px dashed scale-color(colorScheme-docs('1H'), $saturation: 0%, $lightness: 0%, $alpha: 50%);
 //    //
-//    ////color: colorScheme-site('2H');
+//    ////color: colorScheme-docs('2H');
 //    //
 //    //border-radius: 2em;
 //    //padding: 5px 9px;
@@ -67,7 +67,7 @@
 //
 //  //----------------------------------------------------------------------
 //  ////color: currentColor;
-//  //$this-color:   colorScheme-site('2');
+//  //$this-color:   colorScheme-docs('2');
 //  //$whiteTrans:   hsla(0, 0%, 100%, 0.5);
 //  //background: //linear-gradient(0grad, hsla(0,100%,50%,1), hsla(0,100%,50%,1)),
 //  //

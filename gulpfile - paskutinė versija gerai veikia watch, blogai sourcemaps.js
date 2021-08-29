@@ -9,18 +9,18 @@ var browserSync = require('browser-sync').create();
 
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
 
-// var pathSass_scss = 'site/assets/sass/*.scss';
-var pathSass_scss = ['site/assets/sass/*.scss','!site/assets/sass/*--*.scss'];
+// var pathSass_scss = 'docs/assets/sass/*.scss';
+var pathSass_scss = ['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss'];
 
-// var pathSass_scss_watch = [...pathSass_scss, 'site/assets/vendor/lib-frontend/sass/**/*.scss', '!site/assets/vendor/lib-frontend/sass/**/*--*.scss'];
-var pathSass_scss_watch = [...pathSass_scss, '../libs/frontend/site/assets/sass/*.scss', '!../libs/frontend/site/assets/sass/*--*.scss'];
+// var pathSass_scss_watch = [...pathSass_scss, 'docs/assets/vendor/lib-frontend/sass/**/*.scss', '!docs/assets/vendor/lib-frontend/sass/**/*--*.scss'];
+var pathSass_scss_watch = [...pathSass_scss, '../libs/frontend/docs/assets/sass/*.scss', '!../libs/frontend/docs/assets/sass/*--*.scss'];
 
-// pathSass_scss_watch.push('site/assets/vendor/lib-frontend/sass/**/*.scss', '!site/assets/vendor/lib-frontend/sass/**/*--*.scss');
-var pathSass_css = 'site/assets/sass.css';
-// var pathJs = 'site/assets/sass/*.scss';
+// pathSass_scss_watch.push('docs/assets/vendor/lib-frontend/sass/**/*.scss', '!docs/assets/vendor/lib-frontend/sass/**/*--*.scss');
+var pathSass_css = 'docs/assets/sass.css';
+// var pathJs = 'docs/assets/sass/*.scss';
 
-var pathSass_scss_pvz = ['site/assets/sass.pvz/*.scss','!site/assets/sass.pvz/*--*.scss'];
-var pathSass_scss_pvz_css = 'site/assets/sass.pvz.css';
+var pathSass_scss_pvz = ['docs/assets/sass.pvz/*.scss','!docs/assets/sass.pvz/*--*.scss'];
+var pathSass_scss_pvz_css = 'docs/assets/sass.pvz.css';
 
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
 
@@ -40,7 +40,7 @@ gulp.task('sass:watch-all', ['sass:watch', 'sass-mokykla:watch', 'sass-pvz:watch
 gulp.task('serve', ['browserSync','serve-sass','serve-sass-pvz'], function() {
   gulp.watch(pathSass_scss_watch, ['serve-sass']);
   gulp.watch(pathSass_scss_pvz, ['serve-sass-pvz']);
-  gulp.watch(["site/*.html", "site/*.htm"]).on('change', browserSync.reload);
+  gulp.watch(["docs/*.html", "docs/*.htm"]).on('change', browserSync.reload);
 });
 
 gulp.task('serve-sass', function() {
@@ -79,7 +79,7 @@ gulp.task('browserSync', function() {
     // browserSync'as sukuria savo serverį
     //--------------------------------------------
     // server: {
-    //   baseDir: 'site',
+    //   baseDir: 'docs',
     //   directory: true    // Serve files from the app directory with directory listing
     // },
     //--------------------------------------------
@@ -96,7 +96,7 @@ gulp.task('browserSync', function() {
     //--------------------------------------------
   });
   // browserSync.init({
-  //   server: "./site"
+  //   server: "./docs"
   // });
 });
 
@@ -107,7 +107,7 @@ gulp.task('browserSync', function() {
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
 
 gulp.task('sass:watch', function() {
-  // gulp.watch('site/assets/sass/*.scss', ['sass']);
+  // gulp.watch('docs/assets/sass/*.scss', ['sass']);
   gulp.watch(pathSass_scss_watch, ['sass']);
 });
 
@@ -132,18 +132,18 @@ gulp.task('sass', function() {
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
 
 gulp.task('sass-pvz', function() {
-  return gulp.src('site/assets/sass.pvz/*.scss')
+  return gulp.src('docs/assets/sass.pvz/*.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({outputstyle: 'compressed'}).on('error', $.sass.logError))
     .pipe($.sourcemaps.write({includeContent: false}))
     .pipe($.sourcemaps.init({loadMaps: true}))
     .pipe($.autoprefixer())
     .pipe($.sourcemaps.write({ mapSources: function(sourcePath) { return '../sass.pvz/' + sourcePath; } }))
-    .pipe(gulp.dest('site/assets/sass.pvz.css'));
+    .pipe(gulp.dest('docs/assets/sass.pvz.css'));
 });
 
 gulp.task('sass-pvz:watch', function() {
-  gulp.watch('site/assets/sass.pvz/*.scss', ['sass-pvz']);
+  gulp.watch('docs/assets/sass.pvz/*.scss', ['sass-pvz']);
 });
 
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
@@ -151,7 +151,7 @@ gulp.task('sass-pvz:watch', function() {
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
 
 gulp.task('sass-mokykla', function() {
-  return gulp.src('site/assets/sass.mokykla/*.scss')
+  return gulp.src('docs/assets/sass.mokykla/*.scss')
     // .pipe($.sourcemaps.init())
     .pipe($.sass({outputstyle: 'compressed'}).on('error', $.sass.logError))
     // .pipe($.sourcemaps.write({
@@ -160,11 +160,11 @@ gulp.task('sass-mokykla', function() {
     //   }
     //  }))
     .pipe($.autoprefixer())
-    .pipe(gulp.dest('site/assets/sass.mokykla.css'));
+    .pipe(gulp.dest('docs/assets/sass.mokykla.css'));
 });
 
 gulp.task('sass-mokykla:watch', function() {
-  gulp.watch('site/assets/sass.mokykla/*.scss', ['sass-mokykla']);
+  gulp.watch('docs/assets/sass.mokykla/*.scss', ['sass-mokykla']);
 });
 
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪

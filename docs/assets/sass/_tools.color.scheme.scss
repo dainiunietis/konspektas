@@ -6,13 +6,13 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-//$colorScheme-site-base: hsl(215, 100%, 50%);
+//$colorScheme-docs-base: hsl(215, 100%, 50%);
 $colorScheme-site-base: hsl(330, 100%, 50%);
 $colorScheme-site-data: szm-colorScheme-lumenComplementary($colorScheme-site-base);
 
 // @USAGE:
 // .kazkas {
-//   color: scale-color(colorScheme-site('2HL3'), $alpha:-60%);
+//   color: scale-color(colorScheme-docs('2HL3'), $alpha:-60%);
 // }
 
 @function colorScheme-site($key) {

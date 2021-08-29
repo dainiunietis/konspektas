@@ -1,11 +1,11 @@
 'use strict';
 
-const sasszm_src      = ['site/assets/sass.szm/*.scss', '!site/assets/sass.szm/*--*.scss', '!site/assets/sass.szm/*_*.scss'];
+const sasszm_src      = ['docs/assets/sass.szm/*.scss', '!docs/assets/sass.szm/*--*.scss', '!docs/assets/sass.szm/*_*.scss'];
 
-// const sasszm_srcWatch = ['site/assets/sass?(.test.szm)/*.scss','!site/assets/sass?(.test.szm)/*--*.scss'];
-// const sasszm_srcWatch = [...sasszm_src, '../libs/frontend/site/assets/sass/*.scss', '!../libs/frontend/site/assets/sass/*--*.scss'];
+// const sasszm_srcWatch = ['docs/assets/sass?(.test.szm)/*.scss','!docs/assets/sass?(.test.szm)/*--*.scss'];
+// const sasszm_srcWatch = [...sasszm_src, '../libs/frontend/docs/assets/sass/*.scss', '!../libs/frontend/docs/assets/sass/*--*.scss'];
 
-const sasszm_dest     =  'site/assets/sass.szm';
+const sasszm_dest     =  'docs/assets/sass.szm';
 
 function sasszm(cb) {
   return src(sasszm_src)

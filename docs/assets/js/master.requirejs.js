@@ -55,7 +55,7 @@ requirejs.config({
 //
 /////////////////////////////////////////////////////////////////////////
 
-// konspektas\site\~jsApp.toc.ndabas-jquery-toc.html
+// konspektas\docs\~jsApp.toc.ndabas-jquery-toc.html
 
 // requirejs(["../../assets.~jsApp/node_modules/jquery.toc/jquery.toc.js"], () => {
 //   $(() => {

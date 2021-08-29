@@ -87,7 +87,7 @@ gulp.watch(['app/images/!**!/!*'], reload);
 // // Static Server + watching scss/html files
 // gulp.task('serve', ['sass'], function() {
 //   browserSync.init({
-//     server: "./site"
+//     server: "./docs"
 //   });
 //   gulp.watch("app/scss/*.scss", ['sass']);
 //   gulp.watch("app/*.html").on('change', browserSync.reload);
@@ -106,7 +106,7 @@ gulp.watch(['app/images/!**!/!*'], reload);
 // // Static Server + watching scss/html files
 // gulp.task('serve', ['sass'], function() {
 //   browserSync.init({
-//     server: "./site"
+//     server: "./docs"
 //   });
 //   gulp.watch("app/scss/*.scss", ['sass']);
 //   gulp.watch("app/*.html").on('change', browserSync.reload3);

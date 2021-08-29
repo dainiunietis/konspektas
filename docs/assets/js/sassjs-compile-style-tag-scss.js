@@ -1,6 +1,6 @@
 
 // import { Sass } from '../node_modules/sass.js/dist/sass.js';
-// import { siteGlobals } from './site-globals.js';
+// import { siteGlobals } from './docs-globals.js';
 // import { docReady } from './utils.events.js';
 // import { loadCssFile } from './utils.load-files.js';
 // import { escapeRegExp } from './utils.regexp.js';

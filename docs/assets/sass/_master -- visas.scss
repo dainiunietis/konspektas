@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-//libs // //$pathTo_outside_libs-frontend-assets: "../../../../libs/frontend/site/assets/sass/";
+//libs // //$pathTo_outside_libs-frontend-assets: "../../../../libs/frontend/docs/assets/sass/";
 //bower // //$pathTo_bower_inuitcss: "../bower_components/inuitcss/";
 //@import $pathTo_bower_inuitcss + "settings/settings.core";
 
@@ -20,10 +20,10 @@
 //bower // //@import "../bower_components/inuitcss/settings/example.settings.global";
 
 
-//libs // @import "../../../../libs/frontend/site/assets/sass/testinis";
+//libs // @import "../../../../libs/frontend/docs/assets/sass/testinis";
 
 
-//libs // @import "../../../../libs/frontend/site/assets/sass/settings.colors";
+//libs // @import "../../../../libs/frontend/docs/assets/sass/settings.colors";
 
 // @import "settings.config";
 // @import "settings.global-vars";
@@ -46,7 +46,7 @@
 //bower // @import "../bower_components/inuitcss/tools/tools.hidden";
 //bower // @import "../bower_components/sass-mq/mq";
 
-//libs // @import "../../../../libs/frontend/site/assets/sass/tools.color";
+//libs // @import "../../../../libs/frontend/docs/assets/sass/tools.color";
 
 // // @import "../node_modules/sass-lumen/sass/lumen";
 
@@ -121,7 +121,7 @@
 //  * Media................Image- and text-like content side by side. The poster-child of OOCSS.
 //  * Flag.................Table-layout-based advancement on the Media object.
 //  * List-bare............Lists with no bullets or indents.
-//  * List-inline..........A list whose items all site in a line.
+//  * List-inline..........A list whose items all docs in a line.
 //  * Box..................Simple boxing abstraction.
 //  * Block................Image-on-top-of-text object.
 //  * Ratio................A container for maintaining aspect ratio of content.
@@ -147,10 +147,10 @@
 // @import "objects.grid__nenaudoti";
 // @import "objects.grid";
 
-// //libs // @import "../../../../libs/frontend/site/assets/sass/objects.cols";
+// //libs // @import "../../../../libs/frontend/docs/assets/sass/objects.cols";
 
-// //libs // //@import "../../../../libs/frontend/site/assets/sass/_object.layout.cols--nenaudoti";
-// //libs // //@import "../../../../libs/frontend/site/assets/sass/_object.layout.cols";
+// //libs // //@import "../../../../libs/frontend/docs/assets/sass/_object.layout.cols--nenaudoti";
+// //libs // //@import "../../../../libs/frontend/docs/assets/sass/_object.layout.cols";
 
 // //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
 // // Components
@@ -165,7 +165,7 @@
 
 // //--- assets/vendor/lib-frontend/sass ----------------------------------------
 
-// //libs // @import "../../../../libs/frontend/site/assets/sass/components.pvz";
+// //libs // @import "../../../../libs/frontend/docs/assets/sass/components.pvz";
 
 // // --- vietiniai --------------------------------------------------------------
 
@@ -210,7 +210,7 @@
 // // //bower // @import "../bower_components/inuitcss/utilities/utilities.print";
 // // //bower // @import "../bower_components/inuitcss/utilities/utilities.hide";
 
-// // @import "util.site-specific";
+// // @import "util.docs-specific";
 // // @import "util.font";
 // // @import "util.layout.spacing";
 
@@ -220,8 +220,8 @@
 
 // // //--- assets/vendor/lib-frontend/sass ----------------------------------------
 
-// // //libs // @import "../../../../libs/frontend/site/assets/sass/utilities.marking";
-// // //libs // @import "../../../../libs/frontend/site/assets/sass/dev.marking";
+// // //libs // @import "../../../../libs/frontend/docs/assets/sass/utilities.marking";
+// // //libs // @import "../../../../libs/frontend/docs/assets/sass/dev.marking";
 
 
 

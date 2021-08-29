@@ -5,10 +5,10 @@ var browserSync = require('browser-sync').create();
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-var sassPath_src      = ['site/assets/sass/*.scss','!site/assets/sass/*--*.scss'];
+var sassPath_src      = ['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss'];
 var sassPath_srcWatch = [...sassPath_src];
-// var sassPath_srcWatch = [...sassPath_src, '../libs/frontend/site/assets/sass/*.scss', '!../libs/frontend/site/assets/sass/*--*.scss'];
-var sassPath_dest =      'site/assets/sass.css';
+// var sassPath_srcWatch = [...sassPath_src, '../libs/frontend/docs/assets/sass/*.scss', '!../libs/frontend/docs/assets/sass/*--*.scss'];
+var sassPath_dest =      'docs/assets/sass.css';
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

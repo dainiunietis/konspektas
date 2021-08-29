@@ -6,9 +6,9 @@ gulp.task('default', ['sass.testinis:watch']);
 
 //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
-var sassTestinisPathSrc   = ['site/assets/sass.test/*.scss','!site/assets/sass.test/*--*.scss'];
+var sassTestinisPathSrc   = ['docs/assets/sass.test/*.scss','!docs/assets/sass.test/*--*.scss'];
 var sassTestinisPathWatch = [...sassTestinisPathSrc];
-var sassTestinisPathDest  = 'site/assets/sass.test.css';
+var sassTestinisPathDest  = 'docs/assets/sass.test.css';
 
 gulp.task('sass.testinis', function() {
   return gulp.src(sassTestinisPathSrc)

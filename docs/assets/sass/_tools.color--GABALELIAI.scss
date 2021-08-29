@@ -1,5 +1,5 @@
 
-//.test-colorScheme-site {
+//.test-colorScheme-docs {
 //  > * {
 //    //width: 200px;
 //    min-width: 4em;
@@ -11,7 +11,7 @@
 //    white-space: pre;
 //  }
 //  $i: 1;
-//  @each $name, $color in $colorScheme-site-data {
+//  @each $name, $color in $colorScheme-docs-data {
 //    > *:nth-child(#{$i}) {
 //      background: $color;
 //      &::before {
@@ -27,7 +27,7 @@
 
 
 
-//@function colorScheme-site($key: 'primary') {
+//@function colorScheme-docs($key: 'primary') {
 //  @return map-get($color-scheme-main, $key);
 //}
 

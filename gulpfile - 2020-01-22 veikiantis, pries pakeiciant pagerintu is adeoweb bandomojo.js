@@ -21,20 +21,20 @@ $.sass.compiler    = require('node-sass');
 //
 ////////////////////////////////////////////////////////////////////////////////////////
 
-const sass_src      = ['site/assets/sass/master.scss'];
-// const sass_src      = ['site/assets/sass/test*.scss'];
-// const sass_src      = ['site/assets/sass/master.scss', 'site/assets/sass/test*.scss'];
-// const sass_src      = ['site/assets/sass/master.scss','site/assets/sass/master-dreamweaver.scss'];
-// const sass_src      = ['site/assets/sass/*.scss','!site/assets/sass/*--*.scss','!site/assets/sass/*_*.scss'];
-// const sass_src      = ['site/assets/sass/*.scss','!site/assets/sass/*--*.scss'];
-// const sass_src      = ['site/assets/sass/*.scss','!site/assets/sass/*--*.scss', { base: '..' }];
+const sass_src      = ['docs/assets/sass/master.scss'];
+// const sass_src      = ['docs/assets/sass/test*.scss'];
+// const sass_src      = ['docs/assets/sass/master.scss', 'docs/assets/sass/test*.scss'];
+// const sass_src      = ['docs/assets/sass/master.scss','docs/assets/sass/master-dreamweaver.scss'];
+// const sass_src      = ['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss','!docs/assets/sass/*_*.scss'];
+// const sass_src      = ['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss'];
+// const sass_src      = ['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss', { base: '..' }];
 
-// const sass_srcWatch = [...sass_src, '../libs/frontend/site/assets/sass/*.scss', '!../libs/frontend/site/assets/sass/*--*.scss'];
-const sass_srcWatch = ['site/assets/sass?(.szm)/*.scss','!site/assets/sass?(.szm)/*--*.scss'];
-// const sass_srcWatch = ['site/assets/sass/*.scss', 'site/assets/sass.zm/*.scss'];
+// const sass_srcWatch = [...sass_src, '../libs/frontend/docs/assets/sass/*.scss', '!../libs/frontend/docs/assets/sass/*--*.scss'];
+const sass_srcWatch = ['docs/assets/sass?(.szm)/*.scss','!docs/assets/sass?(.szm)/*--*.scss'];
+// const sass_srcWatch = ['docs/assets/sass/*.scss', 'docs/assets/sass.zm/*.scss'];
 
-const sass_dest     =  'site/assets/sass';
-// const sass_dest     =  'site/assets/sass.css';
+const sass_dest     =  'docs/assets/sass';
+// const sass_dest     =  'docs/assets/sass.css';
 
 function sass(cb) {
   // Handle source files from different directories
@@ -56,9 +56,9 @@ function sass(cb) {
       //––– SASS –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
       .pipe($.sass({
         outputStyle: 'expanded', //nested, expanded, compact, compressed
-        // sourceMapRoot: 'site/assets/sass'
+        // sourceMapRoot: 'docs/assets/sass'
         // sourceMapRoot: '../sass'
-        // includePaths: ['site/assets/sass']
+        // includePaths: ['docs/assets/sass']
       }).on('error', $.sass.logError))
       //––– stripCssComments –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
       // !!! VEIKIA, BET SUGRIAUNA SOURCEMAP'Ą !!!
@@ -143,9 +143,9 @@ exports.sassWatchSync = series(BrowserSyncInit, sassSync, sassWatchSync);
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-const sasszm_src      = ['site/assets/sass.szm/*.scss', '!site/assets/sass.szm/*--*.scss', '!site/assets/sass.szm/*_*.scss'];
-// const sasszm_srcWatch = ['site/assets/sass.szm/*.scss','!site/assets/sass.szm/*--*.scss'];
-const sasszm_dest     =  'site/assets/sass.szm';
+const sasszm_src      = ['docs/assets/sass.szm/*.scss', '!docs/assets/sass.szm/*--*.scss', '!docs/assets/sass.szm/*_*.scss'];
+// const sasszm_srcWatch = ['docs/assets/sass.szm/*.scss','!docs/assets/sass.szm/*--*.scss'];
+const sasszm_dest     =  'docs/assets/sass.szm';
 
 function sasszm(cb) {
   return src(sasszm_src)
@@ -186,8 +186,8 @@ exports.sasszm = sasszm;
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-const sassPvz_src      = ['site/assets/sass.pvz/*.scss','!site/assets/sass.pvz/*--*.scss'];
-const sassPvz_dest     =  'site/assets/sass.pvz';
+const sassPvz_src      = ['docs/assets/sass.pvz/*.scss','!docs/assets/sass.pvz/*--*.scss'];
+const sassPvz_dest     =  'docs/assets/sass.pvz';
 
 function sassPvz(cb) {
   return src(sassPvz_src)
@@ -228,12 +228,12 @@ exports.sassPvzWatchSync = series(BrowserSyncInit, sassPvzSync, sassPvzWatchSync
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// gulp.task('site-sync:watch', gulp.parallel('browserSync', function() {
+// gulp.task('docs-sync:watch', gulp.parallel('browserSync', function() {
 //   gulp.watch(sass_srcWatch, gulp.series('sass-main-sync'));
 //   gulp.watch(sassPvzPath_src,       gulp.series('sass-pvz-sync'));
 //   gulp.watch(sassTestPath_src,      gulp.series('sass-test-sync'));
 //   gulp.watch(sassMokyklaPath_src,   gulp.series('sass-mokykla-sync'));
-//   gulp.watch(["site/*.html", "site/*.htm"]).on('change', browserSync.reload);
+//   gulp.watch(["docs/*.html", "docs/*.htm"]).on('change', browserSync.reload);
 // }));
 
 // function siteWatch(cb) {
@@ -246,7 +246,7 @@ exports.sassPvzWatchSync = series(BrowserSyncInit, sassPvzSync, sassPvzWatchSync
 //   cb();
 // }
 
-const html_srcWatch = ["site/{,test.szm/}*.{htm?(l),php}"];
+const html_srcWatch = ["docs/{,test.szm/}*.{htm?(l),php}"];
 
 function htmlWatchSync(cb) {
   watch(html_srcWatch).on('change', browserSync.reload);
@@ -282,7 +282,7 @@ function BrowserSyncInit(cb) {
     // browserSync'as sukuria savo serverį
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     // server: {
-    //   baseDir: 'site',
+    //   baseDir: 'docs',
     //   directory: true    // Serve files from the app directory with directory listing
     // },
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -299,7 +299,7 @@ function BrowserSyncInit(cb) {
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   });
   // browserSync.init({
-  //   server: "./site"
+  //   server: "./docs"
   // });
   cb();
 }
@@ -314,10 +314,10 @@ exports.default = siteWatchSync;
 
 
 // gulp.task('default', ['sass-main:watch']);
-// gulp.task('default', ['site-sync:watch']);
+// gulp.task('default', ['docs-sync:watch']);
 
-// // gulp.task('default', gulp.series(gulp.parallel('site-sync:watch')));
-// gulp.task('default', gulp.series('site-sync:watch', function() {
+// // gulp.task('default', gulp.series(gulp.parallel('docs-sync:watch')));
+// gulp.task('default', gulp.series('docs-sync:watch', function() {
 //   console.log("777 777 777");
 // }));
 
@@ -341,8 +341,8 @@ exports.default = siteWatchSync;
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// var sassPvzPath_src   = ['site/assets/sass.pvz/*.scss','!site/assets/sass.pvz/*--*.scss'];
-// var sassPvzPath_dest  =  'site/assets/sass.pvz.css';
+// var sassPvzPath_src   = ['docs/assets/sass.pvz/*.scss','!docs/assets/sass.pvz/*--*.scss'];
+// var sassPvzPath_dest  =  'docs/assets/sass.pvz.css';
 //
 // gulp.task('sass-pvz-sync', function() {
 //   return gulp.src(sassPvzPath_src)
@@ -373,8 +373,8 @@ exports.default = siteWatchSync;
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// var sassTestPath_src   = ['site/assets/sass.test/*.scss','!site/assets/sass.test/*--*.scss'];
-// var sassTestPath_dest  =  'site/assets/sass.test.css';
+// var sassTestPath_src   = ['docs/assets/sass.test/*.scss','!docs/assets/sass.test/*--*.scss'];
+// var sassTestPath_dest  =  'docs/assets/sass.test.css';
 //
 // gulp.task('sass-test-sync', function() {
 //   return gulp.src(sassTestPath_src)
@@ -405,8 +405,8 @@ exports.default = siteWatchSync;
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// var sassMokyklaPath_src   = ['site/assets/sass.mokykla/*.scss','!site/assets/sass.mokykla/*--*.scss'];
-// var sassMokyklaPath_dest  =  'site/assets/sass.mokykla.css';
+// var sassMokyklaPath_src   = ['docs/assets/sass.mokykla/*.scss','!docs/assets/sass.mokykla/*--*.scss'];
+// var sassMokyklaPath_dest  =  'docs/assets/sass.mokykla.css';
 //
 // gulp.task('sass-mokykla-sync', function() {
 //   return gulp.src(sassMokyklaPath_src)

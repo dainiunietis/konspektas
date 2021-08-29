@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-//$pathTo_outside_libs-frontend-assets: "../../../../libs/frontend/site/assets/sass/";
+//$pathTo_outside_libs-frontend-assets: "../../../../libs/frontend/docs/assets/sass/";
 //$pathTo_bower_inuitcss: "../bower_components/inuitcss/";
 //@import $pathTo_bower_inuitcss + "settings/settings.core";
 
@@ -121,7 +121,7 @@ $inuit-global-line-height:  20px;
  * Media................Image- and text-like content side by side. The poster-child of OOCSS.
  * Flag.................Table-layout-based advancement on the Media object.
  * List-bare............Lists with no bullets or indents.
- * List-inline..........A list whose items all site in a line.
+ * List-inline..........A list whose items all docs in a line.
  * Box..................Simple boxing abstraction.
  * Block................Image-on-top-of-text object.
  * Ratio................A container for maintaining aspect ratio of content.
@@ -149,8 +149,8 @@ $inuit-global-line-height:  20px;
 
 @import "../sass.szm/objects.mcl";
 
-//@import "../../../../libs/frontend/site/assets/sass/_object.layout.cols--nenaudoti";
-//@import "../../../../libs/frontend/site/assets/sass/_object.layout.cols";
+//@import "../../../../libs/frontend/docs/assets/sass/_object.layout.cols--nenaudoti";
+//@import "../../../../libs/frontend/docs/assets/sass/_object.layout.cols";
 
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
 // Components

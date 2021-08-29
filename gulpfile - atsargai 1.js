@@ -8,13 +8,13 @@ var cssnano      = require('cssnano');
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-var sassMainPath_src      = ['site/assets/sass/*.scss','!site/assets/sass/*--*.scss'];
-var sassMainPath_srcWatch = [...sassMainPath_src, '../libs/frontend/site/assets/sass/*.scss', '!../libs/frontend/site/assets/sass/*--*.scss'];
+var sassMainPath_src      = ['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss'];
+var sassMainPath_srcWatch = [...sassMainPath_src, '../libs/frontend/docs/assets/sass/*.scss', '!../libs/frontend/docs/assets/sass/*--*.scss'];
 // var sassMainPath_srcWatch = [...sassMainPath_src];
-var sassMainPath_dest     =  'site/assets/sass.css';
+var sassMainPath_dest     =  'docs/assets/sass.css';
 
-var sassPvzPath_src   = ['site/assets/sass.pvz/*.scss','!site/assets/sass.pvz/*--*.scss'];
-var sassPvzPath_dest  =  'site/assets/sass.pvz.css';
+var sassPvzPath_src   = ['docs/assets/sass.pvz/*.scss','!docs/assets/sass.pvz/*--*.scss'];
+var sassPvzPath_dest  =  'docs/assets/sass.pvz.css';
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,7 +30,7 @@ gulp.task('default', ['sass-main:watch']);
 gulp.task('serve', ['browserSync','serve-sass'], function() {
   gulp.watch(sassMainPath_srcWatch, ['serve-sass']);
   // gulp.watch(sassPvzPath_src, ['serve-sass-pvz']);
-  gulp.watch(["site/*.html", "site/*.htm"]).on('change', browserSync.reload);
+  gulp.watch(["docs/*.html", "docs/*.htm"]).on('change', browserSync.reload);
 });
 
 
@@ -56,7 +56,7 @@ gulp.task('browserSync', function() {
     // browserSync'as sukuria savo serverį
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     // server: {
-    //   baseDir: 'site',
+    //   baseDir: 'docs',
     //   directory: true    // Serve files from the app directory with directory listing
     // },
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -73,7 +73,7 @@ gulp.task('browserSync', function() {
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   });
   // browserSync.init({
-  //   server: "./site"
+  //   server: "./docs"
   // });
 });
 
@@ -115,7 +115,7 @@ gulp.task('sass-main-sync', function() {
   // gulp.src('src/**/*.js')
   //   .pipe(sourcemaps.init({largeFile: true}))
 
-  // return gulp.src(sassMainPath_src, { base: 'site' })
+  // return gulp.src(sassMainPath_src, { base: 'docs' })
   return gulp.src(sassMainPath_src)
     .pipe($.sourcemaps.init())
       .pipe($.sass({outputstyle: 'compressed'}).on('error', $.sass.logError))

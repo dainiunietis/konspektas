@@ -73,11 +73,11 @@ $o-grd-minWidth:  9em;
     outline: 1px dotted colorScheme-site("1HL2");
     outline-offset: 3px;
     &:hover {
-      //outline-color: colorScheme-site("1");
+      //outline-color: colorScheme-docs("1");
       //outline-width: 2px;
       outline-style: solid;
-      //$color: scale_color(colorScheme-site("1HL2"), $alpha: -90%);
-      ////$color: scale_color(invert(colorScheme-site("1HL2"), 100%), $alpha: -93%);
+      //$color: scale_color(colorScheme-docs("1HL2"), $alpha: -90%);
+      ////$color: scale_color(invert(colorScheme-docs("1HL2"), 100%), $alpha: -93%);
       //background: $color;
     }
   }

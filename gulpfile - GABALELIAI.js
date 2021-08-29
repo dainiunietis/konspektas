@@ -17,7 +17,7 @@
 //     'android >= 4.4',
 //     'bb >= 10'
 //   ];*/
-//   return gulp.src('site/assets/sass/*.scss')
+//   return gulp.src('docs/assets/sass/*.scss')
 //     .pipe($.sourcemaps.init())
 //     .pipe($.sass({outputstyle: 'compressed'}).on('error', $.sass.logError))
 //     // .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -46,7 +46,7 @@
 //     //   }
 //     //  }))
 //     //--------------------------------------------------------------------------------------
-//     .pipe(gulp.dest('site/assets/sass.css'));
+//     .pipe(gulp.dest('docs/assets/sass.css'));
 // });
 
 
@@ -87,14 +87,14 @@
 // > npm install --save-dev gulp-jshint jshint-stylish
 
 // gulp.task('jshint', function() {
-//   return gulp.src('site/assets/js/*.js')
+//   return gulp.src('docs/assets/js/*.js')
 //     .pipe($.jshint())
 //     .pipe($.jshint.reporter('jshint-stylish'));
 // });
 //
 // // configure which files to watch and what tasks to use on file changes
 // gulp.task('jshint:watch', function() {
-//   gulp.watch('site/assets/js/*.js', ['jshint']);
+//   gulp.watch('docs/assets/js/*.js', ['jshint']);
 // });
 
 //▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
@@ -123,9 +123,9 @@
 
 
 // gulp.task('watch', function() {
-//   gulp.watch('site/assets/sass/*.scss', ['sass']);
-//   gulp.watch('site/assets/sass.mokykla/*.scss', ['sass-mokykla']);
-//   // gulp.watch('site/assets/js/*.js', ['jshint']);
+//   gulp.watch('docs/assets/sass/*.scss', ['sass']);
+//   gulp.watch('docs/assets/sass.mokykla/*.scss', ['sass-mokykla']);
+//   // gulp.watch('docs/assets/js/*.js', ['jshint']);
 // });
 
 // var gutil = require('gulp-util');
@@ -133,8 +133,8 @@
 //
 //
 // gulp.task('sass', function() {
-//    return gulp.src('site/assets/sass/*.scss')
-//    // return gulp.src('site/assets/sass/*.scss', {base: 'site/assets'})
+//    return gulp.src('docs/assets/sass/*.scss')
+//    // return gulp.src('docs/assets/sass/*.scss', {base: 'docs/assets'})
 //    // gulp.src(['src/test.js', 'src/testdir/test2.js'], { base: 'src' })
 //    .pipe($.sourcemaps.init())
 //    .pipe($.sass().on('error', $.sass.logError))
@@ -159,11 +159,11 @@
 //    // .pipe($.sourcemaps.write('.', {includeContent: false, sourceRoot: '../sass'}))
 //    // .pipe($.sourcemaps.write('.'))
 //    // .pipe($.sourcemaps.write())
-//    .pipe(gulp.dest('site/assets/sass.css'));
+//    .pipe(gulp.dest('docs/assets/sass.css'));
 // });
 //
 // gulp.task('sass:watch', function() {
-//   gulp.watch('site/assets/sass/*.scss', ['sass']);
+//   gulp.watch('docs/assets/sass/*.scss', ['sass']);
 // });
 
 
@@ -194,7 +194,7 @@
 
 
 // browserSync.init({
-//   server: "./site"
+//   server: "./docs"
 // });
 // browserSync.stream();
 
@@ -202,7 +202,7 @@
 // gulp.task('browser-sync', function() {
 //   browserSync.init({
 //     server: {
-//       baseDir: "./site"
+//       baseDir: "./docs"
 //     }
 //   });
 // });

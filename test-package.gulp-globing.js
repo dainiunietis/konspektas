@@ -6,11 +6,11 @@ const print = require('gulp-print').default;
 
 function testGulpGlobing() {
 
-  // const srcFiles = src(['site/assets/sass/*.scss','!site/assets/sass/*--*.scss','!site/assets/sass/*_*.scss']);
-  // return src(['site/assets/sass/*.scss','!site/assets/sass/*--*.scss','!site/assets/sass/*_*.scss'])
+  // const srcFiles = src(['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss','!docs/assets/sass/*_*.scss']);
+  // return src(['docs/assets/sass/*.scss','!docs/assets/sass/*--*.scss','!docs/assets/sass/*_*.scss'])
 
-  // src(['site/assets/sass{,.zm}/*color*.scss'])   // <<< abu daro tą patį
-  // src(['site/assets/sass?(.zm)/*color*.scss'])      // <<<
+  // src(['docs/assets/sass{,.zm}/*color*.scss'])   // <<< abu daro tą patį
+  // src(['docs/assets/sass?(.zm)/*color*.scss'])      // <<<
 
   src(['**/*.js'])      // <<<
 

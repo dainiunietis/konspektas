@@ -2,11 +2,11 @@
 
 let glob = require("glob");
 
-// glob('site/?(test.szm)/*aaa*.{html,php}', function (err, files) {
-// glob('site/?(test.szm)/*aaa*.{htm?(l),php,txt}', function (err, files) {
-// glob('site/{,test.szm/}*aaa*.{htm?(l),php,txt}', function (err, files) {
-glob('site/{,test.szm/}*.{html,php}', function (err, files) {
-// glob('site/*.{htm?(l), php}', function (err, files) {
+// glob('docs/?(test.szm)/*aaa*.{html,php}', function (err, files) {
+// glob('docs/?(test.szm)/*aaa*.{htm?(l),php,txt}', function (err, files) {
+// glob('docs/{,test.szm/}*aaa*.{htm?(l),php,txt}', function (err, files) {
+glob('docs/{,test.szm/}*.{html,php}', function (err, files) {
+// glob('docs/*.{htm?(l), php}', function (err, files) {
   if (err) {
     console.log(err);
   } else {

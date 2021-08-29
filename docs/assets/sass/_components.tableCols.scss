@@ -60,7 +60,7 @@
       &:first-child {
         margin-top: 0;
       }
-      
+
       &:only-child {
         margin-bottom: -7px;
       }
@@ -127,9 +127,9 @@
 
 ////.table-layout {
 //.c-tableCols {
-//  $headingColor: colorScheme-site("1H");
-//  $headingBG:    colorScheme-site("1HL4");
-//  $borderColor:  colorScheme-site("1HL2");
+//  $headingColor: colorScheme-docs("1H");
+//  $headingBG:    colorScheme-docs("1HL4");
+//  $borderColor:  colorScheme-docs("1HL2");
 //  border-collapse: collapse;
 //  box-shadow: none !important;
 //

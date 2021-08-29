@@ -1,5 +1,5 @@
 
-// console.log("site/assets/js/component.collapse.js — BEGIN");
+// console.log("docs/assets/js/component.collapse.js — BEGIN");
 
 /*
 // šitą galima padėti puslapyje, kad pasikrovus visi collapse'ai susi'collapse'intų:
@@ -138,4 +138,4 @@ export default function componentCollapse_class(collapseBlockClass) {
 
 
 
-// console.log("site/assets/js/component.collapse.js — END");
+// console.log("docs/assets/js/component.collapse.js — END");

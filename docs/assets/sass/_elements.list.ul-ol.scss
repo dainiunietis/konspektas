@@ -107,7 +107,7 @@ $ulol--lines-borderClr-base: hsl(0, 0%, 0%);
 @mixin ulol--lines {
   $ulol--lines-borderClr:           scale_color($ulol--lines-borderClr-base, $alpha: -20%);
   $ulol--lines-borderClr-topBottom: scale_color($ulol--lines-borderClr-base, $alpha: -20%);
-  //$borderClr: colorScheme-site('1HD1');
+  //$borderClr: colorScheme-docs('1HD1');
   margin: szm-spacing-size(medium-, em) 0 szm-spacing-size(medium-, em) 0;
   li {
     padding: 0 0 szm-spacing-size(tiny, em) 0;

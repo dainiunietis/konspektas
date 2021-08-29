@@ -19,28 +19,28 @@ $.sass.compiler    = require('sass');
 //
 ////////////////////////////////////////////////////////////////////////////////////////
 
-// const html_srcWatch = ["site/{,test.szm/}*.{htm?(l),php}"];
+// const html_srcWatch = ["docs/{,test.szm/}*.{htm?(l),php}"];
 
-const files_html       = ["./site/*.htm?(l)"];
-const folder_html      =  "./site";
+const files_html       = ["./docs/*.htm?(l)"];
+const folder_html      =  "./docs";
 
 // sass main
 
-const folder_sass_main = 'site/assets/sass';
-const folder_sass_mainLibs  = 'site/assets/sass?(.szm|.enhanced)';
+const folder_sass_main = 'docs/assets/sass';
+const folder_sass_mainLibs  = 'docs/assets/sass?(.szm|.enhanced)';
 
 const files_sass_mainLibs       = [folder_sass_mainLibs + '/*.scss'];
 const files_sass_mainLibs_watch = [...files_sass_mainLibs, '!' + folder_sass_mainLibs + '/*--*.scss'];
 
 // sass pvz
 
-const folder_sass_pvz = 'site/assets/sass.pvz';
-const files_sass_pvz = ['site/assets/sass.pvz/*.scss', '!site/assets/sass.pvz/*--*.scss'];
+const folder_sass_pvz = 'docs/assets/sass.pvz';
+const files_sass_pvz = ['docs/assets/sass.pvz/*.scss', '!docs/assets/sass.pvz/*--*.scss'];
 
 // sass test
 
-const folder_sass_test = 'site/assets/sass.test';
-const files_sass_test = ['site/assets/sass.test/*.scss', '!site/assets/sass.test/*--*.scss'];
+const folder_sass_test = 'docs/assets/sass.test';
+const files_sass_test = ['docs/assets/sass.test/*.scss', '!docs/assets/sass.test/*--*.scss'];
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -67,10 +67,10 @@ exports.testGlob = testGlob;
 ////////////////////////////////////////////////////////////////////////////////////////
 
 // const sass_src      = files_sass_mainLibs_watch;
-const sass_src      = ['site/assets/sass/master.scss'];
-// const sass_src      = ['site/assets/sass/master.dev.scss'];
-// const sass_src      = ['site/assets/sass/master.utilities.scss'];
-// const sass_src      = ['site/assets/sass/master-dreamweaver.scss'];
+const sass_src      = ['docs/assets/sass/master.scss'];
+// const sass_src      = ['docs/assets/sass/master.dev.scss'];
+// const sass_src      = ['docs/assets/sass/master.utilities.scss'];
+// const sass_src      = ['docs/assets/sass/master-dreamweaver.scss'];
 
 function sassCompile(cb) {
 
@@ -349,7 +349,7 @@ function browserSync_init(cb) {
     // browserSync'as sukuria savo serverį
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     // server: {
-    //   baseDir: 'site',
+    //   baseDir: 'docs',
     //   port: 8000,
     //   directory: true    // Serve files from the app directory with directory listing
     // },
@@ -367,7 +367,7 @@ function browserSync_init(cb) {
     //––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   });
   // browserSync.init({
-  //   server: "./site"
+  //   server: "./docs"
   // });
   cb();
 }
@@ -391,7 +391,7 @@ function browserSync_stream(cb) {
 function connect_init(cb) {
 
   // $.connect.server({
-  //   root: './site',
+  //   root: './docs',
   //   name: 'konspektas',  // webdev
   //   port: 8888,
   //   livereload: true
@@ -399,7 +399,7 @@ function connect_init(cb) {
 
   $.connect.server({
     name: 'konspektas',  // webdev
-    root: './site',
+    root: './docs',
     host: 'konspektas.local',
     port: 8000,
     // port: 80, //...................defaultinis, nereikia visai nurodyti naršyklės adrese
@@ -408,7 +408,7 @@ function connect_init(cb) {
   });
 
   // $.connect.server({
-  //   root: './site',
+  //   root: './docs',
   //   name: 'konspektas',  // webdev
   //   port: 8888,
   //   livereload: true

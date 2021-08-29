@@ -83,9 +83,9 @@ h1, h2, h3, h4, h5, h6 {
     background: scale-color(colorScheme-site('1HD1'), $lightness: -10%, $alpha: -95%);
     border-color: scale-color(colorScheme-site('1HD1'), $lightness: -10%, $alpha: -60%);
 
-    //$elm-textFormat-term-colorBase:  scale-color(colorScheme-site('2HD1'), $lightness: -10%, $alpha: -60%);
+    //$elm-textFormat-term-colorBase:  scale-color(colorScheme-docs('2HD1'), $lightness: -10%, $alpha: -60%);
     //
-    //$elm-textFormat-term-colorBg:    scale-color(colorScheme-site('2HD1'), $lightness: -10%, $alpha: -95%);
+    //$elm-textFormat-term-colorBg:    scale-color(colorScheme-docs('2HD1'), $lightness: -10%, $alpha: -95%);
   }
   > dfn {
     &::after {

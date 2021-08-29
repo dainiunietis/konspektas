@@ -1,5 +1,5 @@
 
-console.log("site/assets/js/component.collapse--SENAS.js — BEGIN");
+console.log("docs/assets/js/component.collapse--SENAS.js — BEGIN");
 
 function Component_collapse_savas_locdep(collapseBlockClass) {
 
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function(){
 */
 
 
-console.log("site/assets/js/component.collapse--SENAS.js — END");
+console.log("docs/assets/js/component.collapse--SENAS.js — END");
 
 
 

@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
     //font-size: 0.9em;
   }
 
-  // &:hover { background-color: scale-color(colorScheme-site('1'), $lightness: 90%); } // #EDD8ED
+  // &:hover { background-color: scale-color(colorScheme-docs('1'), $lightness: 90%); } // #EDD8ED
 
   &:before {
     box-sizing: content-box;
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 
     // color: #a86da5; /*color: #E8CEE7;*/
     //color: currentColor;
-    //color: colorScheme-site('1'); /*color: #E8CEE7;*/
+    //color: colorScheme-docs('1'); /*color: #E8CEE7;*/
     //background-color: hsla(230, 100%, 50%, 0.5);
   }
 
@@ -216,8 +216,8 @@ h2, h3, h4, h5, h6 {
 
       scale-color(colorScheme-site('1'), $alpha:-95%) calc(0.91em + 1px),
       scale-color(colorScheme-site('1'), $alpha:-100%) calc(calc(0.91em + 1px) + 0.2em),
-//       scale-color(colorScheme-site('1'), $alpha:-80%)  0.91em,
-//       scale-color(colorScheme-site('1'), $alpha:-100%) 0.95em
+//       scale-color(colorScheme-docs('1'), $alpha:-80%)  0.91em,
+//       scale-color(colorScheme-docs('1'), $alpha:-100%) 0.95em
     )
     ;
   //background-blend-mode: overlay;
@@ -268,7 +268,7 @@ h1 {
   &:before { content: "1 "; }
 
   //font-weight: bold;
-  //color: colorScheme-site('1HL4');
+  //color: colorScheme-docs('1HL4');
   //color: white;
   //text-shadow: hsl(0, 0%, 100%) 0 0 1px,
   //             rgb(90, 102, 82) 0 1px 0px,
@@ -290,7 +290,7 @@ h2 {
   margin: 1em 0 0 0;
   //padding: 0 0 .6em .8em;
   padding-bottom: .6em;
-  // border-top: colorScheme-site('1') solid 1px;
+  // border-top: colorScheme-docs('1') solid 1px;
   &:before {
     content: "2 ";
     // margin-left: 0;
